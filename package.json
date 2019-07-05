@@ -2,10 +2,13 @@
   "name": "pages-vendors",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for pages-vendors goes here",
-  "repository": "",
+  "description": "Ember frontend of the vendor documentation pages",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lblod/pages-vendor.git"
+  },
   "license": "MIT",
-  "author": "",
+  "author": "redpencil.io",
   "directories": {
     "doc": "doc",
     "test": "tests"
