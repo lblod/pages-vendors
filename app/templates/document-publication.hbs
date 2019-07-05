@@ -1,110 +1,215 @@
-{{#link-to "index" class="link--icon--caret link--icon--caret--back"}}Terug naar overzicht{{/link-to}}
+<section class="region region--alt">
+  <div class="layout layout--wide">
+		<div class="tabs__wrapper">
+		  <ul class="tabs" data-tabs-list>
+		    <li class="tab">
+		      {{#link-to "index" class="tab__link"}}<i class="fa fa-angle-left"></i> Terug naar overzicht{{/link-to}}
+		    </li>
+		  </ul>
+		</div>
 
-<h1 class="h1">Annoteren van gepubliceerde documenten</h1>
+		<div class="grid">
+			<div class="col--8-12 col--1-1--s">
+				<h1 class="h1">Annoteren van gepubliceerde documenten</h1>
+				<p>
+				  Lokale besturen publiceren documenten i.v.m. zittingen zoals agenda's, besluitenlijsten, notulen, enz. Opdat de kennis automatisch door een machine uit deze documenten ge&euml;xtraheerd kan worden, moeten ze op een correcte wijze geannoteerd te worden. Deze annotaties gebeuren volgens <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/" target="_blank" rel="noopener">het Besluit Publicatie applicatieprofiel</a> dat beschreven staat op <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/" target="_blank" rel="noopener">https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/</a>. In wat volgt illustreren we dit met enkele voorbeelden.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
 
-<p>
-  Lokale besturen publiceren documenten i.v.m. zittingen zoals agenda's, besluitenlijsten, notulen, enz. Opdat de kennis automatisch door een machine uit deze documenten ge&euml;xtraheerd kan worden, moeten ze op een correcte wijze geannoteerd te worden. Deze annotaties gebeuren volgens <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/" target="_blank" rel="noopener">het Besluit Publicatie applicatieprofiel</a> dat beschreven staat op <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/" target="_blank" rel="noopener">https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/</a>. In wat volgt illustreren we dit met enkele voorbeelden.
-</p>
+<section class="region">
+  <div class="layout layout--wide">
+		<div class="grid">
+			<div class="col--8-12 col--1-1--s">
+				<h2 class="h2" id="annotatie-publicaties">Annotatie van gepubliceerde documenten</h2>
+				<article class="u-spacer--large">
+					<h3 class="h3" id="annotatie-publicaties-document-types">Document types</h3>
+					<p>
+					  Ieder document dat gepubliceerd wordt is een <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/#Document">foaf:Document</a>. Ieder document heeft een type. Momenteel zijn volgende document types gedefinieerd:
+					</p>
+					<table class="data-table u-spacer">
+					  <thead>
+					    <tr>
+					      <th>Document type</th>
+					      <th>URI</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td>Agenda</td>
+					      <td>http://data.lblod.info/id/document-types/agenda</td>
+					    </tr>
+					    <tr>
+					      <td>Besluitenlijst</td>
+					      <td>http://data.lblod.info/id/document-types/besluitenlijst</td>
+					    </tr>
+					    <tr>
+					      <td>Uittreksel</td>
+					      <td>http://data.lblod.info/id/document-types/uittreksel</td>
+					    </tr>
+					    <tr>
+					      <td>Notulen</td>
+					      <td>http://data.lblod.info/id/document-types/notulen</td>
+					    </tr>
+					  </tbody>
+					</table>
+					<p class="u-spacer">
+					  Via RDFa annotaties kan dit als volgt weergegeven worden:
+					  {{#let (get-code-snippet "publication-document-with-type.html") as |snippet|}}
+					    <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+					  {{/let}}
+					</p>
+					<p class="u-spacer">
+					  Annotaties van de overige types van document zijn analoog aan bovenstaand voorbeeld van een agenda.
+					</p>
 
-<h2 class="h2">Annotatie van gepubliceerde documenten</h2>
-<h3 class="h3">Document types</h3>
-<p>
-  Ieder document dat gepubliceerd wordt is een <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/#Document">foaf:Document</a>. Ieder document heeft een type. Momenteel zijn volgende document types gedefinieerd:
-</p>
-<table class="data-table">
-  <thead>
-    <tr>
-      <th>Document type</th>
-      <th>URI</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Agenda</td>
-      <td>http://data.lblod.info/id/document-types/agenda</td>
-    </tr>
-    <tr>
-      <td>Besluitenlijst</td>
-      <td>http://data.lblod.info/id/document-types/besluitenlijst</td>
-    </tr>
-    <tr>
-      <td>Uittreksel</td>
-      <td>http://data.lblod.info/id/document-types/uittreksel</td>
-    </tr>
-    <tr>
-      <td>Notulen</td>
-      <td>http://data.lblod.info/id/document-types/notulen</td>
-    </tr>
-  </tbody>
-</table>
-<p>
-  Via RDFa annotaties kan dit als volgt weergegeven worden:
-  {{#let (get-code-snippet "publication-document-with-type.html") as |snippet|}}
-    <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
-  {{/let}}
-</p>
-<p>
-  Annotaties van de overige types van document zijn analoog aan bovenstaand voorbeeld van een agenda.
-</p>
+					<h3 class="h3" id="document-types-zitting">Annotatie van de relatie naar een zitting</h3>
+					<p class="u-spacer">
+					  Ieder document dat gepubliceerd wordt, moet via een annotatie gerelateerd zijn aan een zitting. De volgende predicaten kunnen gebruikt worden om aan een zitting een document te relateren:
+					</p>
+					<table class="data-table u-spacer">
+					  <thead>
+					    <tr>
+					      <th>Document type</th>
+					      <th>Predicaat om te relateren aan zitting</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr>
+					      <td>Agenda</td>
+					      <td>besluit:heeftAgenda</td>
+					    </tr>
+					    <tr>
+					      <td>Besluitenlijst</td>
+					      <td>besluit:heeftBesluitenlijst</td>
+					    </tr>
+					    <tr>
+					      <td>Uittreksel</td>
+					      <td>besluit:heeftUittreksel</td>
+					    </tr>
+					    <tr>
+					      <td>Notulen</td>
+					      <td>besluit:heeftNotulen</td>
+					    </tr>
+					  </tbody>
+					</table>
+					<p class="u-spacer">
+					  Dit kan op 2 manieren gebeuren:
+					  <ol class="bullet-list">
+					    <li class="bullet-list__item">Op de pagina met het gepubliceerde document zelf</li>
+					    <li class="bullet-list__item">Op een andere pagina met een link naar het gepubliceerde document</li>
+					  </ol>
+					</p>
+					<h4 class="h4" id="annotatie-publicaties-document-types-zitting">Zitting annoteren op de pagina met het gepubliceerde document</h4>
+					<p class="u-spacer">
+					  De relatie tussen een zitting en het gepubliceerde document kan als volgt op &eacute;&eacute;n pagina geannoteerd worden:
+					  {{#let (get-code-snippet "publication-document-to-zitting-relation-one-page.html") as |snippet|}}
+					    <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+					  {{/let}}
+					</p>
+					<h4 class="h4">Zitting annoteren met een link naar het gepubliceerde document</h4>
+					<p class="u-spacer">
+					  De relatie tussen een zitting en een gepubliceerd document kan ook op een andere pagina dan die van het gepubliceerde document geannoteerd worden.
+					  {{#let (get-code-snippet "publication-document-to-zitting-relation-with-hyperlink.html") as |snippet|}}
+					    <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+					  {{/let}}
+					</p>
+					<div class="u-hr"></div>
+				</article>
 
-<h3 class="h3">Annotatie van de relatie naar een zitting</h3>
-<p>
-  Ieder document dat gepubliceerd wordt, moet via een annotatie gerelateerd zijn aan een zitting. De volgende predicaten kunnen gebruikt worden om aan een zitting een document te relateren:
-</p>
-<table class="data-table">
-  <thead>
-    <tr>
-      <th>Document type</th>
-      <th>Predicaat om te relateren aan zitting</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Agenda</td>
-      <td>besluit:heeftAgenda</td>
-    </tr>
-    <tr>
-      <td>Besluitenlijst</td>
-      <td>besluit:heeftBesluitenlijst</td>
-    </tr>
-    <tr>
-      <td>Uittreksel</td>
-      <td>besluit:heeftUittreksel</td>
-    </tr>
-    <tr>
-      <td>Notulen</td>
-      <td>besluit:heeftNotulen</td>
-    </tr>
-  </tbody>
-</table>
-<p>
-  Dit kan op 2 manieren gebeuren:
-  <ol class="bullet-list">
-    <li class="bullet-list__item">Op de pagina met het gepubliceerde document zelf</li>
-    <li class="bullet-list__item">Op een andere pagina met een link naar het gepubliceerde document</li>
-  </ol>
-</p>
-<h4 class="h4">Zitting annoteren op de pagina met het gepubliceerde document</h4>
-<p>
-  De relatie tussen een zitting en het gepubliceerde document kan als volgt op &eacute;&eacute;n pagina geannoteerd worden:
-  {{#let (get-code-snippet "publication-document-to-zitting-relation-one-page.html") as |snippet|}}
-    <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
-  {{/let}}
-</p>
-<h4 class="h4">Zitting annoteren met een link naar het gepubliceerde document</h4>
-<p>
-  De relatie tussen een zitting en een gepubliceerd document kan ook op een andere pagina dan die van het gepubliceerde document geannoteerd worden.
-  {{#let (get-code-snippet "publication-document-to-zitting-relation-with-hyperlink.html") as |snippet|}}
-    <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
-  {{/let}}
-</p>
+				<article class="u-spacer--large">
+					<h2 class="h2" id="annotatie-overzicht">Annotatie van overzichtspagina's</h2>
+					<p>
+					  De URLs die ingestuurd worden bevatten niet altijd de geannoteerde documenten. Vaak bevat de ingestuurde URL een of meerdere links naar pagina's met geannoteerde documenten. Denk bijvoorbeeld aan een overzichtspagina waarop alle zittingen van de gemeenteraad opgelijst worden. Om de navigatie naar relevante pagina's met RDFa kennis te faciliteren, kunnen hyperlinks met een specifieke property <code>http://data.lblod.info/vocabularies/lblod/linkToPublication</code> geannoteerd worden waardoor de Besluit Publicatie harvester ook deze gelinkte pagina's zal harvesten om er de nodige kennis uit te extraheren.
+					</p>
+					<p class="u-spacer">
+						{{#let (get-code-snippet "publication-document-link-to-publication.html") as |snippet|}}
+						  <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+						{{/let}}
+					</p>
+				</article>
 
-<h2 class="h2">Annotatie van overzichtspagina's</h2>
-<p>
-  De URLs die ingestuurd worden bevatten niet altijd de geannoteerde documenten. Vaak bevat de ingestuurde URL een of meerdere links naar pagina's met geannoteerde documenten. Denk bijvoorbeeld aan een overzichtspagina waarop alle zittingen van de gemeenteraad opgelijst worden. Om de navigatie naar relevante pagina's met RDFa kennis te faciliteren, kunnen hyperlinks met een specifieke property <code>http://data.lblod.info/vocabularies/lblod/linkToPublication</code> geannoteerd worden waardoor de Besluit Publicatie harvester ook deze gelinkte pagina's zal harvesten om er de nodige kennis uit te extraheren.
-</p>
-{{#let (get-code-snippet "publication-document-link-to-publication.html") as |snippet|}}
-  <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
-{{/let}}
+				{{outlet}}
+			</div>
+{{!-- 			<div class="col--3-12 col--12-12--s col--4-12--m push--1-12 push--reset--m">
 
-{{outlet}}
+        <nav class="vl-side-navigation js-vl-side-navigation js-vl-sticky js-vl-scrollspy"
+        data-vl-side-navigation
+        data-vl-side-navigation-scrollable
+        data-vl-scrollspy
+        data-vl-scrollspy-mobile="Componenten"
+        data-vl-sticky
+        data-vl-sticky-offset-top="10"
+        aria-label="inhoudsopgave">
+          <div class="vl-side-navigation__content">
+            <h2 class="vl-title--h4">Inhoud van de handleiding</h2>
+            <ul class="vl-side-navigation__group">
+              <li class="vl-side-navigation__item vl-side-navigation__item--parent">
+                <a class="vl-side-navigation__toggle" href="/pages-vendors/#/document-publication/#annotatie-publicaties" data-vl-child="content-1">
+                  Annotatie van gepubliceerde documenten
+                  <i class="vl-vi vl-vi-arrow-right-fat"></i>
+                </a>
+                <ul>
+                  <li class="vl-side-navigation__item">
+                    <div>
+                    	<a href="/pages-vendors/#/document-publication/#annotatie-publicaties-document-types" data-vl-parent="content-1" data-vl-child="content-1-1">
+                    		Document types
+                  			<i class="vl-vi vl-vi-arrow-right-fat"></i>
+                  		</a>
+                    	<ul>
+                  			<li class="vl-side-navigation__item">
+                    			<div>
+	                    			<a href="/pages-vendors/#/document-publication/#annotatie-publicaties-document-types-zitting" data-vl-parent="content-1-1">Zitting annoteren op de pagina met het gepubliceerde document</a>
+	                    		</div>
+                    		</li>
+                    	</ul>
+                    </div>
+                  </li>
+                  <li class="vl-side-navigation__item">
+                    <div><a href="/pages-vendors/#/document-publication/#annotatie-publicaties-zitting" data-vl-parent="content-1">Annotatie van de relatie naar een zitting</a></div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+			</div> --}}
+		</div>
+	</div>
+</section>
+
+<section class="region region--alt">
+  <div class="layout layout--wide">
+		<ul class="grid grid--is-stacked js-equal-height-container">
+			<li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+				{{#link-to "document-publication" class="doormat js-equal-height u-mobile-no-equal-height"}}
+					<div class="doormat__title">
+						Publicaties van documenten
+					</div>
+					<span class="doormat__text">Misschien een korte samenvatting van de documentatie</span>
+				{{/link-to}}
+			</li>
+		</ul>
+	</div>
+</section>
+
+<section class="region">
+  <div class="layout layout--wide u-spacer--large">
+  	{{#link-to "index" class="link--icon--caret link--icon--caret--back"}}Terug naar overzicht{{/link-to}}
+	</div>
+
+	<div class="layout layout--wide" id="infoblock">
+		<div class="layout__wrapper">
+			<section class="info-block info-block--faq">
+				<header class="info-block__header">
+					<h1 class="label-above info-block__title">Vragen</h1>
+				</header>
+				<div class="info-block__content">
+					<p>Voor meer informatie kan u ons contacteren op...</p>
+				</div>
+			</section>
+		</div>
+	</div>
+</section>

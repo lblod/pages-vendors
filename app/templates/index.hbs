@@ -1,3 +1,55 @@
-<ul class="link-list">
-  <li>{{#link-to "document-publication" class="link--icon--caret"}}Publicaties van documenten{{/link-to}}</li>
-</ul>
+<div class="page">
+  <div id="main" itemprop="mainContentOfPage" role="main" tabindex="-1" class="main-content">
+    <header class="content-header content-header--small content-header--half-image u-spacer">
+      <div class="content-header__wrapper">
+        <picture class="content-header__bg"><img sizes="50vw" src="/assets/images/loket-header-1600.jpg" srcset="/assets/images/loket-header-320.jpg 320w, /assets/images/loket-header-1024.jpg 1024w, /assets/images/loket-header-1600.jpg 1600w" alt="" title=""></picture>
+        <div class="layout layout--wide">
+          <div class="content-header__content">
+            <div class="content-header__logo-wrapper"><a href="#" class="content-header__entity-logo content-header__entity-logo--lowercase"><span class="content-header__entity-logo__prefix">Vlaanderen</span><span class="content-header__entity-logo__title">is lokaal bestuur</span></a></div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <section class="region">
+    <div class="layout layout--wide">
+    	<div class="grid">
+    		<div class="col--6-12 col--12-12--s">
+				  <h1 class="h1">Vendor en API integrator documentatie</h1>
+				  <p>Hier kan je wat informatie kwijt over de pagina. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="region region--alt">
+    <div class="layout layout--wide">
+    	<h2 class="h2">Beschikbare documentatie</h2>
+			<ul class="grid grid--is-stacked js-equal-height-container">
+				<li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+					{{#link-to "document-publication" class="doormat js-equal-height u-mobile-no-equal-height"}}
+						<div class="doormat__title">
+							Publicaties van documenten
+						</div>
+						<span class="doormat__text">Misschien een korte samenvatting van de documentatie</span>
+					{{/link-to}}
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<div class="layout layout--wide" id="infoblock">
+		<div class="layout__wrapper">
+			<section class="info-block info-block--faq">
+				<header class="info-block__header">
+					<h1 class="label-above info-block__title">Vragen</h1>
+				</header>
+				<div class="info-block__content">
+					<p>Voor meer informatie kan u ons contacteren op...</p>
+				</div>
+			</section>
+
+		</div>
+	</div>
+
+</div>
