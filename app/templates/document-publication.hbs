@@ -1,0 +1,110 @@
+{{#link-to "index" class="link--icon--caret link--icon--caret--back"}}Terug naar overzicht{{/link-to}}
+
+<h1 class="h1">Annoteren van gepubliceerde documenten</h1>
+
+<p>
+  Lokale besturen publiceren documenten i.v.m. zittingen zoals agenda's, besluitenlijsten, notulen, enz. Opdat de kennis automatisch door een machine uit deze documenten ge&euml;xtraheerd kan worden, moeten ze op een correcte wijze geannoteerd te worden. Deze annotaties gebeuren volgens <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/" target="_blank" rel="noopener">het Besluit Publicatie applicatieprofiel</a> dat beschreven staat op <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/" target="_blank" rel="noopener">https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/</a>. In wat volgt illustreren we dit met enkele voorbeelden.
+</p>
+
+<h2 class="h2">Annotatie van gepubliceerde documenten</h2>
+<h3 class="h3">Document types</h3>
+<p>
+  Ieder document dat gepubliceerd wordt is een <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/#Document">foaf:Document</a>. Ieder document heeft een type. Momenteel zijn volgende document types gedefinieerd:
+</p>
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Document type</th>
+      <th>URI</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Agenda</td>
+      <td>http://data.lblod.info/id/document-types/agenda</td>
+    </tr>
+    <tr>
+      <td>Besluitenlijst</td>
+      <td>http://data.lblod.info/id/document-types/besluitenlijst</td>
+    </tr>
+    <tr>
+      <td>Uittreksel</td>
+      <td>http://data.lblod.info/id/document-types/uittreksel</td>
+    </tr>
+    <tr>
+      <td>Notulen</td>
+      <td>http://data.lblod.info/id/document-types/notulen</td>
+    </tr>
+  </tbody>
+</table>
+<p>
+  Via RDFa annotaties kan dit als volgt weergegeven worden:
+  {{#let (get-code-snippet "publication-document-with-type.html") as |snippet|}}
+    <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+  {{/let}}
+</p>
+<p>
+  Annotaties van de overige types van document zijn analoog aan bovenstaand voorbeeld van een agenda.
+</p>
+
+<h3 class="h3">Annotatie van de relatie naar een zitting</h3>
+<p>
+  Ieder document dat gepubliceerd wordt, moet via een annotatie gerelateerd zijn aan een zitting. De volgende predicaten kunnen gebruikt worden om aan een zitting een document te relateren:
+</p>
+<table class="data-table">
+  <thead>
+    <tr>
+      <th>Document type</th>
+      <th>Predicaat om te relateren aan zitting</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Agenda</td>
+      <td>besluit:heeftAgenda</td>
+    </tr>
+    <tr>
+      <td>Besluitenlijst</td>
+      <td>besluit:heeftBesluitenlijst</td>
+    </tr>
+    <tr>
+      <td>Uittreksel</td>
+      <td>besluit:heeftUittreksel</td>
+    </tr>
+    <tr>
+      <td>Notulen</td>
+      <td>besluit:heeftNotulen</td>
+    </tr>
+  </tbody>
+</table>
+<p>
+  Dit kan op 2 manieren gebeuren:
+  <ol class="bullet-list">
+    <li class="bullet-list__item">Op de pagina met het gepubliceerde document zelf</li>
+    <li class="bullet-list__item">Op een andere pagina met een link naar het gepubliceerde document</li>
+  </ol>
+</p>
+<h4 class="h4">Zitting annoteren op de pagina met het gepubliceerde document</h4>
+<p>
+  De relatie tussen een zitting en het gepubliceerde document kan als volgt op &eacute;&eacute;n pagina geannoteerd worden:
+  {{#let (get-code-snippet "publication-document-to-zitting-relation-one-page.html") as |snippet|}}
+    <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+  {{/let}}
+</p>
+<h4 class="h4">Zitting annoteren met een link naar het gepubliceerde document</h4>
+<p>
+  De relatie tussen een zitting en een gepubliceerd document kan ook op een andere pagina dan die van het gepubliceerde document geannoteerd worden.
+  {{#let (get-code-snippet "publication-document-to-zitting-relation-with-hyperlink.html") as |snippet|}}
+    <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+  {{/let}}
+</p>
+
+<h2 class="h2">Annotatie van overzichtspagina's</h2>
+<p>
+  De URLs die ingestuurd worden bevatten niet altijd de geannoteerde documenten. Vaak bevat de ingestuurde URL een of meerdere links naar pagina's met geannoteerde documenten. Denk bijvoorbeeld aan een overzichtspagina waarop alle zittingen van de gemeenteraad opgelijst worden. Om de navigatie naar relevante pagina's met RDFa kennis te faciliteren, kunnen hyperlinks met een specifieke property <code>http://data.lblod.info/vocabularies/lblod/linkToPublication</code> geannoteerd worden waardoor de Besluit Publicatie harvester ook deze gelinkte pagina's zal harvesten om er de nodige kennis uit te extraheren.
+</p>
+{{#let (get-code-snippet "publication-document-link-to-publication.html") as |snippet|}}
+  <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+{{/let}}
+
+{{outlet}}
