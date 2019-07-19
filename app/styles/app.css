@@ -1,0 +1,12 @@
+p small {
+	font-size: 0.6rem !important;
+}
+
+.uppercase {
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.text-fade {
+	color: gray;
+}
