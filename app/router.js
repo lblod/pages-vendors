@@ -8,6 +8,7 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('document-publication');
+  this.route('reporting-obligation');
 });
 
 export default Router;
