@@ -23,74 +23,62 @@
   <div class="layout layout--wide">
     <div class="grid">
       <div class="col--8-12 col--1-1--s">
-        <h2 class="h2" id="todo">Loket meldingsplicht API</h2>
+        <h2 class="h2" id="todo">Aanmaken nieuwe melding</h2>
         <article class="u-spacer--large">
-          <h3 class="h3" id="todo">API Aanmaken nieuwe melding</h3>
           <p>
-            Maakt een nieuwe melding aan.  Indien al de nodige velden ingevuld zijn wordt de melding automatisch verzonden via het loket.  Indien er ontbrekende velden zijn krijgt het bestuur een mailtje dat er een melding klaar staat voor verzending.
-            Al de calls kunnen uitgevoerd worden door POST https://api.loket.lokaalbestuur.vlaanderen.be/melding, volgende voorbeelden beschrijven de JSON BODY van deze calls.
+            Maakt een nieuwe melding aan.  Indien al de nodige velden ingevuld zijn wordt de melding automatisch verzonden via het loket.  Indien er ontbrekende velden zijn krijgt het bestuur een mailtje dat er een melding klaar staat voor verzending. Alle calls kunnen uitgevoerd worden door
+
+            <CodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/melding</CodeBlock>
+
+            Volgende voorbeelden beschrijven de JSON body van deze calls.
           </p>
 
-          <h4 class="h4" id="todo">Kortste voorbeeld</h4>
+          <h3 class="h3">Kortste voorbeeld</h3>
 
           <p>
             Een kort voorbeeld van de API:
-            {{#let (get-code-snippet "reporting-obligation-quick-example.html") as |snippet|}}
+            {{#let (get-code-snippet "reporting-obligation-quick-example.js") as |snippet|}}
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
             {{/let}}
           </p>
 
-          <h4 class="h4" id="todo">Optioneel mee geven van subject</h4>
+          <h3 class="h3">Optioneel mee geven van subject</h3>
 
           <p>
             Indien er meerdere mogelijke meldingen op een pagina staan, kan het subject voor deze specifieke melding meegegeven worden in de call.
-            {{#let (get-code-snippet "reporting-obligation-optioneel-meegeven-subject.html") as |snippet|}}
+            {{#let (get-code-snippet "reporting-obligation-optioneel-meegeven-subject.js") as |snippet|}}
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
             {{/let}}
           </p>
 
-          <h4 class="h4" id="todo">Optioneel meegeven van draft status</h4>
+          <h3 class="h3">Optioneel meegeven van draft of inzendbaar status</h3>
 
           <p>
-            Indien een inzending aangemaakt wordt en volledig is, dan wordt ze automatisch verzonden.  Optioneel kan aangegeven worden dat de inzending in draft status is door de “status” property mee te geven.
-            {{#let (get-code-snippet "reporting-obligation-optioneel-meegeven-draft-status.html") as |snippet|}}
+            Indien een inzending aangemaakt wordt en volledig is, dan kan ze automatisch verzonden worden.  Optioneel kan aangegeven worden dat de inzending in draft status is door de "status" property mee te geven.  De status kan de uri voor "cconcept" of "inzendbaar" zijn.
+            {{#let (get-code-snippet "reporting-obligation-optioneel-meegeven-draft-status.js") as |snippet|}}
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
             {{/let}}
           </p>
 
-          <h4 class="h4" id="todo">JSON-LD context</h4>
+          <h3 class="h3">JSON-LD context</h3>
 
           <p>
             Elk van voorgaande voorbeelden heeft een impliciete JSON-LD context.  Deze context kan expliciet in de calls meegegeven worden, of een alternatieve context kan meegegeven worden. Op deze manier blijft de API maximaal flexibel.
             Deze context wordt ter beschikking gesteld op https://data.lblod.info/contexten/automatische-melding/v1/context.json of https://data.lblod.info/automatische-melding/v1/context.json
-            {{#let (get-code-snippet "reporting-obligation-json-ld-context.html") as |snippet|}}
+            {{#let (get-code-snippet "reporting-obligation-json-ld-context.js") as |snippet|}}
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
             {{/let}}
           </p>
 
-          <h4 class="h4" id="todo">Expanded call</h4>
+          <h3 class="h3">Expanded call</h3>
 
           <p>
             Een call kan in dat geval ook volledig, zonder JSON-LD context meegegeven worden.  Of de call kan slechts deels geconfigureerd worden.  Dat ziet er dan als volgt uit:
-            {{#let (get-code-snippet "reporting-obligation-expanded-call.html") as |snippet|}}
+            {{#let (get-code-snippet "reporting-obligation-expanded-call.js") as |snippet|}}
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
             {{/let}}
           </p>
 
-          <h3 class="h3" id="todo">Ondersteuning voor vendors</h3>
-
-          <p>
-            We bieden optioneel ondersteuning aan ter validatie van de formulieren in een afzonderlijke installatie.
-            <ul>
-              <li>
-                De ondersteuningssite is een custom installatie van het loket met mock users waarin enkel het recht voor invullen van het formulier ingegeven is.
-              </li>
-              <li>
-                Vendors kunnen inloggen in enkele aan hen toegewezen besturen.
-              </li>
-            </ul>
-            Met behulp van deze setup kunnen de vendors hun inzendingen valideren tov onze APIs en parsers.
-          </p>
         </article>
 
         {{outlet}}
@@ -107,15 +95,15 @@
           <div class="doormat__title">
             Publicaties van documenten
           </div>
-          <span class="doormat__text">Misschien een korte samenvatting van de documentatie</span>
+          <span class="doormat__text">Om de harvester te geleiden dienen bepaalde annotaties toegevoegd te worden, zodat deze de juiste pagina's opgehaald worden.</span>
         {{/link-to}}
       </li>
       <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
         {{#link-to "reporting-obligation" class="doormat js-equal-height u-mobile-no-equal-height"}}
           <div class="doormat__title">
-            Loket meldingsplicht API
+            Meldingsplicht API
           </div>
-          <span class="doormat__text">Misschien een korte samenvatting van de documentatie</span>
+          <span class="doormat__text">API om een nieuwe melding aan te maken in Digitaal Loket. Indien al de nodige velden ingevuld zijn wordt de melding automatisch verzonden.</span>
         {{/link-to}}
       </li>
     </ul>

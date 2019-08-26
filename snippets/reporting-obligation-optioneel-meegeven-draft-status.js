@@ -5,6 +5,6 @@
     "uri": "http://data.lblod.info/vendors/cipal-schaubroeck",
     "key": "AE86-GT86"
   },
-  "status": "http://data.lblod.info/document-statuses/concept",
+  "status": "http://data.lblod.info/document-statuses/inzendbaar",
   "submittedResource": "http://data.tielt-winge.be/besluiten/2398230"
 }
