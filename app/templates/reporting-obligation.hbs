@@ -25,7 +25,7 @@
       <div class="col--8-12 col--1-1--s">
         <h2 class="h2" id="todo">Aanmaken nieuwe melding</h2>
         <article class="u-spacer--large">
-          <p>
+          <p class="u-spacer">
             Maakt een nieuwe melding aan.  Indien al de nodige velden ingevuld zijn wordt de melding automatisch verzonden via het loket.  Indien er ontbrekende velden zijn krijgt het bestuur een mailtje dat er een melding klaar staat voor verzending. Alle calls kunnen uitgevoerd worden door
 
             <CodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/melding</CodeBlock>
@@ -34,8 +34,7 @@
           </p>
 
           <h3 class="h3">Kortste voorbeeld</h3>
-
-          <p>
+          <p class="u-spacer">
             Een kort voorbeeld van de API:
             {{#let (get-code-snippet "reporting-obligation-quick-example.js") as |snippet|}}
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
@@ -43,8 +42,7 @@
           </p>
 
           <h3 class="h3">Optioneel mee geven van subject</h3>
-
-          <p>
+          <p class="u-spacer">
             Indien er meerdere mogelijke meldingen op een pagina staan, kan het subject voor deze specifieke melding meegegeven worden in de call.
             {{#let (get-code-snippet "reporting-obligation-optioneel-meegeven-subject.js") as |snippet|}}
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
@@ -52,8 +50,7 @@
           </p>
 
           <h3 class="h3">Optioneel meegeven van draft of inzendbaar status</h3>
-
-          <p>
+          <p class="u-spacer">
             Indien een inzending aangemaakt wordt en volledig is, dan kan ze automatisch verzonden worden.  Optioneel kan aangegeven worden dat de inzending in draft status is door de "status" property mee te geven.  De status kan de uri voor "cconcept" of "inzendbaar" zijn.
             {{#let (get-code-snippet "reporting-obligation-optioneel-meegeven-draft-status.js") as |snippet|}}
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
@@ -61,8 +58,7 @@
           </p>
 
           <h3 class="h3">JSON-LD context</h3>
-
-          <p>
+          <p class="u-spacer">
             Elk van voorgaande voorbeelden heeft een impliciete JSON-LD context.  Deze context kan expliciet in de calls meegegeven worden, of een alternatieve context kan meegegeven worden. Op deze manier blijft de API maximaal flexibel.
             Deze context wordt ter beschikking gesteld op https://data.lblod.info/contexten/automatische-melding/v1/context.json of https://data.lblod.info/automatische-melding/v1/context.json
             {{#let (get-code-snippet "reporting-obligation-json-ld-context.js") as |snippet|}}
@@ -71,8 +67,7 @@
           </p>
 
           <h3 class="h3">Expanded call</h3>
-
-          <p>
+          <p class="u-spacer">
             Een call kan in dat geval ook volledig, zonder JSON-LD context meegegeven worden.  Of de call kan slechts deels geconfigureerd worden.  Dat ziet er dan als volgt uit:
             {{#let (get-code-snippet "reporting-obligation-expanded-call.js") as |snippet|}}
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
@@ -89,22 +84,33 @@
 
 <section class="region region--alt">
   <div class="layout layout--wide">
+    <h2 class="h2">Andere beschikbare documentatie</h2>
     <ul class="grid grid--is-stacked js-equal-height-container">
       <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
         {{#link-to "document-publication" class="doormat js-equal-height u-mobile-no-equal-height"}}
           <div class="doormat__title">
-            Publicaties van documenten
+            Publicaties van besluiten en notulen
           </div>
           <span class="doormat__text">Om de harvester te geleiden dienen bepaalde annotaties toegevoegd te worden, zodat deze de juiste pagina's opgehaald worden.</span>
         {{/link-to}}
       </li>
       <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
-        {{#link-to "reporting-obligation" class="doormat js-equal-height u-mobile-no-equal-height"}}
+        <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/" target="_blank" rel="noopener" class="doormat js-equal-height u-mobile-no-equal-height">
           <div class="doormat__title">
-            Meldingsplicht API
+            Besluit Publicatie
+            <p><small class="uppercase text-fade"><i class="vi vi-external"></i> externe link</small></p>
           </div>
-          <span class="doormat__text">API om een nieuwe melding aan te maken in Digitaal Loket. Indien al de nodige velden ingevuld zijn wordt de melding automatisch verzonden.</span>
-        {{/link-to}}
+          <span class="doormat__text">Dit applicatieprofiel definieert een specificatie voor de publicatie van notulen en besluiten van bestuursorgaan.</span>
+        </a>
+      </li>
+      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+        <a href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/" target="_blank" rel="noopener" class="doormat js-equal-height u-mobile-no-equal-height">
+          <div class="doormat__title">
+            Mandatendatabank
+            <p><small class="uppercase text-fade"><i class="vi vi-external"></i> externe link</small></p>
+          </div>
+          <span class="doormat__text">Dit applicatieprofiel definieert een specificatie voor een gelinkte mandatendatabank op basis van gelinkte besluiten.</span>
+        </a>
       </li>
     </ul>
   </div>
