@@ -7,7 +7,7 @@
     "meb": "http://rdf.myexperiment.org/ontologies/base/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "pav": "http://purl.org/pav/",
-
+    "adms": "http://www.w3.org/ns/adms#",
     "organization": {
       "@id": "pav:createdBy",
       "@type": "@id"
@@ -19,6 +19,10 @@
     "uri": {
       "@type": "@id",
       "@id": "@id"
+    },
+    "status": {
+      "@type": "@id",
+      "@id": "adms:status"
     }
   },
   "organization": {
