@@ -12,7 +12,7 @@
       "@id": "pav:createdBy",
       "@type": "@id"
     },
-    "url": { "@type": "@id", "@id": "prov:atLocation"},
+    "href": { "@type": "@id", "@id": "prov:atLocation"},
     "submittedResource": { "@type": "@id", "@id": "dct:subject" },
     "key": "muAccount:key",
     "publisher": "pav:providedBy",
@@ -40,7 +40,7 @@
   "status": {
     "uri": "http://data.lblod.info/document-statuses/concept"
   },
-  "url": "http://raadpleegomgeving.tielt-winge.be/floppie",
+  "href": "http://raadpleegomgeving.tielt-winge.be/floppie",
   "@id": "http://data.lblod.info/submissions/4298239",
   "@type": "meb:Submission"
 }
