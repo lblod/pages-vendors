@@ -52,6 +52,27 @@
           <h3 class="h3">Optioneel meegeven van draft of inzendbaar status</h3>
           <p class="u-spacer">
             Indien een inzending aangemaakt wordt en volledig is, dan kan ze automatisch verzonden worden.  Optioneel kan aangegeven worden dat de inzending in draft status is door de "status" property mee te geven.  De status kan de uri voor "concept" of "inzendbaar" zijn.
+
+            <table class="data-table u-spacer">
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>URI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Concept</td>
+                  <td>http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd</td>
+                </tr>
+                <tr>
+                  <td>Inzendbaar</td>
+                  <td>http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff</td>
+                </tr>
+              </tbody>
+            </table>
+
+            Voorbeeld:
             {{#let (get-code-snippet "reporting-obligation-optioneel-meegeven-draft-status.js") as |snippet|}}
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
             {{/let}}

@@ -38,7 +38,7 @@
     "uri": "http://data.tielt-winge.be/besluiten/2398230"
   },
   "status": {
-    "uri": "http://data.lblod.info/document-statuses/concept"
+    "uri": "http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd"
   },
   "href": "http://raadpleegomgeving.tielt-winge.be/floppie",
   "@id": "http://data.lblod.info/submissions/4298239",
