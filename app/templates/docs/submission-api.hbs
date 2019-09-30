@@ -1,0 +1,105 @@
+<section class="region region--alt">
+  <div class="layout layout--wide">
+    <div class="tabs__wrapper">
+      <ul class="tabs" data-tabs-list>
+        <li class="tab">
+          {{#link-to "index" class="tab__link"}}<i class="fa fa-angle-left"></i> Terug naar overzicht{{/link-to}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="grid">
+      <div class="col--8-12 col--1-1--s">
+        <h1 class="h1">Meldingsplicht API</h1>
+        <p>
+          Lokale besturen publiceren beslissingen die via de Toezicht module in het Digitaal Loket gemeld moeten worden. Digitaal Loket biedt een API aan waarop publicaties van beslissingen gemeld kunnen worden, waarna ze automatisch geharvest zullen worden en toevoegd worden als nieuwe melding in Digitaal Loket. Dit document beschrijft de API voor automatische melding.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="region">
+  <div class="layout layout--wide">
+    <div class="grid">
+      <div class="col--8-12 col--1-1--s">
+        <article class="u-spacer--large">
+        	<h2 class="h2" id="todo">Aanmaken nieuwe melding</h2>
+          <p class="u-spacer">
+            Maakt een nieuwe melding aan.  Indien al de nodige velden ingevuld zijn, kan de melding automatisch verzonden via Digitaal Looket.  Indien er ontbrekende velden zijn krijgt het bestuur een mailtje dat er een melding klaar staat voor verzending in Digitaal Loket. Alle calls kunnen uitgevoerd worden door
+
+            <CodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/melding</CodeBlock>
+
+            Volgende voorbeelden beschrijven de JSON body van deze calls. Een specificatie van de annotaties staat beschreven op {{#link-to "docs.submission-annotations"}}annotaties&nbsp;voor&nbsp;automatische&nbsp;melding{{/link-to}}.
+          </p>
+
+          <h3 class="h3">Kortste voorbeeld</h3>
+          <p>
+            Een kort voorbeeld van de API:
+            {{#let (get-code-snippet "reporting-obligation-quick-example.js") as |snippet|}}
+              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+            {{/let}}
+          </p>
+          <p  class="small text-fade u-spacer">
+						Bekijk welke annotaties gebruikt kunnen worden: {{#link-to "docs.submission-annotations"}}annotaties&nbsp;voor&nbsp;automatische&nbsp;melding{{/link-to}}.
+					</p>
+
+          <h3 class="h3">Optioneel meegeven van draft of inzendbaar status</h3>
+          <p class="u-spacer">
+            Indien een inzending aangemaakt wordt en volledig is, dan kan ze automatisch verzonden worden.  Optioneel kan aangegeven worden dat de inzending in draft status is door de "status" property mee te geven.  De status kan de URI voor "concept" of "inzendbaar" zijn.
+
+            <table class="data-table u-spacer">
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>URI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Concept</td>
+                  <td>http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd</td>
+                </tr>
+                <tr>
+                  <td>Inzendbaar</td>
+                  <td>http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff</td>
+                </tr>
+              </tbody>
+            </table>
+
+            Voorbeeld:
+            {{#let (get-code-snippet "reporting-obligation-optioneel-meegeven-draft-status.js") as |snippet|}}
+              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+            {{/let}}
+          </p>
+
+          <h3 class="h3">JSON-LD context</h3>
+          <p class="u-spacer">
+            Elk van voorgaande voorbeelden heeft een impliciete JSON-LD context.  Deze context kan expliciet in de calls meegegeven worden, of een alternatieve context kan meegegeven worden. Op deze manier blijft de API maximaal flexibel.
+            Deze context wordt ter beschikking gesteld op <a href="https://lblod.data.gift/contexts/automatische-melding/v1/context.json">https://lblod.data.gift/contexts/automatische-melding/v1/context.json</a>.
+            {{#let (get-code-snippet "reporting-obligation-json-ld-context.js") as |snippet|}}
+              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+            {{/let}}
+          </p>
+
+          <h3 class="h3">Uitgebreid voorbeeld</h3>
+          <p class="u-spacer">
+            Een call kan ook met een volledige of deels geconfigureerde JSON-LD context ingestuurd worden. Dat ziet er dan als volgt uit:
+            {{#let (get-code-snippet "reporting-obligation-expanded-call.js") as |snippet|}}
+              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+            {{/let}}
+          </p>
+
+        </article>
+
+				<article>
+					<h2 class="h2">Annotaties voor automatische melding</h2>
+					<p class="u-spacer">
+						Bekijk welke annotaties vendors kunnen gebruiken om besluiten automatisch in te sturen: {{#link-to "docs.submission-annotations"}}annotaties&nbsp;voor&nbsp;automatische&nbsp;melding{{/link-to}}.
+					</p>
+				</article>
+        {{outlet}}
+      </div>
+    </div>
+  </div>
+</section>

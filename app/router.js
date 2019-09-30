@@ -7,9 +7,11 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('document-publication');
-  this.route('reporting-obligation');
-  this.route('reporting-annotations');
+  this.route('docs', function() {
+    this.route('submission-api');
+    this.route('submission-annotations');
+    this.route('publication-annotations');
+  });
 });
 
 export default Router;

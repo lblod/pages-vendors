@@ -1,39 +1,4 @@
-<div id="main" itemprop="mainContentOfPage" role="main" tabindex="-1" class="main-content">
-  <header class="content-header content-header--small content-header--half-image u-spacer">
-    <div class="content-header__wrapper">
-      <picture class="content-header__bg">
-        <img
-          sizes="50vw"
-          src="https://loket.lokaalbestuur.vlaanderen.be/assets/images/loket-header-1600-85a5251e74ef6ac8491b2f228d2c90da.jpg"
-          srcset="https://loket.lokaalbestuur.vlaanderen.be/assets/images/loket-header-320-85a5251e74ef6ac8491b2f228d2c90da.jpg 320w, https://loket.lokaalbestuur.vlaanderen.be/assets/images/loket-header-1024-85a5251e74ef6ac8491b2f228d2c90da.jpg 1024w, https://loket.lokaalbestuur.vlaanderen.be/assets/images/loket-header-1600-85a5251e74ef6ac8491b2f228d2c90da.jpg 1600w"
-          alt=""
-          title=""
-        >
-      </picture>
-      <div class="layout layout--wide">
-        <div class="content-header__content">
-          <div class="content-header__logo-wrapper">
-            <a href="#" class="content-header__entity-logo content-header__entity-logo--lowercase">
-              <span class="content-header__entity-logo__prefix">Vlaanderen</span>
-              <span class="content-header__entity-logo__title">is lokaal bestuur</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header>
-</div>
-
-<section class="region">
-  <div class="layout layout--wide">
-    <div class="grid">
-      <div class="col--6-12 col--12-12--s">
-        <h1 class="h1">Gelinkt Notuleren: Vendor en API integrator documentatie</h1>
-        <p>Integreer met systemen van Gelinkt Notuleren. Deze documentatie wordt verder aangevuld naarmate er meer API's beschikbaar zijn, en naarmate er meer vereisten gedefinieerd worden.</p>
-      </div>
-    </div>
-  </div>
-</section>
+{{outlet}}
 
 <section class="region region--alt">
   <div class="layout layout--wide">
@@ -82,5 +47,11 @@
         </a>
       </li>
     </ul>
+  </div>
+</section>
+
+<section class="region">
+  <div class="layout layout--wide">
+    {{#link-to "index" class="link--icon--caret link--icon--caret--back"}}Terug naar overzicht{{/link-to}}
   </div>
 </section>

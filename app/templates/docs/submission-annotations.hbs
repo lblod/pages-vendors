@@ -12,7 +12,7 @@
       <div class="col--8-12 col--1-1--s">
         <h1 class="h1">Annotaties voor automatische melding</h1>
         <p>
-          Bekijk welke annotaties vendors kunnen gebruiken om besluiten automatisch in te sturen.
+          Lokale besturen publiceren beslissingen die via de Toezicht module in het Digitaal Loket gemeld moeten worden. Digitaal Loket biedt een API aan waarop publicaties van beslissingen gemeld kunnen worden, waarna ze automatisch geharvest zullen worden en toevoegd worden als nieuwe melding in Digitaal Loket. Dit document beschrijft de annotaties die gebruikt worden voor automatische melding.
         </p>
       </div>
     </div>
@@ -26,7 +26,7 @@
       <div class="col--8-12 col--1-1--s">
 				<div id="outline-container-orgheadline1">
 					<div class="region typography">
-						<h2 class="h2" id="orgheadline1"><span class="section-number-2">1</span> Prefixen</h2>
+						<h2 class="h2" id="orgheadline1">Gebruikte prefixen</h2>
 						<div class="u-table-overflow">
 							<table class="data-table data-table--zebra">
 								<thead>
@@ -47,10 +47,6 @@
 									<tr>
 										<td>dct</td>
 										<td><a href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</a></td>
-									</tr>
-									<tr>
-										<td>melding</td>
-										<td><a href="http://lblod.data.gift/vocabularies/automatische-melding/">http://lblod.data.gift/vocabularies/automatische-melding/</a></td>
 									</tr>
 									<tr>
 										<td>lblodBesluit</td>
@@ -98,13 +94,13 @@
 					</div>
 				</div>
 				<div id="outline-container-orgheadline33">
-					<h2 class="h2" id="orgheadline33"><span class="section-number-2">2</span> Entiteiten</h2>
+					<h2 class="h2" id="orgheadline33">Entiteiten</h2>
 					<div id="outline-container-orgheadline5">
-						<h3 class="h3" id="orgheadline5"><span class="section-number-3">2.1</span> Submission</h3>
+						<h3 class="h3" id="orgheadline5">Submission</h3>
 
 						<div class="region typography">
 							<div id="outline-container-orgheadline2">
-								<h4 class="h4" id="orgheadline2"><span class="section-number-4">2.1.1</span> Class</h4>
+								<h4 class="h4" id="orgheadline2">Klasse</h4>
 								<div>
 									<p class="u-spacer">
 										<code>meb:Submission</code>
@@ -113,7 +109,7 @@
 							</div>
 
 							<div id="outline-container-orgheadline3">
-								<h4 class="h4" id="orgheadline3"><span class="section-number-4">2.1.2</span> Beschrijving</h4>
+								<h4 class="h4" id="orgheadline3">Beschrijving</h4>
 								<div>
 									<p class="u-spacer">
 										De inzending van een meldingsplichtige publicatie. Een inzending wordt ingestuurd door een (externe) partij en leidt tot een (automatische) verwerking van het gepubliceerde document.
@@ -123,7 +119,7 @@
 						</div>
 
 						<div class="region typography" id="outline-container-orgheadline4">
-							<h4 class="h4" id="orgheadline4"><span class="section-number-4">2.1.3</span> Properties</h4>
+							<h4 class="h4" id="orgheadline4">Eigenschappen</h4>
 							<div class="u-table-overflow">
 								<table class="data-table data-table--zebra">
 									<thead>
@@ -139,37 +135,31 @@
 											<td>organization</td>
 											<td><code>pav:createdBy</code></td>
 											<td><code>besluit:Bestuurseenheid</code></td>
-											<td>Bestuurseenheid die de publicatie gemaakt heeft</td>
+											<td>Bestuurseenheid die de publicatie gemaakt heeft.</td>
 										</tr>
 										<tr>
 											<td>publisher</td>
 											<td><code>pav:providedBy</code></td>
 											<td><code>foaf:Agent</code></td>
-											<td>Partij die de inzending uitvoert</td>
+											<td>Partij die de melding uitvoert.</td>
 										</tr>
 										<tr>
 											<td>submittedResource</td>
 											<td><code>dct:subject</code></td>
 											<td><code>besluit:Besluit</code></td>
-											<td>Document dat ingezonden wordt</td>
+											<td>Beslissing die gemeld wordt.</td>
 										</tr>
 										<tr>
 											<td>status</td>
 											<td><code>adms:status</code></td>
-											<td><code>skos:Concept</code> (submission document status codelist)</td>
-											<td>Status van de inzending</td>
+											<td><code>skos:Concept</code></td>
+											<td>Status van de melding.</td>
 										</tr>
 										<tr>
 											<td>href</td>
 											<td><code>prov:atLocation</code></td>
 											<td><code>rdfs:Resource</code></td>
-											<td>URL waarop het document gepubliceerd is</td>
-										</tr>
-										<tr>
-											<td>file</td>
-											<td><code>nie:hasPart</code></td>
-											<td><code>nfo:FileDataObject</code></td>
-											<td>Bestanden die toegevoegd zijn aan de inzending (door upload of via URL)</td>
+											<td>URL waarop het document gepubliceerd is.</td>
 										</tr>
 									</tbody>
 								</table>
@@ -177,10 +167,10 @@
 						</div>
 					</div>
 					<div id="outline-container-orgheadline9">
-						<h3 class="h3" id="orgheadline9"><span class="section-number-3">2.2</span> Vendor</h3>
+						<h3 class="h3" id="orgheadline9">Vendor</h3>
 						<div class="region typography">
 							<div id="outline-container-orgheadline6">
-								<h4 class="h4" id="orgheadline6"><span class="section-number-4">2.2.1</span> Class</h4>
+								<h4 class="h4" id="orgheadline6">Klasse</h4>
 								<div>
 									<p class="u-spacer">
 										<code>foaf:Agent</code>
@@ -188,16 +178,16 @@
 								</div>
 							</div>
 							<div id="outline-container-orgheadline7">
-								<h4 class="h4" id="orgheadline7"><span class="section-number-4">2.2.2</span> Beschrijving</h4>
+								<h4 class="h4" id="orgheadline7">Beschrijving</h4>
 								<div>
 									<p class="u-spacer">
-										(Externe) partij die een document kan insturen.
+										(Externe) partij die een melding kan sturen.
 									</p>
 								</div>
 							</div>
 						</div>
 						<div class="region typography" id="outline-container-orgheadline8">
-							<h4 class="h4" id="orgheadline8"><span class="section-number-4">2.2.3</span> Properties</h4>
+							<h4 class="h4" id="orgheadline8">Eigenschappen</h4>
 							<div class="u-table-overflow">
 								<table class="data-table data-table--zebra">
 									<thead>
@@ -213,7 +203,7 @@
 											<td>name</td>
 											<td><code>foaf:name</code></td>
 											<td><code>xsd:string</code></td>
-											<td>Naam van de vendor</td>
+											<td>Naam van de agent.</td>
 										</tr>
 										<tr>
 											<td>key</td>
@@ -225,7 +215,7 @@
 											<td>canActOnBehalfOf</td>
 											<td><code>muAccount:canActOnBehalfOf</code></td>
 											<td><code>besluit:Bestuurseenheid</code></td>
-											<td>Bestuurseenheden in wiens naam de agent een inzending mag insturen</td>
+											<td>Bestuurseenheden in wiens naam de agent een melding mag insturen.</td>
 										</tr>
 									</tbody>
 								</table>
@@ -233,27 +223,27 @@
 						</div>
 					</div>
 					<div  id="outline-container-orgheadline13">
-						<h3 class="h3" id="orgheadline13"><span class="section-number-3">2.3</span> Submitted resource</h3>
+						<h3 class="h3" id="orgheadline13">Submitted resource</h3>
 						<div class="region typography">
 							<div id="outline-container-orgheadline10">
-								<h4 class="h4" id="orgheadline10"><span class="section-number-4">2.3.1</span> Class</h4>
+								<h4 class="h4" id="orgheadline10">Klasse</h4>
 								<div>
 									<p class="u-spacer">
-										<code>besluit:Besluit</code> of class uit 'Type besluit'/'Type document' codelijst.
+										<code>besluit:Besluit</code>
 									</p>
 								</div>
 							</div>
 							<div id="outline-container-orgheadline11">
-								<h4 class="h4" id="orgheadline11"><span class="section-number-4">2.3.2</span> Beschrijving</h4>
+								<h4 class="h4" id="orgheadline11">Beschrijving</h4>
 								<div>
 									<p class="u-spacer">
-										Gepubliceerd document dat het onderwerp is van een inzending.
+										Gepubliceerde beslissing dat het onderwerp is van de melding.
 									</p>
 								</div>
 							</div>
 						</div>
 						<div class="region typography" id="outline-container-orgheadline12">
-							<h4 class="h4" id="orgheadline12"><span class="section-number-4">2.3.3</span> Properties</h4>
+							<h4 class="h4" id="orgheadline12">Eigenschappen</h4>
 							<div class="u-table-overflow">
 								<table class="data-table data-table--zebra">
 									<thead>
@@ -275,19 +265,19 @@
 											<td>passedBy</td>
 											<td><code>eli:passed_by</code></td>
 											<td><code>besluit:Bestuursorgaan</code></td>
-											<td>Het bestuursorgaan (niet in tijd) dat het besluit/document goedgekeurd heeft.</td>
+											<td>Het bestuursorgaan dat de beslissing goedgekeurd heeft.</td>
 										</tr>
 										<tr>
 											<td>subject</td>
 											<td><code>eli:is_about</code></td>
 											<td><code>besluit:Bestuurseenheid</code></td>
-											<td>Onderwerp van het document</td>
+											<td>Bestuurseenheid waarover de beslissing handelt.</td>
 										</tr>
 										<tr>
 											<td>reportYear</td>
 											<td><code>elod:financialYear</code></td>
 											<td><code>xsd:gYear</code></td>
-											<td>Het boekjaar waarover het document handelt</td>
+											<td>Het boekjaar waarover de beslissing handelt.</td>
 										</tr>
 										<tr>
 											<td>firstDateInForce</td>
@@ -304,44 +294,44 @@
 										<tr>
 											<td>authenticityType</td>
 											<td><code>lblodBesluit:authenticityType</code></td>
-											<td><code>skos:Concept</code> (authenticy type codelist)</td>
-											<td>Authenticiteit van het ingestuurde document</td>
+											<td><code>skos:Concept</code></td>
+											<td>Authenticiteit van de ingestuurde beslissing.</td>
 										</tr>
 										<tr>
 											<td>chartOfAccount</td>
 											<td><code>lblodBesluit:chartOfAccount</code></td>
-											<td><code>skos:Concept</code> (chart of account codelist)</td>
-											<td>Rekeningstelsel (MAR code) waar in het besluit naar verwezen wordt</td>
+											<td><code>skos:Concept</code></td>
+											<td>Code uit het Minimaal Algemeen Rekeningstelsel (MAR) waar in de beslissing naar verwezen wordt.</td>
 										</tr>
 										<tr>
 											<td>taxRate</td>
 											<td><code>lblodBesluit:taxRate</code></td>
 											<td><code>lblodBesluit:TaxRate</code></td>
-											<td>Aanslagvoet die in het besluit bepaald wordt</td>
+											<td>Aanslagvoet die in de beslissing bepaald wordt.</td>
 										</tr>
 										<tr>
 											<td>taxType</td>
 											<td><code>lblodBesluit:taxType</code></td>
-											<td><code>skos:Concept</code> (tax type codelist)</td>
-											<td>Soort belasting</td>
+											<td><code>skos:Concept</code></td>
+											<td>Soort belasting die in de beslissing bepaald wordt.</td>
 										</tr>
 										<tr>
 											<td>hasAdditionalTaxRate</td>
 											<td><code>lblodBesluit:hasAdditionalTaxRate</code></td>
 											<td><code>xsd:boolean</code></td>
-											<td>Duidt aan of er nog bijkomende aanslagvoeten zijn dan deze beschreven in het besluit</td>
+											<td>Duidt aan of er nog bijkomende aanslagvoeten zijn dan deze beschreven in de beslissing.</td>
 										</tr>
 										<tr>
 											<td>description</td>
 											<td><code>dct:description</code></td>
 											<td><code>xsd:string</code></td>
-											<td>Beschrijving bij de inzending</td>
+											<td>Bijkomende bij de beslissing.</td>
 										</tr>
 										<tr>
 											<td>comment</td>
 											<td><code>rdfs:comment</code></td>
 											<td><code>xsd:string</code></td>
-											<td>Opmerking bij de inzending</td>
+											<td>Opmerking bij de beslissing.</td>
 										</tr>
 									</tbody>
 								</table>
@@ -349,9 +339,9 @@
 						</div>
 					</div>
 					<div id="outline-container-orgheadline17">
-						<h3 class="h3" id="orgheadline17"><span class="section-number-3">2.4</span> Aanslagvoet</h3>
+						<h3 class="h3" id="orgheadline17">Aanslagvoet</h3>
 						<div id="outline-container-orgheadline14">
-							<h4 class="h4" id="orgheadline14"><span class="section-number-4">2.4.1</span> Class</h4>
+							<h4 class="h4" id="orgheadline14">Klasse</h4>
 							<div>
 								<p class="u-spacer">
 									<code>lblodBesluit:TaxRate &lt; schema:UnitPriceSpecification</code>
@@ -359,15 +349,15 @@
 							</div>
 						</div>
 						<div class="region typography" id="outline-container-orgheadline15">
-							<h4 class="h4" id="orgheadline15"><span class="section-number-4">2.4.2</span> Beschrijving</h4>
+							<h4 class="h4" id="orgheadline15">Beschrijving</h4>
 							<div>
 								<p class="u-spacer">
-									Percentage waarop de belasting berekend wordt
+									Percentage waarop de belasting berekend wordt.
 								</p>
 							</div>
 						</div>
 						<div class="region typography" id="outline-container-orgheadline16">
-							<h4 class="h4" id="orgheadline16"><span class="section-number-4">2.4.3</span> Properties</h4>
+							<h4 class="h4" id="orgheadline16">Eigenschappen</h4>
 							<div class="u-table-overflow">
 								<table class="data-table data-table--zebra">
 									<thead>
@@ -383,25 +373,25 @@
 											<td>amount</td>
 											<td><code>schema:price</code></td>
 											<td><code>xsd:float</code></td>
-											<td>Bedrag dat per eenheid gerekend wordt</td>
+											<td>Geldbedrag dat per eenheid gerekend wordt.</td>
 										</tr>
 										<tr>
 											<td>unit</td>
 											<td><code>schema:unitText</code></td>
 											<td><code>xsd:string</code></td>
-											<td>Eenheid waarmee de belasting berekend worden</td>
+											<td>Eenheid op basis waarvan de belasting berekend wordt.</td>
 										</tr>
 										<tr>
 											<td>base</td>
 											<td><code>lblodBesluit:taxableBase</code></td>
 											<td><code>xsd:string</code></td>
-											<td>Belastbare basis waarop de belasting berekend wordt</td>
+											<td>Belastbare basis waarop de belasting berekend wordt.</td>
 										</tr>
 										<tr>
 											<td>description</td>
 											<td><code>schema:description</code></td>
 											<td><code>xsd:string</code></td>
-											<td>Beschrijving van de aanslagvoet</td>
+											<td>Beschrijving van de aanslagvoet.</td>
 										</tr>
 									</tbody>
 								</table>
@@ -409,9 +399,9 @@
 						</div>
 					</div>
 					<div id="outline-container-orgheadline20">
-						<h3 class="h3" id="orgheadline20"><span class="section-number-3">2.5</span> Bestuurseenheid</h3>
+						<h3 class="h3" id="orgheadline20">Bestuurseenheid</h3>
 						<div class="region typography" id="outline-container-orgheadline18">
-							<h4 class="h4" id="orgheadline18"><span class="section-number-4">2.5.1</span> Class</h4>
+							<h4 class="h4" id="orgheadline18">Klasse</h4>
 							<div>
 								<p class="u-spacer">
 									<code>besluit:Bestuurseenheid</code>
@@ -419,7 +409,7 @@
 							</div>
 						</div>
 						<div class="region typography" id="outline-container-orgheadline19">
-							<h4 class="h4" id="orgheadline19"><span class="section-number-4">2.5.2</span> Properties</h4>
+							<h4 class="h4" id="orgheadline19">Eigenschappen</h4>
 							<div class="u-table-overflow">
 								<table class="data-table data-table--zebra">
 									<thead>
@@ -447,7 +437,13 @@
 											<td>identifier</td>
 											<td><code>dct:identifier</code></td>
 											<td><code>xsd:string</code></td>
-											<td>Geografische gebied waarbinnen de bestuurseenheid bepaalde verantwoordelijkheden heeft waarbinnen het bestuurshandelingen kan stellen.</td>
+											<td>Identificator van de bestuurseenheid (vb. ondernemingsnummer).</td>
+										</tr>
+										<tr>
+											<td>bestuursorgaan</td>
+											<td><code>besluit:bestuurt</code></td>
+											<td><code>besluit:Bestuursorgaan</code></td>
+											<td>Bestuursorgaan die door de bestuurseenheid bestuurd wordt.</td>
 										</tr>
 									</tbody>
 								</table>
@@ -455,9 +451,9 @@
 						</div>
 					</div>
 					<div id="outline-container-orgheadline23">
-						<h3 class="h3" id="orgheadline23"><span class="section-number-3">2.6</span> Bestuursorgaan (niet in tijd)</h3>
+						<h3 class="h3" id="orgheadline23">Bestuursorgaan</h3>
 						<div class="region typography" id="outline-container-orgheadline21">
-							<h4 class="h4" id="orgheadline21"><span class="section-number-4">2.6.1</span> Class</h4>
+							<h4 class="h4" id="orgheadline21">Klasse</h4>
 							<div>
 								<p class="u-spacer">
 									<code>besluit:Bestuursorgaan</code>
@@ -465,7 +461,7 @@
 							</div>
 						</div>
 						<div class="region typography" id="outline-container-orgheadline22">
-							<h4 class="h4" id="orgheadline22"><span class="section-number-4">2.6.2</span> Properties</h4>
+							<h4 class="h4" id="orgheadline22">Eigenschappen</h4>
 							<div class="u-table-overflow">
 								<table class="data-table data-table--zebra">
 									<thead>
@@ -483,21 +479,15 @@
 											<td><code>skos:Concept</code></td>
 											<td>Het type bestuursorgaan.</td>
 										</tr>
-										<tr>
-											<td>bestuursorganen</td>
-											<td><code>besluit:bestuurt</code></td>
-											<td><code>besluit:Bestuursorgaan</code></td>
-											<td>De bestuurseenheid die door het orgaan bestuurd wordt. <!-- Erika ik ben niet zeker --></td>
-										</tr>
 									</tbody>
 								</table>
 							</div>
 						</div>
 					</div>
 					<div id="outline-container-orgheadline26">
-						<h3 class="h3" id="orgheadline26"><span class="section-number-3">2.7</span> Behandeling van Agendapunt</h3>
+						<h3 class="h3" id="orgheadline26">Behandeling van Agendapunt</h3>
 						<div class="region typography" id="outline-container-orgheadline24">
-							<h4 class="h4" id="orgheadline24"><span class="section-number-4">2.7.1</span> Class</h4>
+							<h4 class="h4" id="orgheadline24">Klasse</h4>
 							<div>
 								<p class="u-spacer">
 									<code>besluit:BehandelingVanAgendapunt</code>
@@ -505,7 +495,7 @@
 							</div>
 						</div>
 						<div class="region typography" id="outline-container-orgheadline25">
-							<h4 class="h4" id="orgheadline25"><span class="section-number-4">2.7.2</span> Properties</h4>
+							<h4 class="h4" id="orgheadline25">Eigenschappen</h4>
 							<div class="u-table-overflow">
 								<table class="data-table data-table--zebra">
 									<thead>
@@ -524,10 +514,10 @@
 											<td>Het onderwerp van de activiteit.</td>
 										</tr>
 										<tr>
-											<td>submissionDocument</td>
+											<td>besluit</td>
 											<td><code>prov:generated</code></td>
-											<td><code>foaf:Document</code></td>
-											<td>Een besluit dat is opgemaakt naar aanleiding van de behandeling van het agendapunt. <!-- Erika ik ben niet zeker --></td>
+											<td><code>besluit:Besluit</code></td>
+											<td>Een besluit dat is opgemaakt naar aanleiding van de behandeling van het agendapunt.</td>
 										</tr>
 									</tbody>
 								</table>
@@ -535,9 +525,9 @@
 						</div>
 					</div>
 					<div id="outline-container-orgheadline29">
-						<h3 class="h3" id="orgheadline29"><span class="section-number-3">2.8</span> Agendapunt</h3>
+						<h3 class="h3" id="orgheadline29">Agendapunt</h3>
 						<div class="region typography" id="outline-container-orgheadline27">
-							<h4 class="h4" id="orgheadline27"><span class="section-number-4">2.8.1</span> Class</h4>
+							<h4 class="h4" id="orgheadline27">Klasse</h4>
 							<div>
 								<p class="u-spacer">
 									<code>besluit:Agendapunt</code>
@@ -545,30 +535,14 @@
 							</div>
 						</div>
 						<div class="region typography" id="outline-container-orgheadline28">
-							<h4 class="h4" id="orgheadline28"><span class="section-number-4">2.8.2</span> Properties</h4>
-							<div class="u-table-overflow">
-								<table class="data-table data-table--zebra">
-									<thead>
-										<tr>
-											<td>Name</td>
-											<td>URI</td>
-											<td>Range</td>
-											<td>Beschrijving</td>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>-<!-- Erika ik ben niet zeker --></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+							<h4 class="h4" id="orgheadline28">Eigenschappen</h4>
+              <p>Geen relevante eigenschappen.</p>
 						</div>
 					</div>
 					<div id="outline-container-orgheadline32">
-						<h3 class="h3" id="orgheadline32"><span class="section-number-3">2.9</span> Zitting</h3>
+						<h3 class="h3" id="orgheadline32">Zitting</h3>
 						<div id="outline-container-orgheadline30">
-							<h4 class="h4" id="orgheadline30"><span class="section-number-4">2.9.1</span> Class</h4>
+							<h4 class="h4" id="orgheadline30">Klasse</h4>
 							<div>
 								<p class="u-spacer">
 									<code>besluit:Zitting</code>
@@ -576,7 +550,7 @@
 							</div>
 						</div>
 						<div class="region typography" id="outline-container-orgheadline31">
-							<h4 class="h4" id="orgheadline31"><span class="section-number-4">2.9.2</span> Properties</h4>
+							<h4 class="h4" id="orgheadline31">Eigenschappen</h4>
 							<div class="u-table-overflow">
 								<table class="data-table data-table--zebra">
 									<thead>
@@ -592,7 +566,7 @@
 											<td>agendapunt</td>
 											<td><code>besluit:behandelt</code></td>
 											<td><code>besluit:Agendapunt</code></td>
-											<td>Een formeel vastgelegd agendapunt van de zitting. <!-- Erika ik ben niet zeker --></td>
+											<td>Een formeel vastgelegd agendapunt van de zitting.</td>
 										</tr>
 										<tr>
 											<td>gestartOpTijdstip</td>
@@ -603,7 +577,7 @@
 										<tr>
 											<td>bestuursorgaan</td>
 											<td><code>besluit:isGehoudenDoor</code></td>
-											<td><code>besluit:Bestuursorgaan (in tijd)</code></td>
+											<td><code>besluit:Bestuursorgaan</code></td>
 											<td>Duidt aan door welk orgaan de zitting is gehouden.</td>
 										</tr>
 									</tbody>
@@ -614,10 +588,10 @@
 				</div>
 				<div id="outline-container-orgheadline44">
 					<div class="region typography">
-						<h2 class="h2" id="orgheadline44"><span class="section-number-1">3</span> Loket meldingsplicht API</h2>
+						<h2 class="h2" id="orgheadline44">Meldingsplicht API</h2>
 						<div class="region typography">
 							<p class="u-spacer">
-								Bekijk de API die vendors kunnen gebruiken om besluiten in te sturen: {{#link-to "reporting-obligation"}}loket&nbsp;meldingsplicht&nbsp;API{{/link-to}}.
+								Bekijk de API die vendors kunnen gebruiken om besluiten te melden: {{#link-to "docs.submission-api"}}Meldingsplicht&nbsp;API{{/link-to}}.
 							</p>
 						</div>
 					</div>
@@ -626,52 +600,3 @@
 		</div>
 	</div>
 </section>
-
-<section class="region region--alt">
-  <div class="layout layout--wide">
-    <h2 class="h2">Andere beschikbare documentatie</h2>
-    <ul class="grid grid--is-stacked js-equal-height-container">
-      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
-        {{#link-to "reporting-obligation" class="doormat js-equal-height u-mobile-no-equal-height"}}
-          <div class="doormat__title">
-            Meldingsplicht API
-          </div>
-          <span class="doormat__text">API om een nieuwe melding aan te maken in Digitaal Loket. Indien al de nodige velden ingevuld zijn wordt de melding automatisch verzonden.</span>
-        {{/link-to}}
-      </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
-        {{#link-to "document-publication" class="doormat js-equal-height u-mobile-no-equal-height"}}
-          <div class="doormat__title">
-            Publicaties van besluiten en notulen
-          </div>
-          <span class="doormat__text">Om de harvester te geleiden dienen bepaalde annotaties toegevoegd te worden, zodat deze de juiste pagina's opgehaald worden.</span>
-        {{/link-to}}
-      </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
-        <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/" target="_blank" rel="noopener" class="doormat js-equal-height u-mobile-no-equal-height">
-          <div class="doormat__title">
-            Besluit Publicatie
-            <p><small class="uppercase text-fade"><i class="vi vi-external"></i> externe link</small></p>
-          </div>
-          <span class="doormat__text">Dit applicatieprofiel definieert een specificatie voor de publicatie van notulen en besluiten van bestuursorgaan.</span>
-        </a>
-      </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
-        <a href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/" target="_blank" rel="noopener" class="doormat js-equal-height u-mobile-no-equal-height">
-          <div class="doormat__title">
-            Mandatendatabank
-            <p><small class="uppercase text-fade"><i class="vi vi-external"></i> externe link</small></p>
-          </div>
-          <span class="doormat__text">Dit applicatieprofiel definieert een specificatie voor een gelinkte mandatendatabank op basis van gelinkte besluiten.</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<section class="region">
-  <div class="layout layout--wide">
-    {{#link-to "index" class="link--icon--caret link--icon--caret--back"}}Terug naar overzicht{{/link-to}}
-  </div>
-</section>
-{{outlet}}

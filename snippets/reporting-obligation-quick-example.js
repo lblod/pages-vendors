@@ -5,5 +5,5 @@
     "uri": "http://data.lblod.info/vendors/cipal-schaubroeck",
     "key": "AE86-GT86"
   },
-  "submittedResource": "http://raadpleegomgeving.tielt-winge.be/floppie"
+  "submittedResource": "http://data.tielt-winge.be/besluiten/2398230"
 }
