@@ -23,8 +23,8 @@
   <div class="layout layout--wide">
     <div class="grid">
       <div class="col--8-12 col--1-1--s">
-        <h2 class="h2" id="todo">Aanmaken nieuwe melding</h2>
         <article class="u-spacer--large">
+        	<h2 class="h2" id="todo">Aanmaken nieuwe melding</h2>
           <p class="u-spacer">
             Maakt een nieuwe melding aan.  Indien al de nodige velden ingevuld zijn wordt de melding automatisch verzonden via het loket.  Indien er ontbrekende velden zijn krijgt het bestuur een mailtje dat er een melding klaar staat voor verzending. Alle calls kunnen uitgevoerd worden door
 
@@ -34,12 +34,15 @@
           </p>
 
           <h3 class="h3">Kortste voorbeeld</h3>
-          <p class="u-spacer">
+          <p>
             Een kort voorbeeld van de API:
             {{#let (get-code-snippet "reporting-obligation-quick-example.js") as |snippet|}}
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
             {{/let}}
           </p>
+          <p  class="small text-fade u-spacer">
+						Bekijk welke annotaties gebruikt kunnen worden: {{#link-to "reporting-annotations"}}annotaties&nbsp;voor&nbsp;automatische&nbsp;melding{{/link-to}}.
+					</p>
 
           <h3 class="h3">Optioneel mee geven van subject</h3>
           <p class="u-spacer">
@@ -97,6 +100,12 @@
 
         </article>
 
+				<article>
+					<h2 class="h2">Annotaties voor automatische melding</h2>
+					<p class="u-spacer">
+						Bekijk welke annotaties vendors kunnen gebruiken om besluiten automatisch in te sturen: {{#link-to "reporting-annotations"}}annotaties&nbsp;voor&nbsp;automatische&nbsp;melding{{/link-to}}.
+					</p>
+				</article>
         {{outlet}}
       </div>
     </div>
@@ -107,6 +116,14 @@
   <div class="layout layout--wide">
     <h2 class="h2">Andere beschikbare documentatie</h2>
     <ul class="grid grid--is-stacked js-equal-height-container">
+      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+        {{#link-to "reporting-annotations" class="doormat js-equal-height u-mobile-no-equal-height"}}
+          <div class="doormat__title">
+            Annotaties voor automatische melding
+          </div>
+          <span class="doormat__text">Bekijk welke annotaties vendors kunnen gebruiken om besluiten automatisch in te sturen.</span>
+        {{/link-to}}
+      </li>
       <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
         {{#link-to "document-publication" class="doormat js-equal-height u-mobile-no-equal-height"}}
           <div class="doormat__title">
@@ -138,20 +155,7 @@
 </section>
 
 <section class="region">
-  <div class="layout layout--wide u-spacer--large">
+  <div class="layout layout--wide">
     {{#link-to "index" class="link--icon--caret link--icon--caret--back"}}Terug naar overzicht{{/link-to}}
-  </div>
-
-  <div class="layout layout--wide" id="infoblock">
-    <div class="layout__wrapper">
-      <section class="info-block info-block--faq">
-        <header class="info-block__header">
-          <h1 class="label-above info-block__title">Vragen</h1>
-        </header>
-        <div class="info-block__content">
-          <p>Voor meer informatie kan u ons contacteren op...</p>
-        </div>
-      </section>
-    </div>
   </div>
 </section>
