@@ -19,7 +19,6 @@
   </div>
 </section>
 
-
 <section class="region">
   <div class="layout layout--wide">
     <div class="grid">
@@ -586,6 +585,16 @@
 						</div>
 					</div>
 				</div>
+        <div>
+          <h2 class="h2">Voorbeelden</h2>
+          <p class="u-spacer">
+            Voorbeelden van geannoteerde publicaties voor automatische melding:
+            <h3 class="h3">Besluitenlijst</h3>
+            {{#let (get-code-snippet "example-publication-besluitenlijst.html") as |snippet|}}
+              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+            {{/let}}
+          </p>
+        </div>
 				<div id="outline-container-orgheadline44">
 					<div class="region typography">
 						<h2 class="h2" id="orgheadline44">Meldingsplicht API</h2>
