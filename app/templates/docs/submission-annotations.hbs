@@ -12,7 +12,7 @@
       <div class="col--8-12 col--1-1--s">
         <h1 class="h1">Annotaties voor automatische melding</h1>
         <p>
-          Lokale besturen publiceren beslissingen die via de Toezicht module in het Digitaal Loket gemeld moeten worden. Digitaal Loket biedt een API aan waarop publicaties van beslissingen gemeld kunnen worden, waarna ze automatisch geharvest zullen worden en toevoegd worden als nieuwe melding in Digitaal Loket. Dit document beschrijft de annotaties die gebruikt worden voor automatische melding.
+          Lokale besturen publiceren beslissingen die via de Toezicht module in het Loket voor Lokale Besturen gemeld moeten worden. Loket voor Lokale Besturen biedt een API aan waarop publicaties van beslissingen gemeld kunnen worden, waarna ze automatisch geharvest zullen worden en toevoegd worden als nieuwe melding in Loket voor Lokale Besturen. Dit document beschrijft de annotaties die gebruikt worden voor automatische melding.
         </p>
       </div>
     </div>
@@ -587,13 +587,10 @@
 				</div>
         <div>
           <h2 class="h2">Voorbeelden</h2>
-          <p class="u-spacer">
-            Voorbeelden van geannoteerde publicaties voor automatische melding:
-            <h3 class="h3">Besluitenlijst</h3>
-            {{#let (get-code-snippet "example-publication-besluitenlijst.html") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
-            {{/let}}
-          </p>
+          <h3 class="h3">Besluitenlijst</h3>
+          {{#let (get-code-snippet "example-publication-besluitenlijst.html") as |snippet|}}
+            <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+          {{/let}}
         </div>
 				<div id="outline-container-orgheadline44">
 					<div class="region typography">
