@@ -92,6 +92,26 @@
         </article>
 
 				<article>
+          <h2 class="h2">Publicatie van documenten en besluiten</h2>
+          <h3 class="h3">Annotaties voor automatische melding</h3>
+					<p class="u-spacer">
+						Bekijk welke annotaties vendors kunnen gebruiken om besluiten automatisch in te sturen: {{#link-to "docs.submission-annotations"}}annotaties&nbsp;voor&nbsp;automatische&nbsp;melding{{/link-to}}.
+					</p>
+          <h3 class="h3">Vereisten voor gepubliceerde pagina's</h3>
+					<p class="u-spacer">
+            Opdat de documenten en besluiten op een correcte manier automatisch geoogst kunnen worden, moeten de URLs waarop de documenten gepubliceerd worden aan enkele vereisten voldoen:
+          </p>
+          <h4 class="h4">SSL en certificaten</h4>
+          <p class="u-spacer">
+            Wanneer pagina's gepubliceerd worden met HTTPS moeten ze over een geldig certificaat beschikken. Dit certificaat omvat niet enkel het eigen certificaat, maar ook de hele keten tot aan het root-certificaat. Er bestaan tools, zoals <a href="https://www.ssllabs.com/ssltest/index.html">deze</a> om de geldigheid van de certificaten-ketting te testen.
+          </p>
+          <h4 class="h4">javascript</h4>
+          <p class="u-spacer">
+            De gepubliceerde pagina's mogen javascript bevatten, maar dit mag geen impact hebben op de inhoud van de pagina. Alle annotaties die geharvest moeten worden, moeten beschikbaar zijn bij het ophalen van de pagina, zonder dat er verdere scripts nodig zijn. Dit kan bijvoorbeeld getest worden door het gebruik van het <code>curl</code> commando om de gepubliceerde pagina op te halen.
+          </p>
+				</article>
+
+				<article>
 					<h2 class="h2">Authenticatie</h2>
 					<p class="u-spacer">
             Een bestuurseenheid kan een externe partij authorizeren om automatische meldingen uit te voeren in hun naam. Het beheer van deze rechten en permissies zal op lange termijn gebeuren via ACM/IDM en het Gebruikersbeheer. Op korte termijn zal dit beheerd worden door ABB.
@@ -116,13 +136,6 @@
 
             De response geeft de triples terug die geharvest zijn uit de ingestuurde publicatie. Op basis hiervan kan men verifi&euml;ren of de annotaties in het document correct zijn.
           </p>
-				</article>
-
-				<article>
-					<h2 class="h2">Annotaties voor automatische melding</h2>
-					<p class="u-spacer">
-						Bekijk welke annotaties vendors kunnen gebruiken om besluiten automatisch in te sturen: {{#link-to "docs.submission-annotations"}}annotaties&nbsp;voor&nbsp;automatische&nbsp;melding{{/link-to}}.
-					</p>
 				</article>
 
         {{outlet}}
