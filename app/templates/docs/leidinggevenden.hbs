@@ -1,0 +1,417 @@
+<section class="region region--alt">
+  <div class="layout layout--wide">
+    <div class="tabs__wrapper">
+      <ul class="tabs" data-tabs-list>
+        <li class="tab">
+          {{#link-to "index" class="tab__link"}}<i class="fa fa-angle-left"></i> Terug naar overzicht{{/link-to}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="grid">
+      <div class="col--8-12 col--1-1--s">
+        <h1 class="h1">Leidinggevenden databank</h1>
+        <p>
+          De leidinggevenden databank bevat de leidinggevenden van de lokale besturen en hun verzelfstandigde entiteiten. Deze databank volgt een uitbreiding op het applicatieprofiel <a href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/" target="_blank" rel="noopener">mandatendatabank</a>. Dit document beschrijft deze uitbreiding.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="region">
+  <div class="layout layout--wide">
+    <div class="grid">
+      <div class="col--8-12 col--1-1--s">
+        <h2 class="h2" id="overzicht-entiteiten">Overzicht</h2>
+        <img src="assets/images/leidinggevenden.jpg" alt="leidinggevend UML diagram" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="region">
+  <div class="layout layout--wide">
+    <div class="grid">
+      <div class="col--8-12 col--1-1--s">
+				<div id="outline-container-orgheadline1">
+					<div class="region typography">
+						<h2 class="h2" id="orgheadline1">Gebruikte prefixen</h2>
+						<div class="u-table-overflow">
+							<table class="data-table data-table--zebra">
+								<thead>
+									<tr>
+										<th>Prefix</th>
+										<th>URI</th>
+									</tr>
+								</thead>
+								<tbody>
+                  <tr>
+                    <td>adres</td>
+                    <td><a href="https://data.vlaanderen.be/ns/adres#">https://data.vlaanderen.be/ns/adres#</a></td>
+                  </tr>
+  								<tr>
+										<td>foaf</td>
+										<td><a href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</a></td>
+									</tr>
+                  <tr>
+										<td>lblodlg</td>
+										<td><a href="http://data.lblod.info/vocabularies/leidinggevenden/">http://data.lblod.info/vocabularies/leidinggevenden/</a></td>
+									</tr>
+                  <tr>
+										<td>locn</td>
+										<td><a href="http://www.w3.org/ns/locn#">http://www.w3.org/ns/locn#</a></td>
+									</tr>
+                  <tr>
+										<td>mandaat</td>
+										<td><a href="http://data.vlaanderen.be/ns/mandaat#">http://data.vlaanderen.be/ns/mandaat#</a></td>
+									</tr>
+									<tr>
+										<td>person</td>
+                    <td><a href="https://data.vlaanderen.be/ns/persoon#">https://data.vlaanderen.be/ns/persoon#</a></td>
+									</tr>
+                  <tr>
+										<td>persoon</td>
+										<td><a href="http://www.w3.org/ns/person#">http://www.w3.org/ns/person#</a></td>
+									</tr>
+                  <tr>
+										<td>org</td>
+										<td><a href="http://www.w3.org/ns/org#">http://www.w3.org/ns/org#</a></td>
+									</tr>
+                  <tr>
+										<td>schema</td>
+										<td><a href="http://schema.org/">http://schema.org/</a></td>
+									</tr>
+									<tr>
+										<td>xsd</td>
+										<td><a href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</a></td>
+									</tr>
+									<tr>
+										<td>&#xa0;</td>
+										<td>&#xa0;</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div id="outline-container-orgheadline33">
+					<h2 class="h2" id="orgheadline33">Entiteiten</h2>
+          <div id="outline-container-orgheadline5">
+						<h3 class="h3" id="orgheadline5">Adresvoorstelling</h3>
+
+						<div class="region typography">
+							<div id="outline-container-orgheadline2">
+								<h4 class="h4" id="orgheadline2">Klasse</h4>
+								<div>
+									<p class="u-spacer">
+										<code>locn:Address</code>
+									</p>
+								</div>
+							</div>
+
+							<div id="outline-container-orgheadline3">
+								<h4 class="h4" id="orgheadline3">Beschrijving</h4>
+								<div>
+									<p class="u-spacer">Leesbare voorstelling met enkel de basisgegevens van het adres, bedoeld voor het gebruik van een adres als attribuut van een ander object. Overgenomen uit <a href="https://data.vlaanderen.be/doc/applicatieprofiel/adresregister/#Adresvoorstelling">OSLO applicatieprofiel adresregister</a>.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="region typography" id="outline-container-orgheadline4">
+							<h4 class="h4" id="orgheadline4">Eigenschappen</h4>
+							<div class="u-table-overflow">
+								<table class="data-table data-table--zebra">
+									<thead>
+										<tr>
+											<th>Naam</th>
+											<th>URI</th>
+											<th>Verwacht type</th>
+											<th>Beschrijving</th>
+										</tr>
+									</thead>
+									<tbody>
+
+                    <tr>
+											<td>adres-register-uri</td>
+											<td><code>adres:verwijstNaar</code></td>
+											<td><code>adres:Adres</code></td>
+											<td>Adres waarvan de adresvoorstelling is afgeleid.</td>
+										</tr>
+										<tr>
+											<td>gemeentenaam</td>
+											<td><code>adres:gemeentenaam</code></td>
+											<td><code>xsd:string</code></td>
+											<td>Gemeentenaam van het adres.</td>
+										</tr>
+                    <tr>
+											<td>huisnummer</td>
+											<td><code>adres:AdresVoorstelling.huisnummer</code></td>
+											<td><code>xsd:string</code></td>
+											<td>Alfanumerieke code officieel toegekend aan gebouweenheden, ligplaatsen, standplaatsen of percelen.</td>
+										</tr>
+                    <tr>
+											<td>postcode</td>
+											<td><code>locn:postCode</code></td>
+											<td><code>xsd:string</code></td>
+											<td>Code waarmee het geografisch gebied dat adressen voor postale doeleinden groepeert wordt aangeduid.</td>
+										</tr>
+										<tr>
+											<td>straatnaam</td>
+											<td><code>adres:straatnaam</code></td>
+											<td><code>xsd:string</code></td>
+											<td>Straatnaam van het adres.</td>
+										</tr>
+                    <tr>
+											<td>volledig adres</td>
+											<td><code>locn:fullAddress</code></td>
+											<td><code>xsd:string</code></td>
+											<td>Het complete adres in één string, al dan niet geformatteerd.</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+          </div>
+					<div id="outline-container-orgheadline5">
+						<h3 class="h3" id="orgheadline5">Bestuursfunctie</h3>
+
+						<div class="region typography">
+							<div id="outline-container-orgheadline2">
+								<h4 class="h4" id="orgheadline2">Klasse</h4>
+								<div>
+									<p class="u-spacer">
+										<code>lblodlg:Bestuursfunctie</code>
+									</p>
+								</div>
+							</div>
+
+							<div id="outline-container-orgheadline3">
+								<h4 class="h4" id="orgheadline3">Beschrijving</h4>
+								<div>
+									<p class="u-spacer">
+                    De bevoegdheid om gedurende een bepaalde periode een bestuursorgaan te vormen of er deel van uit te maken. specialisatie van <a href="http://data.vlaanderen.be/ns/mandaat#Mandaat">Mandaat</a>.
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="region typography" id="outline-container-orgheadline4">
+							<h4 class="h4" id="orgheadline4">Eigenschappen</h4>
+							<div class="u-table-overflow">
+								<table class="data-table data-table--zebra">
+									<thead>
+										<tr>
+											<th>Naam</th>
+											<th>URI</th>
+											<th>Verwacht type</th>
+											<th>Beschrijving</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>rol</td>
+											<td><code>org:role</code></td>
+											<td><code>org:Role</code></td>
+											<td>Bestuurseenheid die de publicatie gemaakt heeft.</td>
+										</tr>
+										<tr>
+											<td>contactgegevens</td>
+											<td><code>schema:contactPoint</code></td>
+											<td><code>schema:ContactPoint</code></td>
+											<td>Contactgegevens voor de bestuursfunctie.</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+          </div>
+          <div id="outline-container-orgheadline5">
+						<h3 class="h3" id="orgheadline5">Contactgegevens</h3>
+
+						<div class="region typography">
+							<div id="outline-container-orgheadline2">
+								<h4 class="h4" id="orgheadline2">Klasse</h4>
+								<div>
+									<p class="u-spacer">
+										<code>schema:ContactPoint</code>
+									</p>
+								</div>
+							</div>
+
+							<div id="outline-container-orgheadline3">
+								<h4 class="h4" id="orgheadline3">Beschrijving</h4>
+								<div>
+									<p class="u-spacer">
+                    De contactgegevens voor een bestuursfunctie, dit kunnen algemene of persoonlijke contactgegevens zijn.
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="region typography" id="outline-container-orgheadline4">
+							<h4 class="h4" id="orgheadline4">Eigenschappen</h4>
+							<div class="u-table-overflow">
+								<table class="data-table data-table--zebra">
+									<thead>
+										<tr>
+											<th>Naam</th>
+											<th>URI</th>
+											<th>Verwacht type</th>
+											<th>Beschrijving</th>
+										</tr>
+									</thead>
+									<tbody>
+                    <tr>
+											<td>adres</td>
+											<td><code>locn:address</code></td>
+											<td><code>locn:Address</code></td>
+											<td>Adres dat men kan aanschrijven.</td>
+										</tr>
+										<tr>
+											<td>email</td>
+											<td><code>schema:email</code></td>
+											<td><code>xsd:string</code></td>
+											<td>Email-adres waarnaar men kan mailen.</td>
+										</tr>
+										<tr>
+											<td>telefoon</td>
+											<td><code>schema:telephone</code></td>
+											<td><code>xsd:string</code></td>
+											<td>Telefoonnummer waarop men kan bellen.</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+          </div>
+          <div id="outline-container-orgheadline5">
+						<h3 class="h3" id="orgheadline5">Functionaris</h3>
+
+						<div class="region typography">
+							<div id="outline-container-orgheadline2">
+								<h4 class="h4" id="orgheadline2">Klasse</h4>
+								<div>
+									<p class="u-spacer">
+										<code>lblodlg:Functionaris</code>
+									</p>
+								</div>
+							</div>
+
+							<div id="outline-container-orgheadline3">
+								<h4 class="h4" id="orgheadline3">Beschrijving</h4>
+								<div>
+									<p class="u-spacer">
+                    Een persoon in zijn rol als houder van een bestuursfunctie. Specialisatie van <a href="http://data.vlaanderen.be/ns/mandaat#Mandataris">Mandataris</a>.
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="region typography" id="outline-container-orgheadline4">
+							<h4 class="h4" id="orgheadline4">Eigenschappen</h4>
+							<div class="u-table-overflow">
+								<table class="data-table data-table--zebra">
+									<thead>
+										<tr>
+											<th>Naam</th>
+											<th>URI</th>
+											<th>Verwacht type</th>
+											<th>Beschrijving</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>bestuursfunctie</td>
+											<td><code>org:holds</code></td>
+											<td><code>lblodlg:Bestuursfunctie</code></td>
+											<td>De bestuursfunctie die deze functionaris bekleedt.</td>
+										</tr>
+										<tr>
+											<td>einde</td>
+											<td><code>mandaat:einde</code></td>
+											<td><code>xsd:dateTime</code></td>
+											<td>Tijdstip vanaf wanneer de functionaris de bestuursfunctie niet langer opneemt.</td>
+										</tr>
+                    <tr>
+											<td>is bestuurlijke alias van</td>
+											<td><code>mandaat:isBestuurlijkeAliasVan</code></td>
+											<td><code>person:Person</code></td>
+											<td>De persoon die de functionarisrol vervult.</td>
+										</tr>
+                    <tr>
+											<td>start</td>
+											<td><code>mandaat:start</code></td>
+											<td><code>xsd:dateTime</code></td>
+											<td>Tijdstip vanaf wanneer de functionaris de bestuursfunctie opneemt.</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+          </div>
+          <div id="outline-container-orgheadline5">
+						<h3 class="h3" id="orgheadline5">Persoon</h3>
+
+						<div class="region typography">
+							<div id="outline-container-orgheadline2">
+								<h4 class="h4" id="orgheadline2">Klasse</h4>
+								<div>
+									<p class="u-spacer">
+										<code>person:Person</code>
+									</p>
+								</div>
+							</div>
+
+							<div id="outline-container-orgheadline3">
+								<h4 class="h4" id="orgheadline3">Beschrijving</h4>
+								<div>
+									<p class="u-spacer">
+                    Natuurlijk persoon. Overgenomen uit het <a href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/#Persoon">OSLO applicatieprofiel mandatendatabank</a>.
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="region typography" id="outline-container-orgheadline4">
+							<h4 class="h4" id="orgheadline4">Eigenschappen</h4>
+							<div class="u-table-overflow">
+								<table class="data-table data-table--zebra">
+									<thead>
+										<tr>
+											<th>Naam</th>
+											<th>URI</th>
+											<th>Verwacht type</th>
+											<th>Beschrijving</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>achternaam</td>
+											<td><code>foaf:familyName</code></td>
+											<td><code>xsd:string</code></td>
+											<td>De familienaam van de persoon.</td>
+										</tr>
+										<tr>
+											<td>alternatieve naam</td>
+											<td><code>foaf:name</code></td>
+											<td><code>xsd:string</code></td>
+											<td>Een roepnaam van de persoon. 	Indien aanwezig is het aan te raden deze naam te gebruiken voor visualisaties in plaats van voornaam en familienaam.</td>
+										</tr>
+										<tr>
+											<td>gebruikte voornaam</td>
+											<td><code>persoon:gebruikteVoornaam</code></td>
+											<td><code>xsd:string</code></td>
+											<td>De te gebruiken voornaam van alle officiële voornamen van de persoon.</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

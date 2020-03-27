@@ -11,6 +11,7 @@ Router.map(function() {
     this.route('submission-api');
     this.route('submission-annotations');
     this.route('publication-annotations');
+    this.route('leidinggevenden');
   });
 });
 
