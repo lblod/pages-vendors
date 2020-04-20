@@ -12,6 +12,7 @@ Router.map(function() {
     this.route('submission-annotations');
     this.route('publication-annotations');
     this.route('leidinggevenden');
+    this.route('rijksregisternummer-api');
   });
 });
 
