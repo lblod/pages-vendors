@@ -10,7 +10,7 @@
 
     <div class="grid">
       <div class="col--8-12 col--1-1--s">
-        <h1 class="h1">Rijksregisternummer naar Persoon URI API</h1>
+        <h1 class="h1">Rijksregisternummer naar Persoon URI API [BETA]</h1>
         <p>
           Het Rijksregisternummer is een veelgebruikte idenitficator voor een persoon.  Helaas bevat deze identificator persoonlijke informatie zoals het geslacht en de geboortedatum van de persoon waardoor deze niet in alle contexten uitgewisseld kan worden.  Mits het afsluiten van een protocol tussen het bestuur en het Agentschap Binnenlands Bestuur, is het mogelijk om de URI van een persoon op te vragen op basis van het rijksregisternummer.  Dit document beschrijft de API om de URI van een persoon op te vragen op basis van diens rijksregisternummer en de bestuurseenheid waar hij een functie voor uitoefent.
         </p>
@@ -24,11 +24,13 @@
     <div class="grid">
       <div class="col--8-12 col--1-1--s">
         <article class="u-spacer--large">
-        	<h2 class="h2" id="todo">Opvragen URI</h2>
+          <h2 class="h2" id="todo">Opvragen URI</h2>
           <p class="u-spacer">
             Geeft de URI van een persoon terug indien de aanvragende entiteit gemachtigd is voor het opgegeven bestuur en de persoon teruggevonden kon worden.  De request kan als GET of als POST opgevraagd worden, in beide gevallen wordt een JSON body verwacht.
 
             <CodeBlock>POST https://rrn.api.lblod.info/rrn</CodeBlock>
+
+            Noteer dat de bovenstaande URL verwijst naar de ontwikkelomgeving. Deze verandert van zodra de service in productie staat.
 
             Volgende voorbeelden beschrijven de JSON body van deze calls.
           </p>
@@ -40,7 +42,6 @@
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
             {{/let}}
           </p>
-
           <p>
             Een succesvol antwoord heeft de vorm van:
 
@@ -51,19 +52,34 @@
 
           In dit antwoord bevindt de URI van de persoon zich in de eigenschap <code>uri</code>.  De 404 status wordt teruggegeven indien geen antwoord gevonden werd.  Dat kan voorvallen omdat de persoon niet gevonden is binnen de opgegeven bestuurseenheid of omdat de meegegeven authenticatie geen recht heeft de persoonsinformatie op te vragen.
         </article>
-      </div>
-    </div>
-  </div>
-</section>
+        <article>
+          <h2 class="h2">Authenticatie</h2>
+          <p class="u-spacer">
+            Een bestuurseenheid kan een externe partij authorizeren om deze service te gebruiken in hun naam. Het beheer van deze rechten en permissies zal op lange termijn gebeuren via ACM/IDM en het Gebruikersbeheer. Op korte termijn zal dit beheerd worden door ABB.
+          </p>
+          <p class="u-spacer">
+            Iedere externe partij krijgt een unieke identificator en sleutel die meegestuurd wordt bij de bevraging van de service. <br/> Voor de test API kun je als softwareleverancier zelf een sleutel aanvragen via <a href="mailto:digitaalABB@vlaanderen.be?subject=Geheime sleutel rijksregisternummer API test">digitaalABB@vlaanderen.be</a>. Je krijgt dan een random gemeente om mee te testen.<br/> Wanneer de productie API beschikbaar komt, zal een bestuur de sleutel kunnen aanvragen via <a href="mailto:digitaalABB@vlaanderen.be?subject=Geheime sleutel rijksregisternummer API productie">digitaalABB@vlaanderen.be</a>. De lokale besturen zullen dan ook via <a href="mailto:digitaalABB@vlaanderen.be?subject=Permissie voor softwareleverancier ikv rijksregisternummer API">digitaalABB@vlaanderen.be</a> een aanvraag insturen om een softwareleverancier permissie te geven om in hun naam de rijksregisternummer API te gebruiken.
+          </p>
+        </article>
 
-<section class="region">
-  <div class="layout layout--wide">
-    <div class="grid">
-      <div class="col--8-12 col--1-1--s">
+        <article>
+          <h2 class="h2">Ontwikkeling en test</h2>
+          <p class="u-spacer">
+            Voor het ontwikkelen en testen van de rijksregisternummer API is een test endpoint ter beschikking gesteld op:
+
+            <CodeBlock>https://rrn.api.lblod.info/rrn</CodeBlock>
+
+            De vendor URI en geheime sleutel voor deze omgeving moeten eerst aangevraagd worden zoals beschreven onder 'Authenticatie'.
+          </p>
+        </article>
+        
         <article class="u-spacer--large">
-        	<h2 class="h2" id="todo">Beperkingen</h2>
-          Brute-force raden van rijksregisternummers is mogelijk. Om dit te vermijden zijn het aantal calls binnen een tijdspanne beperkt. <br/>
-          Mocht deze beperking overschreden worden, dient er later opnieuw geprobeerd te worden.
+          <h2 class="h2" id="todo">Beperkingen</h2>
+          <h3 class="h3">Rate limiting</h3>
+          <p>
+            Brute-force raden van rijksregisternummers is mogelijk. Om dit te vermijden zijn het aantal calls binnen een tijdspanne beperkt. <br/>
+            Mocht deze beperking overschreden worden, dient er later opnieuw geprobeerd te worden. De status 429 wordt dan teruggegeven.
+          </p>
         </article>
       </div>
     </div>
