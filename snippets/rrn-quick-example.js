@@ -4,7 +4,7 @@
     "key": "5u|>3RM4N"
   },
   "person": {
-    "rrn": "84.04.17-319.23",
+    "rrn": "12.34.56-710.64",
     "organization": "http://data.lblod.info/id/bestuurseenheden/2498239"
   }
 }
