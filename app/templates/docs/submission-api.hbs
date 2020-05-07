@@ -25,28 +25,48 @@
       <div class="col--8-12 col--1-1--s">
         <article class="u-spacer--large">
           <h2 class="h2" id="todo">Aanmaken nieuwe melding</h2>
+          <h3 class="h3">API endpoint</h3>
           <p class="u-spacer">
-            Maakt een nieuwe melding aan.  Indien al de nodige velden ingevuld zijn, kan de melding automatisch verzonden via Loket voor Lokale Besturen.  Indien er ontbrekende velden zijn krijgt het bestuur een mailtje dat er een melding klaar staat voor verzending in het Loket voor Lokale Besturen. Alle calls kunnen uitgevoerd worden door
+            Het aanmaken van een nieuwe melding gebeurt via een request naar
 
             <CodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/melding</CodeBlock>
 
-            Volgende voorbeelden beschrijven de JSON body van deze calls. Een specificatie van de annotaties staat beschreven op {{#link-to "docs.submission-annotations"}}annotaties&nbsp;voor&nbsp;automatische&nbsp;melding{{/link-to}}.
-          </p>
+            met JSON-LD request body:
 
-          <h3 class="h3">Kortste voorbeeld</h3>
-          <p>
-            Een kort voorbeeld van de API:
             {{#let (get-code-snippet "reporting-obligation-quick-example.js") as |snippet|}}
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
             {{/let}}
-          </p>
-          <p  class="small text-fade u-spacer">
-            Bekijk welke annotaties gebruikt kunnen worden: {{#link-to "docs.submission-annotations"}}annotaties&nbsp;voor&nbsp;automatische&nbsp;melding{{/link-to}}.
+            <p  class="small text-fade u-spacer">
+              Bekijk welke annotaties gebruikt kunnen worden in de gepubliceerde pagina: {{#link-to "docs.submission-annotations"}}annotaties&nbsp;voor&nbsp;automatische&nbsp;melding{{/link-to}}.
+            </p>
           </p>
 
-          <h3 class="h3">Optioneel meegeven van draft of inzendbaar status</h3>
           <p class="u-spacer">
-            Indien een inzending aangemaakt wordt en volledig is, dan kan ze automatisch verzonden worden.  Optioneel kan aangegeven worden dat de inzending in draft status is door de "status" property mee te geven.  De status kan de URI voor "concept" of "inzendbaar" zijn.
+            Het aanvragen van een publisher URI en geheime sleutel (key) staan verderop beschreven in de sectie 'Authenticatie'.
+          </p>
+          <h3 class="h3">Scope van een melding</h3>
+          <p class="u-spacer">
+            Er moet een melding gedaan worden per besluit/document. De link die gestuurd wordt in de <code>href</code>-property van de request body moet een link zijn naar de pagina met de inhoud van het besluit/document. Dit mag geen overzichtspagina zijn waar er nog moet doorgeklikt worden naar een andere pagina. Er mogen wel nog andere besluiten/documenten geannoteerd staan op de pagina. De URI van het besluit dat gemeld wordt, wordt meegegeven in de <code>submittedResource</code>-property. Verdere vereisten rond de gepubliceerde pagina's staan verderop beschreven.
+          </p>
+
+          <p class="u-spacer">
+            Bijvoorbeeld: <br>
+            Gemeente Vlavirgem heeft de geannoteerde notulen van een zitting gepubliceerd op <a href="#">http://vlavirgem.be/zittingen/20200304.html</a>. De geannoteerde pagina bevat besluiten:
+          </p>
+          <p class="u-spacer">
+            <ul class="bullet-list">
+              <li class="bullet-list__item"><a href="#">http://data.vlavirgem.be/besluiten/id/besluit-A</a>,</li>
+              <li class="bullet-list__item"><a href="#">http://data.vlavirgem.be/besluiten/id/besluit-B</a>,</li>
+              <li class="bullet-list__item"><a href="#">http://data.vlavirgem.be/besluit/id/besluit-C</a></li>
+            </ul>
+          </p>
+          <p class="u-spacer">
+            Er moeten dan 3 requests naar de melding API gestuurd worden. Alle requests hebben als <code>href</code>-property: <a href="#">http://vlavirgem.be/zittingen/20200304.html</a>. De '<code>submittedResource</code>-property verschilt per request en bevat de URI van het besluit dat gemeld wordt.
+          </p>
+
+          <h3 class="h3">Meegeven van draft of inzendbaar status (optioneel)</h3>
+          <p class="u-spacer">
+            Indien een inzending aangemaakt wordt en volledig is, dan kan ze automatisch verzonden worden. Optioneel kan aangegeven worden dat de inzending in draft status is door de <code>status</code>-property mee te geven. De status kan de URI voor "concept" of "inzendbaar" zijn.
 
             <table class="data-table u-spacer">
               <thead>
@@ -81,21 +101,23 @@
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
             {{/let}}
           </p>
+        </article>
 
-          <h3 class="h3">Uitgebreid voorbeeld</h3>
+        <article>
+          <h2 class="h2">Authenticatie</h2>
           <p class="u-spacer">
-            Een call kan ook met een volledige of deels geconfigureerde JSON-LD context ingestuurd worden. Dat ziet er dan als volgt uit:
-            {{#let (get-code-snippet "reporting-obligation-expanded-call.js") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
-            {{/let}}
+            Een bestuurseenheid kan een externe partij authorizeren om automatische meldingen uit te voeren in hun naam. Het beheer van deze rechten en permissies zal op lange termijn gebeuren via ACM/IDM en het Gebruikersbeheer. Op korte termijn zal dit beheerd worden door ABB.
+          </p>
+          <p class="u-spacer">
+            Iedere externe partij krijgt een unieke identificator en sleutel die meegestuurd wordt in de automatische melding. Voor de test API kun je als softwareleverancier zelf een sleutel aanvragen via <a href="mailto:digitaalABB@vlaanderen.be?subject=Geheime sleutel automatische melding API test">digitaalABB@vlaanderen.be</a>. Je krijgt dan een random gemeente om mee te testen. Wanneer de productie API beschikbaar komt, zal een bestuur de sleutel kunnen aanvragen via <a href="mailto:digitaalABB@vlaanderen.be?subject=Geheime sleutel automatische melding API productie">digitaalABB@vlaanderen.be</a>. De lokale besturen zullen dan ook via <a href="mailto:digitaalABB@vlaanderen.be?subject=Permissie voor softwareleverancier ikv automatische melding">digitaalABB@vlaanderen.be</a> een aanvraag insturen om een softwareleverancier permissie te geven om in hun naam automatische meldingen in te sturen.
           </p>
         </article>
 
         <article>
-          <h2 class="h2">Publicatie van documenten en besluiten</h2>
+          <h2 id="publicatie-documenten" class="h2">Publicatie van documenten en besluiten</h2>
           <h3 class="h3">Annotaties voor automatische melding</h3>
           <p class="u-spacer">
-            Bekijk welke annotaties vendors kunnen gebruiken om besluiten automatisch in te sturen: {{#link-to "docs.submission-annotations"}}annotaties&nbsp;voor&nbsp;automatische&nbsp;melding{{/link-to}}.
+            Bekijk {{#link-to "docs.submission-annotations"}}hier{{/link-to}} welke annotaties gebruikt kunnen worden op de gepubliceerde pagina's om besluiten automatisch te verzenden.
           </p>
           <h3 class="h3">Vereisten voor gepubliceerde pagina's</h3>
           <p class="u-spacer">
@@ -112,29 +134,16 @@
         </article>
 
         <article>
-          <h2 class="h2">Authenticatie</h2>
-          <p class="u-spacer">
-            Een bestuurseenheid kan een externe partij authorizeren om automatische meldingen uit te voeren in hun naam. Het beheer van deze rechten en permissies zal op lange termijn gebeuren via ACM/IDM en het Gebruikersbeheer. Op korte termijn zal dit beheerd worden door ABB.
-          </p>
-          <p class="u-spacer">
-            Iedere externe partij krijgt een unieke identificator en sleutel die meegestuurd wordt in de automatische melding. Voor de test API kun je als softwareleverancier zelf een sleutel aanvragen via <a href="mailto:digitaalABB@vlaanderen.be?subject=Geheime sleutel automatische melding API test">digitaalABB@vlaanderen.be</a>. Je krijgt dan een random gemeente om mee te testen. Wanneer de productie API beschikbaar komt, zal een bestuur de sleutel kunnen aanvragen via <a href="mailto:digitaalABB@vlaanderen.be?subject=Geheime sleutel automatische melding API productie">digitaalABB@vlaanderen.be</a>. De lokale besturen zullen dan ook via <a href="mailto:digitaalABB@vlaanderen.be?subject=Permissie voor softwareleverancier ikv automatische melding">digitaalABB@vlaanderen.be</a> een aanvraag insturen om een softwareleverancier permissie te geven om in hun naam automatische meldingen in te sturen.
-          </p>
-        </article>
-
-        <article>
           <h2 class="h2">Ontwikkeling en test</h2>
           <p class="u-spacer">
             Voor het ontwikkelen en testen van automatische melding is een test endpoint ter beschikking gesteld op:
 
             <CodeBlock>POST https://api.loket.lblod.info/melding</CodeBlock>
 
-            De publisher URI en geheime sleutel voor deze omgeving moeten eerst aangevraagd worden zoals beschreven onder 'Authenticatie'. De verwerking van de melding gebeurt asynchroon. De response van deze request bevat een URI waarmee het resultaat van de verwerking nadien bekeken kan worden.
+            De publisher URI en geheime sleutel voor deze omgeving moeten eerst aangevraagd worden zoals beschreven onder 'Authenticatie'. De verwerking van de melding gebeurt asynchroon, maar zou in normale omstandigheden in een tijdspanne van enkele minuten afgehandeld worden.
           </p>
           <p class="u-spacer">
-            De verificatie kan gebeuren door een request te sturen naar:
-            <CodeBlock>GET https://api.loket.lblod.info/verify/inzending?uri={uri-uit-melding-response}</CodeBlock>
-
-            De response geeft de triples terug die geharvest zijn uit de ingestuurde publicatie. Op basis hiervan kan men verifi&euml;ren of de annotaties in het document correct zijn.
+            Om te valideren hoe een melding er zal uitzien in het Loket van Lokale Besturen is een web applicatie beschikbaar gesteld op <a href="https://api.loket.lblod.info/mock-login">https://api.loket.lblod.info/mock-login</a>. Je kan inloggen door de gewenste bestuurseenheid aan te klikken in de lijst. Vervolgens wordt een lijst getoond van alle meldingen die ontvangen zijn. Wanneer op het 'detail' van een melding geklikt wordt, kan bekeken worden welke kennis er uit het gepubliceerde document geharvest is en of deze al dan niet geldig/volledig is.
           </p>
         </article>
 

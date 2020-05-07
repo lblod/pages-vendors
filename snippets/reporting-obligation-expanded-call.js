@@ -27,7 +27,7 @@
   },
   "organization": {
     "uri": "http://data.lblod.info/id/bestuurseenheden/2498239",
-    "@type": "besluit:BestuursEeenheid"
+    "@type": "besluit:Bestuurseenheid"
   },
   "publisher": {
     "uri": "http://data.lblod.info/vendors/cipal-schaubroeck",
