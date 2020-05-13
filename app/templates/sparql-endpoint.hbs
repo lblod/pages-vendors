@@ -1,0 +1,113 @@
+<section class="region region--alt">
+  <div class="layout layout--wide">
+    <div class="tabs__wrapper">
+      <ul class="tabs" data-tabs-list>
+        <li class="tab">
+          {{#link-to "index" class="tab__link"}}<i class="fa fa-angle-left"></i> Terug naar overzicht{{/link-to}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="region">
+  <div class="layout layout--wide">
+    <div class="grid">
+      <div class="col--8-12 col--1-1--s">
+        <article class="u-spacer--large">
+          <h2 class="h2">Sparql endpoint</h2>
+
+          <h3 class="h3">Given the URI of a werkingsgebied, list all non-time-specific bestuursorganen with their classification (preflabel, URI, classification URI, classification preflabel)</h3>
+          <p class="u-spacer">
+            <CodeBlock>
+              PREFIX besluit: &#60;http://data.vlaanderen.be/ns/besluit#>
+              PREFIX skos: &#60;http://www.w3.org/2004/02/skos/core#>
+
+              SELECT DISTINCT ?bestuursorgaanLabel ?bestuursorgaanUri ?classificatieLabel ?classificatieUri WHERE {
+                ?bestuursorgaanUri a besluit:Bestuursorgaan ;
+                  besluit:bestuurt ?werkingsgebiedUri ;
+                  besluit:classificatie ?classificatieUri ;
+                  skos:prefLabel ?bestuursorgaanLabel .
+                
+                ?classificatieUri skos:prefLabel ?classificatieLabel .
+              }
+            </CodeBlock>
+          </p>
+
+          <h3 class="h3">Given the URI a non-time-specific bestuursorgaan, list the time-specific bestuursorganen that have at least 1 mandate (URI, start, end) ~ only return the 'political' bestuursorganen, not the ones of leidinggevenden</h3>
+          <p class="u-spacer">
+            <CodeBlock>
+              PREFIX org: &#60;http://www.w3.org/ns/org#>
+              PREFIX skos: &#60;http://www.w3.org/2004/02/skos/core#>
+              PREFIX besluit: &#60;http://data.vlaanderen.be/ns/besluit#>
+              PREFIX mandaat: &#60;http://data.vlaanderen.be/ns/mandaat#>
+
+              SELECT DISTINCT ?bestuursorgaanInPeriodeUri ?start ?einde WHERE {
+                ?bestuursorgaanInPeriodeUri a besluit:Bestuursorgaan ;
+                  mandaat:isTijdspecialisatieVan ?bestuursorgaanUri ;
+                  mandaat:bindingStart ?start ;
+                  org:hasPost ?mandaatUri .
+
+                OPTIONAL { ?bestuursorgaanInPeriodeUri mandaat:bindingEinde ?einde }
+              }
+            </CodeBlock>
+          </p>
+
+          <h3 class="h3">Given the URI of time-specific bestuursorgaan, list all mandatees (URI, mandate URI, mandate role URI, mandate role preflabel, person URI, person first name, person last name)</h3>
+          <p class="u-spacer">
+            <CodeBlock>
+              PREFIX foaf: &#60;http://xmlns.com/foaf/0.1/>
+              PREFIX org: &#60;http://www.w3.org/ns/org#>
+              PREFIX skos: &#60;http://www.w3.org/2004/02/skos/core#>
+              PREFIX besluit: &#60;http://data.vlaanderen.be/ns/besluit#>
+              PREFIX mandaat: &#60;http://data.vlaanderen.be/ns/mandaat#>
+
+              SELECT DISTINCT ?mandaatUri ?roleUri ?roleLabel ?persoonUri ?naam ?achternaam WHERE {
+                ?bestuursorgaanInPeriodeUri a besluit:Bestuursorgaan ;
+                  org:hasPost ?mandaatUri .
+
+                ?mandaatUri org:role ?roleUri .
+                ?roleUri skos:prefLabel ?roleLabel .
+                
+                ?mandatarisUri org:holds ?mandaatUri ;
+                  mandaat:isBestuurlijkeAliasVan ?persoonUri .
+                
+                ?persoonUri foaf:name ?naam ;
+                  foaf:familyName ?achternaam .
+              }
+            </CodeBlock>
+          </p>
+
+          <h3 class="h3">Given the URI of a bestuurseenheid, list the functionarissen (= leidinggevenden. URI, bestuursfunctie URI, bestuursfunctie role URI, bestuursfunctie role preflabel, person URI, person first name, person last name)</h3>
+          <p class="u-spacer">
+            <CodeBlock>
+              PREFIX lblodlg: &#60;http://data.lblod.info/vocabularies/leidinggevenden/>
+              PREFIX foaf: &#60;http://xmlns.com/foaf/0.1/>
+              PREFIX org: &#60;http://www.w3.org/ns/org#>
+              PREFIX skos: &#60;http://www.w3.org/2004/02/skos/core#>
+              PREFIX besluit: &#60;http://data.vlaanderen.be/ns/besluit#>
+              PREFIX mandaat: &#60;http://data.vlaanderen.be/ns/mandaat#>
+
+              SELECT DISTINCT ?bestuursfunctieUri ?roleUri ?roleLabel ?persoonUri ?naam ?achternaam WHERE {
+                ?bestuursorgaanUri besluit:bestuurt ?bestuurseenheidUri .
+
+                ?bestuursorgaanInPeriodeUri a besluit:Bestuursorgaan ;
+                  mandaat:isTijdspecialisatieVan ?bestuursorgaanUri ;
+                  lblodlg:heeftBestuursfunctie ?bestuursfunctieUri .
+
+                ?bestuursfunctieUri org:role ?roleUri .
+                ?roleUri skos:prefLabel ?roleLabel .
+                
+                ?mandatarisUri org:holds ?mandaatUri ;
+                  mandaat:isBestuurlijkeAliasVan ?persoonUri .
+                
+                ?persoonUri foaf:name ?naam ;
+                  foaf:familyName ?achternaam .
+              }
+            </CodeBlock>
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
