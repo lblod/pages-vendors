@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <title>Besluit budget Mechelen</title>
+  </head>
+  <body>
+    <!-- Een minimalistisch voorbeeld om een budget op te halen via automatische melding -->
+    <!-- Noteer: om de eenvoud te behouden in dit voorbeeld, zijn niet alle verplichte attributen ingevuld -->
+
+    <div vocab="http://data.vlaanderen.be/ns/besluit#" prefix="lblod: http://data.lblod.info/vocabularies/lblod/ eli: http://data.europa.eu/eli/ontology# prov: http://www.w3.org/ns/prov# mandaat: http://data.vlaanderen.be/ns/mandaat# besluit: http://data.vlaanderen.be/ns/besluit# generiek: http://data.vlaanderen.be/ns/generiek# person: http://www.w3.org/ns/person# persoon: http://data.vlaanderen.be/ns/persoon# dct: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# org: http://www.w3.org/ns/org# foaf: http://xmlns.com/foaf/0.1/ ext: http://mu.semte.ch/vocabularies/ext/ besluittype: https://data.vlaanderen.be/id/concept/BesluitType/ elod: http://linkedeconomy.org/ontology# lblodBesluit: http://lblod.data.gift/vocabularies/besluit/ ">
+
+
+      <!-- ZITTING -->
+      <div typeof="besluit:Zitting" resource="http://een.domein.van.mechelen.be/zittingen/df48943e-a2fa-4664-918e-e5e92b24c980">
+
+        <!--NOTEER: HET GAAT HIER OVER BESTUURSORGAAN IN BESTUURSPERIODE (2019 - )->
+        <!--ZIE OOK: https://mandaten.lokaalbestuur.vlaanderen.be/ -->
+        <span
+          resource="http://data.lblod.info/id/bestuursorganen/f7460afee3759df859b3e42f2b108909d2f657726f884427ee0fc915cac45388"
+          typeof="besluit:Bestuursorgaan"
+          property="besluit:isGehoudenDoor">
+           Gemeenteraad Mechelen
+        </span>
+        <br>
+        Gehouden op
+        <span property="prov:startedAtTime" content="2020-05-26T17:30:00.000Z" datatype="xsd:dateTime">
+          26 Mei 2020, 17:30
+        </span>
+
+        <!-- AGENDA -->
+        <span property="besluit:behandelt"
+          resource="http://een.domein.van.mechelen.be/agendapunten/6828e1a0-f846-4f59-8fa2-60b46a61aa34"
+          typeof="besluit:Agendapunt">
+          <span property="dc:subject" datatype="xsd:string">Agendapunt</span>
+          <span property="dc:title" datatype="xsd:string">
+            Budget stad Mechelen 2020
+          </span>
+        </span>
+      </div>
+
+      <!-- BEHANDELING VAN AGENDAPUNT -->
+      <div resource="http://een.domein.van.mechelen.be/behandelingen-van-agendapunten/0ee0ca37-dd32-4524-bee6-160c5457f8ca"
+        typeof="besluit:BehandelingVanAgendapunt">
+        <h3 property="dc:subject"
+            resource="http://een.domein.van.mechelen.be/agendapunten/6828e1a0-f846-4f59-8fa2-60b46a61aa34">
+            Behandeling budget stad Mechelen 2020
+        </h3>
+
+        <!-- BESLUIT -->
+        <!-- ZIE OOK https://github.com/Informatievlaanderen/OSLOthema-lokaleBesluiten VOOR OVERZICHT TYPES -->
+        <div property="prov:generated" resource="http://een.domein.van.mechelen.be/besluiten/b122fc60-dabe-4fd5-b939-1765fe0c6170-5"
+          typeof="besluit:Besluit https://data.vlaanderen.be/id/concept/BesluitType/40831a2c-771d-4b41-9720-0399998f1873">
+
+          Gepubliceerd op <span property="eli:date_publication" datatype="xsd:date" content="2020-05-26"> 26 mei 2020 </span> <br>
+
+          <h2 property="eli:description" datatype="xsd:string">
+            <!--Zie ook: https://github.com/lblod/codelists/tree/master/application-specfic/inzending-voor-toezicht -->
+            <span property="lblodBesluit:authenticityType"
+              resource="http://lblod.data.gift/concepts/2e2a4aeb13f4348e035c4ade7fc9bc354eaa31ab8a075deb518da05f28e3cd05"
+              typeof="skos:Concept">
+              Besluit over budget
+            </span>
+           </h2>
+           Genomen door
+           <span property="eli:passed_by"
+             resource="http://data.lblod.info/id/bestuursorganen/f7460afee3759df859b3e42f2b108909d2f657726f884427ee0fc915cac45388">
+             Gemeenteraad Mechelen van 2019
+           </span> <br>
+           <span property="eli:title" datatype="xsd:string">Goedkeuring budget 2020 </span> <br>
+           <span property="eli:title_short" datatype="xsd:string">Citeeropschrift van goedkeuring budget 2020 </span>
+           <div property="besluit:motivering">
+             De gemeenteraad Mechelen,
+             <br>
+             heeft een budget voor <span property="elod:financialYear" datatype="xsd:gYear"> 2020 </span> nodig.
+             <br>
+             Gelet op:
+             <span>het decreet
+               <a
+                 href="https://codex.vlaanderen.be/doc/document/1029017"
+                 property="eli:cites">
+                 over het lokaal bestuur
+               </a>
+               inzonderheid de artikelen 40,41 en 330
+             </span>
+             Beslist de gemeenteraad dat,
+             <div property="prov:value" datatype="xsd:string">
+               <div property="eli:has_part"
+                 resource="http://een.domein.van.mechelen.be/artikels/2e6e19a7-2e1e-4765-8396-a43c990d3bad"
+                 typeof="besluit:Artikel">
+
+                 <div property="eli:number" datatype="xsd:string">Artikel 1 </div>
+                 <div property="prov:value" datatype="xsd:string">
+                  De budgetwijziging voor het jaar 2020 wordt vastgesteld.
+                 </div>
+               </div>
+             </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

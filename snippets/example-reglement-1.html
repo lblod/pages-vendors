@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <title>Besluit budget Mechelen</title>
+  </head>
+  <body>
+    <!-- Een minimalistisch voorbeeld om een budget op te halen via automatische melding -->
+    <!-- Noteer: om de eenvoud te behouden in dit voorbeeld, zijn niet alle verplichte attributen ingevuld -->
+
+    <div vocab="http://data.vlaanderen.be/ns/besluit#" prefix="lblod: http://data.lblod.info/vocabularies/lblod/ eli: http://data.europa.eu/eli/ontology# prov: http://www.w3.org/ns/prov# mandaat: http://data.vlaanderen.be/ns/mandaat# besluit: http://data.vlaanderen.be/ns/besluit# generiek: http://data.vlaanderen.be/ns/generiek# person: http://www.w3.org/ns/person# persoon: http://data.vlaanderen.be/ns/persoon# dct: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# org: http://www.w3.org/ns/org# foaf: http://xmlns.com/foaf/0.1/ ext: http://mu.semte.ch/vocabularies/ext/ besluittype: https://data.vlaanderen.be/id/concept/BesluitType/ elod: http://linkedeconomy.org/ontology# lblodBesluit: http://lblod.data.gift/vocabularies/besluit/ ">
+
+
+      <!-- ZITTING -->
+      <div typeof="besluit:Zitting" resource="http://een.domein.van.mechelen.be/zittingen/903d545e-a025-11ea-92f0-37a193807508">
+
+        <!-- NOTEER: HET GAAT HIER OVER BESTUURSORGAAN IN BESTUURSPERIODE COLLEGE BURGEMEESTERS EN SCHEPENEN (2019 - ) -->
+        <!-- ZIE OOK: https://mandaten.lokaalbestuur.vlaanderen.be/ -->
+        <span
+          resource="http://data.lblod.info/id/bestuursorganen/52cdc35f6895723507a37553aae95759f9d7b3992568ca1fbecc85b9e4fab690"
+          typeof="besluit:Bestuursorgaan"
+          property="besluit:isGehoudenDoor">
+           Gemeenteraad Mechelen
+        </span>
+        <br>
+        Gehouden op
+        <span property="prov:startedAtTime" content="2020-06-27T17:30:00.000Z" datatype="xsd:dateTime">
+          27 juni 2020, in de namiddag
+        </span>
+        <br>
+        <!-- AGENDA -->
+        <span property="besluit:behandelt"
+          resource="http://een.domein.van.mechelen.be/agendapunten/9cd250d4-a025-11ea-98cf-a766503a0fb4"
+          typeof="besluit:Agendapunt">
+          <span property="dc:subject" datatype="xsd:string">Agendapunt</span>
+          <span property="dc:title" datatype="xsd:string">
+            Mechelen inning contantbelasting
+          </span>
+        </span>
+      </div>
+
+      <!-- BEHANDELING VAN AGENDAPUNT -->
+      <div resource="http://een.domein.van.mechelen.be/behandelingen-van-agendapunten/0ee0ca37-dd32-4524-bee6-160c5457f8ca"
+        typeof="besluit:BehandelingVanAgendapunt">
+        <h3 property="dc:subject"
+            resource="http://een.domein.van.mechelen.be/agendapunten/9cd250d4-a025-11ea-98cf-a766503a0fb4">
+            Behandeling budget stad Mechelen 2020
+        </h3>
+
+        <!-- BESLUIT -->
+        <!-- ZIE OOK https://github.com/Informatievlaanderen/OSLOthema-lokaleBesluiten VOOR OVERZICHT TYPES -->
+        <div property="prov:generated" resource="http://een.domein.van.mechelen.be/besluiten/eb20653c-a025-11ea-a4a7-67577ff6612e-2"
+          typeof="besluit:Besluit https://data.vlaanderen.be/id/concept/BesluitType/67378dd0-5413-474b-8996-d992ef81637a https://data.vlaanderen.be/id/concept/BesluitType/efa4ec5a-b006-453f-985f-f986ebae11bc https://data.vlaanderen.be/id/concept/BesluitType/4c22ef0a-f808-41dd-9c9f-2aff17fd851f">
+
+          Gepubliceerd op <span property="eli:date_publication" datatype="xsd:date" content="2020-06-27"> 27 juni 2020 </span> <br>
+
+          <h2 property="eli:description" datatype="xsd:string">
+            Besluit over de inning van een contantbelasting.
+           </h2>
+           Genomen door
+           <span property="eli:passed_by"
+             resource="http://data.lblod.info/id/bestuursorganen/52cdc35f6895723507a37553aae95759f9d7b3992568ca1fbecc85b9e4fab690">
+             College van burgemeester en schepenen (2019 - ...)
+           </span> <br>
+           <span property="eli:title" datatype="xsd:string">Besluit inning contantbelasting</span> <br>
+           <span property="eli:title_short" datatype="xsd:string">Citeeropschrift van inning contantbelasting </span>
+           <div property="besluit:motivering">
+             Het college,
+
+             motiveert waarom deze beslissing nodig is.
+             <br>
+             Gelet op:
+             <span>het decreet
+               <a
+                 href="https://codex.vlaanderen.be/doc/document/1029017"
+                 property="eli:cites">
+                 over het lokaal bestuur
+               </a>
+               inzonderheid de artikelen 40,41 en 330
+             </span>
+
+             <h3>Financiële gevolgen</h3>
+             De volgende aanslagvoet wordt vastgelegd
+             <div property="lblodBesluit:taxRate"
+             typeof="lblodBesluit:TaxRate"
+             resource="http://een.domein.van.mechelen.be/belastingen/80361f78-a02a-11ea-9d7f-abbac5ef140e">
+               Een bedrag van
+               <span property="http://schema.org/price" datatype="xsd:float" content="123"> 123 euros</span> op elektrische voertuigen <br>
+               en een bedrag van
+               <span property="http://schema.org/price" datatype="xsd:string" content="456"> 456 euros</span> op voertuigen met verbrandingsmotoren <br>
+            </div>
+            De bedragen worden ondergebracht onder
+
+             <!-- Zie ook: https://github.com/lblod/codelists/tree/master/application-specfic/inzending-voor-toezicht -->
+            <span property="http://lblod.data.gift/vocabularies/besluit/chartOfAccount"
+              resource="http://lblod.data.gift/concepts/8a4eeb0b2e9adf4d7eb7428530723ad5e6ffe1abe9986d6971bd69f545070b8f"
+              typeof="skos:Concept"
+             >
+              MAR 7302 Motorrijtuigen
+            </span>
+             <br>
+             Dit reglement zal in werking treden op
+             <span property="eli:first_date_entry_in_force" content="2020-07-31" datatype="xsd:date"> 31 juli 2020 </span>
+             en uitwerking treden op
+             <span property="eli:date_no_longer_in_force" content="2020-08-30" datatype="xsd:date"> 30/08/2020 </span>
+             <br>
+             Beslist de gemeenteraad dat,
+             <div property="prov:value" datatype="xsd:string">
+               <div property="eli:has_part"
+                 resource="http://een.domein.van.mechelen.be/artikels/bcf583ca-a02c-11ea-9c2a-4366e7813b88"
+                 typeof="besluit:Artikel">
+
+                 <div property="eli:number" datatype="xsd:string">Artikel 1 </div>
+                 <div property="prov:value" datatype="xsd:string">
+                   Het belastingsreglement voor motorrijtuigen vastgesteld is.
+                 </div>
+               </div>
+             </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -600,9 +600,40 @@
         <div>
           <h2 class="h2">Voorbeelden</h2>
           <h3 class="h3">Besluitenlijst</h3>
-          {{#let (get-code-snippet "example-publication-besluitenlijst.html") as |snippet|}}
-            <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
-          {{/let}}
+          {{#if this.showSnippetBesluitenlijst}}
+            {{#wu-button onClick=(action "toggleSnippetBesluitenlijst")}} Verberg snippet {{/wu-button}}
+          {{else}}
+            {{#wu-button onClick=(action "toggleSnippetBesluitenlijst")}} Laat snippet zien {{/wu-button}}
+          {{/if}}
+          {{#if this.showSnippetBesluitenlijst}}
+            {{#let (get-code-snippet "example-besluitenlijst-1.html") as |snippet|}}
+              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+            {{/let}}
+          {{/if}}
+          <br>
+          <h3 class="h3">Budget</h3>
+          {{#if this.showSnippetBudget}}
+            {{#wu-button onClick=(action "toggleSnippetBudget")}} Verberg snippet {{/wu-button}}
+          {{else}}
+            {{#wu-button onClick=(action "toggleSnippetBudget")}} Laat snippet zien {{/wu-button}}
+          {{/if}}
+          {{#if this.showSnippetBudget}}
+            {{#let (get-code-snippet "example-budget-1.html") as |snippet|}}
+              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+            {{/let}}
+          {{/if}}
+          <br>
+          <h3 class="h3">Reglement</h3>
+          {{#if this.showSnippetReglement}}
+            {{#wu-button onClick=(action "toggleSnippetReglement")}} Verberg snippet {{/wu-button}}
+          {{else}}
+            {{#wu-button onClick=(action "toggleSnippetReglement")}} Laat snippet zien {{/wu-button}}
+          {{/if}}
+          {{#if this.showSnippetReglement}}
+            {{#let (get-code-snippet "example-reglement-1.html") as |snippet|}}
+              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+            {{/let}}
+          {{/if}}
         </div>
         <div id="outline-container-orgheadline44">
           <div class="region typography">
