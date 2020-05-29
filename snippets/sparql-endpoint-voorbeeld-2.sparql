@@ -1,0 +1,14 @@
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+SELECT DISTINCT ?bestuursorgaanInPeriodeUri ?bestuursorgaanNaam ?start ?einde WHERE {
+  ?bestuursorgaanInPeriodeUri a besluit:Bestuursorgaan ;
+    mandaat:isTijdspecialisatieVan ?bestuursorgaanUri ;
+    mandaat:bindingStart ?start ;
+    org:hasPost ?mandaatUri .
+
+  ?bestuursorgaanUri skos:prefLabel ?bestuursorgaanNaam.
+  OPTIONAL { ?bestuursorgaanInPeriodeUri mandaat:bindingEinde ?einde }
+}

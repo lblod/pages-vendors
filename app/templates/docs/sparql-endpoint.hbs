@@ -1,0 +1,87 @@
+<section class="region region--alt">
+  <div class="layout layout--wide">
+    <div class="tabs__wrapper">
+      <ul class="tabs" data-tabs-list>
+        <li class="tab">
+          {{#link-to "index" class="tab__link"}}<i class="fa fa-angle-left"></i> Terug naar overzicht{{/link-to}}
+        </li>
+      </ul>
+    </div>
+    <div class="grid">
+      <div class="col--8-12 col--1-1--s">
+        <h1 class="h1">SPARQL endpoint </h1>
+        <p>
+Dit database-endpoint kan bevraagd worden aan de hand van SPARQL, een query-taal om RDF data te manipuleren. <br>
+RDF is een formaat dat binnen het kader van het semantische web -en dus linked data- zeer vaak voorkomt.
+<br>
+Het LBLOD-project gebruikt RDF intensief.  Verschillende datasets worden gepubliceerd als Turtle en RDFa, serializatie-formaten die de RDF-standaard respecteren.
+<br><br>
+Dit endpoint kan gebruikt worden om rechstreeks op de bron te werken.  Dit helpt niet alleen om het aantal tussenliggende conversies te verminderen, maar ook heel praktisch om complexere bevragingen in minder stappen uit te voeren.
+<br>
+Met SPARQL staat men dichter bij de data, en dus dichter op het model.
+        </p>
+      </div>
+    </div>
+    </div>
+</section>
+
+<section class="region">
+  <div class="layout layout--wide">
+    <div class="grid">
+      <div class="col--8-12 col--1-1--s">
+        <article class="u-spacer--large">
+          <h2 class="h2">Benaderen van het endpoint</h2>
+          <p class="u-spacer">
+            Het endpoint staat beschikbaar op <br>
+            <CodeBlock>https://centrale-vindplaats.lblod.info/sparql</CodeBlock>
+            Dit endpoint heeft UI beschikbaar waar SPARQL-queries in uitgevoerd kunnen worden. <br>
+            De queries kunnen ook aan de hand van HTTP calls uitgevoerd worden. <br>
+            De specificatie van de HTTP-calls vindt u <a href="https://www.w3.org/TR/sparql11-protocol/" target="_blank">hier</a>.
+
+            <br><br>
+            De onderliggende HTTP-calls van <a href="https://centrale-vindplaats.lblod.info/sparql" target="_blank">https://centrale-vindplaats.lblod.info/sparql </a> respecteren deze standaard. <br>
+            Mocht u op zoek zijn naar hoe deze SPARQL-queries omgezet worden naar HTTP-calls, vormt de UI een goed startpunt.
+            <br>
+            De UI zelf is een instantie van <a href="https://triply.cc/docs/yasgui" target="_blank">Yasgui</a>. Verder informatie over het gebruik ervan, vindt u daar.
+            <br>
+            <br>
+            Momenteel host <a href="https://centrale-vindplaats.lblod.info">https://centrale-vindplaats.lblod.info</a>
+             alle data die beschikbaar is op <a href="https://mandaten.lokaalbestuur.vlaanderen.be/">https://mandaten.lokaalbestuur.vlaanderen.be </a>
+              en <a href="https://leidinggevenden.lokaalbestuur.vlaanderen.be/">https://leidinggevenden.lokaalbestuur.vlaanderen.be</a>.
+          </p>
+
+          <h2 class="h2">Voorbeelden</h2>
+          De volgende sectie bevat een aantal voorbeelden, specifiek geralateerd aan het model.
+          <h3 class="h3">Oplijsten bestuurseenheden en hun classificatie</h3>
+          <p class="u-spacer">
+            {{#let (get-code-snippet "sparql-endpoint-voorbeeld-1.sparql") as |snippet|}}
+              <CodeBlock>{{snippet.source}}</CodeBlock>
+            {{/let}}
+          </p>
+
+          <h3 class="h3">Lijst alle bestuursorganen (in bestuursperiode op)</h3>
+          <p class="u-spacer">
+            De lijst van alle bestuursorganen (in bestuursperiode) wordt hier opgelijst, alsook hun naam, start en eind datum.
+            {{#let (get-code-snippet "sparql-endpoint-voorbeeld-2.sparql") as |snippet|}}
+              <CodeBlock>{{snippet.source}}</CodeBlock>
+            {{/let}}
+          </p>
+
+          <h3 class="h3">Lijst van alle mandaten, en de bijbehorende personen</h3>
+          <p class="u-spacer">
+            {{#let (get-code-snippet "sparql-endpoint-voorbeeld-3.sparql") as |snippet|}}
+              <CodeBlock>{{snippet.source}}</CodeBlock>
+            {{/let}}
+          </p>
+
+          <h3 class="h3">Overzicht van leidinggevenden per bestuurseenheid</h3>
+          <p class="u-spacer">
+            {{#let (get-code-snippet "sparql-endpoint-voorbeeld-4.sparql") as |snippet|}}
+              <CodeBlock>{{snippet.source}}</CodeBlock>
+            {{/let}}
+          </p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>

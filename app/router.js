@@ -13,6 +13,7 @@ Router.map(function() {
     this.route('publication-annotations');
     this.route('leidinggevenden');
     this.route('rijksregisternummer-api');
+    this.route('sparql-endpoint');
   });
   this.route('sparql-endpoint');
 });
