@@ -45,9 +45,9 @@ Met SPARQL staat men dichter bij de data, en dus dichter op het model.
             De UI zelf is een instantie van <a href="https://triply.cc/docs/yasgui" target="_blank">Yasgui</a>. Verder informatie over het gebruik ervan, vindt u daar.
             <br>
             <br>
-            Momenteel host <a href="https://centrale-vindplaats.lblod.info">https://centrale-vindplaats.lblod.info</a>
-             alle data die beschikbaar is op <a href="https://mandaten.lokaalbestuur.vlaanderen.be/">https://mandaten.lokaalbestuur.vlaanderen.be </a>
-              en <a href="https://leidinggevenden.lokaalbestuur.vlaanderen.be/">https://leidinggevenden.lokaalbestuur.vlaanderen.be</a>.
+            Momenteel host <a href="https://centrale-vindplaats.lblod.info" target="_blank">https://centrale-vindplaats.lblod.info</a>
+             alle data die beschikbaar is op <a href="https://mandaten.lokaalbestuur.vlaanderen.be/" target="_blank">https://mandaten.lokaalbestuur.vlaanderen.be </a>
+              en <a href="https://leidinggevenden.lokaalbestuur.vlaanderen.be/" target="_blank">https://leidinggevenden.lokaalbestuur.vlaanderen.be</a>.
           </p>
 
           <h2 class="h2">Voorbeelden</h2>
@@ -77,6 +77,14 @@ Met SPARQL staat men dichter bij de data, en dus dichter op het model.
           <h3 class="h3">Overzicht van leidinggevenden per bestuurseenheid</h3>
           <p class="u-spacer">
             {{#let (get-code-snippet "sparql-endpoint-voorbeeld-4.sparql") as |snippet|}}
+              <CodeBlock>{{snippet.source}}</CodeBlock>
+            {{/let}}
+          </p>
+
+          <h3 class="h3">Een vraag over de Burgemeester van Antwerpen</h3>
+          Gegeven de Burgemeester van Antwerpen voor bestuursperiode startende op 2019, welke andere mandaten vinden we terug voor deze persoon?
+          <p class="u-spacer">
+            {{#let (get-code-snippet "sparql-endpoint-voorbeeld-5.sparql") as |snippet|}}
               <CodeBlock>{{snippet.source}}</CodeBlock>
             {{/let}}
           </p>
