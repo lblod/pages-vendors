@@ -634,6 +634,27 @@
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
             {{/let}}
           {{/if}}
+
+          <h2 class="h2">Extra informatie</h2>
+          <h3 class="h3">Datetime strings</h3>
+          <p>
+            Bij het verwerken van de "xsd:dateTime"-strings wordt het volgende ondersteunt: <br>
+            Het gaat over een subset van de ISO-8601 specificatie. Het formaat moet zijn
+            <ol>
+              <li>Datum: ""YYYY-MM-DD""</li>
+              <li>Tijdsspecificatie: "YYYY-MM-DDTHH:mm:ss.SSSS" met "T" als separator</li>
+              <li>Offset (tov UTC) met het volgende formaat: +-HH:mm, +-HHmm, +-HH of Z</li>
+            </ol>
+          </p>
+          <h4 class="h4">Voorbeelden van aanvaarde xsd:dateTime strings</h4>
+          <p>
+            <ul>
+              <li>'2020-05-14T06:36:05.7540Z'</li>
+              <li>'2020-05-14T06:36:05.7540+01:10'</li>
+              <li>'2020-05-14T06:36:05.7540+01'</li>
+              <li>'2020-05-14T06:36:05.7540-0130'</li>
+            </ul>
+          </p>
         </div>
         <div id="outline-container-orgheadline44">
           <div class="region typography">
