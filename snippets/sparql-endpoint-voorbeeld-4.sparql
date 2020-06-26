@@ -4,8 +4,9 @@ PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+PREFIX persoon: <http://data.vlaanderen.be/ns/persoon#>
 
-SELECT DISTINCT ?bestuurseenheidNaam ?roleLabel ?persoonUri ?naam ?achternaam WHERE {
+SELECT DISTINCT ?bestuurseenheidNaam ?roleLabel ?persoonUri ?gebruikteVoornaam ?achternaam WHERE {
   ?bestuursorgaanUri besluit:bestuurt ?bestuurseenheidUri.
   ?bestuurseenheidUri skos:prefLabel ?bestuurseenheidNaam.
 
@@ -19,6 +20,7 @@ SELECT DISTINCT ?bestuurseenheidNaam ?roleLabel ?persoonUri ?naam ?achternaam WH
   ?mandatarisUri org:holds ?bestuursfunctieUri ;
     mandaat:isBestuurlijkeAliasVan ?persoonUri .
 
-  ?persoonUri foaf:name ?naam ;
+  ?persoonUri persoon:gebruikteVoornaam ?gebruikteVoornaam ;
     foaf:familyName ?achternaam .
 }
+
