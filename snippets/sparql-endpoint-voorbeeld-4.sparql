@@ -16,7 +16,7 @@ SELECT DISTINCT ?bestuurseenheidNaam ?roleLabel ?persoonUri ?naam ?achternaam WH
   ?bestuursfunctieUri org:role ?roleUri .
   ?roleUri skos:prefLabel ?roleLabel .
 
-  ?mandatarisUri org:holds ?mandaatUri ;
+  ?mandatarisUri org:holds ?bestuursfunctieUri ;
     mandaat:isBestuurlijkeAliasVan ?persoonUri .
 
   ?persoonUri foaf:name ?naam ;
