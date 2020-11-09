@@ -5,6 +5,9 @@ export default Controller.extend({
     toggleSnippetBesluitenlijst(){
       this.set('showSnippetBesluitenlijst', !this.showSnippetBesluitenlijst);
     },
+    toggleSnippetBesluitenlijstMetStemming(){
+      this.set('showSnippetBesluitenlijstMetStemming', !this.showSnippetBesluitenlijstMetStemming);
+    },
     toggleSnippetReglement(){
       this.set('showSnippetReglement', !this.showSnippetReglement);
     },
