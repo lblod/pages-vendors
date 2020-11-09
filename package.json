@@ -24,6 +24,9 @@
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
+    "@embroider/compat": "^0.30.0",
+    "@embroider/core": "^0.30.0",
+    "@embroider/webpack": "^0.30.0",
     "@glimmer/component": "^1.0.2",
     "@glimmer/tracking": "^1.0.2",
     "babel-eslint": "^10.1.0",
@@ -38,6 +41,7 @@
     "ember-cli-deploy-ghpages": "git://github.com/VerdigrisTech/ember-cli-deploy-ghpages.git#v1.0.0",
     "ember-cli-htmlbars": "^5.3.1",
     "ember-cli-inject-live-reload": "^2.0.2",
+    "ember-cli-moment-shim": "^3.8.0",
     "ember-cli-sass": "^10.0.1",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.0",
@@ -51,7 +55,6 @@
     "ember-resolver": "^8.0.2",
     "ember-source": "3.22.0",
     "ember-template-lint": "^2.14.0",
-    "ember-vo-webuniversum": "^0.7.0",
     "eslint": "^7.11.0",
     "eslint-plugin-ember": "^9.3.0",
     "eslint-plugin-node": "^11.1.0",
@@ -67,8 +70,6 @@
     "edition": "octane"
   },
   "dependencies": {
-    "@embroider/compat": "^0.4.3",
-    "@embroider/core": "^0.4.3",
-    "@embroider/webpack": "^0.4.3"
+    "@lblod/ember-vo-webuniversum": "^0.22.8"
   }
 }

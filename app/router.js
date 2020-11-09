@@ -15,4 +15,8 @@ Router.map(function() {
     this.route('rijksregisternummer-api');
     this.route('sparql-endpoint');
   });
+
+  this.route('route-not-found', {
+    path: '/*wildcard'
+  });
 });
