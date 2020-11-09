@@ -1,8 +1,6 @@
 # pages-vendors
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
-
+Contents of https://lblod.github.io/pages-vendors/, which contains Vendor and API integrator documentation related to the LBLOD project.
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
@@ -21,7 +19,7 @@ You will need the following things properly installed on your computer.
 ## Running / Development
 
 * `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+* Visit your app at [http://localhost:4200/pages-vendors/](http://localhost:4200/pages-vendors/).
 * Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
 ### Code Generators
