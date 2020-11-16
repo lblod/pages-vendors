@@ -613,42 +613,21 @@
         </div>
         <div>
           <h2 class="h2">Voorbeelden</h2>
-          <h3 class="h3">Besluitenlijst</h3>
-          {{#if this.showSnippetBesluitenlijst}}
-            {{#wu-button onClick=(action "toggleSnippetBesluitenlijst")}} Verberg snippet {{/wu-button}}
-          {{else}}
-            {{#wu-button onClick=(action "toggleSnippetBesluitenlijst")}} Laat snippet zien {{/wu-button}}
-          {{/if}}
-          {{#if this.showSnippetBesluitenlijst}}
-            {{#let (get-code-snippet "example-besluitenlijst-1.html") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
-            {{/let}}
-          {{/if}}
+          <h3 class="h3">Minimale Besluitenlijst</h3>
+          <SnippetToggle @snippetFilename="example-besluitenlijst-1.html" />
           <br>
-          <h3 class="h3">Budget</h3>
-          {{#if this.showSnippetBudget}}
-            {{#wu-button onClick=(action "toggleSnippetBudget")}} Verberg snippet {{/wu-button}}
-          {{else}}
-            {{#wu-button onClick=(action "toggleSnippetBudget")}} Laat snippet zien {{/wu-button}}
-          {{/if}}
-          {{#if this.showSnippetBudget}}
-            {{#let (get-code-snippet "example-budget-1.html") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
-            {{/let}}
-          {{/if}}
-          <br>
-          <h3 class="h3">Reglement</h3>
-          {{#if this.showSnippetReglement}}
-            {{#wu-button onClick=(action "toggleSnippetReglement")}} Verberg snippet {{/wu-button}}
-          {{else}}
-            {{#wu-button onClick=(action "toggleSnippetReglement")}} Laat snippet zien {{/wu-button}}
-          {{/if}}
-          {{#if this.showSnippetReglement}}
-            {{#let (get-code-snippet "example-reglement-1.html") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
-            {{/let}}
-          {{/if}}
 
+          <h3 class="h3">Besluitenlijst met resultaat van de stemming</h3>
+          <SnippetToggle @snippetFilename="example-besluitenlijst-2.html" />
+          <br>
+
+          <h3 class="h3">Budget</h3>
+          <SnippetToggle @snippetFilename="example-budget-1.html" />
+          <br>
+
+          <h3 class="h3">Reglement</h3>
+          <SnippetToggle @snippetFilename="example-reglement-1.html" />
+          <br>
           <h2 class="h2">Extra informatie</h2>
           <h3 class="h3">Datetime strings</h3>
           <p>
