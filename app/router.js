@@ -14,6 +14,7 @@ Router.map(function() {
     this.route('leidinggevenden');
     this.route('rijksregisternummer-api');
     this.route('sparql-endpoint');
+    this.route('decision-attachments');
   });
 
   this.route('route-not-found', {

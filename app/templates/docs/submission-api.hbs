@@ -1,23 +1,8 @@
-<section class="region region--alt">
-  <div class="layout layout--wide">
-    <div class="tabs__wrapper">
-      <ul class="tabs" data-tabs-list>
-        <li class="tab">
-          {{#link-to "index" class="tab__link"}}<i class="fa fa-angle-left"></i> Terug naar overzicht{{/link-to}}
-        </li>
-      </ul>
-    </div>
-
-    <div class="grid">
-      <div class="col--8-12 col--1-1--s">
-        <h1 class="h1">Meldingsplicht API</h1>
-        <p>
-          Lokale besturen publiceren beslissingen die via de Toezicht module in het Loket voor Lokale Besturen gemeld moeten worden. Loket voor Lokale Besturen biedt een API aan waarop publicaties van beslissingen gemeld kunnen worden, waarna ze automatisch geharvest zullen worden en toevoegd worden als nieuwe melding in Loket voor Lokale Besturen. Dit document beschrijft de API voor automatische melding.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+<DocsHeader @heading="Meldingsplicht API">
+  <p>
+    Lokale besturen publiceren beslissingen die via de Toezicht module in het Loket voor Lokale Besturen gemeld moeten worden. Loket voor Lokale Besturen biedt een API aan waarop publicaties van beslissingen gemeld kunnen worden, waarna ze automatisch geharvest zullen worden en toevoegd worden als nieuwe melding in Loket voor Lokale Besturen. Dit document beschrijft de API voor automatische melding.
+  </p>
+</DocsHeader>
 
 <section class="region">
   <div class="layout layout--wide">
@@ -37,7 +22,7 @@
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
             {{/let}}
             <p  class="small text-fade u-spacer">
-              Bekijk welke annotaties gebruikt kunnen worden in de gepubliceerde pagina: {{#link-to "docs.submission-annotations"}}annotaties&nbsp;voor&nbsp;automatische&nbsp;melding{{/link-to}}.
+              Bekijk welke annotaties gebruikt kunnen worden in de gepubliceerde pagina: <LinkTo @route="docs.submission-annotations">annotaties&nbsp;voor&nbsp;automatische&nbsp;melding</LinkTo>.
             </p>
           </p>
 
@@ -117,7 +102,7 @@
           <h2 id="publicatie-documenten" class="h2">Publicatie van documenten en besluiten</h2>
           <h3 class="h3">Annotaties voor automatische melding</h3>
           <p class="u-spacer">
-            Bekijk {{#link-to "docs.submission-annotations"}}hier{{/link-to}} welke annotaties gebruikt kunnen worden op de gepubliceerde pagina's om besluiten automatisch te verzenden.
+            Bekijk <LinkTo @route="docs.submission-annotations">hier</LinkTo> welke annotaties gebruikt kunnen worden op de gepubliceerde pagina's om besluiten automatisch te verzenden.
           </p>
           <h3 class="h3">Vereisten voor gepubliceerde pagina's</h3>
           <p class="u-spacer">

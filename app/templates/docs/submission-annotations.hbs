@@ -1,23 +1,9 @@
-<section class="region region--alt">
-  <div class="layout layout--wide">
-    <div class="tabs__wrapper">
-      <ul class="tabs" data-tabs-list>
-        <li class="tab">
-          {{#link-to "index" class="tab__link"}}<i class="fa fa-angle-left"></i> Terug naar overzicht{{/link-to}}
-        </li>
-      </ul>
-    </div>
+<DocsHeader @heading="Annotaties voor automatische melding">
+  <p>
+    Lokale besturen publiceren beslissingen die via de Toezicht module in het Loket voor Lokale Besturen gemeld moeten worden. Loket voor Lokale Besturen biedt een API aan waarop publicaties van beslissingen gemeld kunnen worden, waarna ze automatisch geharvest zullen worden en toevoegd worden als nieuwe melding in Loket voor Lokale Besturen. Dit document beschrijft de annotaties die gebruikt worden voor automatische melding.
+  </p>
 
-    <div class="grid">
-      <div class="col--8-12 col--1-1--s">
-        <h1 class="h1">Annotaties voor automatische melding</h1>
-        <p>
-          Lokale besturen publiceren beslissingen die via de Toezicht module in het Loket voor Lokale Besturen gemeld moeten worden. Loket voor Lokale Besturen biedt een API aan waarop publicaties van beslissingen gemeld kunnen worden, waarna ze automatisch geharvest zullen worden en toevoegd worden als nieuwe melding in Loket voor Lokale Besturen. Dit document beschrijft de annotaties die gebruikt worden voor automatische melding.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+</DocsHeader>
 
 <section class="region">
   <div class="layout layout--wide">
@@ -654,7 +640,7 @@
             <h2 class="h2" id="orgheadline44">Meldingsplicht API</h2>
             <div class="region typography">
               <p class="u-spacer">
-                Bekijk de API die vendors kunnen gebruiken om besluiten te melden: {{#link-to "docs.submission-api"}}Meldingsplicht&nbsp;API{{/link-to}}.
+                Bekijk de API die vendors kunnen gebruiken om besluiten te melden: <LinkTo @route="docs.submission-api">Meldingsplicht&nbsp;API</LinkTo>.
               </p>
             </div>
           </div>
