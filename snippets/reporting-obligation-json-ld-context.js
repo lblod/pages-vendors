@@ -11,13 +11,19 @@
     "foaf": "http://xmlns.com/foaf/0.1/",
     "pav": "http://purl.org/pav/",
     "adms": "http://www.w3.org/ns/adms#",
-    "wotSec":  "https://www.w3.org/2019/wot/security#",
+    "wotSec": "https://www.w3.org/2019/wot/security#",
     "organization": {
       "@id": "pav:createdBy",
       "@type": "@id"
     },
-    "href": { "@type": "@id", "@id": "prov:atLocation"},
-    "submittedResource": { "@type": "@id", "@id": "dct:subject" },
+    "href": {
+      "@type": "@id",
+      "@id": "prov:atLocation"
+    },
+    "submittedResource": {
+      "@type": "@id",
+      "@id": "dct:subject"
+    },
     "key": "muAccount:key",
     "publisher": "pav:providedBy",
     "uri": {
@@ -29,11 +35,17 @@
       "@id": "adms:status"
     },
     "authentication": "melding:targetAuthenticationConfiguration",
-    "securityConfiguration": "dgftSec:securityConfiguration",
-    "secrets": "dgftSec:secrets",
+    "configuration": "dgftSec:securityConfiguration",
+    "credentials": "dgftSec:secrets",
     "acceptedBy": "dgftSec:acceptedBy",
-    "oauth2": { "@type": "@id", "@id": "wotSec:OAuth2SecurityScheme" },
-    "basic": { "@type": "@id", "@id": "wotSec:BasicSecurityScheme" },
+    "oauth2": {
+      "@type": "@id",
+      "@id": "wotSec:OAuth2SecurityScheme"
+    },
+    "basic": {
+      "@type": "@id",
+      "@id": "wotSec:BasicSecurityScheme"
+    },
     "flow": "wotSec:flow",
     "token": "wotSec:token",
     "scheme": {
@@ -41,8 +53,8 @@
       "@type": "@vocab"
     },
     "resource": "dgftOauth:resource",
-    "client_id":"dgftOauth:clientId",
-    "client_secret": "dgftOauth:clientSecret",
+    "clientId": "dgftOauth:clientId",
+    "clientSecret": "dgftOauth:clientSecret",
     "username": "meb:username",
     "password": "muAccount:password"
   }

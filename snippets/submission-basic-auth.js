@@ -1,16 +1,14 @@
 {
   "href": "http://raadpleegomgeving.tielt-winge.be/90283409812734",
   "authentication": {
-    "securityConfiguration": {
-      "@id": "http://een/te/kiezen/uri",
+    "configuration": {
       "scheme": "basic"
-     },
-     "secrets": {
-       "acceptedBy": { "@id": "http://een/te/kiezen/uri" },
-         "username": "foo",
-         "password": "bar"
-         }
-     },
+    },
+    "credentials": {
+      "username": "foo",
+      "password": "bar"
+    }
+  },
   "organization": "http://data.lblod.info/id/bestuurseenheden/2498239",
   "publisher": {
     "uri": "http://data.lblod.info/vendors/cipal-schaubroeck",

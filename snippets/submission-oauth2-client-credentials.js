@@ -1,19 +1,17 @@
 {
   "href": "http://raadpleegomgeving.tielt-winge.be/90283409812734",
-  "authentication": {
-    "securityConfiguration": {
-      "@id": "http://een/te/kiezen/uri",
+  "authentication":{
+    "configuration": {
       "scheme": "oauth2",
       "flow": "client",
-      "resource": "optionele resource scope",
-      "token": "http://url/van/de/token/server"
-     },
-     "secrets": {
-       "acceptedBy": { "@id": "http://een/te/kiezen/uri" },
-         "client_id": "foo",
-         "client_secret": "bar"
-         }
-     },
+      "resource": "private",
+      "token": "https://example.com/oauth2/access/tokenserver"
+    },
+    "credentials": {
+      "clientId": "foo",
+      "clientSecret": "bar"
+    }
+  },
   "organization": "http://data.lblod.info/id/bestuurseenheden/2498239",
   "publisher": {
     "uri": "http://data.lblod.info/vendors/cipal-schaubroeck",
