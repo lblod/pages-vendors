@@ -133,7 +133,7 @@
           </p>
           <h3 class="h3">Ophalen van niet-publieke documenten [BETA]</h3>
           <p class="u-spacer">
-            In bepaalde gevallen kan het zijn dat er private documenten dienen opgehaald te worden. Authenticatiegevens kunnen worden doorgegeven aan de crawler. <br> De volgende authenticatie-schemas worden ondersteund:
+            Indien er private documenten moeten worden opgehaald, kunnen authenticatiegevens worden doorgegeven aan de crawler. <br> De volgende authenticatie-schemas worden ondersteund:
             <ul class="ul">
               <li><a href="https://datatracker.ietf.org/doc/html/rfc7617">Basic Authentication</a> </li>
               <li>
@@ -145,24 +145,30 @@
             </ul>
 
             Deze lijst is niet definitief, en kan -in functie van de noden- uitgebreid worden. In geval van vragen, kan u steeds terecht op <a href="mailto:digitaalABB@vlaanderen.be">digitaalABB@vlaanderen.be</a>
-
-            <h4 class="h4">Overzicht</h4>
+          </p>
+          <h4 class="h4">Overzicht</h4>
+          <p class="u-spacer">
             Een key <a href="http://lblod.data.gift/vocabularies/automatische-melding/targetAutenticationConfiguration">authentication</a> dient toegevoed worden aan de body van het request. De informatie die onder de key valt, zal gebruikt worden voor de url van het te ophalen document en alle relevante gerelateerde documenten (bijlagen en <a href="http://lblod.data.gift/vocabularies/besluit/linkToPublication">linkToPublication</a>).
-
-            <h4 class="h4">Basic Authentication</h4>
-
+          </p>
+          <h4 class="h4">Basic Authentication</h4>
+          <p class="u-spacer">
             De key 'authentication' wordt toegevoegd als volgt aan het request:
             {{#let (get-code-snippet "submission-basic-auth.js") as |snippet|}}
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
             {{/let}}
-
-            <h4 class="h4">OAuth 2.0 Client Credentials Grant</h4>
-
+          </p>
+          <h4 class="h4">OAuth 2.0 Client Credentials Grant</h4>
+          <p class="u-spacer">
             De key 'authentication' wordt toegevoegd als volgt aan het request:
             {{#let (get-code-snippet "submission-oauth2-client-credentials.js") as |snippet|}}
               <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
             {{/let}}
+            De key 'resource' is hier optioneel en kan gebruikt worden om verdere beperkingen op te leggen over de op te halen resource, conform:  <a href="https://datatracker.ietf.org/doc/html/rfc8707b">Resource Indicators</a>.
             Noteer, op OAuth 2.0 zijn er veel variaties mogelijk, contacteer ons gerust indien er uitbreidingen gewenst zijn.
+          </p>
+          <h4 class="h4">Belangrijke opmerking</h4>
+          <p class="u-spacer">
+          We gaan ervan uit dat de credentials regelmatig geroteerd worden, teneinde de veiligheid te verhogen.
           </p>
         </article>
 
