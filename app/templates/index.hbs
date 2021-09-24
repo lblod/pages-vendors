@@ -40,14 +40,6 @@
     <h2 class="h2">Beschikbare documentatie</h2>
     <ul class="grid grid--is-stacked js-equal-height-container">
       <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
-        <LinkTo @route="docs.submission-api" class="doormat js-equal-height u-mobile-no-equal-height">
-          <div class="doormat__title">
-            Meldingsplicht API
-          </div>
-          <span class="doormat__text">API om een nieuwe melding aan te maken in Loket voor Lokale Besturen op basis van een publicatie. Indien al de nodige velden ingevuld zijn, kan de melding automatisch verzonden worden.</span>
-        </LinkTo>
-      </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
         <LinkTo @route="docs.submission-annotations" class="doormat js-equal-height u-mobile-no-equal-height">
           <div class="doormat__title">
             Annotaties voor automatische melding
@@ -63,7 +55,39 @@
           <span class="doormat__text">Annotaties die gebruikt worden bij de publicatie van besluiten en documenten opdat ze automatisch geharvest kunnen worden.</span>
         </LinkTo>
       </li>
+            <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+        <LinkTo @route="docs.decision-attachments" class="doormat js-equal-height u-mobile-no-equal-height">
+          <div class="doormat__title">
+            Bijlagen bij een besluit annoteren
+          </div>
+          <span class="doormat__text">Beschrijft hoe verschillende soorten bijlagen bij een besluit geannoteerd kunnen worden.</span>
+        </LinkTo>
+            </li>
       <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+        <LinkTo @route="docs.submission-api" class="doormat js-equal-height u-mobile-no-equal-height">
+          <div class="doormat__title">
+            Meldingsplicht API
+          </div>
+          <span class="doormat__text">API om een nieuwe melding aan te maken in Loket voor Lokale Besturen op basis van een publicatie. Indien al de nodige velden ingevuld zijn, kan de melding automatisch verzonden worden.</span>
+        </LinkTo>
+      </li>
+      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+        <LinkTo @route="docs.rijksregisternummer-api" class="doormat js-equal-height u-mobile-no-equal-height">
+          <div class="doormat__title">
+            Persoon URI [BETA]
+          </div>
+          <span class="doormat__text">Bevragen van de URI van een persoon op basis van diens rijksregisternummer en bestuurseenheid.</span>
+        </LinkTo>
+      </li>
+      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+        <LinkTo @route="docs.sparql-endpoint" class="doormat js-equal-height u-mobile-no-equal-height">
+          <div class="doormat__title">
+           SPARQL endpoint
+          </div>
+          <span class="doormat__text">Endpoint om met SPARQL publieke data te bevragen. </span>
+        </LinkTo>
+      </li>
+                  <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
         <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/" target="_blank" rel="noopener" class="doormat js-equal-height u-mobile-no-equal-height">
           <div class="doormat__title">
             Besluit Publicatie
@@ -89,22 +113,7 @@
           <span class="doormat__text">De leidinggevenden databank volgt het applicatieprofiel mandatendatabank, maar werd uitgebreid met enkele subklassen en eigenschappen.</span>
         </LinkTo>
       </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
-        <LinkTo @route="docs.rijksregisternummer-api" class="doormat js-equal-height u-mobile-no-equal-height">
-          <div class="doormat__title">
-            Persoon URI [BETA]
-          </div>
-          <span class="doormat__text">Bevragen van de URI van een persoon op basis van diens rijksregisternummer en bestuurseenheid.</span>
-        </LinkTo>
-      </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
-        <LinkTo @route="docs.sparql-endpoint" class="doormat js-equal-height u-mobile-no-equal-height">
-          <div class="doormat__title">
-           SPARQL endpoint
-          </div>
-          <span class="doormat__text">Endpoint om met SPARQL publieke data te bevragen. </span>
-        </LinkTo>
-      </li>
+
     </ul>
   </div>
 </section>
