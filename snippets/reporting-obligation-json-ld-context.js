@@ -34,7 +34,7 @@
       "@type": "@id",
       "@id": "adms:status"
     },
-    "authentication": "melding:targetAuthenticationConfiguration",
+    "authentication": "dgftSec:targetAuthenticationConfiguration",
     "configuration": "dgftSec:securityConfiguration",
     "credentials": "dgftSec:secrets",
     "acceptedBy": "dgftSec:acceptedBy",
