@@ -171,6 +171,155 @@
           </p>
         </article>
 
+        <article>
+          <h2 class="h2">Meldingsregels</h2>
+          <p class="u-spacer">
+            Informatie over welk type besluit meldingsplichtig is en dit voor welke type bestuur, wordt bijghouden in de
+            <LinkTo @route="docs.sparql-endpoint">centrale-vindplaats</LinkTo>.
+            <br>
+            Dit endpoint kan dan bevraagd worden om te bepalen of een bestuur al dan niet een inzending kan of moet insturen.
+          </p>
+          <p class="u-spacer">
+            Het model van dergelijke regel ziet er als volgt uit:
+          </p>
+          <h3 class="h3">Gebruikte prefixen</h3>
+          <div class="u-table-overflow">
+            <table class="data-table data-table--zebra">
+              <thead>
+                <tr>
+                  <th>Prefix</th>
+                  <th>URI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lblodBesluit</td>
+                  <td><a href="http://lblod.data.gift/vocabularies/besluit/">http://lblod.data.gift/vocabularies/besluit/</a></td>
+                </tr>
+                <tr>
+                  <td>schema</td>
+                  <td><a href="http://schema.org/">http://schema.org/</a></td>
+                </tr>
+                <tr>
+                  <td>skos</td>
+                  <td><a href="http://www.w3.org/2004/02/skos/core#">http://www.w3.org/2004/02/skos/core#</a></td>
+                </tr>
+                <tr>
+                  <td>xsd</td>
+                  <td><a href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</a></td>
+                </tr>
+                <tr>
+                  <td>rule</td>
+                  <td><a href="http://lblod.data.gift/vocabularies/notification/">http://lblod.data.gift/vocabularies/notification/</a></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="u-spacer">
+
+          </p>
+          <h3 class="h3">rule:NotificationRule</h3>
+          <p class="u-spacer">
+            Beschrijft de meldingsregel voor een bepaald type besluit
+          </p>
+          <h4 class="h4" id="orgheadline4">Eigenschappen</h4>
+          <div class="u-table-overflow">
+            <table class="data-table data-table--zebra">
+              <thead>
+                <tr>
+                  <th>Naam</th>
+                  <th>URI</th>
+                  <th>Verwacht type</th>
+                  <th>Beschrijving</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>geldig vanaf</td>
+                  <td><code>schema:validFrom</code></td>
+                  <td><code>xsd:dateTime</code></td>
+                  <td>Beschrijft de inwerkingstreding van de meldingsregel.</td>
+                </tr>
+                <tr>
+                  <td>geldig tot</td>
+                  <td><code>schema:validThrough </code></td>
+                  <td><code>xsd:dateTime</code></td>
+                  <td>Beschrijft de uitwerkingstreding van de meldingsregel.</td>
+                </tr>
+                <tr>
+                  <td>geldig voor</td>
+                  <td><code>lblodBesluit:decidableBy</code></td>
+                  <td><code>skos:Concept</code></td>
+                  <td>Beschrijving van het type bestuur voor wie de regel geldig is.
+                    <br> De concepten staan beschreven op
+                    <a href="https://data.vlaanderen.be/doc/conceptscheme/BestuurseenheidClassificatieCode" target="_blank">
+                      data.vlaanderen.be/doc/conceptscheme/BestuurseenheidClassificatieCode
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>meldingsplichtig</td>
+                  <td><code>lblodBesluit:obligationToReport</code></td>
+                  <td><code>xsd:boolean</code></td>
+                  <td>Beschrijft of het hier over een meldingsplichtig besluit gaat</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="u-spacer">
+
+          </p>
+          <h3 class="h3">Link naar rule:NotificationRule</h3>
+          <p class="u-spacer">
+            Elementen uit de codelijsten
+            <a href="https://data.vlaanderen.be/id/concept/BesluitDocumentType/">BesluitDocumentType</a> en
+            <a href="https://data.vlaanderen.be/id/concept/BesluitType/">BesluitType</a>
+            worden gelinkt met het predikaat <a href="http://lblod.data.gift/vocabularies/besluit/">lblodBesluit:notificationRule</a> om te verwijzen naar de specifieke regels die van toepassing op het type besluit.
+          </p>
+          <h4 class="h4" id="orgheadline4">Eigenschappen</h4>
+          <div class="u-table-overflow">
+            <table class="data-table data-table--zebra">
+              <thead>
+                <tr>
+                  <th>Naam</th>
+                  <th>URI</th>
+                  <th>Verwacht type</th>
+                  <th>Beschrijving</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>notificationRule</td>
+                  <td><code>lblodBesluit:notificationRule</code></td>
+                  <td><code>rule:NotificationRule</code></td>
+                  <td>Beschrijft welke meldinsregels van toepassing zijn op het type besluit of document</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="u-spacer">
+
+          </p>
+          <h3 class="h3">Voorbeelden</h3>
+          <h4 class="h4">RDF-snippet</h4>
+          <p class="u-spacer">
+            De volgende snippet beschrijft hoe het er kan uitzien in RDF-formaat.
+            {{#let (get-code-snippet "example-notification-rule.ttl") as |snippet|}}
+              <CodeBlock >{{snippet.source}}</CodeBlock>
+            {{/let}}
+            Noteer: het gaat hier om een illustratief voorbeeld.
+          </p>
+          <h4 class="h4">SPARQL-query</h4>
+          <p class="u-spacer">
+            De volgende SPARQL-query geeft een voorbeeld van hoe
+            <LinkTo @route="docs.sparql-endpoint">centrale-vindplaats</LinkTo> bevraagd kan worden om meer informatie te vinden over de regels.
+            <br>
+            Hier worden alle meldingsplichtige besluiten opgelijst voor een Gemeente.
+            {{#let (get-code-snippet "example-notification-rule.sparql") as |snippet|}}
+              <CodeBlock >{{snippet.source}}</CodeBlock>
+            {{/let}}
+          </p>
+        </article>
         {{outlet}}
       </div>
     </div>
