@@ -1,12 +1,14 @@
-<WuButton @onClick={{this.toggleSnippetVisbility}}>
+<div ...attributes>
+  <WuButton @onClick={{this.toggleSnippetVisbility}}>
+    {{#if this.showSnippet}}
+      Verberg snippet
+    {{else}}
+      Laat snippet zien
+    {{/if}}
+  </WuButton>
   {{#if this.showSnippet}}
-    Verberg snippet
-  {{else}}
-    Laat snippet zien
+    {{#let (get-code-snippet @snippetFilename) as |snippet|}}
+      <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+    {{/let}}
   {{/if}}
-</WuButton>
-{{#if this.showSnippet}}
-  {{#let (get-code-snippet @snippetFilename) as |snippet|}}
-    <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
-  {{/let}}
-{{/if}}
+</div>
