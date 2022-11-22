@@ -169,6 +169,13 @@
               </div>
             </div>
           </div>
+
+          <h2 class="h2">Fouten</h2>
+          <p class="u-spacer--tiny">
+            Bij elk van bovenstaande soort request kunnen er fouten optreden. Een login kan falen vanwege foute combinatie van vendor URI en sleutel, een query kan falen vanwege syntax problemen met de query zelf of vanwege een fout opgestelde request, &hellip; In alle gevallen wordt er zo veel mogelijk aan gedaan om een waardevolle foutboodschap terug te geven in combinatie met een bijhorende HTTP (fout)code. In het geval van het versturen van queries kunnen foutberichten en foutcodes terugkomen die gegenereerd werden door de database zelf of van een tussenliggende service. Dit kan enige inconsistenties veroorzaken in de response. In het geval van de login en logout requests, fouten zitten verwerkt in de volgende JSON-LD context en worden ook op die manier geformatteerd als antwoord.
+          </p>
+          <SnippetToggle class="u-spacer" @snippetFilename="vendor-sparql-api_error-response-context.js" />
+
           <h2 class="h2">Prefixes</h2>
           <p>
             Onderstaande tabel beschrijft de prefixes gebruikt in dit document en in de gegevens beschikbaar in het endpoint.
