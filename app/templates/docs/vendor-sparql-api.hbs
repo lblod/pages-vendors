@@ -91,8 +91,8 @@
             {{/let}}
           </div>
           <h3 class="h3">Voorbeelden van requests</h3>
-          <p>
-            Hieronder staan een aantal voorbeelden van request, uitgevoerd via <CodeInline>cURL</CodeInline>. De query is steeds op te vullen met de benodigde SPARQL query.
+          <p class="u-spacer">
+            Hieronder staan een aantal voorbeelden van requests, uitgevoerd via <CodeInline>cURL</CodeInline>. De query is steeds op te vullen met de benodigde SPARQL query.
           </p>
           <p>
             De meest gebruikte manier: een POST request met de query als body, ge&euml;ncodeerd zoals een formulier veld.
@@ -104,7 +104,7 @@
   -d 'query=SELECT+DISTINCT+?s+?p+?o+WHERE+{+?s+?p+?o+.+}+LIMIT+10' \
   https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql</CodeBlock>
           <p>
-            Dit is hetzelfde als het vorige voorbeeld, maar voor de encodering is hier de typische JavaScript <CodeInline>encodeURIComponent()</CodeInline> gebruikt.
+            Het volgende voorbeeld is hetzelfde als het vorige, maar voor de encodering is hier de typische JavaScript <CodeInline>encodeURIComponent()</CodeInline> gebruikt.
           </p>
 <CodeBlock>curl -v -X POST \
   -H "Content-Type: application/x-www-form-urlencoded" \
@@ -140,15 +140,17 @@
           <div class="u-spacer">
             <CodeBlock>DELETE https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
           </div>
-
+          <p class="u-spacer">
+            Het antwoord op deze request is, als uitloggen successvol was, leeg. De HTTP response code is dan <CodeInline>204 No Content</CodeInline>.
+          </p>
           <h3 class="h3">Voorbeeld</h3>
           <p>
-            Bij het gebruik van <CodeInline>cURL</CodeInline> ziet de request voor uitloggen er als volgt het.
+            Bij het gebruik van <CodeInline>cURL</CodeInline> ziet de request voor uitloggen er als volgt uit.
           </p>
           <div class="u-spacer">
             <CodeBlock>curl -v -X DELETE \
   -b CookieJar.tsv -c CookieJar.tsv \
-  https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login</CodeBlock>
+  https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
           </div>
 
           <h2 class="h2">Beschikbaarheid van gegevens</h2>
