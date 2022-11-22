@@ -16,6 +16,7 @@
           <p class="u-spacer">
             Het opvragen van de status van ingestuurde meldingen is mogelijk door het uitsturen van de juiste query naar het SPARQL endpoint. Het kunnen uitvoeren van SPARQL queries brengt echter risico met zich mee in verband met databeveiliging. Daarom wordt de toegang tot het SPARQL endpoint beschermd met een login en is het enkel mogelijk om data uit te lezen. Er kan dus niets gewijzigd worden via SPARQL Update queries. Deze pagina beschrijft het stappenplan om in te loggen en SPARQL queries uit te voeren.
           </p>
+
           <h2 class="h2">Inloggen</h2>
           <p>
             De API voor inloggen is gelijkaardig aan hoe een melding wordt ingestuurd: volgens een request met authenticatie door middel van vendor URI, sleutel en de URI van de organisatie in een JSON-LD body naar
@@ -35,7 +36,6 @@
             Vind hieronder de volledige context, indien nodig.
           </p>
           <SnippetToggle class="u-spacer" @snippetFilename="vendor-sparql-api_login-context.js" />
-
           <p class="u-spacer--tiny">
             Het antwoord op de login request is <strong>een sessie cookie</strong> waar volgende requests (SPARQL queries en uitloggen) mee worden geauthenticeert. Er wordt ook een JSON-LD body teruggegeven die informatie over de sessie voorstelt, zoals hieronder als voorbeeld wordt weergegeven. Deze informatie kan echter worden genegeerd, want <strong> de sessie wordt vanaf de login request enkel bepaald door middel van de cookie</strong>.
           </p>
@@ -50,16 +50,10 @@
             Als voorbeeld staat hieronder hoe een login kan worden uitgevoerd met <CodeInline>cURL</CodeInline>. Het ontvangen en verder weer versturen van cookies is noodzakelijk. Daarom wordt de cookie engine ingeschakeld met de <CodeInline>-b</CodeInline> en <CodeInline>-c</CodeInline> flags die verwijzen naar een bestand waar de cookies worden opgeslagen.
           </p>
           <div class="u-spacer">
-            <CodeBlock>curl -v -X POST \
-  -H "Content-Type: application/json" \
-  -b CookieJar.tsv -c CookieJar.tsv \
-  -d '{
-    "organization": "http://data.lblod.info/id/bestuurseenheden/be278471a2a318edba32e7ac4294c0eafbe4c8077a34dcbb9c2e43211d4a78a6",
-    "publisher": {
-        "uri": "http://example.com/vendor/mechelen",
-        "key": "mechelen-secret-key"
-    }
-}' https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login</CodeBlock>
+            {{#let (get-code-snippet "vendor-sparql-api_login-ex.sh") as |snippet|}}
+              {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
+              <CodeBlock @code={{snippet.source}} />
+            {{/let}}
           </div>
 
           <h2 class="h2">Versturen van queries</h2>
@@ -73,6 +67,7 @@
           <p class="u-spacer">
             Bij het inzenden van een nieuwe melding (zoals beschreven in <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo>) wordt er JSON teruggegeven die een URI bevat voor de melding (Submission) en de Job waarin de melding zal worden verwerkt. Deze kunnen worden gebruikt als onderwerp of voorwerp in SPARQL queries om doelgericht informatie op te vragen.
           </p>
+
           <h3 class="h3">Voorbeelden van queries</h3>
           <p>
             Hieronder staan een aantal voorbeelden van SPARQL queries. Als eerste voorbeeld wordt de URI gebruikt om alle gegevens van een melding op te vragen.
@@ -90,6 +85,7 @@
               <CodeBlock @code={{snippet.source}} />
             {{/let}}
           </div>
+
           <h3 class="h3">Voorbeelden van requests</h3>
           <p class="u-spacer">
             Hieronder staan een aantal voorbeelden van requests, uitgevoerd via <CodeInline>cURL</CodeInline>. De query is steeds op te vullen met de benodigde SPARQL query.
@@ -97,41 +93,33 @@
           <p>
             De meest gebruikte manier: een POST request met de query als body, ge&euml;ncodeerd zoals een formulier veld.
           </p>
-          <CodeBlock>curl -v -X POST \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -H "Accept: application/sparql-results+json" \
-  -b CookieJar.tsv -c CookieJar.tsv \
-  -d 'query=SELECT+DISTINCT+?s+?p+?o+WHERE+{+?s+?p+?o+.+}+LIMIT+10' \
-  https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql</CodeBlock>
+          {{#let (get-code-snippet "vendor-sparql-api_request-ex-1.sparql") as |snippet|}}
+            {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
+            <CodeBlock @code={{snippet.source}} />
+          {{/let}}
           <p>
             Het volgende voorbeeld is hetzelfde als het vorige, maar voor de encodering is hier de typische JavaScript <CodeInline>encodeURIComponent()</CodeInline> gebruikt.
           </p>
-<CodeBlock>curl -v -X POST \
-  -H "Content-Type: application/x-www-form-urlencoded" \
-  -H "Accept: application/sparql-results+json" \
-  -b CookieJar.tsv -c CookieJar.tsv \
-  -d 'query=SELECT%20*%20WHERE%20%7B%20%3Fs%20%3Fp%20%3Fo%20.%7D%20LIMIT%2010' \
-  https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql
-</CodeBlock>
+          {{#let (get-code-snippet "vendor-sparql-api_request-ex-2.sparql") as |snippet|}}
+            {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
+            <CodeBlock @code={{snippet.source}} />
+          {{/let}}
           <p>
             Het is ook mogelijk om, via de juiste header, de SPARQL query direct als body van de request te sturen zonder speciale encodering. <strong>Het zou kunnen dat deze methode niet werkt op deze endpoint. Probeer een van de twee bovenstaande methoden eerst.</strong>
           </p>
-<CodeBlock>curl -v -X POST \
-  -H "Content-Type: application/sparql-query" \
-  -H "Accept: application/sparql-results+json" \
-  -b CookieJar.tsv -c CookieJar.tsv \
-  -d 'SELECT DISTINCT ?s ?p ?o WHERE { ?s ?p ?o . } LIMIT 10' \
-  https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql
-</CodeBlock>
+          {{#let (get-code-snippet "vendor-sparql-api_request-ex-3.sparql") as |snippet|}}
+            {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
+            <CodeBlock @code={{snippet.source}} />
+          {{/let}}
           <p>
             Uit volledigheid ondersteunt de endpoint ook GET requests, waar de SPARQL query als URL parameter wordt meegegeven. Deze methode is echter niet aan te raden vanwege beperkingen op de lengte van de query.
           </p>
-<div class="u-spacer">
-  <CodeBlock>curl -v -X GET \
-    -H "Accept: application/sparql-results+json" \
-    -b CookieJar.tsv -c CookieJar.tsv \
-    https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql?query=SELECT%20DISTINCT%20%3Fs%20%3Fp%20%3Fo%20WHERE%20%7B%20%3Fs%20%3Fp%20%3Fo%20.%20%7D%20LIMIT%2010</CodeBlock>
-</div>
+          <div class="u-spacer">
+            {{#let (get-code-snippet "vendor-sparql-api_request-ex-4.sparql") as |snippet|}}
+              {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
+              <CodeBlock @code={{snippet.source}} />
+            {{/let}}
+          </div>
 
           <h2 class="h2">Uitloggen</h2>
           <p>
@@ -143,14 +131,16 @@
           <p class="u-spacer">
             Het antwoord op deze request is, als uitloggen successvol was, leeg. De HTTP response code is dan <CodeInline>204 No Content</CodeInline>.
           </p>
+
           <h3 class="h3">Voorbeeld</h3>
           <p>
             Bij het gebruik van <CodeInline>cURL</CodeInline> ziet de request voor uitloggen er als volgt uit.
           </p>
           <div class="u-spacer">
-            <CodeBlock>curl -v -X DELETE \
-  -b CookieJar.tsv -c CookieJar.tsv \
-  https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
+            {{#let (get-code-snippet "vendor-sparql-api_logout-ex.sh") as |snippet|}}
+              {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
+              <CodeBlock @code={{snippet.source}} />
+            {{/let}}
           </div>
 
           <h2 class="h2">Beschikbaarheid van gegevens</h2>
