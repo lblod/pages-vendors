@@ -20,12 +20,5 @@ module.exports = function (defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  //return app.toTree();
-  const Webpack = require('@embroider/webpack').Webpack;
-  return require('@embroider/compat').compatBuild(app, Webpack, {
-    staticAddonTrees: true,
-    staticAddonTestSupportTrees: true,
-    staticHelpers: true,
-    staticComponents: true
-  });
+  return app.toTree();
 };
