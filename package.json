@@ -1,6 +1,6 @@
 {
   "name": "pages-vendors",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "description": "Ember frontend of the vendor documentation pages",
   "repository": {
@@ -25,38 +25,35 @@
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test"
   },
+  "dependencies": {
+    "@lblod/ember-vo-webuniversum": "^0.23.0"
+  },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.6.0",
-    "@embroider/compat": "^0.30.0",
-    "@embroider/core": "^0.30.0",
-    "@embroider/webpack": "^0.30.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
-    "ember-auto-import": "^1.12.0",
+    "ember-auto-import": "^2.4.3",
     "ember-cli": "3.28.6",
     "ember-cli-app-version": "^5.0.0",
     "ember-cli-babel": "^7.26.10",
     "ember-cli-dependency-checker": "^3.2.0",
-    "ember-cli-deploy": "^1.0.2",
-    "ember-cli-deploy-build": "^1.1.1",
-    "ember-cli-deploy-ghpages": "git://github.com/VerdigrisTech/ember-cli-deploy-ghpages.git#master",
+    "ember-cli-deploy": "^2.0.0",
+    "ember-cli-deploy-build": "^2.0.0",
+    "ember-cli-deploy-ghpages": "^0.2.0",
     "ember-cli-htmlbars": "^5.7.2",
     "ember-cli-inject-live-reload": "^2.1.0",
-    "ember-cli-moment-shim": "^3.8.0",
-    "ember-cli-sass": "^10.0.1",
+    "ember-cli-sass": "^11.0.1",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
-    "ember-cli-update": "^1.0.1",
     "ember-code-snippet": "^3.0.0",
     "ember-export-application-global": "^2.0.1",
-    "ember-fetch": "^8.1.1",
     "ember-load-initializers": "^2.1.2",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-page-title": "^6.2.2",
-    "ember-prism": "^0.5.0",
+    "ember-prism": "^0.13.0",
     "ember-qunit": "^5.1.5",
     "ember-resolver": "^8.0.3",
     "ember-source": "3.28.8",
@@ -72,15 +69,12 @@
     "prettier": "^2.5.1",
     "qunit": "^2.17.2",
     "qunit-dom": "^1.6.0",
-    "sass": "^1.22.7"
+    "sass": "^1.56.1"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"
   },
   "ember": {
     "edition": "octane"
-  },
-  "dependencies": {
-    "@lblod/ember-vo-webuniversum": "^0.22.8"
   }
 }
