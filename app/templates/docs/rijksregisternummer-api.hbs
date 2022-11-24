@@ -13,7 +13,7 @@
           <p class="u-spacer">
             Geeft de URI van een persoon terug indien de aanvragende entiteit gemachtigd is voor het opgegeven bestuur en de persoon teruggevonden kon worden.  De request kan als GET of als POST opgevraagd worden, in beide gevallen wordt een JSON body verwacht.
 
-            <CodeBlock>POST https://rrn.api.lblod.info/rrn</CodeBlock>
+            <CodeBlock @code="POST https://rrn.api.lblod.info/rrn" />
 
             Noteer dat de bovenstaande URL verwijst naar de ontwikkelomgeving. Deze verandert van zodra de service in productie staat.
 
@@ -24,14 +24,14 @@
           <p>
             Een kort voorbeeld van de API:
             {{#let (get-code-snippet "rrn-quick-example.js") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </p>
           <p>
             Een succesvol antwoord heeft de vorm van:
 
             {{#let (get-code-snippet "rrn-quick-example-response.js") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </p>
           Noteer: het bovenstaande voorbeeld gebruikt bewust een niet bestaand rijksregisternummer.
@@ -55,7 +55,7 @@
           <p class="u-spacer">
             Voor het ontwikkelen en testen van de rijksregisternummer API is een test endpoint ter beschikking gesteld op:
 
-            <CodeBlock>https://rrn.api.lblod.info/rrn</CodeBlock>
+            <CodeBlock @code="https://rrn.api.lblod.info/rrn" />
 
             De vendor URI en geheime sleutel voor deze omgeving moeten eerst aangevraagd worden zoals beschreven onder 'Authenticatie'.
           </p>

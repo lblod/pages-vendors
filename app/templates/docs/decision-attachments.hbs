@@ -12,7 +12,7 @@
             Het applicatieprofiel besluit-publicatie voorziet de relatie <a href="http://data.europa.eu/eli/ontology#related_to" target="_blank" rel="noopener noreferrer">eli:related_to</a> voor verwijzingen naar bijlagen.</p>
           <p class="u-spacer">In het onderstaande voorbeeld wordt gelinkt een pdf bijlage.</p>
           {{#with (get-code-snippet "example-besluit-met-pdf-bijlage.html") as |snippet|}}
-            <CodeBlock>{{snippet.source}}</CodeBlock>
+            <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
           {{/with}}
         </article>
         <article class="u-spacer--large">
@@ -20,7 +20,7 @@
           <p class="u-spacer">Indien een bijlage (juridisch) kan worden aanzien als zijnde een onderdeel van het besluit worden de annotaties van de eenvoudige bijlage aangevuld om aan te duiden dat het gaat om een document onderdeel. Het applicatieprofiel besluit-publicatie voorziet hiervoor de relatie <a href="http://purl.org/dc/terms/isPartOf" target="_blank" rel="noopener noreferrer">dct:isPartOf</a> van het onderdeel naar het besluit.</p>
           <p class="u-spacer"><strong>Opmerking:</strong> In het voorbeeld maken we gebruik van het html atribuut "rev" om deze relatie in de omgekeerde richting op te geven.</p>
           {{#with (get-code-snippet "example-besluit-met-pdf-bijlage-als-onderdeel.html") as |snippet|}}
-            <CodeBlock>{{snippet.source}}</CodeBlock>
+            <CodeBlock @@language={{snippet.language}} @code={{snippet.source}} />
           {{/with}}
         </article>
         <article class="u-spacer--large">
@@ -36,7 +36,7 @@
             </ul>
 
             {{#with (get-code-snippet "example-besluit-met-geannoteerde-bijlage.html") as |snippet|}}
-            <CodeBlock>{{snippet.source}}</CodeBlock>
+            <CodeBlock @@language={{snippet.language}} @code={{snippet.source}} />
           {{/with}}
         </article>
       </div>

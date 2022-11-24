@@ -37,7 +37,7 @@
           <p class="u-spacer">
             Via RDFa annotaties kan dit als volgt weergegeven worden:
             {{#let (get-code-snippet "publication-document-with-type.html") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </p>
           <p class="u-spacer">
@@ -85,14 +85,14 @@
           <p class="u-spacer">
             De relatie tussen een zitting en het gepubliceerde document kan als volgt op &eacute;&eacute;n pagina geannoteerd worden:
             {{#let (get-code-snippet "publication-document-to-zitting-relation-one-page.html") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </p>
           <h4 class="h4">Zitting annoteren met een link naar het gepubliceerde document</h4>
           <p class="u-spacer">
             De relatie tussen een zitting en een gepubliceerd document kan ook op een andere pagina dan die van het gepubliceerde document geannoteerd worden.
             {{#let (get-code-snippet "publication-document-to-zitting-relation-with-hyperlink.html") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </p>
           <div class="u-hr"></div>
@@ -107,7 +107,7 @@
           </p>
           <p class="u-spacer">
             {{#let (get-code-snippet "publication-document-link-to-publication.html") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </p>
         </article>

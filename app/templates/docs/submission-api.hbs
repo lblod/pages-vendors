@@ -14,12 +14,12 @@
           <p class="u-spacer">
             Het aanmaken van een nieuwe melding gebeurt via een request naar
 
-            <CodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/melding</CodeBlock>
+            <CodeBlock @code="POST https://api.loket.lokaalbestuur.vlaanderen.be/melding" />
 
             met JSON-LD request body:
 
             {{#let (get-code-snippet "reporting-obligation-quick-example.js") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
             <p  class="small text-fade u-spacer">
               Bekijk welke annotaties gebruikt kunnen worden in de gepubliceerde pagina: <LinkTo @route="docs.submission-annotations">annotaties&nbsp;voor&nbsp;automatische&nbsp;melding</LinkTo>.
@@ -74,7 +74,7 @@
 
             Voorbeeld:
             {{#let (get-code-snippet "reporting-obligation-optioneel-meegeven-draft-status.js") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </p>
 
@@ -83,7 +83,7 @@
             Elk van voorgaande voorbeelden heeft een impliciete JSON-LD context.  Deze context kan expliciet in de calls meegegeven worden, of een alternatieve context kan meegegeven worden. Op deze manier blijft de API maximaal flexibel.
             Deze context wordt ter beschikking gesteld op <a href="https://lblod.data.gift/contexts/automatische-melding/v1/context.json">https://lblod.data.gift/contexts/automatische-melding/v1/context.json</a>.
             {{#let (get-code-snippet "reporting-obligation-json-ld-context.js") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </p>
         </article>
@@ -139,14 +139,14 @@
           <p class="u-spacer">
             De key 'authentication' wordt toegevoegd als volgt aan het request:
             {{#let (get-code-snippet "submission-basic-auth.js") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </p>
           <h4 class="h4">OAuth 2.0 Client Credentials Grant</h4>
           <p class="u-spacer">
             De key 'authentication' wordt toegevoegd als volgt aan het request:
             {{#let (get-code-snippet "submission-oauth2-client-credentials.js") as |snippet|}}
-              <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
             De key 'resource' is hier optioneel en kan gebruikt worden om verdere beperkingen op te leggen over de op te halen resource, conform:  <a href="https://datatracker.ietf.org/doc/html/rfc8707">Resource Indicators</a>.
             Noteer, op OAuth 2.0 zijn er veel variaties mogelijk, contacteer ons gerust indien er uitbreidingen gewenst zijn.
@@ -162,7 +162,7 @@
           <p class="u-spacer">
             Voor het ontwikkelen en testen van automatische melding is een test endpoint ter beschikking gesteld op:
 
-            <CodeBlock>POST https://api.loket.lblod.info/melding</CodeBlock>
+            <CodeBlock @code="POST https://api.loket.lblod.info/melding" />
 
             De publisher URI en geheime sleutel voor deze omgeving moeten eerst aangevraagd worden zoals beschreven onder 'Authenticatie'. De verwerking van de melding gebeurt asynchroon, maar zou in normale omstandigheden in een tijdspanne van enkele minuten afgehandeld worden.
           </p>
@@ -305,7 +305,7 @@
           <p class="u-spacer">
             De volgende snippet beschrijft hoe het er kan uitzien in RDF-formaat.
             {{#let (get-code-snippet "example-notification-rule.ttl") as |snippet|}}
-              <CodeBlock >{{snippet.source}}</CodeBlock>
+              <CodeBlock @language="turtle" @code={{snippet.source}} />
             {{/let}}
             Noteer: het gaat hier om een illustratief voorbeeld.
           </p>
@@ -316,7 +316,7 @@
             <br>
             Hier worden alle meldingsplichtige besluiten opgelijst voor een Gemeente.
             {{#let (get-code-snippet "example-notification-rule.sparql") as |snippet|}}
-              <CodeBlock >{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </p>
         </article>
