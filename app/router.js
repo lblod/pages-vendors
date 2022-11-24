@@ -6,8 +6,8 @@ export default class Router extends EmberRouter {
   rootURL = config.rootURL;
 }
 
-Router.map(function() {
-  this.route('docs', function() {
+Router.map(function () {
+  this.route('docs', function () {
     this.route('submission-api');
     this.route('submission-annotations');
     this.route('publication-annotations');
@@ -19,6 +19,6 @@ Router.map(function() {
   });
 
   this.route('route-not-found', {
-    path: '/*wildcard'
+    path: '/*wildcard',
   });
 });
