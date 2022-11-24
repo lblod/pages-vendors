@@ -7,6 +7,7 @@
           src="https://loket.lokaalbestuur.vlaanderen.be/assets/images/loket-header-1600-85a5251e74ef6ac8491b2f228d2c90da.jpg"
           srcset="https://loket.lokaalbestuur.vlaanderen.be/assets/images/loket-header-320-85a5251e74ef6ac8491b2f228d2c90da.jpg 320w, https://loket.lokaalbestuur.vlaanderen.be/assets/images/loket-header-1024-85a5251e74ef6ac8491b2f228d2c90da.jpg 1024w, https://loket.lokaalbestuur.vlaanderen.be/assets/images/loket-header-1600-85a5251e74ef6ac8491b2f228d2c90da.jpg 1600w"
           alt=""
+          role="none"
           title=""
         >
       </picture>
@@ -39,7 +40,7 @@
   <div class="layout layout--wide">
     <h2 class="h2">Beschikbare documentatie</h2>
     <ul class="grid grid--is-stacked js-equal-height-container">
-      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+      <li class="col--4-12 col--1-2--s col--12-12--xs">
         <LinkTo @route="docs.submission-annotations" class="doormat js-equal-height u-mobile-no-equal-height">
           <div class="doormat__title">
             Annotaties voor automatische melding
@@ -47,7 +48,7 @@
           <span class="doormat__text">Annotaties die gebruikt worden bij automatische meldingen van besluiten en documenten.</span>
         </LinkTo>
       </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+      <li class="col--4-12 col--1-2--s col--12-12--xs">
         <LinkTo @route="docs.publication-annotations" class="doormat js-equal-height u-mobile-no-equal-height">
           <div class="doormat__title">
             Annotaties van besluiten en documenten
@@ -55,7 +56,7 @@
           <span class="doormat__text">Annotaties die gebruikt worden bij de publicatie van besluiten en documenten opdat ze automatisch geharvest kunnen worden.</span>
         </LinkTo>
       </li>
-            <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+            <li class="col--4-12 col--1-2--s col--12-12--xs">
         <LinkTo @route="docs.decision-attachments" class="doormat js-equal-height u-mobile-no-equal-height">
           <div class="doormat__title">
             Bijlagen bij een besluit annoteren
@@ -63,7 +64,7 @@
           <span class="doormat__text">Beschrijft hoe verschillende soorten bijlagen bij een besluit geannoteerd kunnen worden.</span>
         </LinkTo>
             </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+      <li class="col--4-12 col--1-2--s col--12-12--xs">
         <LinkTo @route="docs.submission-api" class="doormat js-equal-height u-mobile-no-equal-height">
           <div class="doormat__title">
             Meldingsplicht API
@@ -71,7 +72,7 @@
           <span class="doormat__text">API om een nieuwe melding aan te maken in Loket voor Lokale Besturen op basis van een publicatie. Indien al de nodige velden ingevuld zijn, kan de melding automatisch verzonden worden.</span>
         </LinkTo>
       </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+      <li class="col--4-12 col--1-2--s col--12-12--xs">
         <LinkTo @route="docs.vendor-sparql-api" class="doormat js-equal-height u-mobile-no-equal-height">
           <div class="doormat__title">
             Vendor SPARQL API
@@ -79,7 +80,7 @@
           <span class="doormat__text">API voor het uitvoeren van SPARQL queries voor het opvragen van statusgegevens over eerder uitgevoerde meldingen in Loket.</span>
         </LinkTo>
       </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+      <li class="col--4-12 col--1-2--s col--12-12--xs">
         <LinkTo @route="docs.rijksregisternummer-api" class="doormat js-equal-height u-mobile-no-equal-height">
           <div class="doormat__title">
             Persoon URI [BETA]
@@ -87,7 +88,7 @@
           <span class="doormat__text">Bevragen van de URI van een persoon op basis van diens rijksregisternummer en bestuurseenheid.</span>
         </LinkTo>
       </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+      <li class="col--4-12 col--1-2--s col--12-12--xs">
         <LinkTo @route="docs.sparql-endpoint" class="doormat js-equal-height u-mobile-no-equal-height">
           <div class="doormat__title">
            SPARQL endpoint
@@ -95,8 +96,8 @@
           <span class="doormat__text">Endpoint om met SPARQL publieke data te bevragen. </span>
         </LinkTo>
       </li>
-                  <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
-        <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/" target="_blank" rel="noopener" class="doormat js-equal-height u-mobile-no-equal-height">
+                  <li class="col--4-12 col--1-2--s col--12-12--xs">
+        <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/" target="_blank" rel="noopener noreferrer" class="doormat js-equal-height u-mobile-no-equal-height">
           <div class="doormat__title">
             Besluit Publicatie
             <p><small class="uppercase text-fade"><i class="vi vi-external"></i> externe link</small></p>
@@ -104,8 +105,8 @@
           <span class="doormat__text">Dit applicatieprofiel definieert een specificatie voor de publicatie van notulen en besluiten van bestuursorgaan.</span>
         </a>
       </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
-        <a href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/" target="_blank" rel="noopener" class="doormat js-equal-height u-mobile-no-equal-height">
+      <li class="col--4-12 col--1-2--s col--12-12--xs">
+        <a href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/" target="_blank" rel="noopener noreferrer" class="doormat js-equal-height u-mobile-no-equal-height">
           <div class="doormat__title">
             Mandatendatabank
             <p><small class="uppercase text-fade"><i class="vi vi-external"></i> externe link</small></p>
@@ -113,7 +114,7 @@
           <span class="doormat__text">Dit applicatieprofiel definieert een specificatie voor een gelinkte mandatendatabank op basis van gelinkte besluiten.</span>
         </a>
       </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs" style="min-height: 194px;">
+      <li class="col--4-12 col--1-2--s col--12-12--xs">
         <LinkTo @route="docs.leidinggevenden" class="doormat js-equal-height u-mobile-no-equal-height">
           <div class="doormat__title">
             Leidinggevenden
