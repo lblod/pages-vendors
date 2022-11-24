@@ -8,7 +8,7 @@
   </WuButton>
   {{#if this.showSnippet}}
     {{#let (get-code-snippet @snippetFilename) as |snippet|}}
-      <CodeBlock @language={{snippet.language}}>{{snippet.source}}</CodeBlock>
+      <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
     {{/let}}
   {{/if}}
 </div>
