@@ -19,7 +19,7 @@
           <h2 class="h2">Benaderen van het endpoint</h2>
           <p class="u-spacer">
             Het endpoint staat beschikbaar op <br>
-            <CodeBlock>https://centrale-vindplaats.lblod.info/sparql</CodeBlock>
+            <CodeBlock @code="https://centrale-vindplaats.lblod.info/sparql" />
             Dit endpoint heeft UI beschikbaar waar SPARQL-queries in uitgevoerd kunnen worden. <br>
             De queries kunnen ook aan de hand van HTTP calls uitgevoerd worden. <br>
             De specificatie van de HTTP-calls vindt u <a href="https://www.w3.org/TR/sparql11-protocol/" target="_blank" rel="noopener noreferrer">hier</a>.
@@ -41,7 +41,7 @@
           <h3 class="h3">Oplijsten bestuurseenheden en hun classificatie</h3>
           <p class="u-spacer">
             {{#let (get-code-snippet "sparql-endpoint-voorbeeld-1.sparql") as |snippet|}}
-              <CodeBlock>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </p>
 
@@ -49,21 +49,21 @@
           <p class="u-spacer">
             De lijst van alle bestuursorganen (in bestuursperiode) wordt hier opgelijst, alsook hun naam, start en eind datum.
             {{#let (get-code-snippet "sparql-endpoint-voorbeeld-2.sparql") as |snippet|}}
-              <CodeBlock>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </p>
 
           <h3 class="h3">Lijst van alle mandaten, en de bijbehorende personen</h3>
           <p class="u-spacer">
             {{#let (get-code-snippet "sparql-endpoint-voorbeeld-3.sparql") as |snippet|}}
-              <CodeBlock>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </p>
 
           <h3 class="h3">Overzicht van leidinggevenden per bestuurseenheid</h3>
           <p class="u-spacer">
             {{#let (get-code-snippet "sparql-endpoint-voorbeeld-4.sparql") as |snippet|}}
-              <CodeBlock>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </p>
 
@@ -71,7 +71,7 @@
           Gegeven de Burgemeester van Antwerpen voor bestuursperiode startende op 2019, welke andere mandaten vinden we terug voor deze persoon?
           <p class="u-spacer">
             {{#let (get-code-snippet "sparql-endpoint-voorbeeld-5.sparql") as |snippet|}}
-              <CodeBlock>{{snippet.source}}</CodeBlock>
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </p>
         </article>
