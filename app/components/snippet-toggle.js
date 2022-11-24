@@ -6,6 +6,6 @@ export default class SnippetToggleComponent extends Component {
 
   @action
   toggleSnippetVisbility() {
-    this.showSnippet = ! this.showSnippet;
+    this.showSnippet = !this.showSnippet;
   }
 }

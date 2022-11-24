@@ -1,13 +1,13 @@
 /* eslint-env node */
 'use strict';
 
-module.exports = function(deployTarget) {
+module.exports = function (deployTarget) {
   let ENV = {
     build: {},
     // include other plugin configuration that applies to all deploy targets here,
     ghpages: {
-      gitRemoteUrl: 'git@github.com:lblod/pages-vendors'
-    }
+      gitRemoteUrl: 'git@github.com:lblod/pages-vendors',
+    },
   };
 
   if (deployTarget === 'development') {
