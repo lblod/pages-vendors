@@ -1,11 +1,11 @@
 <div ...attributes>
-  <WuButton @onClick={{this.toggleSnippetVisbility}}>
+  <AuButton @onClick={{this.toggleSnippetVisbility}}>
     {{#if this.showSnippet}}
       Verberg snippet
     {{else}}
       Laat snippet zien
     {{/if}}
-  </WuButton>
+  </AuButton>
   {{#if this.showSnippet}}
     {{#let (get-code-snippet @snippetFilename) as |snippet|}}
       <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
