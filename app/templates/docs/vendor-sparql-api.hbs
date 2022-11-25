@@ -1,4 +1,4 @@
-<DocsHeader @heading="Vendor SPARQL API">
+<DocsHeader @heading="Vendor SPARQL API [BETA]">
   <p class="u-spacer">
     Met deze API is het mogelijk om rechtstreeks SPARQL queries uit te voeren tegen een gereduceerde dataset waar nuttige informatie terug te vinden is over de toestand van eerder ingestuurde meldingen. Bekijk de pagina over de <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo> voor het insturen van meldingen.
   </p>
@@ -70,12 +70,17 @@
 
           <h3 class="h3">Voorbeelden van queries</h3>
           <p>
-            Hieronder staan een aantal voorbeelden van SPARQL queries. Als eerste voorbeeld wordt de URI gebruikt om alle gegevens van een melding op te vragen.
+            Hieronder staan een aantal voorbeelden van SPARQL queries.
+            <br>
+            Aan de hand van het eerste voorbeeld kan u de status opvragen van de ingestuurde melding.
           </p>
           {{#let (get-code-snippet "vendor-sparql-api_query-ex-1.sparql") as |snippet|}}
             {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
             <CodeBlock @code={{snippet.source}} />
           {{/let}}
+          <p>
+            Noteer: ivm. status; aangeraden om op URI te werken, het label kan veranderen, het achterliggende concept (i.e. de URI) niet.
+          </p>
           <p>
             Met het volgende voorbeeld worden er 100 eerder verrrichtte meldingen opgevraagd. Met de verkregen URI's kan men queries gelijk de bovenstaande opstellen.
           </p>
@@ -101,13 +106,6 @@
             Het volgende voorbeeld is hetzelfde als het vorige, maar voor de encodering is hier de typische JavaScript <CodeInline>encodeURIComponent()</CodeInline> gebruikt.
           </p>
           {{#let (get-code-snippet "vendor-sparql-api_request-ex-2.sparql") as |snippet|}}
-            {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
-            <CodeBlock @code={{snippet.source}} />
-          {{/let}}
-          <p>
-            Het is ook mogelijk om, via de juiste header, de SPARQL query direct als body van de request te sturen zonder speciale encodering. <strong>Het zou kunnen dat deze methode niet werkt op deze endpoint. Probeer een van de twee bovenstaande methoden eerst.</strong>
-          </p>
-          {{#let (get-code-snippet "vendor-sparql-api_request-ex-3.sparql") as |snippet|}}
             {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
             <CodeBlock @code={{snippet.source}} />
           {{/let}}
