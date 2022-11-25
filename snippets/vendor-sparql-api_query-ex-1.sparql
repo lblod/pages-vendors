@@ -1,4 +1,9 @@
-SELECT * WHERE {
-  <http://data.lblod.info/submissions/ceecdbb0-699b-11ed-b29d-cb0aa48f5e37>
-    ?pred ?obj .
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT DISTINCT ?submission ?status ?statusLabel WHERE {
+  ?submission a <http://rdf.myexperiment.org/ontologies/base/Submission> ;
+  <http://purl.org/dc/terms/subject> <http://gemeente.be/uri/van/het/ingezonden/besluit/ceecdbb0-699b-11ed-b29d-cb0aa48f5e37> ;
+  <http://www.w3.org/ns/adms#status> ?status .
+
+  ?status skos:prefLabel ?statusLabel.
 }
