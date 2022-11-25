@@ -1,16 +1,5 @@
-p small {
-	font-size: 1.3rem !important;
-}
+// EMBER-APPUNIVERSUM
+@import "ember-appuniversum";
 
-.uppercase {
-	text-transform: uppercase;
-	letter-spacing: 1px;
-}
-
-.text-fade {
-	color: gray;
-}
-
-code {
-	font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
-}
+// Hacks and quickfixes
+@import "shame"

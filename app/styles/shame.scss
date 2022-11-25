@@ -1,0 +1,26 @@
+.center-children .centered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.padded-children .centered {
+  padding-left: $au-unit;
+  padding-right: $au-unit;
+}
+
+p small {
+	font-size: 1.3rem !important;
+}
+
+.uppercase {
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.text-fade {
+	color: gray;
+}
+
+code {
+	font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,sans-serif;
+}

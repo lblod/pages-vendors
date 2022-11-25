@@ -25,10 +25,8 @@
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test"
   },
-  "dependencies": {
-    "@lblod/ember-vo-webuniversum": "^0.23.0"
-  },
   "devDependencies": {
+    "@appuniversum/ember-appuniversum": "^2.1.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.6.0",
     "@glimmer/component": "^1.0.4",
