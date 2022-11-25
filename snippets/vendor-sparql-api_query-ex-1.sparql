@@ -1,0 +1,4 @@
+SELECT * WHERE {
+  <http://data.lblod.info/submissions/ceecdbb0-699b-11ed-b29d-cb0aa48f5e37>
+    ?pred ?obj .
+}

@@ -1,0 +1,237 @@
+<DocsHeader @heading="Vendor SPARQL API">
+  <p class="u-spacer">
+    Met deze API is het mogelijk om rechtstreeks SPARQL queries uit te voeren tegen een gereduceerde dataset waar nuttige informatie terug te vinden is over de toestand van eerder ingestuurde meldingen. Bekijk de pagina over de <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo> voor het insturen van meldingen.
+  </p>
+  <p>
+    <strong>Het soort beschikbare gegevens is nog sterk onderhevig aan veranderingen. Vertrouw voorlopig (bij het schrijven in 11/2022) nog niet te veel op het soort gegevens en de structuur ervan.</strong>
+  </p>
+</DocsHeader>
+
+<section class="region">
+  <div class="layout layout--wide">
+    <div class="grid">
+      <div class="col--8-12 col--1-1--s">
+        <article class="u-spacer--large">
+
+          <p class="u-spacer">
+            Het opvragen van de status van ingestuurde meldingen is mogelijk door het uitsturen van de juiste query naar het SPARQL endpoint. Het kunnen uitvoeren van SPARQL queries brengt echter risico met zich mee in verband met databeveiliging. Daarom wordt de toegang tot het SPARQL endpoint beschermd met een login en is het enkel mogelijk om data uit te lezen. Er kan dus niets gewijzigd worden via SPARQL Update queries. Deze pagina beschrijft het stappenplan om in te loggen en SPARQL queries uit te voeren.
+          </p>
+
+          <h2 class="h2">Inloggen</h2>
+          <p>
+            De API voor inloggen is gelijkaardig aan hoe een melding wordt ingestuurd: volgens een request met authenticatie door middel van vendor URI, sleutel en de URI van de organisatie in een JSON-LD body naar
+          </p>
+          <CodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login</CodeBlock>
+          <p>
+            De JSON-LD body ziet er minimaal uit zoals het volgende:
+          </p>
+          {{#let (get-code-snippet "vendor-sparql-api_login-request-body.js") as |snippet|}}
+            <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
+          {{/let}}
+          <p class="u-spacer">
+            In het voorbeeld hierboven staat de <CodeInline>organisation</CodeInline> voor de URI van de bestuurseenheid waar de vendor garant voor staat. <CodeInline>publisher.uri</CodeInline> staat voor de URI van de vendor, en <CodeInline>publisher.key</CodeInline> staat voor de geheime sleutel die eerder werd verkregen. Het aanvragen van een publisher URI en geheime sleutel (key) staan beschreven in de sectie &ldquo;Authenticatie&rdquo; op de pagina over <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo>.
+          </p>
+          <p class="u-spacer--tiny">
+            De volledige JSON-LD context beschrijft met RDF wat elke eigenschap betekent, welk datatype wordt verwacht en zou aan aan elke request moeten worden toegevoegd. Deze login service voegt echter automatisch de juiste context toe aan elke login request, dus het verzenden van de minimale body zoals hierboven volstaat.
+            Vind hieronder de volledige context, indien nodig.
+          </p>
+          <SnippetToggle class="u-spacer" @snippetFilename="vendor-sparql-api_login-context.js" />
+          <p class="u-spacer--tiny">
+            Het antwoord op de login request is <strong>een sessie cookie</strong> waar volgende requests (SPARQL queries en uitloggen) mee worden geauthenticeert. Er wordt ook een JSON-LD body teruggegeven die informatie over de sessie voorstelt, zoals hieronder als voorbeeld wordt weergegeven. Deze informatie kan echter worden genegeerd, want <strong> de sessie wordt vanaf de login request enkel bepaald door middel van de cookie</strong>.
+          </p>
+          <SnippetToggle class="u-spacer" @snippetFilename="vendor-sparql-api_login-response.js" />
+          <p class="u-spacer--tiny">
+             Als referentie wordt hieronder nog de context vermeld van het antwoord met de sessieinformatie.
+          </p>
+          <SnippetToggle class="u-spacer" @snippetFilename="vendor-sparql-api_login-response-context.js" />
+
+          <h3 class="h3">Voorbeeld</h3>
+          <p>
+            Als voorbeeld staat hieronder hoe een login kan worden uitgevoerd met <CodeInline>cURL</CodeInline>. Het ontvangen en verder weer versturen van cookies is noodzakelijk. Daarom wordt de cookie engine ingeschakeld met de <CodeInline>-b</CodeInline> en <CodeInline>-c</CodeInline> flags die verwijzen naar een bestand waar de cookies worden opgeslagen.
+          </p>
+          <div class="u-spacer">
+            {{#let (get-code-snippet "vendor-sparql-api_login-ex.sh") as |snippet|}}
+              {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
+              <CodeBlock @code={{snippet.source}} />
+            {{/let}}
+          </div>
+
+          <h2 class="h2">Versturen van queries</h2>
+          <p>
+            Eenmaal ingelogd is het mogelijk om SPARQL queries te versturen naar het SPARQL endpoint, benaderbaar via
+          </p>
+          <CodeBlock>https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql</CodeBlock>
+          <p class="u-spacer">
+            Het versturen van queries moet gebeuren via HTTP requests zoals beschreven in de <a href="https://www.w3.org/TR/sparql11-protocol/#query-operation" target="_blank">offici&euml;le specificatie van het SPARQL Protocol</a>. Er is geen webpagina beschikbaar op dit endpoint. Het is noodzakelijk om de sessie cookie, verkregen bij het inloggen, steeds mee te sturen bij elke request.
+          </p>
+          <p class="u-spacer">
+            Bij het inzenden van een nieuwe melding (zoals beschreven in <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo>) wordt er JSON teruggegeven die een URI bevat voor de melding (Submission) en de Job waarin de melding zal worden verwerkt. Deze kunnen worden gebruikt als onderwerp of voorwerp in SPARQL queries om doelgericht informatie op te vragen.
+          </p>
+
+          <h3 class="h3">Voorbeelden van queries</h3>
+          <p>
+            Hieronder staan een aantal voorbeelden van SPARQL queries. Als eerste voorbeeld wordt de URI gebruikt om alle gegevens van een melding op te vragen.
+          </p>
+          {{#let (get-code-snippet "vendor-sparql-api_query-ex-1.sparql") as |snippet|}}
+            {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
+            <CodeBlock @code={{snippet.source}} />
+          {{/let}}
+          <p>
+            Met het volgende voorbeeld worden er 100 eerder verrrichtte meldingen opgevraagd. Met de verkregen URI's kan men queries gelijk de bovenstaande opstellen.
+          </p>
+          <div class="u-spacer">
+            {{#let (get-code-snippet "vendor-sparql-api_query-ex-2.sparql") as |snippet|}}
+              {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
+              <CodeBlock @code={{snippet.source}} />
+            {{/let}}
+          </div>
+
+          <h3 class="h3">Voorbeelden van requests</h3>
+          <p class="u-spacer">
+            Hieronder staan een aantal voorbeelden van requests, uitgevoerd via <CodeInline>cURL</CodeInline>. De query is steeds op te vullen met de benodigde SPARQL query.
+          </p>
+          <p>
+            De meest gebruikte manier: een POST request met de query als body, ge&euml;ncodeerd zoals een formulier veld.
+          </p>
+          {{#let (get-code-snippet "vendor-sparql-api_request-ex-1.sparql") as |snippet|}}
+            {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
+            <CodeBlock @code={{snippet.source}} />
+          {{/let}}
+          <p>
+            Het volgende voorbeeld is hetzelfde als het vorige, maar voor de encodering is hier de typische JavaScript <CodeInline>encodeURIComponent()</CodeInline> gebruikt.
+          </p>
+          {{#let (get-code-snippet "vendor-sparql-api_request-ex-2.sparql") as |snippet|}}
+            {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
+            <CodeBlock @code={{snippet.source}} />
+          {{/let}}
+          <p>
+            Het is ook mogelijk om, via de juiste header, de SPARQL query direct als body van de request te sturen zonder speciale encodering. <strong>Het zou kunnen dat deze methode niet werkt op deze endpoint. Probeer een van de twee bovenstaande methoden eerst.</strong>
+          </p>
+          {{#let (get-code-snippet "vendor-sparql-api_request-ex-3.sparql") as |snippet|}}
+            {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
+            <CodeBlock @code={{snippet.source}} />
+          {{/let}}
+          <p>
+            Uit volledigheid ondersteunt de endpoint ook GET requests, waar de SPARQL query als URL parameter wordt meegegeven. Deze methode is echter niet aan te raden vanwege beperkingen op de lengte van de query.
+          </p>
+          <div class="u-spacer">
+            {{#let (get-code-snippet "vendor-sparql-api_request-ex-4.sparql") as |snippet|}}
+              {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
+              <CodeBlock @code={{snippet.source}} />
+            {{/let}}
+          </div>
+
+          <h2 class="h2">Uitloggen</h2>
+          <p>
+            Om de sessie af te sluiten volstaat het om een request, als methode <CodeInline>DELETE</CodeInline> met de sessie cookie, te sturen naar
+          </p>
+          <div class="u-spacer">
+            <CodeBlock>DELETE https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
+          </div>
+          <p class="u-spacer">
+            Het antwoord op deze request is, als uitloggen successvol was, leeg. De HTTP response code is dan <CodeInline>204 No Content</CodeInline>.
+          </p>
+
+          <h3 class="h3">Voorbeeld</h3>
+          <p>
+            Bij het gebruik van <CodeInline>cURL</CodeInline> ziet de request voor uitloggen er als volgt uit.
+          </p>
+          <div class="u-spacer">
+            {{#let (get-code-snippet "vendor-sparql-api_logout-ex.sh") as |snippet|}}
+              {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
+              <CodeBlock @code={{snippet.source}} />
+            {{/let}}
+          </div>
+
+          <h2 class="h2">Beschikbaarheid van gegevens</h2>
+          <p>
+            In de beginfase van de ontwikkeling van deze endpoint (november 2022) is de beschikbare hoeveelheid gegevens nog beperkt. Het gaat om de gegevens voorgesteld op onderstaand diagram voor Linked Data. In dit diagram zijn entiteiten voorgesteld met een cirkel, data properties met pijlen wijzend naar een rechthoek waar het datatype in vermeld staat en object properties met pijlen naar een nieuwe cirkel. Als er van een entiteit op het diagram geen eigenschappen bestaan zijn deze ook niet aanwezig in de data.
+          </p>
+          <div class="grid grid--is-stacked u-spacer">
+            <div class="col--1-1">
+              <div class="lightbox js-lightbox gallery">
+                <a data-lightbox-item class="gallery__item" href="assets/images/VendorAPIModel.svg" data-size="1123x794" itemprop="contentUrl">
+                  <figure>
+                    <img itemprop="thumbnail" src="assets/images/VendorAPIModel.svg" alt="Diagram van beschikbare gegevens" />
+                    <figcaption class="js-lightbox-caption lightbox-caption" itemprop="caption description">Diagram van Linked Data van beschikbare gegevens in het endpoint</figcaption>
+                  </figure>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="h2">Fouten</h2>
+          <p class="u-spacer--tiny">
+            Bij elk van bovenstaande soort request kunnen er fouten optreden. Een login kan falen vanwege foute combinatie van vendor URI en sleutel, een query kan falen vanwege syntax problemen met de query zelf of vanwege een fout opgestelde request, &hellip; In alle gevallen wordt er zo veel mogelijk aan gedaan om een waardevolle foutboodschap terug te geven in combinatie met een bijhorende HTTP (fout)code. In het geval van het versturen van queries kunnen foutberichten en foutcodes terugkomen die gegenereerd werden door de database zelf of van een tussenliggende service. Dit kan enige inconsistenties veroorzaken in de response. In het geval van de login en logout requests, fouten zitten verwerkt in de volgende JSON-LD context en worden ook op die manier geformatteerd als antwoord.
+          </p>
+          <SnippetToggle class="u-spacer" @snippetFilename="vendor-sparql-api_error-response-context.js" />
+
+          <h2 class="h2">Prefixes</h2>
+          <p>
+            Onderstaande tabel beschrijft de prefixes gebruikt in dit document en in de gegevens beschikbaar in het endpoint.
+          </p>
+          <div class="u-table-overflow">
+            <table class="data-table data-table--zebra">
+              <thead>
+                <tr>
+                  <th>Prefix</th>
+                  <th>URI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><CodeInline>rdf:</CodeInline></td>
+                  <td>http://www.w3.org/1999/02/22-rdf-syntax-ns</td>
+                </tr>
+                <tr>
+                  <td><CodeInline>xsd:</CodeInline></td>
+                  <td>http://www.w3.org/2001/XMLSchema#</td>
+                </tr>
+                <tr>
+                  <td><CodeInline>meb:</CodeInline></td>
+                  <td>http://rdf.myexperiment.org/ontologies/base/</td>
+                </tr>
+                <tr>
+                  <td><CodeInline>mu:</CodeInline></td>
+                  <td>http://mu.semte.ch/vocabularies/core/</td>
+                </tr>
+                <tr>
+                  <td><CodeInline>prov:</CodeInline></td>
+                  <td>http://www.w3.org/ns/prov#</td>
+                </tr>
+                <tr>
+                  <td><CodeInline>dct:</CodeInline></td>
+                  <td>http://purl.org/dc/terms/</td>
+                </tr>
+                <tr>
+                  <td><CodeInline>adms:</CodeInline></td>
+                  <td>http://www.w3.org/ns/adms#</td>
+                </tr>
+                <tr>
+                  <td><CodeInline>pav:</CodeInline></td>
+                  <td>http://purl.org/pav/</td>
+                </tr>
+                <tr>
+                  <td><CodeInline>nie:</CodeInline></td>
+                  <td>http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart</td>
+                </tr>
+                <tr>
+                  <td><CodeInline>nfo:</CodeInline></td>
+                  <td>http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</td>
+                </tr>
+                <tr>
+                  <td><CodeInline>ext:</CodeInline></td>
+                  <td>http://mu.semte.ch/vocabularies/ext/Vendor</td>
+                </tr>
+                <tr>
+                  <td><CodeInline>am:</CodeInline></td>
+                  <td>http://lblod.data.gift/vocabularies/automatische-melding/</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
