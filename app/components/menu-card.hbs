@@ -1,0 +1,55 @@
+<div class="au-o-grid__item au-u-1-3@medium au-u-1-2@small">
+<AuCard
+  @flex={{true}}
+  @textCenter={{false}}
+  @shadow={{true}}
+  @size="small"
+  @standOut={{false}}
+  @expandable={{false}}
+  @isExpanded={{true}}
+  @isOpenInitially={{true}}
+  @manualControl={{false}}
+  as |c|>
+  <c.header
+    @badgeIcon={{if @external "external" "book"}}
+    @badgeSkin="brand"
+    @badgeSize="default">
+    <AuHeading @level="2" @skin="4">
+      {{@title}}
+    </AuHeading>
+    <p>
+      {{@subtitle}}
+    </p>
+  </c.header>
+  <c.content>
+    <p>
+      {{@content}}
+    </p>
+  </c.content>
+  <c.footer class="au-u-text-right">
+    {{#if @external}}
+      <AuLinkExternal
+        href={{@href}}
+        @skin="button"
+        @icon="external"
+        @iconAlignment="right"
+        @hideText={{false}}
+        @width="default"
+        @active={{false}}>
+        Open externe documentatie
+      </AuLinkExternal>
+    {{else}}
+      <AuLink
+        @route={{@route}}
+        @skin="button"
+        @icon="chevron-right"
+        @iconAlignment="right"
+        @hideText={{false}}
+        @width="default"
+        @active={{false}}>
+        Open documentatie
+      </AuLink>
+    {{/if}}
+  </c.footer>
+</AuCard>
+</div>

@@ -1,131 +1,106 @@
-<div id="main" itemprop="mainContentOfPage" role="main" tabindex="-1" class="main-content">
-  <header class="content-header content-header--small content-header--half-image u-spacer">
-    <div class="content-header__wrapper">
-      <picture class="content-header__bg">
-        <img
-          sizes="50vw"
-          src="assets/images/loket-header-1600.jpg"
-          srcset="
-            assets/images/loket-header-320.jpg 320w,
-            assets/images/loket-header-1024.jpg 1024w,
-            assets/images/loket-header-1600.jpg 1600w"
-          alt=""
-          role="none"
-          title=""
-        >
-      </picture>
-      <div class="layout layout--wide">
-        <div class="content-header__content">
-          <div class="content-header__logo-wrapper">
-            <a href="#" class="content-header__entity-logo content-header__entity-logo--lowercase">
-              <span class="content-header__entity-logo__prefix">Vlaanderen</span>
-              <span class="content-header__entity-logo__title">is lokaal bestuur</span>
-            </a>
+<AuApp>
+  <AuBodyContainer
+    @scroll={{true}}>
+    <div class="au-d-component-block au-d-component-block--overflow">
+      <AuContentHeader
+        @titlePartOne="Vlaanderen"
+        @titlePartTwo="is lokaal bestuur"
+        @pictureSize="default">
+        <img sizes="50vw" src="assets/images/loket-header-1600.jpg" alt="Foto van een laptop met daarop het vlaanderen logo." />
+      </AuContentHeader>
+
+      <AuContent
+        class="center-children padded-children"
+        @skin="default">
+        <AuHeading
+          class="centered au-u-margin-top au-u-max-width-medium"
+          @level="1"
+          @skin="1">
+          Gelinkt Notuleren: Vendor en API integrator documentatie
+        </AuHeading>
+        <p class="au-u-para-lead centered au-u-max-width-medium">
+          Integreer met systemen van Gelinkt Notuleren. Deze documentatie wordt verder aangevuld naarmate er meer API's beschikbaar zijn, en naarmate er meer vereisten gedefinieerd worden.
+        </p>
+        <section class="au-u-background-gray-100 au-u-padding-top au-u-padding-bottom">
+          <div class="centered au-u-max-width-medium">
+          <AuHeading
+            @level="2"
+            @skin="2">
+            Beschikbare documentatie
+          </AuHeading>
+          <nav class="au-u-margin-top au-u-margin-bottom au-o-grid au-o-grid--small">
+            <MenuCard
+              @route="docs.submission-annotations"
+              @title="Annotaties voor automatische melding"
+              @content="Annotaties die gebruikt worden bij automatische meldingen van besluiten en documenten.">
+            </MenuCard>
+            <MenuCard
+              @route="docs.publication-annotations"
+              @title="Annotaties van besluiten en documenten"
+              @content="Annotaties die gebruikt worden bij de publicatie van besluiten en documenten opdat ze automatisch geharvest kunnen worden.">
+            </MenuCard>
+            <MenuCard
+              @route="docs.decision-attachments"
+              @title="Bijlagen bij een besluit annoteren"
+              @content="Beschrijft hoe verschillende soorten bijlagen bij een besluit geannoteerd kunnen worden.">
+            </MenuCard>
+            <MenuCard
+              @route="docs.submission-api"
+              @title="Meldingsplicht API"
+              @content="API om een nieuwe melding aan te maken in Loket voor Lokale Besturen op basis van een publicatie. Indien al de nodige velden ingevuld zijn, kan de melding automatisch verzonden worden.">
+            </MenuCard>
+            <MenuCard
+              @route="docs.vendor-sparql-api"
+              @title="Vendor SPARQL API"
+              @content="API voor het uitvoeren van SPARQL queries voor het opvragen van statusgegevens over eerder uitgevoerde meldingen in Loket.">
+            </MenuCard>
+            <MenuCard
+              @route="docs.rijksregisternummer-api"
+              @title="Persoon URI"
+              @subtitle="[BETA]"
+              @content="Bevragen van de URI van een persoon op basis van diens rijksregisternummer en bestuurseenheid.">
+            </MenuCard>
+            <MenuCard
+              @route="docs.sparql-endpoint"
+              @title="SPARQL endpoint"
+              @content="Endpoint om met SPARQL publieke data te bevragen. ">
+            </MenuCard>
+            <MenuCard
+              @href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/"
+              @title="Besluit Publicatie"
+              @content="Dit applicatieprofiel definieert een specificatie voor de publicatie van notulen en besluiten van bestuursorgaan."
+              @external={{true}}>
+            </MenuCard>
+            <MenuCard
+              @href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/"
+              @title="Mandatendatabank"
+              @content="Dit applicatieprofiel definieert een specificatie voor een gelinkte mandatendatabank op basis van gelinkte besluiten."
+              @external={{true}}>
+            </MenuCard>
+            <MenuCard
+              @route="docs.leidinggevenden"
+              @title="Leidinggevenden"
+              @content="De leidinggevenden databank volgt het applicatieprofiel mandatendatabank, maar werd uitgebreid met enkele subklassen en eigenschappen.">
+            </MenuCard>
+          </nav>
           </div>
-        </div>
-      </div>
+        </section>
+      </AuContent>
     </div>
-  </header>
-</div>
+  </AuBodyContainer>
 
-<section class="region">
-  <div class="layout layout--wide">
-    <div class="grid">
-      <div class="col--6-12 col--12-12--s">
-        <h1 class="h1">Gelinkt Notuleren: Vendor en API integrator documentatie</h1>
-        <p>Integreer met systemen van Gelinkt Notuleren. Deze documentatie wordt verder aangevuld naarmate er meer API's beschikbaar zijn, en naarmate er meer vereisten gedefinieerd worden.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="region region--alt">
-  <div class="layout layout--wide">
-    <h2 class="h2">Beschikbare documentatie</h2>
-    <ul class="grid grid--is-stacked js-equal-height-container">
-      <li class="col--4-12 col--1-2--s col--12-12--xs">
-        <LinkTo @route="docs.submission-annotations" class="doormat js-equal-height u-mobile-no-equal-height">
-          <div class="doormat__title">
-            Annotaties voor automatische melding
-          </div>
-          <span class="doormat__text">Annotaties die gebruikt worden bij automatische meldingen van besluiten en documenten.</span>
-        </LinkTo>
-      </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs">
-        <LinkTo @route="docs.publication-annotations" class="doormat js-equal-height u-mobile-no-equal-height">
-          <div class="doormat__title">
-            Annotaties van besluiten en documenten
-          </div>
-          <span class="doormat__text">Annotaties die gebruikt worden bij de publicatie van besluiten en documenten opdat ze automatisch geharvest kunnen worden.</span>
-        </LinkTo>
-      </li>
-            <li class="col--4-12 col--1-2--s col--12-12--xs">
-        <LinkTo @route="docs.decision-attachments" class="doormat js-equal-height u-mobile-no-equal-height">
-          <div class="doormat__title">
-            Bijlagen bij een besluit annoteren
-          </div>
-          <span class="doormat__text">Beschrijft hoe verschillende soorten bijlagen bij een besluit geannoteerd kunnen worden.</span>
-        </LinkTo>
-            </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs">
-        <LinkTo @route="docs.submission-api" class="doormat js-equal-height u-mobile-no-equal-height">
-          <div class="doormat__title">
-            Meldingsplicht API
-          </div>
-          <span class="doormat__text">API om een nieuwe melding aan te maken in Loket voor Lokale Besturen op basis van een publicatie. Indien al de nodige velden ingevuld zijn, kan de melding automatisch verzonden worden.</span>
-        </LinkTo>
-      </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs">
-        <LinkTo @route="docs.vendor-sparql-api" class="doormat js-equal-height u-mobile-no-equal-height">
-          <div class="doormat__title">
-            Vendor SPARQL API
-          </div>
-          <span class="doormat__text">API voor het uitvoeren van SPARQL queries voor het opvragen van statusgegevens over eerder uitgevoerde meldingen in Loket.</span>
-        </LinkTo>
-      </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs">
-        <LinkTo @route="docs.rijksregisternummer-api" class="doormat js-equal-height u-mobile-no-equal-height">
-          <div class="doormat__title">
-            Persoon URI [BETA]
-          </div>
-          <span class="doormat__text">Bevragen van de URI van een persoon op basis van diens rijksregisternummer en bestuurseenheid.</span>
-        </LinkTo>
-      </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs">
-        <LinkTo @route="docs.sparql-endpoint" class="doormat js-equal-height u-mobile-no-equal-height">
-          <div class="doormat__title">
-           SPARQL endpoint
-          </div>
-          <span class="doormat__text">Endpoint om met SPARQL publieke data te bevragen. </span>
-        </LinkTo>
-      </li>
-                  <li class="col--4-12 col--1-2--s col--12-12--xs">
-        <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/" target="_blank" rel="noopener noreferrer" class="doormat js-equal-height u-mobile-no-equal-height">
-          <div class="doormat__title">
-            Besluit Publicatie
-            <p><small class="uppercase text-fade"><i class="vi vi-external"></i> externe link</small></p>
-          </div>
-          <span class="doormat__text">Dit applicatieprofiel definieert een specificatie voor de publicatie van notulen en besluiten van bestuursorgaan.</span>
-        </a>
-      </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs">
-        <a href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/" target="_blank" rel="noopener noreferrer" class="doormat js-equal-height u-mobile-no-equal-height">
-          <div class="doormat__title">
-            Mandatendatabank
-            <p><small class="uppercase text-fade"><i class="vi vi-external"></i> externe link</small></p>
-          </div>
-          <span class="doormat__text">Dit applicatieprofiel definieert een specificatie voor een gelinkte mandatendatabank op basis van gelinkte besluiten.</span>
-        </a>
-      </li>
-      <li class="col--4-12 col--1-2--s col--12-12--xs">
-        <LinkTo @route="docs.leidinggevenden" class="doormat js-equal-height u-mobile-no-equal-height">
-          <div class="doormat__title">
-            Leidinggevenden
-          </div>
-          <span class="doormat__text">De leidinggevenden databank volgt het applicatieprofiel mandatendatabank, maar werd uitgebreid met enkele subklassen en eigenschappen.</span>
-        </LinkTo>
-      </li>
-
-    </ul>
-  </div>
-</section>
+	<section class="region">
+	  <div class="layout layout--wide" id="infoblock">
+	    <div class="layout__wrapper">
+	      <section class="info-block info-block--faq">
+	        <header class="info-block__header">
+	          <h1 class="label-above info-block__title">Vragen</h1>
+	        </header>
+	        <div class="info-block__content">
+	          <p>Voor meer informatie kan u ons contacteren op <a href="mailto:digitaalABB@vlaanderen.be">digitaalABB@vlaanderen.be</a></p>
+	        </div>
+	      </section>
+	    </div>
+	  </div>
+	</section>
+</AuApp>
