@@ -1,9 +1,11 @@
-.center-children .centered {
+.center-children .centered,
+.center-children-centered {
   margin-left: auto;
   margin-right: auto;
 }
 
-.padded-children .centered {
+.padded-children .centered,
+.padded-children-centered {
   padding-left: $au-unit;
   padding-right: $au-unit;
 }
