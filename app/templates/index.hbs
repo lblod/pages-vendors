@@ -1,14 +1,13 @@
 <AuApp>
   <AuBodyContainer
     @scroll={{true}}>
+    <AuContentHeader
+      @titlePartOne="Vlaanderen"
+      @titlePartTwo="is lokaal bestuur"
+      @pictureSize="default">
+      <img sizes="50vw" src="assets/images/loket-header-1600.jpg" alt="Foto van een laptop met daarop het vlaanderen logo." />
+    </AuContentHeader>
     <div class="au-d-component-block au-d-component-block--overflow">
-      <AuContentHeader
-        @titlePartOne="Vlaanderen"
-        @titlePartTwo="is lokaal bestuur"
-        @pictureSize="default">
-        <img sizes="50vw" src="assets/images/loket-header-1600.jpg" alt="Foto van een laptop met daarop het vlaanderen logo." />
-      </AuContentHeader>
-
       <AuContent
         class="center-children padded-children"
         @skin="default">
