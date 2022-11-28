@@ -87,20 +87,34 @@
         </section>
       </AuContent>
     </div>
+    <AuMainFooter>
+      <AuHeading @level="3" @skin="4">
+        Gelinkt Notuleren: Vendor en API integrator documentatie
+      </AuHeading>
+      <AuContent @skin="small">
+        <AuAlert
+          class="au-u-margin-top"
+          @title="Vragen?"
+          @skin="warning"
+          @icon="question-circle"
+          @size="default"
+          @closeable={{false}}>
+          <p>
+            Voor meer informatie kan u ons contacteren op <AuLinkExternal href="mailto:digitaalABB@vlaanderen.be" @icon="mail" @iconAlignment="left">digitaalABB@vlaanderen.be</AuLinkExternal>.
+          </p>
+        </AuAlert>
+        <p>
+          Uitgegeven door <AuLinkExternal class="au-c-link" href="https://www.vlaanderen.be/organisaties/administratieve-diensten-van-de-vlaamse-overheid/beleidsdomein-kanselarij-en-bestuur/agentschap-binnenlands-bestuur" @icon="external" @iconAlignment="left">Agentschap Binnenlands Bestuur</AuLinkExternal>
+        </p>
+        <ul class="au-c-list-horizontal">
+          <li class="au-c-list-horizontal__item">
+            <AuLinkExternal href="https://www.vlaanderen.be/over-vlaanderenbe/disclaimer" @skin="secondary" @icon="external" @iconAlignment="left">Disclaimer</AuLinkExternal>
+          </li>
+          <li class="au-c-list-horizontal__item">
+            <AuLinkExternal href="https://www.vlaanderen.be/over-vlaanderenbe/cookieverklaring-vlaanderenbe" @skin="secondary" @icon="external" @iconAlignment="left">Cookieverklaring</AuLinkExternal>
+          </li>
+        </ul>
+      </AuContent>
+    </AuMainFooter>
   </AuBodyContainer>
-
-	<section class="region">
-	  <div class="layout layout--wide" id="infoblock">
-	    <div class="layout__wrapper">
-	      <section class="info-block info-block--faq">
-	        <header class="info-block__header">
-	          <h1 class="label-above info-block__title">Vragen</h1>
-	        </header>
-	        <div class="info-block__content">
-	          <p>Voor meer informatie kan u ons contacteren op <a href="mailto:digitaalABB@vlaanderen.be">digitaalABB@vlaanderen.be</a></p>
-	        </div>
-	      </section>
-	    </div>
-	  </div>
-	</section>
 </AuApp>
