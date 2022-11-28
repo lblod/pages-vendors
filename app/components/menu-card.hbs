@@ -22,9 +22,11 @@
     </p>
   </c.header>
   <c.content>
-    <p>
-      {{@content}}
-    </p>
+    {{#if @fullSize}}
+      <p>
+        {{@content}}
+      </p>
+    {{/if}}
   </c.content>
   <c.footer class="au-u-text-right">
     {{#if @external}}

@@ -1,0 +1,65 @@
+<nav class="au-u-margin-top au-u-margin-bottom au-o-grid au-o-grid--small">
+  <MenuCard
+    @fullSize={{@fullSize}}
+    @route="docs.submission-annotations"
+    @title="Annotaties voor automatische melding"
+    @content="Annotaties die gebruikt worden bij automatische meldingen van besluiten en documenten.">
+  </MenuCard>
+  <MenuCard
+    @fullSize={{@fullSize}}
+    @route="docs.publication-annotations"
+    @title="Annotaties van besluiten en documenten"
+    @content="Annotaties die gebruikt worden bij de publicatie van besluiten en documenten opdat ze automatisch geharvest kunnen worden.">
+  </MenuCard>
+  <MenuCard
+    @fullSize={{@fullSize}}
+    @route="docs.decision-attachments"
+    @title="Bijlagen bij een besluit annoteren"
+    @content="Beschrijft hoe verschillende soorten bijlagen bij een besluit geannoteerd kunnen worden.">
+  </MenuCard>
+  <MenuCard
+    @fullSize={{@fullSize}}
+    @route="docs.submission-api"
+    @title="Meldingsplicht API"
+    @content="API om een nieuwe melding aan te maken in Loket voor Lokale Besturen op basis van een publicatie. Indien al de nodige velden ingevuld zijn, kan de melding automatisch verzonden worden.">
+  </MenuCard>
+  <MenuCard
+    @fullSize={{@fullSize}}
+    @route="docs.vendor-sparql-api"
+    @title="Vendor SPARQL API"
+    @content="API voor het uitvoeren van SPARQL queries voor het opvragen van statusgegevens over eerder uitgevoerde meldingen in Loket.">
+  </MenuCard>
+  <MenuCard
+    @fullSize={{@fullSize}}
+    @route="docs.rijksregisternummer-api"
+    @title="Persoon URI"
+    @subtitle="[BETA]"
+    @content="Bevragen van de URI van een persoon op basis van diens rijksregisternummer en bestuurseenheid.">
+  </MenuCard>
+  <MenuCard
+    @fullSize={{@fullSize}}
+    @route="docs.sparql-endpoint"
+    @title="SPARQL endpoint"
+    @content="Endpoint om met SPARQL publieke data te bevragen. ">
+  </MenuCard>
+  <MenuCard
+    @fullSize={{@fullSize}}
+    @href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/"
+    @title="Besluit Publicatie"
+    @content="Dit applicatieprofiel definieert een specificatie voor de publicatie van notulen en besluiten van bestuursorgaan."
+    @external={{true}}>
+  </MenuCard>
+  <MenuCard
+    @fullSize={{@fullSize}}
+    @href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/"
+    @title="Mandatendatabank"
+    @content="Dit applicatieprofiel definieert een specificatie voor een gelinkte mandatendatabank op basis van gelinkte besluiten."
+    @external={{true}}>
+  </MenuCard>
+  <MenuCard
+    @fullSize={{@fullSize}}
+    @route="docs.leidinggevenden"
+    @title="Leidinggevenden"
+    @content="De leidinggevenden databank volgt het applicatieprofiel mandatendatabank, maar werd uitgebreid met enkele subklassen en eigenschappen.">
+  </MenuCard>
+</nav>

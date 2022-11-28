@@ -16,90 +16,13 @@
           Terug naar overzicht
         </AuLink>
       </AuToolbar>
+
       <AuContent
-        class="au-u-margin-top center-children-centered padded-children-centered au-u-max-width-medium"
+        class="au-u-margin-top au-u-margin-bottom center-children-centered padded-children-centered au-u-max-width-medium"
         @skin="default">
         {{outlet}}
-        <section class="region region--alt">
-          <div class="layout layout--wide">
-            <h2 class="h2">Beschikbare documentatie</h2>
-            <ul class="grid grid--is-stacked js-equal-height-container">
-              <li class="col--4-12 col--1-2--s col--12-12--xs">
-                <LinkTo @route="docs.submission-annotations" class="doormat js-equal-height u-mobile-no-equal-height">
-                  <div class="doormat__title">
-                    Annotaties voor automatische melding
-                  </div>
-                </LinkTo>
-              </li>
-              <li class="col--4-12 col--1-2--s col--12-12--xs">
-                <LinkTo @route="docs.publication-annotations" class="doormat js-equal-height u-mobile-no-equal-height">
-                  <div class="doormat__title">
-                    Annotaties van besluiten en documenten
-                  </div>
-                </LinkTo>
-              </li>
-              <li class="col--4-12 col--1-2--s col--12-12--xs">
-                <LinkTo @route="docs.decision-attachments" class="doormat js-equal-height u-mobile-no-equal-height">
-                  <div class="doormat__title">
-                    Bijlagen bij een besluit annoteren
-                  </div>
-                </LinkTo>
-              </li>
-              <li class="col--4-12 col--1-2--s col--12-12--xs">
-                <LinkTo @route="docs.submission-api" class="doormat js-equal-height u-mobile-no-equal-height">
-                  <div class="doormat__title">
-                    Meldingsplicht API
-                  </div>
-                </LinkTo>
-              </li>
-              <li class="col--4-12 col--1-2--s col--12-12--xs">
-                <LinkTo @route="docs.vendor-sparql-api" class="doormat js-equal-height u-mobile-no-equal-height">
-                  <div class="doormat__title">
-                    Vendor SPARQL API
-                  </div>
-                </LinkTo>
-              </li>
-              <li class="col--4-12 col--1-2--s col--12-12--xs">
-                <LinkTo @route="docs.sparql-endpoint" class="doormat js-equal-height u-mobile-no-equal-height">
-                  <div class="doormat__title">
-                    SPARQL endpoint
-                  </div>
-                </LinkTo>
-              </li>
-              <li class="col--4-12 col--1-2--s col--12-12--xs">
-                <LinkTo @route="docs.rijksregisternummer-api" class="doormat js-equal-height u-mobile-no-equal-height">
-                  <div class="doormat__title">
-                    Persoon URI [BETA]
-                  </div>
-                </LinkTo>
-              </li>
-                    <li class="col--4-12 col--1-2--s col--12-12--xs">
-                <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/" target="_blank" rel="noopener noreferrer" class="doormat js-equal-height u-mobile-no-equal-height">
-                  <div class="doormat__title">
-                    Besluit Publicatie
-                    <p><small class="uppercase text-fade"><i class="vi vi-external"></i> externe link</small></p>
-                  </div>
-                </a>
-              </li>
-              <li class="col--4-12 col--1-2--s col--12-12--xs">
-                <a href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/" target="_blank" rel="noopener noreferrer" class="doormat js-equal-height u-mobile-no-equal-height">
-                  <div class="doormat__title">
-                    Mandatendatabank
-                    <p><small class="uppercase text-fade"><i class="vi vi-external"></i> externe link</small></p>
-                  </div>
-                </a>
-              </li>
-              <li class="col--4-12 col--1-2--s col--12-12--xs">
-                <LinkTo @route="docs.leidinggevenden" class="doormat js-equal-height u-mobile-no-equal-height">
-                  <div class="doormat__title">
-                    Leidinggevenden
-                  </div>
-                </LinkTo>
-              </li>
-            </ul>
-          </div>
-        </section>
       </AuContent>
+
       <AuToolbar
         @reverse={{false}}
         @border="top"
@@ -114,7 +37,18 @@
           Terug naar overzicht
         </AuLink>
       </AuToolbar>
+
+      <section class="au-u-background-gray-100 au-u-padding">
+        <AuHeading
+          @level="2"
+          @skin="2">
+          Beschikbare documentatie
+        </AuHeading>
+        <Menu @fullSize={{false}} />
+      </section>
+
       <Footer />
+
     </div>
   </AuBodyContainer>
 </AuApp>
