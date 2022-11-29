@@ -1,14 +1,26 @@
-<div ...attributes>
-  <AuButton @onClick={{this.toggleSnippetVisbility}}>
-    {{#if this.showSnippet}}
-      Verberg snippet
-    {{else}}
-      Laat snippet zien
-    {{/if}}
-  </AuButton>
-  {{#if this.showSnippet}}
+<AuCard
+  ...attributes
+  @flex={{false}}
+  @textCenter={{false}}
+  @shadow={{true}}
+  @size="small"
+  @standOut={{false}}
+  @expandable={{true}}
+  @isExpanded={{false}}
+  @isOpenInitially={{false}}
+  @manualControl={{false}}
+  as |c|>
+  <c.header
+    @badgeIcon=""
+    @badgeSkin=""
+    @badgeSize="">
+    <AuHeading @level="4" @skin="functional">
+      Toon/verberg het code snippet
+    </AuHeading>
+  </c.header>
+  <c.content>
     {{#let (get-code-snippet @snippetFilename) as |snippet|}}
       <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
     {{/let}}
-  {{/if}}
-</div>
+  </c.content>
+</AuCard>
