@@ -39,39 +39,29 @@
           De volgende sectie bevat een aantal voorbeelden, specifiek geralateerd aan het model.
           <h3 class="h3">Oplijsten bestuurseenheden en hun classificatie</h3>
           <p class="u-spacer">
-            {{#let (get-code-snippet "sparql-endpoint-voorbeeld-1.sparql") as |snippet|}}
-              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-            {{/let}}
+            <Snippet @snippetFilename="sparql-endpoint-voorbeeld-1.sparql" />
           </p>
 
           <h3 class="h3">Lijst alle bestuursorganen (in bestuursperiode op)</h3>
           <p class="u-spacer">
             De lijst van alle bestuursorganen (in bestuursperiode) wordt hier opgelijst, alsook hun naam, start en eind datum.
-            {{#let (get-code-snippet "sparql-endpoint-voorbeeld-2.sparql") as |snippet|}}
-              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-            {{/let}}
+            <Snippet @snippetFilename="sparql-endpoint-voorbeeld-2.sparql" />
           </p>
 
           <h3 class="h3">Lijst van alle mandaten, en de bijbehorende personen</h3>
           <p class="u-spacer">
-            {{#let (get-code-snippet "sparql-endpoint-voorbeeld-3.sparql") as |snippet|}}
-              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-            {{/let}}
+            <Snippet @snippetFilename="sparql-endpoint-voorbeeld-3.sparql" />
           </p>
 
           <h3 class="h3">Overzicht van leidinggevenden per bestuurseenheid</h3>
           <p class="u-spacer">
-            {{#let (get-code-snippet "sparql-endpoint-voorbeeld-4.sparql") as |snippet|}}
-              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-            {{/let}}
+            <Snippet @snippetFilename="sparql-endpoint-voorbeeld-4.sparql" />
           </p>
 
           <h3 class="h3">Een vraag over de Burgemeester van Antwerpen</h3>
           Gegeven de Burgemeester van Antwerpen voor bestuursperiode startende op 2019, welke andere mandaten vinden we terug voor deze persoon?
           <p class="u-spacer">
-            {{#let (get-code-snippet "sparql-endpoint-voorbeeld-5.sparql") as |snippet|}}
-              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-            {{/let}}
+            <Snippet @snippetFilename="sparql-endpoint-voorbeeld-5.sparql" />
           </p>
         </article>
       </div>

@@ -22,16 +22,12 @@
           <h3 class="h3">Kortste voorbeeld</h3>
           <p>
             Een kort voorbeeld van de API:
-            {{#let (get-code-snippet "rrn-quick-example.js") as |snippet|}}
-              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-            {{/let}}
+            <Snippet @snippetFilename="rrn-quick-example.js" />
           </p>
           <p>
             Een succesvol antwoord heeft de vorm van:
 
-            {{#let (get-code-snippet "rrn-quick-example-response.js") as |snippet|}}
-              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-            {{/let}}
+            <Snippet @snippetFilename="rrn-quick-example-response.js" />
           </p>
           Noteer: het bovenstaande voorbeeld gebruikt bewust een niet bestaand rijksregisternummer.
           <p>

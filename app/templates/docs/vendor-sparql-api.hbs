@@ -17,9 +17,7 @@
 <p>
   De JSON-LD body ziet er minimaal uit zoals het volgende:
 </p>
-{{#let (get-code-snippet "vendor-sparql-api_login-request-body.json") as |snippet|}}
-  <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-{{/let}}
+<Snippet @snippetFilename="vendor-sparql-api_login-request-body.json" />
 <p>
   In het voorbeeld hierboven staat de <CodeInline @code="organisation" /> voor de URI van de bestuurseenheid waar de vendor garant voor staat. <CodeInline @code="publisher.uri" /> staat voor de URI van de vendor, en <CodeInline @code="publisher.key" /> staat voor de geheime sleutel die eerder werd verkregen. Het aanvragen van een publisher URI en geheime sleutel (key) staan beschreven in de sectie &ldquo;Authenticatie&rdquo; op de pagina over <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo>.
 </p>
@@ -41,11 +39,7 @@
 <p>
   Als voorbeeld staat hieronder hoe een login kan worden uitgevoerd met <CodeInline @code="cURL" />. Het ontvangen en verder weer versturen van cookies is noodzakelijk. Daarom wordt de cookie engine ingeschakeld met de <CodeInline @code="-b" /> en <CodeInline @code="-c" /> flags die verwijzen naar een bestand waar de cookies worden opgeslagen.
 </p>
-<div>
-  {{#let (get-code-snippet "vendor-sparql-api_login-ex.sh") as |snippet|}}
-    <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-  {{/let}}
-</div>
+<Snippet @snippetFilename="vendor-sparql-api_login-ex.sh" />
 
 <AuHeading @level="2" @skin="2">Versturen van queries</AuHeading>
 <p>
@@ -63,17 +57,11 @@
 <p>
   Hieronder staan een aantal voorbeelden van SPARQL queries. Als eerste voorbeeld wordt de URI gebruikt om alle gegevens van een melding op te vragen.
 </p>
-{{#let (get-code-snippet "vendor-sparql-api_query-ex-1.sparql") as |snippet|}}
-  <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-{{/let}}
+<Snippet @snippetFilename="vendor-sparql-api_query-ex-1.sparql" />
 <p>
   Met het volgende voorbeeld worden er 100 eerder verrrichtte meldingen opgevraagd. Met de verkregen URI's kan men queries gelijk de bovenstaande opstellen.
 </p>
-<div>
-  {{#let (get-code-snippet "vendor-sparql-api_query-ex-2.sparql") as |snippet|}}
-    <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-  {{/let}}
-</div>
+<Snippet @snippetFilename="vendor-sparql-api_query-ex-2.sparql" />
 
 <AuHeading @level="3" @skin="3">Voorbeelden van requests</AuHeading>
 <p>
@@ -82,29 +70,19 @@
 <p>
   De meest gebruikte manier: een POST request met de query als body, ge&euml;ncodeerd zoals een formulier veld.
 </p>
-{{#let (get-code-snippet "vendor-sparql-api_request-ex-1.sh") as |snippet|}}
-  <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-{{/let}}
+<Snippet @snippetFilename="vendor-sparql-api_request-ex-1.sh" />
 <p>
   Het volgende voorbeeld is hetzelfde als het vorige, maar voor de encodering is hier de typische JavaScript <CodeInline @code="encodeURIComponent()" /> gebruikt.
 </p>
-{{#let (get-code-snippet "vendor-sparql-api_request-ex-2.sh") as |snippet|}}
-  <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-{{/let}}
+<Snippet @snippetFilename="vendor-sparql-api_request-ex-2.sh" />
 <p>
   Het is ook mogelijk om, via de juiste header, de SPARQL query direct als body van de request te sturen zonder speciale encodering. <strong>Het zou kunnen dat deze methode niet werkt op deze endpoint. Probeer een van de twee bovenstaande methoden eerst.</strong>
 </p>
-{{#let (get-code-snippet "vendor-sparql-api_request-ex-3.sh") as |snippet|}}
-  <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-{{/let}}
+<Snippet @snippetFilename="vendor-sparql-api_request-ex-3.sh" />
 <p>
   Uit volledigheid ondersteunt de endpoint ook GET requests, waar de SPARQL query als URL parameter wordt meegegeven. Deze methode is echter niet aan te raden vanwege beperkingen op de lengte van de query.
 </p>
-<div>
-  {{#let (get-code-snippet "vendor-sparql-api_request-ex-4.sh") as |snippet|}}
-    <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-  {{/let}}
-</div>
+<Snippet @snippetFilename="vendor-sparql-api_request-ex-4.sh" />
 
 <AuHeading @level="2" @skin="2">Uitloggen</AuHeading>
 <p>
@@ -121,11 +99,7 @@
 <p>
   Bij het gebruik van <CodeInline @code="cURL" /> ziet de request voor uitloggen er als volgt uit.
 </p>
-<div>
-  {{#let (get-code-snippet "vendor-sparql-api_logout-ex.sh") as |snippet|}}
-    <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-  {{/let}}
-</div>
+<Snippet @snippetFilename="vendor-sparql-api_logout-ex.sh" />
 
 <AuHeading @level="2" @skin="2">Beschikbaarheid van gegevens</AuHeading>
 <p>

@@ -17,9 +17,7 @@
 
             met JSON-LD request body:
 
-            {{#let (get-code-snippet "reporting-obligation-quick-example.js") as |snippet|}}
-              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-            {{/let}}
+            <Snippet @snippetFilename="reporting-obligation-quick-example.js" />
             <p  class="small text-fade u-spacer">
               Bekijk welke annotaties gebruikt kunnen worden in de gepubliceerde pagina: <LinkTo @route="docs.submission-annotations">annotaties&nbsp;voor&nbsp;automatische&nbsp;melding</LinkTo>.
             </p>
@@ -72,18 +70,14 @@
             </table>
 
             Voorbeeld:
-            {{#let (get-code-snippet "reporting-obligation-optioneel-meegeven-draft-status.js") as |snippet|}}
-              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-            {{/let}}
+            <Snippet @snippetFilename="reporting-obligation-optioneel-meegeven-draft-status.js" />
           </p>
 
           <h3 class="h3">JSON-LD context</h3>
           <p class="u-spacer">
             Elk van voorgaande voorbeelden heeft een impliciete JSON-LD context.  Deze context kan expliciet in de calls meegegeven worden, of een alternatieve context kan meegegeven worden. Op deze manier blijft de API maximaal flexibel.
             Deze context wordt ter beschikking gesteld op <a href="https://lblod.data.gift/contexts/automatische-melding/v1/context.json">https://lblod.data.gift/contexts/automatische-melding/v1/context.json</a>.
-            {{#let (get-code-snippet "reporting-obligation-json-ld-context.js") as |snippet|}}
-              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-            {{/let}}
+            <Snippet @snippetFilename="reporting-obligation-json-ld-context.js" />
           </p>
         </article>
 
@@ -137,16 +131,12 @@
           <h4 class="h4">Basic Authentication</h4>
           <p class="u-spacer">
             De key 'authentication' wordt toegevoegd als volgt aan het request:
-            {{#let (get-code-snippet "submission-basic-auth.js") as |snippet|}}
-              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-            {{/let}}
+            <Snippet @snippetFilename="submission-basic-auth.js" />
           </p>
           <h4 class="h4">OAuth 2.0 Client Credentials Grant</h4>
           <p class="u-spacer">
             De key 'authentication' wordt toegevoegd als volgt aan het request:
-            {{#let (get-code-snippet "submission-oauth2-client-credentials.js") as |snippet|}}
-              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-            {{/let}}
+            <Snippet @snippetFilename="submission-oauth2-client-credentials.js" />
             De key 'resource' is hier optioneel en kan gebruikt worden om verdere beperkingen op te leggen over de op te halen resource, conform:  <a href="https://datatracker.ietf.org/doc/html/rfc8707">Resource Indicators</a>.
             Noteer, op OAuth 2.0 zijn er veel variaties mogelijk, contacteer ons gerust indien er uitbreidingen gewenst zijn.
           </p>
@@ -303,9 +293,7 @@
           <h4 class="h4">RDF-snippet</h4>
           <p class="u-spacer">
             De volgende snippet beschrijft hoe het er kan uitzien in RDF-formaat.
-            {{#let (get-code-snippet "example-notification-rule.ttl") as |snippet|}}
-              <CodeBlock @language="turtle" @code={{snippet.source}} />
-            {{/let}}
+            <Snippet @snippetFilename="example-notification-rule.turtle" />
             Noteer: het gaat hier om een illustratief voorbeeld.
           </p>
           <h4 class="h4">SPARQL-query</h4>
@@ -314,9 +302,7 @@
             <LinkTo @route="docs.sparql-endpoint">centrale-vindplaats</LinkTo> bevraagd kan worden om meer informatie te vinden over de regels.
             <br>
             Hier worden alle meldingsplichtige besluiten opgelijst voor een Gemeente.
-            {{#let (get-code-snippet "example-notification-rule.sparql") as |snippet|}}
-              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-            {{/let}}
+            <Snippet @snippetFilename="example-notification-rule.sparql" />
           </p>
         </article>
         {{outlet}}
