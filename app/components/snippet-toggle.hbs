@@ -19,8 +19,6 @@
     </AuHeading>
   </c.header>
   <c.content>
-    {{#let (get-code-snippet @snippetFilename) as |snippet|}}
-      <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
-    {{/let}}
+    <Snippet @snippetFilename={{@snippetFilename}} />
   </c.content>
 </AuCard>
