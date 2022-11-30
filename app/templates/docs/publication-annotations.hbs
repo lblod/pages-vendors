@@ -1,111 +1,97 @@
 <AuHeading @level="1" @skin="1">Annoteren van publicaties</AuHeading>
 <p>
-  Lokale besturen publiceren documenten en beslissingen zoals agenda's, besluitenlijsten, notulen, enz. Opdat de kennis automatisch door een machine uit deze documenten ge&euml;xtraheerd kan worden, moeten ze op een correcte wijze
-  geannoteerd te worden. Deze annotaties gebeuren volgens <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/" target="_blank" rel="noopener noreferrer">het Besluit Publicatie applicatieprofiel</a> en de <LinkTo @route="docs.submission-annotations">annotaties voor automatische melding</LinkTo>. Dit document beschrijft de annotaties die gebruikt worden om gepubliceerde documenten en overzichtpagina's te annoteren.
+  Lokale besturen publiceren documenten en beslissingen zoals agenda's, besluitenlijsten, notulen, enz. Opdat de kennis automatisch door een machine uit deze documenten ge&euml;xtraheerd kan worden, moeten ze op een correcte wijze geannoteerd te worden. Deze annotaties gebeuren volgens <AuLinkExternal href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/">het Besluit Publicatie applicatieprofiel</AuLinkExternal> en de <AuLink @route="docs.submission-annotations">annotaties voor automatische melding</AuLink>. Dit document beschrijft de annotaties die gebruikt worden om gepubliceerde documenten en overzichtpagina's te annoteren.
 </p>
-<section class="region">
-  <div class="layout layout--wide">
-    <div class="grid">
-      <div class="col--8-12 col--1-1--s">
-        <h2 class="h2" id="annotatie-publicaties">Annotatie van gepubliceerde documenten</h2>
-        <article class="u-spacer--large">
-          <h3 class="h3" id="annotatie-publicaties-document-types">Document en besluit types</h3>
-          <p>
-            Ieder document dat gepubliceerd wordt is een <a href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/#Document">foaf:Document</a>. Ieder document heeft een type dat geannoteerd kan worden met het <code>typeof</code> attribuut. De gekende besluit- en document types zijn gepubliceerd als codelijst op <a href="https://data.vlaanderen.be">data.vlaanderen.be</a>:
-          </p>
-          <table class="data-table u-spacer">
-            <thead>
-              <tr>
-                <th>Codelijst</th>
-                <th>URL</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Besluit type</td>
-                <td><a href="https://data.vlaanderen.be/doc/conceptscheme/BesluitType">https://data.vlaanderen.be/doc/conceptscheme/BesluitType</a></td>
-              </tr>
-              <tr>
-                <td>Document type</td>
-                <td><a href="https://data.vlaanderen.be/doc/conceptscheme/BesluitDocumentType">https://data.vlaanderen.be/doc/conceptscheme/BesluitDocumentType</a></td>
-              </tr>
-            </tbody>
-          </table>
 
-          <h4 class="h4">Voorbeeld</h4>
-          <p class="u-spacer">
-            Via RDFa annotaties kan dit als volgt weergegeven worden:
-            <Snippet @snippetFilename="publication-document-with-type.html" />
-          </p>
-          <p class="u-spacer">
-            Annotaties van de overige types van besluiten en documenten zijn analoog aan bovenstaand voorbeeld van een agenda.
-          </p>
+<AuHeading @level="2" @skin="2" id="annotatie-publicaties">Annotatie van gepubliceerde documenten</AuHeading>
+<AuHeading @level="3" @skin="3" id="annotatie-publicaties-document-types">Document en besluit types</AuHeading>
+<p>
+  Ieder document dat gepubliceerd wordt is een <AuLinkExternal href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/#Document">foaf:Document</AuLinkExternal>. Ieder document heeft een type dat geannoteerd kan worden met het <CodeInline @code="typeof" /> attribuut. De gekende besluit- en document types zijn gepubliceerd als codelijst op <AuLinkExternal href="https://data.vlaanderen.be">data.vlaanderen.be</AuLinkExternal>:
+</p>
+<AuTable>
+  <:header>
+    <tr>
+      <th>Codelijst</th>
+      <th>URL</th>
+    </tr>
+  </:header>
+  <:body>
+    <tr>
+      <td>Besluit type</td>
+      <td>
+        <AuLinkExternal href="https://data.vlaanderen.be/doc/conceptscheme/BesluitType">https://data.vlaanderen.be/doc/conceptscheme/BesluitType</AuLinkExternal>
+      </td>
+    </tr>
+    <tr>
+      <td>Document type</td>
+      <td>
+        <AuLinkExternal href="https://data.vlaanderen.be/doc/conceptscheme/BesluitDocumentType">https://data.vlaanderen.be/doc/conceptscheme/BesluitDocumentType</AuLinkExternal>
+      </td>
+    </tr>
+  </:body>
+</AuTable>
 
-          <h3 class="h3" id="document-types-zitting">Annotatie van de relatie naar een zitting</h3>
-          <p class="u-spacer">
-            Ieder document dat gepubliceerd wordt, moet via een annotatie gerelateerd zijn aan een zitting. Voor documenten dat geen besluit zijn, kunnen volgende predicaten gebruikt worden om ze aan een zitting te relateren:
-          </p>
-          <table class="data-table u-spacer">
-            <thead>
-              <tr>
-                <th>Document type</th>
-                <th>Predicaat om te relateren aan zitting</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Agenda</td>
-                <td>besluit:heeftAgenda</td>
-              </tr>
-              <tr>
-                <td>Besluitenlijst</td>
-                <td>besluit:heeftBesluitenlijst</td>
-              </tr>
-              <tr>
-                <td>Uittreksel</td>
-                <td>besluit:heeftUittreksel</td>
-              </tr>
-              <tr>
-                <td>Notulen</td>
-                <td>besluit:heeftNotulen</td>
-              </tr>
-            </tbody>
-          </table>
-          <p class="u-spacer">
-            Dit kan op 2 manieren gebeuren:
-            <ol class="bullet-list">
-              <li class="bullet-list__item">Op de pagina met het gepubliceerde document zelf</li>
-              <li class="bullet-list__item">Op een andere pagina met een link naar het gepubliceerde document</li>
-            </ol>
-          </p>
-          <h4 class="h4" id="annotatie-publicaties-document-types-zitting">Zitting annoteren op de pagina met het gepubliceerde document</h4>
-          <p class="u-spacer">
-            De relatie tussen een zitting en het gepubliceerde document kan als volgt op &eacute;&eacute;n pagina geannoteerd worden:
-            <Snippet @snippetFilename="publication-document-to-zitting-relation-one-page.html" />
-          </p>
-          <h4 class="h4">Zitting annoteren met een link naar het gepubliceerde document</h4>
-          <p class="u-spacer">
-            De relatie tussen een zitting en een gepubliceerd document kan ook op een andere pagina dan die van het gepubliceerde document geannoteerd worden.
-            <Snippet @snippetFilename="publication-document-to-zitting-relation-with-hyperlink.html" />
-          </p>
-          <div class="u-hr"></div>
-        </article>
+<AuHeading @level="4" @skin="4">Voorbeeld</AuHeading>
+<p>
+  Via RDFa annotaties kan dit als volgt weergegeven worden:
+</p>
+<Snippet @snippetFilename="publication-document-with-type.html" />
+<p>
+  Annotaties van de overige types van besluiten en documenten zijn analoog aan bovenstaand voorbeeld van een agenda.
+</p>
 
-        <article class="u-spacer--large">
-          <h2 class="h2" id="annotatie-overzicht">Annotatie van overzichtspagina's</h2>
-          <p>
-            De URLs die ingestuurd worden bevatten niet altijd de geannoteerde documenten. Vaak bevat de ingestuurde URL een of meerdere links naar pagina's met geannoteerde documenten. Denk bijvoorbeeld aan een overzichtspagina waarop alle
-            zittingen van de gemeenteraad opgelijst worden. Om de navigatie naar relevante pagina's met RDFa kennis te faciliteren, kunnen hyperlinks met een specifieke property <code>http://lblod.data.gift/vocabularies/besluit/linkToPublication</code>
-            geannoteerd worden waardoor de Besluit Publicatie harvester ook deze gelinkte pagina's zal harvesten om er de nodige kennis uit te extraheren.
-          </p>
-          <p class="u-spacer">
-            <Snippet @snippetFilename="publication-document-link-to-publication.html" />
-          </p>
-        </article>
+<AuHeading @level="3" @skin="3" id="document-types-zitting">Annotatie van de relatie naar een zitting</AuHeading>
+<p>
+  Ieder document dat gepubliceerd wordt, moet via een annotatie gerelateerd zijn aan een zitting. Voor documenten dat geen besluit zijn, kunnen volgende predicaten gebruikt worden om ze aan een zitting te relateren:
+</p>
+<AuTable>
+  <:header>
+    <tr>
+      <th>Document type</th>
+      <th>Predicaat om te relateren aan zitting</th>
+    </tr>
+  </:header>
+  <:body>
+    <tr>
+      <td>Agenda</td>
+      <td><CodeInline @code="besluit:heeftAgenda" /></td>
+    </tr>
+    <tr>
+      <td>Besluitenlijst</td>
+      <td><CodeInline @code="besluit:heeftBesluitenlijst" /></td>
+    </tr>
+    <tr>
+      <td>Uittreksel</td>
+      <td><CodeInline @code="besluit:heeftUittreksel" /></td>
+    </tr>
+    <tr>
+      <td>Notulen</td>
+      <td><CodeInline @code="besluit:heeftNotulen" /></td>
+    </tr>
+  </:body>
+</AuTable>
+<p>
+  Dit kan op 2 manieren gebeuren:
+</p>
+<ul>
+  <li>Op de pagina met het gepubliceerde document zelf</li>
+  <li>Op een andere pagina met een link naar het gepubliceerde document</li>
+</ul>
 
-        {{outlet}}
-      </div>
-    </div>
-  </div>
-</section>
-{{outlet}}
+<AuHeading @level="4" @skin="4" id="annotatie-publicaties-document-types-zitting">Zitting annoteren op de pagina met het gepubliceerde document</AuHeading>
+<p>
+  De relatie tussen een zitting en het gepubliceerde document kan als volgt op &eacute;&eacute;n pagina geannoteerd worden:
+  <Snippet @snippetFilename="publication-document-to-zitting-relation-one-page.html" />
+</p>
+
+<AuHeading @level="4" @skin="4">Zitting annoteren met een link naar het gepubliceerde document</AuHeading>
+<p>
+  De relatie tussen een zitting en een gepubliceerd document kan ook op een andere pagina dan die van het gepubliceerde document geannoteerd worden.
+  <Snippet @snippetFilename="publication-document-to-zitting-relation-with-hyperlink.html" />
+</p>
+
+<AuHeading @level="2" @skin="2" id="annotatie-overzicht">Annotatie van overzichtspagina's</AuHeading>
+<p>
+  De URLs die ingestuurd worden bevatten niet altijd de geannoteerde documenten. Vaak bevat de ingestuurde URL een of meerdere links naar pagina's met geannoteerde documenten. Denk bijvoorbeeld aan een overzichtspagina waarop alle zittingen van de gemeenteraad opgelijst worden. Om de navigatie naar relevante pagina's met RDFa kennis te faciliteren, kunnen hyperlinks met een specifieke property <CodeInline @code="http://lblod.data.gift/vocabularies/besluit/linkToPublication" /> geannoteerd worden waardoor de Besluit Publicatie harvester ook deze gelinkte pagina's zal harvesten om er de nodige kennis uit te extraheren.
+</p>
+<Snippet @snippetFilename="publication-document-link-to-publication.html" />

@@ -3,38 +3,42 @@
   Dit document beschrijft hoe verschillende soorten bijlagen bij een besluit geannoteerd kunnen worden. Er wordt extra aandacht besteed aan reglementaire bijlagen zoals bijvoorbeeld een subsidieregelement of aanvullend wegreglement.
 </p>
 
-<section class="region">
-  <div class="layout layout--wide">
-    <div class="grid">
-      <div class="col--8-12 col--1-1--s">
-        <article class="u-spacer--large">
-          <h2 class="h2">Eenvoudige bijlagen</h2>
-          <p class="u-spacer">
-            Het applicatieprofiel besluit-publicatie voorziet de relatie <a href="http://data.europa.eu/eli/ontology#related_to" target="_blank" rel="noopener noreferrer">eli:related_to</a> voor verwijzingen naar bijlagen.</p>
-          <p class="u-spacer">In het onderstaande voorbeeld wordt gelinkt een pdf bijlage.</p>
-          <Snippet @snippetFilename="example-besluit-met-pdf-bijlage.html" />
-        </article>
-        <article class="u-spacer--large">
-          <h2 class="h2">Bijlagen die deel uitmaken van het besluit</h2>
-          <p class="u-spacer">Indien een bijlage (juridisch) kan worden aanzien als zijnde een onderdeel van het besluit worden de annotaties van de eenvoudige bijlage aangevuld om aan te duiden dat het gaat om een document onderdeel. Het applicatieprofiel besluit-publicatie voorziet hiervoor de relatie <a href="http://purl.org/dc/terms/isPartOf" target="_blank" rel="noopener noreferrer">dct:isPartOf</a> van het onderdeel naar het besluit.</p>
-          <p class="u-spacer"><strong>Opmerking:</strong> In het voorbeeld maken we gebruik van het html atribuut "rev" om deze relatie in de omgekeerde richting op te geven.</p>
-          <Snippet @snippetFilename="example-besluit-met-pdf-bijlage-als-onderdeel.html" />
-        </article>
-        <article class="u-spacer--large">
-          <h2 class="h2">Een besluit als bijlage</h2>
-          <p class="u-spacer">
-            Sommige bijlagen zijn besluiten op zich, het gaat dan voornamelijk om reglementen zoals het huishoudelijk reglement, subsdiereglementen, aanvullende verkeersreglementen, etc. Deze bijlagen dienen geannoteerd te worden als een besluit en kunnen ofwel opgenomen worden als een tweede besluit in de publicatie (inline bijlage) of als een verwijzing naar een geannoteerde publicatie.</p>
-            <h3 class="h3">Inline besluit als bijlage</h3>
-            <p class="u-spacer">In het onderstaande voorbeeld wordt een subsidiereglement goedgekeurd, het reglement wordt als tweede besluit opgenomen in de behandeling van het agendapunt.</p>
-            <ul>
-              <li>Er wordt gebruikt gemaakt van de relatie prov:generated tussen de behandeling en de twee besluiten.</li>
-              <li>Met de relatie eli:related_to wordt aangegeven dat het subsidiereglement een bijlage is van het goedkeuringsbesluit</li>
-              <li>Met de relatie dct:isPartOf wordt aangegeven dat het subsidiereglement kan worden aanzien als zijnde een onderdeel van het eerste besluit</li>
-            </ul>
+<AuHeading @level="2" @skin="2">Eenvoudige bijlagen</AuHeading>
+<p>
+  Het applicatieprofiel besluit-publicatie voorziet de relatie <AuLinkExternal href="http://data.europa.eu/eli/ontology#related_to">eli:related_to</AuLinkExternal> voor verwijzingen naar bijlagen.
+</p>
+<p>
+  In het onderstaande voorbeeld wordt gelinkt een pdf bijlage.
+</p>
+<Snippet @snippetFilename="example-besluit-met-pdf-bijlage.html" />
 
-            <Snippet @snippetFilename="example-besluit-met-geannoteerde-bijlage.html" />
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
+<AuHeading @level="2" @skin="2">Bijlagen die deel uitmaken van het besluit</AuHeading>
+<p>
+  Indien een bijlage (juridisch) kan worden aanzien als zijnde een onderdeel van het besluit worden de annotaties van de eenvoudige bijlage aangevuld om aan te duiden dat het gaat om een document onderdeel. Het applicatieprofiel besluit-publicatie voorziet hiervoor de relatie <AuLinkExternal href="http://purl.org/dc/terms/isPartOf">dct:isPartOf</AuLinkExternal> van het onderdeel naar het besluit.
+</p>
+<p>
+  <strong>Opmerking:</strong> In het voorbeeld maken we gebruik van het html atribuut "rev" om deze relatie in de omgekeerde richting op te geven.
+</p>
+<Snippet @snippetFilename="example-besluit-met-pdf-bijlage-als-onderdeel.html" />
+
+<AuHeading @level="2" @skin="2">Een besluit als bijlage</AuHeading>
+<p>
+  Sommige bijlagen zijn besluiten op zich, het gaat dan voornamelijk om reglementen zoals het huishoudelijk reglement, subsdiereglementen, aanvullende verkeersreglementen, etc. Deze bijlagen dienen geannoteerd te worden als een besluit en kunnen ofwel opgenomen worden als een tweede besluit in de publicatie (inline bijlage) of als een verwijzing naar een geannoteerde publicatie.
+</p>
+
+<AuHeading @level="3" @skin="3">Inline besluit als bijlage</AuHeading>
+<p>
+  In het onderstaande voorbeeld wordt een subsidiereglement goedgekeurd, het reglement wordt als tweede besluit opgenomen in de behandeling van het agendapunt.
+</p>
+<ul>
+  <li>
+    Er wordt gebruikt gemaakt van de relatie <CodeInline @code="prov:generated" /> tussen de behandeling en de twee besluiten.
+  </li>
+  <li>
+    Met de relatie <CodeInline @code="eli:related_to" /> wordt aangegeven dat het subsidiereglement een bijlage is van het goedkeuringsbesluit
+  </li>
+  <li>
+    Met de relatie <CodeInline @code="dct:isPartOf" /> wordt aangegeven dat het subsidiereglement kan worden aanzien als zijnde een onderdeel van het eerste besluit
+  </li>
+</ul>
+<Snippet @snippetFilename="example-besluit-met-geannoteerde-bijlage.html" />
