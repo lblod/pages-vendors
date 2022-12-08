@@ -2,9 +2,11 @@
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+    'ember-prism': {
+      components: ['javascript', 'json', 'bash', 'turtle', 'sparql'],
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
@@ -20,12 +22,5 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  //return app.toTree();
-  const Webpack = require('@embroider/webpack').Webpack;
-  return require('@embroider/compat').compatBuild(app, Webpack, {
-    staticAddonTrees: true,
-    staticAddonTestSupportTrees: true,
-    staticHelpers: true,
-    staticComponents: true
-  });
+  return app.toTree();
 };

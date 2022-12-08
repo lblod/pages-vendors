@@ -21,38 +21,37 @@
           <p>
             De API voor inloggen is gelijkaardig aan hoe een melding wordt ingestuurd: volgens een request met authenticatie door middel van vendor URI, sleutel en de URI van de organisatie in een JSON-LD body naar
           </p>
-          <CodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login</CodeBlock>
+          <CodeBlock @code="POST https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login" />
           <p>
             De JSON-LD body ziet er minimaal uit zoals het volgende:
           </p>
-          {{#let (get-code-snippet "vendor-sparql-api_login-request-body.js") as |snippet|}}
+          {{#let (get-code-snippet "vendor-sparql-api_login-request-body.json") as |snippet|}}
             <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
           {{/let}}
           <p class="u-spacer">
-            In het voorbeeld hierboven staat de <CodeInline>organisation</CodeInline> voor de URI van de bestuurseenheid waar de vendor garant voor staat. <CodeInline>publisher.uri</CodeInline> staat voor de URI van de vendor, en <CodeInline>publisher.key</CodeInline> staat voor de geheime sleutel die eerder werd verkregen. Het aanvragen van een publisher URI en geheime sleutel (key) staan beschreven in de sectie &ldquo;Authenticatie&rdquo; op de pagina over <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo>.
+            In het voorbeeld hierboven staat de <CodeInline @code="organisation" /> voor de URI van de bestuurseenheid waar de vendor garant voor staat. <CodeInline @code="publisher.uri" /> staat voor de URI van de vendor, en <CodeInline @code="publisher.key" /> staat voor de geheime sleutel die eerder werd verkregen. Het aanvragen van een publisher URI en geheime sleutel (key) staan beschreven in de sectie &ldquo;Authenticatie&rdquo; op de pagina over <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo>.
           </p>
           <p class="u-spacer--tiny">
             De volledige JSON-LD context beschrijft met RDF wat elke eigenschap betekent, welk datatype wordt verwacht en zou aan aan elke request moeten worden toegevoegd. Deze login service voegt echter automatisch de juiste context toe aan elke login request, dus het verzenden van de minimale body zoals hierboven volstaat.
             Vind hieronder de volledige context, indien nodig.
           </p>
-          <SnippetToggle class="u-spacer" @snippetFilename="vendor-sparql-api_login-context.js" />
+          <SnippetToggle class="u-spacer" @snippetFilename="vendor-sparql-api_login-context.json" />
           <p class="u-spacer--tiny">
             Het antwoord op de login request is <strong>een sessie cookie</strong> waar volgende requests (SPARQL queries en uitloggen) mee worden geauthenticeert. Er wordt ook een JSON-LD body teruggegeven die informatie over de sessie voorstelt, zoals hieronder als voorbeeld wordt weergegeven. Deze informatie kan echter worden genegeerd, want <strong> de sessie wordt vanaf de login request enkel bepaald door middel van de cookie</strong>.
           </p>
-          <SnippetToggle class="u-spacer" @snippetFilename="vendor-sparql-api_login-response.js" />
+          <SnippetToggle class="u-spacer" @snippetFilename="vendor-sparql-api_login-response.json" />
           <p class="u-spacer--tiny">
              Als referentie wordt hieronder nog de context vermeld van het antwoord met de sessieinformatie.
           </p>
-          <SnippetToggle class="u-spacer" @snippetFilename="vendor-sparql-api_login-response-context.js" />
+          <SnippetToggle class="u-spacer" @snippetFilename="vendor-sparql-api_login-response-context.json" />
 
           <h3 class="h3">Voorbeeld</h3>
           <p>
-            Als voorbeeld staat hieronder hoe een login kan worden uitgevoerd met <CodeInline>cURL</CodeInline>. Het ontvangen en verder weer versturen van cookies is noodzakelijk. Daarom wordt de cookie engine ingeschakeld met de <CodeInline>-b</CodeInline> en <CodeInline>-c</CodeInline> flags die verwijzen naar een bestand waar de cookies worden opgeslagen.
+            Als voorbeeld staat hieronder hoe een login kan worden uitgevoerd met <CodeInline @code="cURL" />. Het ontvangen en verder weer versturen van cookies is noodzakelijk. Daarom wordt de cookie engine ingeschakeld met de <CodeInline @code="-b" /> en <CodeInline @code="-c" /> flags die verwijzen naar een bestand waar de cookies worden opgeslagen.
           </p>
           <div class="u-spacer">
             {{#let (get-code-snippet "vendor-sparql-api_login-ex.sh") as |snippet|}}
-              {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
-              <CodeBlock @code={{snippet.source}} />
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </div>
 
@@ -60,9 +59,9 @@
           <p>
             Eenmaal ingelogd is het mogelijk om SPARQL queries te versturen naar het SPARQL endpoint, benaderbaar via
           </p>
-          <CodeBlock>https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql</CodeBlock>
+          <CodeBlock @code="https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql" />
           <p class="u-spacer">
-            Het versturen van queries moet gebeuren via HTTP requests zoals beschreven in de <a href="https://www.w3.org/TR/sparql11-protocol/#query-operation" target="_blank">offici&euml;le specificatie van het SPARQL Protocol</a>. Er is geen webpagina beschikbaar op dit endpoint. Het is noodzakelijk om de sessie cookie, verkregen bij het inloggen, steeds mee te sturen bij elke request.
+            Het versturen van queries moet gebeuren via HTTP requests zoals beschreven in de <a href="https://www.w3.org/TR/sparql11-protocol/#query-operation" target="_blank" rel="noopener noreferrer">offici&euml;le specificatie van het SPARQL Protocol</a>. Er is geen webpagina beschikbaar op dit endpoint. Het is noodzakelijk om de sessie cookie, verkregen bij het inloggen, steeds mee te sturen bij elke request.
           </p>
           <p class="u-spacer">
             Bij het inzenden van een nieuwe melding (zoals beschreven in <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo>) wordt er JSON teruggegeven die een URI bevat voor de melding (Submission) en de Job waarin de melding zal worden verwerkt. Deze kunnen worden gebruikt als onderwerp of voorwerp in SPARQL queries om doelgericht informatie op te vragen.
@@ -75,8 +74,7 @@
             Aan de hand van het eerste voorbeeld kan u de status opvragen van de ingestuurde melding.
           </p>
           {{#let (get-code-snippet "vendor-sparql-api_query-ex-1.sparql") as |snippet|}}
-            {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
-            <CodeBlock @code={{snippet.source}} />
+            <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
           {{/let}}
           <p>
             Noteer: ivm. status; aangeraden om op URI te werken, het label kan veranderen, het achterliggende concept (i.e. de URI) niet.
@@ -86,58 +84,53 @@
           </p>
           <div class="u-spacer">
             {{#let (get-code-snippet "vendor-sparql-api_query-ex-2.sparql") as |snippet|}}
-              {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
-              <CodeBlock @code={{snippet.source}} />
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </div>
 
           <h3 class="h3">Voorbeelden van requests</h3>
           <p class="u-spacer">
-            Hieronder staan een aantal voorbeelden van requests, uitgevoerd via <CodeInline>cURL</CodeInline>. De query is steeds op te vullen met de benodigde SPARQL query.
+            Hieronder staan een aantal voorbeelden van requests, uitgevoerd via <CodeInline @code="cURL" />. De query is steeds op te vullen met de benodigde SPARQL query.
           </p>
           <p>
             De meest gebruikte manier: een POST request met de query als body, ge&euml;ncodeerd zoals een formulier veld.
           </p>
-          {{#let (get-code-snippet "vendor-sparql-api_request-ex-1.sparql") as |snippet|}}
-            {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
-            <CodeBlock @code={{snippet.source}} />
+          {{#let (get-code-snippet "vendor-sparql-api_request-ex-1.sh") as |snippet|}}
+            <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
           {{/let}}
           <p>
-            Het volgende voorbeeld is hetzelfde als het vorige, maar voor de encodering is hier de typische JavaScript <CodeInline>encodeURIComponent()</CodeInline> gebruikt.
+            Het volgende voorbeeld is hetzelfde als het vorige, maar voor de encodering is hier de typische JavaScript <CodeInline @code="encodeURIComponent()" /> gebruikt.
           </p>
-          {{#let (get-code-snippet "vendor-sparql-api_request-ex-2.sparql") as |snippet|}}
-            {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
-            <CodeBlock @code={{snippet.source}} />
+          {{#let (get-code-snippet "vendor-sparql-api_request-ex-2.sh") as |snippet|}}
+            <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
           {{/let}}
           <p>
             Uit volledigheid ondersteunt de endpoint ook GET requests, waar de SPARQL query als URL parameter wordt meegegeven. Deze methode is echter niet aan te raden vanwege beperkingen op de lengte van de query.
           </p>
           <div class="u-spacer">
-            {{#let (get-code-snippet "vendor-sparql-api_request-ex-4.sparql") as |snippet|}}
-              {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
-              <CodeBlock @code={{snippet.source}} />
+            {{#let (get-code-snippet "vendor-sparql-api_request-ex-4.sh") as |snippet|}}
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </div>
 
           <h2 class="h2">Uitloggen</h2>
           <p>
-            Om de sessie af te sluiten volstaat het om een request, als methode <CodeInline>DELETE</CodeInline> met de sessie cookie, te sturen naar
+            Om de sessie af te sluiten volstaat het om een request, als methode <CodeInline @code="DELETE" /> met de sessie cookie, te sturen naar
           </p>
           <div class="u-spacer">
-            <CodeBlock>DELETE https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
+            <CodeBlock @code="DELETE https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout" />
           </div>
           <p class="u-spacer">
-            Het antwoord op deze request is, als uitloggen successvol was, leeg. De HTTP response code is dan <CodeInline>204 No Content</CodeInline>.
+            Het antwoord op deze request is, als uitloggen successvol was, leeg. De HTTP response code is dan <CodeInline @code="204 No Content" />.
           </p>
 
           <h3 class="h3">Voorbeeld</h3>
           <p>
-            Bij het gebruik van <CodeInline>cURL</CodeInline> ziet de request voor uitloggen er als volgt uit.
+            Bij het gebruik van <CodeInline @code="cURL" /> ziet de request voor uitloggen er als volgt uit.
           </p>
           <div class="u-spacer">
             {{#let (get-code-snippet "vendor-sparql-api_logout-ex.sh") as |snippet|}}
-              {{!--<CodeBlock @language={{snippet.language}} @code={{snippet.source}} />--}}
-              <CodeBlock @code={{snippet.source}} />
+              <CodeBlock @language={{snippet.language}} @code={{snippet.source}} />
             {{/let}}
           </div>
 
@@ -162,7 +155,7 @@
           <p class="u-spacer--tiny">
             Bij elk van bovenstaande soort request kunnen er fouten optreden. Een login kan falen vanwege foute combinatie van vendor URI en sleutel, een query kan falen vanwege syntax problemen met de query zelf of vanwege een fout opgestelde request, &hellip; In alle gevallen wordt er zo veel mogelijk aan gedaan om een waardevolle foutboodschap terug te geven in combinatie met een bijhorende HTTP (fout)code. In het geval van het versturen van queries kunnen foutberichten en foutcodes terugkomen die gegenereerd werden door de database zelf of van een tussenliggende service. Dit kan enige inconsistenties veroorzaken in de response. In het geval van de login en logout requests, fouten zitten verwerkt in de volgende JSON-LD context en worden ook op die manier geformatteerd als antwoord.
           </p>
-          <SnippetToggle class="u-spacer" @snippetFilename="vendor-sparql-api_error-response-context.js" />
+          <SnippetToggle class="u-spacer" @snippetFilename="vendor-sparql-api_error-response-context.json" />
 
           <h2 class="h2">Prefixes</h2>
           <p>
@@ -178,51 +171,51 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><CodeInline>rdf:</CodeInline></td>
+                  <td><CodeInline @code="rdf:" /></td>
                   <td>http://www.w3.org/1999/02/22-rdf-syntax-ns</td>
                 </tr>
                 <tr>
-                  <td><CodeInline>xsd:</CodeInline></td>
+                  <td><CodeInline @code="xsd:" /></td>
                   <td>http://www.w3.org/2001/XMLSchema#</td>
                 </tr>
                 <tr>
-                  <td><CodeInline>meb:</CodeInline></td>
+                  <td><CodeInline @code="meb:" /></td>
                   <td>http://rdf.myexperiment.org/ontologies/base/</td>
                 </tr>
                 <tr>
-                  <td><CodeInline>mu:</CodeInline></td>
+                  <td><CodeInline @code="mu:" /></td>
                   <td>http://mu.semte.ch/vocabularies/core/</td>
                 </tr>
                 <tr>
-                  <td><CodeInline>prov:</CodeInline></td>
+                  <td><CodeInline @code="prov:" /></td>
                   <td>http://www.w3.org/ns/prov#</td>
                 </tr>
                 <tr>
-                  <td><CodeInline>dct:</CodeInline></td>
+                  <td><CodeInline @code="dct:" /></td>
                   <td>http://purl.org/dc/terms/</td>
                 </tr>
                 <tr>
-                  <td><CodeInline>adms:</CodeInline></td>
+                  <td><CodeInline @code="adms:" /></td>
                   <td>http://www.w3.org/ns/adms#</td>
                 </tr>
                 <tr>
-                  <td><CodeInline>pav:</CodeInline></td>
+                  <td><CodeInline @code="pav:" /></td>
                   <td>http://purl.org/pav/</td>
                 </tr>
                 <tr>
-                  <td><CodeInline>nie:</CodeInline></td>
+                  <td><CodeInline @code="nie:" /></td>
                   <td>http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart</td>
                 </tr>
                 <tr>
-                  <td><CodeInline>nfo:</CodeInline></td>
+                  <td><CodeInline @code="nfo:" /></td>
                   <td>http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</td>
                 </tr>
                 <tr>
-                  <td><CodeInline>ext:</CodeInline></td>
+                  <td><CodeInline @code="ext:" /></td>
                   <td>http://mu.semte.ch/vocabularies/ext/Vendor</td>
                 </tr>
                 <tr>
-                  <td><CodeInline>am:</CodeInline></td>
+                  <td><CodeInline @code="am:" /></td>
                   <td>http://lblod.data.gift/vocabularies/automatische-melding/</td>
                 </tr>
               </tbody>
