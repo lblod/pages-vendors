@@ -2,7 +2,7 @@
   <AuBodyContainer
     id="scroll-to-top-container"
     @scroll={{true}}>
-    <div class="au-d-component-block au-d-component-block--overflow">
+    <div>
       <AuToolbar
         @reverse={{false}}
         @border="bottom"
@@ -19,7 +19,7 @@
       </AuToolbar>
 
       <AuContent
-        class="au-u-margin-top au-u-margin-bottom center-children-centered padded-children-centered au-u-max-width-medium"
+        class="au-o-region au-o-layout au-u-max-width-medium"
         @skin="default">
         {{outlet}}
       </AuContent>
@@ -40,7 +40,7 @@
       </AuToolbar>
 
       <section class="au-u-background-gray-100">
-        <div class="au-u-max-width-large center-children-centered padded-children-centered">
+        <div class="au-o-layout">
           <AuHeading
             @level="2"
             @skin="2">

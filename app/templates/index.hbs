@@ -7,31 +7,28 @@
       @pictureSize="default">
       <img sizes="50vw" src="assets/images/loket-header-1600.jpg" alt="Foto van een laptop met daarop het vlaanderen logo." />
     </AuContentHeader>
-    <div class="au-d-component-block au-d-component-block--overflow">
-      <AuContent
-        class="center-children padded-children"
-        @skin="default">
+    <AuContent @skin="default">
+      <div class="au-o-region au-o-layout au-u-max-width-medium">
         <AuHeading
-          class="centered au-u-margin-top au-u-max-width-medium"
           @level="1"
           @skin="1">
           Gelinkt Notuleren: Vendor en API integrator documentatie
         </AuHeading>
-        <p class="au-u-para-lead centered au-u-max-width-medium">
+        <p class="au-u-para-lead au-u-margin-top">
           Integreer met systemen van Gelinkt Notuleren. Deze documentatie wordt verder aangevuld naarmate er meer API's beschikbaar zijn, en naarmate er meer vereisten gedefinieerd worden.
         </p>
-        <section class="au-u-background-gray-100 au-u-padding-top au-u-padding-bottom">
-          <div class="centered au-u-max-width-large">
+      </div>
+      <section class="au-u-background-gray-100 au-o-region au-o-region-large">
+        <div class="au-o-layout au-o-layout--large">
           <AuHeading
             @level="2"
             @skin="2">
             Beschikbare documentatie
           </AuHeading>
           <Menu @fullSize={{true}} />
-          </div>
-        </section>
-      </AuContent>
-    </div>
+        </div>
+      </section>
+    </AuContent>
     <Footer />
   </AuBodyContainer>
 </AuApp>
