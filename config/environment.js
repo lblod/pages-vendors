@@ -6,6 +6,10 @@ module.exports = function (environment) {
     environment,
     rootURL: '/pages-vendors/',
     locationType: 'hash',
+    historySupportMiddleware: true,
+    routerScroll: {
+      scrollElement: '#scroll-to-top-container',
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
