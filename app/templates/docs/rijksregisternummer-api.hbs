@@ -1,11 +1,11 @@
 <AuHeading @level="1" @skin="1">Rijksregisternummer naar Persoon URI API</AuHeading>
 <p>
-  Het Rijksregisternummer is een veelgebruikte idenitficator voor een persoon.  Helaas bevat deze identificator persoonlijke informatie zoals het geslacht en de geboortedatum van de persoon waardoor deze niet in alle contexten uitgewisseld kan worden.  Mits het afsluiten van een protocol tussen het bestuur en het Agentschap Binnenlands Bestuur, is het mogelijk om de URI van een persoon op te vragen op basis van het rijksregisternummer.  Dit document beschrijft de API om de URI van een persoon op te vragen op basis van diens rijksregisternummer en de bestuurseenheid waar hij een functie voor uitoefent.
+  Het Rijksregisternummer is een veelgebruikte idenitficator voor een persoon. Helaas bevat deze identificator persoonlijke informatie zoals het geslacht en de geboortedatum van de persoon waardoor deze niet in alle contexten uitgewisseld kan worden. Mits het afsluiten van een protocol tussen het bestuur en het Agentschap Binnenlands Bestuur, is het mogelijk om de URI van een persoon op te vragen op basis van het rijksregisternummer. Dit document beschrijft de API om de URI van een persoon op te vragen op basis van diens rijksregisternummer en de bestuurseenheid waar hij een functie voor uitoefent.
 </p>
 
 <AuHeading @level="2" @skin="2">Opvragen URI</AuHeading>
 <p>
-  Geeft de URI van een persoon terug indien de aanvragende entiteit gemachtigd is voor het opgegeven bestuur en de persoon teruggevonden kon worden.  De request kan als GET of als POST opgevraagd worden, in beide gevallen wordt een JSON body verwacht.
+  Geeft de URI van een persoon terug indien de aanvragende entiteit gemachtigd is voor het opgegeven bestuur en de persoon teruggevonden kon worden. De request kan als GET of als POST opgevraagd worden, in beide gevallen wordt een JSON body verwacht.
 </p>
 <CodeBlock @code="POST https://rrn.api.lblod.info/rrn" />
 <p>
@@ -26,7 +26,7 @@
 </p>
 <p>
   In dit antwoord bevindt de URI van de persoon zich in de eigenschap <CodeInline @code="uri" />.
-  De 404 status wordt teruggegeven indien geen antwoord gevonden werd.  Dat kan voorvallen omdat de persoon niet gevonden is binnen de opgegeven bestuurseenheid of omdat de meegegeven authenticatie geen recht heeft de persoonsinformatie op te vragen.
+  De 404 status wordt teruggegeven indien geen antwoord gevonden werd. Dat kan voorvallen omdat de persoon niet gevonden is binnen de opgegeven bestuurseenheid of omdat de meegegeven authenticatie geen recht heeft de persoonsinformatie op te vragen.
 </p>
 
 <AuHeading @level="2" @skin="2">Authenticatie</AuHeading>
@@ -34,7 +34,7 @@
   Een bestuurseenheid kan een externe partij authorizeren om deze service te gebruiken in hun naam. Het beheer van deze rechten en permissies zal op lange termijn gebeuren via ACM/IDM en het Gebruikersbeheer. Op korte termijn zal dit beheerd worden door ABB.
 </p>
 <p>
-  Iedere externe partij krijgt een unieke identificator en sleutel die meegestuurd wordt bij de bevraging van de service. Voor de test API kun je als softwareleverancier zelf een sleutel aanvragen via <AuLinkExternal href="mailto:digitaalABB@vlaanderen.be?subject=Geheime sleutel rijksregisternummer API test">digitaalABB@vlaanderen.be</AuLinkExternal>. Je krijgt dan een random gemeente om mee te testen. Wanneer de productie API beschikbaar komt, zal een bestuur de sleutel kunnen aanvragen via <AuLinkExternal href="mailto:digitaalABB@vlaanderen.be?subject=Geheime sleutel rijksregisternummer API productie">digitaalABB@vlaanderen.be</AuLinkExternal> op voorwaarde dat eerst een protocol hiervoor werd afgesloten.  De lokale besturen zullen dan ook via <AuLinkExternal href="mailto:digitaalABB@vlaanderen.be?subject=Permissie voor softwareleverancier ikv rijksregisternummer API">digitaalABB@vlaanderen.be</AuLinkExternal> een aanvraag insturen om een softwareleverancier permissie te geven om in hun naam de rijksregisternummer API te gebruiken.
+  Iedere externe partij krijgt een unieke identificator en sleutel die meegestuurd wordt bij de bevraging van de service. Voor de test API kun je als softwareleverancier zelf een sleutel aanvragen via <AuLinkExternal href="mailto:digitaalABB@vlaanderen.be?subject=Geheime sleutel rijksregisternummer API test">digitaalABB@vlaanderen.be</AuLinkExternal>. Je krijgt dan een random gemeente om mee te testen. Wanneer de productie API beschikbaar komt, zal een bestuur de sleutel kunnen aanvragen via <AuLinkExternal href="mailto:digitaalABB@vlaanderen.be?subject=Geheime sleutel rijksregisternummer API productie">digitaalABB@vlaanderen.be</AuLinkExternal> op voorwaarde dat eerst een protocol hiervoor werd afgesloten. De lokale besturen zullen dan ook via <AuLinkExternal href="mailto:digitaalABB@vlaanderen.be?subject=Permissie voor softwareleverancier ikv rijksregisternummer API">digitaalABB@vlaanderen.be</AuLinkExternal> een aanvraag insturen om een softwareleverancier permissie te geven om in hun naam de rijksregisternummer API te gebruiken.
 </p>
 
 <AuHeading @level="2" @skin="2">Ontwikkeling en test</AuHeading>
