@@ -62,7 +62,10 @@
   <strong>Noteer:</strong> voor de status is aangeraden om steeds met de URI te werken. Het label kan veranderen, maar het achterliggende concept (i.e. de URI) niet.
 </p>
 <p>
-  Met het volgende voorbeeld worden er 100 eerder verrrichtte meldingen opgevraagd. Met de verkregen URI's kan men queries gelijk de bovenstaande opstellen.
+  <strong>Noteer:</strong> de status voor een inzending kan "verzonden" of "concept" zijn. Een inzending in "concept" vereist nog manuele interventie door onvolledigheid van het document alvorens het officieel kan worden ingediend, waarna het de status "verzonden" krijgt. Verder op deze pagina worden de URI's voor de status opgelijst.
+</p>
+<p>
+  Met het volgende voorbeeld worden er 100 eerder verrichtte meldingen opgevraagd. Met de verkregen URI's kan men queries gelijk de bovenstaande opstellen.
 </p>
 <Snippet @snippetFilename="vendor-sparql-api_query-ex-2.sparql" />
 
@@ -110,6 +113,33 @@
     <figcaption>Diagram van Linked Data van beschikbare gegevens in het endpoint</figcaption>
   </figure>
 </a>
+
+<AuHeading @level="3" @skin="3">Documentstatussen</AuHeading>
+<p>
+  Onderstaande tabel verduidelijkt de URI's die worden gebruikt om de status van een ingezonden document aan te duiden.
+</p>
+<AuTable @size="default">
+  <:header>
+    <tr>
+      <th>URI</th>
+      <th>Label</th>
+    </tr>
+  </:header>
+  <:body>
+    <tr>
+      <td><CodeInline @code="http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd" /></td>
+      <td>Concept</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c" /></td>
+      <td>Verzonden</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff" /></td>
+      <td>Inzendbaar</td>
+    </tr>
+  </:body>
+</AuTable>
 
 <AuHeading @level="2" @skin="2">Fouten</AuHeading>
 <p>

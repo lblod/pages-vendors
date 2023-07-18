@@ -38,7 +38,7 @@
 
 <AuHeading @level="3" @skin="3">Meegeven van concept of inzendbaar status (optioneel)</AuHeading>
 <p>
-  Indien een inzending aangemaakt wordt en volledig is, dan kan ze automatisch verzonden worden. Optioneel kan aangegeven worden dat de inzending in draft status is door de <CodeInline @code="status" />-property mee te geven. De status kan de URI voor "concept" of "inzendbaar" zijn.
+Indien een inzending aangemaakt wordt en volledig is, dan kan ze automatisch verzonden worden. Optioneel kan aangegeven worden dat de inzending in concept status is door de onderstaande URI voor "concept" als <CodeInline @code="status" />-property mee te geven. Hierdoor zal de inzending niet verzonden worden, maar als concept blijven staan tot manuele actie de inzending markeert als inzendbaar. Dit kan gedaan worden in de applicatie voor automatische meldingen of via een API call (ongedocumenteerd). Als het document de status van inzendbaar krijgt, wordt het meteen ingezonden als de data volledig is. Indien niet, wordt het alsnog in concept status gebracht voor manuele aanvulling en inzending. De mogelijke waarden voor de status zijn de URI's voor "concept" of "inzendbaar":
 </p>
 <AuTable>
   <:header>
