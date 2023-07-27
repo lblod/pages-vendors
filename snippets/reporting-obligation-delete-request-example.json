@@ -1,0 +1,8 @@
+{
+  "submission": "http://data.lblod.info/submissions/31b7b6a0-2c85-11ee-aac3-018db9894181",
+  "organization": "http://data.lblod.info/id/bestuurseenheden/jdjkq65q4sdfqsdf4456654321fqsd456f321",
+  "publisher": {
+    "uri": "http://example.com/vendor/acme",
+    "key": "acme-secret-key"
+  }
+}
