@@ -87,7 +87,11 @@ Indien een inzending aangemaakt wordt en volledig is, dan kan ze automatisch ver
 </p>
 <Snippet @snippetFilename="reporting-obligation-response-example.json" />
 <p>
-  De <CodeInline @code="submission" /> eigenschap bevat de URI voor de nieuw aangemaakte melding voor het ingezonden document. Deze kan worden gebruikt voor het formuleren van een aanvraag voor verwijdering. Volgend codefragment toont de minimale body voor zo'n aanvraag.
+  De <CodeInline @code="submission" /> eigenschap bevat de URI voor de nieuw aangemaakte melding voor het ingezonden document. Deze kan worden gebruikt voor het formuleren van een aanvraag voor verwijdering dat kan worden verzonden op volgende URL:
+</p>
+<CodeBlock @code="POST https://api.loket.lokaalbestuur.vlaanderen.be/delete-melding" />
+<p>
+  Volgend codefragment toont de minimale body voor zo'n aanvraag.
 </p>
 <Snippet @snippetFilename="reporting-obligation-delete-request-example.json" />
 <p>
