@@ -1,0 +1,199 @@
+<AuHeading @level="1" @skin="1">Berichtencentrum API</AuHeading>
+<p>
+  Lokale besturen en ABB kunnen beveiligde berichten met mekaar uitwisselen.
+  Het loket voor Lokale Besturen biedt een API aan waarop deze functionaliteit programmatorisch geïntegreerd kan worden.
+  <br> Dit document beschrijft de API voor het berichtencentrum.
+</p>
+
+<AuHeading @level="2" @skin="2">High level beschrijving van de flow</AuHeading>
+<p>
+  Het berichtencentrum bestaat uit Conversaties en Berichten. Een conversatie bestaat uit verschillende berichten; een conversatie is een zogenaamde 'thread'.
+  <br> Momenteel kan enkel ABB conversaties initiëren, en kunnen besturen enkel reageren.
+  <br>
+  De beschikbare conversaties en berichten kunnen bevraagd worden aan de hand van <AuLink @route="docs.vendor-sparql-api">Vendor SPARQL API</AuLink>. Meer details over de queries volgen hieronder.
+  <br> In geval er een nieuw bericht naar ABB moet worden gestuurd, publiceert het bestuur een Rdfa-geannoteerd document.
+  <br> Via een Rest call meldt het bestuur de locatie van de nieuwe publicatie aan het loket, en zal de crawler van het loket het document ophalen.
+  <br> De flow is heel gelijkaardig aan die van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
+</p>
+
+
+<AuHeading @level="2" @skin="2">Melden van nieuwe bericht</AuHeading>
+<AuHeading @level="3" @skin="3">API endpoint</AuHeading>
+<p>
+  Het melden van een nieuw bericht gebeurt via een request
+</p>
+<CodeBlock @code="POST https://api.loket.lokaalbestuur.vlaanderen.be/berichtencentrum/melding" />
+<p>
+  met JSON-LD request body:
+</p>
+<Snippet @snippetFilename="berichtencentrum-melding-quick-example.js" />
+<p class="au-u-para-small au-u-muted">
+  Annotaties die gebruikt kunnen worden bij de gepubliceerde pagina worden verder besproken.
+</p>
+<p>
+  Het aanvragen van een publisher URI en een geheime sleutel (key) wordt beschreven in de sectie 'Authenticatie' van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
+  <br>
+  Verder verwachten we dat het gepubliceerde document beschermd is met authenticatie. Voor meer informatie over welke methodes de crawler ondersteunt, verwijzen we u door naar de sectie 'Ophalen van niet-publieke documenten' van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
+</p>
+
+<AuHeading @level="3" @skin="3">Scope van een publicatie</AuHeading>
+<p>TODO</p>
+
+<AuHeading @level="3" @skin="3">JSON-LD context</AuHeading>
+<p>
+  Zie <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
+</p>
+
+
+<AuHeading @level="2" @skin="2" id="publicatie-documenten">Publicatie van berichten</AuHeading>
+<AuHeading @level="3" @skin="3">Annotaties voor automatische melding</AuHeading>
+<p>
+  Bekijk <AuLink @route="docs.submission-annotations">hier</AuLink> welke annotaties gebruikt kunnen worden op de gepubliceerde pagina's om besluiten automatisch te verzenden.
+</p>
+<AuHeading @level="3" @skin="3">Vereisten voor gepubliceerde pagina's</AuHeading>
+<p>
+  Zie <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
+</p>
+
+<AuHeading @level="2" @skin="2">Ontwikkeling en test</AuHeading>
+<p>
+TODO   Voor het ontwikkelen en testen van automatische melding is een test endpoint ter beschikking gesteld op:
+</p>
+<CodeBlock @code="POST https://api.loket.lblod.info/melding" />
+<p>
+  De publisher URI en geheime sleutel voor deze omgeving moeten eerst aangevraagd worden zoals beschreven onder 'Authenticatie'. De verwerking van de melding gebeurt asynchroon, maar zou in normale omstandigheden in een tijdspanne van enkele minuten afgehandeld worden.
+</p>
+<p>
+  Om te valideren hoe een melding er zal uitzien in het Loket van Lokale Besturen is een web applicatie beschikbaar gesteld op <AuLinkExternal href="https://api.loket.lblod.info/mock-login">https://api.loket.lblod.info/mock-login</AuLinkExternal>. Je kan inloggen door de gewenste bestuurseenheid aan te klikken in de lijst. Vervolgens wordt een lijst getoond van alle meldingen die ontvangen zijn. Wanneer op het 'detail' van een melding geklikt wordt, kan bekeken worden welke kennis er uit het gepubliceerde document geharvest is en of deze al dan niet geldig/volledig is.
+</p>
+
+<AuHeading @level="2" @skin="2">Model</AuHeading>
+<AuTable>
+  <:header>
+  <tr>
+    <th>Prefix</th>
+    <th>URI</th>
+  </tr>
+  </:header>
+  <:body>
+  <tr>
+    <td><CodeInline @code="dct" /></td>
+    <td><AuLinkExternal href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</AuLinkExternal></td>
+  </tr>
+  <tr>
+    <td><CodeInline @code="nie" /></td>
+    <td><AuLinkExternal href="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#">http://www.semanticdesktop.org/ontologies/2007/01/19/nie#</AuLinkExternal></td>
+  </tr>
+  <tr>
+    <td><CodeInline @code="schema" /></td>
+    <td>
+      <AuLinkExternal href="http://schema.org/">http://schema.org/</AuLinkExternal>
+      <br>
+      Noteer: geen <em>http<strong>s</strong></em>!
+    </td>
+  </tr>
+  <tr>
+    <td><CodeInline @code="rdf" /></td>
+    <td><AuLinkExternal href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</AuLinkExternal></td>
+  </tr>
+  <tr>
+    <td><CodeInline @code="xsd" /></td>
+    <td><AuLinkExternal href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
+  </tr>
+  </:body>
+</AuTable>
+
+<AuHeading @level="3" @skin="3"><CodeInline @code="schema:Conversation" /></AuHeading>
+<p>
+  Bundelt schema:Message rondt specifiek topic.
+</p>
+<AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+<AuTable>
+  <:header>
+  <tr>
+    <th>Naam</th>
+    <th>URI</th>
+    <th>Verwacht type</th>
+    <th>Beschrijving</th>
+  </tr>
+  </:header>
+  <:body>
+  <tr>
+    <td>hasPart</td>
+    <td><CodeInline @code="schema:hasPart" /></td>
+    <td><CodeInline @code="schema:Message" /></td>
+    <td>Verwijst naar het gelinkt bericht aan de conversatie</td>
+  </tr>
+  <tr>
+    <td>about</td>
+    <td><CodeInline @code="schema:about" /></td>
+    <td><CodeInline @code="xsd:string" /></td>
+    <td>Beschrijft het topic van het gesprek</td>
+  </tr>
+  <tr>
+    <td>Identificator</td>
+    <td><CodeInline @code="schema:identifier" /></td>
+    <td><CodeInline @code="xsd:string" /></td>
+    <td>
+      De interne referentie van ABB.
+    </td>
+  </tr>
+  </:body>
+</AuTable>
+
+<AuHeading @level="3" @skin="3">Bericht<CodeInline @code="schema:Message" /></AuHeading>
+<p>
+  Een resource die de effectieve communicatie bevat.
+</p>
+<AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+<AuTable>
+  <:header>
+  <tr>
+    <th>Naam</th>
+    <th>URI</th>
+    <th>Verwacht type</th>
+    <th>Beschrijving</th>
+  </tr>
+  </:header>
+  <:body>
+  <tr>
+    <td>Type</td>
+    <td><CodeInline @code="dct:type" /></td>
+    <td><CodeInline @code="xsd:string" /></td>
+    <td>
+      Een string die samenvat wat de type communicatie is. <br>
+      Voorbeelden hiervan zijn "Kennisgeving toezichtsbeslissing" of "Opvraging" <br>
+      Noteer hierbij dat het bestuur dit veld <em>niet</em> hoeft te publiceren. <br>
+      Alle berichten die binnenkomen vanuit een bestuur zullen automatisch het label "Reactie" krijgen.
+    </td>
+  </tr>
+  <tr>
+    <td>Type</td>
+    <td><CodeInline @code="nie:hasPart" /></td>
+    <td><CodeInline @code="xsd:string" /></td>
+    <td>
+      Een string die samenvat wat de type communicatie is. <br>
+      Voorbeelden hiervan zijn "Kennisgeving toezichtsbeslissing" of "Opvraging" <br>
+      Noteer hierbij dat het bestuur dit veld <em>niet</em> hoeft te publiceren. <br>
+      Alle berichten die binnenkomen vanuit een bestuur zullen automatisch het label "Reactie" krijgen.
+    </td>
+  </tr>
+  </:body>
+</AuTable>
+
+<AuHeading @level="3" @skin="3">Voorbeelden</AuHeading>
+<AuHeading @level="4" @skin="4">RDF-snippet</AuHeading>
+<p>
+  De volgende snippet beschrijft hoe het er kan uitzien in RDF-formaat.
+</p>
+<Snippet @snippetFilename="example-notification-rule.turtle" />
+<p>
+  Noteer: het gaat hier om een illustratief voorbeeld.
+</p>
+<AuHeading @level="4" @skin="4">SPARQL-query</AuHeading>
+<p>
+  De volgende SPARQL-query geeft een voorbeeld van hoe
+  <AuLink @route="docs.sparql-endpoint">centrale-vindplaats</AuLink> bevraagd kan worden om meer informatie te vinden over de regels. <br />
+  Hier worden alle meldingsplichtige besluiten opgelijst voor een Gemeente.
+</p>
+<Snippet @snippetFilename="example-notification-rule.sparql" />
