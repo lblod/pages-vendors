@@ -103,9 +103,11 @@
 </p>
 <Snippet @snippetFilename="vendor-sparql-api_logout-ex.sh" />
 
-<AuHeading @level="2" @skin="2">Beschikbaarheid van gegevens</AuHeading>
+<AuHeading @level="2" @skin="2">Beschikbare gegevens</AuHeading>
+<AuHeading @level="3" @skin="3">Inzendingen</AuHeading>
 <p>
-  In de beginfase van de ontwikkeling van deze endpoint (november 2022) is de beschikbare hoeveelheid gegevens nog beperkt. Het gaat om de gegevens voorgesteld op onderstaand diagram voor Linked Data. In dit diagram zijn entiteiten voorgesteld met een cirkel, data properties met pijlen wijzend naar een rechthoek waar het datatype in vermeld staat en object properties met pijlen naar een nieuwe cirkel. Als er van een entiteit op het diagram geen eigenschappen bestaan zijn deze ook niet aanwezig in de data.
+  Het datamodel voor de inzendingen worden voorgesteld op onderstaand diagram voor Linked Data. <br>
+  In dit diagram zijn entiteiten voorgesteld met een cirkel, data properties met pijlen wijzend naar een rechthoek waar het datatype in vermeld staat en object properties met pijlen naar een nieuwe cirkel. Als er van een entiteit op het diagram geen eigenschappen bestaan zijn deze ook niet aanwezig in de data.
 </p>
 <a href="assets/images/VendorAPIModel.svg">
   <figure>
@@ -113,8 +115,7 @@
     <figcaption>Diagram van Linked Data van beschikbare gegevens in het endpoint</figcaption>
   </figure>
 </a>
-
-<AuHeading @level="3" @skin="3">Documentstatussen</AuHeading>
+<AuHeading @level="4" @skin="4">Documentstatussen inzendingen</AuHeading>
 <p>
   Onderstaande tabel verduidelijkt de URI's die worden gebruikt om de status van een ingezonden document aan te duiden.
 </p>
@@ -138,8 +139,14 @@
       <td><CodeInline @code="http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff" /></td>
       <td>Inzendbaar</td>
     </tr>
-  </:body>
+    </:body>
 </AuTable>
+
+<AuHeading @level="3" @skin="3">Berichten en Conversaties</AuHeading>
+<p>
+  Berichten en conversaties zullen ook beschikbaar gemaakt worden. Voor verdere informatie verwijzen we naar
+   <LinkTo @route="docs.berichtencentrum-api">berichtencentrum-api</LinkTo>.
+</p>
 
 <AuHeading @level="2" @skin="2">Fouten</AuHeading>
 <p>
