@@ -11,7 +11,7 @@
   <br> Momenteel kan enkel ABB conversaties initiëren, en kunnen besturen enkel reageren.
   <br>
   De beschikbare conversaties en berichten kunnen bevraagd worden aan de hand van <AuLink @route="docs.vendor-sparql-api">Vendor SPARQL API</AuLink>. Meer details over de queries volgen hieronder.
-  <br> In geval er een nieuw bericht naar ABB moet worden gestuurd, publiceert het bestuur een Rdfa-geannoteerd document.
+  <br> In geval er een nieuw bericht naar ABB moet worden gestuurd, publiceert het bestuur een RDFa-geannoteerd document.
   <br> Via een Rest call meldt het bestuur de locatie van de nieuwe publicatie aan het loket, en zal de crawler van het loket het document ophalen.
   <br> De flow is heel gelijkaardig aan die van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
 </p>
@@ -50,7 +50,7 @@
   <CodeInline @code="<http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> " />
 </p>
 <SnippetToggle @snippetFilename="example-berichtencentrum-1.sparql" />
-<AuHeading @level="4" @skin="4">Rdfa voorbeeldpublicatie van bericht </AuHeading>
+<AuHeading @level="4" @skin="4">RDFa voorbeeldpublicatie van bericht </AuHeading>
 <p>
   Het volgende voorbeeld illustreert hoe een bericht in RDFa wordt gepubliceerd. <br>
   Dit is een zeer minimaal voorbeeld. <br>
@@ -61,7 +61,7 @@
 <AuHeading @level="4" @skin="4">Voorbeeld-request om nieuw bericht te melden</AuHeading>
 <p>
   Voortgaand op het vorige voorbeeld, geven we weer hoe een request naar loket er zou kunnen uitzien.
-  Stel dat de rdfa geannoteerde pagina gehost staat op <CodeBlock @code="http://vendor.example.com/conversaties/bestuur/1" />. <br>
+  Stel dat de RDFa geannoteerde pagina gehost staat op <CodeBlock @code="http://vendor.example.com/conversaties/bestuur/1" />. <br>
   Uit vorige voorbeeld is de uri van het nieuwe bericht <CodeBlock @code="http://nieuw/berichturi/voor/ABB" />. <br>
   Dan kan het request er als volgt uitzien:
 </p>
@@ -82,8 +82,8 @@
 
 <AuHeading @level="3" @skin="3">Organiseren van gepubliceerde pagina's</AuHeading>
 <p>
-  De crawler verwacht bij het ophalen van de rdfa-informatie dat de resource -gespecifieerd met het <CodeInline @code="resource" /> veld in de json-body- volledig beschreven staat op de pagina gespecifieerd in het <CodeInline @code="href" /> veld. 
-  De crawler verwacht dat de rdfa beschrijving van het veld <CodeInline @code="nie:url" /> een rechtstreekse link is naar het bestand. <br>
+  De crawler verwacht bij het ophalen van de RDFa-informatie dat de resource -gespecifieerd met het <CodeInline @code="resource" /> veld in de json-body- volledig beschreven staat op de pagina gespecifieerd in het <CodeInline @code="href" /> veld. 
+  De crawler verwacht dat de RDFa beschrijving van het veld <CodeInline @code="nie:url" /> een rechtstreekse link is naar het bestand. <br>
   (Indien content-negotiation gewenst is, kunnen de annotaties makkelijk uitgebreid worden. Laat gerust weten.) <br>
   Verder zijn er geen echt harde restricties, behalve dat we niet verwachten dat de grootte van de pagina's te groot wordt. (Nader te bepalen wat de harde grens zou zijn; een html bestand van 20+ mb beschouwen we al als groot.) <br>
   Goede vertrouwelijkheidshygiëne is wenselijk, bijvoorbeeld: niet de berichten van alle besturen in beheer op één pagina publiceren. Technisch kan het, maar het vergroot het risico.
