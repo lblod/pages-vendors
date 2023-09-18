@@ -1,0 +1,35 @@
+SELECT DISTINCT
+  ?conversation
+  ?conversationNr
+  ?conversationAbout
+  ?message
+  ?messageType
+  ?messageSent
+  ?messageText
+  ?bijlage
+  ?bijlageUrl
+  ?bijlageNaam
+
+  WHERE {
+    ?conversation a <http://schema.org/Conversation>;
+      <http://schema.org/about>  ?conversationAbout;
+      <http://schema.org/identifier> ?conversationNr;
+      <http://schema.org/hasPart> ?message.
+
+     ?message a <http://schema.org/Message>;
+       <http://schema.org/sender> <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b>;
+       <http://schema.org/recipient> <http://data.lblod.info/id/bestuurseenheden/974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4>;
+       <http://purl.org/dc/terms/type> ?messageType;
+       <http://schema.org/dateSent> ?messageSent;
+       <http://schema.org/text> ?messageText;
+       <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart> ?bijlage.
+
+     OPTIONAL {
+       ?bijlage a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject>;
+         <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#url> ?bijlageUrl;
+         <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName> ?bijlageNaam.
+     }
+
+     FILTER(?messageSent >  "2023-01-01"^^xsd:date)
+}
+ORDER BY ?messageSent

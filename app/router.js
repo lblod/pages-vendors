@@ -16,6 +16,7 @@ Router.map(function () {
     this.route('sparql-endpoint');
     this.route('decision-attachments');
     this.route('vendor-sparql-api');
+    this.route('berichtencentrum-api');
   });
 
   this.route('route-not-found', {
