@@ -1247,7 +1247,7 @@
       class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
       @fullSize={{@fullSize}}
       @route="docs.sparql-endpoint"
-      @title="SPARQL endpoint"
+      @title="SPARQL endpoint (centrale-vindplaats)"
       @content="Endpoint om met SPARQL publieke data te bevragen."/>
     <Menu::Card
       class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
@@ -1269,12 +1269,18 @@
       @route="docs.leidinggevenden"
       @title="Leidinggevenden"
       @content="De leidinggevenden databank volgt het applicatieprofiel mandatendatabank, maar werd uitgebreid met enkele subklassen en eigenschappen."/>
+    <Menu::Card
+      class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
+      @fullSize={{@fullSize}}
+      @route="docs.berichtencentrum-api"
+      @title="Berichtencentrum API"
+      @content="API om de module berichtencentrum te integreren. [DRAFT]"/>
   </nav>
   
   */
   {
-    "id": "b5y/fDLR",
-    "block": "[[[10,\"nav\"],[14,0,\"au-u-padding-top au-u-padding-bottom au-o-grid au-o-grid--small\"],[12],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@content\"],[[30,1],\"docs.submission-annotations\",\"Annotaties voor automatische melding\",\"Annotaties die gebruikt worden bij automatische meldingen van besluiten en documenten.\"]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@content\"],[[30,1],\"docs.publication-annotations\",\"Annotaties van besluiten en documenten\",\"Annotaties die gebruikt worden bij de publicatie van besluiten en documenten opdat ze automatisch geharvest kunnen worden.\"]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@content\"],[[30,1],\"docs.decision-attachments\",\"Bijlagen bij een besluit annoteren\",\"Beschrijft hoe verschillende soorten bijlagen bij een besluit geannoteerd kunnen worden.\"]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@content\"],[[30,1],\"docs.submission-api\",\"Meldingsplicht API\",\"API om een nieuwe melding aan te maken in Loket voor Lokale Besturen op basis van een publicatie. Indien al de nodige velden ingevuld zijn, kan de melding automatisch verzonden worden.\"]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@subtitle\",\"@content\"],[[30,1],\"docs.vendor-sparql-api\",\"Vendor SPARQL API\",\"[BETA]\",\"API voor het uitvoeren van SPARQL queries voor het opvragen van statusgegevens over eerder uitgevoerde meldingen in Loket.\"]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@content\"],[[30,1],\"docs.rijksregisternummer-api\",\"Persoon URI\",\"Bevragen van de URI van een persoon op basis van diens rijksregisternummer en bestuurseenheid.\"]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@content\"],[[30,1],\"docs.sparql-endpoint\",\"SPARQL endpoint\",\"Endpoint om met SPARQL publieke data te bevragen.\"]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@href\",\"@title\",\"@content\",\"@external\"],[[30,1],\"https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/\",\"Besluit Publicatie\",\"Dit applicatieprofiel definieert een specificatie voor de publicatie van notulen en besluiten van bestuursorgaan.\",true]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@href\",\"@title\",\"@content\",\"@external\"],[[30,1],\"https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/\",\"Mandatendatabank\",\"Dit applicatieprofiel definieert een specificatie voor een gelinkte mandatendatabank op basis van gelinkte besluiten.\",true]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@content\"],[[30,1],\"docs.leidinggevenden\",\"Leidinggevenden\",\"De leidinggevenden databank volgt het applicatieprofiel mandatendatabank, maar werd uitgebreid met enkele subklassen en eigenschappen.\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"@fullSize\"],false,[\"menu/card\"]]",
+    "id": "O9E/omuW",
+    "block": "[[[10,\"nav\"],[14,0,\"au-u-padding-top au-u-padding-bottom au-o-grid au-o-grid--small\"],[12],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@content\"],[[30,1],\"docs.submission-annotations\",\"Annotaties voor automatische melding\",\"Annotaties die gebruikt worden bij automatische meldingen van besluiten en documenten.\"]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@content\"],[[30,1],\"docs.publication-annotations\",\"Annotaties van besluiten en documenten\",\"Annotaties die gebruikt worden bij de publicatie van besluiten en documenten opdat ze automatisch geharvest kunnen worden.\"]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@content\"],[[30,1],\"docs.decision-attachments\",\"Bijlagen bij een besluit annoteren\",\"Beschrijft hoe verschillende soorten bijlagen bij een besluit geannoteerd kunnen worden.\"]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@content\"],[[30,1],\"docs.submission-api\",\"Meldingsplicht API\",\"API om een nieuwe melding aan te maken in Loket voor Lokale Besturen op basis van een publicatie. Indien al de nodige velden ingevuld zijn, kan de melding automatisch verzonden worden.\"]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@subtitle\",\"@content\"],[[30,1],\"docs.vendor-sparql-api\",\"Vendor SPARQL API\",\"[BETA]\",\"API voor het uitvoeren van SPARQL queries voor het opvragen van statusgegevens over eerder uitgevoerde meldingen in Loket.\"]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@content\"],[[30,1],\"docs.rijksregisternummer-api\",\"Persoon URI\",\"Bevragen van de URI van een persoon op basis van diens rijksregisternummer en bestuurseenheid.\"]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@content\"],[[30,1],\"docs.sparql-endpoint\",\"SPARQL endpoint (centrale-vindplaats)\",\"Endpoint om met SPARQL publieke data te bevragen.\"]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@href\",\"@title\",\"@content\",\"@external\"],[[30,1],\"https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/\",\"Besluit Publicatie\",\"Dit applicatieprofiel definieert een specificatie voor de publicatie van notulen en besluiten van bestuursorgaan.\",true]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@href\",\"@title\",\"@content\",\"@external\"],[[30,1],\"https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/\",\"Mandatendatabank\",\"Dit applicatieprofiel definieert een specificatie voor een gelinkte mandatendatabank op basis van gelinkte besluiten.\",true]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@content\"],[[30,1],\"docs.leidinggevenden\",\"Leidinggevenden\",\"De leidinggevenden databank volgt het applicatieprofiel mandatendatabank, maar werd uitgebreid met enkele subklassen en eigenschappen.\"]],null],[1,\"\\n  \"],[8,[39,0],[[24,0,\"au-o-grid__item au-u-1-3@medium au-u-1-2@small\"]],[[\"@fullSize\",\"@route\",\"@title\",\"@content\"],[[30,1],\"docs.berichtencentrum-api\",\"Berichtencentrum API\",\"API om de module berichtencentrum te integreren. [DRAFT]\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"@fullSize\"],false,[\"menu/card\"]]",
     "moduleName": "pages-vendors/components/menu.hbs",
     "isStrictMode": false
   });
@@ -3738,6 +3744,7 @@
       this.route('sparql-endpoint');
       this.route('decision-attachments');
       this.route('vendor-sparql-api');
+      this.route('berichtencentrum-api');
     });
     this.route('route-not-found', {
       path: '/*wildcard'
@@ -4047,6 +4054,331 @@
     "id": "7G5DKu83",
     "block": "[[[8,[39,0],null,null,[[\"default\"],[[[[1,\"\\n  \"],[8,[39,1],[[24,1,\"scroll-to-top-container\"]],[[\"@scroll\"],[true]],[[\"default\"],[[[[1,\"\\n    \"],[10,0],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@reverse\",\"@border\",\"@skin\",\"@size\",\"@nowrap\"],[false,\"bottom\",\"tint\",\"large\",true]],[[\"default\"],[[[[1,\"\\n        \"],[8,[39,3],null,[[\"@route\",\"@skin\",\"@icon\",\"@iconAlignment\"],[\"index\",\"primary\",\"chevron-left\",\"left\"]],[[\"default\"],[[[[1,\"\\n          Terug naar overzicht\\n        \"]],[]]]]],[1,\"\\n      \"]],[]]]]],[1,\"\\n\\n      \"],[8,[39,4],[[24,0,\"au-o-region au-o-layout au-u-max-width-medium\"]],[[\"@skin\"],[\"default\"]],[[\"default\"],[[[[1,\"\\n        \"],[46,[28,[37,6],null,null],null,null,null],[1,\"\\n      \"]],[]]]]],[1,\"\\n\\n      \"],[8,[39,2],null,[[\"@reverse\",\"@border\",\"@skin\",\"@size\",\"@nowrap\"],[false,\"top\",\"tint\",\"large\",true]],[[\"default\"],[[[[1,\"\\n        \"],[8,[39,3],null,[[\"@route\",\"@skin\",\"@icon\",\"@iconAlignment\"],[\"index\",\"primary\",\"chevron-left\",\"left\"]],[[\"default\"],[[[[1,\"\\n          Terug naar overzicht\\n        \"]],[]]]]],[1,\"\\n      \"]],[]]]]],[1,\"\\n\\n      \"],[10,\"section\"],[14,0,\"au-u-background-gray-100\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"au-o-layout\"],[12],[1,\"\\n          \"],[8,[39,7],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"\\n            Beschikbare documentatie\\n          \"]],[]]]]],[1,\"\\n          \"],[8,[39,8],null,[[\"@fullSize\"],[false]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n      \"],[8,[39,9],null,null,null],[1,\"\\n\\n    \"],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n\"]],[]]]]],[1,\"\\n\"]],[],false,[\"au-app\",\"au-body-container\",\"au-toolbar\",\"au-link\",\"au-content\",\"component\",\"-outlet\",\"au-heading\",\"menu\",\"footer\"]]",
     "moduleName": "pages-vendors/templates/docs.hbs",
+    "isStrictMode": false
+  });
+  _exports.default = _default;
+});
+;define("pages-vendors/templates/docs/berichtencentrum-api", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <AuHeading @level="1" @skin="1">Berichtencentrum API [DRAFT]</AuHeading>
+  <p>
+    Lokale besturen en ABB kunnen beveiligde berichten met mekaar uitwisselen.
+    Het loket voor Lokale Besturen biedt een API aan waarop deze functionaliteit programmatorisch geïntegreerd kan worden.
+    <br> Dit document beschrijft de API voor het berichtencentrum.
+  </p>
+  
+  <AuHeading @level="2" @skin="2">High level beschrijving van de flow</AuHeading>
+  <p>
+    Het berichtencentrum bestaat uit Conversaties en Berichten. Een conversatie bestaat uit verschillende berichten; een conversatie is een zogenaamde 'thread'.
+    <br> Momenteel kan enkel ABB conversaties initiëren, en kunnen besturen enkel reageren.
+    <br>
+    De beschikbare conversaties en berichten kunnen bevraagd worden aan de hand van <AuLink @route="docs.vendor-sparql-api">Vendor SPARQL API</AuLink>. Meer details over de queries volgen hieronder.
+    <br> In geval er een nieuw bericht naar ABB moet worden gestuurd, publiceert het bestuur een RDFa-geannoteerd document.
+    <br> Via een Rest call meldt het bestuur de locatie van de nieuwe publicatie aan het loket, en zal de crawler van het loket het document ophalen.
+    <br> De flow is heel gelijkaardig aan die van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
+  </p>
+  
+  
+  <AuHeading @level="2" @skin="2">Melden van nieuwe bericht</AuHeading>
+  <AuHeading @level="3" @skin="3">API endpoint</AuHeading>
+  <p>
+    Het melden van een nieuw bericht gebeurt via een request
+  </p>
+  <CodeBlock @code="POST https://api.loket.lokaalbestuur.vlaanderen.be/berichtencentrum/melding" />
+  <p>
+    met JSON-LD request body:
+  </p>
+  <Snippet @snippetFilename="berichtencentrum-melding-quick-example.js" />
+  <p class="au-u-para-small au-u-muted">
+    Annotaties die gebruikt kunnen worden bij de gepubliceerde pagina worden verder besproken.
+  </p>
+  <p>
+    Het aanvragen van een publisher URI en een geheime sleutel (key) wordt beschreven in de sectie 'Authenticatie' van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
+    <br>
+    Verder verwachten we dat het gepubliceerde document beschermd is met authenticatie. Voor meer informatie over welke methodes de crawler ondersteunt, verwijzen we u door naar de sectie 'Ophalen van niet-publieke documenten' van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
+  </p>
+  
+  <AuHeading @level="2" @skin="2" id="publicatie-documenten">Publicatie van berichten</AuHeading>
+  <AuHeading @level="3" @skin="3">Voorbeelden</AuHeading>
+  <AuHeading @level="4" @skin="4">Opvragen berichten ABB</AuHeading>
+  <p>
+    De onderstaande SPARQL-query toont hoe u verzonden berichten van ABB naar specifiek bestuur kunt opvragen die recenter zijn dan een specifieke datum. <br>
+    Voor elk bericht, halen we ook de (optionele) url naar de bijlage(n) op. <br>
+    De query wordt verstuurd naar de <AuLink @route="docs.vendor-sparql-api">Vendor SPARQL API</AuLink>. <br>
+    Alle informatie over hoe u kan aanloggen, hoe het request er precies moet uitzien, vindt u daar.
+    <br>
+    Noteer opnieuw dat de uri van ABB de volgende is:
+    <br>
+    <CodeInline @code="<http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> " />
+  </p>
+  <SnippetToggle @snippetFilename="example-berichtencentrum-1.sparql" />
+  <AuHeading @level="4" @skin="4">RDFa voorbeeldpublicatie van bericht </AuHeading>
+  <p>
+    Het volgende voorbeeld illustreert hoe een bericht in RDFa wordt gepubliceerd. <br>
+    Dit is een zeer minimaal voorbeeld. <br>
+    Evengoed kan dit uitgebreid worden om het ook bruikbaar te maken voor zowel menselijke gebruikers als machines. <br>
+    Het staat het bestuur dus zeker vrij om extra annotaties toe te voegen.
+  </p>
+  <SnippetToggle @snippetFilename="example-berichtencentrum-2.html" />
+  <AuHeading @level="4" @skin="4">Voorbeeld-request om nieuw bericht te melden</AuHeading>
+  <p>
+    Voortgaand op het vorige voorbeeld, geven we weer hoe een request naar loket er zou kunnen uitzien.
+    Stel dat de RDFa geannoteerde pagina gehost staat op <CodeBlock @code="http://vendor.example.com/conversaties/bestuur/1" />. <br>
+    Uit vorige voorbeeld is de uri van het nieuwe bericht <CodeBlock @code="http://nieuw/berichturi/voor/ABB" />. <br>
+    Dan kan het request er als volgt uitzien:
+  </p>
+  <SnippetToggle @snippetFilename="example-berichtencentrum-3.sh" />
+  <p>
+    Noteer dat meerdere authenticatiemogelijkheden beschikbaar zijn, niet alleen basic auth.
+  </p>
+  
+  <AuHeading @level="3" @skin="3">JSON-LD context</AuHeading>
+  <p>
+    Zie <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
+  </p>
+  
+  <AuHeading @level="3" @skin="3">Vereisten voor gepubliceerde pagina's</AuHeading>
+  <p>
+    Zie <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
+  </p>
+  
+  <AuHeading @level="3" @skin="3">Organiseren van gepubliceerde pagina's</AuHeading>
+  <p>
+    De crawler verwacht bij het ophalen van de RDFa-informatie dat de resource -gespecifieerd met het <CodeInline @code="resource" /> veld in de json-body- volledig beschreven staat op de pagina gespecifieerd in het <CodeInline @code="href" /> veld. 
+    De crawler verwacht dat de RDFa beschrijving van het veld <CodeInline @code="nie:url" /> een rechtstreekse link is naar het bestand. <br>
+    (Indien content-negotiation gewenst is, kunnen de annotaties makkelijk uitgebreid worden. Laat gerust weten.) <br>
+    Verder zijn er geen echt harde restricties, behalve dat we niet verwachten dat de grootte van de pagina's te groot wordt. (Nader te bepalen wat de harde grens zou zijn; een html bestand van 20+ mb beschouwen we al als groot.) <br>
+    Goede vertrouwelijkheidshygiëne is wenselijk, bijvoorbeeld: niet de berichten van alle besturen in beheer op één pagina publiceren. Technisch kan het, maar het vergroot het risico.
+  </p>
+  
+  
+  <AuHeading @level="2" @skin="2">Ontwikkeling en test</AuHeading>
+  <p>
+  Deze informatie volgt nog.
+  </p>
+  
+  <AuHeading @level="2" @skin="2">Model</AuHeading>
+  <AuTable>
+    <:header>
+    <tr>
+      <th>Prefix</th>
+      <th>URI</th>
+    </tr>
+    </:header>
+    <:body>
+    <tr>
+      <td><CodeInline @code="besluit" /></td>
+      <td><AuLinkExternal href="http://data.vlaanderen.be/ns/besluit#">http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="dcterms" /></td>
+      <td><AuLinkExternal href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="nfo" /></td>
+      <td><AuLinkExternal href="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#">http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="nie" /></td>
+      <td><AuLinkExternal href="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#">http://www.semanticdesktop.org/ontologies/2007/01/19/nie#</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="schema" /></td>
+      <td>
+        <AuLinkExternal href="http://schema.org/">http://schema.org/</AuLinkExternal>
+        <br>
+        Noteer: geen <em>http<strong>s</strong></em>!
+      </td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="rdf" /></td>
+      <td><AuLinkExternal href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="xsd" /></td>
+      <td><AuLinkExternal href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
+    </tr>
+    </:body>
+  </AuTable>
+  
+  <AuHeading @level="3" @skin="3"><CodeInline @code="schema:Conversation" /></AuHeading>
+  <p>
+    Bundelt schema:Message rondt specifiek topic.
+  </p>
+  <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+  <AuTable>
+    <:header>
+    <tr>
+      <th>Naam</th>
+      <th>URI</th>
+      <th>Verwacht type</th>
+      <th>Beschrijving</th>
+    </tr>
+    </:header>
+    <:body>
+    <tr>
+      <td>hasPart</td>
+      <td><CodeInline @code="schema:hasPart" /></td>
+      <td><CodeInline @code="schema:Message" /></td>
+      <td>Verwijst naar het gelinkt bericht aan de conversatie</td>
+    </tr>
+    <tr>
+      <td>about</td>
+      <td><CodeInline @code="schema:about" /></td>
+      <td><CodeInline @code="xsd:string" /></td>
+      <td>Beschrijft het topic van het gesprek</td>
+    </tr>
+    <tr>
+      <td>Identificator</td>
+      <td><CodeInline @code="schema:identifier" /></td>
+      <td><CodeInline @code="xsd:string" /></td>
+      <td>
+        De interne referentie van ABB.
+      </td>
+    </tr>
+    </:body>
+  </AuTable>
+  
+  <AuHeading @level="3" @skin="3"> Bericht <CodeInline @code="schema:Message" /></AuHeading>
+  <p>
+    Een resource die de effectieve communicatie bevat.
+  </p>
+  <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+  <AuTable>
+    <:header>
+    <tr>
+      <th>Naam</th>
+      <th>URI</th>
+      <th>Verwacht type</th>
+      <th>Beschrijving</th>
+    </tr>
+    </:header>
+    <:body>
+    <tr>
+      <td>type</td>
+      <td><CodeInline @code="dcterms:type" /></td>
+      <td><CodeInline @code="xsd:string" /></td>
+      <td>
+        Een string die samenvat wat de type communicatie is. <br>
+        Voorbeelden hiervan zijn "Kennisgeving toezichtsbeslissing" of "Opvraging" <br>
+        Noteer hierbij dat het bestuur dit veld <em>niet</em> hoeft te publiceren. <br>
+        Alle berichten die binnenkomen vanuit een bestuur zullen automatisch het label "Reactie" krijgen.
+      </td>
+    </tr>
+    <tr>
+      <td>hasPart</td>
+      <td><CodeInline @code="nie:hasPart" /></td>
+      <td><CodeInline @code="nfo:FileDataObject" /></td>
+      <td>Verwijst naar het bijbehorende document of bestand van het bericht, zoals een bijlage.</td>
+    </tr>
+    <tr>
+      <td>sender</td>
+      <td><CodeInline @code="schema:sender" /></td>
+      <td><CodeInline @code="besluit:Bestuurseenheid" /></td>
+      <td>
+        Verwijst naar de zender of afzender van het bericht. <br>
+        Zie voorbeelden <AuLink @route="docs.sparql-endpoint">SPARQL endpoint</AuLink> voor queries.
+      </td>
+    </tr>
+    <tr>
+      <td>recipient</td>
+      <td><CodeInline @code="schema:recipient" /></td>
+      <td><CodeInline @code="besluit:Bestuurseenheid" /></td>
+      <td>
+        Verwijst naar de ontvanger van het bericht. <br>
+        In de prakijk ABB met vaste URI <br>
+        <CodeInline @code="<http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b>"/>
+      </td>
+    </tr>
+    <tr>
+      <td>text</td>
+      <td><CodeInline @code="schema:text" /></td>
+      <td><CodeInline @code="xsd:string" /></td>
+      <td>De tekst of inhoud van het bericht.</td>
+    </tr>
+    <tr>
+      <td>dateSent</td>
+      <td><CodeInline @code="schema:dateSent" /></td>
+      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td>Datum en tijd waarop het bericht is verzonden.
+        <br>
+        In de praktijk, wanneer de gebruiker op 'versturen' geklikt heeft.
+        <br>
+        Dit is niet de datum van ontvangest bij ABB.
+        <br>
+        (Verdere discussie zal nodig zijn om uit te klaren welke timestamp rechtsgeldig is voor de termijnen)
+      </td>
+    </tr>
+    </:body>
+  </AuTable>
+  
+  <AuHeading @level="3" @skin="3"> FileDataObject <CodeInline @code="nfo:FileDataObject" /></AuHeading>
+  <p>
+    Deze Klasse wordt gebruikt om bijlagen te annoteren. <br>
+  </p>
+  <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+  <AuTable>
+    <:header>
+    <tr>
+      <th>Naam</th>
+      <th>URI</th>
+      <th>Verwacht type</th>
+      <th>Beschrijving</th>
+    </tr>
+    </:header>
+    <:body>
+    <tr>
+      <td>created</td>
+      <td><CodeInline @code="dcterms:created" /></td>
+      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td>Datum en tijd waarop het bestand is gecreëerd.</td>
+    </tr>
+    <tr>
+      <td>url</td>
+      <td><CodeInline @code="nie:url" /></td>
+      <td><CodeInline @code="xsd:anyURI" /></td>
+      <td>De locatie van het bestand die gebruikt zal worden om opgehaald te worden</td>
+    </tr>
+    <tr>
+      <td>modified</td>
+      <td><CodeInline @code="dcterms:modified" /></td>
+      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td>Datum en tijd waarop het bestand voor het laatst is gewijzigd.</td>
+    </tr>
+    <tr>
+      <td>fileName</td>
+      <td><CodeInline @code="nfo:fileName" /></td>
+      <td><CodeInline @code="xsd:string" /></td>
+      <td>De mensleesbare naam van het bestand.</td>
+    </tr>
+    <tr>
+      <td>status</td>
+      <td><CodeInline @code="adms:status" /></td>
+      <td><CodeInline @code="skos:Concept" /></td>
+      <td>De status gebruikt bij ABB om de voortgang van de download van de file op te volgen.
+        <br>
+        De mogelijke statussen vindt u (voorlopig)
+        <AuLinkExternal href="https://github.com/lblod/download-url-service#file-download-statuses">hier</AuLinkExternal>
+        <br>
+        Noteer: deze property wordt genegeerd indien het bestuur dit publiceert.
+      </td>
+    </tr>
+    </:body>
+  </AuTable>
+  
+  */
+  {
+    "id": "EBbORcii",
+    "block": "[[[8,[39,0],null,[[\"@level\",\"@skin\"],[\"1\",\"1\"]],[[\"default\"],[[[[1,\"Berichtencentrum API [DRAFT]\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Lokale besturen en ABB kunnen beveiligde berichten met mekaar uitwisselen.\\n  Het loket voor Lokale Besturen biedt een API aan waarop deze functionaliteit programmatorisch geïntegreerd kan worden.\\n  \"],[10,\"br\"],[12],[13],[1,\" Dit document beschrijft de API voor het berichtencentrum.\\n\"],[13],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"High level beschrijving van de flow\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Het berichtencentrum bestaat uit Conversaties en Berichten. Een conversatie bestaat uit verschillende berichten; een conversatie is een zogenaamde 'thread'.\\n  \"],[10,\"br\"],[12],[13],[1,\" Momenteel kan enkel ABB conversaties initiëren, en kunnen besturen enkel reageren.\\n  \"],[10,\"br\"],[12],[13],[1,\"\\n  De beschikbare conversaties en berichten kunnen bevraagd worden aan de hand van \"],[8,[39,1],null,[[\"@route\"],[\"docs.vendor-sparql-api\"]],[[\"default\"],[[[[1,\"Vendor SPARQL API\"]],[]]]]],[1,\". Meer details over de queries volgen hieronder.\\n  \"],[10,\"br\"],[12],[13],[1,\" In geval er een nieuw bericht naar ABB moet worden gestuurd, publiceert het bestuur een RDFa-geannoteerd document.\\n  \"],[10,\"br\"],[12],[13],[1,\" Via een Rest call meldt het bestuur de locatie van de nieuwe publicatie aan het loket, en zal de crawler van het loket het document ophalen.\\n  \"],[10,\"br\"],[12],[13],[1,\" De flow is heel gelijkaardig aan die van de \"],[8,[39,1],null,[[\"@route\"],[\"docs.submission-api\"]],[[\"default\"],[[[[1,\"Meldingsplicht API\"]],[]]]]],[1,\".\\n\"],[13],[1,\"\\n\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Melden van nieuwe bericht\"]],[]]]]],[1,\"\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"API endpoint\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Het melden van een nieuw bericht gebeurt via een request\\n\"],[13],[1,\"\\n\"],[8,[39,2],null,[[\"@code\"],[\"POST https://api.loket.lokaalbestuur.vlaanderen.be/berichtencentrum/melding\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  met JSON-LD request body:\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"berichtencentrum-melding-quick-example.js\"]],null],[1,\"\\n\"],[10,2],[14,0,\"au-u-para-small au-u-muted\"],[12],[1,\"\\n  Annotaties die gebruikt kunnen worden bij de gepubliceerde pagina worden verder besproken.\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Het aanvragen van een publisher URI en een geheime sleutel (key) wordt beschreven in de sectie 'Authenticatie' van de \"],[8,[39,1],null,[[\"@route\"],[\"docs.submission-api\"]],[[\"default\"],[[[[1,\"Meldingsplicht API\"]],[]]]]],[1,\".\\n  \"],[10,\"br\"],[12],[13],[1,\"\\n  Verder verwachten we dat het gepubliceerde document beschermd is met authenticatie. Voor meer informatie over welke methodes de crawler ondersteunt, verwijzen we u door naar de sectie 'Ophalen van niet-publieke documenten' van de \"],[8,[39,1],null,[[\"@route\"],[\"docs.submission-api\"]],[[\"default\"],[[[[1,\"Meldingsplicht API\"]],[]]]]],[1,\".\\n\"],[13],[1,\"\\n\\n\"],[8,[39,0],[[24,1,\"publicatie-documenten\"]],[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Publicatie van berichten\"]],[]]]]],[1,\"\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"Voorbeelden\"]],[]]]]],[1,\"\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"4\",\"4\"]],[[\"default\"],[[[[1,\"Opvragen berichten ABB\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  De onderstaande SPARQL-query toont hoe u verzonden berichten van ABB naar specifiek bestuur kunt opvragen die recenter zijn dan een specifieke datum. \"],[10,\"br\"],[12],[13],[1,\"\\n  Voor elk bericht, halen we ook de (optionele) url naar de bijlage(n) op. \"],[10,\"br\"],[12],[13],[1,\"\\n  De query wordt verstuurd naar de \"],[8,[39,1],null,[[\"@route\"],[\"docs.vendor-sparql-api\"]],[[\"default\"],[[[[1,\"Vendor SPARQL API\"]],[]]]]],[1,\". \"],[10,\"br\"],[12],[13],[1,\"\\n  Alle informatie over hoe u kan aanloggen, hoe het request er precies moet uitzien, vindt u daar.\\n  \"],[10,\"br\"],[12],[13],[1,\"\\n  Noteer opnieuw dat de uri van ABB de volgende is:\\n  \"],[10,\"br\"],[12],[13],[1,\"\\n  \"],[8,[39,4],null,[[\"@code\"],[\"<http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> \"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[8,[39,5],null,[[\"@snippetFilename\"],[\"example-berichtencentrum-1.sparql\"]],null],[1,\"\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"4\",\"4\"]],[[\"default\"],[[[[1,\"RDFa voorbeeldpublicatie van bericht \"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Het volgende voorbeeld illustreert hoe een bericht in RDFa wordt gepubliceerd. \"],[10,\"br\"],[12],[13],[1,\"\\n  Dit is een zeer minimaal voorbeeld. \"],[10,\"br\"],[12],[13],[1,\"\\n  Evengoed kan dit uitgebreid worden om het ook bruikbaar te maken voor zowel menselijke gebruikers als machines. \"],[10,\"br\"],[12],[13],[1,\"\\n  Het staat het bestuur dus zeker vrij om extra annotaties toe te voegen.\\n\"],[13],[1,\"\\n\"],[8,[39,5],null,[[\"@snippetFilename\"],[\"example-berichtencentrum-2.html\"]],null],[1,\"\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"4\",\"4\"]],[[\"default\"],[[[[1,\"Voorbeeld-request om nieuw bericht te melden\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Voortgaand op het vorige voorbeeld, geven we weer hoe een request naar loket er zou kunnen uitzien.\\n  Stel dat de RDFa geannoteerde pagina gehost staat op \"],[8,[39,2],null,[[\"@code\"],[\"http://vendor.example.com/conversaties/bestuur/1\"]],null],[1,\". \"],[10,\"br\"],[12],[13],[1,\"\\n  Uit vorige voorbeeld is de uri van het nieuwe bericht \"],[8,[39,2],null,[[\"@code\"],[\"http://nieuw/berichturi/voor/ABB\"]],null],[1,\". \"],[10,\"br\"],[12],[13],[1,\"\\n  Dan kan het request er als volgt uitzien:\\n\"],[13],[1,\"\\n\"],[8,[39,5],null,[[\"@snippetFilename\"],[\"example-berichtencentrum-3.sh\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Noteer dat meerdere authenticatiemogelijkheden beschikbaar zijn, niet alleen basic auth.\\n\"],[13],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"JSON-LD context\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Zie \"],[8,[39,1],null,[[\"@route\"],[\"docs.submission-api\"]],[[\"default\"],[[[[1,\"Meldingsplicht API\"]],[]]]]],[1,\".\\n\"],[13],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"Vereisten voor gepubliceerde pagina's\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Zie \"],[8,[39,1],null,[[\"@route\"],[\"docs.submission-api\"]],[[\"default\"],[[[[1,\"Meldingsplicht API\"]],[]]]]],[1,\".\\n\"],[13],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"Organiseren van gepubliceerde pagina's\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  De crawler verwacht bij het ophalen van de RDFa-informatie dat de resource -gespecifieerd met het \"],[8,[39,4],null,[[\"@code\"],[\"resource\"]],null],[1,\" veld in de json-body- volledig beschreven staat op de pagina gespecifieerd in het \"],[8,[39,4],null,[[\"@code\"],[\"href\"]],null],[1,\" veld. \\n  De crawler verwacht dat de RDFa beschrijving van het veld \"],[8,[39,4],null,[[\"@code\"],[\"nie:url\"]],null],[1,\" een rechtstreekse link is naar het bestand. \"],[10,\"br\"],[12],[13],[1,\"\\n  (Indien content-negotiation gewenst is, kunnen de annotaties makkelijk uitgebreid worden. Laat gerust weten.) \"],[10,\"br\"],[12],[13],[1,\"\\n  Verder zijn er geen echt harde restricties, behalve dat we niet verwachten dat de grootte van de pagina's te groot wordt. (Nader te bepalen wat de harde grens zou zijn; een html bestand van 20+ mb beschouwen we al als groot.) \"],[10,\"br\"],[12],[13],[1,\"\\n  Goede vertrouwelijkheidshygiëne is wenselijk, bijvoorbeeld: niet de berichten van alle besturen in beheer op één pagina publiceren. Technisch kan het, maar het vergroot het risico.\\n\"],[13],[1,\"\\n\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Ontwikkeling en test\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\nDeze informatie volgt nog.\\n\"],[13],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Model\"]],[]]]]],[1,\"\\n\"],[8,[39,6],null,null,[[\"header\",\"body\"],[[[[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"th\"],[12],[1,\"Prefix\"],[13],[1,\"\\n    \"],[10,\"th\"],[12],[1,\"URI\"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"besluit\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,7],[[24,6,\"http://data.vlaanderen.be/ns/besluit#\"]],null,[[\"default\"],[[[[1,\"http://data.vlaanderen.be/ns/besluit#\"]],[]]]]],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"dcterms\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,7],[[24,6,\"http://purl.org/dc/terms/\"]],null,[[\"default\"],[[[[1,\"http://purl.org/dc/terms/\"]],[]]]]],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"nfo\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,7],[[24,6,\"http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#\"]],null,[[\"default\"],[[[[1,\"http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#\"]],[]]]]],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"nie\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,7],[[24,6,\"http://www.semanticdesktop.org/ontologies/2007/01/19/nie#\"]],null,[[\"default\"],[[[[1,\"http://www.semanticdesktop.org/ontologies/2007/01/19/nie#\"]],[]]]]],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"schema\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"\\n      \"],[8,[39,7],[[24,6,\"http://schema.org/\"]],null,[[\"default\"],[[[[1,\"http://schema.org/\"]],[]]]]],[1,\"\\n      \"],[10,\"br\"],[12],[13],[1,\"\\n      Noteer: geen \"],[10,\"em\"],[12],[1,\"http\"],[10,\"strong\"],[12],[1,\"s\"],[13],[13],[1,\"!\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"rdf\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,7],[[24,6,\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"]],null,[[\"default\"],[[[[1,\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"]],[]]]]],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"xsd\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,7],[[24,6,\"http://www.w3.org/2001/XMLSchema#\"]],null,[[\"default\"],[[[[1,\"http://www.w3.org/2001/XMLSchema#\"]],[]]]]],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[8,[39,4],null,[[\"@code\"],[\"schema:Conversation\"]],null]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Bundelt schema:Message rondt specifiek topic.\\n\"],[13],[1,\"\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"4\",\"4\"]],[[\"default\"],[[[[1,\"Eigenschappen\"]],[]]]]],[1,\"\\n\"],[8,[39,6],null,null,[[\"header\",\"body\"],[[[[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"th\"],[12],[1,\"Naam\"],[13],[1,\"\\n    \"],[10,\"th\"],[12],[1,\"URI\"],[13],[1,\"\\n    \"],[10,\"th\"],[12],[1,\"Verwacht type\"],[13],[1,\"\\n    \"],[10,\"th\"],[12],[1,\"Beschrijving\"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"hasPart\"],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"schema:hasPart\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"schema:Message\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"Verwijst naar het gelinkt bericht aan de conversatie\"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"about\"],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"schema:about\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"xsd:string\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"Beschrijft het topic van het gesprek\"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"Identificator\"],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"schema:identifier\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"xsd:string\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"\\n      De interne referentie van ABB.\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\" Bericht \"],[8,[39,4],null,[[\"@code\"],[\"schema:Message\"]],null]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Een resource die de effectieve communicatie bevat.\\n\"],[13],[1,\"\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"4\",\"4\"]],[[\"default\"],[[[[1,\"Eigenschappen\"]],[]]]]],[1,\"\\n\"],[8,[39,6],null,null,[[\"header\",\"body\"],[[[[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"th\"],[12],[1,\"Naam\"],[13],[1,\"\\n    \"],[10,\"th\"],[12],[1,\"URI\"],[13],[1,\"\\n    \"],[10,\"th\"],[12],[1,\"Verwacht type\"],[13],[1,\"\\n    \"],[10,\"th\"],[12],[1,\"Beschrijving\"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"type\"],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"dcterms:type\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"xsd:string\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"\\n      Een string die samenvat wat de type communicatie is. \"],[10,\"br\"],[12],[13],[1,\"\\n      Voorbeelden hiervan zijn \\\"Kennisgeving toezichtsbeslissing\\\" of \\\"Opvraging\\\" \"],[10,\"br\"],[12],[13],[1,\"\\n      Noteer hierbij dat het bestuur dit veld \"],[10,\"em\"],[12],[1,\"niet\"],[13],[1,\" hoeft te publiceren. \"],[10,\"br\"],[12],[13],[1,\"\\n      Alle berichten die binnenkomen vanuit een bestuur zullen automatisch het label \\\"Reactie\\\" krijgen.\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"hasPart\"],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"nie:hasPart\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"nfo:FileDataObject\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"Verwijst naar het bijbehorende document of bestand van het bericht, zoals een bijlage.\"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"sender\"],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"schema:sender\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"besluit:Bestuurseenheid\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"\\n      Verwijst naar de zender of afzender van het bericht. \"],[10,\"br\"],[12],[13],[1,\"\\n      Zie voorbeelden \"],[8,[39,1],null,[[\"@route\"],[\"docs.sparql-endpoint\"]],[[\"default\"],[[[[1,\"SPARQL endpoint\"]],[]]]]],[1,\" voor queries.\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"recipient\"],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"schema:recipient\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"besluit:Bestuurseenheid\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"\\n      Verwijst naar de ontvanger van het bericht. \"],[10,\"br\"],[12],[13],[1,\"\\n      In de prakijk ABB met vaste URI \"],[10,\"br\"],[12],[13],[1,\"\\n      \"],[8,[39,4],null,[[\"@code\"],[\"<http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b>\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"text\"],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"schema:text\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"xsd:string\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"De tekst of inhoud van het bericht.\"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"dateSent\"],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"schema:dateSent\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"xsd:dateTime\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"Datum en tijd waarop het bericht is verzonden.\\n      \"],[10,\"br\"],[12],[13],[1,\"\\n      In de praktijk, wanneer de gebruiker op 'versturen' geklikt heeft.\\n      \"],[10,\"br\"],[12],[13],[1,\"\\n      Dit is niet de datum van ontvangest bij ABB.\\n      \"],[10,\"br\"],[12],[13],[1,\"\\n      (Verdere discussie zal nodig zijn om uit te klaren welke timestamp rechtsgeldig is voor de termijnen)\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\" FileDataObject \"],[8,[39,4],null,[[\"@code\"],[\"nfo:FileDataObject\"]],null]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Deze Klasse wordt gebruikt om bijlagen te annoteren. \"],[10,\"br\"],[12],[13],[1,\"\\n\"],[13],[1,\"\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"4\",\"4\"]],[[\"default\"],[[[[1,\"Eigenschappen\"]],[]]]]],[1,\"\\n\"],[8,[39,6],null,null,[[\"header\",\"body\"],[[[[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"th\"],[12],[1,\"Naam\"],[13],[1,\"\\n    \"],[10,\"th\"],[12],[1,\"URI\"],[13],[1,\"\\n    \"],[10,\"th\"],[12],[1,\"Verwacht type\"],[13],[1,\"\\n    \"],[10,\"th\"],[12],[1,\"Beschrijving\"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"created\"],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"dcterms:created\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"xsd:dateTime\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"Datum en tijd waarop het bestand is gecreëerd.\"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"url\"],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"nie:url\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"xsd:anyURI\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"De locatie van het bestand die gebruikt zal worden om opgehaald te worden\"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"modified\"],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"dcterms:modified\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"xsd:dateTime\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"Datum en tijd waarop het bestand voor het laatst is gewijzigd.\"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"fileName\"],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"nfo:fileName\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"xsd:string\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"De mensleesbare naam van het bestand.\"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,\"tr\"],[12],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"status\"],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"adms:status\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"skos:Concept\"]],null],[13],[1,\"\\n    \"],[10,\"td\"],[12],[1,\"De status gebruikt bij ABB om de voortgang van de download van de file op te volgen.\\n      \"],[10,\"br\"],[12],[13],[1,\"\\n      De mogelijke statussen vindt u (voorlopig)\\n      \"],[8,[39,7],[[24,6,\"https://github.com/lblod/download-url-service#file-download-statuses\"]],null,[[\"default\"],[[[[1,\"hier\"]],[]]]]],[1,\"\\n      \"],[10,\"br\"],[12],[13],[1,\"\\n      Noteer: deze property wordt genegeerd indien het bestuur dit publiceert.\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n\"]],[],false,[\"au-heading\",\"au-link\",\"code-block\",\"snippet\",\"code-inline\",\"snippet-toggle\",\"au-table\",\"au-link-external\"]]",
+    "moduleName": "pages-vendors/templates/docs/berichtencentrum-api.hbs",
     "isStrictMode": false
   });
   _exports.default = _default;
@@ -5679,9 +6011,11 @@
   </p>
   <Snippet @snippetFilename="vendor-sparql-api_logout-ex.sh" />
   
-  <AuHeading @level="2" @skin="2">Beschikbaarheid van gegevens</AuHeading>
+  <AuHeading @level="2" @skin="2">Beschikbare gegevens</AuHeading>
+  <AuHeading @level="3" @skin="3">Inzendingen</AuHeading>
   <p>
-    In de beginfase van de ontwikkeling van deze endpoint (november 2022) is de beschikbare hoeveelheid gegevens nog beperkt. Het gaat om de gegevens voorgesteld op onderstaand diagram voor Linked Data. In dit diagram zijn entiteiten voorgesteld met een cirkel, data properties met pijlen wijzend naar een rechthoek waar het datatype in vermeld staat en object properties met pijlen naar een nieuwe cirkel. Als er van een entiteit op het diagram geen eigenschappen bestaan zijn deze ook niet aanwezig in de data.
+    Het datamodel voor de inzendingen worden voorgesteld op onderstaand diagram voor Linked Data. <br>
+    In dit diagram zijn entiteiten voorgesteld met een cirkel, data properties met pijlen wijzend naar een rechthoek waar het datatype in vermeld staat en object properties met pijlen naar een nieuwe cirkel. Als er van een entiteit op het diagram geen eigenschappen bestaan zijn deze ook niet aanwezig in de data.
   </p>
   <a href="assets/images/VendorAPIModel.svg">
     <figure>
@@ -5689,8 +6023,7 @@
       <figcaption>Diagram van Linked Data van beschikbare gegevens in het endpoint</figcaption>
     </figure>
   </a>
-  
-  <AuHeading @level="3" @skin="3">Documentstatussen</AuHeading>
+  <AuHeading @level="4" @skin="4">Documentstatussen inzendingen</AuHeading>
   <p>
     Onderstaande tabel verduidelijkt de URI's die worden gebruikt om de status van een ingezonden document aan te duiden.
   </p>
@@ -5714,8 +6047,14 @@
         <td><CodeInline @code="http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff" /></td>
         <td>Inzendbaar</td>
       </tr>
-    </:body>
+      </:body>
   </AuTable>
+  
+  <AuHeading @level="3" @skin="3">Berichten en Conversaties</AuHeading>
+  <p>
+    Berichten en conversaties zullen ook beschikbaar gemaakt worden. Voor verdere informatie verwijzen we naar
+     <LinkTo @route="docs.berichtencentrum-api">berichtencentrum-api</LinkTo>.
+  </p>
   
   <AuHeading @level="2" @skin="2">Fouten</AuHeading>
   <p>
@@ -5785,10 +6124,11 @@
       </tr>
     </:body>
   </AuTable>
+  
   */
   {
-    "id": "wHkqop/t",
-    "block": "[[[8,[39,0],null,[[\"@level\",\"@skin\"],[\"h1\",\"h1\"]],[[\"default\"],[[[[1,\"Vendor SPARQL API [BETA]\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Met deze API is het mogelijk om rechtstreeks SPARQL queries uit te voeren tegen een gereduceerde dataset waar nuttige informatie terug te vinden is over de toestand van eerder ingestuurde meldingen. Bekijk de pagina over de \"],[8,[39,1],null,[[\"@route\"],[\"docs.submission-api\"]],[[\"default\"],[[[[1,\"Meldingsplicht API\"]],[]]]]],[1,\" voor het insturen van meldingen.\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n  \"],[10,\"strong\"],[12],[1,\"Het soort beschikbare gegevens is nog sterk onderhevig aan veranderingen. Vertrouw voorlopig (bij het schrijven in 11/2022) nog niet te veel op het soort gegevens en de structuur ervan.\"],[13],[1,\"\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Het opvragen van de status van ingestuurde meldingen is mogelijk door het uitsturen van de juiste query naar het SPARQL endpoint. Het kunnen uitvoeren van SPARQL queries brengt echter risico met zich mee in verband met databeveiliging. Daarom wordt de toegang tot het SPARQL endpoint beschermd met een login en is het enkel mogelijk om data uit te lezen. Er kan dus niets gewijzigd worden via SPARQL Update queries. Deze pagina beschrijft het stappenplan om in te loggen en SPARQL queries uit te voeren.\\n\"],[13],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Inloggen\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  De API voor inloggen is gelijkaardig aan hoe een melding wordt ingestuurd: volgens een request met authenticatie door middel van vendor URI, sleutel en de URI van de organisatie in een JSON-LD body naar\\n\"],[13],[1,\"\\n\"],[8,[39,2],null,[[\"@code\"],[\"POST https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  De JSON-LD body ziet er minimaal uit zoals het volgende:\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_login-request-body.json\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  In het voorbeeld hierboven staat de \"],[8,[39,4],null,[[\"@code\"],[\"organisation\"]],null],[1,\" voor de URI van de bestuurseenheid waar de vendor garant voor staat. \"],[8,[39,4],null,[[\"@code\"],[\"publisher.uri\"]],null],[1,\" staat voor de URI van de vendor, en \"],[8,[39,4],null,[[\"@code\"],[\"publisher.key\"]],null],[1,\" staat voor de geheime sleutel die eerder werd verkregen. Het aanvragen van een publisher URI en geheime sleutel (key) staan beschreven in de sectie “Authenticatie” op de pagina over \"],[8,[39,1],null,[[\"@route\"],[\"docs.submission-api\"]],[[\"default\"],[[[[1,\"Meldingsplicht API\"]],[]]]]],[1,\".\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n  De volledige JSON-LD context beschrijft met RDF wat elke eigenschap betekent, welk datatype wordt verwacht en zou aan aan elke request moeten worden toegevoegd. Deze login service voegt echter automatisch de juiste context toe aan elke login request, dus het verzenden van de minimale body zoals hierboven volstaat.\\n  Vind hieronder de volledige context, indien nodig.\\n\"],[13],[1,\"\\n\"],[8,[39,5],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_login-context.json\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Het antwoord op de login request is \"],[10,\"strong\"],[12],[1,\"een sessie cookie\"],[13],[1,\" waar volgende requests (SPARQL queries en uitloggen) mee worden geauthenticeert. Er wordt ook een JSON-LD body teruggegeven die informatie over de sessie voorstelt, zoals hieronder als voorbeeld wordt weergegeven. Deze informatie kan echter worden genegeerd, want \"],[10,\"strong\"],[12],[1,\" de sessie wordt vanaf de login request enkel bepaald door middel van de cookie\"],[13],[1,\".\\n\"],[13],[1,\"\\n\"],[8,[39,5],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_login-response.json\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n   Als referentie wordt hieronder nog de context vermeld van het antwoord met de sessieinformatie.\\n\"],[13],[1,\"\\n\"],[8,[39,5],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_login-response-context.json\"]],null],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"Voorbeeld\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Als voorbeeld staat hieronder hoe een login kan worden uitgevoerd met \"],[8,[39,4],null,[[\"@code\"],[\"cURL\"]],null],[1,\". Het ontvangen en verder weer versturen van cookies is noodzakelijk. Daarom wordt de cookie engine ingeschakeld met de \"],[8,[39,4],null,[[\"@code\"],[\"-b\"]],null],[1,\" en \"],[8,[39,4],null,[[\"@code\"],[\"-c\"]],null],[1,\" flags die verwijzen naar een bestand waar de cookies worden opgeslagen.\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_login-ex.sh\"]],null],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Versturen van queries\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Eenmaal ingelogd is het mogelijk om SPARQL queries te versturen naar het SPARQL endpoint, benaderbaar via\\n\"],[13],[1,\"\\n\"],[8,[39,2],null,[[\"@code\"],[\"https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Het versturen van queries moet gebeuren via HTTP(S) requests zoals beschreven in de \"],[10,3],[14,6,\"https://www.w3.org/TR/sparql11-protocol/#query-operation\"],[14,\"target\",\"_blank\"],[14,\"rel\",\"noopener noreferrer\"],[12],[1,\"officiële specificatie van het SPARQL Protocol\"],[13],[1,\". Er is geen webpagina beschikbaar op dit endpoint. Het is noodzakelijk om de sessie cookie, verkregen bij het inloggen, steeds mee te sturen bij elke request.\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Bij het inzenden van een nieuwe melding (zoals beschreven in \"],[8,[39,1],null,[[\"@route\"],[\"docs.submission-api\"]],[[\"default\"],[[[[1,\"Meldingsplicht API\"]],[]]]]],[1,\") wordt er JSON teruggegeven die een URI bevat voor de melding (Submission) en de Job waarin de melding zal worden verwerkt. Deze kunnen worden gebruikt als onderwerp of voorwerp in SPARQL queries om doelgericht informatie op te vragen.\\n\"],[13],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"Voorbeelden van queries\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Hieronder staan een aantal voorbeelden van SPARQL queries. Aan de hand van het eerste voorbeeld kan de status van de ingestuurde melding worden opgevraagd.\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_query-ex-1.sparql\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  \"],[10,\"strong\"],[12],[1,\"Noteer:\"],[13],[1,\" voor de status is aangeraden om steeds met de URI te werken. Het label kan veranderen, maar het achterliggende concept (i.e. de URI) niet.\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n\"],[10,\"strong\"],[12],[1,\"Noteer:\"],[13],[1,\" de status voor een inzending kan \\\"verzonden\\\" of \\\"concept\\\" zijn. Een inzending in \\\"concept\\\" vereist nog manuele interventie door onvolledigheid van het document alvorens het officieel kan worden ingediend, waarna het de status \\\"verzonden\\\" krijgt. Indien er ingestuurd werd met status \\\"verzonden\\\" en de status blijft hangen op \\\"concept\\\", is er hoogst waarschijnlijk iets mis met de gegevens van het document. Je kan steeds terecht bij op \"],[8,[39,6],[[24,6,\"digitaalABB@vlaanderen.be\"]],[[\"@icon\"],[\"mail\"]],[[\"default\"],[[[[1,\"digitaalABB@vlaanderen.be\"]],[]]]]],[1,\" voor hulp. Verder op deze pagina worden de URI's voor de status opgelijst.\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Met het volgende voorbeeld worden er 100 eerder verrichtte meldingen opgevraagd. Met de verkregen URI's kan men queries gelijk de bovenstaande opstellen.\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_query-ex-2.sparql\"]],null],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"Voorbeelden van requests\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Hieronder staan een aantal voorbeelden van requests, uitgevoerd via \"],[8,[39,4],null,[[\"@code\"],[\"cURL\"]],null],[1,\". De query is steeds op te vullen met de benodigde SPARQL query.\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n  De meest gebruikte manier: een POST request met de query als body, geëncodeerd zoals een formulier veld.\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_request-ex-1.sh\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Het volgende voorbeeld is hetzelfde als het vorige, maar voor de encodering is hier de typische JavaScript \"],[8,[39,4],null,[[\"@code\"],[\"encodeURIComponent()\"]],null],[1,\" gebruikt.\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_request-ex-2.sh\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Uit volledigheid ondersteunt de endpoint ook GET requests, waar de SPARQL query als URL parameter wordt meegegeven. Deze methode is echter niet aan te raden vanwege beperkingen op de lengte van de query.\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_request-ex-4.sh\"]],null],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Uitloggen\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Om de sessie af te sluiten volstaat het om een request, als methode \"],[8,[39,4],null,[[\"@code\"],[\"DELETE\"]],null],[1,\" met de sessie cookie, te sturen naar\\n\"],[13],[1,\"\\n\"],[10,0],[12],[1,\"\\n  \"],[8,[39,2],null,[[\"@code\"],[\"DELETE https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Het antwoord op deze request is, als uitloggen successvol was, leeg. De HTTP response code is dan \"],[8,[39,4],null,[[\"@code\"],[\"204 No Content\"]],null],[1,\".\\n\"],[13],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"Voorbeeld\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Bij het gebruik van \"],[8,[39,4],null,[[\"@code\"],[\"cURL\"]],null],[1,\" ziet de request voor uitloggen er als volgt uit.\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_logout-ex.sh\"]],null],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Beschikbaarheid van gegevens\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  In de beginfase van de ontwikkeling van deze endpoint (november 2022) is de beschikbare hoeveelheid gegevens nog beperkt. Het gaat om de gegevens voorgesteld op onderstaand diagram voor Linked Data. In dit diagram zijn entiteiten voorgesteld met een cirkel, data properties met pijlen wijzend naar een rechthoek waar het datatype in vermeld staat en object properties met pijlen naar een nieuwe cirkel. Als er van een entiteit op het diagram geen eigenschappen bestaan zijn deze ook niet aanwezig in de data.\\n\"],[13],[1,\"\\n\"],[10,3],[14,6,\"assets/images/VendorAPIModel.svg\"],[12],[1,\"\\n  \"],[10,\"figure\"],[12],[1,\"\\n    \"],[10,\"img\"],[14,\"itemprop\",\"thumbnail\"],[14,\"src\",\"assets/images/VendorAPIModel.svg\"],[14,\"alt\",\"Diagram van beschikbare gegevens\"],[12],[13],[1,\"\\n    \"],[10,\"figcaption\"],[12],[1,\"Diagram van Linked Data van beschikbare gegevens in het endpoint\"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"Documentstatussen\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Onderstaande tabel verduidelijkt de URI's die worden gebruikt om de status van een ingezonden document aan te duiden.\\n\"],[13],[1,\"\\n\"],[8,[39,7],null,[[\"@size\"],[\"default\"]],[[\"header\",\"body\"],[[[[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"th\"],[12],[1,\"URI\"],[13],[1,\"\\n      \"],[10,\"th\"],[12],[1,\"Label\"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"Concept\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"Verzonden\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"Inzendbaar\"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Fouten\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Bij elk van bovenstaande soort request kunnen er fouten optreden. Een login kan falen vanwege foute combinatie van vendor URI en sleutel, een query kan falen vanwege syntax problemen met de query zelf of vanwege een fout opgestelde request, … In alle gevallen wordt er zo veel mogelijk aan gedaan om een waardevolle foutboodschap terug te geven in combinatie met een bijhorende HTTP (fout)code. In het geval van het versturen van queries kunnen foutberichten en foutcodes terugkomen die gegenereerd werden door de database zelf of van een tussenliggende service. Dit kan enige inconsistenties veroorzaken in de response. In het geval van de login en logout requests, fouten zitten verwerkt in de volgende JSON-LD context en worden ook op die manier geformatteerd als antwoord.\\n\"],[13],[1,\"\\n\"],[8,[39,5],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_error-response-context.json\"]],null],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Prefixes\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Onderstaande tabel beschrijft de prefixes gebruikt in dit document en in de gegevens beschikbaar in het endpoint.\\n\"],[13],[1,\"\\n\"],[8,[39,7],null,[[\"@size\"],[\"default\"]],[[\"header\",\"body\"],[[[[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"th\"],[12],[1,\"Prefix\"],[13],[1,\"\\n      \"],[10,\"th\"],[12],[1,\"URI\"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"rdf:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://www.w3.org/1999/02/22-rdf-syntax-ns\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"xsd:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://www.w3.org/2001/XMLSchema#\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"meb:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://rdf.myexperiment.org/ontologies/base/\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"mu:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://mu.semte.ch/vocabularies/core/\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"prov:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://www.w3.org/ns/prov#\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"dct:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://purl.org/dc/terms/\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"adms:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://www.w3.org/ns/adms#\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"pav:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://purl.org/pav/\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"nie:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"nfo:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"ext:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://mu.semte.ch/vocabularies/ext/Vendor\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"am:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://lblod.data.gift/vocabularies/automatische-melding/\"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]]]]]],[],false,[\"au-heading\",\"link-to\",\"code-block\",\"snippet\",\"code-inline\",\"snippet-toggle\",\"au-link-external\",\"au-table\"]]",
+    "id": "+EwGsMv5",
+    "block": "[[[8,[39,0],null,[[\"@level\",\"@skin\"],[\"h1\",\"h1\"]],[[\"default\"],[[[[1,\"Vendor SPARQL API [BETA]\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Met deze API is het mogelijk om rechtstreeks SPARQL queries uit te voeren tegen een gereduceerde dataset waar nuttige informatie terug te vinden is over de toestand van eerder ingestuurde meldingen. Bekijk de pagina over de \"],[8,[39,1],null,[[\"@route\"],[\"docs.submission-api\"]],[[\"default\"],[[[[1,\"Meldingsplicht API\"]],[]]]]],[1,\" voor het insturen van meldingen.\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n  \"],[10,\"strong\"],[12],[1,\"Het soort beschikbare gegevens is nog sterk onderhevig aan veranderingen. Vertrouw voorlopig (bij het schrijven in 11/2022) nog niet te veel op het soort gegevens en de structuur ervan.\"],[13],[1,\"\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Het opvragen van de status van ingestuurde meldingen is mogelijk door het uitsturen van de juiste query naar het SPARQL endpoint. Het kunnen uitvoeren van SPARQL queries brengt echter risico met zich mee in verband met databeveiliging. Daarom wordt de toegang tot het SPARQL endpoint beschermd met een login en is het enkel mogelijk om data uit te lezen. Er kan dus niets gewijzigd worden via SPARQL Update queries. Deze pagina beschrijft het stappenplan om in te loggen en SPARQL queries uit te voeren.\\n\"],[13],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Inloggen\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  De API voor inloggen is gelijkaardig aan hoe een melding wordt ingestuurd: volgens een request met authenticatie door middel van vendor URI, sleutel en de URI van de organisatie in een JSON-LD body naar\\n\"],[13],[1,\"\\n\"],[8,[39,2],null,[[\"@code\"],[\"POST https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  De JSON-LD body ziet er minimaal uit zoals het volgende:\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_login-request-body.json\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  In het voorbeeld hierboven staat de \"],[8,[39,4],null,[[\"@code\"],[\"organisation\"]],null],[1,\" voor de URI van de bestuurseenheid waar de vendor garant voor staat. \"],[8,[39,4],null,[[\"@code\"],[\"publisher.uri\"]],null],[1,\" staat voor de URI van de vendor, en \"],[8,[39,4],null,[[\"@code\"],[\"publisher.key\"]],null],[1,\" staat voor de geheime sleutel die eerder werd verkregen. Het aanvragen van een publisher URI en geheime sleutel (key) staan beschreven in de sectie “Authenticatie” op de pagina over \"],[8,[39,1],null,[[\"@route\"],[\"docs.submission-api\"]],[[\"default\"],[[[[1,\"Meldingsplicht API\"]],[]]]]],[1,\".\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n  De volledige JSON-LD context beschrijft met RDF wat elke eigenschap betekent, welk datatype wordt verwacht en zou aan aan elke request moeten worden toegevoegd. Deze login service voegt echter automatisch de juiste context toe aan elke login request, dus het verzenden van de minimale body zoals hierboven volstaat.\\n  Vind hieronder de volledige context, indien nodig.\\n\"],[13],[1,\"\\n\"],[8,[39,5],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_login-context.json\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Het antwoord op de login request is \"],[10,\"strong\"],[12],[1,\"een sessie cookie\"],[13],[1,\" waar volgende requests (SPARQL queries en uitloggen) mee worden geauthenticeert. Er wordt ook een JSON-LD body teruggegeven die informatie over de sessie voorstelt, zoals hieronder als voorbeeld wordt weergegeven. Deze informatie kan echter worden genegeerd, want \"],[10,\"strong\"],[12],[1,\" de sessie wordt vanaf de login request enkel bepaald door middel van de cookie\"],[13],[1,\".\\n\"],[13],[1,\"\\n\"],[8,[39,5],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_login-response.json\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n   Als referentie wordt hieronder nog de context vermeld van het antwoord met de sessieinformatie.\\n\"],[13],[1,\"\\n\"],[8,[39,5],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_login-response-context.json\"]],null],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"Voorbeeld\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Als voorbeeld staat hieronder hoe een login kan worden uitgevoerd met \"],[8,[39,4],null,[[\"@code\"],[\"cURL\"]],null],[1,\". Het ontvangen en verder weer versturen van cookies is noodzakelijk. Daarom wordt de cookie engine ingeschakeld met de \"],[8,[39,4],null,[[\"@code\"],[\"-b\"]],null],[1,\" en \"],[8,[39,4],null,[[\"@code\"],[\"-c\"]],null],[1,\" flags die verwijzen naar een bestand waar de cookies worden opgeslagen.\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_login-ex.sh\"]],null],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Versturen van queries\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Eenmaal ingelogd is het mogelijk om SPARQL queries te versturen naar het SPARQL endpoint, benaderbaar via\\n\"],[13],[1,\"\\n\"],[8,[39,2],null,[[\"@code\"],[\"https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Het versturen van queries moet gebeuren via HTTP(S) requests zoals beschreven in de \"],[10,3],[14,6,\"https://www.w3.org/TR/sparql11-protocol/#query-operation\"],[14,\"target\",\"_blank\"],[14,\"rel\",\"noopener noreferrer\"],[12],[1,\"officiële specificatie van het SPARQL Protocol\"],[13],[1,\". Er is geen webpagina beschikbaar op dit endpoint. Het is noodzakelijk om de sessie cookie, verkregen bij het inloggen, steeds mee te sturen bij elke request.\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Bij het inzenden van een nieuwe melding (zoals beschreven in \"],[8,[39,1],null,[[\"@route\"],[\"docs.submission-api\"]],[[\"default\"],[[[[1,\"Meldingsplicht API\"]],[]]]]],[1,\") wordt er JSON teruggegeven die een URI bevat voor de melding (Submission) en de Job waarin de melding zal worden verwerkt. Deze kunnen worden gebruikt als onderwerp of voorwerp in SPARQL queries om doelgericht informatie op te vragen.\\n\"],[13],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"Voorbeelden van queries\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Hieronder staan een aantal voorbeelden van SPARQL queries. Aan de hand van het eerste voorbeeld kan de status van de ingestuurde melding worden opgevraagd.\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_query-ex-1.sparql\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  \"],[10,\"strong\"],[12],[1,\"Noteer:\"],[13],[1,\" voor de status is aangeraden om steeds met de URI te werken. Het label kan veranderen, maar het achterliggende concept (i.e. de URI) niet.\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n\"],[10,\"strong\"],[12],[1,\"Noteer:\"],[13],[1,\" de status voor een inzending kan \\\"verzonden\\\" of \\\"concept\\\" zijn. Een inzending in \\\"concept\\\" vereist nog manuele interventie door onvolledigheid van het document alvorens het officieel kan worden ingediend, waarna het de status \\\"verzonden\\\" krijgt. Indien er ingestuurd werd met status \\\"verzonden\\\" en de status blijft hangen op \\\"concept\\\", is er hoogst waarschijnlijk iets mis met de gegevens van het document. Je kan steeds terecht bij op \"],[8,[39,6],[[24,6,\"digitaalABB@vlaanderen.be\"]],[[\"@icon\"],[\"mail\"]],[[\"default\"],[[[[1,\"digitaalABB@vlaanderen.be\"]],[]]]]],[1,\" voor hulp. Verder op deze pagina worden de URI's voor de status opgelijst.\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Met het volgende voorbeeld worden er 100 eerder verrichtte meldingen opgevraagd. Met de verkregen URI's kan men queries gelijk de bovenstaande opstellen.\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_query-ex-2.sparql\"]],null],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"Voorbeelden van requests\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Hieronder staan een aantal voorbeelden van requests, uitgevoerd via \"],[8,[39,4],null,[[\"@code\"],[\"cURL\"]],null],[1,\". De query is steeds op te vullen met de benodigde SPARQL query.\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n  De meest gebruikte manier: een POST request met de query als body, geëncodeerd zoals een formulier veld.\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_request-ex-1.sh\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Het volgende voorbeeld is hetzelfde als het vorige, maar voor de encodering is hier de typische JavaScript \"],[8,[39,4],null,[[\"@code\"],[\"encodeURIComponent()\"]],null],[1,\" gebruikt.\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_request-ex-2.sh\"]],null],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Uit volledigheid ondersteunt de endpoint ook GET requests, waar de SPARQL query als URL parameter wordt meegegeven. Deze methode is echter niet aan te raden vanwege beperkingen op de lengte van de query.\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_request-ex-4.sh\"]],null],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Uitloggen\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Om de sessie af te sluiten volstaat het om een request, als methode \"],[8,[39,4],null,[[\"@code\"],[\"DELETE\"]],null],[1,\" met de sessie cookie, te sturen naar\\n\"],[13],[1,\"\\n\"],[10,0],[12],[1,\"\\n  \"],[8,[39,2],null,[[\"@code\"],[\"DELETE https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Het antwoord op deze request is, als uitloggen successvol was, leeg. De HTTP response code is dan \"],[8,[39,4],null,[[\"@code\"],[\"204 No Content\"]],null],[1,\".\\n\"],[13],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"Voorbeeld\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Bij het gebruik van \"],[8,[39,4],null,[[\"@code\"],[\"cURL\"]],null],[1,\" ziet de request voor uitloggen er als volgt uit.\\n\"],[13],[1,\"\\n\"],[8,[39,3],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_logout-ex.sh\"]],null],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Beschikbare gegevens\"]],[]]]]],[1,\"\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"Inzendingen\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Het datamodel voor de inzendingen worden voorgesteld op onderstaand diagram voor Linked Data. \"],[10,\"br\"],[12],[13],[1,\"\\n  In dit diagram zijn entiteiten voorgesteld met een cirkel, data properties met pijlen wijzend naar een rechthoek waar het datatype in vermeld staat en object properties met pijlen naar een nieuwe cirkel. Als er van een entiteit op het diagram geen eigenschappen bestaan zijn deze ook niet aanwezig in de data.\\n\"],[13],[1,\"\\n\"],[10,3],[14,6,\"assets/images/VendorAPIModel.svg\"],[12],[1,\"\\n  \"],[10,\"figure\"],[12],[1,\"\\n    \"],[10,\"img\"],[14,\"itemprop\",\"thumbnail\"],[14,\"src\",\"assets/images/VendorAPIModel.svg\"],[14,\"alt\",\"Diagram van beschikbare gegevens\"],[12],[13],[1,\"\\n    \"],[10,\"figcaption\"],[12],[1,\"Diagram van Linked Data van beschikbare gegevens in het endpoint\"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"4\",\"4\"]],[[\"default\"],[[[[1,\"Documentstatussen inzendingen\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Onderstaande tabel verduidelijkt de URI's die worden gebruikt om de status van een ingezonden document aan te duiden.\\n\"],[13],[1,\"\\n\"],[8,[39,7],null,[[\"@size\"],[\"default\"]],[[\"header\",\"body\"],[[[[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"th\"],[12],[1,\"URI\"],[13],[1,\"\\n      \"],[10,\"th\"],[12],[1,\"Label\"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"Concept\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"Verzonden\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"Inzendbaar\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"3\",\"3\"]],[[\"default\"],[[[[1,\"Berichten en Conversaties\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Berichten en conversaties zullen ook beschikbaar gemaakt worden. Voor verdere informatie verwijzen we naar\\n   \"],[8,[39,1],null,[[\"@route\"],[\"docs.berichtencentrum-api\"]],[[\"default\"],[[[[1,\"berichtencentrum-api\"]],[]]]]],[1,\".\\n\"],[13],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Fouten\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Bij elk van bovenstaande soort request kunnen er fouten optreden. Een login kan falen vanwege foute combinatie van vendor URI en sleutel, een query kan falen vanwege syntax problemen met de query zelf of vanwege een fout opgestelde request, … In alle gevallen wordt er zo veel mogelijk aan gedaan om een waardevolle foutboodschap terug te geven in combinatie met een bijhorende HTTP (fout)code. In het geval van het versturen van queries kunnen foutberichten en foutcodes terugkomen die gegenereerd werden door de database zelf of van een tussenliggende service. Dit kan enige inconsistenties veroorzaken in de response. In het geval van de login en logout requests, fouten zitten verwerkt in de volgende JSON-LD context en worden ook op die manier geformatteerd als antwoord.\\n\"],[13],[1,\"\\n\"],[8,[39,5],null,[[\"@snippetFilename\"],[\"vendor-sparql-api_error-response-context.json\"]],null],[1,\"\\n\\n\"],[8,[39,0],null,[[\"@level\",\"@skin\"],[\"2\",\"2\"]],[[\"default\"],[[[[1,\"Prefixes\"]],[]]]]],[1,\"\\n\"],[10,2],[12],[1,\"\\n  Onderstaande tabel beschrijft de prefixes gebruikt in dit document en in de gegevens beschikbaar in het endpoint.\\n\"],[13],[1,\"\\n\"],[8,[39,7],null,[[\"@size\"],[\"default\"]],[[\"header\",\"body\"],[[[[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"th\"],[12],[1,\"Prefix\"],[13],[1,\"\\n      \"],[10,\"th\"],[12],[1,\"URI\"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"rdf:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://www.w3.org/1999/02/22-rdf-syntax-ns\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"xsd:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://www.w3.org/2001/XMLSchema#\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"meb:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://rdf.myexperiment.org/ontologies/base/\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"mu:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://mu.semte.ch/vocabularies/core/\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"prov:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://www.w3.org/ns/prov#\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"dct:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://purl.org/dc/terms/\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"adms:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://www.w3.org/ns/adms#\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"pav:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://purl.org/pav/\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"nie:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"nfo:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"ext:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://mu.semte.ch/vocabularies/ext/Vendor\"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,\"tr\"],[12],[1,\"\\n      \"],[10,\"td\"],[12],[8,[39,4],null,[[\"@code\"],[\"am:\"]],null],[13],[1,\"\\n      \"],[10,\"td\"],[12],[1,\"http://lblod.data.gift/vocabularies/automatische-melding/\"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n\"]],[],false,[\"au-heading\",\"link-to\",\"code-block\",\"snippet\",\"code-inline\",\"snippet-toggle\",\"au-link-external\",\"au-table\"]]",
     "moduleName": "pages-vendors/templates/docs/vendor-sparql-api.hbs",
     "isStrictMode": false
   });
@@ -5871,7 +6211,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("pages-vendors/app")["default"].create({"name":"pages-vendors","version":"1.0.0+cfa35939"});
+            require("pages-vendors/app")["default"].create({"name":"pages-vendors","version":"1.0.0+c45a2846"});
           }
         
 //# sourceMappingURL=pages-vendors.map
