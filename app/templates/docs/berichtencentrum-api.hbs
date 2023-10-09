@@ -62,7 +62,7 @@
 <p>
   De onderstaande SPARQL-query toont hoe u de status van de aangemaakt job kan opvolgen.
   <br>
-  Noteer; gegeven de verwerking van een melding  een asynchroon proces is, kan het even duren alvorens informatie over job beschikbaar is.
+  Noteer; gegeven de verwerking van een melding een asynchroon proces is, kan het even duren alvorens informatie over job beschikbaar is.
   <br> Het staat wel vast dat de informatie eventueel bechikbaar wordt.
   <br> Na de melding kan er dus al gerust opgevraagd worden.
 </p>
@@ -89,15 +89,20 @@
   Noteer dat meerdere authenticatiemogelijkheden beschikbaar zijn, niet alleen basic auth.
 </p>
 
-<AuHeading @level="4" @skin="4">Voorbeeld-script opvolgen melding</AuHeading>
+<AuHeading @level="4" @skin="4">Voorbeeldscript opvolgen melding</AuHeading>
 <p>
   Het volgend voorbeeld illustreert een sequentie van calls die zou kunnen gebeuren om een melding op te volgen.
   <br> Noteer: het gaat om een zeer naive interpretatie, zeker niet aan te raden in productie.
 </p>
 <SnippetToggle @snippetFilename="example-berichtencentrum-5.sh" />
+
+<AuHeading @level="4" @skin="4">Voorbeeldscript downloaden bijlage</AuHeading>
 <p>
-  Noteer dat meerdere authenticatiemogelijkheden beschikbaar zijn, niet alleen basic auth.
+  Het volgend voorbeeld illustreert een sequentie van calls om een bijlage te ontdekken en te downloaden.
+  <br> Noteer: Het ontdekken van de bijlagen kan hier op vele manieren, en veel efficienter met andere SPARQL-queries.
+  <br> Noteer: het gaat om een zeer naive interpretatie, zeker niet aan te raden in productie.
 </p>
+<SnippetToggle @snippetFilename="example-berichtencentrum-6.sh" />
 
 <AuHeading @level="3" @skin="3">JSON-LD context</AuHeading>
 <p>
