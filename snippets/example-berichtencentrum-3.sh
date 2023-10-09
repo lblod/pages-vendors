@@ -1,4 +1,4 @@
-curl --location --request POST 'https://api.loket.lokaalbestuur.vlaanderen.be/berichtencentrum/melding' \
+curl --location --request POST 'https://api.loket.lokaalbestuur.vlaanderen.be/vendor/berichtencentrum/melding' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "href": "http://vendor.example.com/conversaties/bestuur/1",
