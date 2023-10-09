@@ -13,6 +13,7 @@
   De beschikbare conversaties en berichten kunnen bevraagd worden aan de hand van <AuLink @route="docs.vendor-sparql-api">Vendor SPARQL API</AuLink>. Meer details over de queries volgen hieronder.
   <br> In geval er een nieuw bericht naar ABB moet worden gestuurd, publiceert het bestuur een RDFa-geannoteerd document.
   <br> Via een Rest call meldt het bestuur de locatie van de nieuwe publicatie aan het loket, en zal de crawler van het loket het document ophalen.
+  <br> Het melden van een bericht zal een <CodeInline @code="cogs:Job" /> aanmaken. Hiermee kan de vendor of het bestuur de status van de melding opvolgen.
   <br> De flow is heel gelijkaardig aan die van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
 </p>
 
@@ -22,7 +23,7 @@
 <p>
   Het melden van een nieuw bericht gebeurt via een request
 </p>
-<CodeBlock @code="POST https://api.loket.lokaalbestuur.vlaanderen.be/berichtencentrum/melding" />
+<CodeBlock @code="POST https://api.loket.lokaalbestuur.vlaanderen.be/vendor/berichtencentrum/melding" />
 <p>
   met JSON-LD request body:
 </p>
@@ -34,10 +35,24 @@
   Het aanvragen van een publisher URI en een geheime sleutel (key) wordt beschreven in de sectie 'Authenticatie' van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
   <br>
   Verder verwachten we dat het gepubliceerde document beschermd is met authenticatie. Voor meer informatie over welke methodes de crawler ondersteunt, verwijzen we u door naar de sectie 'Ophalen van niet-publieke documenten' van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
+  <br>
+  Een antwoord van het endpoint wordt dan, indien de eerste ronde van validatie ok is.
+  <CodeBlock @code='{ "job": "http://data.lblod.info/id/job/example-uri" }' />
+  <br>
+  Indien er zaken niet in orde zijn, kan u terugvallen op de standaard HTTP-codes en error-boodschappen.
 </p>
+
+<AuHeading @level="3" @skin="3">Over het verwijderen van berichten</AuHeading>
+<p>
+  Momenteel is er geen endpoint voorzien om een bericht te verwijderen. <br>
+  Van zodra het bericht correct verwerkt is, propageert dit binnen allerhande systemen en wordt het zeer moeilijk om consistent te verwijderen. <br>
+  Noteer; indien een bepaalde medling gefaald is, kan u steeds dezelfde melding opnieuw doen.
+</p>
+
 
 <AuHeading @level="2" @skin="2" id="publicatie-documenten">Publicatie van berichten</AuHeading>
 <AuHeading @level="3" @skin="3">Voorbeelden</AuHeading>
+
 <AuHeading @level="4" @skin="4">Opvragen berichten ABB</AuHeading>
 <p>
   De onderstaande SPARQL-query toont hoe u verzonden berichten van ABB naar specifiek bestuur kunt opvragen die recenter zijn dan een specifieke datum. <br>
@@ -50,6 +65,17 @@
   <CodeInline @code="<http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> " />
 </p>
 <SnippetToggle @snippetFilename="example-berichtencentrum-1.sparql" />
+
+<AuHeading @level="4" @skin="4">Opvolgen van de ingestuurde melding </AuHeading>
+<p>
+  De onderstaande SPARQL-query toont hoe u de status van de aangemaakt job kan opvolgen.
+  <br>
+  Noteer; gegeven de verwerking van een melding een asynchroon proces is, kan het even duren alvorens informatie over job beschikbaar is.
+  <br> Het staat wel vast dat de informatie eventueel bechikbaar wordt.
+  <br> Na de melding kan er dus al gerust opgevraagd worden.
+</p>
+<SnippetToggle @snippetFilename="example-berichtencentrum-4.sparql" />
+
 <AuHeading @level="4" @skin="4">RDFa voorbeeldpublicatie van bericht </AuHeading>
 <p>
   Het volgende voorbeeld illustreert hoe een bericht in RDFa wordt gepubliceerd. <br>
@@ -58,6 +84,7 @@
   Het staat het bestuur dus zeker vrij om extra annotaties toe te voegen.
 </p>
 <SnippetToggle @snippetFilename="example-berichtencentrum-2.html" />
+
 <AuHeading @level="4" @skin="4">Voorbeeld-request om nieuw bericht te melden</AuHeading>
 <p>
   Voortgaand op het vorige voorbeeld, geven we weer hoe een request naar loket er zou kunnen uitzien.
@@ -69,6 +96,21 @@
 <p>
   Noteer dat meerdere authenticatiemogelijkheden beschikbaar zijn, niet alleen basic auth.
 </p>
+
+<AuHeading @level="4" @skin="4">Voorbeeldscript opvolgen melding</AuHeading>
+<p>
+  Het volgend voorbeeld illustreert een sequentie van calls die zou kunnen gebeuren om een melding op te volgen.
+  <br> Noteer: het gaat om een zeer naive interpretatie, zeker niet aan te raden in productie.
+</p>
+<SnippetToggle @snippetFilename="example-berichtencentrum-5.sh" />
+
+<AuHeading @level="4" @skin="4">Voorbeeldscript downloaden bijlage</AuHeading>
+<p>
+  Het volgend voorbeeld illustreert een sequentie van calls om een bijlage te ontdekken en te downloaden.
+  <br> Noteer: Het ontdekken van de bijlagen kan hier op vele manieren, en veel efficienter met andere SPARQL-queries.
+  <br> Noteer: het gaat om een zeer naive interpretatie, zeker niet aan te raden in productie.
+</p>
+<SnippetToggle @snippetFilename="example-berichtencentrum-6.sh" />
 
 <AuHeading @level="3" @skin="3">JSON-LD context</AuHeading>
 <p>
@@ -82,7 +124,7 @@
 
 <AuHeading @level="3" @skin="3">Organiseren van gepubliceerde pagina's</AuHeading>
 <p>
-  De crawler verwacht bij het ophalen van de RDFa-informatie dat de resource -gespecifieerd met het <CodeInline @code="resource" /> veld in de json-body- volledig beschreven staat op de pagina gespecifieerd in het <CodeInline @code="href" /> veld. 
+  De crawler verwacht bij het ophalen van de RDFa-informatie dat de resource -gespecifieerd met het <CodeInline @code="resource" /> veld in de json-body- volledig beschreven staat op de pagina gespecifieerd in het <CodeInline @code="href" /> veld.
   De crawler verwacht dat de RDFa beschrijving van het veld <CodeInline @code="nie:url" /> een rechtstreekse link is naar het bestand. <br>
   (Indien content-negotiation gewenst is, kunnen de annotaties makkelijk uitgebreid worden. Laat gerust weten.) <br>
   Verder zijn er geen echt harde restricties, behalve dat we niet verwachten dat de grootte van de pagina's te groot wordt. (Nader te bepalen wat de harde grens zou zijn; een html bestand van 20+ mb beschouwen we al als groot.) <br>
@@ -104,6 +146,10 @@ Deze informatie volgt nog.
   </tr>
   </:header>
   <:body>
+  <tr>
+    <td><CodeInline @code="adms" /></td>
+    <td><AuLinkExternal href="http://www.w3.org/ns/adms#">http://www.w3.org/ns/adms#</AuLinkExternal></td>
+  </tr>
   <tr>
     <td><CodeInline @code="besluit" /></td>
     <td><AuLinkExternal href="http://data.vlaanderen.be/ns/besluit#">http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
@@ -135,6 +181,18 @@ Deze informatie volgt nog.
   <tr>
     <td><CodeInline @code="xsd" /></td>
     <td><AuLinkExternal href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
+  </tr>
+  <tr>
+    <td><CodeInline @code="cogs" /></td>
+    <td><AuLinkExternal href="http://vocab.deri.ie/cogs#">http://vocab.deri.ie/cogs#</AuLinkExternal></td>
+  </tr>
+  <tr>
+    <td><CodeInline @code="oslc" /></td>
+    <td><AuLinkExternal href="http://open-services.net/ns/core#">http://open-services.net/ns/core#</AuLinkExternal></td>
+  </tr>
+  <tr>
+    <td><CodeInline @code="task" /></td>
+    <td><AuLinkExternal href="http://redpencil.data.gift/vocabularies/tasks/">http://redpencil.data.gift/vocabularies/tasks/</AuLinkExternal></td>
   </tr>
   </:body>
 </AuTable>
@@ -232,7 +290,10 @@ Deze informatie volgt nog.
     <td>text</td>
     <td><CodeInline @code="schema:text" /></td>
     <td><CodeInline @code="xsd:string" /></td>
-    <td>De tekst of inhoud van het bericht.</td>
+    <td>
+      De tekst of inhoud van het bericht. <br>
+      Dit veld kan rich text bevatten, dit wordt doorgegeven als html.
+    </td>
   </tr>
   <tr>
     <td>dateSent</td>
@@ -300,6 +361,92 @@ Deze informatie volgt nog.
       <br>
       Noteer: deze property wordt genegeerd indien het bestuur dit publiceert.
     </td>
+  </tr>
+  </:body>
+</AuTable>
+
+<AuHeading @level="3" @skin="3"> <CodeInline @code="cogs:Job" /> </AuHeading>
+<p>Een instantie van deze klasse gaat bijhouden wat de status van de ingestuurde melding is.</p>
+<AuHeading @level="4" @skin="4">class</AuHeading>
+<CodeInline @code="cogs:Job" />
+
+<AuHeading @level="4" @skin="4">properties</AuHeading>
+<AuTable>
+  <:header>
+  <tr>
+    <th>Naam</th>
+    <th>URI</th>
+    <th>Verwacht type</th>
+    <th>Beschrijving</th>
+  </tr>
+  </:header>
+  <:body>
+  <tr>
+    <td>status</td>
+    <td><CodeInline @code="adms:status" /></td>
+    <td><CodeInline @code="skos:Concept" /></td>
+    <td>
+      Status van de job. Mogelijke waarden zijn <br>
+      <ul>
+        <li><CodeInline @code="http://redpencil.data.gift/id/concept/JobStatus/busy" /></li>
+        <li><CodeInline @code="http://redpencil.data.gift/id/concept/JobStatus/scheduled" /></li>
+        <li><CodeInline @code="http://redpencil.data.gift/id/concept/JobStatus/success" /></li>
+        <li><CodeInline @code="http://redpencil.data.gift/id/concept/JobStatus/failed" /></li>
+      </ul>
+
+    </td>
+  </tr>
+  <tr>
+    <td>created</td>
+    <td><CodeInline @code="dct:created" /></td>
+    <td><CodeInline @code="xsd:dateTime" /></td>
+    <td>Tijdstip van create</td>
+  </tr>
+  <tr>
+    <td>modified</td>
+    <td><CodeInline @code="dct:modified" /></td>
+    <td><CodeInline @code="xsd:dateTime" /></td>
+    <td>Tijdstip van update</td>
+  </tr>
+  <tr>
+    <td>subject</td>
+    <td><CodeInline @code="dct:subject" /></td>
+    <td><CodeInline @code="schema:Message" /></td>
+    <td>Het bericht waaran de job verbonden is</td>
+  </tr>
+  <tr>
+    <td>error</td>
+    <td><CodeInline @code="task:error" /></td>
+    <td><CodeInline @code="oslc:Error" /></td>
+    <td>
+      Meer informatie over de fout in geval van de fout <br>
+      <CodeInline @code="http://redpencil.data.gift/id/concept/JobStatus/failed" />
+    </td>
+  </tr>
+  </:body>
+</AuTable>
+
+<AuHeading @level="3" @skin="3"> <CodeInline @code="oslc:Error" /> </AuHeading>
+<p>Deze klasse beschrijft een error. In dit geval zal deze gelinkt zijn met <CodeInline @code="cogs:Job" /> </p>
+<AuHeading @level="4" @skin="4">klasse</AuHeading>
+<CodeInline @code="oslc:Error" />
+
+<AuHeading @level="4" @skin="4">eigenschappen</AuHeading>
+<AuTable>
+  <:header>
+  <tr>
+    <th>Naam</th>
+    <th>URI</th>
+    <th>Verwacht type</th>
+    <th>Beschrijving</th>
+  </tr>
+  </:header>
+  <:body>
+  <tr>
+    <td>bericht</td>
+    <td><CodeInline @code="oslc:message" /></td>
+    <td><CodeInline @code="xsd:string" /></td>
+    <td>Beschrijving van de fout</td>
   </tr>
   </:body>
 </AuTable>
