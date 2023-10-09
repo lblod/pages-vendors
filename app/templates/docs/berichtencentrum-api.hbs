@@ -105,6 +105,10 @@ Deze informatie volgt nog.
   </:header>
   <:body>
   <tr>
+    <td><CodeInline @code="adms" /></td>
+    <td><AuLinkExternal href="http://www.w3.org/ns/adms#">http://www.w3.org/ns/adms#</AuLinkExternal></td>
+  </tr>
+  <tr>
     <td><CodeInline @code="besluit" /></td>
     <td><AuLinkExternal href="http://data.vlaanderen.be/ns/besluit#">http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
   </tr>
@@ -135,6 +139,14 @@ Deze informatie volgt nog.
   <tr>
     <td><CodeInline @code="xsd" /></td>
     <td><AuLinkExternal href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
+  </tr>
+  <tr>
+    <td><CodeInline @code="cogs" /></td>
+    <td><AuLinkExternal href="http://vocab.deri.ie/cogs#">http://vocab.deri.ie/cogs#</AuLinkExternal></td>
+  </tr>
+  <tr>
+    <td><CodeInline @code="oslc" /></td>
+    <td><AuLinkExternal href="http://open-services.net/ns/core#">http://open-services.net/ns/core#</AuLinkExternal></td>
   </tr>
   </:body>
 </AuTable>
@@ -232,7 +244,10 @@ Deze informatie volgt nog.
     <td>text</td>
     <td><CodeInline @code="schema:text" /></td>
     <td><CodeInline @code="xsd:string" /></td>
-    <td>De tekst of inhoud van het bericht.</td>
+    <td>
+      De tekst of inhoud van het bericht. <br>
+      Dit veld kan rich text bevatten, dit wordt doorgegeven als html.
+    </td>
   </tr>
   <tr>
     <td>dateSent</td>
@@ -300,6 +315,86 @@ Deze informatie volgt nog.
       <br>
       Noteer: deze property wordt genegeerd indien het bestuur dit publiceert.
     </td>
+  </tr>
+  </:body>
+</AuTable>
+
+<AuHeading @level="3" @skin="3"> <CodeInline @code="cogs:Job" /> </AuHeading>
+<p>Een instantie van deze klasse gaat bijhouden wat de status van de ingestuurde melding is.</p>
+<AuHeading @level="4" @skin="4">class</AuHeading>
+<CodeInline @code="cogs:Job" />
+
+<AuHeading @level="4" @skin="4">properties</AuHeading>
+<AuTable>
+  <:header>
+  <tr>
+    <th>Naam</th>
+    <th>URI</th>
+    <th>Verwacht type</th>
+    <th>Beschrijving</th>
+  </tr>
+  </:header>
+  <:body>
+  <tr>
+    <td>status</td>
+    <td><CodeInline @code="adms:status" /></td>
+    <td><CodeInline @code="skos:Concept" /></td>
+    <td>
+      Status van de job. Mogelijke waarden zijn <br>
+      <ul>
+        <li><CodeInline @code="http://redpencil.data.gift/id/concept/JobStatus/busy" /></li>
+        <li><CodeInline @code="http://redpencil.data.gift/id/concept/JobStatus/scheduled" /></li>
+        <li><CodeInline @code="http://redpencil.data.gift/id/concept/JobStatus/success" /></li>
+        <li><CodeInline @code="http://redpencil.data.gift/id/concept/JobStatus/failed" /></li>
+      </ul>
+
+    </td>
+  </tr>
+  <tr>
+    <td>created</td>
+    <td><CodeInline @code="dct:created" /></td>
+    <td><CodeInline @code="xsd:dateTime" /></td>
+    <td>Tijdstip van create</td>
+  </tr>
+  <tr>
+    <td>modified</td>
+    <td><CodeInline @code="dct:modified" /></td>
+    <td><CodeInline @code="xsd:dateTime" /></td>
+    <td>Tijdstip van update</td>
+  </tr>
+  <tr>
+    <td>error</td>
+    <td><CodeInline @code="task:error" /></td>
+    <td><CodeInline @code="oslc:Error" /></td>
+    <td>
+      Meer informatie over de fout in geval van de fout <br>
+      <CodeInline @code="http://redpencil.data.gift/id/concept/JobStatus/failed" />
+    </td>
+  </tr>
+  </:body>
+</AuTable>
+
+<AuHeading @level="3" @skin="3"> <CodeInline @code="oslc:Error" /> </AuHeading>
+<p>Deze klasse beschrijft een error. In dit geval zal deze gelinkt zijn met <CodeInline @code="cogs:Job" /> </p>
+<AuHeading @level="4" @skin="4">klasse</AuHeading>
+<CodeInline @code="oslc:Error" />
+
+<AuHeading @level="4" @skin="4">eigenschappen</AuHeading>
+<AuTable>
+  <:header>
+  <tr>
+    <th>Naam</th>
+    <th>URI</th>
+    <th>Verwacht type</th>
+    <th>Beschrijving</th>
+  </tr>
+  </:header>
+  <:body>
+  <tr>
+    <td>bericht</td>
+    <td><CodeInline @code="oslc:message" /></td>
+    <td><CodeInline @code="xsd:string" /></td>
+    <td>Beschrijving van de fout</td>
   </tr>
   </:body>
 </AuTable>
