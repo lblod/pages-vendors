@@ -5,7 +5,7 @@ module.exports = function (environment) {
     modulePrefix: 'pages-vendors',
     environment,
     rootURL: '/pages-vendors/',
-    locationType: 'hash',
+    locationType: 'history',
     historySupportMiddleware: true,
     routerScroll: {
       scrollElement: '#scroll-to-top-container',
