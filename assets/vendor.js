@@ -56870,7 +56870,7 @@ Prism.languages.rq = Prism.languages.sparql;
     monthNames: getLocalizedMonths(),
     monthNamesShort: getLocalizedMonths('short')
   };
-  if ((0, _runtime.macroCondition)((0, _runtime.config)("/app/node_modules/@appuniversum/ember-appuniversum").dutchDatePickerLocalization)) {
+  if ((0, _runtime.macroCondition)((0, _runtime.config)("/home/ben/Documenten/RedPencilWorkspaces/LBLOD/Loket/pages-vendors/node_modules/@appuniversum/ember-appuniversum").dutchDatePickerLocalization)) {
     Object.assign(DEFAULT_LOCALIZATION, {
       buttonLabel: 'Kies een datum',
       placeholder: 'DD-MM-JJJJ',
@@ -56905,7 +56905,7 @@ Prism.languages.rq = Prism.languages.sparql;
       _initializerDefineProperty(this, "max", _descriptor3, this);
       _initializerDefineProperty(this, "isInitialized", _descriptor4, this);
       this.registerDuetDatePicker();
-      let isNewImplementation = (0, _runtime.macroCondition)((0, _runtime.config)("/app/node_modules/@appuniversum/ember-appuniversum").dutchDatePickerLocalization) ? true : false;
+      let isNewImplementation = (0, _runtime.macroCondition)((0, _runtime.config)("/home/ben/Documenten/RedPencilWorkspaces/LBLOD/Loket/pages-vendors/node_modules/@appuniversum/ember-appuniversum").dutchDatePickerLocalization) ? true : false;
       (true && !(isNewImplementation) && (0, _debug.deprecate)(`[AuDatePicker] The English localization is deprecated. You should explicitly enable the Dutch localization by adding a build-time flag to your ember-cli-build.js file:
 
       \`\`\`
@@ -57059,7 +57059,7 @@ Prism.languages.rq = Prism.languages.sparql;
     });
   }
   function intl(options) {
-    let locale = (0, _runtime.macroCondition)((0, _runtime.config)("/app/node_modules/@appuniversum/ember-appuniversum").dutchDatePickerLocalization) ? 'nl-BE' : 'en';
+    let locale = (0, _runtime.macroCondition)((0, _runtime.config)("/home/ben/Documenten/RedPencilWorkspaces/LBLOD/Loket/pages-vendors/node_modules/@appuniversum/ember-appuniversum").dutchDatePickerLocalization) ? 'nl-BE' : 'en';
     return new Intl.DateTimeFormat(locale, options);
   }
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, AuDatePickerComponent);
@@ -60496,7 +60496,7 @@ Prism.languages.rq = Prism.languages.sparql;
   function initializeRuntimeMacrosConfig() {
     return {
       "packages": {
-        "/app/node_modules/@appuniversum/ember-appuniversum": {
+        "/home/ben/Documenten/RedPencilWorkspaces/LBLOD/Loket/pages-vendors/node_modules/@appuniversum/ember-appuniversum": {
           "dutchDatePickerLocalization": false
         }
       },
