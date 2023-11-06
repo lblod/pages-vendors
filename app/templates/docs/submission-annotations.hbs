@@ -179,7 +179,7 @@
     </tr>
   </:body>
 </AuTable>
-<AuHeading @level="3" @skin="3">Submitted resource</AuHeading>
+<AuHeading @level="3" @skin="3" id="submitted-resource">Submitted resource</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
   <CodeInline @code="foaf:Document" /> (meestal <CodeInline @code="besluit:Besluit" />)
@@ -221,7 +221,7 @@
       <td>subject</td>
       <td><CodeInline @code="eli:is_about" /></td>
       <td><CodeInline @code="foaf:Agent" /></td>
-      <td>Agent (organisatie, bestuurseenheid) waarover de beslissing handelt.</td>
+      <td>Agent (organisatie, bestuurseenheid) waarover de beslissing handelt. <br /><strong>Zie onderaan bij "Extra informatie" over <a href="#linken-bestuurseenheid">Linken naar Bestuurseenheid bij sommige Besluittypes</a>.</strong></td>
     </tr>
     <tr>
       <td>reportYear</td>
@@ -484,7 +484,9 @@
     </tr>
   </:body>
 </AuTable>
+
 <AuHeading @level="2" @skin="2">Voorbeelden</AuHeading>
+
 <AuHeading @level="3" @skin="3">Minimale Besluitenlijst</AuHeading>
 <SnippetToggle @snippetFilename="example-besluitenlijst-1.html" />
 
@@ -496,7 +498,36 @@
 
 <AuHeading @level="3" @skin="3">Reglement</AuHeading>
 <SnippetToggle @snippetFilename="example-reglement-1.html" />
+
 <AuHeading @level="2" @skin="2">Extra informatie</AuHeading>
+
+<AuHeading @level="3" @skin="3" id="linken-bestuurseenheid">Linken naar Bestuurseenheid bij sommige Besluittypes</AuHeading>
+
+<p>
+  Bij sommige besluiten is het nodig om te refereren naar een Bestuurseenheid. Hierbij gaat het bijvoorbeeld over de besluiten met volgende types:
+</p>
+<ul>
+  <li>Advies jaarrekening</li>
+  <li>Besluit over budget(wijziging)</li>
+  <li>Besluit over meerjarenplan(aanpassing)</li>
+  <li>Schorsingsbesluit</li>
+  <li>Stuiten</li>
+  <li>Aanvraag desaffectatie presbyteria/kerken</li>
+</ul>
+<p>
+  Om vanuit het Besluit te refereren naar de betreffende Bestuurseenheid via de URI, gebruik het RDF predicaat <CodeInline @code="eli:is_about" />. Zie eveneens bij de bovenstaande tabel onder <a href="#submitted-resource">Submitted Resource</a> voor nog meer eigenschappen voor Besluiten.
+</p>
+<p>
+  Onderstaande query kan gebruikt worden om gerelateerde Eredienstbestuurseenheden te vinden voor een gegeven Bestuurseenheid. Vervang in onderstaande query de URI voor het Bestuurseenheid met de URI van de betreffende eenheid. Voer deze SPARQL query uit op de <AuLink @route="docs.sparql-endpoint">Centrale Vindplaats</AuLink>.
+</p>
+<SnippetToggle @snippetFilename="annotaties-automatisch-melden-verkrijg-bestuurseenheden.sparql" />
+
+<AuHeading @level="4" @skin="4">Voorbeeld</AuHeading>
+<p>
+  Beschouw onderstaand voorbeeld van Besluit waarin wordt verwezen naar een betreffende Bestuurseenheid, direct als eigenschap van het Besluit.
+</p>
+<SnippetToggle @snippetFilename="annotaties-automatisch-melden-rdfa-met-link-bestuurseenheid-voorbeeld.html" />
+
 <AuHeading @level="3" @skin="3">Datetime strings</AuHeading>
 <p>
   Bij het verwerken van de <CodeInline @code="xsd:dateTime" /> strings wordt het volgende ondersteund: <br />
