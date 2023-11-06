@@ -221,7 +221,7 @@
       <td>subject</td>
       <td><CodeInline @code="eli:is_about" /></td>
       <td><CodeInline @code="foaf:Agent" /></td>
-      <td>Agent (organisatie, bestuurseenheid) waarover de beslissing handelt. <br /><strong>Zie onderaan bij "Extra informatie" over <a href="#linken-bestuurseenheid">Linken naar Bestuurseenheid bij sommige Besluittypes</a>.</strong></td>
+      <td>Agent (organisatie, bestuurseenheid) waarover de beslissing handelt. <br /><strong>Zie onderaan bij "Extra informatie" over <ScrollLink @scrollToId="linken-bestuurseenheid">Linken naar Bestuurseenheid bij sommige Besluittypes</ScrollLink>.</strong></td>
     </tr>
     <tr>
       <td>reportYear</td>
@@ -515,7 +515,7 @@
   <li>Aanvraag desaffectatie presbyteria/kerken</li>
 </ul>
 <p>
-  Om vanuit het Besluit te refereren naar de betreffende Bestuurseenheid via de URI, gebruik het RDF predicaat <CodeInline @code="eli:is_about" />. Zie eveneens bij de bovenstaande tabel onder <a href="#submitted-resource">Submitted Resource</a> voor nog meer eigenschappen voor Besluiten.
+  Om vanuit het Besluit te refereren naar de betreffende Bestuurseenheid via de URI, gebruik het RDF predicaat <CodeInline @code="eli:is_about" />. Zie eveneens bij de bovenstaande tabel onder <ScrollLink @scrollToId="submitted-resource">Submitted Resource</ScrollLink> voor nog meer eigenschappen voor Besluiten.
 </p>
 <p>
   Onderstaande query kan gebruikt worden om gerelateerde Eredienstbestuurseenheden te vinden voor een gegeven Bestuurseenheid. Vervang in onderstaande query de URI voor het Bestuurseenheid met de URI van de betreffende eenheid. Voer deze SPARQL query uit op de <AuLink @route="docs.sparql-endpoint">Centrale Vindplaats</AuLink>.
