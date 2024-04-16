@@ -11,6 +11,7 @@ module.exports = function (environment) {
       scrollElement: '#scroll-to-top-container',
     },
     EmberENV: {
+      EXTEND_PROTOTYPES: false,
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. EMBER_MODULE_UNIFICATION: true
