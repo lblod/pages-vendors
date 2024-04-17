@@ -1,96 +1,63 @@
 <AuHeading @level="1" @skin="1">Berichtencentrum API [DRAFT]</AuHeading>
 <p>
-  Lokale besturen en ABB kunnen beveiligde berichten met mekaar uitwisselen.
-  Het loket voor Lokale Besturen biedt een API aan waarop deze functionaliteit programmatorisch geïntegreerd kan worden.
-  <br> Dit document beschrijft de API voor het berichtencentrum.
+  Lokale besturen en ABB kunnen beveiligde berichten met mekaar uitwisselen. Het loket voor Lokale Besturen biedt een API aan waarop deze functionaliteit programmatorisch ge&iuml;ntegreerd kan worden. Dit document beschrijft de API voor het berichtencentrum.
 </p>
 
 <AuHeading @level="2" @skin="2">High level beschrijving van de flow</AuHeading>
 <p>
-  Het berichtencentrum bestaat uit Conversaties en Berichten. Een conversatie bestaat uit verschillende berichten; een conversatie is een zogenaamde 'thread'.
-  <br> Momenteel kan enkel ABB conversaties initiëren, en kunnen besturen enkel reageren.
-  <br>
-  De beschikbare conversaties en berichten kunnen bevraagd worden aan de hand van <AuLink @route="docs.vendor-sparql-api">Vendor SPARQL API</AuLink>. Meer details over de queries volgen hieronder.
-  <br> In geval er een nieuw bericht naar ABB moet worden gestuurd, publiceert het bestuur een RDFa-geannoteerd document.
-  <br> Via een Rest call meldt het bestuur de locatie van de nieuwe publicatie aan het loket, en zal de crawler van het loket het document ophalen.
-  <br> Het melden van een bericht zal een <CodeInline @code="cogs:Job" /> aanmaken. Hiermee kan de vendor of het bestuur de status van de melding opvolgen.
-  <br> De flow is heel gelijkaardig aan die van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
+  Het Berichtencentrum bestaat uit Conversaties en Berichten. Een conversatie bestaat uit verschillende berichten; een conversatie is een zogenaamde 'thread'. Momenteel kan enkel ABB conversaties initi&euml;ren, en kunnen besturen enkel reageren. De beschikbare conversaties en berichten kunnen bevraagd worden aan de hand van <AuLink @route="docs.vendor-sparql-api">Vendor SPARQL API</AuLink>. Meer details over de query's volgen hieronder. In geval er een nieuw bericht naar ABB moet worden gestuurd, publiceert het bestuur een RDFa-geannoteerd document. Via een REST call meldt het bestuur de locatie van de nieuwe publicatie aan het loket, en zal de crawler van het loket het document ophalen. Het melden van een bericht zal een <CodeInline @code="cogs:Job" /> aanmaken. Hiermee kan de vendor of het bestuur de status van de melding opvolgen. De flow is heel gelijkaardig aan die van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
 </p>
 
-
-<AuHeading @level="2" @skin="2">Melden van nieuwe bericht</AuHeading>
-<AuHeading @level="3" @skin="3">API endpoint</AuHeading>
+<AuHeading @level="2" @skin="2">Melden van een nieuw bericht</AuHeading>
 <p>
-  Het melden van een nieuw bericht gebeurt via een request
+  Het melden van een nieuw bericht gebeurt via een request via
 </p>
 <CodeBlock @code="POST https://api.loket.lokaalbestuur.vlaanderen.be/vendor/berichtencentrum/melding" />
 <p>
-  met JSON-LD request body:
+  met als JSON-LD request body:
 </p>
 <Snippet @snippetFilename="berichtencentrum-melding-quick-example.js" />
 <p class="au-u-para-small au-u-muted">
   Annotaties die gebruikt kunnen worden bij de gepubliceerde pagina worden verder besproken.
 </p>
 <p>
-  Het aanvragen van een publisher URI en een geheime sleutel (key) wordt beschreven in de sectie 'Authenticatie' van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
-  <br>
-  Verder verwachten we dat het gepubliceerde document beschermd is met authenticatie. Voor meer informatie over welke methodes de crawler ondersteunt, verwijzen we u door naar de sectie 'Ophalen van niet-publieke documenten' van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>.
-  <br>
-  Een antwoord van het endpoint wordt dan, indien de eerste ronde van validatie ok is.
-  <CodeBlock @code='{ "job": "http://data.lblod.info/id/job/example-uri" }' />
-  <br>
+  Het aanvragen van een publisher URI en een geheime sleutel (key) wordt beschreven in de sectie 'Authenticatie' van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>. Verder verwachten we dat het gepubliceerde document beschermd is met authenticatie. Voor meer informatie over welke methodes de crawler ondersteunt, verwijzen we u door naar de sectie 'Ophalen van niet-publieke documenten' van de <AuLink @route="docs.submission-api">Meldingsplicht API</AuLink>. Een antwoord van het endpoint wordt dan, indien de eerste ronde van validatie OK is:
+</p>
+<CodeBlock @code='{ "job": "http://data.lblod.info/id/job/example-uri" }' />
+<p>
   Indien er zaken niet in orde zijn, kan u terugvallen op de standaard HTTP-codes en error-boodschappen.
 </p>
 
-<AuHeading @level="3" @skin="3">Over het verwijderen van berichten</AuHeading>
+<AuHeading @level="3" @skin="3">Verwijderen van berichten</AuHeading>
 <p>
-  Momenteel is er geen endpoint voorzien om een bericht te verwijderen. <br>
-  Van zodra het bericht correct verwerkt is, propageert dit binnen allerhande systemen en wordt het zeer moeilijk om consistent te verwijderen. <br>
-  Noteer; indien een bepaalde medling gefaald is, kan u steeds dezelfde melding opnieuw doen.
+  Momenteel is er geen endpoint voorzien om een bericht te verwijderen. Van zodra het bericht correct verwerkt is, propageert dit binnen allerhande systemen en wordt het zeer moeilijk om consistent te verwijderen. Noteer: indien een bepaalde medling gefaald is, kan u steeds dezelfde melding opnieuw insturen.
 </p>
-
 
 <AuHeading @level="2" @skin="2" id="publicatie-documenten">Publicatie van berichten</AuHeading>
 <AuHeading @level="3" @skin="3">Voorbeelden</AuHeading>
 
 <AuHeading @level="4" @skin="4">Opvragen berichten ABB</AuHeading>
 <p>
-  De onderstaande SPARQL-query toont hoe u verzonden berichten van ABB naar specifiek bestuur kunt opvragen die recenter zijn dan een specifieke datum. <br>
-  Voor elk bericht, halen we ook de (optionele) url naar de bijlage(n) op. <br>
-  De query wordt verstuurd naar de <AuLink @route="docs.vendor-sparql-api">Vendor SPARQL API</AuLink>. <br>
-  Alle informatie over hoe u kan aanloggen, hoe het request er precies moet uitzien, vindt u daar.
-  <br>
-  Noteer opnieuw dat de uri van ABB de volgende is:
-  <br>
-  <CodeInline @code="<http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> " />
+  De onderstaande SPARQL query toont hoe u verzonden berichten van ABB naar een specifiek bestuur kunt opvragen die recenter zijn dan een specifieke datum. Voor elk bericht, halen we ook de (optionele) URL naar de bijlage(n) op. De query wordt verstuurd naar de <AuLink @route="docs.vendor-sparql-api">Vendor SPARQL API</AuLink>. Alle informatie over hoe u kan inloggen, hoe het request er precies moet uitzien, vindt u daar. Noteer opnieuw dat de URI van ABB de volgende is:
+  <CodeInline @code="<http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b>" />
 </p>
 <SnippetToggle @snippetFilename="example-berichtencentrum-1.sparql" />
 
-<AuHeading @level="4" @skin="4">Opvolgen van de ingestuurde melding </AuHeading>
+<AuHeading @level="4" @skin="4">Opvolgen van de ingestuurde melding</AuHeading>
 <p>
-  De onderstaande SPARQL-query toont hoe u de status van de aangemaakt job kan opvolgen.
-  <br>
-  Noteer; gegeven de verwerking van een melding een asynchroon proces is, kan het even duren alvorens informatie over job beschikbaar is.
-  <br> Het staat wel vast dat de informatie eventueel bechikbaar wordt.
-  <br> Na de melding kan er dus al gerust opgevraagd worden.
+  De onderstaande SPARQL query toont hoe u de status van de aangemaakt job kan opvolgen. Noteer: gegeven de verwerking van een melding een asynchroon proces is, kan het even duren alvorens informatie over de job beschikbaar is. Het staat wel vast dat de informatie eventueel beschikbaar wordt. Na de melding kan er dus al gerust opgevraagd worden.
 </p>
 <SnippetToggle @snippetFilename="example-berichtencentrum-4.sparql" />
 
 <AuHeading @level="4" @skin="4">RDFa voorbeeldpublicatie van bericht </AuHeading>
 <p>
-  Het volgende voorbeeld illustreert hoe een bericht in RDFa wordt gepubliceerd. <br>
-  Dit is een zeer minimaal voorbeeld. <br>
-  Evengoed kan dit uitgebreid worden om het ook bruikbaar te maken voor zowel menselijke gebruikers als machines. <br>
-  Het staat het bestuur dus zeker vrij om extra annotaties toe te voegen.
+  Het volgende voorbeeld illustreert hoe een bericht in RDFa wordt gepubliceerd. Dit is een zeer minimaal voorbeeld. Evengoed kan dit uitgebreid worden om het ook bruikbaar te maken voor zowel menselijke gebruikers als machines. Het staat het bestuur dus zeker vrij om extra annotaties toe te voegen.
 </p>
 <SnippetToggle @snippetFilename="example-berichtencentrum-2.html" />
 
 <AuHeading @level="4" @skin="4">Voorbeeld-request om nieuw bericht te melden</AuHeading>
 <p>
-  Voortgaand op het vorige voorbeeld, geven we weer hoe een request naar loket er zou kunnen uitzien.
-  Stel dat de RDFa geannoteerde pagina gehost staat op <CodeBlock @code="http://vendor.example.com/conversaties/bestuur/1" />. <br>
-  Uit vorige voorbeeld is de uri van het nieuwe bericht <CodeBlock @code="http://nieuw/berichturi/voor/ABB" />. <br>
-  Dan kan het request er als volgt uitzien:
+  Voortgaand op het vorige voorbeeld, geven we weer hoe een request naar loket er zou kunnen uitzien. Stel dat de RDFa geannoteerde pagina gehost staat op <CodeInline @code="http://vendor.example.com/conversaties/bestuur/1" />. Uit vorige voorbeeld is de URI van het nieuwe bericht <CodeInline @code="http://nieuw/berichturi/voor/ABB" />. Dan kan het request er als volgt uitzien:
 </p>
 <SnippetToggle @snippetFilename="example-berichtencentrum-3.sh" />
 <p>
@@ -99,16 +66,13 @@
 
 <AuHeading @level="4" @skin="4">Voorbeeldscript opvolgen melding</AuHeading>
 <p>
-  Het volgend voorbeeld illustreert een sequentie van calls die zou kunnen gebeuren om een melding op te volgen.
-  <br> Noteer: het gaat om een zeer naive interpretatie, zeker niet aan te raden in productie.
+  Het volgend voorbeeld illustreert een sequentie van calls die zou kunnen gebeuren om een melding op te volgen. Noteer: het gaat om een zeer naive interpretatie, zeker niet aan te raden in productie.
 </p>
 <SnippetToggle @snippetFilename="example-berichtencentrum-5.sh" />
 
 <AuHeading @level="4" @skin="4">Voorbeeldscript downloaden bijlage</AuHeading>
 <p>
-  Het volgend voorbeeld illustreert een sequentie van calls om een bijlage te ontdekken en te downloaden.
-  <br> Noteer: Het ontdekken van de bijlagen kan hier op vele manieren, en veel efficienter met andere SPARQL-queries.
-  <br> Noteer: het gaat om een zeer naive interpretatie, zeker niet aan te raden in productie.
+  Het volgend voorbeeld illustreert een sequentie van calls om een bijlage te ontdekken en te downloaden. Noteer: Het ontdekken van de bijlagen kan hier op vele manieren, en veel efficienter met andere SPARQL query's. Noteer nog steeds: het gaat om een zeer naive interpretatie, zeker niet aan te raden in productie.
 </p>
 <SnippetToggle @snippetFilename="example-berichtencentrum-6.sh" />
 
@@ -124,17 +88,12 @@
 
 <AuHeading @level="3" @skin="3">Organiseren van gepubliceerde pagina's</AuHeading>
 <p>
-  De crawler verwacht bij het ophalen van de RDFa-informatie dat de resource -gespecifieerd met het <CodeInline @code="resource" /> veld in de json-body- volledig beschreven staat op de pagina gespecifieerd in het <CodeInline @code="href" /> veld.
-  De crawler verwacht dat de RDFa beschrijving van het veld <CodeInline @code="nie:url" /> een rechtstreekse link is naar het bestand. <br>
-  (Indien content-negotiation gewenst is, kunnen de annotaties makkelijk uitgebreid worden. Laat gerust weten.) <br>
-  Verder zijn er geen echt harde restricties, behalve dat we niet verwachten dat de grootte van de pagina's te groot wordt. (Nader te bepalen wat de harde grens zou zijn; een html bestand van 20+ mb beschouwen we al als groot.) <br>
-  Goede vertrouwelijkheidshygiëne is wenselijk, bijvoorbeeld: niet de berichten van alle besturen in beheer op één pagina publiceren. Technisch kan het, maar het vergroot het risico.
+  De crawler verwacht bij het ophalen van de RDFa-informatie dat de resource -gespecifieerd met het <CodeInline @code="resource" /> veld in de json-body- volledig beschreven staat op de pagina gespecifieerd in het <CodeInline @code="href" /> veld. De crawler verwacht dat de RDFa beschrijving van het veld <CodeInline @code="nie:url" /> een rechtstreekse link is naar het bestand. (Indien content-negotiation gewenst is, kunnen de annotaties makkelijk uitgebreid worden. Laat gerust weten.) Verder zijn er geen echt harde restricties, behalve dat we niet verwachten dat de grootte van de pagina's te groot wordt. (Nader te bepalen wat de harde grens zou zijn; een HTML bestand van 20+MB beschouwen we al als groot.) Goede vertrouwelijkheidshygi&euml;ne is wenselijk, bijvoorbeeld: niet de berichten van alle besturen in beheer op één pagina publiceren. Technisch kan het, maar het vergroot het risico.
 </p>
-
 
 <AuHeading @level="2" @skin="2">Ontwikkeling en test</AuHeading>
 <p>
-Deze informatie volgt nog.
+  Deze informatie volgt nog.
 </p>
 
 <AuHeading @level="2" @skin="2">Model</AuHeading>
@@ -273,7 +232,7 @@ Deze informatie volgt nog.
     <td><CodeInline @code="besluit:Bestuurseenheid" /></td>
     <td>
       Verwijst naar de zender of afzender van het bericht. <br>
-      Zie voorbeelden <AuLink @route="docs.sparql-endpoint">SPARQL endpoint</AuLink> voor queries.
+      Zie voorbeelden <AuLink @route="docs.sparql-endpoint">SPARQL endpoint</AuLink> voor query's.
     </td>
   </tr>
   <tr>

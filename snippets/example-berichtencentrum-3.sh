@@ -1,6 +1,6 @@
-curl --location --request POST 'https://api.loket.lokaalbestuur.vlaanderen.be/vendor/berichtencentrum/melding' \
---header 'Content-Type: application/json' \
---data-raw '{
+curl -v -X POST \
+-H 'Content-Type: application/json' \
+-d '{
     "href": "http://vendor.example.com/conversaties/bestuur/1",
     "authentication": {
         "configuration": {
@@ -17,4 +17,4 @@ curl --location --request POST 'https://api.loket.lokaalbestuur.vlaanderen.be/ve
         "key": "AE86-GT86"
     },
     "submittedResource": "http://nieuw/berichturi/voor/ABB"
-}'
+}' https://api.loket.lokaalbestuur.vlaanderen.be/vendor/berichtencentrum/melding
