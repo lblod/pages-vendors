@@ -1,12 +1,12 @@
 <AuHeading @level="h1" @skin="h1">Vendor SPARQL API [BETA]</AuHeading>
 <p>
-  Met deze API is het mogelijk om rechtstreeks SPARQL queries uit te voeren tegen een gereduceerde dataset waar nuttige informatie terug te vinden is over de toestand van eerder ingestuurde meldingen. Bekijk de pagina over de <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo> voor het insturen van meldingen.
+  Met deze API is het mogelijk om rechtstreeks SPARQL query's uit te voeren tegen een gereduceerde dataset waar nuttige informatie terug te vinden is over de toestand van eerder ingestuurde meldingen. Bekijk de pagina over de <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo> voor het insturen van meldingen.
 </p>
 <p>
   <strong>Het soort beschikbare gegevens is nog sterk onderhevig aan veranderingen. Vertrouw voorlopig (bij het schrijven in 11/2022) nog niet te veel op het soort gegevens en de structuur ervan.</strong>
 </p>
 <p>
-  Het opvragen van de status van ingestuurde meldingen is mogelijk door het uitsturen van de juiste query naar het SPARQL endpoint. Het kunnen uitvoeren van SPARQL queries brengt echter risico met zich mee in verband met databeveiliging. Daarom wordt de toegang tot het SPARQL endpoint beschermd met een login en is het enkel mogelijk om data uit te lezen. Er kan dus niets gewijzigd worden via SPARQL Update queries. Deze pagina beschrijft het stappenplan om in te loggen en SPARQL queries uit te voeren.
+  Het opvragen van de status van ingestuurde meldingen is mogelijk door het uitsturen van de juiste query naar het SPARQL endpoint. Het kunnen uitvoeren van SPARQL query's brengt echter risico met zich mee in verband met databeveiliging. Daarom wordt de toegang tot het SPARQL endpoint beschermd met een login en is het enkel mogelijk om data uit te lezen. Er kan dus niets gewijzigd worden via SPARQL Update query's. Deze pagina beschrijft het stappenplan om in te loggen en SPARQL query's uit te voeren.
 </p>
 
 <AuHeading @level="2" @skin="2">Inloggen</AuHeading>
@@ -27,7 +27,7 @@
 </p>
 <SnippetToggle @snippetFilename="vendor-sparql-api_login-context.json" />
 <p>
-  Het antwoord op de login request is <strong>een sessie cookie</strong> waar volgende requests (SPARQL queries en uitloggen) mee worden geauthenticeert. Er wordt ook een JSON-LD body teruggegeven die informatie over de sessie voorstelt, zoals hieronder als voorbeeld wordt weergegeven. Deze informatie kan echter worden genegeerd, want <strong> de sessie wordt vanaf de login request enkel bepaald door middel van de cookie</strong>.
+  Het antwoord op de login request is <strong>een sessie cookie</strong> waar volgende requests (SPARQL query's en uitloggen) mee worden geauthenticeert. Er wordt ook een JSON-LD body teruggegeven die informatie over de sessie voorstelt, zoals hieronder als voorbeeld wordt weergegeven. Deze informatie kan echter worden genegeerd, want <strong> de sessie wordt vanaf de login request enkel bepaald door middel van de cookie</strong>.
 </p>
 <SnippetToggle @snippetFilename="vendor-sparql-api_login-response.json" />
 <p>
@@ -41,21 +41,21 @@
 </p>
 <Snippet @snippetFilename="vendor-sparql-api_login-ex.sh" />
 
-<AuHeading @level="2" @skin="2">Versturen van queries</AuHeading>
+<AuHeading @level="2" @skin="2">Versturen van query's</AuHeading>
 <p>
-  Eenmaal ingelogd is het mogelijk om SPARQL queries te versturen naar het SPARQL endpoint, benaderbaar via
+  Eenmaal ingelogd is het mogelijk om SPARQL query's te versturen naar het SPARQL endpoint, benaderbaar via
 </p>
 <CodeBlock @code="https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql" />
 <p>
-  Het versturen van queries moet gebeuren via HTTP(S) requests zoals beschreven in de <a href="https://www.w3.org/TR/sparql11-protocol/#query-operation" target="_blank" rel="noopener noreferrer">offici&euml;le specificatie van het SPARQL Protocol</a>. Er is geen webpagina beschikbaar op dit endpoint. Het is noodzakelijk om de sessie cookie, verkregen bij het inloggen, steeds mee te sturen bij elke request.
+  Het versturen van query's moet gebeuren via HTTP(S) requests zoals beschreven in de <a href="https://www.w3.org/TR/sparql11-protocol/#query-operation" target="_blank" rel="noopener noreferrer">offici&euml;le specificatie van het SPARQL Protocol</a>. Er is geen webpagina beschikbaar op dit endpoint. Het is noodzakelijk om de sessie cookie, verkregen bij het inloggen, steeds mee te sturen bij elke request.
 </p>
 <p>
-  Bij het inzenden van een nieuwe melding (zoals beschreven in <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo>) wordt er JSON teruggegeven die een URI bevat voor de melding (Submission) en de Job waarin de melding zal worden verwerkt. Deze kunnen worden gebruikt als onderwerp of voorwerp in SPARQL queries om doelgericht informatie op te vragen.
+  Bij het inzenden van een nieuwe melding (zoals beschreven in <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo>) wordt er JSON teruggegeven die een URI bevat voor de melding (Submission) en de Job waarin de melding zal worden verwerkt. Deze kunnen worden gebruikt als onderwerp of voorwerp in SPARQL query's om doelgericht informatie op te vragen.
 </p>
 
-<AuHeading @level="3" @skin="3">Voorbeelden van queries</AuHeading>
+<AuHeading @level="3" @skin="3">Voorbeelden van query's</AuHeading>
 <p>
-  Hieronder staan een aantal voorbeelden van SPARQL queries. Aan de hand van het eerste voorbeeld kan de status van de ingestuurde melding worden opgevraagd.
+  Hieronder staan een aantal voorbeelden van SPARQL query's. Aan de hand van het eerste voorbeeld kan de status van de ingestuurde melding worden opgevraagd.
 </p>
 <Snippet @snippetFilename="vendor-sparql-api_query-ex-1.sparql" />
 <p>
@@ -65,7 +65,7 @@
 <strong>Noteer:</strong> de status voor een inzending kan &ldquo;verzonden&rdquo; of &ldquo;concept&rdquo; zijn. Een inzending in &ldquo;concept&rdquo; vereist nog manuele interventie door onvolledigheid van het document alvorens het officieel kan worden ingediend, waarna het de status &ldquo;verzonden&rdquo; krijgt. Indien er ingestuurd werd met status &ldquo;verzonden&rdquo; en de status blijft hangen op &ldquo;concept&rdquo;, is er hoogst waarschijnlijk iets mis met de gegevens van het document. Je kan steeds terecht bij op <AuLinkExternal href="digitaalABB@vlaanderen.be" @icon="mail">digitaalABB@vlaanderen.be</AuLinkExternal> voor hulp. Verder op deze pagina worden de URI's voor de status opgelijst.
 </p>
 <p>
-  Met het volgende voorbeeld worden er 100 eerder verrichtte meldingen opgevraagd. Met de verkregen URI's kan men queries gelijk de bovenstaande opstellen.
+  Met het volgende voorbeeld worden er 100 eerder verrichtte meldingen opgevraagd. Met de verkregen URI's kan men query's gelijk de bovenstaande opstellen.
 </p>
 <Snippet @snippetFilename="vendor-sparql-api_query-ex-2.sparql" />
 
@@ -150,7 +150,7 @@
 
 <AuHeading @level="2" @skin="2">Fouten</AuHeading>
 <p>
-  Bij elk van bovenstaande soort request kunnen er fouten optreden. Een login kan falen vanwege foute combinatie van vendor URI en sleutel, een query kan falen vanwege syntax problemen met de query zelf of vanwege een fout opgestelde request, &hellip; In alle gevallen wordt er zo veel mogelijk aan gedaan om een waardevolle foutboodschap terug te geven in combinatie met een bijhorende HTTP (fout)code. In het geval van het versturen van queries kunnen foutberichten en foutcodes terugkomen die gegenereerd werden door de database zelf of van een tussenliggende service. Dit kan enige inconsistenties veroorzaken in de response. In het geval van de login en logout requests, fouten zitten verwerkt in de volgende JSON-LD context en worden ook op die manier geformatteerd als antwoord.
+  Bij elk van bovenstaande soort request kunnen er fouten optreden. Een login kan falen vanwege foute combinatie van vendor URI en sleutel, een query kan falen vanwege syntax problemen met de query zelf of vanwege een fout opgestelde request, &hellip; In alle gevallen wordt er zo veel mogelijk aan gedaan om een waardevolle foutboodschap terug te geven in combinatie met een bijhorende HTTP (fout)code. In het geval van het versturen van query's kunnen foutberichten en foutcodes terugkomen die gegenereerd werden door de database zelf of van een tussenliggende service. Dit kan enige inconsistenties veroorzaken in de response. In het geval van de login en logout requests, fouten zitten verwerkt in de volgende JSON-LD context en worden ook op die manier geformatteerd als antwoord.
 </p>
 <SnippetToggle @snippetFilename="vendor-sparql-api_error-response-context.json" />
 
