@@ -8,15 +8,20 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('docs', function () {
-    this.route('submission-api');
-    this.route('submission-annotations');
-    this.route('publication-annotations');
-    this.route('leidinggevenden');
+    //Data annotaties
+    this.route('meldingsplicht-annotaties');
+    this.route('publicatie-annotaties');
+    this.route('bijlagen-annotaties');
+    this.route('leidinggevenden-annotaties');
+    //Insturen
+    this.route('meldingsplicht');
+    this.route('berichtencentrum');
+    //Opvragen
+    this.route('vendor-sparql');
+    this.route('meldingsplicht-sparql');
+    this.route('berichtencentrum-sparql');
     this.route('rijksregisternummer-api');
-    this.route('sparql-endpoint');
-    this.route('decision-attachments');
-    this.route('vendor-sparql-api');
-    this.route('berichtencentrum-api');
+    this.route('centrale-vindplaats-sparql');
   });
 
   this.route('route-not-found', {

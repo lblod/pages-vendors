@@ -1,6 +1,6 @@
-<AuHeading @level="1" @skin="1">Vendor SPARQL API [DRAFT]</AuHeading>
+<AuHeading @level="1" @skin="1">Vendor SPARQL API</AuHeading>
 <p>
-  Met deze API is het mogelijk om rechtstreeks SPARQL query's uit te voeren tegen een gereduceerde dataset waar nuttige informatie terug te vinden is over de toestand van eerder ingestuurde meldingen. Bekijk de pagina over de <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo> voor het insturen van meldingen.
+  Met deze API is het mogelijk om rechtstreeks SPARQL query's uit te voeren tegen een gereduceerde dataset waar nuttige informatie terug te vinden is over de toestand van eerder ingestuurde meldingen. Bekijk de pagina over de <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo> voor het insturen van meldingen.
 </p>
 <p>
   <strong>Het soort beschikbare gegevens is nog sterk onderhevig aan veranderingen. Vertrouw voorlopig (bij het schrijven in 11/2022) nog niet te veel op het soort gegevens en de structuur ervan.</strong>
@@ -19,7 +19,7 @@
 </p>
 <Snippet @snippetFilename="vendor-sparql-api_login-request-body.json" />
 <p>
-  In het voorbeeld hierboven staat de <CodeInline @code="organisation" /> voor de URI van de bestuurseenheid waar de vendor garant voor staat. <CodeInline @code="publisher.uri" /> staat voor de URI van de vendor, en <CodeInline @code="publisher.key" /> staat voor de geheime sleutel die eerder werd verkregen. Het aanvragen van een publisher URI en geheime sleutel (key) staan beschreven in de sectie &ldquo;Authenticatie&rdquo; op de pagina over <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo>.
+  In het voorbeeld hierboven staat de <CodeInline @code="organisation" /> voor de URI van de bestuurseenheid waar de vendor garant voor staat. <CodeInline @code="publisher.uri" /> staat voor de URI van de vendor, en <CodeInline @code="publisher.key" /> staat voor de geheime sleutel die eerder werd verkregen. Het aanvragen van een publisher URI en geheime sleutel (key) staan beschreven in de sectie &ldquo;Authenticatie&rdquo; op de pagina over <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>.
 </p>
 <p>
   De volledige JSON-LD context beschrijft met RDF wat elke eigenschap betekent, welk datatype wordt verwacht en zou aan aan elke request moeten worden toegevoegd. Deze login service voegt echter automatisch de juiste context toe aan elke login request, dus het verzenden van de minimale body zoals hierboven volstaat.
@@ -50,7 +50,7 @@
   Het versturen van query's moet gebeuren via HTTP(S) requests zoals beschreven in de <a href="https://www.w3.org/TR/sparql11-protocol/#query-operation" target="_blank" rel="noopener noreferrer">offici&euml;le specificatie van het SPARQL Protocol</a>. Er is geen webpagina beschikbaar op dit endpoint. Het is noodzakelijk om de sessie cookie, verkregen bij het inloggen, steeds mee te sturen bij elke request.
 </p>
 <p>
-  Bij het inzenden van een nieuwe melding (zoals beschreven in <LinkTo @route="docs.submission-api">Meldingsplicht API</LinkTo>) wordt er JSON teruggegeven die een URI bevat voor de melding (Submission) en de Job waarin de melding zal worden verwerkt. Deze kunnen worden gebruikt als onderwerp of voorwerp in SPARQL query's om doelgericht informatie op te vragen.
+  Bij het inzenden van een nieuwe melding (zoals beschreven in <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>) wordt er JSON teruggegeven die een URI bevat voor de melding (Submission) en de Job waarin de melding zal worden verwerkt. Deze kunnen worden gebruikt als onderwerp of voorwerp in SPARQL query's om doelgericht informatie op te vragen.
 </p>
 
 <AuHeading @level="3" @skin="3">Voorbeelden van query's</AuHeading>
@@ -109,9 +109,9 @@
   Het datamodel voor de inzendingen worden voorgesteld op onderstaand diagram voor Linked Data. <br>
   In dit diagram zijn entiteiten voorgesteld met een cirkel, data properties met pijlen wijzend naar een rechthoek waar het datatype in vermeld staat en object properties met pijlen naar een nieuwe cirkel. Als er van een entiteit op het diagram geen eigenschappen bestaan zijn deze ook niet aanwezig in de data.
 </p>
-<a href="assets/images/VendorAPIModel.svg">
+<a href="assets/images/models/MeldingsplichtSparqlAPI.svg">
   <figure>
-    <img itemprop="thumbnail" src="assets/images/VendorAPIModel.svg" alt="Diagram van beschikbare gegevens" />
+    <img itemprop="thumbnail" src="assets/images/models/MeldingsplichtSparqlAPI.svg" alt="Diagram van beschikbare gegevens" />
     <figcaption>Diagram van Linked Data van beschikbare gegevens in het endpoint</figcaption>
   </figure>
 </a>
@@ -145,7 +145,7 @@
 <AuHeading @level="3" @skin="3">Berichten en Conversaties</AuHeading>
 <p>
   Berichten en conversaties zullen ook beschikbaar gemaakt worden. Voor verdere informatie verwijzen we naar
-   <LinkTo @route="docs.berichtencentrum-api">berichtencentrum-api</LinkTo>.
+   <LinkTo @route="docs.berichtencentrum">berichtencentrum-api</LinkTo>.
 </p>
 
 <AuHeading @level="2" @skin="2">Fouten</AuHeading>
