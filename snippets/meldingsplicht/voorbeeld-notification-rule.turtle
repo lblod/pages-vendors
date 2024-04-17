@@ -5,14 +5,14 @@
 
 # Besluitenlijst met bijbehorende Notificationrule
 <https://data.vlaanderen.be/id/concept/BesluitDocumentType/3fa67785-ffdc-4b30-8880-2b99d97b4dee>
-  lblodBesluit:notificationRule <http://data.lblod.info/id/notification-rule/147a1e97-028a-4ea2-a1d3-960e219bc253>.
+  lblodBesluit:notificationRule <http://data.lblod.info/id/notification-rule/147a1e97-028a-4ea2-a1d3-960e219bc253> .
 
 # De definitie van de NotificationRule
 <http://data.lblod.info/id/notification-rule/147a1e97-028a-4ea2-a1d3-960e219bc253>
-  a rule:NotificationRule;
+  a rule:NotificationRule ;
   schema:validFrom "2022-05-01T01:00:00"^^xsd:dateTime ;
   schema:validThrough "2022-12-01T01:00:00"^^xsd:dateTime ;
   # geldig voor gemeente en OCMW
-  lblodBesluit:decidableBy <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001>;
-  lblodBesluit:decidableBy <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002>;
-  lblodBesluit:obligationToReport "true"^^xsd:boolean . 
+  lblodBesluit:decidableBy <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+  lblodBesluit:decidableBy <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000002> ;
+  lblodBesluit:obligationToReport "true"^^xsd:boolean .

@@ -12,7 +12,7 @@
 <p>
   met JSON-LD request body:
 </p>
-<Snippet @snippetFilename="reporting-obligation-quick-example.js" />
+<Snippet @snippetFilename="meldingsplicht/voorbeeld-body.json" />
 <p class="au-u-para-small au-u-muted">
   Bekijk welke annotaties gebruikt kunnen worden in de gepubliceerde pagina: <AuLink @route="docs.meldingsplicht-annotaties">annotaties voor automatische melding</AuLink>.
 </p>
@@ -65,13 +65,13 @@ Indien een inzending aangemaakt wordt en volledig is, dan kan ze automatisch ver
 <p>
   Voorbeeld:
 </p>
-<Snippet @snippetFilename="reporting-obligation-optioneel-meegeven-draft-status.js" />
+<Snippet @snippetFilename="meldingsplicht/voorbeeld-body-met-draft-status.json" />
 
 <AuHeading @level="3" @skin="3">JSON-LD context</AuHeading>
 <p>
   Elk van voorgaande voorbeelden heeft een impliciete JSON-LD context. Deze context kan expliciet in de calls meegegeven worden, of een alternatieve context kan meegegeven worden. Op deze manier blijft de API maximaal flexibel. Deze context wordt ter beschikking gesteld op <AuLinkExternal href="https://lblod.data.gift/contexts/automatische-melding/v1/context.json">https://lblod.data.gift/contexts/automatische-melding/v1/context.json</AuLinkExternal>.
 </p>
-<Snippet @snippetFilename="reporting-obligation-json-ld-context.js" />
+<Snippet @snippetFilename="meldingsplicht/json-ld-context.json" />
 
 <AuHeading @level="2" @skin="2">Authenticatie</AuHeading>
 <p>
@@ -85,7 +85,7 @@ Indien een inzending aangemaakt wordt en volledig is, dan kan ze automatisch ver
 <p>
   Het is mogelijk om een melding weer te verwijderen op voorwaarde dat het meegeleverde document nog niet verzonden werd naar het Loket. Dit kan gebruikt worden om documenten die nog niet volledig waren en daarom bleven steken in "Concept" status te verwijderen, aan te vullen en opnieuw te proberen melden. Na het melden van een document via de bovenstaande API wordt er een antwoord verzonden onder de vorm van een JSON object:
 </p>
-<Snippet @snippetFilename="reporting-obligation-response-example.json" />
+<Snippet @snippetFilename="meldingsplicht/voorbeeld-antwoord.json" />
 <p>
   De <CodeInline @code="submission" /> eigenschap bevat de URI voor de nieuw aangemaakte melding voor het ingezonden document. Deze kan worden gebruikt voor het formuleren van een aanvraag voor verwijdering dat kan worden verzonden op volgende URL:
 </p>
@@ -93,7 +93,7 @@ Indien een inzending aangemaakt wordt en volledig is, dan kan ze automatisch ver
 <p>
   Volgend codefragment toont de minimale body voor zo'n aanvraag.
 </p>
-<Snippet @snippetFilename="reporting-obligation-delete-request-example.json" />
+<Snippet @snippetFilename="meldingsplicht/voorbeeld-verwijder-request.json" />
 <p>
 Net zoals bij de melding is authenticatie op dezelfde manier vereist met <CodeInline @code="organization" /> en <CodeInline @code="publisher" /> eigenschappen.
 </p>
@@ -144,12 +144,12 @@ Net zoals bij de melding is authenticatie op dezelfde manier vereist met <CodeIn
 <p>
   De key 'authentication' wordt toegevoegd als volgt aan het request:
 </p>
-<Snippet @snippetFilename="submission-basic-auth.js" />
+<Snippet @snippetFilename="meldingsplicht/voorbeeld-basic-auth.json" />
 <AuHeading @level="4" @skin="4">OAuth 2.0 Client Credentials Grant</AuHeading>
 <p>
   De key 'authentication' wordt toegevoegd als volgt aan het request:
 </p>
-<Snippet @snippetFilename="submission-oauth2-client-credentials.js" />
+<Snippet @snippetFilename="meldingsplicht/voorbeeld-oauth2.json" />
 <p>
   De key 'resource' is hier optioneel en kan gebruikt worden om verdere beperkingen op te leggen over de op te halen resource, conform:  <AuLinkExternal href="https://datatracker.ietf.org/doc/html/rfc8707">Resource Indicators</AuLinkExternal>. Noteer, op OAuth 2.0 zijn er veel variaties mogelijk, contacteer ons gerust indien er uitbreidingen gewenst zijn.
 </p>
@@ -286,14 +286,14 @@ Net zoals bij de melding is authenticatie op dezelfde manier vereist met <CodeIn
 <p>
   De volgende snippet beschrijft hoe het er kan uitzien in RDF-formaat.
 </p>
-<Snippet @snippetFilename="example-notification-rule.turtle" />
+<Snippet @snippetFilename="meldingsplicht/voorbeeld-notification-rule.turtle" />
 <p>
   Noteer: het gaat hier om een illustratief voorbeeld.
 </p>
-<AuHeading @level="4" @skin="4">SPARQL-query</AuHeading>
+<AuHeading @level="4" @skin="4">SPARQL query</AuHeading>
 <p>
   De volgende SPARQL-query geeft een voorbeeld van hoe
   <AuLink @route="docs.centrale-vindplaats-sparql">centrale-vindplaats</AuLink> bevraagd kan worden om meer informatie te vinden over de regels. <br />
   Hier worden alle meldingsplichtige besluiten opgelijst voor een Gemeente.
 </p>
-<Snippet @snippetFilename="example-notification-rule.sparql" />
+<Snippet @snippetFilename="meldingsplicht/voorbeeld-notification-rule.sparql" />

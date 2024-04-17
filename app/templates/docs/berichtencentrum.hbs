@@ -16,7 +16,7 @@
 <p>
   met als JSON-LD request body:
 </p>
-<Snippet @snippetFilename="berichtencentrum-melding-quick-example.js" />
+<Snippet @snippetFilename="berichtencentrum/voorbeeld-melding-body.js" />
 <p class="au-u-para-small au-u-muted">
   Annotaties die gebruikt kunnen worden bij de gepubliceerde pagina worden verder besproken.
 </p>
@@ -41,25 +41,25 @@
   De onderstaande SPARQL query toont hoe u verzonden berichten van ABB naar een specifiek bestuur kunt opvragen die recenter zijn dan een specifieke datum. Voor elk bericht, halen we ook de (optionele) URL naar de bijlage(n) op. De query wordt verstuurd naar de <AuLink @route="docs.vendor-sparql">Vendor SPARQL API</AuLink>. Alle informatie over hoe u kan inloggen, hoe het request er precies moet uitzien, vindt u daar. Noteer opnieuw dat de URI van ABB de volgende is:
   <CodeInline @code="<http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b>" />
 </p>
-<SnippetToggle @snippetFilename="example-berichtencentrum-1.sparql" />
+<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-berichten-na-datum.sparql" />
 
 <AuHeading @level="4" @skin="4">Opvolgen van de ingestuurde melding</AuHeading>
 <p>
   De onderstaande SPARQL query toont hoe u de status van de aangemaakt job kan opvolgen. Noteer: gegeven de verwerking van een melding een asynchroon proces is, kan het even duren alvorens informatie over de job beschikbaar is. Het staat wel vast dat de informatie eventueel beschikbaar wordt. Na de melding kan er dus al gerust opgevraagd worden.
 </p>
-<SnippetToggle @snippetFilename="example-berichtencentrum-4.sparql" />
+<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-job-status.sparql" />
 
 <AuHeading @level="4" @skin="4">RDFa voorbeeldpublicatie van bericht </AuHeading>
 <p>
   Het volgende voorbeeld illustreert hoe een bericht in RDFa wordt gepubliceerd. Dit is een zeer minimaal voorbeeld. Evengoed kan dit uitgebreid worden om het ook bruikbaar te maken voor zowel menselijke gebruikers als machines. Het staat het bestuur dus zeker vrij om extra annotaties toe te voegen.
 </p>
-<SnippetToggle @snippetFilename="example-berichtencentrum-2.html" />
+<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-rdfa-bericht.html" />
 
 <AuHeading @level="4" @skin="4">Voorbeeld-request om nieuw bericht te melden</AuHeading>
 <p>
   Voortgaand op het vorige voorbeeld, geven we weer hoe een request naar loket er zou kunnen uitzien. Stel dat de RDFa geannoteerde pagina gehost staat op <CodeInline @code="http://vendor.example.com/conversaties/bestuur/1" />. Uit vorige voorbeeld is de URI van het nieuwe bericht <CodeInline @code="http://nieuw/berichturi/voor/ABB" />. Dan kan het request er als volgt uitzien:
 </p>
-<SnippetToggle @snippetFilename="example-berichtencentrum-3.sh" />
+<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-melding.sh" />
 <p>
   Noteer dat meerdere authenticatiemogelijkheden beschikbaar zijn, niet alleen basic auth.
 </p>
@@ -68,13 +68,13 @@
 <p>
   Het volgend voorbeeld illustreert een sequentie van calls die zou kunnen gebeuren om een melding op te volgen. Noteer: het gaat om een zeer naive interpretatie, zeker niet aan te raden in productie.
 </p>
-<SnippetToggle @snippetFilename="example-berichtencentrum-5.sh" />
+<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-melding-opvolgen.sh" />
 
 <AuHeading @level="4" @skin="4">Voorbeeldscript downloaden bijlage</AuHeading>
 <p>
   Het volgend voorbeeld illustreert een sequentie van calls om een bijlage te ontdekken en te downloaden. Noteer: Het ontdekken van de bijlagen kan hier op vele manieren, en veel efficienter met andere SPARQL query's. Noteer nog steeds: het gaat om een zeer naive interpretatie, zeker niet aan te raden in productie.
 </p>
-<SnippetToggle @snippetFilename="example-berichtencentrum-6.sh" />
+<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-bijlage-downloaden.sh" />
 
 <AuHeading @level="3" @skin="3">JSON-LD context</AuHeading>
 <p>

@@ -35,7 +35,7 @@
 <p>
   Via RDFa annotaties kan dit als volgt weergegeven worden:
 </p>
-<Snippet @snippetFilename="publication-document-with-type.html" />
+<Snippet @snippetFilename="publicatie-annotaties/voorbeeld-rdfa-document-met-type.html" />
 <p>
   Annotaties van de overige types van besluiten en documenten zijn analoog aan bovenstaand voorbeeld van een agenda.
 </p>
@@ -81,17 +81,17 @@
 <AuHeading @level="4" @skin="4" id="annotatie-publicaties-document-types-zitting">Zitting annoteren op de pagina met het gepubliceerde document</AuHeading>
 <p>
   De relatie tussen een zitting en het gepubliceerde document kan als volgt op &eacute;&eacute;n pagina geannoteerd worden:
-  <Snippet @snippetFilename="publication-document-to-zitting-relation-one-page.html" />
+  <Snippet @snippetFilename="publicatie-annotaties/voorbeeld-rdfa-document-zitting-relatie-een-pagina.html" />
 </p>
 
 <AuHeading @level="4" @skin="4">Zitting annoteren met een link naar het gepubliceerde document</AuHeading>
 <p>
   De relatie tussen een zitting en een gepubliceerd document kan ook op een andere pagina dan die van het gepubliceerde document geannoteerd worden.
-  <Snippet @snippetFilename="publication-document-to-zitting-relation-with-hyperlink.html" />
+  <Snippet @snippetFilename="publicatie-annotaties/voorbeeld-rdfa-document-zitting-relatie-hyperlink.html" />
 </p>
 
 <AuHeading @level="2" @skin="2" id="annotatie-overzicht">Annotatie van overzichtspagina's</AuHeading>
 <p>
   De URLs die ingestuurd worden bevatten niet altijd de geannoteerde documenten. Vaak bevat de ingestuurde URL een of meerdere links naar pagina's met geannoteerde documenten. Denk bijvoorbeeld aan een overzichtspagina waarop alle zittingen van de gemeenteraad opgelijst worden. Om de navigatie naar relevante pagina's met RDFa kennis te faciliteren, kunnen hyperlinks met een specifieke property <CodeInline @code="http://lblod.data.gift/vocabularies/besluit/linkToPublication" /> geannoteerd worden waardoor de Besluit Publicatie harvester ook deze gelinkte pagina's zal harvesten om er de nodige kennis uit te extraheren.
 </p>
-<Snippet @snippetFilename="publication-document-link-to-publication.html" />
+<Snippet @snippetFilename="publicatie-annotaties/voorbeeld-rdfa-document-link-publicatie.html" />

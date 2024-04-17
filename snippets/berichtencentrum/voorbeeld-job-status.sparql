@@ -1,5 +1,5 @@
 PREFIX oslc: <http://open-services.net/ns/core#>
-PREFIX cogs:  <http://vocab.deri.ie/cogs#>
+PREFIX cogs: <http://vocab.deri.ie/cogs#>
 PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX task: <http://redpencil.data.gift/vocabularies/tasks/>
 
@@ -15,7 +15,8 @@ WHERE {
   OPTIONAL {
     ?job task:error ?error.
 
-    ?error a oslc:Error;
+    ?error
+      a oslc:Error;
       oslc:message ?errorMsg.
   }
 }

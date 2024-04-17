@@ -17,7 +17,7 @@
 <p>
   De JSON-LD body ziet er minimaal uit zoals het volgende:
 </p>
-<Snippet @snippetFilename="vendor-sparql-api_login-request-body.json" />
+<Snippet @snippetFilename="vendor-sparql/voorbeeld-login-request-body.json" />
 <p>
   In het voorbeeld hierboven staat de <CodeInline @code="organisation" /> voor de URI van de bestuurseenheid waar de vendor garant voor staat. <CodeInline @code="publisher.uri" /> staat voor de URI van de vendor, en <CodeInline @code="publisher.key" /> staat voor de geheime sleutel die eerder werd verkregen. Het aanvragen van een publisher URI en geheime sleutel (key) staan beschreven in de sectie &ldquo;Authenticatie&rdquo; op de pagina over <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>.
 </p>
@@ -25,21 +25,21 @@
   De volledige JSON-LD context beschrijft met RDF wat elke eigenschap betekent, welk datatype wordt verwacht en zou aan aan elke request moeten worden toegevoegd. Deze login service voegt echter automatisch de juiste context toe aan elke login request, dus het verzenden van de minimale body zoals hierboven volstaat.
   Vind hieronder de volledige context, indien nodig.
 </p>
-<SnippetToggle @snippetFilename="vendor-sparql-api_login-context.json" />
+<SnippetToggle @snippetFilename="vendor-sparql/login-context.json" />
 <p>
   Het antwoord op de login request is <strong>een sessie cookie</strong> waar volgende requests (SPARQL query's en uitloggen) mee worden geauthenticeert. Er wordt ook een JSON-LD body teruggegeven die informatie over de sessie voorstelt, zoals hieronder als voorbeeld wordt weergegeven. Deze informatie kan echter worden genegeerd, want <strong> de sessie wordt vanaf de login request enkel bepaald door middel van de cookie</strong>.
 </p>
-<SnippetToggle @snippetFilename="vendor-sparql-api_login-response.json" />
+<SnippetToggle @snippetFilename="vendor-sparql/voorbeeld-login-response.json" />
 <p>
    Als referentie wordt hieronder nog de context vermeld van het antwoord met de sessieinformatie.
 </p>
-<SnippetToggle @snippetFilename="vendor-sparql-api_login-response-context.json" />
+<SnippetToggle @snippetFilename="vendor-sparql/login-response-context.json" />
 
 <AuHeading @level="3" @skin="3">Voorbeeld</AuHeading>
 <p>
   Als voorbeeld staat hieronder hoe een login kan worden uitgevoerd met <CodeInline @code="cURL" />. Het ontvangen en verder weer versturen van cookies is noodzakelijk. Daarom wordt de cookie engine ingeschakeld met de <CodeInline @code="-b" /> en <CodeInline @code="-c" /> flags die verwijzen naar een bestand waar de cookies worden opgeslagen.
 </p>
-<Snippet @snippetFilename="vendor-sparql-api_login-ex.sh" />
+<Snippet @snippetFilename="vendor-sparql/voorbeeld-login.sh" />
 
 <AuHeading @level="2" @skin="2">Versturen van query's</AuHeading>
 <p>
@@ -57,7 +57,7 @@
 <p>
   Hieronder staan een aantal voorbeelden van SPARQL query's. Aan de hand van het eerste voorbeeld kan de status van de ingestuurde melding worden opgevraagd.
 </p>
-<Snippet @snippetFilename="vendor-sparql-api_query-ex-1.sparql" />
+<Snippet @snippetFilename="vendor-sparql/voorbeeld-melding-status.sparql" />
 <p>
   <strong>Noteer:</strong> voor de status is aangeraden om steeds met de URI te werken. Het label kan veranderen, maar het achterliggende concept (i.e. de URI) niet.
 </p>
@@ -67,7 +67,7 @@
 <p>
   Met het volgende voorbeeld worden er 100 eerder verrichtte meldingen opgevraagd. Met de verkregen URI's kan men query's gelijk de bovenstaande opstellen.
 </p>
-<Snippet @snippetFilename="vendor-sparql-api_query-ex-2.sparql" />
+<Snippet @snippetFilename="vendor-sparql/meldingen-eerste-100.sparql" />
 
 <AuHeading @level="3" @skin="3">Voorbeelden van requests</AuHeading>
 <p>
@@ -76,15 +76,15 @@
 <p>
   De meest gebruikte manier: een POST request met de query als body, ge&euml;ncodeerd zoals een formulier veld.
 </p>
-<Snippet @snippetFilename="vendor-sparql-api_request-ex-1.sh" />
+<Snippet @snippetFilename="vendor-sparql/voorbeeld-request-form.sh" />
 <p>
   Het volgende voorbeeld is hetzelfde als het vorige, maar voor de encodering is hier de typische JavaScript <CodeInline @code="encodeURIComponent()" /> gebruikt.
 </p>
-<Snippet @snippetFilename="vendor-sparql-api_request-ex-2.sh" />
+<Snippet @snippetFilename="vendor-sparql/voorbeeld-request-form-url-encode.sh" />
 <p>
   Uit volledigheid ondersteunt de endpoint ook GET requests, waar de SPARQL query als URL parameter wordt meegegeven. Deze methode is echter niet aan te raden vanwege beperkingen op de lengte van de query.
 </p>
-<Snippet @snippetFilename="vendor-sparql-api_request-ex-4.sh" />
+<Snippet @snippetFilename="vendor-sparql/voorbeeld-request-get.sh" />
 
 <AuHeading @level="2" @skin="2">Uitloggen</AuHeading>
 <p>
@@ -101,7 +101,7 @@
 <p>
   Bij het gebruik van <CodeInline @code="cURL" /> ziet de request voor uitloggen er als volgt uit.
 </p>
-<Snippet @snippetFilename="vendor-sparql-api_logout-ex.sh" />
+<Snippet @snippetFilename="vendor-sparql/logout.sh" />
 
 <AuHeading @level="2" @skin="2">Beschikbare gegevens</AuHeading>
 <AuHeading @level="3" @skin="3">Inzendingen</AuHeading>
@@ -152,7 +152,7 @@
 <p>
   Bij elk van bovenstaande soort request kunnen er fouten optreden. Een login kan falen vanwege foute combinatie van vendor URI en sleutel, een query kan falen vanwege syntax problemen met de query zelf of vanwege een fout opgestelde request, &hellip; In alle gevallen wordt er zo veel mogelijk aan gedaan om een waardevolle foutboodschap terug te geven in combinatie met een bijhorende HTTP (fout)code. In het geval van het versturen van query's kunnen foutberichten en foutcodes terugkomen die gegenereerd werden door de database zelf of van een tussenliggende service. Dit kan enige inconsistenties veroorzaken in de response. In het geval van de login en logout requests, fouten zitten verwerkt in de volgende JSON-LD context en worden ook op die manier geformatteerd als antwoord.
 </p>
-<SnippetToggle @snippetFilename="vendor-sparql-api_error-response-context.json" />
+<SnippetToggle @snippetFilename="vendor-sparql/error-response-context.json" />
 
 <AuHeading @level="2" @skin="2">Prefixes</AuHeading>
 <p>

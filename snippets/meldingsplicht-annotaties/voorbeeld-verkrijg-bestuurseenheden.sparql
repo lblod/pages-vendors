@@ -12,6 +12,6 @@ SELECT DISTINCT ?eredienst ?label ?classificatieLabel WHERE {
     ?eredienst
       besluit:classificatie ?classificatie ;
       skos:prefLabel ?label .
-    ?classificatie skos:prefLabel ?classificatieLabel.
+    ?classificatie skos:prefLabel ?classificatieLabel .
   }
 }
