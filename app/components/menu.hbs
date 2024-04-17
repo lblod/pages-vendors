@@ -5,6 +5,7 @@
     @fullSize={{@fullSize}}
     @route="docs.submission-annotations"
     @title="Annotaties voor automatische melding"
+    @badgeIcon="pencil"
     @content="Annotaties die gebruikt worden bij automatische meldingen van besluiten en documenten."/>
   <Menu::Card
     class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
@@ -12,15 +13,18 @@
     @route="docs.publication-annotations"
     @title="Annotaties van besluiten en documenten"
     @content="Annotaties die gebruikt worden bij de publicatie van besluiten en documenten opdat ze automatisch geharvest kunnen worden."/>
+    @badgeIcon="pencil"
   <Menu::Card
     class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
     @fullSize={{@fullSize}}
     @route="docs.decision-attachments"
     @title="Bijlagen bij een besluit annoteren"
+    @badgeIcon="pencil"
     @content="Beschrijft hoe verschillende soorten bijlagen bij een besluit geannoteerd kunnen worden."/>
   <Menu::Card
     class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
     @fullSize={{@fullSize}}
+    @badgeIcon="pencil"
     @href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/"
     @title="Besluit Publicatie"
     @content="Dit applicatieprofiel definieert een specificatie voor de publicatie van notulen en besluiten van bestuursorgaan."
@@ -28,6 +32,7 @@
   <Menu::Card
     class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
     @fullSize={{@fullSize}}
+    @badgeIcon="pencil"
     @href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/"
     @title="Mandatendatabank"
     @content="Dit applicatieprofiel definieert een specificatie voor een gelinkte mandatendatabank op basis van gelinkte besluiten."
@@ -37,6 +42,7 @@
     @fullSize={{@fullSize}}
     @route="docs.leidinggevenden"
     @title="Leidinggevenden"
+    @badgeIcon="pencil"
     @content="De leidinggevenden databank volgt het applicatieprofiel mandatendatabank, maar werd uitgebreid met enkele subklassen en eigenschappen."/>
 </nav>
 
@@ -46,12 +52,14 @@
     class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
     @fullSize={{@fullSize}}
     @route="docs.submission-api"
+    @badgeIcon="upload"
     @title="Meldingsplicht API"
     @content="API om een nieuwe melding aan te maken in Loket voor Lokale Besturen op basis van een publicatie. Indien al de nodige velden ingevuld zijn, kan de melding automatisch verzonden worden."/>
   <Menu::Card
     class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
     @fullSize={{@fullSize}}
     @route="docs.berichtencentrum-api"
+    @badgeIcon="upload"
     @title="Berichtencentrum API"
     @subtitle="[DRAFT]"
     @content="API om de module Berichtencentrum te integreren. Het opsturen van berichten en het uitlezen van berichten en conversaties met behulp van SPARQL query's."/>
@@ -63,7 +71,9 @@
     class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
     @fullSize={{@fullSize}}
     @route="docs.vendor-sparql-api"
+    @badgeIcon="download"
     @title="Vendor SPARQL API"
+    @badgeIcon="download"
     @subtitle="[DRAFT]"
     @content="API voor het uitvoeren van SPARQL query's voor het opvragen van statusgegevens over eerder uitgevoerde meldingen in Loket."/>
   <Menu::Card
@@ -71,11 +81,13 @@
     @fullSize={{@fullSize}}
     @route="docs.berichtencentrum-api"
     @title="Berichtencentrum API"
+    @badgeIcon="download"
     @subtitle="[DRAFT]"
     @content="API om de module Berichtencentrum te integreren. Het opsturen van berichten en het uitlezen van berichten en conversaties met behulp van SPARQL query's."/>
   <Menu::Card
     class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
     @fullSize={{@fullSize}}
+    @badgeIcon="download"
     @route="docs.rijksregisternummer-api"
     @title="Persoon URI"
     @content="Bevragen van de URI van een persoon op basis van diens rijksregisternummer en bestuurseenheid."/>
@@ -84,5 +96,6 @@
     @fullSize={{@fullSize}}
     @route="docs.sparql-endpoint"
     @title="SPARQL endpoint (centrale-vindplaats)"
+    @badgeIcon="download"
     @content="Endpoint om met SPARQL publieke data te bevragen."/>
 </nav>
