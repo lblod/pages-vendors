@@ -1,8 +1,142 @@
 <AuHeading @skin="1" @level="1">Meldingsplicht SPARQL API <em>[DRAFT]</em></AuHeading>
 
-Wat is het
-Hoe werken → verwijs volledig naar Vendor SPARQL API
-URL
-Nuttige voorbeelden en scripts, maar niet de standaard dingen gelijk inloggen enzo
-Schema met data structuur
-Tabellen met datastructuur
+<p>
+  Met deze API is het mogelijk om rechtstreeks SPARQL query's uit te voeren tegen een gereduceerde dataset waar nuttige informatie terug te vinden is over de toestand van eerder ingestuurde meldingen. Bekijk de pagina over de <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo> voor het insturen van meldingen. Bekijk zeker de pagina over de <LinkTo @route="docs.vendor-sparql">Vendor SPARQL API</LinkTo> om te leren hoe de SPARQL API werkt!
+</p>
+<p>
+  <strong>Het soort beschikbare gegevens is nog sterk onderhevig aan veranderingen. Vertrouw voorlopig (bij het schrijven in 11/2022) nog niet te veel op het soort gegevens en de structuur ervan.</strong>
+</p>
+
+<AuHeading @level="2" @skin="2">Verbinden</AuHeading>
+<p>
+  De endpoint voor deze API kan bereikt worden via
+</p>
+<CodeBlock @code="https://api.loket.lokaalbestuur.vlaanderen.be" />
+<p>
+  Ter volledigheid staat hieronder de volledige lijst aan URL's voor het inloggen, sturen van query's en het uitloggen respectievelijk.
+</p>
+<CodeBlock @code="https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login
+https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql
+https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout" />
+
+<AuHeading @level="2" @skin="2">Sturen van query's</AuHeading>
+<p>
+  Bij het inzenden van een nieuwe melding (zoals beschreven in <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>) wordt er JSON teruggegeven die een URI bevat voor de melding (Submission) en de Job waarin de melding zal worden verwerkt. Deze kunnen worden gebruikt als onderwerp of voorwerp in SPARQL query's om doelgericht informatie op te vragen.
+</p>
+
+<AuHeading @level="3" @skin="3">Voorbeelden van query's</AuHeading>
+<p>
+  Hieronder staan een aantal voorbeelden van SPARQL query's die naar het endpoint kunnen worden verstuurd. Aan de hand van het eerste voorbeeld kan de status van een ingestuurde melding (Submission) worden opgevraagd.
+</p>
+<Snippet @snippetFilename="vendor-sparql/voorbeeld-melding-status.sparql" />
+<p>
+  <strong>Noteer:</strong> voor de status is aangeraden om steeds met de URI te werken. Het label kan veranderen, maar het achterliggende concept (i.e. de URI) niet.
+</p>
+<p>
+<strong>Noteer:</strong> de status voor een inzending kan &ldquo;verzonden&rdquo; of &ldquo;concept&rdquo; zijn. Een inzending in &ldquo;concept&rdquo; vereist nog manuele interventie door onvolledigheid van het document alvorens het officieel kan worden ingediend, waarna het de status &ldquo;verzonden&rdquo; krijgt. Indien er ingestuurd werd met status &ldquo;verzonden&rdquo; en de status blijft hangen op &ldquo;concept&rdquo;, is er hoogst waarschijnlijk iets mis met de gegevens van het document. Je kan steeds terecht bij op <AuLinkExternal href="digitaalABB@vlaanderen.be" @icon="mail">digitaalABB@vlaanderen.be</AuLinkExternal> voor hulp. Verder op deze pagina worden de URI's voor de status opgelijst.
+</p>
+<p>
+  Met het volgende voorbeeld worden er 100 eerder verrichtte meldingen opgevraagd. Met de verkregen URI's kan men query's gelijk de bovenstaande opstellen.
+</p>
+<Snippet @snippetFilename="vendor-sparql/meldingen-eerste-100.sparql" />
+
+<AuHeading @level="2" @skin="2">Beschikbare gegevens</AuHeading>
+<p>
+  Het datamodel voor de inzendingen worden voorgesteld op onderstaand diagram voor Linked Data. <br>
+  In dit diagram zijn entiteiten voorgesteld met een cirkel, data properties met pijlen wijzend naar een rechthoek waar het datatype in vermeld staat en object properties met pijlen naar een nieuwe cirkel. Als er van een entiteit op het diagram geen eigenschappen bestaan zijn deze ook niet aanwezig in de data.
+</p>
+<a href="assets/images/models/MeldingsplichtSparqlAPI.svg">
+  <figure>
+    <img itemprop="thumbnail" src="assets/images/models/MeldingsplichtSparqlAPI.svg" alt="Diagram van beschikbare gegevens" />
+    <figcaption>Diagram van Linked Data van beschikbare gegevens in het endpoint</figcaption>
+  </figure>
+</a>
+<AuHeading @level="4" @skin="4">Documentstatussen inzendingen</AuHeading>
+<p>
+  Onderstaande tabel verduidelijkt de URI's die worden gebruikt om de status van een ingezonden document aan te duiden.
+</p>
+<AuTable @size="default">
+  <:header>
+    <tr>
+      <th>URI</th>
+      <th>Label</th>
+    </tr>
+  </:header>
+  <:body>
+    <tr>
+      <td><CodeInline @code="http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd" /></td>
+      <td>Concept</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c" /></td>
+      <td>Verzonden</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff" /></td>
+      <td>Inzendbaar</td>
+    </tr>
+    </:body>
+</AuTable>
+
+<AuHeading @level="2" @skin="2">Prefixes</AuHeading>
+<p>
+  Onderstaande tabel beschrijft de prefixes gebruikt in dit document en in de gegevens beschikbaar in het endpoint.
+</p>
+<AuTable @size="default">
+  <:header>
+    <tr>
+      <th>Prefix</th>
+      <th>URI</th>
+    </tr>
+  </:header>
+  <:body>
+    <tr>
+      <td><CodeInline @code="rdf:" /></td>
+      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="xsd:" /></td>
+      <td>http://www.w3.org/2001/XMLSchema#</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="meb:" /></td>
+      <td>http://rdf.myexperiment.org/ontologies/base/</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="mu:" /></td>
+      <td>http://mu.semte.ch/vocabularies/core/</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="prov:" /></td>
+      <td>http://www.w3.org/ns/prov#</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="dct:" /></td>
+      <td>http://purl.org/dc/terms/</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="adms:" /></td>
+      <td>http://www.w3.org/ns/adms#</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="pav:" /></td>
+      <td>http://purl.org/pav/</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="nie:" /></td>
+      <td>http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="nfo:" /></td>
+      <td>http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="ext:" /></td>
+      <td>http://mu.semte.ch/vocabularies/ext/Vendor</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="am:" /></td>
+      <td>http://lblod.data.gift/vocabularies/automatische-melding/</td>
+    </tr>
+  </:body>
+</AuTable>
