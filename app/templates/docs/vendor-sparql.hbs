@@ -1,33 +1,33 @@
 <AuHeading @level="1" @skin="1">Vendor SPARQL API</AuHeading>
+
 <p>
-  Met deze API is het mogelijk om rechtstreeks SPARQL query's uit te voeren tegen een gereduceerde dataset waar nuttige informatie terug te vinden is over de toestand van eerder ingestuurde meldingen. Bekijk de pagina over de <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo> voor het insturen van meldingen.
+  De Vendor SPARQL API is een manier om SPARQL queries uit te voeren op een SPARQL endpoint gehost op een van de applicaties binnen Loket en verwanten om informatie op te vragen. Dit vervangt een klassieke JSON REST API, maar kan eveneens worden gebruikt voor het integreren met de applicaties van Loket. Deze API biedt de volledige vrijheid van SPARQL voor het construeren van een informatieverzoek. Per applicatie zijn er verschillende soorten gegevens terug te vinden, dus houdt acht met de host waarop query's worden uitgevoerd. De bedoeling is wel dat op elk van de hosts een gelijkaardige Vendor SPARQL API terug te vinden is die steeds op dezelfde manier aanspreekbaar is. Het generiek mechanisme wordt op deze pagina verduidelijkt.
 </p>
 <p>
-  <strong>Het soort beschikbare gegevens is nog sterk onderhevig aan veranderingen. Vertrouw voorlopig (bij het schrijven in 11/2022) nog niet te veel op het soort gegevens en de structuur ervan.</strong>
+  Het kunnen uitvoeren van SPARQL query's brengt echter risico met zich mee in verband met databeveiliging. Daarom wordt de toegang tot het SPARQL endpoint beschermd met een login en is het enkel mogelijk om data uit te lezen. Er kan dus niets gewijzigd worden via SPARQL Update query's. Deze pagina beschrijft aan de hand van voorbeelden het stappenplan om in te loggen, hoe SPARQL query's uit te voeren, hoe weer uit te loggen en hoe eventuele fouten worden afgehandeld.
 </p>
 <p>
-  Het opvragen van de status van ingestuurde meldingen is mogelijk door het uitsturen van de juiste query naar het SPARQL endpoint. Het kunnen uitvoeren van SPARQL query's brengt echter risico met zich mee in verband met databeveiliging. Daarom wordt de toegang tot het SPARQL endpoint beschermd met een login en is het enkel mogelijk om data uit te lezen. Er kan dus niets gewijzigd worden via SPARQL Update query's. Deze pagina beschrijft het stappenplan om in te loggen en SPARQL query's uit te voeren.
+  Per applicatie is er buiten deze pagina nog documentatie te vinden over de beschikbare data en eventuele aandachtspunten. Bekijk hiervoor de gerelateerde pagina's: <LinkTo @route="docs.meldingsplicht-sparql">Meldingsplicht SPARQL API</LinkTo>, <LinkTo @route="docs.berichtencentrum-sparql">Berichtencentrum SPARQL API</LinkTo>, &hellip;
 </p>
 
 <AuHeading @level="2" @skin="2">Inloggen</AuHeading>
 <p>
-  De API voor inloggen is gelijkaardig aan hoe een melding wordt ingestuurd: volgens een request met authenticatie door middel van vendor URI, sleutel en de URI van de organisatie in een JSON-LD body naar
+  Inloggen gebeurt door middel van een request met authenticatie door middel van vendor URI, sleutel en de URI van de organisatie in een JSON-LD body naar
 </p>
-<CodeBlock @code="POST https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login" />
+<CodeBlock @code="POST https://<applicatie-host>/vendor/login" />
 <p>
-  De JSON-LD body ziet er minimaal uit zoals het volgende:
+  De specifieke hostname hangt af van het type van gegevens die benodigd zijn. Raadpleeg hiervoor de specifieke documentatie op de pagina's hierboven beschreven (<LinkTo @route="docs.meldingsplicht-sparql">Meldingsplicht SPARQL API</LinkTo>, <LinkTo @route="docs.berichtencentrum-sparql">Berichtencentrum SPARQL API</LinkTo>, &hellip;). De JSON-LD body ziet er minimaal uit zoals het volgende:
 </p>
 <Snippet @snippetFilename="vendor-sparql/voorbeeld-login-request-body.json" />
 <p>
   In het voorbeeld hierboven staat de <CodeInline @code="organisation" /> voor de URI van de bestuurseenheid waar de vendor garant voor staat. <CodeInline @code="publisher.uri" /> staat voor de URI van de vendor, en <CodeInline @code="publisher.key" /> staat voor de geheime sleutel die eerder werd verkregen. Het aanvragen van een publisher URI en geheime sleutel (key) staan beschreven in de sectie &ldquo;Authenticatie&rdquo; op de pagina over <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>.
 </p>
 <p>
-  De volledige JSON-LD context beschrijft met RDF wat elke eigenschap betekent, welk datatype wordt verwacht en zou aan aan elke request moeten worden toegevoegd. Deze login service voegt echter automatisch de juiste context toe aan elke login request, dus het verzenden van de minimale body zoals hierboven volstaat.
-  Vind hieronder de volledige context, indien nodig.
+  De volledige JSON-LD context beschrijft met RDF wat elke eigenschap betekent, welk datatype wordt verwacht en zou aan aan elke request moeten worden toegevoegd. Deze login service voegt echter automatisch de juiste context toe aan elke login request, dus het verzenden van de minimale body zoals hierboven volstaat. Vind hieronder de volledige context, indien nodig.
 </p>
 <SnippetToggle @snippetFilename="vendor-sparql/login-context.json" />
 <p>
-  Het antwoord op de login request is <strong>een sessie cookie</strong> waar volgende requests (SPARQL query's en uitloggen) mee worden geauthenticeert. Er wordt ook een JSON-LD body teruggegeven die informatie over de sessie voorstelt, zoals hieronder als voorbeeld wordt weergegeven. Deze informatie kan echter worden genegeerd, want <strong> de sessie wordt vanaf de login request enkel bepaald door middel van de cookie</strong>.
+  Het antwoord op de login request is <strong>een sessie cookie</strong> waar volgende requests (SPARQL query's en uitloggen) mee worden geauthenticeert. Er wordt ook een JSON-LD body teruggegeven die informatie over de sessie voorstelt, zoals hieronder als voorbeeld wordt weergegeven. Deze informatie kan echter worden genegeerd, want <strong>de sessie wordt vanaf de login request enkel bepaald door middel van de cookie</strong>.
 </p>
 <SnippetToggle @snippetFilename="vendor-sparql/voorbeeld-login-response.json" />
 <p>
@@ -45,25 +45,16 @@
 <p>
   Eenmaal ingelogd is het mogelijk om SPARQL query's te versturen naar het SPARQL endpoint, benaderbaar via
 </p>
-<CodeBlock @code="https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql" />
+<CodeBlock @code="https://<applicaite-host>/vendor/sparql" />
 <p>
   Het versturen van query's moet gebeuren via HTTP(S) requests zoals beschreven in de <a href="https://www.w3.org/TR/sparql11-protocol/#query-operation" target="_blank" rel="noopener noreferrer">offici&euml;le specificatie van het SPARQL Protocol</a>. Er is geen webpagina beschikbaar op dit endpoint. Het is noodzakelijk om de sessie cookie, verkregen bij het inloggen, steeds mee te sturen bij elke request.
-</p>
-<p>
-  Bij het inzenden van een nieuwe melding (zoals beschreven in <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>) wordt er JSON teruggegeven die een URI bevat voor de melding (Submission) en de Job waarin de melding zal worden verwerkt. Deze kunnen worden gebruikt als onderwerp of voorwerp in SPARQL query's om doelgericht informatie op te vragen.
 </p>
 
 <AuHeading @level="3" @skin="3">Voorbeelden van query's</AuHeading>
 <p>
-  Hieronder staan een aantal voorbeelden van SPARQL query's. Aan de hand van het eerste voorbeeld kan de status van de ingestuurde melding worden opgevraagd.
+  Hieronder staan een aantal voorbeelden van SPARQL query's die naar het endpoint kunnen worden verstuurd. Deze voorbeelden gaan over inzendingen van publicaties (Submissions), en deze zijn dus louter demonstratief. Aan de hand van het eerste voorbeeld kan de status van een ingestuurde melding worden opgevraagd.
 </p>
 <Snippet @snippetFilename="vendor-sparql/voorbeeld-melding-status.sparql" />
-<p>
-  <strong>Noteer:</strong> voor de status is aangeraden om steeds met de URI te werken. Het label kan veranderen, maar het achterliggende concept (i.e. de URI) niet.
-</p>
-<p>
-<strong>Noteer:</strong> de status voor een inzending kan &ldquo;verzonden&rdquo; of &ldquo;concept&rdquo; zijn. Een inzending in &ldquo;concept&rdquo; vereist nog manuele interventie door onvolledigheid van het document alvorens het officieel kan worden ingediend, waarna het de status &ldquo;verzonden&rdquo; krijgt. Indien er ingestuurd werd met status &ldquo;verzonden&rdquo; en de status blijft hangen op &ldquo;concept&rdquo;, is er hoogst waarschijnlijk iets mis met de gegevens van het document. Je kan steeds terecht bij op <AuLinkExternal href="digitaalABB@vlaanderen.be" @icon="mail">digitaalABB@vlaanderen.be</AuLinkExternal> voor hulp. Verder op deze pagina worden de URI's voor de status opgelijst.
-</p>
 <p>
   Met het volgende voorbeeld worden er 100 eerder verrichtte meldingen opgevraagd. Met de verkregen URI's kan men query's gelijk de bovenstaande opstellen.
 </p>
@@ -82,6 +73,10 @@
 </p>
 <Snippet @snippetFilename="vendor-sparql/voorbeeld-request-form-url-encode.sh" />
 <p>
+  Dit kan ook uitgevoerd worden met de <CodeInline @code="--data-urlencode" /> parameter op <CodeInline @code="cURL" /> als men dan de query meegeeft als formulier veld zonder speciale encodering.
+</p>
+<Snippet @snippetFilename="vendor-sparql/voorbeeld-request-form-data-urlencode.sh" />
+<p>
   Uit volledigheid ondersteunt de endpoint ook GET requests, waar de SPARQL query als URL parameter wordt meegegeven. Deze methode is echter niet aan te raden vanwege beperkingen op de lengte van de query.
 </p>
 <Snippet @snippetFilename="vendor-sparql/voorbeeld-request-get.sh" />
@@ -91,7 +86,7 @@
   Om de sessie af te sluiten volstaat het om een request, als methode <CodeInline @code="DELETE" /> met de sessie cookie, te sturen naar
 </p>
 <div>
-  <CodeBlock @code="DELETE https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout" />
+  <CodeBlock @code="DELETE https://<applicatie-host>/vendor/logout" />
 </div>
 <p>
   Het antwoord op deze request is, als uitloggen successvol was, leeg. De HTTP response code is dan <CodeInline @code="204 No Content" />.
@@ -103,116 +98,8 @@
 </p>
 <Snippet @snippetFilename="vendor-sparql/logout.sh" />
 
-<AuHeading @level="2" @skin="2">Beschikbare gegevens</AuHeading>
-<AuHeading @level="3" @skin="3">Inzendingen</AuHeading>
-<p>
-  Het datamodel voor de inzendingen worden voorgesteld op onderstaand diagram voor Linked Data. <br>
-  In dit diagram zijn entiteiten voorgesteld met een cirkel, data properties met pijlen wijzend naar een rechthoek waar het datatype in vermeld staat en object properties met pijlen naar een nieuwe cirkel. Als er van een entiteit op het diagram geen eigenschappen bestaan zijn deze ook niet aanwezig in de data.
-</p>
-<a href="assets/images/models/MeldingsplichtSparqlAPI.svg">
-  <figure>
-    <img itemprop="thumbnail" src="assets/images/models/MeldingsplichtSparqlAPI.svg" alt="Diagram van beschikbare gegevens" />
-    <figcaption>Diagram van Linked Data van beschikbare gegevens in het endpoint</figcaption>
-  </figure>
-</a>
-<AuHeading @level="4" @skin="4">Documentstatussen inzendingen</AuHeading>
-<p>
-  Onderstaande tabel verduidelijkt de URI's die worden gebruikt om de status van een ingezonden document aan te duiden.
-</p>
-<AuTable @size="default">
-  <:header>
-    <tr>
-      <th>URI</th>
-      <th>Label</th>
-    </tr>
-  </:header>
-  <:body>
-    <tr>
-      <td><CodeInline @code="http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd" /></td>
-      <td>Concept</td>
-    </tr>
-    <tr>
-      <td><CodeInline @code="http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c" /></td>
-      <td>Verzonden</td>
-    </tr>
-    <tr>
-      <td><CodeInline @code="http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff" /></td>
-      <td>Inzendbaar</td>
-    </tr>
-    </:body>
-</AuTable>
-
-<AuHeading @level="3" @skin="3">Berichten en Conversaties</AuHeading>
-<p>
-  Berichten en conversaties zullen ook beschikbaar gemaakt worden. Voor verdere informatie verwijzen we naar
-   <LinkTo @route="docs.berichtencentrum">berichtencentrum-api</LinkTo>.
-</p>
-
 <AuHeading @level="2" @skin="2">Fouten</AuHeading>
 <p>
   Bij elk van bovenstaande soort request kunnen er fouten optreden. Een login kan falen vanwege foute combinatie van vendor URI en sleutel, een query kan falen vanwege syntax problemen met de query zelf of vanwege een fout opgestelde request, &hellip; In alle gevallen wordt er zo veel mogelijk aan gedaan om een waardevolle foutboodschap terug te geven in combinatie met een bijhorende HTTP (fout)code. In het geval van het versturen van query's kunnen foutberichten en foutcodes terugkomen die gegenereerd werden door de database zelf of van een tussenliggende service. Dit kan enige inconsistenties veroorzaken in de response. In het geval van de login en logout requests, fouten zitten verwerkt in de volgende JSON-LD context en worden ook op die manier geformatteerd als antwoord.
 </p>
 <SnippetToggle @snippetFilename="vendor-sparql/error-response-context.json" />
-
-<AuHeading @level="2" @skin="2">Prefixes</AuHeading>
-<p>
-  Onderstaande tabel beschrijft de prefixes gebruikt in dit document en in de gegevens beschikbaar in het endpoint.
-</p>
-<AuTable @size="default">
-  <:header>
-    <tr>
-      <th>Prefix</th>
-      <th>URI</th>
-    </tr>
-  </:header>
-  <:body>
-    <tr>
-      <td><CodeInline @code="rdf:" /></td>
-      <td>http://www.w3.org/1999/02/22-rdf-syntax-ns</td>
-    </tr>
-    <tr>
-      <td><CodeInline @code="xsd:" /></td>
-      <td>http://www.w3.org/2001/XMLSchema#</td>
-    </tr>
-    <tr>
-      <td><CodeInline @code="meb:" /></td>
-      <td>http://rdf.myexperiment.org/ontologies/base/</td>
-    </tr>
-    <tr>
-      <td><CodeInline @code="mu:" /></td>
-      <td>http://mu.semte.ch/vocabularies/core/</td>
-    </tr>
-    <tr>
-      <td><CodeInline @code="prov:" /></td>
-      <td>http://www.w3.org/ns/prov#</td>
-    </tr>
-    <tr>
-      <td><CodeInline @code="dct:" /></td>
-      <td>http://purl.org/dc/terms/</td>
-    </tr>
-    <tr>
-      <td><CodeInline @code="adms:" /></td>
-      <td>http://www.w3.org/ns/adms#</td>
-    </tr>
-    <tr>
-      <td><CodeInline @code="pav:" /></td>
-      <td>http://purl.org/pav/</td>
-    </tr>
-    <tr>
-      <td><CodeInline @code="nie:" /></td>
-      <td>http://www.semanticdesktop.org/ontologies/2007/01/19/nie#hasPart</td>
-    </tr>
-    <tr>
-      <td><CodeInline @code="nfo:" /></td>
-      <td>http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</td>
-    </tr>
-    <tr>
-      <td><CodeInline @code="ext:" /></td>
-      <td>http://mu.semte.ch/vocabularies/ext/Vendor</td>
-    </tr>
-    <tr>
-      <td><CodeInline @code="am:" /></td>
-      <td>http://lblod.data.gift/vocabularies/automatische-melding/</td>
-    </tr>
-  </:body>
-</AuTable>
