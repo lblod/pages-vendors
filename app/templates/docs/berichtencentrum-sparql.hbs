@@ -30,25 +30,25 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout" />
   De onderstaande SPARQL query toont hoe verzonden berichten van ABB naar een specifiek bestuur die recenter zijn dan een specifieke datum opgevraagd kunnen worden. Voor elk bericht halen we ook de (optionele) URL('s) naar de bijlage(n) op. Noteer dat de URI van ABB de volgende is:
   <CodeInline @code="http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b" />
 </p>
-<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-berichten-na-datum.sparql" />
+<SnippetToggle @snippetFilename="berichtencentrum-sparql/voorbeeld-berichten-na-datum.sparql" />
 
 <AuHeading @level="4" @skin="4">Opvolgen van de ingestuurde melding</AuHeading>
 <p>
   De onderstaande SPARQL query toont hoe u de status van de aangemaakt Job kan opvolgen. Noteer: gegeven de verwerking van een melding een asynchroon proces is kan het even duren alvorens informatie over de Job beschikbaar is. Het staat wel vast dat de informatie ooit beschikbaar wordt. Na de melding kan er dus al gerust opgevraagd worden.
 </p>
-<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-job-status.sparql" />
+<SnippetToggle @snippetFilename="berichtencentrum-sparql/voorbeeld-job-status.sparql" />
 
 <AuHeading @level="4" @skin="4">Script voor opvolgen melding</AuHeading>
 <p>
   Het volgend voorbeeld is een Bash script dat een sequentie van calls uitvoert om een melding op te volgen. Noteer: het gaat om een zeer na&iuml;eve interpretatie, zeker niet aan te raden in productie.
 </p>
-<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-melding-opvolgen.sh" />
+<SnippetToggle @snippetFilename="berichtencentrum-sparql/voorbeeld-melding-opvolgen.sh" />
 
 <AuHeading @level="4" @skin="4">Script voor downloaden bijlage</AuHeading>
 <p>
   Het volgend voorbeeld illustreert een sequentie van calls om een bijlage te ontdekken en te downloaden. Noteer: Het ontdekken van de bijlagen kan hier op vele manieren, en veel effici&euml;nter met andere SPARQL query's. Noteer nog steeds: het gaat om een zeer na&iuml;eve interpretatie, zeker niet aan te raden in productie.
 </p>
-<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-bijlage-downloaden.sh" />
+<SnippetToggle @snippetFilename="berichtencentrum-sparql/voorbeeld-bijlage-downloaden.sh" />
 
 <AuHeading @level="2" @skin="2">Model van beschikbare data</AuHeading>
 <p>
