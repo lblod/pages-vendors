@@ -8,6 +8,24 @@
   Het Berichtencentrum bestaat uit Conversaties en Berichten. Een conversatie bestaat uit verschillende berichten; een conversatie is een zogenaamde 'thread'. Momenteel kan enkel ABB conversaties initi&euml;ren, en kunnen besturen enkel reageren. De beschikbare conversaties en berichten kunnen bevraagd worden aan de hand van <AuLink @route="docs.vendor-sparql">Vendor SPARQL API</AuLink>. Meer details over de query's volgen hieronder. In geval er een nieuw bericht naar ABB moet worden gestuurd, publiceert het bestuur een RDFa-geannoteerd document. Via een REST call meldt het bestuur de locatie van de nieuwe publicatie aan het loket, en zal de crawler van het loket het document ophalen. Het melden van een bericht zal een <CodeInline @code="cogs:Job" /> aanmaken. Hiermee kan de vendor of het bestuur de status van de melding opvolgen. De flow is heel gelijkaardig aan die van de <AuLink @route="docs.meldingsplicht">Meldingsplicht API</AuLink>.
 </p>
 
+<AuHeading @level="2" @skin="2" id="publicatie-documenten">Publicatie van berichten</AuHeading>
+<p>
+  Het bestuur dat een bericht wil sturen in Loket publiceert een, via authenticatie beschermd, RDFa document. De publieke URL voor dit document moet worden meegegeven in een REST call naar Loket zodat een crawler het document kan inlezen en verwerken.
+</p>
+<AuHeading @level="3" @skin="3">Vereisten voor gepubliceerde pagina's</AuHeading>
+<p>
+  Zie <AuLink @route="docs.meldingsplicht">Meldingsplicht API</AuLink>.
+</p>
+<AuHeading @level="3" @skin="3">Organiseren van gepubliceerde pagina's</AuHeading>
+<p>
+  De crawler verwacht bij het ophalen van de RDFa-informatie dat de resource -gespecifieerd met het <CodeInline @code="resource" /> veld in de json-body- volledig beschreven staat op de pagina gespecifieerd in het <CodeInline @code="href" /> veld. De crawler verwacht dat de RDFa beschrijving van het veld <CodeInline @code="nie:url" /> een rechtstreekse link is naar het bestand. (Indien content-negotiation gewenst is, kunnen de annotaties makkelijk uitgebreid worden. Laat gerust weten.) Verder zijn er geen echt harde restricties, behalve dat we niet verwachten dat de grootte van de pagina's te groot wordt. (Nader te bepalen wat de harde grens zou zijn; een HTML bestand van 20+MB beschouwen we al als groot.) Goede vertrouwelijkheidshygi&euml;ne is wenselijk, bijvoorbeeld: niet de berichten van alle besturen in beheer op één pagina publiceren. Technisch kan het, maar het vergroot het risico.
+</p>
+<AuHeading @level="3" @skin="3">RDFa voorbeeldpublicatie van bericht</AuHeading>
+<p>
+  Het volgende voorbeeld illustreert hoe een bericht in RDFa wordt gepubliceerd. Dit is een zeer minimaal voorbeeld. Evengoed kan dit uitgebreid worden om het ook bruikbaar te maken voor zowel menselijke gebruikers als machines. Het staat het bestuur dus zeker vrij om extra annotaties toe te voegen.
+</p>
+<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-rdfa-bericht.html" />
+
 <AuHeading @level="2" @skin="2">Melden van een nieuw bericht</AuHeading>
 <p>
   Het melden van een nieuw bericht gebeurt via een request via
@@ -27,35 +45,11 @@
 <p>
   Indien er zaken niet in orde zijn, kan u terugvallen op de standaard HTTP-codes en error-boodschappen.
 </p>
-
-<AuHeading @level="3" @skin="3">Verwijderen van berichten</AuHeading>
+<AuHeading @level="3" @skin="3">JSON-LD context</AuHeading>
 <p>
-  Momenteel is er geen endpoint voorzien om een bericht te verwijderen. Van zodra het bericht correct verwerkt is, propageert dit binnen allerhande systemen en wordt het zeer moeilijk om consistent te verwijderen. Noteer: indien een bepaalde medling gefaald is, kan u steeds dezelfde melding opnieuw insturen.
+  Zie <AuLink @route="docs.meldingsplicht">Meldingsplicht API</AuLink>.
 </p>
-
-<AuHeading @level="2" @skin="2" id="publicatie-documenten">Publicatie van berichten</AuHeading>
-<AuHeading @level="3" @skin="3">Voorbeelden</AuHeading>
-
-<AuHeading @level="4" @skin="4">Opvragen berichten ABB</AuHeading>
-<p>
-  De onderstaande SPARQL query toont hoe u verzonden berichten van ABB naar een specifiek bestuur kunt opvragen die recenter zijn dan een specifieke datum. Voor elk bericht, halen we ook de (optionele) URL naar de bijlage(n) op. De query wordt verstuurd naar de <AuLink @route="docs.vendor-sparql">Vendor SPARQL API</AuLink>. Alle informatie over hoe u kan inloggen, hoe het request er precies moet uitzien, vindt u daar. Noteer opnieuw dat de URI van ABB de volgende is:
-  <CodeInline @code="<http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b>" />
-</p>
-<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-berichten-na-datum.sparql" />
-
-<AuHeading @level="4" @skin="4">Opvolgen van de ingestuurde melding</AuHeading>
-<p>
-  De onderstaande SPARQL query toont hoe u de status van de aangemaakt job kan opvolgen. Noteer: gegeven de verwerking van een melding een asynchroon proces is, kan het even duren alvorens informatie over de job beschikbaar is. Het staat wel vast dat de informatie eventueel beschikbaar wordt. Na de melding kan er dus al gerust opgevraagd worden.
-</p>
-<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-job-status.sparql" />
-
-<AuHeading @level="4" @skin="4">RDFa voorbeeldpublicatie van bericht </AuHeading>
-<p>
-  Het volgende voorbeeld illustreert hoe een bericht in RDFa wordt gepubliceerd. Dit is een zeer minimaal voorbeeld. Evengoed kan dit uitgebreid worden om het ook bruikbaar te maken voor zowel menselijke gebruikers als machines. Het staat het bestuur dus zeker vrij om extra annotaties toe te voegen.
-</p>
-<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-rdfa-bericht.html" />
-
-<AuHeading @level="4" @skin="4">Voorbeeld-request om nieuw bericht te melden</AuHeading>
+<AuHeading @level="3" @skin="3">Voorbeeld-request om nieuw bericht te melden</AuHeading>
 <p>
   Voortgaand op het vorige voorbeeld, geven we weer hoe een request naar loket er zou kunnen uitzien. Stel dat de RDFa geannoteerde pagina gehost staat op <CodeInline @code="http://vendor.example.com/conversaties/bestuur/1" />. Uit vorige voorbeeld is de URI van het nieuwe bericht <CodeInline @code="http://nieuw/berichturi/voor/ABB" />. Dan kan het request er als volgt uitzien:
 </p>
@@ -64,348 +58,12 @@
   Noteer dat meerdere authenticatiemogelijkheden beschikbaar zijn, niet alleen basic auth.
 </p>
 
-<AuHeading @level="4" @skin="4">Voorbeeldscript opvolgen melding</AuHeading>
+<AuHeading @level="2" @skin="2">Verwijderen van berichten</AuHeading>
 <p>
-  Het volgend voorbeeld illustreert een sequentie van calls die zou kunnen gebeuren om een melding op te volgen. Noteer: het gaat om een zeer naive interpretatie, zeker niet aan te raden in productie.
-</p>
-<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-melding-opvolgen.sh" />
-
-<AuHeading @level="4" @skin="4">Voorbeeldscript downloaden bijlage</AuHeading>
-<p>
-  Het volgend voorbeeld illustreert een sequentie van calls om een bijlage te ontdekken en te downloaden. Noteer: Het ontdekken van de bijlagen kan hier op vele manieren, en veel efficienter met andere SPARQL query's. Noteer nog steeds: het gaat om een zeer naive interpretatie, zeker niet aan te raden in productie.
-</p>
-<SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-bijlage-downloaden.sh" />
-
-<AuHeading @level="3" @skin="3">JSON-LD context</AuHeading>
-<p>
-  Zie <AuLink @route="docs.meldingsplicht">Meldingsplicht API</AuLink>.
-</p>
-
-<AuHeading @level="3" @skin="3">Vereisten voor gepubliceerde pagina's</AuHeading>
-<p>
-  Zie <AuLink @route="docs.meldingsplicht">Meldingsplicht API</AuLink>.
-</p>
-
-<AuHeading @level="3" @skin="3">Organiseren van gepubliceerde pagina's</AuHeading>
-<p>
-  De crawler verwacht bij het ophalen van de RDFa-informatie dat de resource -gespecifieerd met het <CodeInline @code="resource" /> veld in de json-body- volledig beschreven staat op de pagina gespecifieerd in het <CodeInline @code="href" /> veld. De crawler verwacht dat de RDFa beschrijving van het veld <CodeInline @code="nie:url" /> een rechtstreekse link is naar het bestand. (Indien content-negotiation gewenst is, kunnen de annotaties makkelijk uitgebreid worden. Laat gerust weten.) Verder zijn er geen echt harde restricties, behalve dat we niet verwachten dat de grootte van de pagina's te groot wordt. (Nader te bepalen wat de harde grens zou zijn; een HTML bestand van 20+MB beschouwen we al als groot.) Goede vertrouwelijkheidshygi&euml;ne is wenselijk, bijvoorbeeld: niet de berichten van alle besturen in beheer op één pagina publiceren. Technisch kan het, maar het vergroot het risico.
+  Momenteel is er geen endpoint voorzien om een bericht te verwijderen. Van zodra het bericht correct verwerkt is, propageert dit binnen allerhande systemen en wordt het zeer moeilijk om consistent te verwijderen. Noteer: indien een bepaalde melding gefaald is, kan u steeds dezelfde melding opnieuw insturen.
 </p>
 
 <AuHeading @level="2" @skin="2">Ontwikkeling en test</AuHeading>
 <p>
   Deze informatie volgt nog.
 </p>
-
-<AuHeading @level="2" @skin="2">Model</AuHeading>
-<AuTable>
-  <:header>
-  <tr>
-    <th>Prefix</th>
-    <th>URI</th>
-  </tr>
-  </:header>
-  <:body>
-  <tr>
-    <td><CodeInline @code="adms" /></td>
-    <td><AuLinkExternal href="http://www.w3.org/ns/adms#">http://www.w3.org/ns/adms#</AuLinkExternal></td>
-  </tr>
-  <tr>
-    <td><CodeInline @code="besluit" /></td>
-    <td><AuLinkExternal href="http://data.vlaanderen.be/ns/besluit#">http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
-  </tr>
-  <tr>
-    <td><CodeInline @code="dcterms" /></td>
-    <td><AuLinkExternal href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</AuLinkExternal></td>
-  </tr>
-  <tr>
-    <td><CodeInline @code="nfo" /></td>
-    <td><AuLinkExternal href="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#">http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</AuLinkExternal></td>
-  </tr>
-  <tr>
-    <td><CodeInline @code="nie" /></td>
-    <td><AuLinkExternal href="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#">http://www.semanticdesktop.org/ontologies/2007/01/19/nie#</AuLinkExternal></td>
-  </tr>
-  <tr>
-    <td><CodeInline @code="schema" /></td>
-    <td>
-      <AuLinkExternal href="http://schema.org/">http://schema.org/</AuLinkExternal>
-      <br>
-      Noteer: geen <em>http<strong>s</strong></em>!
-    </td>
-  </tr>
-  <tr>
-    <td><CodeInline @code="rdf" /></td>
-    <td><AuLinkExternal href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</AuLinkExternal></td>
-  </tr>
-  <tr>
-    <td><CodeInline @code="xsd" /></td>
-    <td><AuLinkExternal href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
-  </tr>
-  <tr>
-    <td><CodeInline @code="cogs" /></td>
-    <td><AuLinkExternal href="http://vocab.deri.ie/cogs#">http://vocab.deri.ie/cogs#</AuLinkExternal></td>
-  </tr>
-  <tr>
-    <td><CodeInline @code="oslc" /></td>
-    <td><AuLinkExternal href="http://open-services.net/ns/core#">http://open-services.net/ns/core#</AuLinkExternal></td>
-  </tr>
-  <tr>
-    <td><CodeInline @code="task" /></td>
-    <td><AuLinkExternal href="http://redpencil.data.gift/vocabularies/tasks/">http://redpencil.data.gift/vocabularies/tasks/</AuLinkExternal></td>
-  </tr>
-  </:body>
-</AuTable>
-
-<AuHeading @level="3" @skin="3"><CodeInline @code="schema:Conversation" /></AuHeading>
-<p>
-  Bundelt schema:Message rondt specifiek topic.
-</p>
-<AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
-<AuTable>
-  <:header>
-  <tr>
-    <th>Naam</th>
-    <th>URI</th>
-    <th>Verwacht type</th>
-    <th>Beschrijving</th>
-  </tr>
-  </:header>
-  <:body>
-  <tr>
-    <td>hasPart</td>
-    <td><CodeInline @code="schema:hasPart" /></td>
-    <td><CodeInline @code="schema:Message" /></td>
-    <td>Verwijst naar het gelinkt bericht aan de conversatie</td>
-  </tr>
-  <tr>
-    <td>about</td>
-    <td><CodeInline @code="schema:about" /></td>
-    <td><CodeInline @code="xsd:string" /></td>
-    <td>Beschrijft het topic van het gesprek</td>
-  </tr>
-  <tr>
-    <td>Identificator</td>
-    <td><CodeInline @code="schema:identifier" /></td>
-    <td><CodeInline @code="xsd:string" /></td>
-    <td>
-      De interne referentie van ABB.
-    </td>
-  </tr>
-  </:body>
-</AuTable>
-
-<AuHeading @level="3" @skin="3"> Bericht <CodeInline @code="schema:Message" /></AuHeading>
-<p>
-  Een resource die de effectieve communicatie bevat.
-</p>
-<AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
-<AuTable>
-  <:header>
-  <tr>
-    <th>Naam</th>
-    <th>URI</th>
-    <th>Verwacht type</th>
-    <th>Beschrijving</th>
-  </tr>
-  </:header>
-  <:body>
-  <tr>
-    <td>type</td>
-    <td><CodeInline @code="dcterms:type" /></td>
-    <td><CodeInline @code="xsd:string" /></td>
-    <td>
-      Een string die samenvat wat de type communicatie is. <br>
-      Voorbeelden hiervan zijn "Kennisgeving toezichtsbeslissing" of "Opvraging" <br>
-      Noteer hierbij dat het bestuur dit veld <em>niet</em> hoeft te publiceren. <br>
-      Alle berichten die binnenkomen vanuit een bestuur zullen automatisch het label "Reactie" krijgen.
-    </td>
-  </tr>
-  <tr>
-    <td>hasPart</td>
-    <td><CodeInline @code="nie:hasPart" /></td>
-    <td><CodeInline @code="nfo:FileDataObject" /></td>
-    <td>Verwijst naar het bijbehorende document of bestand van het bericht, zoals een bijlage.</td>
-  </tr>
-  <tr>
-    <td>sender</td>
-    <td><CodeInline @code="schema:sender" /></td>
-    <td><CodeInline @code="besluit:Bestuurseenheid" /></td>
-    <td>
-      Verwijst naar de zender of afzender van het bericht. <br>
-      Zie voorbeelden <AuLink @route="docs.centrale-vindplaats-sparql">SPARQL endpoint</AuLink> voor query's.
-    </td>
-  </tr>
-  <tr>
-    <td>recipient</td>
-    <td><CodeInline @code="schema:recipient" /></td>
-    <td><CodeInline @code="besluit:Bestuurseenheid" /></td>
-    <td>
-      Verwijst naar de ontvanger van het bericht. <br>
-      In de prakijk ABB met vaste URI <br>
-      <CodeInline @code="<http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b>"/>
-    </td>
-  </tr>
-  <tr>
-    <td>text</td>
-    <td><CodeInline @code="schema:text" /></td>
-    <td><CodeInline @code="xsd:string" /></td>
-    <td>
-      De tekst of inhoud van het bericht. <br>
-      Dit veld kan rich text bevatten, dit wordt doorgegeven als html.
-    </td>
-  </tr>
-  <tr>
-    <td>dateSent</td>
-    <td><CodeInline @code="schema:dateSent" /></td>
-    <td><CodeInline @code="xsd:dateTime" /></td>
-    <td>Datum en tijd waarop het bericht is verzonden.
-      <br>
-      In de praktijk, wanneer de gebruiker op 'versturen' geklikt heeft.
-      <br>
-      Dit is niet de datum van ontvangest bij ABB.
-      <br>
-      (Verdere discussie zal nodig zijn om uit te klaren welke timestamp rechtsgeldig is voor de termijnen)
-    </td>
-  </tr>
-  </:body>
-</AuTable>
-
-<AuHeading @level="3" @skin="3"> FileDataObject <CodeInline @code="nfo:FileDataObject" /></AuHeading>
-<p>
-  Deze Klasse wordt gebruikt om bijlagen te annoteren. <br>
-</p>
-<AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
-<AuTable>
-  <:header>
-  <tr>
-    <th>Naam</th>
-    <th>URI</th>
-    <th>Verwacht type</th>
-    <th>Beschrijving</th>
-  </tr>
-  </:header>
-  <:body>
-  <tr>
-    <td>created</td>
-    <td><CodeInline @code="dcterms:created" /></td>
-    <td><CodeInline @code="xsd:dateTime" /></td>
-    <td>Datum en tijd waarop het bestand is gecreëerd.</td>
-  </tr>
-  <tr>
-    <td>url</td>
-    <td><CodeInline @code="nie:url" /></td>
-    <td><CodeInline @code="xsd:anyURI" /></td>
-    <td>De locatie van het bestand die gebruikt zal worden om opgehaald te worden</td>
-  </tr>
-  <tr>
-    <td>modified</td>
-    <td><CodeInline @code="dcterms:modified" /></td>
-    <td><CodeInline @code="xsd:dateTime" /></td>
-    <td>Datum en tijd waarop het bestand voor het laatst is gewijzigd.</td>
-  </tr>
-  <tr>
-    <td>fileName</td>
-    <td><CodeInline @code="nfo:fileName" /></td>
-    <td><CodeInline @code="xsd:string" /></td>
-    <td>De mensleesbare naam van het bestand.</td>
-  </tr>
-  <tr>
-    <td>status</td>
-    <td><CodeInline @code="adms:status" /></td>
-    <td><CodeInline @code="skos:Concept" /></td>
-    <td>De status gebruikt bij ABB om de voortgang van de download van de file op te volgen.
-      <br>
-      De mogelijke statussen vindt u (voorlopig)
-      <AuLinkExternal href="https://github.com/lblod/download-url-service#file-download-statuses">hier</AuLinkExternal>
-      <br>
-      Noteer: deze property wordt genegeerd indien het bestuur dit publiceert.
-    </td>
-  </tr>
-  </:body>
-</AuTable>
-
-<AuHeading @level="3" @skin="3"> <CodeInline @code="cogs:Job" /> </AuHeading>
-<p>Een instantie van deze klasse gaat bijhouden wat de status van de ingestuurde melding is.</p>
-<AuHeading @level="4" @skin="4">class</AuHeading>
-<CodeInline @code="cogs:Job" />
-
-<AuHeading @level="4" @skin="4">properties</AuHeading>
-<AuTable>
-  <:header>
-  <tr>
-    <th>Naam</th>
-    <th>URI</th>
-    <th>Verwacht type</th>
-    <th>Beschrijving</th>
-  </tr>
-  </:header>
-  <:body>
-  <tr>
-    <td>status</td>
-    <td><CodeInline @code="adms:status" /></td>
-    <td><CodeInline @code="skos:Concept" /></td>
-    <td>
-      Status van de job. Mogelijke waarden zijn <br>
-      <ul>
-        <li><CodeInline @code="http://redpencil.data.gift/id/concept/JobStatus/busy" /></li>
-        <li><CodeInline @code="http://redpencil.data.gift/id/concept/JobStatus/scheduled" /></li>
-        <li><CodeInline @code="http://redpencil.data.gift/id/concept/JobStatus/success" /></li>
-        <li><CodeInline @code="http://redpencil.data.gift/id/concept/JobStatus/failed" /></li>
-      </ul>
-
-    </td>
-  </tr>
-  <tr>
-    <td>created</td>
-    <td><CodeInline @code="dct:created" /></td>
-    <td><CodeInline @code="xsd:dateTime" /></td>
-    <td>Tijdstip van create</td>
-  </tr>
-  <tr>
-    <td>modified</td>
-    <td><CodeInline @code="dct:modified" /></td>
-    <td><CodeInline @code="xsd:dateTime" /></td>
-    <td>Tijdstip van update</td>
-  </tr>
-  <tr>
-    <td>subject</td>
-    <td><CodeInline @code="dct:subject" /></td>
-    <td><CodeInline @code="schema:Message" /></td>
-    <td>Het bericht waaran de job verbonden is</td>
-  </tr>
-  <tr>
-    <td>error</td>
-    <td><CodeInline @code="task:error" /></td>
-    <td><CodeInline @code="oslc:Error" /></td>
-    <td>
-      Meer informatie over de fout in geval van de fout <br>
-      <CodeInline @code="http://redpencil.data.gift/id/concept/JobStatus/failed" />
-    </td>
-  </tr>
-  </:body>
-</AuTable>
-
-<AuHeading @level="3" @skin="3"> <CodeInline @code="oslc:Error" /> </AuHeading>
-<p>Deze klasse beschrijft een error. In dit geval zal deze gelinkt zijn met <CodeInline @code="cogs:Job" /> </p>
-<AuHeading @level="4" @skin="4">klasse</AuHeading>
-<CodeInline @code="oslc:Error" />
-
-<AuHeading @level="4" @skin="4">eigenschappen</AuHeading>
-<AuTable>
-  <:header>
-  <tr>
-    <th>Naam</th>
-    <th>URI</th>
-    <th>Verwacht type</th>
-    <th>Beschrijving</th>
-  </tr>
-  </:header>
-  <:body>
-  <tr>
-    <td>bericht</td>
-    <td><CodeInline @code="oslc:message" /></td>
-    <td><CodeInline @code="xsd:string" /></td>
-    <td>Beschrijving van de fout</td>
-  </tr>
-  </:body>
-</AuTable>
