@@ -1,0 +1,12 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dct:  <http://purl.org/dc/terms/>
+PREFIX mob:  <http://rdf.myexperiment.org/ontologies/base/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+SELECT DISTINCT ?s WHERE {
+  ?s rdf:type mob:Submission .
+  ?s prov:generated ?formData .
+  ?formData
+    dct:type
+      <https://data.vlaanderen.be/id/concept/BesluitType/e44c535d-4339-4d15-bdbf-d4be6046de2c> .
+}

@@ -1,0 +1,13 @@
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX mob: <http://rdf.myexperiment.org/ontologies/base/>
+
+SELECT DISTINCT ?s ?createdDate WHERE {
+  ?s rdf:type mob:Submission .
+  ?s dct:created ?createdDate .
+  FILTER (
+    ?createdDate > "2024-03-01T00:00:00.000Z"^^xsd:dateTime &&
+    ?createdDate < "2024-04-01T00:00:00.000Z"^^xsd:dateTime)
+}
+ORDER BY ?createdDate

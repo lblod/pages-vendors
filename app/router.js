@@ -20,6 +20,7 @@ Router.map(function () {
     this.route('vendor-sparql');
     this.route('meldingsplicht-sparql');
     this.route('berichtencentrum-sparql');
+    this.route('erediensten-toezichtsdatabank-sparql');
     this.route('rijksregisternummer-api');
     this.route('centrale-vindplaats-sparql');
   });

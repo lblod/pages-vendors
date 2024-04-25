@@ -1,0 +1,378 @@
+<AuHeading @skin="1" @level="1">Erediensten Toezichtsdatabank SPARQL API <em>[DRAFT]</em></AuHeading>
+
+<p>
+  Via deze API is het mogelijk om SPARQL query's uit te voeren op de Toezichtsdatabank voor Erediensten waar besluiten te vinden zijn die naar het Loket zijn gepubliceerd. Deze API is gebaseerd op de <LinkTo @route="docs.vendor-sparql">Vendor SPARQL API</LinkTo>.
+</p>
+
+<AuHeading @level="2" @skin="2">Verbinden</AuHeading>
+<p>
+  De endpoint voor deze API kan bereikt worden via
+</p>
+<CodeBlock @code="https://databankerediensten.lokaalbestuur.vlaanderen.be" />
+<p>
+  Ter volledigheid staat hieronder de volledige lijst aan URL's voor het inloggen, sturen van query's en het uitloggen respectievelijk.
+</p>
+<CodeBlock @code="https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/login
+https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/sparql
+https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
+<p>
+  <strong>Bekijk zeker de pagina over de <LinkTo @route="docs.vendor-sparql">Vendor SPARQL API</LinkTo> om te leren hoe de SPARQL API werkt!</strong>
+</p>
+
+<AuHeading @level="2" @skin="2">Sturen van query's</AuHeading>
+<p>
+  Op dit endpoint kunnen alle gegevens omtrent inzendingen teruggevonden worden, samen met het ingevulde formulier voor de publicatie in Loket. Deze formuliergegevens zitten in bestanden die via een downloadlink kunnen worden gedownload. Al deze informatie is vrij te ondervragen in deze SPARQL endpoint met de volledige vrijheid van SPARQL voor filteren op datum, URI, regex, &hellip;
+</p>
+
+<AuHeading @level="3" @skin="3">Voorbeelden</AuHeading>
+<p>
+  Dit eerste eenvoudig voorbeeld geeft een korte lijst van een aantal willekeurige inzendingen (Submissions); een query voor het ontdekken van een aantal URI's die in volgende query's gebruikt kunnen worden.
+</p>
+<Snippet @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-willekeurige-lijst.sparql" />
+
+<p>
+  In dit volgend voorbeeld wordt er gezocht naar de Submissions in maart van het jaar 2024. Als antwoord wordt een lijst van de URI's en hun creatiedatum gegeven die gesorteerd is op die datum.
+</p>
+<Snippet @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-submissions-in-maart.sparql" />
+
+<p>
+  Om te zoeken naar alle Submissions van een bepaald type van publicatie kan inspiratie gehaald worden uit volgend voorbeeld. Dit kan gecombineerd worden met een filter op creatiedatum bijvoorbeeld of met een invulling van de bestuurseenheid om enkel over een bepaalde bestuurseenheid te zoeken.
+</p>
+<Snippet @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-documenttype.sparql" />
+
+<p>
+  Om in detail alle informatie over een Submission, de formuliergegevens (FormData) en alle gelinkte bestanden te bekomen kan een query als de onderstaande gebruikt worden.
+</p>
+<Snippet @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-construct.sparql" />
+<p>
+  In bovenstaande query wordt gebruik gemaakt van <CodeInline @code="UNION" /> om de performantie van de query te verbeteren. Het gaat over 3 gelinkte entiteiten waarvan alle eigenschappen worden opgevraagd. Buiten de links tussen de entiteiten is er verder geen verband meer en kunnen de eigenschappen onafhankelijk van elkaar opgevraagd worden. Zonder de <CodeInline @code="UNION" /> wordt een gigantisch scalair product opgebouwd in de SPARQL engine. Zodanig dat de query uiteindelijk niet afgewerkt kan worden vanwege geheugen of tijdlimitaties.
+</p>
+
+<p>
+  Om voor een bepaalde Submission een lijst te krijgen van alle gelinkte bestanden van de formuliergegevens, gebruik het onderstaande voorbeeld.
+</p>
+<Snippet @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-downloadlink.sparql" />
+<p>
+  Met deze downloadlinks kan het bestand gedownload worden door middel van simpele HTTP requests. Houdt rekening dat dezelfde authenticatie moet gebruikt worden al voor de toegang tot deze SPARQL API.
+</p>
+
+{{! TODO }}
+<AuHeading @level="2" @skin="2">Model van beschikbare data</AuHeading>
+<p>
+  In onderstaand model wordt gebruik gemaakt van volgende prefixen.
+</p>
+
+<AuTable>
+  <:header>
+    <tr>
+      <th>Prefix</th>
+      <th>URI</th>
+    </tr>
+  </:header>
+  <:body>
+    <tr>
+      <td><CodeInline @code="adms" /></td>
+      <td><AuLinkExternal href="http://www.w3.org/ns/adms#">http://www.w3.org/ns/adms#</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="besluit" /></td>
+      <td><AuLinkExternal href="http://data.vlaanderen.be/ns/besluit#">http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="dct" /></td>
+      <td><AuLinkExternal href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="skos" /></td>
+      <td><AuLinkExternal href="http://www.w3.org/2004/02/skos/">http://www.w3.org/2004/02/skos/</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="nfo" /></td>
+      <td><AuLinkExternal href="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#">http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="nie" /></td>
+      <td><AuLinkExternal href="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#">http://www.semanticdesktop.org/ontologies/2007/01/19/nie#</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="rdf" /></td>
+      <td><AuLinkExternal href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="xsd" /></td>
+      <td><AuLinkExternal href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="ext" /></td>
+      <td><AuLinkExternal href="http://mu.semte.ch/vocabularies/ext/">http://mu.semte.ch/vocabularies/ext/</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="am" /></td>
+      <td><AuLinkExternal href="http://lblod.data.gift/vocabularies/automatische-melding/">http://lblod.data.gift/vocabularies/automatische-melding/</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="core" /></td>
+      <td><AuLinkExternal href="http://mu.semte.ch/vocabularies/core/">http://mu.semte.ch/vocabularies/core/</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="nmo" /></td>
+      <td><AuLinkExternal href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="prov" /></td>
+      <td><AuLinkExternal href="http://www.w3.org/ns/prov#">http://www.w3.org/ns/prov#</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="pav" /></td>
+      <td><AuLinkExternal href="http://purl.org/pav/">http://purl.org/pav/</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="fd" /></td>
+      <td><AuLinkExternal href="http://lblod.data.gift/vocabularies/besluit/submission/form-data/">http://lblod.data.gift/vocabularies/besluit/submission/form-data/</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="eli" /></td>
+      <td><AuLinkExternal href="http://data.europa.eu/eli/ontology#">http://data.europa.eu/eli/ontology#</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="le" /></td>
+      <td><AuLinkExternal href="http://linkedeconomy.org/ontology#">http://linkedeconomy.org/ontology#</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="dbpedia" /></td>
+      <td><AuLinkExternal href="http://dbpedia.org/ontology/">http://dbpedia.org/ontology/</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="mob" /></td>
+      <td><AuLinkExternal href="http://rdf.myexperiment.org/ontologies/base/">http://rdf.myexperiment.org/ontologies/base/</AuLinkExternal></td>
+    </tr>
+  </:body>
+</AuTable>
+
+<AuHeading @level="3" @skin="3"><CodeInline @code="mob:Submission" /></AuHeading>
+<p>
+  Dit is de entiteit die informatie over de feitelijke inzending encodeert.
+</p>
+<AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+<AuTable>
+  <:header>
+  <tr>
+    <th>Naam</th>
+    <th>URI</th>
+    <th>Verwacht type</th>
+    <th>Beschrijving</th>
+  </tr>
+  </:header>
+  <:body>
+    <tr>
+      <td>uuid</td>
+      <td><CodeInline @code="core:uuid" /></td>
+      <td><CodeInline @code="xsd:string" /></td>
+      <td>UUID van de entitieit</td>
+    </tr>
+    <tr>
+      <td>created</td>
+      <td><CodeInline @code="dct:created" /></td>
+      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td>Creatiedatum van de Submission</td>
+    </tr>
+    <tr>
+      <td>sent date</td>
+      <td><CodeInline @code="nmo:sentDate" /></td>
+      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td>Datum van inzending</td>
+    </tr>
+    <tr>
+      <td>modified</td>
+      <td><CodeInline @code="dct:modified" /></td>
+      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td>Laatste bewerkingsdatum van de Submission</td>
+    </tr>
+    <tr>
+      <td>created by</td>
+      <td><CodeInline @code="pav:createdBy" /></td>
+      <td><CodeInline @code="besluit:Bestuurseenheid" /></td>
+      <td>Bestuurseenheid voor dewelke deze Submission werd aangemaakt</td>
+    </tr>
+    <tr>
+      <td>provided by</td>
+      <td><CodeInline @code="pav:providedBy" /></td>
+      <td><CodeInline @code="ext:Vendor" /></td>
+      <td>Vendor die de Submission heeft ingezonden</td>
+    </tr>
+    <tr>
+      <td>status</td>
+      <td><CodeInline @code="adms:status" /></td>
+      <td><CodeInline @code="skos:Concept" /> of <CodeInline @code="ext:SubmissionDocumentStatus" /></td>
+      <td>Status van de inzending, zie de Documentstatussen inzendingen onderaan deze pagina</td>
+    </tr>
+    <tr>
+      <td>subject</td>
+      <td><CodeInline @code="dct:subject" /></td>
+      <td>IRI</td>
+      <td>URI van de vendor voor de Submission</td>
+    </tr>
+    <tr>
+      <td>at location</td>
+      <td><CodeInline @code="prov:atLocation" /></td>
+      <td>IRI</td>
+      <td>URL op de vendor applicatie van de gedownloade resource</td>
+    </tr>
+    <tr>
+      <td>generated</td>
+      <td><CodeInline @code="prov:generated" /></td>
+      <td><CodeInline @code="am:FormData" /></td>
+      <td>De formuliergegevens</td>
+    </tr>
+  </:body>
+</AuTable>
+
+<AuHeading @level="3" @skin="3"><CodeInline @code="am:FormData" /></AuHeading>
+<p>
+  Deze entiteit bevat de gegevens over het ingevulde formulier gelinkt aan de inzending.
+</p>
+<AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+<AuTable>
+  <:header>
+  <tr>
+    <th>Naam</th>
+    <th>URI</th>
+    <th>Verwacht type</th>
+    <th>Beschrijving</th>
+  </tr>
+  </:header>
+  <:body>
+    <tr>
+      <td>uuid</td>
+      <td><CodeInline @code="core:uuid" /></td>
+      <td><CodeInline @code="xsd:string" /></td>
+      <td>UUID van de entitieit</td>
+    </tr>
+    <tr>
+      <td>type</td>
+      <td><CodeInline @code="dct:type" /></td>
+      <td><CodeInline @code="skos:Concept" /></td>
+      <td>Het soort besluittype van dit document</td>
+    </tr>
+    <tr>
+      <td>decision type</td>
+      <td><CodeInline @code="ext:decisionType" /></td>
+      <td><CodeInline @code="skos:Concept" /></td>
+      <td>Het soort besluittype van dit document</td>
+    </tr>
+    <tr>
+      <td>submission type</td>
+      <td><CodeInline @code="fd:submissionType" /></td>
+      <td><CodeInline @code="skos:Concept" /></td>
+      <td>Het soort besluittype van dit document</td>
+    </tr>
+    <tr>
+      <td>session started at</td>
+      <td><CodeInline @code="fd:sessionStartedAtTime" /></td>
+      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td>Starttijdstip van de zitting waar het besluit werd genomen (indien van toepassing)</td>
+    </tr>
+    <tr>
+      <td>session started at</td>
+      <td><CodeInline @code="ext:sessionStartedAtTime" /></td>
+      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td>Starttijdstip van de zitting waar het besluit werd genomen (indien van toepassing)</td>
+    </tr>
+    <tr>
+      <td>financial year</td>
+      <td><CodeInline @code="le:financialYear" /></td>
+      <td><CodeInline @code="xsd:string" /></td>
+      <td>Financieel jaar (indien van toepassing)</td>
+    </tr>
+    <tr>
+      <td>passed by</td>
+      <td><CodeInline @code="eli:passed_by" /></td>
+      <td><CodeInline @code="besluit:Bestuursorgaan" /></td>
+      <td>Bestuursorgaan dat de besluiten heeft ondertekend</td>
+    </tr>
+    <tr>
+      <td>has part</td>
+      <td><CodeInline @code="dct:hasPart" /></td>
+      <td><CodeInline @code="nfo:FileDataObject" />, <CodeInline @code="nfo:RemoteDataObject" /></td>
+      <td>Onderdeel van de formuliergegevens of bijlagen</td>
+    </tr>
+  </:body>
+</AuTable>
+
+<AuHeading @level="3" @skin="3"><CodeInline @code="nfo:FileDataObject" />, <CodeInline @code="nfo:RemoteDataObject" /></AuHeading>
+<p>
+  Deze twee klassen worden vaak samen gebruikt op dezelfde entiteit. Deze beschrijven bestanden als bijlagen gelinkt aan de Submission en FormData.
+</p>
+<AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+<AuTable>
+  <:header>
+  <tr>
+    <th>Naam</th>
+    <th>URI</th>
+    <th>Verwacht type</th>
+    <th>Beschrijving</th>
+  </tr>
+  </:header>
+  <:body>
+    <tr>
+      <td>uuid</td>
+      <td><CodeInline @code="core:uuid" /></td>
+      <td><CodeInline @code="xsd:string" /></td>
+      <td>UUID van de entitieit</td>
+    </tr>
+    <tr>
+      <td>created</td>
+      <td><CodeInline @code="dct:created" /></td>
+      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td>Creatiedatum van het bestand</td>
+    </tr>
+    <tr>
+      <td>modified</td>
+      <td><CodeInline @code="dct:modified" /></td>
+      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td>Laatste bewerkingsdatum van het bestand</td>
+    </tr>
+    <tr>
+      <td>file size</td>
+      <td><CodeInline @code="nfo:fileSize" /></td>
+      <td><CodeInline @code="xsd:string" /></td>
+      <td>Bestandsgrootte</td>
+    </tr>
+    <tr>
+      <td>file extension</td>
+      <td><CodeInline @code="dbpedia:fileExtension" /></td>
+      <td><CodeInline @code="xsd:string" /></td>
+      <td>Bestandsextentie</td>
+    </tr>
+    <tr>
+      <td>format</td>
+      <td><CodeInline @code="dct:format" /></td>
+      <td><CodeInline @code="xsd:string" /></td>
+      <td>MIME type van de indeling van het bestand</td>
+    </tr>
+    <tr>
+      <td>file name</td>
+      <td><CodeInline @code="nfo:fileName" /></td>
+      <td><CodeInline @code="xsd:string" /></td>
+      <td>Bestandsnaam</td>
+    </tr>
+    <tr>
+      <td>status</td>
+      <td><CodeInline @code="adms:status" /></td>
+      <td>IRI</td>
+      <td>Downloadstatus</td>
+    </tr>
+    <tr>
+      <td>had primary source</td>
+      <td><CodeInline @code="prov:hadPrimarySource" /></td>
+      <td>IRI</td>
+      <td>URL in de vendor applicatie waar oorspronkelijk het bestand van werd gedownload</td>
+    </tr>
+    <tr>
+      <td>URL</td>
+      <td><CodeInline @code="nie:url" /></td>
+      <td><CodeInline @code="xsd:string" /></td>
+      <td>URL waar het bestand op dit moment in deze applicatie te downloaden is</td>
+    </tr>
+  </:body>
+</AuTable>
