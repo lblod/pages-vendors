@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Voorbeeldconversatie</title>
+  </head>
+  <body
+    prefix="besluit: http://data.vlaanderen.be/ns/besluit#
+            dcterms: http://purl.org/dc/terms/
+            nfo: http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#
+            nie: http://www.semanticdesktop.org/ontologies/2007/01/19/nie#
+            schema: http://schema.org/
+            rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+            xsd: http://www.w3.org/2001/XMLSchema#">
+    <div
+      resource="http://reeds/bestaande/conversatieuri"
+      typeof="schema:Conversation">
+      <div
+        property="schema:hasPart"
+        resource="http://nieuw/berichturi/voor/ABB"
+        typeof="schema:Message">
+        <div
+          property="schema:sender"
+          resource="https://data.lblod.info/id/bestuurseenheden/974816591f269bb7d74aa1720922651529f3d3b2a787f5c60b73e5a0384950a4">
+          Sender Aalst
+        </div>
+        <div
+          property="schema:recipient"
+          resource="http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b">
+          Recipient ABB
+        </div>
+        <div
+          property="schema:text">
+          In bijlage vindt u de opgevraagde documenten.
+        </div>
+        <div
+          property="schema:dateSent"
+          content="2023-09-15T13:45:42.360Z"
+          datatype="xsd:dateTime" >
+          Verstuurd op '2023-09-15T13:45:42.360Z'
+        </div>
+        <div
+          property="nie:hasPart"
+          resource="http://uri/van/een/bijlage"
+          typeof="nfo:FileDataObject">
+          <div
+            property="nfo:fileName"
+            content="bijlage.pdf">
+            bijlage
+          </div>
+          <!-- Ook mogelijk: <a property="nie:url" href="http://url/waar/de/bijlage/kan/gedownload/worden">..</a>  -->
+          <div
+            property="nie:url"
+            resource="http://url/waar/de/bijlage/kan/gedownload/worden">
+            <!-- Ook mogelijk: <a property="nie:url" href="http://url/waar/de/bijlage/kan/gedownload/worden">..</a>  -->
+            Noteer: deze mag dezelfde zijn als de URI van de bijlage
+          </div>
+          <div
+            property="dcterms:created"
+            content="2023-09-15T13:35:42.360Z"
+            datatype="xsd:dateTime">
+          </div>
+          <div
+            property="dcterms:modified"
+            content="2023-09-15T13:40:42.360Z"
+            datatype="xsd:dateTime">
+          </div>
+      </div>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX mob: <http://rdf.myexperiment.org/ontologies/base/>
+
+SELECT DISTINCT ?s WHERE {
+  ?s rdf:type mob:Submission .
+}
+LIMIT 10

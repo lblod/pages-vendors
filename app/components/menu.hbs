@@ -1,50 +1,30 @@
+<AuHeading @level="3" @skin="3" class="au-u-margin-top">Structuur</AuHeading>
 <nav class="au-u-padding-top au-u-padding-bottom au-o-grid au-o-grid--small">
   <Menu::Card
     class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
     @fullSize={{@fullSize}}
-    @route="docs.submission-annotations"
-    @title="Annotaties voor automatische melding"
+    @badgeIcon="pencil"
+    @route="docs.meldingsplicht-annotaties"
+    @title="Annotaties voor automatische meldingen"
     @content="Annotaties die gebruikt worden bij automatische meldingen van besluiten en documenten."/>
   <Menu::Card
     class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
     @fullSize={{@fullSize}}
-    @route="docs.publication-annotations"
-    @title="Annotaties van besluiten en documenten"
-    @content="Annotaties die gebruikt worden bij de publicatie van besluiten en documenten opdat ze automatisch geharvest kunnen worden."/>
+    @badgeIcon="pencil"
+    @route="docs.publicatie-annotaties"
+    @title="Annotaties voor publicaties"
+    @content="Annotaties die gebruikt worden bij de publicatie van Besluiten en documenten opdat ze automatisch geharvest kunnen worden."/>
   <Menu::Card
     class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
     @fullSize={{@fullSize}}
-    @route="docs.decision-attachments"
-    @title="Bijlagen bij een besluit annoteren"
+    @badgeIcon="pencil"
+    @route="docs.bijlagen-annotaties"
+    @title="Annotaties voor bijlagen bij een Besluit"
     @content="Beschrijft hoe verschillende soorten bijlagen bij een besluit geannoteerd kunnen worden."/>
   <Menu::Card
     class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
     @fullSize={{@fullSize}}
-    @route="docs.submission-api"
-    @title="Meldingsplicht API"
-    @content="API om een nieuwe melding aan te maken in Loket voor Lokale Besturen op basis van een publicatie. Indien al de nodige velden ingevuld zijn, kan de melding automatisch verzonden worden."/>
-  <Menu::Card
-    class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
-    @fullSize={{@fullSize}}
-    @route="docs.vendor-sparql-api"
-    @title="Vendor SPARQL API"
-    @subtitle="[BETA]"
-    @content="API voor het uitvoeren van SPARQL queries voor het opvragen van statusgegevens over eerder uitgevoerde meldingen in Loket."/>
-  <Menu::Card
-    class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
-    @fullSize={{@fullSize}}
-    @route="docs.rijksregisternummer-api"
-    @title="Persoon URI"
-    @content="Bevragen van de URI van een persoon op basis van diens rijksregisternummer en bestuurseenheid."/>
-  <Menu::Card
-    class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
-    @fullSize={{@fullSize}}
-    @route="docs.sparql-endpoint"
-    @title="SPARQL endpoint (centrale-vindplaats)"
-    @content="Endpoint om met SPARQL publieke data te bevragen."/>
-  <Menu::Card
-    class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
-    @fullSize={{@fullSize}}
+    @badgeIcon="pencil"
     @href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/"
     @title="Besluit Publicatie"
     @content="Dit applicatieprofiel definieert een specificatie voor de publicatie van notulen en besluiten van bestuursorgaan."
@@ -52,6 +32,7 @@
   <Menu::Card
     class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
     @fullSize={{@fullSize}}
+    @badgeIcon="pencil"
     @href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/"
     @title="Mandatendatabank"
     @content="Dit applicatieprofiel definieert een specificatie voor een gelinkte mandatendatabank op basis van gelinkte besluiten."
@@ -59,13 +40,76 @@
   <Menu::Card
     class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
     @fullSize={{@fullSize}}
-    @route="docs.leidinggevenden"
-    @title="Leidinggevenden"
+    @badgeIcon="pencil"
+    @route="docs.leidinggevenden-annotaties"
+    @title="Leidinggevendendatabank"
     @content="De leidinggevenden databank volgt het applicatieprofiel mandatendatabank, maar werd uitgebreid met enkele subklassen en eigenschappen."/>
+</nav>
+
+<AuHeading @level="3" @skin="3" class="au-u-margin-top">Insturen</AuHeading>
+<nav class="au-u-padding-top au-u-padding-bottom au-o-grid au-o-grid--small">
   <Menu::Card
     class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
     @fullSize={{@fullSize}}
-    @route="docs.berichtencentrum-api"
+    @badgeIcon="upload"
+    @route="docs.meldingsplicht"
+    @title="Meldingsplicht API"
+    @content="Deel van een API om een nieuwe melding aan te maken in Loket voor Lokale Besturen op basis van een publicatie. Indien al de nodige velden ingevuld zijn, kan de melding automatisch verzonden worden."/>
+  <Menu::Card
+    class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
+    @fullSize={{@fullSize}}
+    @badgeIcon="upload"
+    @route="docs.berichtencentrum"
     @title="Berichtencentrum API"
-    @content="API om de module berichtencentrum te integreren. [DRAFT]"/>
+    @subtitle="[CONCEPT]"
+    @content="Deel van een API om de module Berichtencentrum te integreren. Het opsturen van berichten door middel van het publiceren van een RDFa document en het melden van de publieke URL."/>
+</nav>
+
+<AuHeading @level="3" @skin="3" class="au-u-margin-top">Opvragen</AuHeading>
+<nav class="au-u-padding-top au-u-padding-bottom au-o-grid au-o-grid--small">
+  <Menu::Card
+    class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
+    @fullSize={{@fullSize}}
+    @badgeIcon="download"
+    @route="docs.vendor-sparql"
+    @title="Vendor SPARQL API"
+    @content="Generieke documentatie voor het uitvoeren van SPARQL query's via de Vendor SPARQL API, van toepassing op verscheidene applicaties."/>
+  <Menu::Card
+    class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
+    @fullSize={{@fullSize}}
+    @badgeIcon="download"
+    @route="docs.meldingsplicht-sparql"
+    @title="Meldingsplicht SPARQL API"
+    @subtitle="[CONCEPT]"
+    @content="Het opvragen van statusgegevens over eerder uitgevoerde meldingen in Loket via de Vendor SPARQL API."/>
+  <Menu::Card
+    class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
+    @fullSize={{@fullSize}}
+    @badgeIcon="download"
+    @route="docs.berichtencentrum-sparql"
+    @title="Berichtencentrum SPARQL API"
+    @subtitle="[CONCEPT]"
+    @content="Het opvragen van Berichten en Conversaties in Loket met oog op integratie via de Vendor SPARQL API."/>
+  <Menu::Card
+    class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
+    @fullSize={{@fullSize}}
+    @badgeIcon="download"
+    @route="docs.erediensten-toezichtsdatabank-sparql"
+    @title="Erediensten Toezichtsdatabank SPARQL API"
+    @subtitle="[CONCEPT]"
+    @content="Het opvragen van Besluiten over Erediensten via de Vendor SPARQL API."/>
+  <Menu::Card
+    class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
+    @fullSize={{@fullSize}}
+    @badgeIcon="download"
+    @route="docs.rijksregisternummer-api"
+    @title="Rijksregisternummer naar Persoon URI API"
+    @content="Bevragen van de URI van een persoon op basis van diens rijksregisternummer en bestuurseenheid."/>
+  <Menu::Card
+    class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
+    @fullSize={{@fullSize}}
+    @badgeIcon="download"
+    @route="docs.centrale-vindplaats-sparql"
+    @title="Centrale Vindplaats SPARQL endpoint"
+    @content="Endpoint om met SPARQL publieke data te bevragen."/>
 </nav>

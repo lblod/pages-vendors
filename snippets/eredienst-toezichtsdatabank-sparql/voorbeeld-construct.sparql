@@ -1,0 +1,29 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dct:  <http://purl.org/dc/terms/>
+PREFIX mob:  <http://rdf.myexperiment.org/ontologies/base/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+
+CONSTRUCT {
+  ?submission ?sp ?so .
+  ?formData ?fp ?fo .
+  ?remoteFile ?rp ?ro .
+}
+WHERE {
+  BIND (<http://data.lblod.info/submissions/4722f050-d21c-16ee-b4e2-0b072ec1d0af> as ?submission)
+  {
+    ?submission
+      rdf:type mob:Submission ;
+      ?sp ?so .
+  } UNION {
+    ?submission
+      rdf:type mob:Submission ;
+      prov:generated ?formData .
+    ?formData ?fp ?fo .
+  } UNION {
+    ?submission
+      rdf:type mob:Submission ;
+      prov:generated ?formData .
+    ?formData dct:hasPart ?remoteFile .
+    ?remoteFile ?rp ?ro .
+  }
+}
