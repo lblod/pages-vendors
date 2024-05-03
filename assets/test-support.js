@@ -3,12 +3,12 @@
 (function() {
 /*!
  * @overview  Ember - JavaScript Application Framework
- * @copyright Copyright 2011-2021 Tilde Inc. and contributors
+ * @copyright Copyright 2011 Tilde Inc. and contributors
  *            Portions Copyright 2006-2011 Strobe Inc.
  *            Portions Copyright 2008-2011 Apple Inc. All rights reserved.
  * @license   Licensed under MIT license
  *            See https://raw.github.com/emberjs/ember.js/master/LICENSE
- * @version   4.4.0
+ * @version   5.4.0
  */
 /* eslint-disable no-var */
 /* globals global globalThis self */
@@ -80,7 +80,7 @@ var define, require;
   };
   require._eak_seen = require.entries = registry;
 })();
-define("@ember/debug/index", ["exports", "@ember/-internals/browser-environment", "@ember/error", "@ember/debug/lib/deprecate", "@ember/debug/lib/testing", "@ember/debug/lib/warn", "@ember/-internals/utils", "@ember/debug/lib/capture-render-tree"], function (_exports, _browserEnvironment, _error, _deprecate2, _testing, _warn2, _utils, _captureRenderTree) {
+define("@ember/debug/index", ["exports", "@ember/-internals/browser-environment", "@ember/debug/lib/deprecate", "@ember/debug/lib/testing", "@ember/debug/lib/warn", "@ember/debug/lib/inspect", "@ember/debug/lib/capture-render-tree"], function (_exports, _browserEnvironment, _deprecate2, _testing, _warn2, _inspect, _captureRenderTree) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -97,7 +97,7 @@ define("@ember/debug/index", ["exports", "@ember/-internals/browser-environment"
   Object.defineProperty(_exports, "inspect", {
     enumerable: true,
     get: function () {
-      return _utils.inspect;
+      return _inspect.default;
     }
   });
   Object.defineProperty(_exports, "isTesting", {
@@ -127,28 +127,19 @@ define("@ember/debug/index", ["exports", "@ember/-internals/browser-environment"
   });
   _exports.warn = void 0;
   // These are the default production build versions:
-
   var noop = () => {};
-  var assert = noop;
-  _exports.assert = assert;
-  var info = noop;
-  _exports.info = info;
-  var warn = noop;
-  _exports.warn = warn;
-  var debug = noop;
-  _exports.debug = debug;
-  var deprecate = noop;
-  _exports.deprecate = deprecate;
-  var debugSeal = noop;
-  _exports.debugSeal = debugSeal;
-  var debugFreeze = noop;
-  _exports.debugFreeze = debugFreeze;
-  var runInDebug = noop;
-  _exports.runInDebug = runInDebug;
-  var setDebugFunction = noop;
-  _exports.setDebugFunction = setDebugFunction;
-  var getDebugFunction = noop;
-  _exports.getDebugFunction = getDebugFunction;
+  // SAFETY: these casts are just straight-up lies, but the point is that they do
+  // not do anything in production builds.
+  var assert = _exports.assert = noop;
+  var info = _exports.info = noop;
+  var warn = _exports.warn = noop;
+  var debug = _exports.debug = noop;
+  var deprecate = _exports.deprecate = noop;
+  var debugSeal = _exports.debugSeal = noop;
+  var debugFreeze = _exports.debugFreeze = noop;
+  var runInDebug = _exports.runInDebug = noop;
+  var setDebugFunction = _exports.setDebugFunction = noop;
+  var getDebugFunction = _exports.getDebugFunction = noop;
   var deprecateFunc = function () {
     return arguments[arguments.length - 1];
   };
@@ -202,41 +193,14 @@ define("@ember/debug/index", ["exports", "@ember/-internals/browser-environment"
   /**
   @module @ember/debug
   */
-
   if (true /* DEBUG */) {
-    /**
-      Verify that a certain expectation is met, or throw a exception otherwise.
-         This is useful for communicating assumptions in the code to other human
-      readers as well as catching bugs that accidentally violates these
-      expectations.
-         Assertions are removed from production builds, so they can be freely added
-      for documentation and debugging purposes without worries of incuring any
-      performance penalty. However, because of that, they should not be used for
-      checks that could reasonably fail during normal usage. Furthermore, care
-      should be taken to avoid accidentally relying on side-effects produced from
-      evaluating the condition itself, since the code will not run in production.
-         ```javascript
-      import { assert } from '@ember/debug';
-         // Test for truthiness
-      assert('Must pass a string', typeof str === 'string');
-         // Fail unconditionally
-      assert('This code path should never be run');
-      ```
-         @method assert
-      @static
-      @for @ember/debug
-      @param {String} description Describes the expectation. This will become the
-        text of the Error thrown if the assertion fails.
-      @param {any} condition Must be truthy for the assertion to pass. If
-        falsy, an exception will be thrown.
-      @public
-      @since 1.0.0
-    */
-    setDebugFunction('assert', function assert(desc, test) {
+    // eslint-disable-next-line no-inner-declarations
+    function _assert(desc, test) {
       if (!test) {
-        throw new _error.default(`Assertion Failed: ${desc}`);
+        throw new Error(`Assertion Failed: ${desc}`);
       }
-    });
+    }
+    setDebugFunction('assert', _assert);
     /**
       Display a debug notice.
          Calls to this function are not invoked in production builds.
@@ -250,15 +214,8 @@ define("@ember/debug/index", ["exports", "@ember/-internals/browser-environment"
       @param {String} message A debug message to display.
       @public
     */
-
     setDebugFunction('debug', function debug(message) {
-      /* eslint-disable no-console */
-      if (console.debug) {
-        console.debug(`DEBUG: ${message}`);
-      } else {
-        console.log(`DEBUG: ${message}`);
-      }
-      /* eslint-enable no-console */
+      console.debug(`DEBUG: ${message}`); /* eslint-disable-line no-console */
     });
     /**
       Display an info notice.
@@ -268,16 +225,13 @@ define("@ember/debug/index", ["exports", "@ember/-internals/browser-environment"
          @method info
       @private
     */
-
     setDebugFunction('info', function info() {
-      console.info(...arguments);
-      /* eslint-disable-line no-console */
+      console.info(...arguments); /* eslint-disable-line no-console */
     });
     /**
      @module @ember/debug
      @public
     */
-
     /**
       Alias an old, deprecated method with its new counterpart.
          Display a deprecation warning with the provided message and a stack trace
@@ -298,18 +252,11 @@ define("@ember/debug/index", ["exports", "@ember/-internals/browser-environment"
       @return {Function} A new function that wraps the original function with a deprecation warning
       @private
     */
-
-    setDebugFunction('deprecateFunc', function deprecateFunc() {
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
+    setDebugFunction('deprecateFunc', function deprecateFunc(...args) {
       if (args.length === 3) {
         var [message, options, func] = args;
-        return function () {
+        return function (...args) {
           deprecate(message, false, options);
-          for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-            args[_key2] = arguments[_key2];
-          }
           return func.apply(this, args);
         };
       } else {
@@ -324,7 +271,6 @@ define("@ember/debug/index", ["exports", "@ember/-internals/browser-environment"
      @module @ember/debug
      @public
     */
-
     /**
       Run a function meant for debugging.
          Calls to this function are removed from production builds, so they can be
@@ -348,7 +294,6 @@ define("@ember/debug/index", ["exports", "@ember/-internals/browser-environment"
       @since 1.5.0
       @public
     */
-
     setDebugFunction('runInDebug', function runInDebug(func) {
       func();
     });
@@ -368,7 +313,6 @@ define("@ember/debug/index", ["exports", "@ember/-internals/browser-environment"
     setDebugFunction('warn', _warn2.default);
   }
   var _warnIfUsingStrippedFeatureFlags;
-  _exports._warnIfUsingStrippedFeatureFlags = _warnIfUsingStrippedFeatureFlags;
   if (true /* DEBUG */ && !(0, _testing.isTesting)()) {
     if (typeof window !== 'undefined' && (_browserEnvironment.isFirefox || _browserEnvironment.isChrome) && window.addEventListener) {
       window.addEventListener('load', () => {
@@ -395,7 +339,6 @@ define("@ember/debug/lib/capture-render-tree", ["exports", "@glimmer/util"], fun
   /**
     @module @ember/debug
   */
-
   /**
     Ember Inspector calls this function to capture the current render tree.
   
@@ -409,7 +352,6 @@ define("@ember/debug/lib/capture-render-tree", ["exports", "@glimmer/util"], fun
     @param app {ApplicationInstance} An `ApplicationInstance`.
     @since 3.14.0
   */
-
   function captureRenderTree(app) {
     // SAFETY: Ideally we'd assert here but that causes awkward circular requires since this is also in @ember/debug.
     // This is only for debug stuff so not very risky.
@@ -428,7 +370,6 @@ define("@ember/debug/lib/deprecate", ["exports", "@ember/-internals/environment"
    @module @ember/debug
    @public
   */
-
   /**
     Allows for runtime registration of handler functions that override the default deprecation behavior.
     Deprecations are invoked by calls to [@ember/debug/deprecate](/ember/release/classes/@ember%2Fdebug/methods/deprecate?anchor=deprecate).
@@ -467,13 +408,10 @@ define("@ember/debug/lib/deprecate", ["exports", "@ember/-internals/environment"
     @param handler {Function} A function to handle deprecation calls.
     @since 2.1.0
   */
-
   var registerHandler = () => {};
   _exports.registerHandler = registerHandler;
   var missingOptionsDeprecation;
-  _exports.missingOptionsDeprecation = missingOptionsDeprecation;
   var missingOptionsIdDeprecation;
-  _exports.missingOptionsIdDeprecation = missingOptionsIdDeprecation;
   var missingOptionDeprecation = () => '';
   _exports.missingOptionDeprecation = missingOptionDeprecation;
   var deprecate = () => {};
@@ -483,13 +421,13 @@ define("@ember/debug/lib/deprecate", ["exports", "@ember/-internals/environment"
     };
     var formatMessage = function formatMessage(_message, options) {
       var message = _message;
-      if (options === null || options === void 0 ? void 0 : options.id) {
+      if (options?.id) {
         message = message + ` [deprecation id: ${options.id}]`;
       }
-      if (options === null || options === void 0 ? void 0 : options.until) {
-        message = message + ` This will be removed in Ember ${options.until}.`;
+      if (options?.until) {
+        message = message + ` This will be removed in ${options.for} ${options.until}.`;
       }
-      if (options === null || options === void 0 ? void 0 : options.url) {
+      if (options?.url) {
         message += ` See ${options.url} for more details.`;
       }
       return message;
@@ -498,7 +436,6 @@ define("@ember/debug/lib/deprecate", ["exports", "@ember/-internals/environment"
       var updatedMessage = formatMessage(message, options);
       console.warn(`DEPRECATION: ${updatedMessage}`); // eslint-disable-line no-console
     });
-
     var captureErrorForStack;
     if (new Error().stack) {
       captureErrorForStack = () => new Error();
@@ -506,6 +443,7 @@ define("@ember/debug/lib/deprecate", ["exports", "@ember/-internals/environment"
       captureErrorForStack = () => {
         try {
           __fail__.fail();
+          return;
         } catch (e) {
           return e;
         }
@@ -552,12 +490,42 @@ define("@ember/debug/lib/deprecate", ["exports", "@ember/-internals/environment"
      @module @ember/debug
      @public
      */
-
     /**
       Display a deprecation warning with the provided message and a stack trace
       (Chrome and Firefox only).
+         Ember itself leverages [Semantic Versioning](https://semver.org) to aid
+      projects in keeping up with changes to the framework. Before any
+      functionality or API is removed, it first flows linearly through a
+      deprecation staging process. The staging process currently contains two
+      stages: available and enabled.
+         Deprecations are initially released into the 'available' stage.
+      Deprecations will stay in this stage until the replacement API has been
+      marked as a recommended practice via the RFC process and the addon
+      ecosystem has generally adopted the change.
+         Once a deprecation meets the above criteria, it will move into the
+      'enabled' stage where it will remain until the functionality or API is
+      eventually removed.
+         For application and addon developers, "available" deprecations are not
+      urgent and "enabled" deprecations require action.
          * In a production build, this method is defined as an empty function (NOP).
       Uses of this method in Ember itself are stripped from the ember.prod.js build.
+         ```javascript
+      import { deprecate } from '@ember/debug';
+         deprecate(
+        'Use of `assign` has been deprecated. Please use `Object.assign` or the spread operator instead.',
+        false,
+        {
+          id: 'ember-polyfills.deprecate-assign',
+          until: '5.0.0',
+          url: 'https://deprecations.emberjs.com/v4.x/#toc_ember-polyfills-deprecate-assign',
+          for: 'ember-source',
+          since: {
+            available: '4.0.0',
+            enabled: '4.0.0',
+          },
+        }
+      );
+      ```
          @method deprecate
       @for @ember/debug
       @param {String} message A description of the deprecation.
@@ -577,7 +545,6 @@ define("@ember/debug/lib/deprecate", ["exports", "@ember/-internals/environment"
       @public
       @since 1.0.0
     */
-
     deprecate = function deprecate(message, test, options) {
       (0, _index.assert)(missingOptionsDeprecation, Boolean(options && (options.id || options.until)));
       (0, _index.assert)(missingOptionsIdDeprecation, Boolean(options.id));
@@ -587,8 +554,7 @@ define("@ember/debug/lib/deprecate", ["exports", "@ember/-internals/environment"
       (0, _handlers.invoke)('deprecate', message, test, options);
     };
   }
-  var _default = deprecate;
-  _exports.default = _default;
+  var _default = _exports.default = deprecate;
 });
 define("@ember/debug/lib/handlers", ["exports"], function (_exports) {
   "use strict";
@@ -597,10 +563,8 @@ define("@ember/debug/lib/handlers", ["exports"], function (_exports) {
     value: true
   });
   _exports.registerHandler = _exports.invoke = _exports.HANDLERS = void 0;
-  var HANDLERS = {};
-  _exports.HANDLERS = HANDLERS;
-  var registerHandler = function registerHandler(_type, _callback) {};
-  _exports.registerHandler = registerHandler;
+  var HANDLERS = _exports.HANDLERS = {};
+  var registerHandler = _exports.registerHandler = function registerHandler(_type, _callback) {};
   var invoke = () => {};
   _exports.invoke = invoke;
   if (true /* DEBUG */) {
@@ -619,6 +583,129 @@ define("@ember/debug/lib/handlers", ["exports"], function (_exports) {
         handlerForType(message, options);
       }
     };
+  }
+});
+define("@ember/debug/lib/inspect", ["exports", "@glimmer/util", "@ember/debug"], function (_exports, _util, _debug) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = inspect;
+  var {
+    toString: objectToString
+  } = Object.prototype;
+  var {
+    toString: functionToString
+  } = Function.prototype;
+  var {
+    isArray
+  } = Array;
+  var {
+    keys: objectKeys
+  } = Object;
+  var {
+    stringify
+  } = JSON;
+  var LIST_LIMIT = 100;
+  var DEPTH_LIMIT = 4;
+  var SAFE_KEY = /^[\w$]+$/;
+  /**
+   @module @ember/debug
+  */
+  /**
+    Convenience method to inspect an object. This method will attempt to
+    convert the object into a useful string description.
+  
+    It is a pretty simple implementation. If you want something more robust,
+    use something like JSDump: https://github.com/NV/jsDump
+  
+    @method inspect
+    @static
+    @param {Object} obj The object you want to inspect.
+    @return {String} A description of the object
+    @since 1.4.0
+    @private
+  */
+  function inspect(obj) {
+    // detect Node util.inspect call inspect(depth: number, opts: object)
+    if (typeof obj === 'number' && arguments.length === 2) {
+      return this;
+    }
+    return inspectValue(obj, 0);
+  }
+  function inspectValue(value, depth, seen) {
+    var valueIsArray = false;
+    switch (typeof value) {
+      case 'undefined':
+        return 'undefined';
+      case 'object':
+        if (value === null) return 'null';
+        if (isArray(value)) {
+          valueIsArray = true;
+          break;
+        }
+        // is toString Object.prototype.toString or undefined then traverse
+        if (value.toString === objectToString || value.toString === undefined) {
+          break;
+        }
+        // custom toString
+        return value.toString();
+      case 'function':
+        return value.toString === functionToString ? value.name ? `[Function:${value.name}]` : `[Function]` : value.toString();
+      case 'string':
+        return stringify(value);
+      case 'symbol':
+      case 'boolean':
+      case 'number':
+      default:
+        return value.toString();
+    }
+    if (seen === undefined) {
+      seen = new _util._WeakSet();
+    } else {
+      if (seen.has(value)) return `[Circular]`;
+    }
+    seen.add(value);
+    return valueIsArray ? inspectArray(value, depth + 1, seen) : inspectObject(value, depth + 1, seen);
+  }
+  function inspectKey(key) {
+    return SAFE_KEY.test(key) ? key : stringify(key);
+  }
+  function inspectObject(obj, depth, seen) {
+    if (depth > DEPTH_LIMIT) {
+      return '[Object]';
+    }
+    var s = '{';
+    var keys = objectKeys(obj);
+    for (var i = 0; i < keys.length; i++) {
+      s += i === 0 ? ' ' : ', ';
+      if (i >= LIST_LIMIT) {
+        s += `... ${keys.length - LIST_LIMIT} more keys`;
+        break;
+      }
+      var key = keys[i];
+      (true && !(key) && (0, _debug.assert)('has key', key)); // Looping over array
+      s += `${inspectKey(String(key))}: ${inspectValue(obj[key], depth, seen)}`;
+    }
+    s += ' }';
+    return s;
+  }
+  function inspectArray(arr, depth, seen) {
+    if (depth > DEPTH_LIMIT) {
+      return '[Array]';
+    }
+    var s = '[';
+    for (var i = 0; i < arr.length; i++) {
+      s += i === 0 ? ' ' : ', ';
+      if (i >= LIST_LIMIT) {
+        s += `... ${arr.length - LIST_LIMIT} more items`;
+        break;
+      }
+      s += inspectValue(arr[i], depth, seen);
+    }
+    s += ' ]';
+    return s;
   }
 });
 define("@ember/debug/lib/testing", ["exports"], function (_exports) {
@@ -648,12 +735,10 @@ define("@ember/debug/lib/warn", ["exports", "@ember/debug/index", "@ember/debug/
   _exports.registerHandler = registerHandler;
   var warn = () => {};
   var missingOptionsDeprecation;
-  _exports.missingOptionsDeprecation = missingOptionsDeprecation;
   var missingOptionsIdDeprecation;
   /**
   @module @ember/debug
   */
-  _exports.missingOptionsIdDeprecation = missingOptionsIdDeprecation;
   if (true /* DEBUG */) {
     /**
       Allows for runtime registration of handler functions that override the default warning behavior.
@@ -689,7 +774,6 @@ define("@ember/debug/lib/warn", ["exports", "@ember/debug/index", "@ember/debug/
       console.warn(`WARNING: ${message}`);
       /* eslint-enable no-console */
     });
-
     _exports.missingOptionsDeprecation = missingOptionsDeprecation = 'When calling `warn` you ' + 'must provide an `options` hash as the third parameter.  ' + '`options` should include an `id` property.';
     _exports.missingOptionsIdDeprecation = missingOptionsIdDeprecation = 'When calling `warn` you must provide `id` in options.';
     /**
@@ -717,7 +801,6 @@ define("@ember/debug/lib/warn", ["exports", "@ember/debug/index", "@ember/debug/
       @public
       @since 1.0.0
     */
-
     warn = function warn(message, test, options) {
       if (arguments.length === 2 && typeof test === 'object') {
         options = test;
@@ -725,11 +808,11 @@ define("@ember/debug/lib/warn", ["exports", "@ember/debug/index", "@ember/debug/
       }
       (0, _index.assert)(missingOptionsDeprecation, Boolean(options));
       (0, _index.assert)(missingOptionsIdDeprecation, Boolean(options && options.id));
+      // SAFETY: we checked this by way of the `arguments` check above.
       (0, _handlers.invoke)('warn', message, test, options);
     };
   }
-  var _default = warn;
-  _exports.default = _default;
+  var _default = _exports.default = warn;
 });
 define("ember-testing/index", ["exports", "ember-testing/lib/test", "ember-testing/lib/adapters/adapter", "ember-testing/lib/setup_for_testing", "ember-testing/lib/adapters/qunit", "ember-testing/lib/ext/application", "ember-testing/lib/ext/rsvp", "ember-testing/lib/helpers", "ember-testing/lib/initializers"], function (_exports, _test, _adapter, _setup_for_testing, _qunit, _application, _rsvp, _helpers, _initializers) {
   "use strict";
@@ -762,53 +845,39 @@ define("ember-testing/index", ["exports", "ember-testing/lib/test", "ember-testi
     }
   });
 });
-define("ember-testing/lib/adapters/adapter", ["exports", "@ember/-internals/runtime"], function (_exports, _runtime) {
+define("ember-testing/lib/adapters/adapter", ["exports", "@ember/object"], function (_exports, _object) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  function K() {
-    return this;
-  }
-  /**
-   @module @ember/test
-  */
-
-  /**
-    The primary purpose of this class is to create hooks that can be implemented
-    by an adapter for various test frameworks.
-  
-    @class TestAdapter
-    @public
-  */
-  var _default = _runtime.Object.extend({
+  var Adapter = _object.default.extend({
     /**
       This callback will be called whenever an async operation is about to start.
-       Override this to call your framework's methods that handle async
+         Override this to call your framework's methods that handle async
       operations.
-       @public
+         @public
       @method asyncStart
     */
-    asyncStart: K,
+    asyncStart() {},
     /**
       This callback will be called whenever an async operation has completed.
-       @public
+         @public
       @method asyncEnd
     */
-    asyncEnd: K,
+    asyncEnd() {},
     /**
       Override this method with your testing framework's false assertion.
       This function is called whenever an exception occurs causing the testing
       promise to fail.
-       QUnit example:
-       ```javascript
+         QUnit example:
+         ```javascript
         exception: function(error) {
           ok(false, error);
         };
       ```
-       @public
+         @public
       @method exception
       @param {String} error The exception to be raised.
     */
@@ -816,9 +885,9 @@ define("ember-testing/lib/adapters/adapter", ["exports", "@ember/-internals/runt
       throw error;
     }
   });
-  _exports.default = _default;
+  var _default = _exports.default = Adapter;
 });
-define("ember-testing/lib/adapters/qunit", ["exports", "@ember/-internals/utils", "ember-testing/lib/adapters/adapter"], function (_exports, _utils, _adapter) {
+define("ember-testing/lib/adapters/qunit", ["exports", "@ember/debug", "ember-testing/lib/adapters/adapter"], function (_exports, _debug, _adapter) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -826,24 +895,16 @@ define("ember-testing/lib/adapters/qunit", ["exports", "@ember/-internals/utils"
   });
   _exports.default = void 0;
   /* globals QUnit */
-  /**
-     @module ember
-  */
-  /**
-    This class implements the methods defined by TestAdapter for the
-    QUnit testing framework.
-  
-    @class QUnitAdapter
-    @namespace Ember.Test
-    @extends TestAdapter
-    @public
-  */
-  var _default = _adapter.default.extend({
+
+  function isVeryOldQunit(obj) {
+    return obj != null && typeof obj.stop === 'function';
+  }
+  var QUnitAdapter = _adapter.default.extend({
     init() {
       this.doneCallbacks = [];
     },
     asyncStart() {
-      if (typeof QUnit.stop === 'function') {
+      if (isVeryOldQunit(QUnit)) {
         // very old QUnit version
         // eslint-disable-next-line qunit/no-qunit-stop
         QUnit.stop();
@@ -855,23 +916,23 @@ define("ember-testing/lib/adapters/qunit", ["exports", "@ember/-internals/utils"
       // checking for QUnit.stop here (even though we _need_ QUnit.start) because
       // QUnit.start() still exists in QUnit 2.x (it just throws an error when calling
       // inside a test context)
-      if (typeof QUnit.stop === 'function') {
+      if (isVeryOldQunit(QUnit)) {
         QUnit.start();
       } else {
-        var done = this.doneCallbacks.pop(); // This can be null if asyncStart() was called outside of a test
-
+        var done = this.doneCallbacks.pop();
+        // This can be null if asyncStart() was called outside of a test
         if (done) {
           done();
         }
       }
     },
     exception(error) {
-      QUnit.config.current.assert.ok(false, (0, _utils.inspect)(error));
+      QUnit.config.current.assert.ok(false, (0, _debug.inspect)(error));
     }
   });
-  _exports.default = _default;
+  var _default = _exports.default = QUnitAdapter;
 });
-define("ember-testing/lib/ext/application", ["@ember/application", "ember-testing/lib/setup_for_testing", "ember-testing/lib/test/helpers", "ember-testing/lib/test/promise", "ember-testing/lib/test/run", "ember-testing/lib/test/on_inject_helpers", "ember-testing/lib/test/adapter"], function (_application, _setup_for_testing, _helpers, _promise, _run, _on_inject_helpers, _adapter) {
+define("ember-testing/lib/ext/application", ["@ember/application", "ember-testing/lib/setup_for_testing", "ember-testing/lib/test/helpers", "ember-testing/lib/test/promise", "ember-testing/lib/test/run", "ember-testing/lib/test/on_inject_helpers", "ember-testing/lib/test/adapter", "@ember/debug"], function (_application, _setup_for_testing, _helpers, _promise, _run, _on_inject_helpers, _adapter, _debug) {
   "use strict";
 
   _application.default.reopen({
@@ -880,7 +941,7 @@ define("ember-testing/lib/ext/application", ["@ember/application", "ember-testin
      are created once you call `injectTestHelpers` on your `Application`
      instance. The included helpers are also available on the `window` object by
      default, but can be used from this object on the individual application also.
-       @property testHelpers
+         @property testHelpers
       @type {Object}
       @default {}
       @public
@@ -889,9 +950,9 @@ define("ember-testing/lib/ext/application", ["@ember/application", "ember-testin
     /**
      This property will contain the original methods that were registered
      on the `helperContainer` before `injectTestHelpers` is called.
-      When `removeTestHelpers` is called, these methods are restored to the
+        When `removeTestHelpers` is called, these methods are restored to the
      `helperContainer`.
-       @property originalMethods
+         @property originalMethods
       @type {Object}
       @default {}
       @private
@@ -902,7 +963,7 @@ define("ember-testing/lib/ext/application", ["@ember/application", "ember-testin
     This property indicates whether or not this application is currently in
     testing mode. This is set when `setupForTesting` is called on the current
     application.
-     @property testing
+       @property testing
     @type {Boolean}
     @default false
     @since 1.3.0
@@ -916,11 +977,11 @@ define("ember-testing/lib/ext/application", ["@ember/application", "ember-testin
       (preventing both accidental leaking of state between tests and interference
       with your testing framework). `setupForTesting` should only be called after
       setting a custom `router` class (for example `App.Router = Router.extend(`).
-       Example:
-       ```
+         Example:
+         ```
       App.setupForTesting();
       ```
-       @method setupForTesting
+         @method setupForTesting
       @public
     */
     setupForTesting() {
@@ -933,7 +994,7 @@ define("ember-testing/lib/ext/application", ["@ember/application", "ember-testin
     /**
       This will be used as the container to inject the test helpers into. By
       default the helpers are injected into `window`.
-       @property helperContainer
+         @property helperContainer
       @type {Object} The object to be used for test helpers.
       @default window
       @since 1.2.0
@@ -946,13 +1007,13 @@ define("ember-testing/lib/ext/application", ["@ember/application", "ember-testin
       to `window`. If a function of the same name has already been defined it will be cached
       (so that it can be reset if the helper is removed with `unregisterHelper` or
       `removeTestHelpers`).
-       Any callbacks registered with `onInjectHelpers` will be called once the
+         Any callbacks registered with `onInjectHelpers` will be called once the
       helpers have been injected.
-       Example:
+         Example:
       ```
       App.injectTestHelpers();
       ```
-       @method injectTestHelpers
+         @method injectTestHelpers
       @public
     */
     injectTestHelpers(helperContainer) {
@@ -969,8 +1030,11 @@ define("ember-testing/lib/ext/application", ["@ember/application", "ember-testin
       });
       this.testHelpers = {};
       for (var name in _helpers.helpers) {
+        // SAFETY: It is safe to access a property on an object
         this.originalMethods[name] = this.helperContainer[name];
+        // SAFETY: It is not quite as safe to do this, but it _seems_ to be ok.
         this.testHelpers[name] = this.helperContainer[name] = helper(this, name);
+        // SAFETY: We checked that it exists
         protoWrap(_promise.default.prototype, name, helper(this, name), _helpers.helpers[name].meta.wait);
       }
       (0, _on_inject_helpers.invokeInjectHelpersCallbacks)(this);
@@ -978,11 +1042,11 @@ define("ember-testing/lib/ext/application", ["@ember/application", "ember-testin
     /**
       This removes all helpers that have been registered, and resets and functions
       that were overridden by the helpers.
-       Example:
-       ```javascript
+         Example:
+         ```javascript
       App.removeTestHelpers();
       ```
-       @public
+         @public
       @method removeTestHelpers
     */
     removeTestHelpers() {
@@ -991,23 +1055,23 @@ define("ember-testing/lib/ext/application", ["@ember/application", "ember-testin
       }
       for (var name in _helpers.helpers) {
         this.helperContainer[name] = this.originalMethods[name];
+        // SAFETY: This is a weird thing, but it's not technically unsafe here.
         delete _promise.default.prototype[name];
         delete this.testHelpers[name];
         delete this.originalMethods[name];
       }
     }
-  }); // This method is no longer needed
+  });
+  // This method is no longer needed
   // But still here for backwards compatibility
   // of helper chaining
-
   function protoWrap(proto, name, callback, isAsync) {
-    proto[name] = function () {
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
+    // SAFETY: This isn't entirely safe, but it _seems_ to be ok.
+    proto[name] = function (...args) {
       if (isAsync) {
         return callback.apply(this, args);
       } else {
+        // SAFETY: This is not actually safe.
         return this.then(function () {
           return callback.apply(this, args);
         });
@@ -1015,31 +1079,25 @@ define("ember-testing/lib/ext/application", ["@ember/application", "ember-testin
     };
   }
   function helper(app, name) {
-    var fn = _helpers.helpers[name].method;
-    var meta = _helpers.helpers[name].meta;
+    var helper = _helpers.helpers[name];
+    (true && !(helper) && (0, _debug.assert)(`[BUG] Missing helper: ${name}`, helper));
+    var fn = helper.method;
+    var meta = helper.meta;
     if (!meta.wait) {
-      return function () {
-        for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-          args[_key2] = arguments[_key2];
-        }
-        return fn.apply(app, [app, ...args]);
-      };
+      return (...args) => fn.apply(app, [app, ...args]);
     }
-    return function () {
-      for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-        args[_key3] = arguments[_key3];
-      }
-      var lastPromise = (0, _run.default)(() => (0, _promise.resolve)((0, _promise.getLastPromise)())); // wait for last helper's promise to resolve and then
+    return (...args) => {
+      var lastPromise = (0, _run.default)(() => (0, _promise.resolve)((0, _promise.getLastPromise)()));
+      // wait for last helper's promise to resolve and then
       // execute. To be safe, we need to tell the adapter we're going
       // asynchronous here, because fn may not be invoked before we
       // return.
-
       (0, _adapter.asyncStart)();
       return lastPromise.then(() => fn.apply(app, [app, ...args])).finally(_adapter.asyncEnd);
     };
   }
 });
-define("ember-testing/lib/ext/rsvp", ["exports", "@ember/-internals/runtime", "@ember/runloop", "@ember/debug", "ember-testing/lib/test/adapter"], function (_exports, _runtime, _runloop, _debug, _adapter) {
+define("ember-testing/lib/ext/rsvp", ["exports", "@ember/-internals/runtime", "@ember/runloop"], function (_exports, _runtime, _runloop) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -1048,18 +1106,9 @@ define("ember-testing/lib/ext/rsvp", ["exports", "@ember/-internals/runtime", "@
   _exports.default = void 0;
   _runtime.RSVP.configure('async', function (callback, promise) {
     // if schedule will cause autorun, we need to inform adapter
-    if ((0, _debug.isTesting)() && !_runloop._backburner.currentInstance) {
-      (0, _adapter.asyncStart)();
-      _runloop._backburner.schedule('actions', () => {
-        (0, _adapter.asyncEnd)();
-        callback(promise);
-      });
-    } else {
-      _runloop._backburner.schedule('actions', () => callback(promise));
-    }
+    _runloop._backburner.schedule('actions', () => callback(promise));
   });
-  var _default = _runtime.RSVP;
-  _exports.default = _default;
+  var _default = _exports.default = _runtime.RSVP;
 });
 define("ember-testing/lib/helpers", ["ember-testing/lib/test/helpers", "ember-testing/lib/helpers/and_then", "ember-testing/lib/helpers/current_path", "ember-testing/lib/helpers/current_route_name", "ember-testing/lib/helpers/current_url", "ember-testing/lib/helpers/pause_test", "ember-testing/lib/helpers/visit", "ember-testing/lib/helpers/wait"], function (_helpers, _and_then, _current_path, _current_route_name, _current_url, _pause_test, _visit, _wait) {
   "use strict";
@@ -1073,7 +1122,7 @@ define("ember-testing/lib/helpers", ["ember-testing/lib/test/helpers", "ember-te
   (0, _helpers.registerHelper)('currentURL', _current_url.default);
   (0, _helpers.registerHelper)('resumeTest', _pause_test.resumeTest);
 });
-define("ember-testing/lib/helpers/and_then", ["exports"], function (_exports) {
+define("ember-testing/lib/helpers/and_then", ["exports", "@ember/debug"], function (_exports, _debug) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -1081,10 +1130,12 @@ define("ember-testing/lib/helpers/and_then", ["exports"], function (_exports) {
   });
   _exports.default = andThen;
   function andThen(app, callback) {
-    return app.testHelpers.wait(callback(app));
+    var wait = app.testHelpers['wait'];
+    (true && !(wait) && (0, _debug.assert)('[BUG] Missing wait helper', wait));
+    return wait(callback(app));
   }
 });
-define("ember-testing/lib/helpers/current_path", ["exports", "@ember/-internals/metal"], function (_exports, _metal) {
+define("ember-testing/lib/helpers/current_path", ["exports", "@ember/object", "@ember/routing/-internals", "@ember/debug"], function (_exports, _object, _internals, _debug) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -1113,13 +1164,14 @@ define("ember-testing/lib/helpers/current_path", ["exports", "@ember/-internals/
   @since 1.5.0
   @public
   */
-
   function currentPath(app) {
+    (true && !(app.__container__) && (0, _debug.assert)('[BUG] app.__container__ is not set', app.__container__));
     var routingService = app.__container__.lookup('service:-routing');
-    return (0, _metal.get)(routingService, 'currentPath');
+    (true && !(routingService instanceof _internals.RoutingService) && (0, _debug.assert)('[BUG] service:-routing is not a RoutingService', routingService instanceof _internals.RoutingService));
+    return (0, _object.get)(routingService, 'currentPath');
   }
 });
-define("ember-testing/lib/helpers/current_route_name", ["exports", "@ember/-internals/metal"], function (_exports, _metal) {
+define("ember-testing/lib/helpers/current_route_name", ["exports", "@ember/object", "@ember/routing/-internals", "@ember/debug"], function (_exports, _object, _internals, _debug) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -1147,13 +1199,14 @@ define("ember-testing/lib/helpers/current_route_name", ["exports", "@ember/-inte
   @since 1.5.0
   @public
   */
-
   function currentRouteName(app) {
+    (true && !(app.__container__) && (0, _debug.assert)('[BUG] app.__container__ is not set', app.__container__));
     var routingService = app.__container__.lookup('service:-routing');
-    return (0, _metal.get)(routingService, 'currentRouteName');
+    (true && !(routingService instanceof _internals.RoutingService) && (0, _debug.assert)('[BUG] service:-routing is not a RoutingService', routingService instanceof _internals.RoutingService));
+    return (0, _object.get)(routingService, 'currentRouteName');
   }
 });
-define("ember-testing/lib/helpers/current_url", ["exports", "@ember/-internals/metal"], function (_exports, _metal) {
+define("ember-testing/lib/helpers/current_url", ["exports", "@ember/object", "@ember/debug", "@ember/routing/router"], function (_exports, _object, _debug, _router) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -1182,10 +1235,13 @@ define("ember-testing/lib/helpers/current_url", ["exports", "@ember/-internals/m
   @since 1.5.0
   @public
   */
-
   function currentURL(app) {
+    (true && !(app.__container__) && (0, _debug.assert)('[BUG] app.__container__ is not set', app.__container__));
     var router = app.__container__.lookup('router:main');
-    return (0, _metal.get)(router, 'location').getURL();
+    (true && !(router instanceof _router.default) && (0, _debug.assert)('[BUG] router:main is not a Router', router instanceof _router.default));
+    var location = (0, _object.get)(router, 'location');
+    (true && !(typeof location !== 'string') && (0, _debug.assert)('[BUG] location is still a string', typeof location !== 'string'));
+    return location.getURL();
   }
 });
 define("ember-testing/lib/helpers/pause_test", ["exports", "@ember/-internals/runtime", "@ember/debug"], function (_exports, _runtime, _debug) {
@@ -1208,7 +1264,6 @@ define("ember-testing/lib/helpers/pause_test", ["exports", "@ember/-internals/ru
    @return {void}
    @public
   */
-
   function resumeTest() {
     (true && !(resume) && (0, _debug.assert)('Testing has not been paused. There is nothing to resume.', resume));
     resume();
@@ -1251,7 +1306,6 @@ define("ember-testing/lib/helpers/pause_test", ["exports", "@ember/-internals/ru
    @return {Object} A promise that will never resolve
    @public
   */
-
   function pauseTest() {
     (0, _debug.info)('Testing paused. Use `resumeTest()` to continue.');
     return new _runtime.RSVP.Promise(resolve => {
@@ -1259,7 +1313,7 @@ define("ember-testing/lib/helpers/pause_test", ["exports", "@ember/-internals/ru
     }, 'TestAdapter paused promise');
   }
 });
-define("ember-testing/lib/helpers/visit", ["exports", "@ember/runloop"], function (_exports, _runloop) {
+define("ember-testing/lib/helpers/visit", ["exports", "@ember/debug", "@ember/routing/router", "@ember/runloop"], function (_exports, _debug, _router, _runloop) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -1284,27 +1338,33 @@ define("ember-testing/lib/helpers/visit", ["exports", "@ember/runloop"], functio
     @return {RSVP.Promise<undefined>}
     @public
   */
-
   function visit(app, url) {
+    (true && !(app.__container__) && (0, _debug.assert)('[BUG] Missing container', app.__container__));
     var router = app.__container__.lookup('router:main');
+    (true && !(router instanceof _router.default) && (0, _debug.assert)('[BUG] router:main is not a Router', router instanceof _router.default));
     var shouldHandleURL = false;
     app.boot().then(() => {
+      (true && !(typeof router.location !== 'string') && (0, _debug.assert)('[BUG] router.location is still a string', typeof router.location !== 'string'));
       router.location.setURL(url);
       if (shouldHandleURL) {
+        (true && !(app.__deprecatedInstance__) && (0, _debug.assert)("[BUG] __deprecatedInstance__ isn't set", app.__deprecatedInstance__));
         (0, _runloop.run)(app.__deprecatedInstance__, 'handleURL', url);
       }
     });
     if (app._readinessDeferrals > 0) {
+      // SAFETY: This should be safe, though it is odd.
       router.initialURL = url;
       (0, _runloop.run)(app, 'advanceReadiness');
       delete router.initialURL;
     } else {
       shouldHandleURL = true;
     }
-    return app.testHelpers.wait();
+    var wait = app.testHelpers['wait'];
+    (true && !(wait) && (0, _debug.assert)('[BUG] missing wait helper', wait));
+    return wait();
   }
 });
-define("ember-testing/lib/helpers/wait", ["exports", "ember-testing/lib/test/waiters", "@ember/-internals/runtime", "@ember/runloop", "ember-testing/lib/test/pending_requests"], function (_exports, _waiters, _runtime, _runloop, _pending_requests) {
+define("ember-testing/lib/helpers/wait", ["exports", "ember-testing/lib/test/waiters", "@ember/-internals/runtime", "@ember/runloop", "ember-testing/lib/test/pending_requests", "@ember/debug", "@ember/routing/router"], function (_exports, _waiters, _runtime, _runloop, _pending_requests, _debug, _router) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -1345,31 +1405,31 @@ define("ember-testing/lib/helpers/wait", ["exports", "ember-testing/lib/test/wai
     @public
     @since 1.0.0
   */
-
   function wait(app, value) {
     return new _runtime.RSVP.Promise(function (resolve) {
-      var router = app.__container__.lookup('router:main'); // Every 10ms, poll for the async thing to have finished
-
+      (true && !(app.__container__) && (0, _debug.assert)('[BUG] Missing container', app.__container__));
+      var router = app.__container__.lookup('router:main');
+      (true && !(router instanceof _router.default) && (0, _debug.assert)('[BUG] Expected router:main to be a subclass of Ember Router', router instanceof _router.default)); // Every 10ms, poll for the async thing to have finished
       var watcher = setInterval(() => {
         // 1. If the router is loading, keep polling
         var routerIsLoading = router._routerMicrolib && Boolean(router._routerMicrolib.activeTransition);
         if (routerIsLoading) {
           return;
-        } // 2. If there are pending Ajax requests, keep polling
-
+        }
+        // 2. If there are pending Ajax requests, keep polling
         if ((0, _pending_requests.pendingRequests)()) {
           return;
-        } // 3. If there are scheduled timers or we are inside of a run loop, keep polling
-
+        }
+        // 3. If there are scheduled timers or we are inside of a run loop, keep polling
         if ((0, _runloop._hasScheduledTimers)() || (0, _runloop._getCurrentRunLoop)()) {
           return;
         }
         if ((0, _waiters.checkWaiters)()) {
           return;
-        } // Stop polling
-
-        clearInterval(watcher); // Synchronously resolve the promise
-
+        }
+        // Stop polling
+        clearInterval(watcher);
+        // Synchronously resolve the promise
         (0, _runloop.run)(null, resolve, value);
       }, 10);
     });
@@ -1379,9 +1439,9 @@ define("ember-testing/lib/initializers", ["@ember/application"], function (_appl
   "use strict";
 
   var name = 'deferReadiness in `testing` mode';
-  (0, _application.onLoad)('Ember.Application', function (Application) {
-    if (!Application.initializers[name]) {
-      Application.initializer({
+  (0, _application.onLoad)('Ember.Application', function (ApplicationClass) {
+    if (!ApplicationClass.initializers[name]) {
+      ApplicationClass.initializer({
         name: name,
         initialize(application) {
           if (application.testing) {
@@ -1413,11 +1473,10 @@ define("ember-testing/lib/setup_for_testing", ["exports", "@ember/debug", "ember
     @since 1.5.0
     @private
   */
-
   function setupForTesting() {
     (0, _debug.setTesting)(true);
-    var adapter = (0, _adapter.getAdapter)(); // if adapter is not manually set default to QUnit
-
+    var adapter = (0, _adapter.getAdapter)();
+    // if adapter is not manually set default to QUnit
     if (!adapter) {
       (0, _adapter.setAdapter)(typeof self.QUnit === 'undefined' ? _adapter2.default.create() : _qunit.default.create());
     }
@@ -1446,11 +1505,10 @@ define("ember-testing/lib/test", ["exports", "ember-testing/lib/test/helpers", "
     @namespace Ember
     @public
   */
-
   var Test = {
     /**
       Hash containing all known test helpers.
-       @property _helpers
+         @property _helpers
       @private
       @since 1.7.0
     */
@@ -1486,13 +1544,11 @@ define("ember-testing/lib/test", ["exports", "ember-testing/lib/test/helpers", "
    @type {Class} The adapter to be used.
    @default Ember.Test.QUnitAdapter
   */
-
   Object.defineProperty(Test, 'adapter', {
     get: _adapter.getAdapter,
     set: _adapter.setAdapter
   });
-  var _default = Test;
-  _exports.default = _default;
+  var _default = _exports.default = Test;
 });
 define("ember-testing/lib/test/adapter", ["exports", "@ember/-internals/error-handling"], function (_exports, _errorHandling) {
   "use strict";
@@ -1528,6 +1584,7 @@ define("ember-testing/lib/test/adapter", ["exports", "@ember/-internals/error-ha
   }
   function adapterDispatch(error) {
     adapter.exception(error);
+    // @ts-expect-error Normally unreachable
     console.error(error.stack); // eslint-disable-line no-console
   }
 });
@@ -1541,11 +1598,10 @@ define("ember-testing/lib/test/helpers", ["exports", "ember-testing/lib/test/pro
   _exports.registerAsyncHelper = registerAsyncHelper;
   _exports.registerHelper = registerHelper;
   _exports.unregisterHelper = unregisterHelper;
-  var helpers = {};
+  var helpers = _exports.helpers = {};
   /**
    @module @ember/test
   */
-
   /**
     `registerHelper` is used to register a test helper that will be injected
     when `App.injectTestHelpers` is called.
@@ -1583,7 +1639,6 @@ define("ember-testing/lib/test/helpers", ["exports", "ember-testing/lib/test/pro
     @param {Function} helperMethod
     @param options {Object}
   */
-  _exports.helpers = helpers;
   function registerHelper(name, helperMethod) {
     helpers[name] = {
       method: helperMethod,
@@ -1638,7 +1693,6 @@ define("ember-testing/lib/test/helpers", ["exports", "ember-testing/lib/test/pro
     @param {Function} helperMethod
     @since 1.2.0
   */
-
   function registerAsyncHelper(name, helperMethod) {
     helpers[name] = {
       method: helperMethod,
@@ -1664,9 +1718,10 @@ define("ember-testing/lib/test/helpers", ["exports", "ember-testing/lib/test/pro
     @for @ember/test
     @param {String} name The helper to remove.
   */
-
   function unregisterHelper(name) {
     delete helpers[name];
+    // SAFETY: This isn't necessarily a safe thing to do, but in terms of the immediate types here
+    // it won't error.
     delete _promise.default.prototype[name];
   }
 });
@@ -1679,7 +1734,7 @@ define("ember-testing/lib/test/on_inject_helpers", ["exports"], function (_expor
   _exports.callbacks = void 0;
   _exports.invokeInjectHelpersCallbacks = invokeInjectHelpersCallbacks;
   _exports.onInjectHelpers = onInjectHelpers;
-  var callbacks = [];
+  var callbacks = _exports.callbacks = [];
   /**
     Used to register callbacks to be fired whenever `App.injectTestHelpers`
     is called.
@@ -1707,13 +1762,12 @@ define("ember-testing/lib/test/on_inject_helpers", ["exports"], function (_expor
     @method onInjectHelpers
     @param {Function} callback The function to be called.
   */
-  _exports.callbacks = callbacks;
   function onInjectHelpers(callback) {
     callbacks.push(callback);
   }
   function invokeInjectHelpersCallbacks(app) {
-    for (var i = 0; i < callbacks.length; i++) {
-      callbacks[i](app);
+    for (var callback of callbacks) {
+      callback(app);
     }
   }
 });
@@ -1758,18 +1812,15 @@ define("ember-testing/lib/test/promise", ["exports", "@ember/-internals/runtime"
   _exports.getLastPromise = getLastPromise;
   _exports.promise = promise;
   _exports.resolve = resolve;
-  var lastPromise;
+  var lastPromise = null;
   class TestPromise extends _runtime.RSVP.Promise {
-    constructor() {
-      super(...arguments);
+    constructor(executor, label) {
+      super(executor, label);
       lastPromise = this;
     }
-    then(_onFulfillment) {
-      var onFulfillment = typeof _onFulfillment === 'function' ? result => isolate(_onFulfillment, result) : undefined;
-      for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-        args[_key - 1] = arguments[_key];
-      }
-      return super.then(onFulfillment, ...args);
+    then(onFulfilled, onRejected, label) {
+      var normalizedOnFulfilled = typeof onFulfilled === 'function' ? result => isolate(onFulfilled, result) : undefined;
+      return super.then(normalizedOnFulfilled, onRejected, label);
     }
   }
   /**
@@ -1801,28 +1852,27 @@ define("ember-testing/lib/test/promise", ["exports", "@ember/-internals/runtime"
     @param {Mixed} The value to resolve
     @since 1.2.0
   */
-
   function resolve(result, label) {
     return TestPromise.resolve(result, label);
   }
   function getLastPromise() {
     return lastPromise;
-  } // This method isolates nested async methods
+  }
+  // This method isolates nested async methods
   // so that they don't conflict with other last promises.
   //
   // 1. Set `Ember.Test.lastPromise` to null
   // 2. Invoke method
   // 3. Return the last promise created during method
-
-  function isolate(onFulfillment, result) {
+  function isolate(onFulfilled, result) {
     // Reset lastPromise for nested helpers
     lastPromise = null;
-    var value = onFulfillment(result);
+    var value = onFulfilled(result);
     var promise = lastPromise;
-    lastPromise = null; // If the method returned a promise
+    lastPromise = null;
+    // If the method returned a promise
     // return that promise. If not,
     // return the last async helper's promise
-
     if (value && value instanceof TestPromise || !promise) {
       return value;
     } else {
@@ -1859,53 +1909,24 @@ define("ember-testing/lib/test/waiters", ["exports"], function (_exports) {
   */
   var contexts = [];
   var callbacks = [];
-  /**
-     This allows ember-testing to play nicely with other asynchronous
-     events, such as an application that is waiting for a CSS3
-     transition or an IndexDB transaction. The waiter runs periodically
-     after each async helper (i.e. `click`, `andThen`, `visit`, etc) has executed,
-     until the returning result is truthy. After the waiters finish, the next async helper
-     is executed and the process repeats.
-  
-     For example:
-  
-     ```javascript
-     import { registerWaiter } from '@ember/test';
-  
-     registerWaiter(function() {
-       return myPendingTransactions() === 0;
-     });
-     ```
-     The `context` argument allows you to optionally specify the `this`
-     with which your callback will be invoked.
-  
-     For example:
-  
-     ```javascript
-     import { registerWaiter } from '@ember/test';
-  
-     registerWaiter(MyDB, MyDB.hasPendingTransactions);
-     ```
-  
-     @public
-     @for @ember/test
-     @static
-     @method registerWaiter
-     @param {Object} context (optional)
-     @param {Function} callback
-     @since 1.2.0
-  */
-
-  function registerWaiter(context, callback) {
-    if (arguments.length === 1) {
-      callback = context;
-      context = null;
+  function registerWaiter(
+  // Formatting makes a pretty big difference in how readable this is.
+  // prettier-ignore
+  ...args) {
+    var checkedCallback;
+    var checkedContext;
+    if (args.length === 1) {
+      checkedContext = null;
+      checkedCallback = args[0];
+    } else {
+      checkedContext = args[0];
+      checkedCallback = args[1];
     }
-    if (indexOf(context, callback) > -1) {
+    if (indexOf(checkedContext, checkedCallback) > -1) {
       return;
     }
-    contexts.push(context);
-    callbacks.push(callback);
+    contexts.push(checkedContext);
+    callbacks.push(checkedCallback);
   }
   /**
      `unregisterWaiter` is used to unregister a callback that was
@@ -1919,7 +1940,6 @@ define("ember-testing/lib/test/waiters", ["exports"], function (_exports) {
      @param {Function} callback
      @since 1.2.0
   */
-
   function unregisterWaiter(context, callback) {
     if (!callbacks.length) {
       return;
@@ -1948,7 +1968,6 @@ define("ember-testing/lib/test/waiters", ["exports"], function (_exports) {
     @static
     @method checkWaiters
   */
-
   function checkWaiters() {
     if (!callbacks.length) {
       return false;
@@ -1956,6 +1975,7 @@ define("ember-testing/lib/test/waiters", ["exports"], function (_exports) {
     for (var i = 0; i < callbacks.length; i++) {
       var context = contexts[i];
       var callback = callbacks[i];
+      // SAFETY: The loop ensures that this exists
       if (!callback.call(context)) {
         return true;
       }
@@ -1987,13 +2007,64 @@ require('ember-testing');
   });
 })();
 
-define("@ember/test-helpers/-internal/build-registry", ["exports", "@ember/application/instance", "@ember/application", "@ember/object", "require", "ember"], function (_exports, _instance, _application, _object, _require, _ember) {
+define("@ember/test-helpers/-internal/-owner-mixin-imports", ["exports", "ember"], function (_exports, _ember) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _default;
+  _exports.RegistryProxyMixin = _exports.ContainerProxyMixin = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember"eaimeta@70e063a35619d71f
+  // These utter shenanigans allow this to work regardless of what types you are
+  // importing from. The idea is: you supply multiple imports, each of which is
+  // mutually exclusive with the others in terms of valid imports, then ignore the
+  // imports so they type check, then "resolve" between them based on which one is
+  // actually defined. 😭
+  //
+  // TODO: at the next major version (4.0), when we drop support for Ember < 5.1
+  // or some later version and can therefore either depend *somewhat* more on
+  // these import locations *or* can drop them entirely (depending on the path
+  // taken in terms of the `Owner` stack), switch to the normal imports:
+  // ```
+  // import {
+  //   ContainerProxyMixin,
+  //   RegistryProxyMixin,
+  // } from '@ember/-internals/runtime';
+  // ```
+  //
+  // For now, we are stuck with this utterly horrifying hack to get the types for
+  // these reliably.
+  // This pair of types lets us check whether the imported type is set. We can
+  // then use that to pick between the imported types. The first type produces
+  // `any` when the type is otherwise not defined at all, which means we cannot
+  // use it directly because `any` will fall through, well, basically *any* check
+  // we might come up with... other than checking whether `any extends` it. The
+  // second uses that to get back a `never` so we can then "pick" between the
+  // imported types.
+  // This mapped type does the "picking". You can pass it any number of types,
+  // where only one should be available, and it will "resolve" that type.
+  // Constraint: the `Array` type must include mutually exclusive types, such that
+  // it should be impossible to ever get back more than one; otherwise, you will
+  // end up with a union type of the two. That is very unlikely to be what you
+  // want!
+  // We also resolve the *values* from a "stable" location. However, the *types*
+  // for the Ember namespace do not consistently include this definition (they do
+  // on the stable types, but not in the preview or DT types), so cast as `any` so
+  // that it resolves regardless.
+  const ContainerProxyMixin = _exports.ContainerProxyMixin = _ember.default._ContainerProxyMixin;
+  const RegistryProxyMixin = _exports.RegistryProxyMixin = _ember.default._RegistryProxyMixin;
+});
+define("@ember/test-helpers/-internal/build-registry", ["exports", "@ember/application/instance", "@ember/application", "@ember/object", "require", "ember", "@ember/test-helpers/-internal/-owner-mixin-imports"], function (_exports, _instance, _application, _object, _require, _ember, _ownerMixinImports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = buildRegistry;
+  0; //eaimeta@70e063a35619d71f0,"@ember/application/instance",0,"@ember/application",0,"@ember/object",0,"require",0,"ember",0,"@ember/test-helpers/-internal/-owner-mixin-imports"eaimeta@70e063a35619d71f
+  // These shenanigans work around the fact that the import locations are not
+  // public API and are not stable, so we jump through hoops to get the right
+  // types and values to use.
   /**
    * Adds methods that are normally only on registry to the container. This is largely to support the legacy APIs
    * that are not using `owner` (but are still using `this.container`).
@@ -2001,22 +2072,26 @@ define("@ember/test-helpers/-internal/build-registry", ["exports", "@ember/appli
    * @private
    * @param {Object} container  the container to modify
    */
-
   function exposeRegistryMethodsWithoutDeprecations(container) {
     let methods = ['register', 'unregister', 'resolve', 'normalize', 'typeInjection', 'injection', 'factoryInjection', 'factoryTypeInjection', 'has', 'options', 'optionsForType'];
     for (let i = 0, l = methods.length; i < l; i++) {
-      let method = methods[i];
-      if (method in container) {
-        container[method] = function () {
-          return container._registry[method](...arguments);
+      let methodName = methods[i];
+      if (methodName && methodName in container) {
+        const knownMethod = methodName;
+        container[knownMethod] = function (...args) {
+          return container._registry[knownMethod](...args);
         };
       }
     }
   }
-  const RegistryProxyMixin = _ember.default._RegistryProxyMixin;
-  const ContainerProxyMixin = _ember.default._ContainerProxyMixin;
-  const Owner = _object.default.extend(RegistryProxyMixin, ContainerProxyMixin, {
+
+  // NOTE: this is the same as what `EngineInstance`/`ApplicationInstance`
+  // implement, and is thus a superset of the `InternalOwner` contract from Ember
+  // itself.
+
+  const Owner = _object.default.extend(_ownerMixinImports.RegistryProxyMixin, _ownerMixinImports.ContainerProxyMixin, {
     _emberTestHelpersMockOwner: true,
+    /* eslint-disable valid-jsdoc */
     /**
      * Unregister a factory and its instance.
      *
@@ -2028,48 +2103,81 @@ define("@ember/test-helpers/-internal/build-registry", ["exports", "@ember/appli
      * @see {@link https://github.com/emberjs/ember.js/pull/12680}
      * @see {@link https://github.com/emberjs/ember.js/blob/v4.5.0-alpha.5/packages/%40ember/engine/instance.ts#L152-L167}
      */
+    /* eslint-enable valid-jsdoc */
     unregister(fullName) {
-      this.__container__.reset(fullName); // We overwrote this method from RegistryProxyMixin.
+      // SAFETY: this is always present, but only the stable type definitions from
+      // Ember actually preserve it, since it is private API.
+      this['__container__'].reset(fullName);
 
-      this.__registry__.unregister(fullName);
+      // We overwrote this method from RegistryProxyMixin.
+      // SAFETY: this is always present, but only the stable type definitions from
+      // Ember actually preserve it, since it is private API.
+      this['__registry__'].unregister(fullName);
     }
   });
+
   /**
    * @private
    * @param {Object} resolver the resolver to use with the registry
    * @returns {Object} owner, container, registry
    */
-
-  function _default(resolver) {
-    let fallbackRegistry, registry, container;
-    let namespace = _object.default.create({
-      Resolver: {
-        create() {
-          return resolver;
-        }
+  function buildRegistry(resolver) {
+    let namespace = new _application.default();
+    // @ts-ignore: this is actually the correcct type, but there was a typo in
+    // Ember's docs for many years which meant that there was a matching problem
+    // in the types for Ember's definition of `Engine`. Once we require at least
+    // Ember 5.1 (in some future breaking change), this ts-ignore can be removed.
+    namespace.Resolver = {
+      create() {
+        return resolver;
       }
-    });
-    fallbackRegistry = _application.default.buildRegistry(namespace); // TODO: only do this on Ember < 3.13
+    };
 
+    // @ts-ignore: this is private API.
+    let fallbackRegistry = _application.default.buildRegistry(namespace);
+    // TODO: only do this on Ember < 3.13
+    // @ts-ignore: this is private API.
     fallbackRegistry.register('component-lookup:main', _ember.default.ComponentLookup);
-    registry = new _ember.default.Registry({
+
+    // @ts-ignore: this is private API.
+    let registry = new _ember.default.Registry({
       fallback: fallbackRegistry
     });
-    _instance.default.setupRegistry(registry); // these properties are set on the fallback registry by `buildRegistry`
+
+    // @ts-ignore: this is private API.
+    _instance.default.setupRegistry(registry);
+
+    // these properties are set on the fallback registry by `buildRegistry`
     // and on the primary registry within the ApplicationInstance constructor
     // but we need to manually recreate them since ApplicationInstance's are not
     // exposed externally
-
+    // @ts-ignore: this is private API.
     registry.normalizeFullName = fallbackRegistry.normalizeFullName;
+    // @ts-ignore: this is private API.
     registry.makeToString = fallbackRegistry.makeToString;
+    // @ts-ignore: this is private API.
     registry.describe = fallbackRegistry.describe;
     let owner = Owner.create({
+      // @ts-ignore -- we do not have type safety for `Object.extend` so the type
+      // of `Owner` here is just `EmberObject`, but we *do* constrain it to allow
+      // only types from the actual class, so these fields are not accepted.
+      // However, we can see that they are valid, based on the definition of
+      // `Owner` above given that it fulfills the `InternalOwner` contract and
+      // also extends it just as `EngineInstance` does internally.
+      //
+      // NOTE: we use an `ignore` directive rather than `expect-error` because in
+      // *some* versions of the types, we *do* have (at least some of) this
+      // safety, and maximal backwards compatibility means we have to account for
+      // that.
       __registry__: registry,
       __container__: null
     });
-    container = registry.container({
+
+    // @ts-ignore: this is private API.
+    let container = registry.container({
       owner: owner
     });
+    // @ts-ignore: this is private API.
     owner.__container__ = container;
     exposeRegistryMethodsWithoutDeprecations(container);
     if ((0, _require.has)('ember-data/setup-container')) {
@@ -2079,7 +2187,7 @@ define("@ember/test-helpers/-internal/build-registry", ["exports", "@ember/appli
       // correctly for the tests; that's why we import and call setupContainer
       // here; also see https://github.com/emberjs/data/issues/4071 for context
       let setupContainer = (0, _require.default)("ember-data/setup-container")['default'];
-      setupContainer(registry || container);
+      setupContainer(owner);
     }
     return {
       registry,
@@ -2096,7 +2204,9 @@ define("@ember/test-helpers/-internal/debug-info-helpers", ["exports"], function
   });
   _exports.debugInfoHelpers = void 0;
   _exports.default = registerDebugInfoHelper;
-  const debugInfoHelpers = new Set();
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
+  const debugInfoHelpers = _exports.debugInfoHelpers = new Set();
+
   /**
    * Registers a custom debug info helper to augment the output for test isolation validation.
    *
@@ -2116,7 +2226,6 @@ define("@ember/test-helpers/-internal/debug-info-helpers", ["exports"], function
    *   }
    * })
    */
-  _exports.debugInfoHelpers = debugInfoHelpers;
   function registerDebugInfoHelper(debugHelper) {
     debugInfoHelpers.add(debugHelper);
   }
@@ -2130,16 +2239,18 @@ define("@ember/test-helpers/-internal/debug-info", ["exports", "@ember/runloop",
   _exports.TestDebugInfo = void 0;
   _exports.backburnerDebugInfoAvailable = backburnerDebugInfoAvailable;
   _exports.getDebugInfo = getDebugInfo;
+  0; //eaimeta@70e063a35619d71f0,"@ember/runloop",0,"@ember/test-helpers/-internal/debug-info-helpers",0,"@ember/test-waiters"eaimeta@70e063a35619d71f
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-  function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return typeof key === "symbol" ? key : String(key); }
-  function _toPrimitive(input, hint) { if (typeof input !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (typeof res !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : i + ""; }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); } // @ts-ignore: this is private API. This import will work Ember 5.1+ since it
+  // "provides" this public API, but does not for earlier versions. As a result,
+  // this type will be `any`.
   const PENDING_AJAX_REQUESTS = 'Pending AJAX requests';
   const PENDING_TEST_WAITERS = 'Pending test waiters';
   const SCHEDULED_ASYNC = 'Scheduled async';
   const SCHEDULED_AUTORUN = 'Scheduled autorun';
-
   /**
-   * Determins if the `getDebugInfo` method is available in the
+   * Determines if the `getDebugInfo` method is available in the
    * running verison of backburner.
    *
    * @returns {boolean} True if `getDebugInfo` is present in backburner, otherwise false.
@@ -2147,6 +2258,7 @@ define("@ember/test-helpers/-internal/debug-info", ["exports", "@ember/runloop",
   function backburnerDebugInfoAvailable() {
     return typeof _runloop._backburner.getDebugInfo === 'function';
   }
+
   /**
    * Retrieves debug information from backburner's current deferred actions queue (runloop instance).
    * If the `getDebugInfo` method isn't available, it returns `null`.
@@ -2154,10 +2266,10 @@ define("@ember/test-helpers/-internal/debug-info", ["exports", "@ember/runloop",
    * @public
    * @returns {MaybeDebugInfo | null} Backburner debugInfo or, if the getDebugInfo method is not present, null
    */
-
   function getDebugInfo() {
     return _runloop._backburner.DEBUG === true && backburnerDebugInfoAvailable() ? _runloop._backburner.getDebugInfo() : null;
   }
+
   /**
    * Encapsulates debug information for an individual test. Aggregates information
    * from:
@@ -2169,10 +2281,8 @@ define("@ember/test-helpers/-internal/debug-info", ["exports", "@ember/runloop",
    * - info provided by backburner's getDebugInfo method (timers, schedules, and stack trace info)
    *
    */
-
   class TestDebugInfo {
-    constructor(settledState) {
-      let debugInfo = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : getDebugInfo();
+    constructor(settledState, debugInfo = getDebugInfo()) {
       _defineProperty(this, "_summaryInfo", undefined);
       this._settledState = settledState;
       this._debugInfo = debugInfo;
@@ -2187,15 +2297,23 @@ define("@ember/test-helpers/-internal/debug-info", ["exports", "@ember/runloop",
           this._summaryInfo.pendingTimersCount = this._debugInfo.timers.length;
           this._summaryInfo.hasPendingTimers = this._settledState.hasPendingTimers && this._summaryInfo.pendingTimersCount > 0;
           this._summaryInfo.pendingTimersStackTraces = this._debugInfo.timers.map(timer => timer.stack);
-          this._summaryInfo.pendingScheduledQueueItemCount = this._debugInfo.instanceStack.filter(q => q).reduce((total, item) => {
-            Object.keys(item).forEach(queueName => {
-              total += item[queueName].length;
+          this._summaryInfo.pendingScheduledQueueItemCount = this._debugInfo.instanceStack.filter(isNotNullable).reduce((total, item) => {
+            Object.values(item).forEach(queueItems => {
+              // SAFETY: this cast is required for versions of Ember which do
+              // not supply a correct definition of these types. It should
+              // also be compatible with the version where Ember *does* supply
+              // the types correctly.
+              total += queueItems?.length ?? 0;
             });
             return total;
           }, 0);
-          this._summaryInfo.pendingScheduledQueueItemStackTraces = this._debugInfo.instanceStack.filter(q => q).reduce((stacks, deferredActionQueues) => {
-            Object.keys(deferredActionQueues).forEach(queue => {
-              deferredActionQueues[queue].forEach(queueItem => queueItem.stack && stacks.push(queueItem.stack));
+          this._summaryInfo.pendingScheduledQueueItemStackTraces = this._debugInfo.instanceStack.filter(isNotNullable).reduce((stacks, deferredActionQueues) => {
+            Object.values(deferredActionQueues).forEach(queueItems => {
+              // SAFETY: this cast is required for versions of Ember which do
+              // not supply a correct definition of these types. It should
+              // also be compatible with the version where Ember *does* supply
+              // the types correctly.
+              queueItems?.forEach(queueItem => queueItem.stack && stacks.push(queueItem.stack));
             });
             return stacks;
           }, []);
@@ -2206,8 +2324,7 @@ define("@ember/test-helpers/-internal/debug-info", ["exports", "@ember/runloop",
       }
       return this._summaryInfo;
     }
-    toConsole() {
-      let _console = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : console;
+    toConsole(_console = console) {
       let summary = this.summary;
       if (summary.hasPendingRequests) {
         _console.log(PENDING_AJAX_REQUESTS);
@@ -2256,7 +2373,12 @@ define("@ember/test-helpers/-internal/debug-info", ["exports", "@ember/runloop",
       return `${title}: ${count}`;
     }
   }
+
+  // eslint-disable-next-line require-jsdoc
   _exports.TestDebugInfo = TestDebugInfo;
+  function isNotNullable(value) {
+    return value != null;
+  }
 });
 define("@ember/test-helpers/-internal/deprecations", ["exports", "@ember/debug", "@ember/test-helpers/-internal/is-promise"], function (_exports, _debug, _isPromise) {
   "use strict";
@@ -2266,7 +2388,9 @@ define("@ember/test-helpers/-internal/deprecations", ["exports", "@ember/debug",
   });
   _exports.getDeprecationsDuringCallbackForContext = getDeprecationsDuringCallbackForContext;
   _exports.getDeprecationsForContext = getDeprecationsForContext;
+  0; //eaimeta@70e063a35619d71f0,"@ember/debug",0,"@ember/test-helpers/-internal/is-promise"eaimeta@70e063a35619d71f
   const DEPRECATIONS = new WeakMap();
+
   /**
    *
    * Provides the list of deprecation failures associated with a given base context;
@@ -2275,7 +2399,6 @@ define("@ember/test-helpers/-internal/deprecations", ["exports", "@ember/debug",
    * @param {BaseContext} [context] the test context
    * @return {Array<DeprecationFailure>} the Deprecation Failures associated with the corresponding BaseContext;
    */
-
   function getDeprecationsForContext(context) {
     if (!context) {
       throw new TypeError(`[@ember/test-helpers] could not get deprecations for an invalid test context: '${context}'`);
@@ -2287,18 +2410,18 @@ define("@ember/test-helpers/-internal/deprecations", ["exports", "@ember/debug",
     }
     return deprecations;
   }
+
   /**
    *
    * Provides the list of deprecation failures associated with a given base
-   * context which occure while a callback is executed. This callback can be
-   * synchonous, or it can be an async function.
+   * context which occur while a callback is executed. This callback can be
+   * synchronous, or it can be an async function.
    *
    * @private
    * @param {BaseContext} [context] the test context
-   * @param {CallableFunction} [callback] The callback that when executed will have its DeprecationFailure recorded
-   * @return {Array<DeprecationFailure>} The Deprecation Failures associated with the corresponding baseContext which occured while the CallbackFunction was executed
+   * @param {Function} [callback] The callback that when executed will have its DeprecationFailure recorded
+   * @return {Array<DeprecationFailure>} The Deprecation Failures associated with the corresponding baseContext which occurred while the CallbackFunction was executed
    */
-
   function getDeprecationsDuringCallbackForContext(context, callback) {
     if (!context) {
       throw new TypeError(`[@ember/test-helpers] could not get deprecations for an invalid test context: '${context}'`);
@@ -2313,199 +2436,60 @@ define("@ember/test-helpers/-internal/deprecations", ["exports", "@ember/debug",
     } else {
       return deprecations.slice(previousLength); // only return deprecations created as a result of the callback
     }
-  } // This provides (when the environment supports) queryParam support for deprecations:
+  }
+
+  // This provides (when the environment supports) queryParam support for deprecations:
   // * squelch deprecations by name via: `/tests/index.html?disabledDeprecations=this-property-fallback,some-other-thing`
   // * enable a debuggger when a deprecation by a specific name is encountered via: `/tests/index.html?debugDeprecations=some-other-thing` when the
-
   if (typeof URLSearchParams !== 'undefined') {
     let queryParams = new URLSearchParams(document.location.search.substring(1));
     const disabledDeprecations = queryParams.get('disabledDeprecations');
-    const debugDeprecations = queryParams.get('debugDeprecations'); // When using `/tests/index.html?disabledDeprecations=this-property-fallback,some-other-thing`
-    // those deprecations will be squelched
+    const debugDeprecations = queryParams.get('debugDeprecations');
 
+    // When using `/tests/index.html?disabledDeprecations=this-property-fallback,some-other-thing`
+    // those deprecations will be squelched
     if (disabledDeprecations) {
       (0, _debug.registerDeprecationHandler)((message, options, next) => {
-        if (!disabledDeprecations.includes(options.id)) {
+        if (!options || !disabledDeprecations.includes(options.id)) {
           next.apply(null, [message, options]);
         }
       });
-    } // When using `/tests/index.html?debugDeprecations=some-other-thing` when the
-    // `some-other-thing` deprecation is triggered, this `debugger` will be hit`
+    }
 
+    // When using `/tests/index.html?debugDeprecations=some-other-thing` when the
+    // `some-other-thing` deprecation is triggered, this `debugger` will be hit`
     if (debugDeprecations) {
       (0, _debug.registerDeprecationHandler)((message, options, next) => {
-        if (debugDeprecations.includes(options.id)) {
+        if (options && debugDeprecations.includes(options.id)) {
           debugger; // eslint-disable-line no-debugger
         }
-
         next.apply(null, [message, options]);
       });
     }
   }
 });
-define("@ember/test-helpers/-internal/ember-internals", ["exports"], function (_exports) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.lookupCurriedComponentDefinition = lookupCurriedComponentDefinition;
-  function runtimeResolver(owner) {
-    let resolver = owner.lookup('renderer:-dom')._runtimeResolver;
-    if (resolver) {
-      return resolver;
-    }
-    let entry = Object.entries(owner.__container__.cache).find(e => e[0].startsWith('template-compiler:main-'));
-    if (entry) {
-      return entry[1].resolver.resolver;
-    }
-    throw new Error(`@embroider/util couldn't locate the runtime resolver on this ember version`);
-  }
-  function lookupCurriedComponentDefinition(name, owner) {
-    let resolver = runtimeResolver(owner);
-    if (typeof resolver.lookupComponentHandle === 'function') {
-      let handle = resolver.lookupComponentHandle(name, contextForLookup(owner));
-      if (handle != null) {
-        return new CurriedComponentDefinition(resolver.resolve(handle), null);
-      }
-    }
-
-    // here we're doing the same thing the internal currying does, in order to
-    // generate a sane error message (even though we don't actually use
-    // resolvedDefinition as part of our return value).
-    let resolvedDefinition = resolver.lookupComponent(name, owner);
-    if (!resolvedDefinition) {
-      throw new Error(`Attempted to resolve \`${name}\` via ensureSafeComponent, but nothing was found.`);
-    }
-    return curry(0, name, owner, {
-      named: {},
-      positional: []
-    });
-  }
-});
-define("@ember/test-helpers/-internal/get-component-manager", ["exports", "@embroider/macros/es-compat", "@embroider/macros/runtime", "ember"], function (_exports, _esCompat, _runtime, _ember) {
+define("@ember/test-helpers/-internal/is-component", ["exports", "@glimmer/manager"], function (_exports, _manager) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  let getComponentManager;
-  if ((0, _runtime.macroCondition)(true)) {
-    let _getComponentManager =
-    //@ts-ignore
-    (0, _esCompat.default)(require("@glimmer/manager")).getInternalComponentManager;
-    getComponentManager = (definition, owner) => {
-      return _getComponentManager(definition, true);
-    };
-  } else if ((0, _runtime.macroCondition)(true)) {
-    let _getComponentManager = _ember.default.__loader.require('@glimmer/manager').getInternalComponentManager;
-    getComponentManager = (definition, owner) => {
-      return _getComponentManager(definition, true);
-    };
-  } else {
-    let _getComponentManager = _ember.default.__loader.require('@glimmer/runtime').getComponentManager;
-    getComponentManager = (definition, owner) => {
-      return _getComponentManager(owner, definition);
-    };
-  }
-  var _default = getComponentManager;
-  _exports.default = _default;
-});
-define("@ember/test-helpers/-internal/helper-hooks", ["exports", "@ember/test-helpers/-utils"], function (_exports, _utils) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.registerHook = registerHook;
-  _exports.runHooks = runHooks;
-  const registeredHooks = new Map();
-  /**
-   * @private
-   * @param {string} helperName The name of the test helper in which to run the hook.
-   * @param {string} label A label to help identify the hook.
-   * @returns {string} The compound key for the helper.
-   */
-
-  function getHelperKey(helperName, label) {
-    return `${helperName}:${label}`;
-  }
-  /**
-   * Registers a hook function to be run during the invocation of a test helper.
-   *
-   * @private
-   * @param {string} helperName The name of the test helper in which to run the hook.
-   * @param {string} label A label to help identify the hook. Built-in labels are `start` and `end`,
-   *                       designating the start of the helper invocation and the end.
-   * @param {Function} hook The hook function to run when the test helper is invoked.
-   * @returns {HookUnregister} An object containing an unregister function that will unregister
-   *                           the specific hook registered to the helper.
-   */
-
-  function registerHook(helperName, label, hook) {
-    let helperKey = getHelperKey(helperName, label);
-    let hooksForHelper = registeredHooks.get(helperKey);
-    if (hooksForHelper === undefined) {
-      hooksForHelper = new Set();
-      registeredHooks.set(helperKey, hooksForHelper);
-    }
-    hooksForHelper.add(hook);
-    return {
-      unregister() {
-        hooksForHelper.delete(hook);
-      }
-    };
-  }
-  /**
-   * Runs all hooks registered for a specific test helper.
-   *
-   * @private
-   * @param {string} helperName  The name of the test helper.
-   * @param {string} label A label to help identify the hook. Built-in labels are `start` and `end`,
-   *                       designating the start of the helper invocation and the end.
-   * @param {any[]} args Any arguments originally passed to the test helper.
-   * @returns {Promise<void>} A promise representing the serial invocation of the hooks.
-   */
-
-  function runHooks(helperName, label) {
-    for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-      args[_key - 2] = arguments[_key];
-    }
-    let hooks = registeredHooks.get(getHelperKey(helperName, label)) || new Set();
-    let promises = [];
-    hooks.forEach(hook => {
-      let hookResult = hook(...args);
-      promises.push(hookResult);
-    });
-    return _utils.Promise.all(promises).then(() => {});
-  }
-});
-define("@ember/test-helpers/-internal/is-component", ["exports", "@embroider/macros/runtime", "@ember/test-helpers/-internal/get-component-manager"], function (_exports, _runtime, _getComponentManager) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"@glimmer/manager"eaimeta@70e063a35619d71f
+  // @ts-ignore: types for this API is not consistently available (via transitive
+  // deps) and we do not currently want to make it an explicit dependency. It
+  // does, however, consistently work at runtime. :sigh:
   /**
    * We should ultimately get a new API from @glimmer/runtime that provides this functionality
    * (see https://github.com/emberjs/rfcs/pull/785 for more info).
    * @private
    * @param {Object} maybeComponent The thing you think might be a component
-   * @param {Object} owner Owner, we need this for old versions of getComponentManager
    * @returns {boolean} True if it's a component, false if not
    */
-
-  function isComponent(maybeComponent, owner) {
-    if ((0, _runtime.macroCondition)(true)) {
-      return !!(0, _getComponentManager.default)(maybeComponent, owner);
-    } else {
-      return !!(0, _getComponentManager.default)(maybeComponent, owner) || ['@ember/component', '@ember/component/template-only'].includes(maybeComponent.toString());
-    }
+  function isComponent(maybeComponent) {
+    return !!(0, _manager.getInternalComponentManager)(maybeComponent, true);
   }
-  var _default = isComponent;
-  _exports.default = _default;
+  var _default = _exports.default = isComponent;
 });
 define("@ember/test-helpers/-internal/is-promise", ["exports"], function (_exports) {
   "use strict";
@@ -2514,6 +2498,7 @@ define("@ember/test-helpers/-internal/is-promise", ["exports"], function (_expor
     value: true
   });
   _exports.default = _default;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
   /**
    *
    * detect if a value appears to be a promise
@@ -2526,385 +2511,20 @@ define("@ember/test-helpers/-internal/is-promise", ["exports"], function (_expor
     return maybePromise !== null && (typeof maybePromise === 'object' || typeof maybePromise === 'function') && typeof maybePromise.then === 'function';
   }
 });
-define("@ember/test-helpers/-internal/promise-polyfill", ["exports"], function (_exports) {
+define("@ember/test-helpers/-internal/render-settled", ["exports", "@embroider/macros/es-compat2"], function (_exports, _esCompat) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  // @ts-nocheck
-  /* eslint-disable */
-  /* globals globalThis global setImmediate */
-  /*
-  Using the same promise polyfill that is used in qunit@2.14.0 (see https://git.io/JtMxC).
-  
-  https://github.com/taylorhakes/promise-polyfill/tree/8.2.0
-  
-  Copyright 2014 Taylor Hakes
-  Copyright 2014 Forbes Lindesay
-  
-  Permission is hereby granted, free of charge, to any person obtaining a copy
-  of this software and associated documentation files (the "Software"), to deal
-  in the Software without restriction, including without limitation the rights
-  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  copies of the Software, and to permit persons to whom the Software is
-  furnished to do so, subject to the following conditions:
-  
-  The above copyright notice and this permission notice shall be included in
-  all copies or substantial portions of the Software.
-  
-  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-  THE SOFTWARE.
-  
-  -------
-  
-  Patches from promise-polyfill@8.2.0 for use in QUnit:
-  
-  - 2021-01-09: Export as module only, don't change global scope as QUnit must not
-    affect the host context (e.g. people may test their application intentionally
-    with different or no polyfills and we must not affect that).
-  
-  - 2021-01-10: Avoid unconditional reference to setTimeout, which isn't supported
-    on SpiderMonkey (mozjs 68). Done by re-arranging the code so that we return early
-    (it has native support for Promise), instead of building an unused polyfill.
-  
-  - 2021-01-10: Add 'globalThis' to globalNS implementation to support SpiderMonkey.
-  */
-  var _default = function () {
-    'use strict';
-
-    /** @suppress {undefinedVars} */
-    let globalNS = function () {
-      // the only reliable means to get the global object is
-      // `Function('return this')()`
-      // However, this causes CSP violations in Chrome apps.
-      if (typeof globalThis !== 'undefined') {
-        return globalThis;
-      }
-      if (typeof self !== 'undefined') {
-        return self;
-      }
-      if (typeof window !== 'undefined') {
-        return window;
-      }
-      if (typeof global !== 'undefined') {
-        return global;
-      }
-      throw new Error('unable to locate global object');
-    }(); // Expose the polyfill if Promise is undefined or set to a
-    // non-function value. The latter can be due to a named HTMLElement
-    // being exposed by browsers for legacy reasons.
-    // https://github.com/taylorhakes/promise-polyfill/issues/114
-
-    if (typeof globalNS['Promise'] === 'function') {
-      return globalNS['Promise'];
-    }
-    /**
-     * @this {Promise}
-     */
-
-    function finallyConstructor(callback) {
-      let constructor = this.constructor;
-      return this.then(function (value) {
-        // @ts-ignore
-        return constructor.resolve(callback()).then(function () {
-          return value;
-        });
-      }, function (reason) {
-        // @ts-ignore
-        return constructor.resolve(callback()).then(function () {
-          // @ts-ignore
-          return constructor.reject(reason);
-        });
-      });
-    }
-    function allSettled(arr) {
-      let P = this;
-      return new P(function (resolve, reject) {
-        if (!(arr && typeof arr.length !== 'undefined')) {
-          return reject(new TypeError(typeof arr + ' ' + arr + ' is not iterable(cannot read property Symbol(Symbol.iterator))'));
-        }
-        let args = Array.prototype.slice.call(arr);
-        if (args.length === 0) return resolve([]);
-        let remaining = args.length;
-        function res(i, val) {
-          if (val && (typeof val === 'object' || typeof val === 'function')) {
-            let then = val.then;
-            if (typeof then === 'function') {
-              then.call(val, function (val) {
-                res(i, val);
-              }, function (e) {
-                args[i] = {
-                  status: 'rejected',
-                  reason: e
-                };
-                if (--remaining === 0) {
-                  resolve(args);
-                }
-              });
-              return;
-            }
-          }
-          args[i] = {
-            status: 'fulfilled',
-            value: val
-          };
-          if (--remaining === 0) {
-            resolve(args);
-          }
-        }
-        for (let i = 0; i < args.length; i++) {
-          res(i, args[i]);
-        }
-      });
-    } // Store setTimeout reference so promise-polyfill will be unaffected by
-    // other code modifying setTimeout (like sinon.useFakeTimers())
-
-    let setTimeoutFunc = setTimeout;
-    function isArray(x) {
-      return Boolean(x && typeof x.length !== 'undefined');
-    }
-    function noop() {} // Polyfill for Function.prototype.bind
-
-    function bind(fn, thisArg) {
-      return function () {
-        fn.apply(thisArg, arguments);
-      };
-    }
-    /**
-     * @constructor
-     * @param {Function} fn
-     */
-
-    function Promise(fn) {
-      if (!(this instanceof Promise)) throw new TypeError('Promises must be constructed via new');
-      if (typeof fn !== 'function') throw new TypeError('not a function');
-      /** @type {!number} */
-
-      this._state = 0;
-      /** @type {!boolean} */
-
-      this._handled = false;
-      /** @type {Promise|undefined} */
-
-      this._value = undefined;
-      /** @type {!Array<!Function>} */
-
-      this._deferreds = [];
-      doResolve(fn, this);
-    }
-    function handle(self, deferred) {
-      while (self._state === 3) {
-        self = self._value;
-      }
-      if (self._state === 0) {
-        self._deferreds.push(deferred);
-        return;
-      }
-      self._handled = true;
-      Promise._immediateFn(function () {
-        let cb = self._state === 1 ? deferred.onFulfilled : deferred.onRejected;
-        if (cb === null) {
-          (self._state === 1 ? resolve : reject)(deferred.promise, self._value);
-          return;
-        }
-        let ret;
-        try {
-          ret = cb(self._value);
-        } catch (e) {
-          reject(deferred.promise, e);
-          return;
-        }
-        resolve(deferred.promise, ret);
-      });
-    }
-    function resolve(self, newValue) {
-      try {
-        // Promise Resolution Procedure: https://github.com/promises-aplus/promises-spec#the-promise-resolution-procedure
-        if (newValue === self) throw new TypeError('A promise cannot be resolved with itself.');
-        if (newValue && (typeof newValue === 'object' || typeof newValue === 'function')) {
-          let then = newValue.then;
-          if (newValue instanceof Promise) {
-            self._state = 3;
-            self._value = newValue;
-            finale(self);
-            return;
-          } else if (typeof then === 'function') {
-            doResolve(bind(then, newValue), self);
-            return;
-          }
-        }
-        self._state = 1;
-        self._value = newValue;
-        finale(self);
-      } catch (e) {
-        reject(self, e);
-      }
-    }
-    function reject(self, newValue) {
-      self._state = 2;
-      self._value = newValue;
-      finale(self);
-    }
-    function finale(self) {
-      if (self._state === 2 && self._deferreds.length === 0) {
-        Promise._immediateFn(function () {
-          if (!self._handled) {
-            Promise._unhandledRejectionFn(self._value);
-          }
-        });
-      }
-      for (let i = 0, len = self._deferreds.length; i < len; i++) {
-        handle(self, self._deferreds[i]);
-      }
-      self._deferreds = null;
-    }
-    /**
-     * @constructor
-     */
-
-    function Handler(onFulfilled, onRejected, promise) {
-      this.onFulfilled = typeof onFulfilled === 'function' ? onFulfilled : null;
-      this.onRejected = typeof onRejected === 'function' ? onRejected : null;
-      this.promise = promise;
-    }
-    /**
-     * Take a potentially misbehaving resolver function and make sure
-     * onFulfilled and onRejected are only called once.
-     *
-     * Makes no guarantees about asynchrony.
-     */
-
-    function doResolve(fn, self) {
-      let done = false;
-      try {
-        fn(function (value) {
-          if (done) return;
-          done = true;
-          resolve(self, value);
-        }, function (reason) {
-          if (done) return;
-          done = true;
-          reject(self, reason);
-        });
-      } catch (ex) {
-        if (done) return;
-        done = true;
-        reject(self, ex);
-      }
-    }
-    Promise.prototype['catch'] = function (onRejected) {
-      return this.then(null, onRejected);
-    };
-    Promise.prototype.then = function (onFulfilled, onRejected) {
-      // @ts-ignore
-      let prom = new this.constructor(noop);
-      handle(this, new Handler(onFulfilled, onRejected, prom));
-      return prom;
-    };
-    Promise.prototype['finally'] = finallyConstructor;
-    Promise.all = function (arr) {
-      return new Promise(function (resolve, reject) {
-        if (!isArray(arr)) {
-          return reject(new TypeError('Promise.all accepts an array'));
-        }
-        let args = Array.prototype.slice.call(arr);
-        if (args.length === 0) return resolve([]);
-        let remaining = args.length;
-        function res(i, val) {
-          try {
-            if (val && (typeof val === 'object' || typeof val === 'function')) {
-              let then = val.then;
-              if (typeof then === 'function') {
-                then.call(val, function (val) {
-                  res(i, val);
-                }, reject);
-                return;
-              }
-            }
-            args[i] = val;
-            if (--remaining === 0) {
-              resolve(args);
-            }
-          } catch (ex) {
-            reject(ex);
-          }
-        }
-        for (let i = 0; i < args.length; i++) {
-          res(i, args[i]);
-        }
-      });
-    };
-    Promise.allSettled = allSettled;
-    Promise.resolve = function (value) {
-      if (value && typeof value === 'object' && value.constructor === Promise) {
-        return value;
-      }
-      return new Promise(function (resolve) {
-        resolve(value);
-      });
-    };
-    Promise.reject = function (value) {
-      return new Promise(function (_resolve, reject) {
-        reject(value);
-      });
-    };
-    Promise.race = function (arr) {
-      return new Promise(function (resolve, reject) {
-        if (!isArray(arr)) {
-          return reject(new TypeError('Promise.race accepts an array'));
-        }
-        for (let i = 0, len = arr.length; i < len; i++) {
-          Promise.resolve(arr[i]).then(resolve, reject);
-        }
-      });
-    }; // Use polyfill for setImmediate for performance gains
-
-    Promise._immediateFn =
-    // @ts-ignore
-    typeof setImmediate === 'function' && function (fn) {
-      // @ts-ignore
-      setImmediate(fn);
-    } || function (fn) {
-      setTimeoutFunc(fn, 0);
-    };
-    Promise._unhandledRejectionFn = function _unhandledRejectionFn(err) {
-      if (typeof console !== 'undefined' && console) {
-        console.warn('Possible Unhandled Promise Rejection:', err); // eslint-disable-line no-console
-      }
-    };
-
-    return Promise;
-  }();
-  _exports.default = _default;
-});
-define("@ember/test-helpers/-internal/render-settled", ["exports", "@embroider/macros/es-compat", "@embroider/macros/runtime", "ember"], function (_exports, _esCompat, _runtime, _ember) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"@embroider/macros",0,"@ember/renderer"eaimeta@70e063a35619d71f
   let renderSettled;
-  if ((0, _runtime.macroCondition)(false)) {
+  {
     //@ts-ignore
     renderSettled = (0, _esCompat.default)(require("@ember/renderer")).renderSettled;
-  } else if ((0, _runtime.macroCondition)(true)) {
-    //@ts-ignore
-    renderSettled = (0, _esCompat.default)(require("@ember/-internals/glimmer")).renderSettled;
-  } else if ((0, _runtime.macroCondition)(true)) {
-    renderSettled = _ember.default.__loader.require('@ember/-internals/glimmer').renderSettled;
-  } else {
-    renderSettled = _ember.default.__loader.require('ember-glimmer').renderSettled;
   }
-  var _default = renderSettled;
-  _exports.default = _default;
+  var _default = _exports.default = renderSettled;
 });
 define("@ember/test-helpers/-internal/warnings", ["exports", "@ember/debug", "@ember/test-helpers/-internal/is-promise"], function (_exports, _debug, _isPromise) {
   "use strict";
@@ -2914,9 +2534,11 @@ define("@ember/test-helpers/-internal/warnings", ["exports", "@ember/debug", "@e
   });
   _exports.getWarningsDuringCallbackForContext = getWarningsDuringCallbackForContext;
   _exports.getWarningsForContext = getWarningsForContext;
+  0; //eaimeta@70e063a35619d71f0,"@ember/debug",0,"@ember/test-helpers/-internal/is-promise"eaimeta@70e063a35619d71f
   // the WARNINGS data structure which is used to weakly associated warnings with
-  // the test context their occured within
+  // the test context their occurred within
   const WARNINGS = new WeakMap();
+
   /**
    *
    * Provides the list of warnings associated with a given base context;
@@ -2925,7 +2547,6 @@ define("@ember/test-helpers/-internal/warnings", ["exports", "@ember/debug", "@e
    * @param {BaseContext} [context] the test context
    * @return {Array<Warning>} the warnings associated with the corresponding BaseContext;
    */
-
   function getWarningsForContext(context) {
     if (!context) {
       throw new TypeError(`[@ember/test-helpers] could not get warnings for an invalid test context: '${context}'`);
@@ -2937,18 +2558,18 @@ define("@ember/test-helpers/-internal/warnings", ["exports", "@ember/debug", "@e
     }
     return warnings;
   }
+
   /**
    *
    * Provides the list of warnings associated with a given test context which
-   * occured only while a the provided callback is executed. This callback can be
-   * synchonous, or it can be an async function.
+   * occurred only while a the provided callback is executed. This callback can be
+   * synchronous, or it can be an async function.
    *
    * @private
    * @param {BaseContext} [context] the test context
-   * @param {CallableFunction} [callback] The callback that when executed will have its warnings recorded
-   * @return {Array<Warning>} The warnings associated with the corresponding baseContext which occured while the CallbackFunction was executed
+   * @param {Function} [callback] The callback that when executed will have its warnings recorded
+   * @return {Array<Warning>} The warnings associated with the corresponding baseContext which occurred while the CallbackFunction was executed
    */
-
   function getWarningsDuringCallbackForContext(context, callback) {
     if (!context) {
       throw new TypeError(`[@ember/test-helpers] could not get warnings for an invalid test context: '${context}'`);
@@ -2963,31 +2584,33 @@ define("@ember/test-helpers/-internal/warnings", ["exports", "@ember/debug", "@e
     } else {
       return warnings.slice(previousLength); // only return warnings created as a result of the callback
     }
-  } // This provides (when the environment supports) queryParam support for warnings:
+  }
+
+  // This provides (when the environment supports) queryParam support for warnings:
   // * squelch warnings by name via: `/tests/index.html?disabledWarnings=this-property-fallback,some-other-thing`
   // * enable a debuggger when a warning by a specific name is encountered via: `/tests/index.html?debugWarnings=some-other-thing` when the
-
   if (typeof URLSearchParams !== 'undefined') {
     const queryParams = new URLSearchParams(document.location.search.substring(1));
     const disabledWarnings = queryParams.get('disabledWarnings');
-    const debugWarnings = queryParams.get('debugWarnings'); // When using `/tests/index.html?disabledWarnings=this-property-fallback,some-other-thing`
-    // those warnings will be squelched
+    const debugWarnings = queryParams.get('debugWarnings');
 
+    // When using `/tests/index.html?disabledWarnings=this-property-fallback,some-other-thing`
+    // those warnings will be squelched
     if (disabledWarnings) {
       (0, _debug.registerWarnHandler)((message, options, next) => {
-        if (!disabledWarnings.includes(options.id)) {
+        if (!options || !disabledWarnings.includes(options.id)) {
           next.apply(null, [message, options]);
         }
       });
-    } // When using `/tests/index.html?debugWarnings=some-other-thing` when the
-    // `some-other-thing` warning is triggered, this `debugger` will be hit`
+    }
 
+    // When using `/tests/index.html?debugWarnings=some-other-thing` when the
+    // `some-other-thing` warning is triggered, this `debugger` will be hit`
     if (debugWarnings) {
       (0, _debug.registerWarnHandler)((message, options, next) => {
-        if (debugWarnings.includes(options.id)) {
+        if (options && debugWarnings.includes(options.id)) {
           debugger; // eslint-disable-line no-debugger
         }
-
         next.apply(null, [message, options]);
       });
     }
@@ -3000,36 +2623,30 @@ define("@ember/test-helpers/-tuple", ["exports"], function (_exports) {
     value: true
   });
   _exports.default = tuple;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
   // eslint-disable-next-line require-jsdoc
-  function tuple() {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
+  function tuple(...args) {
     return args;
   }
 });
-define("@ember/test-helpers/-utils", ["exports", "rsvp", "@ember/test-helpers/-internal/promise-polyfill", "@ember/test-helpers/dom/-is-form-control"], function (_exports, _rsvp, _promisePolyfill, _isFormControl) {
+define("@ember/test-helpers/-utils", ["exports", "@ember/test-helpers/dom/-is-form-control"], function (_exports, _isFormControl) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.futureTick = _exports.Promise = void 0;
+  _exports.futureTick = void 0;
   _exports.isDisabled = isDisabled;
   _exports.isNumeric = isNumeric;
   _exports.isVisible = isVisible;
   _exports.nextTick = void 0;
   _exports.runDestroyablesFor = runDestroyablesFor;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-is-form-control"eaimeta@70e063a35619d71f
   /* globals Promise */
-
-  const HAS_PROMISE = typeof Promise === 'function' &&
-  // @ts-ignore this is checking if someone has explicitly done `window.Promise = window.Promise || Ember.RSVP.Promise
-  Promise !== _rsvp.default.Promise;
-  const _Promise = HAS_PROMISE ? Promise : _promisePolyfill.default;
-  _exports.Promise = _Promise;
-  const nextTick = HAS_PROMISE ? cb => Promise.resolve().then(cb) : _rsvp.default.asap;
+  const nextTick = cb => Promise.resolve().then(cb);
   _exports.nextTick = nextTick;
-  const futureTick = setTimeout;
+  const futureTick = _exports.futureTick = setTimeout;
+
   /**
    Retrieves an array of destroyables from the specified property on the object
    provided, iterates that array invoking each function, then deleting the
@@ -3039,7 +2656,6 @@ define("@ember/test-helpers/-utils", ["exports", "rsvp", "@ember/test-helpers/-i
    @param {Object} object an object to search for the destroyable array within
    @param {string} property the property on the object that contains the destroyable array
   */
-  _exports.futureTick = futureTick;
   function runDestroyablesFor(object, property) {
     let destroyables = object[property];
     if (!destroyables) {
@@ -3050,6 +2666,7 @@ define("@ember/test-helpers/-utils", ["exports", "rsvp", "@ember/test-helpers/-i
     }
     delete object[property];
   }
+
   /**
    Returns whether the passed in string consists only of numeric characters.
   
@@ -3057,10 +2674,10 @@ define("@ember/test-helpers/-utils", ["exports", "rsvp", "@ember/test-helpers/-i
    @param {string} n input string
    @returns {boolean} whether the input string consists only of numeric characters
    */
-
   function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(Number(n));
   }
+
   /**
     Checks if an element is considered visible by the focus area spec.
   
@@ -3068,11 +2685,11 @@ define("@ember/test-helpers/-utils", ["exports", "rsvp", "@ember/test-helpers/-i
     @param {Element} element the element to check
     @returns {boolean} `true` when the element is visible, `false` otherwise
   */
-
   function isVisible(element) {
     let styles = window.getComputedStyle(element);
     return styles.display !== 'none' && styles.visibility !== 'hidden';
   }
+
   /**
     Checks if an element is disabled.
   
@@ -3080,7 +2697,6 @@ define("@ember/test-helpers/-utils", ["exports", "rsvp", "@ember/test-helpers/-i
     @param {Element} element the element to check
     @returns {boolean} `true` when the element is disabled, `false` otherwise
   */
-
   function isDisabled(element) {
     if ((0, _isFormControl.default)(element)) {
       return element.disabled;
@@ -3096,7 +2712,9 @@ define("@ember/test-helpers/application", ["exports", "@ember/test-helpers/resol
   });
   _exports.getApplication = getApplication;
   _exports.setApplication = setApplication;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/resolver"eaimeta@70e063a35619d71f
   let __application__;
+
   /**
     Stores the provided application instance so that tests being ran will be aware of the application under test.
   
@@ -3106,7 +2724,6 @@ define("@ember/test-helpers/application", ["exports", "@ember/test-helpers/resol
     @public
     @param {Ember.Application} application the application that will be tested
   */
-
   function setApplication(application) {
     __application__ = application;
     if (!(0, _resolver.getResolver)()) {
@@ -3117,24 +2734,25 @@ define("@ember/test-helpers/application", ["exports", "@ember/test-helpers/resol
       (0, _resolver.setResolver)(resolver);
     }
   }
+
   /**
     Retrieve the application instance stored by `setApplication`.
   
     @public
     @returns {Ember.Application} the previously stored application instance under test
   */
-
   function getApplication() {
     return __application__;
   }
 });
-define("@ember/test-helpers/build-owner", ["exports", "@ember/test-helpers/-utils", "@ember/test-helpers/-internal/build-registry"], function (_exports, _utils, _buildRegistry) {
+define("@ember/test-helpers/build-owner", ["exports", "@ember/test-helpers/-internal/build-registry"], function (_exports, _buildRegistry) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = buildOwner;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/-internal/build-registry"eaimeta@70e063a35619d71f
   /**
     Creates an "owner" (an object that either _is_ or duck-types like an
     `Ember.ApplicationInstance`) from the provided options.
@@ -3156,6 +2774,10 @@ define("@ember/test-helpers/build-owner", ["exports", "@ember/test-helpers/-util
   */
   function buildOwner(application, resolver) {
     if (application) {
+      // @ts-ignore: this type is correct and will check against Ember 4.12 or 5.1
+      // or later. However, the first round of preview types in Ember 4.8 does not
+      // include the `visit` API (it was missing for many years!) and therefore
+      // there is no way to make this assignable accross all supported versions.
       return application.boot().then(app => app.buildInstance().boot());
     }
     if (!resolver) {
@@ -3164,16 +2786,42 @@ define("@ember/test-helpers/build-owner", ["exports", "@ember/test-helpers/-util
     let {
       owner
     } = (0, _buildRegistry.default)(resolver);
-    return _utils.Promise.resolve(owner);
+    return Promise.resolve(owner);
   }
 });
-define("@ember/test-helpers/dom/-get-element", ["exports", "@ember/test-helpers/dom/get-root-element", "@ember/test-helpers/dom/-target"], function (_exports, _getRootElement, _target) {
+define("@ember/test-helpers/dom/-get-description", ["exports", "dom-element-descriptors"], function (_exports, _domElementDescriptors) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = getDescription;
+  0; //eaimeta@70e063a35619d71f0,"dom-element-descriptors"eaimeta@70e063a35619d71f
+  /**
+    Used internally by the DOM interaction helpers to get a description of a
+    target for debug/error messaging.
+  
+    @private
+    @param {Target} target the target
+    @returns {string} a description of the target
+  */
+  function getDescription(target) {
+    let data = (0, _domElementDescriptors.isDescriptor)(target) ? (0, _domElementDescriptors.lookupDescriptorData)(target) : null;
+    if (data) {
+      return data.description || '<unknown descriptor>';
+    } else {
+      return `${target}`;
+    }
+  }
+});
+define("@ember/test-helpers/dom/-get-element", ["exports", "@ember/test-helpers/dom/get-root-element", "@ember/test-helpers/dom/-target", "dom-element-descriptors"], function (_exports, _getRootElement, _target, _domElementDescriptors) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/get-root-element",0,"@ember/test-helpers/dom/-target",0,"dom-element-descriptors"eaimeta@70e063a35619d71f
   /**
     Used internally by the DOM interaction helpers to find one element.
   
@@ -3190,19 +2838,24 @@ define("@ember/test-helpers/dom/-get-element", ["exports", "@ember/test-helpers/
     } else if (target instanceof Window) {
       return target.document;
     } else {
-      throw new Error('Must use an element or a selector string');
+      let descriptorData = (0, _domElementDescriptors.lookupDescriptorData)(target);
+      if (descriptorData) {
+        return (0, _domElementDescriptors.resolveDOMElement)(descriptorData);
+      } else {
+        throw new Error('Must use an element, selector string, or DOM element descriptor');
+      }
     }
   }
-  var _default = getElement;
-  _exports.default = _default;
+  var _default = _exports.default = getElement;
 });
-define("@ember/test-helpers/dom/-get-elements", ["exports", "@ember/test-helpers/dom/get-root-element"], function (_exports, _getRootElement) {
+define("@ember/test-helpers/dom/-get-elements", ["exports", "dom-element-descriptors", "@ember/test-helpers/dom/get-root-element"], function (_exports, _domElementDescriptors, _getRootElement) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = getElements;
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"dom-element-descriptors",0,"@ember/test-helpers/dom/get-root-element"eaimeta@70e063a35619d71f
   /**
     Used internally by the DOM interaction helpers to find multiple elements.
   
@@ -3210,15 +2863,20 @@ define("@ember/test-helpers/dom/-get-elements", ["exports", "@ember/test-helpers
     @param {string} target the selector to retrieve
     @returns {NodeList} the matched elements
   */
-
   function getElements(target) {
     if (typeof target === 'string') {
       let rootElement = (0, _getRootElement.default)();
       return rootElement.querySelectorAll(target);
     } else {
-      throw new Error('Must use a selector string');
+      let descriptorData = (0, _domElementDescriptors.lookupDescriptorData)(target);
+      if (descriptorData) {
+        return (0, _domElementDescriptors.resolveDOMElements)(descriptorData);
+      } else {
+        throw new Error('Must use a selector string or DOM element descriptor');
+      }
     }
   }
+  var _default = _exports.default = getElements;
 });
 define("@ember/test-helpers/dom/-get-window-or-element", ["exports", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/-target"], function (_exports, _getElement, _target) {
   "use strict";
@@ -3227,6 +2885,7 @@ define("@ember/test-helpers/dom/-get-window-or-element", ["exports", "@ember/tes
     value: true
   });
   _exports.getWindowOrElement = getWindowOrElement;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-get-element",0,"@ember/test-helpers/dom/-target"eaimeta@70e063a35619d71f
   /**
     Used internally by the DOM interaction helpers to find either window or an element.
   
@@ -3234,7 +2893,6 @@ define("@ember/test-helpers/dom/-get-window-or-element", ["exports", "@ember/tes
     @param {string|Element} target the window, an element or selector to retrieve
     @returns {Element|Window} the target or selector
   */
-
   function getWindowOrElement(target) {
     if ((0, _target.isWindow)(target)) {
       return target;
@@ -3249,17 +2907,19 @@ define("@ember/test-helpers/dom/-guard-for-maxlength", ["exports"], function (_e
     value: true
   });
   _exports.default = guardForMaxlength;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
   // ref: https://html.spec.whatwg.org/multipage/input.html#concept-input-apply
   const constrainedInputTypes = ['text', 'search', 'url', 'tel', 'email', 'password'];
+
   /**
     @private
     @param {Element} element - the element to check
     @returns {boolean} `true` when the element should constrain input by the maxlength attribute, `false` otherwise
   */
-
   function isMaxLengthConstrained(element) {
     return !!Number(element.getAttribute('maxLength')) && (element instanceof HTMLTextAreaElement || element instanceof HTMLInputElement && constrainedInputTypes.indexOf(element.type) > -1);
   }
+
   /**
    * @private
    * @param {Element} element - the element to check
@@ -3267,7 +2927,6 @@ define("@ember/test-helpers/dom/-guard-for-maxlength", ["exports"], function (_e
    * @param {string} testHelper - the test helper context the guard is called from (for Error message)
    * @throws if `element` has `maxlength` & `value` exceeds `maxlength`
    */
-
   function guardForMaxlength(element, text, testHelper) {
     const maxlength = element.getAttribute('maxlength');
     if (isMaxLengthConstrained(element) && maxlength && text && text.length > Number(maxlength)) {
@@ -3282,21 +2941,20 @@ define("@ember/test-helpers/dom/-is-focusable", ["exports", "@ember/test-helpers
     value: true
   });
   _exports.default = isFocusable;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-is-form-control",0,"@ember/test-helpers/dom/-target"eaimeta@70e063a35619d71f
   // For reference:
   // https://html.spec.whatwg.org/multipage/interaction.html#the-tabindex-attribute
-
   const FOCUSABLE_TAGS = ['A', 'SUMMARY'];
-
   // eslint-disable-next-line require-jsdoc
   function isFocusableElement(element) {
     return FOCUSABLE_TAGS.indexOf(element.tagName) > -1;
   }
+
   /**
     @private
     @param {Element} element the element to check
     @returns {boolean} `true` when the element is focusable, `false` otherwise
   */
-
   function isFocusable(element) {
     if ((0, _target.isWindow)(element)) {
       return false;
@@ -3320,8 +2978,8 @@ define("@ember/test-helpers/dom/-is-form-control", ["exports", "@ember/test-help
     value: true
   });
   _exports.default = isFormControl;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-target"eaimeta@70e063a35619d71f
   const FORM_CONTROL_TAGS = ['INPUT', 'BUTTON', 'SELECT', 'TEXTAREA'];
-
   /**
     @private
     @param {Element} element the element to check
@@ -3338,12 +2996,12 @@ define("@ember/test-helpers/dom/-is-select-element", ["exports", "@ember/test-he
     value: true
   });
   _exports.default = isSelectElement;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-target"eaimeta@70e063a35619d71f
   /**
     @private
     @param {Element} element the element to check
     @returns {boolean} `true` when the element is a select element, `false` otherwise
   */
-
   function isSelectElement(element) {
     return !(0, _target.isDocument)(element) && element.tagName === 'SELECT';
   }
@@ -3356,6 +3014,7 @@ define("@ember/test-helpers/dom/-logging", ["exports"], function (_exports) {
   });
   _exports.elementToString = elementToString;
   _exports.log = log;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
   /**
    * Logs a debug message to the console if the `testHelperLogging` query
    * parameter is set.
@@ -3364,15 +3023,13 @@ define("@ember/test-helpers/dom/-logging", ["exports"], function (_exports) {
    * @param {string} helperName Name of the helper
    * @param {string|Element} target The target element or selector
    */
-  function log(helperName, target) {
+  function log(helperName, target, ...args) {
     if (loggingEnabled()) {
-      for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-        args[_key - 2] = arguments[_key];
-      }
       // eslint-disable-next-line no-console
       console.log(`${helperName}(${[elementToString(target), ...args.filter(Boolean)].join(', ')})`);
     }
   }
+
   /**
    * Returns whether the test helper logging is enabled or not via the
    * `testHelperLogging` query parameter.
@@ -3380,10 +3037,10 @@ define("@ember/test-helpers/dom/-logging", ["exports"], function (_exports) {
    * @private
    * @returns {boolean} true if enabled
    */
-
   function loggingEnabled() {
     return typeof location !== 'undefined' && location.search.indexOf('testHelperLogging') !== -1;
   }
+
   /**
    * This generates a human-readable description to a DOM element.
    *
@@ -3391,7 +3048,6 @@ define("@ember/test-helpers/dom/-logging", ["exports"], function (_exports) {
    * @param {*} el The element that should be described
    * @returns {string} A human-readable description
    */
-
   function elementToString(el) {
     let desc;
     if (el instanceof NodeList) {
@@ -3429,19 +3085,23 @@ define("@ember/test-helpers/dom/-target", ["exports"], function (_exports) {
   _exports.isDocument = isDocument;
   _exports.isElement = isElement;
   _exports.isWindow = isWindow;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
   // eslint-disable-next-line require-jsdoc
   function isElement(target) {
-    return target.nodeType === Node.ELEMENT_NODE;
-  } // eslint-disable-next-line require-jsdoc
+    return target !== null && typeof target === 'object' && Reflect.get(target, 'nodeType') === Node.ELEMENT_NODE;
+  }
 
+  // eslint-disable-next-line require-jsdoc
   function isWindow(target) {
     return target instanceof Window;
-  } // eslint-disable-next-line require-jsdoc
+  }
 
+  // eslint-disable-next-line require-jsdoc
   function isDocument(target) {
-    return target.nodeType === Node.DOCUMENT_NODE;
-  } // eslint-disable-next-line require-jsdoc
+    return target !== null && typeof target === 'object' && Reflect.get(target, 'nodeType') === Node.DOCUMENT_NODE;
+  }
 
+  // eslint-disable-next-line require-jsdoc
   function isContentEditable(element) {
     return 'isContentEditable' in element && element.isContentEditable;
   }
@@ -3453,6 +3113,7 @@ define("@ember/test-helpers/dom/-to-array", ["exports"], function (_exports) {
     value: true
   });
   _exports.default = toArray;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
   /**
     @private
     @param {NodeList} nodelist the nodelist to convert to an array
@@ -3466,7 +3127,7 @@ define("@ember/test-helpers/dom/-to-array", ["exports"], function (_exports) {
     return array;
   }
 });
-define("@ember/test-helpers/dom/blur", ["exports", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/settled", "@ember/test-helpers/-utils", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/dom/-is-focusable", "@ember/test-helpers/-internal/helper-hooks"], function (_exports, _getElement, _fireEvent, _settled, _utils, _logging, _isFocusable, _helperHooks) {
+define("@ember/test-helpers/dom/blur", ["exports", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/settled", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/dom/-is-focusable", "@ember/test-helpers/helper-hooks", "@ember/test-helpers/dom/-get-description"], function (_exports, _getElement, _fireEvent, _settled, _logging, _isFocusable, _helperHooks, _getDescription) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -3474,18 +3135,18 @@ define("@ember/test-helpers/dom/blur", ["exports", "@ember/test-helpers/dom/-get
   });
   _exports.__blur__ = __blur__;
   _exports.default = blur;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-get-element",0,"@ember/test-helpers/dom/fire-event",0,"@ember/test-helpers/settled",0,"@ember/test-helpers/dom/-logging",0,"@ember/test-helpers/dom/-is-focusable",0,"@ember/test-helpers/helper-hooks",0,"@ember/test-helpers/dom/-get-description"eaimeta@70e063a35619d71f
   (0, _helperHooks.registerHook)('blur', 'start', target => {
     (0, _logging.log)('blur', target);
   });
+
   /**
     @private
     @param {Element} element the element to trigger events on
     @param {Element} relatedTarget the element that is focused after blur
     @return {Promise<Event | void>} resolves when settled
   */
-
-  function __blur__(element) {
-    let relatedTarget = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  function __blur__(element, relatedTarget = null) {
     if (!(0, _isFocusable.default)(element)) {
       throw new Error(`${element} is not focusable`);
     }
@@ -3495,18 +3156,20 @@ define("@ember/test-helpers/dom/blur", ["exports", "@ember/test-helpers/dom/-get
       // makes `document.activeElement` be `body`.
       // If the browser is focused, it also fires a blur event
       element.blur();
-    } // Chrome/Firefox does not trigger the `blur` event if the window
+    }
+
+    // Chrome/Firefox does not trigger the `blur` event if the window
     // does not have focus. If the document does not have focus then
     // fire `blur` event via native event.
-
     let options = {
       relatedTarget
     };
-    return browserIsNotFocused || needsCustomEventOptions ? _utils.Promise.resolve().then(() => (0, _fireEvent.default)(element, 'blur', {
+    return browserIsNotFocused || needsCustomEventOptions ? Promise.resolve().then(() => (0, _fireEvent.default)(element, 'blur', {
       bubbles: false,
       ...options
-    })).then(() => (0, _fireEvent.default)(element, 'focusout', options)) : _utils.Promise.resolve();
+    })).then(() => (0, _fireEvent.default)(element, 'focusout', options)) : Promise.resolve();
   }
+
   /**
     Unfocus the specified target.
   
@@ -3522,7 +3185,7 @@ define("@ember/test-helpers/dom/blur", ["exports", "@ember/test-helpers/dom/-get
     to continue to emulate how actual browsers handle unfocusing a given element.
   
     @public
-    @param {string|Element} [target=document.activeElement] the element or selector to unfocus
+    @param {string|Element|IDOMElementDescriptor} [target=document.activeElement] the element, selector, or descriptor to unfocus
     @return {Promise<void>} resolves when settled
   
     @example
@@ -3532,19 +3195,18 @@ define("@ember/test-helpers/dom/blur", ["exports", "@ember/test-helpers/dom/-get
   
     blur('input');
   */
-
-  function blur() {
-    let target = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.activeElement;
-    return _utils.Promise.resolve().then(() => (0, _helperHooks.runHooks)('blur', 'start', target)).then(() => {
+  function blur(target = document.activeElement) {
+    return Promise.resolve().then(() => (0, _helperHooks.runHooks)('blur', 'start', target)).then(() => {
       let element = (0, _getElement.default)(target);
       if (!element) {
-        throw new Error(`Element not found when calling \`blur('${target}')\`.`);
+        let description = (0, _getDescription.default)(target);
+        throw new Error(`Element not found when calling \`blur('${description}')\`.`);
       }
       return __blur__(element).then(() => (0, _settled.default)());
     }).then(() => (0, _helperHooks.runHooks)('blur', 'end', target));
   }
 });
-define("@ember/test-helpers/dom/click", ["exports", "@ember/test-helpers/dom/-get-window-or-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/dom/focus", "@ember/test-helpers/settled", "@ember/test-helpers/-utils", "@ember/test-helpers/dom/-is-form-control", "@ember/test-helpers/dom/-target", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/-internal/helper-hooks"], function (_exports, _getWindowOrElement, _fireEvent, _focus, _settled, _utils, _isFormControl, _target, _logging, _helperHooks) {
+define("@ember/test-helpers/dom/click", ["exports", "@ember/test-helpers/dom/-get-window-or-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/dom/focus", "@ember/test-helpers/settled", "@ember/test-helpers/dom/-is-form-control", "@ember/test-helpers/dom/-target", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/helper-hooks", "@ember/test-helpers/dom/-get-description"], function (_exports, _getWindowOrElement, _fireEvent, _focus, _settled, _isFormControl, _target, _logging, _helperHooks, _getDescription) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -3553,30 +3215,32 @@ define("@ember/test-helpers/dom/click", ["exports", "@ember/test-helpers/dom/-ge
   _exports.DEFAULT_CLICK_OPTIONS = void 0;
   _exports.__click__ = __click__;
   _exports.default = click;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-get-window-or-element",0,"@ember/test-helpers/dom/fire-event",0,"@ember/test-helpers/dom/focus",0,"@ember/test-helpers/settled",0,"@ember/test-helpers/dom/-is-form-control",0,"@ember/test-helpers/dom/-target",0,"@ember/test-helpers/dom/-logging",0,"@ember/test-helpers/helper-hooks",0,"@ember/test-helpers/dom/-get-description"eaimeta@70e063a35619d71f
   const PRIMARY_BUTTON = 1;
   const MAIN_BUTTON_PRESSED = 0;
   (0, _helperHooks.registerHook)('click', 'start', target => {
     (0, _logging.log)('click', target);
   });
+
   /**
    * Represent a particular mouse button being clicked.
    * See https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/buttons for available options.
    */
-
-  const DEFAULT_CLICK_OPTIONS = {
+  const DEFAULT_CLICK_OPTIONS = _exports.DEFAULT_CLICK_OPTIONS = {
     buttons: PRIMARY_BUTTON,
     button: MAIN_BUTTON_PRESSED
   };
+
   /**
     @private
     @param {Element} element the element to click on
     @param {MouseEventInit} options the options to be merged into the mouse events
     @return {Promise<Event | void>} resolves when settled
   */
-  _exports.DEFAULT_CLICK_OPTIONS = DEFAULT_CLICK_OPTIONS;
   function __click__(element, options) {
-    return _utils.Promise.resolve().then(() => (0, _fireEvent.default)(element, 'mousedown', options)).then(mouseDownEvent => !(0, _target.isWindow)(element) && !mouseDownEvent?.defaultPrevented ? (0, _focus.__focus__)(element) : _utils.Promise.resolve()).then(() => (0, _fireEvent.default)(element, 'mouseup', options)).then(() => (0, _fireEvent.default)(element, 'click', options));
+    return Promise.resolve().then(() => (0, _fireEvent.default)(element, 'mousedown', options)).then(mouseDownEvent => !(0, _target.isWindow)(element) && !mouseDownEvent?.defaultPrevented ? (0, _focus.__focus__)(element) : Promise.resolve()).then(() => (0, _fireEvent.default)(element, 'mouseup', options)).then(() => (0, _fireEvent.default)(element, 'click', options));
   }
+
   /**
     Clicks on the specified target.
   
@@ -3602,10 +3266,10 @@ define("@ember/test-helpers/dom/click", ["exports", "@ember/test-helpers/dom/-ge
     to continue to emulate how actual browsers handle clicking a given element.
   
     Use the `options` hash to change the parameters of the [MouseEvents](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/MouseEvent).
-    You can use this to specifiy modifier keys as well.
+    You can use this to specify modifier keys as well.
   
     @public
-    @param {string|Element} target the element or selector to click on
+    @param {string|Element|IDOMElementDescriptor} target the element, selector, or descriptor to click on
     @param {MouseEventInit} _options the options to be merged into the mouse events.
     @return {Promise<void>} resolves when settled
   
@@ -3622,20 +3286,19 @@ define("@ember/test-helpers/dom/click", ["exports", "@ember/test-helpers/dom/-ge
   
     click('button', { shiftKey: true });
   */
-
-  function click(target) {
-    let _options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  function click(target, _options = {}) {
     let options = {
       ...DEFAULT_CLICK_OPTIONS,
       ..._options
     };
-    return _utils.Promise.resolve().then(() => (0, _helperHooks.runHooks)('click', 'start', target, _options)).then(() => {
+    return Promise.resolve().then(() => (0, _helperHooks.runHooks)('click', 'start', target, _options)).then(() => {
       if (!target) {
-        throw new Error('Must pass an element or selector to `click`.');
+        throw new Error('Must pass an element, selector, or descriptor to `click`.');
       }
       let element = (0, _getWindowOrElement.getWindowOrElement)(target);
       if (!element) {
-        throw new Error(`Element not found when calling \`click('${target}')\`.`);
+        let description = (0, _getDescription.default)(target);
+        throw new Error(`Element not found when calling \`click('${description}')\`.`);
       }
       if ((0, _isFormControl.default)(element) && element.disabled) {
         throw new Error(`Can not \`click\` disabled ${element}`);
@@ -3644,7 +3307,7 @@ define("@ember/test-helpers/dom/click", ["exports", "@ember/test-helpers/dom/-ge
     }).then(() => (0, _helperHooks.runHooks)('click', 'end', target, _options));
   }
 });
-define("@ember/test-helpers/dom/double-click", ["exports", "@ember/test-helpers/dom/-get-window-or-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/dom/focus", "@ember/test-helpers/settled", "@ember/test-helpers/-utils", "@ember/test-helpers/dom/click", "@ember/test-helpers/dom/-target", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/dom/-is-form-control", "@ember/test-helpers/-internal/helper-hooks"], function (_exports, _getWindowOrElement, _fireEvent, _focus, _settled, _utils, _click, _target, _logging, _isFormControl, _helperHooks) {
+define("@ember/test-helpers/dom/double-click", ["exports", "@ember/test-helpers/dom/-get-window-or-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/dom/focus", "@ember/test-helpers/settled", "@ember/test-helpers/dom/click", "@ember/test-helpers/dom/-target", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/dom/-is-form-control", "@ember/test-helpers/helper-hooks", "@ember/test-helpers/dom/-get-description"], function (_exports, _getWindowOrElement, _fireEvent, _focus, _settled, _click, _target, _logging, _isFormControl, _helperHooks, _getDescription) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -3652,21 +3315,23 @@ define("@ember/test-helpers/dom/double-click", ["exports", "@ember/test-helpers/
   });
   _exports.__doubleClick__ = __doubleClick__;
   _exports.default = doubleClick;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-get-window-or-element",0,"@ember/test-helpers/dom/fire-event",0,"@ember/test-helpers/dom/focus",0,"@ember/test-helpers/settled",0,"@ember/test-helpers/dom/click",0,"@ember/test-helpers/dom/-target",0,"@ember/test-helpers/dom/-logging",0,"@ember/test-helpers/dom/-is-form-control",0,"@ember/test-helpers/helper-hooks",0,"@ember/test-helpers/dom/-get-description"eaimeta@70e063a35619d71f
   (0, _helperHooks.registerHook)('doubleClick', 'start', target => {
     (0, _logging.log)('doubleClick', target);
   });
+
   /**
     @private
     @param {Element} element the element to double-click on
     @param {MouseEventInit} options the options to be merged into the mouse events
     @returns {Promise<Event | void>} resolves when settled
   */
-
   function __doubleClick__(element, options) {
-    return _utils.Promise.resolve().then(() => (0, _fireEvent.default)(element, 'mousedown', options)).then(mouseDownEvent => {
-      return !(0, _target.isWindow)(element) && !mouseDownEvent?.defaultPrevented ? (0, _focus.__focus__)(element) : _utils.Promise.resolve();
+    return Promise.resolve().then(() => (0, _fireEvent.default)(element, 'mousedown', options)).then(mouseDownEvent => {
+      return !(0, _target.isWindow)(element) && !mouseDownEvent?.defaultPrevented ? (0, _focus.__focus__)(element) : Promise.resolve();
     }).then(() => (0, _fireEvent.default)(element, 'mouseup', options)).then(() => (0, _fireEvent.default)(element, 'click', options)).then(() => (0, _fireEvent.default)(element, 'mousedown', options)).then(() => (0, _fireEvent.default)(element, 'mouseup', options)).then(() => (0, _fireEvent.default)(element, 'click', options)).then(() => (0, _fireEvent.default)(element, 'dblclick', options));
   }
+
   /**
     Double-clicks on the specified target.
   
@@ -3702,7 +3367,7 @@ define("@ember/test-helpers/dom/double-click", ["exports", "@ember/test-helpers/
     Use the `options` hash to change the parameters of the [MouseEvents](https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/MouseEvent).
   
     @public
-    @param {string|Element} target the element or selector to double-click on
+    @param {string|Element|IDOMElementDescriptor} target the element, selector, or descriptor to double-click on
     @param {MouseEventInit} _options the options to be merged into the mouse events
     @return {Promise<void>} resolves when settled
   
@@ -3720,20 +3385,19 @@ define("@ember/test-helpers/dom/double-click", ["exports", "@ember/test-helpers/
   
     doubleClick('button', { shiftKey: true });
   */
-
-  function doubleClick(target) {
-    let _options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  function doubleClick(target, _options = {}) {
     let options = {
       ..._click.DEFAULT_CLICK_OPTIONS,
       ..._options
     };
-    return _utils.Promise.resolve().then(() => (0, _helperHooks.runHooks)('doubleClick', 'start', target, _options)).then(() => {
+    return Promise.resolve().then(() => (0, _helperHooks.runHooks)('doubleClick', 'start', target, _options)).then(() => {
       if (!target) {
-        throw new Error('Must pass an element or selector to `doubleClick`.');
+        throw new Error('Must pass an element, selector, or descriptor to `doubleClick`.');
       }
       let element = (0, _getWindowOrElement.getWindowOrElement)(target);
       if (!element) {
-        throw new Error(`Element not found when calling \`doubleClick('${target}')\`.`);
+        let description = (0, _getDescription.default)(target);
+        throw new Error(`Element not found when calling \`doubleClick('${description}')\`.`);
       }
       if ((0, _isFormControl.default)(element) && element.disabled) {
         throw new Error(`Can not \`doubleClick\` disabled ${element}`);
@@ -3742,25 +3406,27 @@ define("@ember/test-helpers/dom/double-click", ["exports", "@ember/test-helpers/
     }).then(() => (0, _helperHooks.runHooks)('doubleClick', 'end', target, _options));
   }
 });
-define("@ember/test-helpers/dom/fill-in", ["exports", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/-is-form-control", "@ember/test-helpers/dom/-guard-for-maxlength", "@ember/test-helpers/dom/focus", "@ember/test-helpers/settled", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/-utils", "@ember/test-helpers/dom/-target", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/-internal/helper-hooks"], function (_exports, _getElement, _isFormControl, _guardForMaxlength, _focus, _settled, _fireEvent, _utils, _target, _logging, _helperHooks) {
+define("@ember/test-helpers/dom/fill-in", ["exports", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/-is-form-control", "@ember/test-helpers/dom/-guard-for-maxlength", "@ember/test-helpers/dom/focus", "@ember/test-helpers/settled", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/dom/-target", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/helper-hooks", "@ember/test-helpers/dom/-get-description"], function (_exports, _getElement, _isFormControl, _guardForMaxlength, _focus, _settled, _fireEvent, _target, _logging, _helperHooks, _getDescription) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = fillIn;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-get-element",0,"@ember/test-helpers/dom/-is-form-control",0,"@ember/test-helpers/dom/-guard-for-maxlength",0,"@ember/test-helpers/dom/focus",0,"@ember/test-helpers/settled",0,"@ember/test-helpers/dom/fire-event",0,"@ember/test-helpers/dom/-target",0,"@ember/test-helpers/dom/-logging",0,"@ember/test-helpers/helper-hooks",0,"@ember/test-helpers/dom/-get-description"eaimeta@70e063a35619d71f
   (0, _helperHooks.registerHook)('fillIn', 'start', (target, text) => {
     (0, _logging.log)('fillIn', target, text);
   });
+
   /**
     Fill the provided text into the `value` property (or set `.innerHTML` when
     the target is a content editable element) then trigger `change` and `input`
     events on the specified target.
   
     @public
-    @param {string|Element} target the element or selector to enter text into
+    @param {string|Element|IDOMElementDescriptor} target the element, selector, or descriptor to enter text into
     @param {string} text the text to fill into the target element
-    @return {Promise<Element | void>} resolves when the application is settled
+    @return {Promise<void>} resolves when the application is settled
   
     @example
     <caption>
@@ -3769,25 +3435,25 @@ define("@ember/test-helpers/dom/fill-in", ["exports", "@ember/test-helpers/dom/-
   
     fillIn('input', 'hello world');
   */
-
   function fillIn(target, text) {
-    return _utils.Promise.resolve().then(() => (0, _helperHooks.runHooks)('fillIn', 'start', target, text)).then(() => {
+    return Promise.resolve().then(() => (0, _helperHooks.runHooks)('fillIn', 'start', target, text)).then(() => {
       if (!target) {
-        throw new Error('Must pass an element or selector to `fillIn`.');
+        throw new Error('Must pass an element, selector, or descriptor to `fillIn`.');
       }
       let element = (0, _getElement.default)(target);
       if (!element) {
-        throw new Error(`Element not found when calling \`fillIn('${target}')\`.`);
+        let description = (0, _getDescription.default)(target);
+        throw new Error(`Element not found when calling \`fillIn('${description}')\`.`);
       }
       if (typeof text === 'undefined' || text === null) {
         throw new Error('Must provide `text` when calling `fillIn`.');
       }
       if ((0, _isFormControl.default)(element)) {
         if (element.disabled) {
-          throw new Error(`Can not \`fillIn\` disabled '${target}'.`);
+          throw new Error(`Can not \`fillIn\` disabled '${(0, _getDescription.default)(target)}'.`);
         }
         if ('readOnly' in element && element.readOnly) {
-          throw new Error(`Can not \`fillIn\` readonly '${target}'.`);
+          throw new Error(`Can not \`fillIn\` readonly '${(0, _getDescription.default)(target)}'.`);
         }
         (0, _guardForMaxlength.default)(element, text, 'fillIn');
         return (0, _focus.__focus__)(element).then(() => {
@@ -3805,13 +3471,19 @@ define("@ember/test-helpers/dom/fill-in", ["exports", "@ember/test-helpers/dom/-
     }).then(element => (0, _fireEvent.default)(element, 'input').then(() => (0, _fireEvent.default)(element, 'change')).then(_settled.default)).then(() => (0, _helperHooks.runHooks)('fillIn', 'end', target, text));
   }
 });
-define("@ember/test-helpers/dom/find-all", ["exports", "@ember/test-helpers/dom/-get-elements", "@ember/test-helpers/ie-11-polyfills"], function (_exports, _getElements, _ie11Polyfills) {
+define("@ember/test-helpers/dom/find-all", ["exports", "@ember/test-helpers/dom/-get-elements"], function (_exports, _getElements) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = findAll;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-get-elements"eaimeta@70e063a35619d71f
+  // Derived, with modification, from the types for `querySelectorAll`. These
+  // would simply be defined as a tweaked re-export as `querySelector` is, but it
+  // is non-trivial (to say the least!) to preserve overloads like this while also
+  // changing the return type (from `NodeListOf` to `Array`).
+
   /**
     Find all elements matched by the given selector. Similar to calling
     `querySelectorAll()` on the test root element, but returns an array instead
@@ -3820,8 +3492,13 @@ define("@ember/test-helpers/dom/find-all", ["exports", "@ember/test-helpers/dom/
     @public
     @param {string} selector the selector to search for
     @return {Array} array of matched elements
+  
+    @example
+    <caption>
+      Find all of the elements matching '.my-selector'.
+    </caption>
+    findAll('.my-selector');
   */
-
   function findAll(selector) {
     if (!selector) {
       throw new Error('Must pass a selector to `findAll`.');
@@ -3829,7 +3506,7 @@ define("@ember/test-helpers/dom/find-all", ["exports", "@ember/test-helpers/dom/
     if (arguments.length > 1) {
       throw new Error('The `findAll` test helper only takes a single argument.');
     }
-    return (0, _ie11Polyfills.toArray)((0, _getElements.default)(selector));
+    return Array.from((0, _getElements.default)(selector));
   }
 });
 define("@ember/test-helpers/dom/find", ["exports", "@ember/test-helpers/dom/-get-element"], function (_exports, _getElement) {
@@ -3839,15 +3516,23 @@ define("@ember/test-helpers/dom/find", ["exports", "@ember/test-helpers/dom/-get
     value: true
   });
   _exports.default = find;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-get-element"eaimeta@70e063a35619d71f
+  // Derived from `querySelector` types.
+
   /**
     Find the first element matched by the given selector. Equivalent to calling
     `querySelector()` on the test root element.
   
     @public
     @param {string} selector the selector to search for
-    @return {Element} matched element or null
+    @return {Element | null} matched element or null
+  
+    @example
+    <caption>
+      Finding the first element with id 'foo'
+    </caption>
+    find('#foo');
   */
-
   function find(selector) {
     if (!selector) {
       throw new Error('Must pass a selector to `find`.');
@@ -3858,7 +3543,7 @@ define("@ember/test-helpers/dom/find", ["exports", "@ember/test-helpers/dom/-get
     return (0, _getElement.default)(selector);
   }
 });
-define("@ember/test-helpers/dom/fire-event", ["exports", "@ember/test-helpers/dom/-target", "@ember/test-helpers/-tuple", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/-internal/helper-hooks"], function (_exports, _target, _tuple, _logging, _helperHooks) {
+define("@ember/test-helpers/dom/fire-event", ["exports", "@ember/test-helpers/dom/-target", "@ember/test-helpers/-tuple", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/helper-hooks"], function (_exports, _target, _tuple, _logging, _helperHooks) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -3871,10 +3556,12 @@ define("@ember/test-helpers/dom/fire-event", ["exports", "@ember/test-helpers/do
   _exports.isFileSelectionInput = isFileSelectionInput;
   _exports.isKeyboardEventType = isKeyboardEventType;
   _exports.isMouseEventType = isMouseEventType;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-target",0,"@ember/test-helpers/-tuple",0,"@ember/test-helpers/dom/-logging",0,"@ember/test-helpers/helper-hooks"eaimeta@70e063a35619d71f
   (0, _helperHooks.registerHook)('fireEvent', 'start', target => {
     (0, _logging.log)('fireEvent', target);
-  }); // eslint-disable-next-line require-jsdoc
+  });
 
+  // eslint-disable-next-line require-jsdoc
   const MOUSE_EVENT_CONSTRUCTOR = (() => {
     try {
       new MouseEvent('test');
@@ -3887,9 +3574,8 @@ define("@ember/test-helpers/dom/fire-event", ["exports", "@ember/test-helpers/do
     bubbles: true,
     cancelable: true
   };
-  const KEYBOARD_EVENT_TYPES = (0, _tuple.default)('keydown', 'keypress', 'keyup');
+  const KEYBOARD_EVENT_TYPES = _exports.KEYBOARD_EVENT_TYPES = (0, _tuple.default)('keydown', 'keypress', 'keyup');
   // eslint-disable-next-line require-jsdoc
-  _exports.KEYBOARD_EVENT_TYPES = KEYBOARD_EVENT_TYPES;
   function isKeyboardEventType(eventType) {
     return KEYBOARD_EVENT_TYPES.indexOf(eventType) > -1;
   }
@@ -3902,12 +3588,12 @@ define("@ember/test-helpers/dom/fire-event", ["exports", "@ember/test-helpers/do
   // eslint-disable-next-line require-jsdoc
   function isFileSelectionEventType(eventType) {
     return FILE_SELECTION_EVENT_TYPES.indexOf(eventType) > -1;
-  } // eslint-disable-next-line require-jsdoc
+  }
 
+  // eslint-disable-next-line require-jsdoc
   function isFileSelectionInput(element) {
     return element.files;
   }
-
   /**
     Internal helper used to build and dispatch events throughout the other DOM helpers.
   
@@ -3917,8 +3603,7 @@ define("@ember/test-helpers/dom/fire-event", ["exports", "@ember/test-helpers/do
     @param {Object} [options] additional properties to be set on the event
     @returns {Event} the event that was dispatched
   */
-  function fireEvent(element, eventType) {
-    let options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  function fireEvent(element, eventType, options = {}) {
     return Promise.resolve().then(() => (0, _helperHooks.runHooks)('fireEvent', 'start', element)).then(() => (0, _helperHooks.runHooks)(`fireEvent:${eventType}`, 'start', element)).then(() => {
       if (!element) {
         throw new Error('Must pass an element to `fireEvent`');
@@ -3958,26 +3643,25 @@ define("@ember/test-helpers/dom/fire-event", ["exports", "@ember/test-helpers/do
       return event;
     }).then(event => (0, _helperHooks.runHooks)(`fireEvent:${eventType}`, 'end', element).then(() => event)).then(event => (0, _helperHooks.runHooks)('fireEvent', 'end', element).then(() => event));
   }
-  var _default = fireEvent; // eslint-disable-next-line require-jsdoc
-  _exports.default = _default;
-  function buildBasicEvent(type) {
-    let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var _default = _exports.default = fireEvent; // eslint-disable-next-line require-jsdoc
+  function buildBasicEvent(type, options = {}) {
     let event = document.createEvent('Events');
     let bubbles = options.bubbles !== undefined ? options.bubbles : true;
     let cancelable = options.cancelable !== undefined ? options.cancelable : true;
     delete options.bubbles;
-    delete options.cancelable; // bubbles and cancelable are readonly, so they can be
-    // set when initializing event
+    delete options.cancelable;
 
+    // bubbles and cancelable are readonly, so they can be
+    // set when initializing event
     event.initEvent(type, bubbles, cancelable);
     for (let prop in options) {
       event[prop] = options[prop];
     }
     return event;
-  } // eslint-disable-next-line require-jsdoc
+  }
 
-  function buildMouseEvent(type) {
-    let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  // eslint-disable-next-line require-jsdoc
+  function buildMouseEvent(type, options = {}) {
     let event;
     let eventOpts = {
       view: window,
@@ -3995,11 +3679,11 @@ define("@ember/test-helpers/dom/fire-event", ["exports", "@ember/test-helpers/do
       }
     }
     return event;
-  } // @private
-  // eslint-disable-next-line require-jsdoc
+  }
 
-  function _buildKeyboardEvent(type) {
-    let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  // @private
+  // eslint-disable-next-line require-jsdoc
+  function _buildKeyboardEvent(type, options = {}) {
     let eventOpts = {
       ...DEFAULT_EVENT_OPTIONS,
       ...options
@@ -4007,7 +3691,9 @@ define("@ember/test-helpers/dom/fire-event", ["exports", "@ember/test-helpers/do
     let event;
     let eventMethodName;
     try {
-      event = new KeyboardEvent(type, eventOpts); // Property definitions are required for B/C for keyboard event usage
+      event = new KeyboardEvent(type, eventOpts);
+
+      // Property definitions are required for B/C for keyboard event usage
       // If this properties are not defined, when listening for key events
       // keyCode/which will be 0. Also, keyCode and which now are string
       // and if app compare it with === with integer key definitions,
@@ -4015,7 +3701,6 @@ define("@ember/test-helpers/dom/fire-event", ["exports", "@ember/test-helpers/do
       //
       // https://w3c.github.io/uievents/#interface-keyboardevent
       // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent
-
       Object.defineProperty(event, 'keyCode', {
         get() {
           return parseInt(eventOpts.keyCode);
@@ -4027,18 +3712,21 @@ define("@ember/test-helpers/dom/fire-event", ["exports", "@ember/test-helpers/do
         }
       });
       return event;
-    } catch (e) {// left intentionally blank
+    } catch (e) {
+      // left intentionally blank
     }
     try {
       event = document.createEvent('KeyboardEvents');
       eventMethodName = 'initKeyboardEvent';
-    } catch (e) {// left intentionally blank
+    } catch (e) {
+      // left intentionally blank
     }
     if (!event) {
       try {
         event = document.createEvent('KeyEvents');
         eventMethodName = 'initKeyEvent';
-      } catch (e) {// left intentionally blank
+      } catch (e) {
+        // left intentionally blank
       }
     }
     if (event && eventMethodName) {
@@ -4047,10 +3735,10 @@ define("@ember/test-helpers/dom/fire-event", ["exports", "@ember/test-helpers/do
       event = buildBasicEvent(type, options);
     }
     return event;
-  } // eslint-disable-next-line require-jsdoc
+  }
 
-  function buildFileEvent(type, element) {
-    let options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  // eslint-disable-next-line require-jsdoc
+  function buildFileEvent(type, element, options = {}) {
     let event = buildBasicEvent(type);
     let files = options.files;
     if (Array.isArray(options)) {
@@ -4075,9 +3763,10 @@ define("@ember/test-helpers/dom/fire-event", ["exports", "@ember/test-helpers/do
           return valueProp.get.call(element);
         },
         set(value) {
-          valueProp.set.call(element, value); // We are sure that the value is empty here.
-          // For a non-empty value the original setter must raise an exception.
+          valueProp.set.call(element, value);
 
+          // We are sure that the value is empty here.
+          // For a non-empty value the original setter must raise an exception.
           Object.defineProperty(element, 'files', {
             configurable: true,
             value: []
@@ -4091,7 +3780,7 @@ define("@ember/test-helpers/dom/fire-event", ["exports", "@ember/test-helpers/do
     return event;
   }
 });
-define("@ember/test-helpers/dom/focus", ["exports", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/settled", "@ember/test-helpers/dom/-is-focusable", "@ember/test-helpers/-utils", "@ember/test-helpers/dom/-target", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/-internal/helper-hooks", "@ember/test-helpers/dom/blur"], function (_exports, _getElement, _fireEvent, _settled, _isFocusable, _utils, _target, _logging, _helperHooks, _blur) {
+define("@ember/test-helpers/dom/focus", ["exports", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/settled", "@ember/test-helpers/dom/-is-focusable", "@ember/test-helpers/dom/-target", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/helper-hooks", "@ember/test-helpers/dom/blur", "@ember/test-helpers/dom/-get-description"], function (_exports, _getElement, _fireEvent, _settled, _isFocusable, _target, _logging, _helperHooks, _blur, _getDescription) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -4099,10 +3788,10 @@ define("@ember/test-helpers/dom/focus", ["exports", "@ember/test-helpers/dom/-ge
   });
   _exports.__focus__ = __focus__;
   _exports.default = focus;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-get-element",0,"@ember/test-helpers/dom/fire-event",0,"@ember/test-helpers/settled",0,"@ember/test-helpers/dom/-is-focusable",0,"@ember/test-helpers/dom/-target",0,"@ember/test-helpers/dom/-logging",0,"@ember/test-helpers/helper-hooks",0,"@ember/test-helpers/dom/blur",0,"@ember/test-helpers/dom/-get-description"eaimeta@70e063a35619d71f
   (0, _helperHooks.registerHook)('focus', 'start', target => {
     (0, _logging.log)('focus', target);
   });
-
   /**
      Get the closest focusable ancestor of a given element (or the element itself
      if it's focusable)
@@ -4122,58 +3811,60 @@ define("@ember/test-helpers/dom/focus", ["exports", "@ember/test-helpers/dom/-ge
     }
     return maybeFocusable;
   }
+
   /**
     @private
     @param {Element} element the element to trigger events on
     @return {Promise<FocusRecord | Event | void>} resolves when settled
   */
-
   function __focus__(element) {
-    return _utils.Promise.resolve().then(() => {
+    return Promise.resolve().then(() => {
       let focusTarget = getClosestFocusable(element);
-      const previousFocusedElement = document.activeElement && document.activeElement !== focusTarget && (0, _isFocusable.default)(document.activeElement) ? document.activeElement : null; // fire __blur__ manually with the null relatedTarget when the target is not focusable
-      // and there was a previously focused element
+      const previousFocusedElement = document.activeElement && document.activeElement !== focusTarget && (0, _isFocusable.default)(document.activeElement) ? document.activeElement : null;
 
-      return !focusTarget && previousFocusedElement ? (0, _blur.__blur__)(previousFocusedElement, null).then(() => _utils.Promise.resolve({
+      // fire __blur__ manually with the null relatedTarget when the target is not focusable
+      // and there was a previously focused element
+      return !focusTarget && previousFocusedElement ? (0, _blur.__blur__)(previousFocusedElement, null).then(() => Promise.resolve({
         focusTarget,
         previousFocusedElement
-      })) : _utils.Promise.resolve({
+      })) : Promise.resolve({
         focusTarget,
         previousFocusedElement
       });
-    }).then(_ref => {
-      let {
-        focusTarget,
-        previousFocusedElement
-      } = _ref;
+    }).then(({
+      focusTarget,
+      previousFocusedElement
+    }) => {
       if (!focusTarget) {
         throw new Error('There was a previously focused element');
       }
-      let browserIsNotFocused = !document?.hasFocus(); // fire __blur__ manually with the correct relatedTarget when the browser is not
-      // already in focus and there was a previously focused element
+      let browserIsNotFocused = !document?.hasFocus();
 
-      return previousFocusedElement && browserIsNotFocused ? (0, _blur.__blur__)(previousFocusedElement, focusTarget).then(() => _utils.Promise.resolve({
+      // fire __blur__ manually with the correct relatedTarget when the browser is not
+      // already in focus and there was a previously focused element
+      return previousFocusedElement && browserIsNotFocused ? (0, _blur.__blur__)(previousFocusedElement, focusTarget).then(() => Promise.resolve({
         focusTarget
-      })) : _utils.Promise.resolve({
+      })) : Promise.resolve({
         focusTarget
       });
-    }).then(_ref2 => {
-      let {
-        focusTarget
-      } = _ref2;
+    }).then(({
+      focusTarget
+    }) => {
       // makes `document.activeElement` be `element`. If the browser is focused, it also fires a focus event
-      focusTarget.focus(); // Firefox does not trigger the `focusin` event if the window
+      focusTarget.focus();
+
+      // Firefox does not trigger the `focusin` event if the window
       // does not have focus. If the document does not have focus then
       // fire `focusin` event as well.
-
       let browserIsFocused = document?.hasFocus();
-      return browserIsFocused ? _utils.Promise.resolve() :
+      return browserIsFocused ? Promise.resolve() :
       // if the browser is not focused the previous `el.focus()` didn't fire an event, so we simulate it
-      _utils.Promise.resolve().then(() => (0, _fireEvent.default)(focusTarget, 'focus', {
+      Promise.resolve().then(() => (0, _fireEvent.default)(focusTarget, 'focus', {
         bubbles: false
       })).then(() => (0, _fireEvent.default)(focusTarget, 'focusin')).then(() => (0, _settled.default)());
     }).catch(() => {});
   }
+
   /**
     Focus the specified target.
   
@@ -4189,7 +3880,7 @@ define("@ember/test-helpers/dom/focus", ["exports", "@ember/test-helpers/dom/-ge
     to continue to emulate how actual browsers handle focusing a given element.
   
     @public
-    @param {string|Element} target the element or selector to focus
+    @param {string|Element|IDOMElementDescriptor} target the element, selector, or descriptor to focus
     @return {Promise<void>} resolves when the application is settled
   
     @example
@@ -4199,15 +3890,15 @@ define("@ember/test-helpers/dom/focus", ["exports", "@ember/test-helpers/dom/-ge
   
     focus('input');
   */
-
   function focus(target) {
-    return _utils.Promise.resolve().then(() => (0, _helperHooks.runHooks)('focus', 'start', target)).then(() => {
+    return Promise.resolve().then(() => (0, _helperHooks.runHooks)('focus', 'start', target)).then(() => {
       if (!target) {
-        throw new Error('Must pass an element or selector to `focus`.');
+        throw new Error('Must pass an element, selector, or descriptor to `focus`.');
       }
       let element = (0, _getElement.default)(target);
       if (!element) {
-        throw new Error(`Element not found when calling \`focus('${target}')\`.`);
+        let description = (0, _getDescription.default)(target);
+        throw new Error(`Element not found when calling \`focus('${description}')\`.`);
       }
       if (!(0, _isFocusable.default)(element)) {
         throw new Error(`${element} is not focusable`);
@@ -4223,22 +3914,29 @@ define("@ember/test-helpers/dom/get-root-element", ["exports", "@ember/test-help
     value: true
   });
   _exports.default = getRootElement;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/setup-context",0,"@ember/test-helpers/dom/-target"eaimeta@70e063a35619d71f
   /**
     Get the root element of the application under test (usually `#ember-testing`)
   
     @public
     @returns {Element} the root element
+  
+    @example
+    <caption>
+      Getting the root element of the application and checking that it is equal
+      to the element with id 'ember-testing'.
+    </caption>
+    assert.equal(getRootElement(), document.querySelector('#ember-testing'));
   */
-
   function getRootElement() {
     let context = (0, _setupContext.getContext)();
-    let owner = context && context.owner;
-    if (!owner) {
+    if (!context || !(0, _setupContext.isTestContext)(context) || !context.owner) {
       throw new Error('Must setup rendering context before attempting to interact with elements.');
     }
-    let rootElement; // When the host app uses `setApplication` (instead of `setResolver`) the owner has
+    let owner = context.owner;
+    let rootElement;
+    // When the host app uses `setApplication` (instead of `setResolver`) the owner has
     // a `rootElement` set on it with the element or id to be used
-
     if (owner && owner._emberTestHelpersMockOwner === undefined) {
       rootElement = owner.rootElement;
     } else {
@@ -4260,17 +3958,24 @@ define("@ember/test-helpers/dom/get-root-element", ["exports", "@ember/test-help
     }
   }
 });
-define("@ember/test-helpers/dom/scroll-to", ["exports", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/settled", "@ember/test-helpers/-utils", "@ember/test-helpers/dom/-target", "@ember/test-helpers/-internal/helper-hooks"], function (_exports, _getElement, _fireEvent, _settled, _utils, _target, _helperHooks) {
+define("@ember/test-helpers/dom/scroll-to", ["exports", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/settled", "@ember/test-helpers/dom/-target", "@ember/test-helpers/helper-hooks", "@ember/test-helpers/dom/-get-description"], function (_exports, _getElement, _fireEvent, _settled, _target, _helperHooks, _getDescription) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = scrollTo;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-get-element",0,"@ember/test-helpers/dom/fire-event",0,"@ember/test-helpers/settled",0,"@ember/test-helpers/dom/-target",0,"@ember/test-helpers/helper-hooks",0,"@ember/test-helpers/dom/-get-description"eaimeta@70e063a35619d71f
+  // eslint-disable-next-line require-jsdoc
+  function errorMessage(message, target) {
+    let description = (0, _getDescription.default)(target);
+    return `${message} when calling \`scrollTo('${description}')\`.`;
+  }
+
   /**
-    Scrolls DOM element or selector to the given coordinates.
+    Scrolls DOM element, selector, or descriptor to the given coordinates.
     @public
-    @param {string|HTMLElement} target the element or selector to trigger scroll on
+    @param {string|HTMLElement|IDOMElementDescriptor} target the element, selector, or descriptor to trigger scroll on
     @param {Number} x x-coordinate
     @param {Number} y y-coordinate
     @return {Promise<void>} resolves when settled
@@ -4283,21 +3988,31 @@ define("@ember/test-helpers/dom/scroll-to", ["exports", "@ember/test-helpers/dom
     scrollTo('#my-long-div', 0, 0); // scroll to top
     scrollTo('#my-long-div', 0, 100); // scroll down
   */
-
   function scrollTo(target, x, y) {
-    return _utils.Promise.resolve().then(() => (0, _helperHooks.runHooks)('scrollTo', 'start', target)).then(() => {
+    return Promise.resolve().then(() => (0, _helperHooks.runHooks)('scrollTo', 'start', target)).then(() => {
       if (!target) {
-        throw new Error('Must pass an element or selector to `scrollTo`.');
+        throw new Error('Must pass an element, selector, or descriptor to `scrollTo`.');
       }
       if (x === undefined || y === undefined) {
         throw new Error('Must pass both x and y coordinates to `scrollTo`.');
       }
       let element = (0, _getElement.default)(target);
       if (!element) {
-        throw new Error(`Element not found when calling \`scrollTo('${target}')\`.`);
+        throw new Error(errorMessage('Element not found', target));
       }
       if (!(0, _target.isElement)(element)) {
-        throw new Error(`"target" must be an element, but was a ${element.nodeType} when calling \`scrollTo('${target}')\`.`);
+        let nodeType;
+        if ((0, _target.isDocument)(element)) {
+          nodeType = 'Document';
+        } else {
+          // This is an error check for non-typescript callers passing in the
+          // wrong type for `target`, so we have to cast `element` (which is
+          // `never` inside this block) to something that will allow us to
+          // access `nodeType`.
+          let notElement = element;
+          nodeType = notElement.nodeType;
+        }
+        throw new Error(errorMessage(`"target" must be an element, but was a ${nodeType}`, target));
       }
       element.scrollTop = y;
       element.scrollLeft = x;
@@ -4305,13 +4020,20 @@ define("@ember/test-helpers/dom/scroll-to", ["exports", "@ember/test-helpers/dom
     }).then(() => (0, _helperHooks.runHooks)('scrollTo', 'end', target));
   }
 });
-define("@ember/test-helpers/dom/select", ["exports", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/-is-select-element", "@ember/test-helpers/dom/focus", "@ember/test-helpers/settled", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/-utils", "@ember/test-helpers/-internal/helper-hooks"], function (_exports, _getElement, _isSelectElement, _focus, _settled, _fireEvent, _utils, _helperHooks) {
+define("@ember/test-helpers/dom/select", ["exports", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/-is-select-element", "@ember/test-helpers/dom/focus", "@ember/test-helpers/settled", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/helper-hooks", "@ember/test-helpers/dom/-get-description"], function (_exports, _getElement, _isSelectElement, _focus, _settled, _fireEvent, _helperHooks, _getDescription) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = select;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-get-element",0,"@ember/test-helpers/dom/-is-select-element",0,"@ember/test-helpers/dom/focus",0,"@ember/test-helpers/settled",0,"@ember/test-helpers/dom/fire-event",0,"@ember/test-helpers/helper-hooks",0,"@ember/test-helpers/dom/-get-description"eaimeta@70e063a35619d71f
+  // eslint-disable-next-line require-jsdoc
+  function errorMessage(message, target) {
+    let description = (0, _getDescription.default)(target);
+    return `${message} when calling \`select('${description}')\`.`;
+  }
+
   /**
     Set the `selected` property true for the provided option the target is a
     select element (or set the select property true for multiple options if the
@@ -4319,7 +4041,7 @@ define("@ember/test-helpers/dom/select", ["exports", "@ember/test-helpers/dom/-g
     `change` and `input` events on the specified target.
   
     @public
-    @param {string|Element} target the element or selector for the select element
+    @param {string|Element|IDOMElementDescriptor} target the element, selector, or descriptor for the select element
     @param {string|string[]} options the value/values of the items to select
     @param {boolean} keepPreviouslySelected a flag keep any existing selections
     @return {Promise<void>} resolves when the application is settled
@@ -4335,29 +4057,27 @@ define("@ember/test-helpers/dom/select", ["exports", "@ember/test-helpers/dom/-g
   
     select('select', ['apple', 'orange'], true);
   */
-
-  function select(target, options) {
-    let keepPreviouslySelected = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-    return _utils.Promise.resolve().then(() => (0, _helperHooks.runHooks)('select', 'start', target, options, keepPreviouslySelected)).then(() => {
+  function select(target, options, keepPreviouslySelected = false) {
+    return Promise.resolve().then(() => (0, _helperHooks.runHooks)('select', 'start', target, options, keepPreviouslySelected)).then(() => {
       if (!target) {
-        throw new Error('Must pass an element or selector to `select`.');
+        throw new Error('Must pass an element, selector, or descriptor to `select`.');
       }
       if (typeof options === 'undefined' || options === null) {
         throw new Error('Must provide an `option` or `options` to select when calling `select`.');
       }
       const element = (0, _getElement.default)(target);
       if (!element) {
-        throw new Error(`Element not found when calling \`select('${target}')\`.`);
+        throw new Error(errorMessage('Element not found', target));
       }
       if (!(0, _isSelectElement.default)(element)) {
-        throw new Error(`Element is not a HTMLSelectElement when calling \`select('${target}')\`.`);
+        throw new Error(errorMessage('Element is not a HTMLSelectElement', target));
       }
       if (element.disabled) {
-        throw new Error(`Element is disabled when calling \`select('${target}')\`.`);
+        throw new Error(errorMessage('Element is disabled', target));
       }
       options = Array.isArray(options) ? options : [options];
       if (!element.multiple && options.length > 1) {
-        throw new Error(`HTMLSelectElement \`multiple\` attribute is set to \`false\` but multiple options were passed when calling \`select('${target}')\`.`);
+        throw new Error(errorMessage('HTMLSelectElement `multiple` attribute is set to `false` but multiple options were passed', target));
       }
       return (0, _focus.__focus__)(element).then(() => element);
     }).then(element => {
@@ -4375,18 +4095,20 @@ define("@ember/test-helpers/dom/select", ["exports", "@ember/test-helpers/dom/-g
     }).then(() => (0, _helperHooks.runHooks)('select', 'end', target, options, keepPreviouslySelected));
   }
 });
-define("@ember/test-helpers/dom/tab", ["exports", "@ember/test-helpers/dom/get-root-element", "@ember/test-helpers/settled", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/dom/-target", "@ember/test-helpers/dom/blur", "@ember/test-helpers/dom/focus", "@ember/test-helpers/-utils", "@ember/test-helpers/-internal/helper-hooks", "@ember/test-helpers/dom/-logging"], function (_exports, _getRootElement, _settled, _fireEvent, _target, _blur, _focus, _utils, _helperHooks, _logging) {
+define("@ember/test-helpers/dom/tab", ["exports", "@ember/test-helpers/dom/get-root-element", "@ember/test-helpers/settled", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/dom/-target", "@ember/test-helpers/dom/blur", "@ember/test-helpers/dom/focus", "@ember/test-helpers/-utils", "@ember/test-helpers/helper-hooks", "@ember/test-helpers/dom/-logging"], function (_exports, _getRootElement, _settled, _fireEvent, _target, _blur, _focus, _utils, _helperHooks, _logging) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = triggerTab;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/get-root-element",0,"@ember/test-helpers/settled",0,"@ember/test-helpers/dom/fire-event",0,"@ember/test-helpers/dom/-target",0,"@ember/test-helpers/dom/blur",0,"@ember/test-helpers/dom/focus",0,"@ember/test-helpers/-utils",0,"@ember/test-helpers/helper-hooks",0,"@ember/test-helpers/dom/-logging"eaimeta@70e063a35619d71f
   const SUPPORTS_INERT = ('inert' in Element.prototype);
   const FALLBACK_ELEMENTS = ['CANVAS', 'VIDEO', 'PICTURE'];
   (0, _helperHooks.registerHook)('tab', 'start', target => {
     (0, _logging.log)('tab', target);
   });
+
   /**
     Gets the active element of a document. IE11 may return null instead of the body as
     other user-agents does when there isn’t an active element.
@@ -4394,57 +4116,58 @@ define("@ember/test-helpers/dom/tab", ["exports", "@ember/test-helpers/dom/get-r
     @param {Document} ownerDocument the element to check
     @returns {HTMLElement} the active element of the document
   */
-
   function getActiveElement(ownerDocument) {
     return ownerDocument.activeElement || ownerDocument.body;
   }
-
   /**
-    Compiles a list of nodes that can be focused. Walkes the tree, discardes hidden elements and a few edge cases. To calculate the right.
+    Compiles a list of nodes that can be focused. Walks the tree, discards hidden elements and a few edge cases. To calculate the right.
     @private
     @param {Element} root the root element to start traversing on
     @returns {Array} list of focusable nodes
   */
-  function compileFocusAreas() {
-    let root = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : document.body;
+  function compileFocusAreas(root = document.body) {
     let {
       ownerDocument
     } = root;
     if (!ownerDocument) {
       throw new Error('Element must be in the DOM');
     }
-    let activeElment = getActiveElement(ownerDocument);
+    let activeElement = getActiveElement(ownerDocument);
     let treeWalker = ownerDocument.createTreeWalker(root, NodeFilter.SHOW_ELEMENT, {
       acceptNode: node => {
         // Only visible nodes can be focused, with, at least, one exception; the "area" element.
         // reference: https://html.spec.whatwg.org/multipage/interaction.html#data-model
         if (node.tagName !== 'AREA' && (0, _utils.isVisible)(node) === false) {
           return NodeFilter.FILTER_REJECT;
-        } // Reject any fallback elements. Fallback elements’s children are only rendered if the UA
+        }
+
+        // Reject any fallback elements. Fallback elements’s children are only rendered if the UA
         // doesn’t support the element. We make an assumption that they are always supported, we
         // could consider feature detecting every node type, or making it configurable.
-
         let parentNode = node.parentNode;
         if (parentNode && FALLBACK_ELEMENTS.indexOf(parentNode.tagName) !== -1) {
           return NodeFilter.FILTER_REJECT;
-        } // Rejects inert containers, if the user agent supports the feature (or if a polyfill is installed.)
+        }
 
+        // Rejects inert containers, if the user agent supports the feature (or if a polyfill is installed.)
         if (SUPPORTS_INERT && node.inert) {
           return NodeFilter.FILTER_REJECT;
         }
         if ((0, _utils.isDisabled)(node)) {
           return NodeFilter.FILTER_REJECT;
-        } // Always accept the 'activeElement' of the document, as it might fail the next check, elements with tabindex="-1"
-        // can be focused programtically, we'll therefor ensure the current active element is in the list.
+        }
 
-        if (node === activeElment) {
+        // Always accept the 'activeElement' of the document, as it might fail the next check, elements with tabindex="-1"
+        // can be focused programmatically, we'll therefor ensure the current active element is in the list.
+        if (node === activeElement) {
           return NodeFilter.FILTER_ACCEPT;
-        } // UA parses the tabindex attribute and applies its default values, If the tabIndex is non negative, the UA can
-        // foucs it.
+        }
 
+        // UA parses the tabindex attribute and applies its default values, If the tabIndex is non negative, the UA can
+        // focus it.
         return node.tabIndex >= 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
       }
-    }, false);
+    });
     let node;
     let elements = [];
     while (node = treeWalker.nextNode()) {
@@ -4452,6 +4175,7 @@ define("@ember/test-helpers/dom/tab", ["exports", "@ember/test-helpers/dom/get-r
     }
     return elements;
   }
+
   /**
     Sort elements by their tab indices.
     As older browsers doesn't necessarily implement stabile sort, we'll have to
@@ -4460,7 +4184,6 @@ define("@ember/test-helpers/dom/tab", ["exports", "@ember/test-helpers/dom/get-r
     @param {Array<HTMLElement>} elements to sort
     @returns {Array<HTMLElement>} list of sorted focusable nodes by their tab index
   */
-
   function sortElementsByTabIndices(elements) {
     return elements.map((element, index) => {
       return {
@@ -4476,13 +4199,13 @@ define("@ember/test-helpers/dom/tab", ["exports", "@ember/test-helpers/dom/get-r
       return a.element.tabIndex - b.element.tabIndex;
     }).map(entity => entity.element);
   }
+
   /**
     @private
     @param {Element} root The root element or node to start traversing on.
     @param {HTMLElement} activeElement The element to find the next and previous focus areas of
     @returns {object} The next and previous focus areas of the active element
    */
-
   function findNextResponders(root, activeElement) {
     let focusAreas = compileFocusAreas(root);
     let sortedFocusAreas = sortElementsByTabIndices(focusAreas);
@@ -4499,6 +4222,7 @@ define("@ember/test-helpers/dom/tab", ["exports", "@ember/test-helpers/dom/get-r
       previous: elements[index - 1]
     };
   }
+
   /**
     Emulates the user pressing the tab button.
   
@@ -4523,23 +4247,23 @@ define("@ember/test-helpers/dom/tab", ["exports", "@ember/test-helpers/dom/get-r
     </caption>
     tab({ backwards: true });
   */
-
-  function triggerTab(options) {
-    return _utils.Promise.resolve().then(() => {
-      let backwards = options && options.backwards || false;
-      let unRestrainTabIndex = options && options.unRestrainTabIndex || false;
+  function triggerTab({
+    backwards = false,
+    unRestrainTabIndex = false
+  } = {}) {
+    return Promise.resolve().then(() => {
       return triggerResponderChange(backwards, unRestrainTabIndex);
     }).then(() => {
       return (0, _settled.default)();
     });
   }
+
   /**
     @private
-    @param {boolean} backwards when `true` it selects the previous foucs area
+    @param {boolean} backwards when `true` it selects the previous focus area
     @param {boolean} unRestrainTabIndex when `true`, will not throw an error if tabindex > 0 is encountered
     @returns {Promise<void>} resolves when all events are fired
    */
-
   function triggerResponderChange(backwards, unRestrainTabIndex) {
     let root = (0, _getRootElement.default)();
     let ownerDocument;
@@ -4563,7 +4287,7 @@ define("@ember/test-helpers/dom/tab", ["exports", "@ember/test-helpers/dom/get-r
       ownerDocument,
       rootElement
     };
-    return _utils.Promise.resolve().then(() => (0, _helperHooks.runHooks)('tab', 'start', debugData)).then(() => getActiveElement(ownerDocument)).then(activeElement => (0, _helperHooks.runHooks)('tab', 'targetFound', activeElement).then(() => activeElement)).then(activeElement => {
+    return Promise.resolve().then(() => (0, _helperHooks.runHooks)('tab', 'start', debugData)).then(() => getActiveElement(ownerDocument)).then(activeElement => (0, _helperHooks.runHooks)('tab', 'targetFound', activeElement).then(() => activeElement)).then(activeElement => {
       let event = (0, _fireEvent._buildKeyboardEvent)('keydown', keyboardEventOptions);
       let defaultNotPrevented = activeElement.dispatchEvent(event);
       if (defaultNotPrevented) {
@@ -4580,7 +4304,7 @@ define("@ember/test-helpers/dom/tab", ["exports", "@ember/test-helpers/dom/get-r
           }
         }
       }
-      return _utils.Promise.resolve();
+      return Promise.resolve();
     }).then(() => {
       let activeElement = getActiveElement(ownerDocument);
       return (0, _fireEvent.default)(activeElement, 'keyup', keyboardEventOptions).then(() => activeElement);
@@ -4591,16 +4315,18 @@ define("@ember/test-helpers/dom/tab", ["exports", "@ember/test-helpers/dom/get-r
     }).then(() => (0, _helperHooks.runHooks)('tab', 'end', debugData));
   }
 });
-define("@ember/test-helpers/dom/tap", ["exports", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/dom/click", "@ember/test-helpers/settled", "@ember/test-helpers/-utils", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/dom/-is-form-control", "@ember/test-helpers/-internal/helper-hooks"], function (_exports, _getElement, _fireEvent, _click, _settled, _utils, _logging, _isFormControl, _helperHooks) {
+define("@ember/test-helpers/dom/tap", ["exports", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/dom/click", "@ember/test-helpers/settled", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/dom/-is-form-control", "@ember/test-helpers/helper-hooks", "@ember/test-helpers/dom/-get-description"], function (_exports, _getElement, _fireEvent, _click, _settled, _logging, _isFormControl, _helperHooks, _getDescription) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = tap;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-get-element",0,"@ember/test-helpers/dom/fire-event",0,"@ember/test-helpers/dom/click",0,"@ember/test-helpers/settled",0,"@ember/test-helpers/dom/-logging",0,"@ember/test-helpers/dom/-is-form-control",0,"@ember/test-helpers/helper-hooks",0,"@ember/test-helpers/dom/-get-description"eaimeta@70e063a35619d71f
   (0, _helperHooks.registerHook)('tap', 'start', target => {
     (0, _logging.log)('tap', target);
   });
+
   /**
     Taps on the specified target.
   
@@ -4632,9 +4358,9 @@ define("@ember/test-helpers/dom/tap", ["exports", "@ember/test-helpers/dom/-get-
     Use the `options` hash to change the parameters of the tap events.
   
     @public
-    @param {string|Element} target the element or selector to tap on
+    @param {string|Element|IDOMElementDescriptor} target the element, selector, or descriptor to tap on
     @param {Object} options the options to be merged into the touch events
-    @return {Promise<Event | Event[] | void>} resolves when settled
+    @return {Promise<void>} resolves when settled
   
     @example
     <caption>
@@ -4643,46 +4369,44 @@ define("@ember/test-helpers/dom/tap", ["exports", "@ember/test-helpers/dom/-get-
   
     tap('button');
   */
-
-  function tap(target) {
-    let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    return _utils.Promise.resolve().then(() => {
+  function tap(target, options = {}) {
+    return Promise.resolve().then(() => {
       return (0, _helperHooks.runHooks)('tap', 'start', target, options);
     }).then(() => {
       if (!target) {
-        throw new Error('Must pass an element or selector to `tap`.');
+        throw new Error('Must pass an element, selector, or descriptor to `tap`.');
       }
       let element = (0, _getElement.default)(target);
       if (!element) {
-        throw new Error(`Element not found when calling \`tap('${target}')\`.`);
+        let description = (0, _getDescription.default)(target);
+        throw new Error(`Element not found when calling \`tap('${description}')\`.`);
       }
       if ((0, _isFormControl.default)(element) && element.disabled) {
         throw new Error(`Can not \`tap\` disabled ${element}`);
       }
-      return (0, _fireEvent.default)(element, 'touchstart', options).then(touchstartEv => (0, _fireEvent.default)(element, 'touchend', options).then(touchendEv => [touchstartEv, touchendEv])).then(_ref => {
-        let [touchstartEv, touchendEv] = _ref;
-        return !touchstartEv.defaultPrevented && !touchendEv.defaultPrevented ? (0, _click.__click__)(element, options) : _utils.Promise.resolve();
-      }).then(_settled.default);
+      return (0, _fireEvent.default)(element, 'touchstart', options).then(touchstartEv => (0, _fireEvent.default)(element, 'touchend', options).then(touchendEv => [touchstartEv, touchendEv])).then(([touchstartEv, touchendEv]) => !touchstartEv.defaultPrevented && !touchendEv.defaultPrevented ? (0, _click.__click__)(element, options) : Promise.resolve()).then(_settled.default);
     }).then(() => {
       return (0, _helperHooks.runHooks)('tap', 'end', target, options);
     });
   }
 });
-define("@ember/test-helpers/dom/trigger-event", ["exports", "@ember/test-helpers/dom/-get-window-or-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/settled", "@ember/test-helpers/-utils", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/dom/-is-form-control", "@ember/test-helpers/-internal/helper-hooks"], function (_exports, _getWindowOrElement, _fireEvent, _settled, _utils, _logging, _isFormControl, _helperHooks) {
+define("@ember/test-helpers/dom/trigger-event", ["exports", "@ember/test-helpers/dom/-get-window-or-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/settled", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/dom/-is-form-control", "@ember/test-helpers/helper-hooks", "@ember/test-helpers/dom/-get-description"], function (_exports, _getWindowOrElement, _fireEvent, _settled, _logging, _isFormControl, _helperHooks, _getDescription) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = triggerEvent;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-get-window-or-element",0,"@ember/test-helpers/dom/fire-event",0,"@ember/test-helpers/settled",0,"@ember/test-helpers/dom/-logging",0,"@ember/test-helpers/dom/-is-form-control",0,"@ember/test-helpers/helper-hooks",0,"@ember/test-helpers/dom/-get-description"eaimeta@70e063a35619d71f
   (0, _helperHooks.registerHook)('triggerEvent', 'start', (target, eventType) => {
     (0, _logging.log)('triggerEvent', target, eventType);
   });
+
   /**
    * Triggers an event on the specified target.
    *
    * @public
-   * @param {string|Element} target the element or selector to trigger the event on
+   * @param {string|Element|IDOMElementDescriptor} target the element, selector, or descriptor to trigger the event on
    * @param {string} eventType the type of event to trigger
    * @param {Object} options additional properties to be set on the event
    * @return {Promise<void>} resolves when the application is settled
@@ -4721,20 +4445,20 @@ define("@ember/test-helpers/dom/trigger-event", ["exports", "@ember/test-helpers
    *   }
    * )
    */
-
   function triggerEvent(target, eventType, options) {
-    return _utils.Promise.resolve().then(() => {
+    return Promise.resolve().then(() => {
       return (0, _helperHooks.runHooks)('triggerEvent', 'start', target, eventType, options);
     }).then(() => {
       if (!target) {
-        throw new Error('Must pass an element or selector to `triggerEvent`.');
+        throw new Error('Must pass an element, selector, or descriptor to `triggerEvent`.');
       }
       if (!eventType) {
         throw new Error(`Must provide an \`eventType\` to \`triggerEvent\``);
       }
       let element = (0, _getWindowOrElement.getWindowOrElement)(target);
       if (!element) {
-        throw new Error(`Element not found when calling \`triggerEvent('${target}', ...)\`.`);
+        let description = (0, _getDescription.default)(target);
+        throw new Error(`Element not found when calling \`triggerEvent('${description}', ...)\`.`);
       }
       if ((0, _isFormControl.default)(element) && element.disabled) {
         throw new Error(`Can not \`triggerEvent\` on disabled ${element}`);
@@ -4745,7 +4469,7 @@ define("@ember/test-helpers/dom/trigger-event", ["exports", "@ember/test-helpers
     });
   }
 });
-define("@ember/test-helpers/dom/trigger-key-event", ["exports", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/settled", "@ember/test-helpers/-utils", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/dom/-is-form-control", "@ember/test-helpers/-internal/helper-hooks", "@ember/test-helpers/ie-11-polyfills"], function (_exports, _getElement, _fireEvent, _settled, _utils, _logging, _isFormControl, _helperHooks, _ie11Polyfills) {
+define("@ember/test-helpers/dom/trigger-key-event", ["exports", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/settled", "@ember/test-helpers/-utils", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/dom/-is-form-control", "@ember/test-helpers/helper-hooks", "@ember/test-helpers/dom/-get-description"], function (_exports, _getElement, _fireEvent, _settled, _utils, _logging, _isFormControl, _helperHooks, _getDescription) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -4753,6 +4477,7 @@ define("@ember/test-helpers/dom/trigger-key-event", ["exports", "@ember/test-hel
   });
   _exports.__triggerKeyEvent__ = __triggerKeyEvent__;
   _exports.default = triggerKeyEvent;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/dom/-get-element",0,"@ember/test-helpers/dom/fire-event",0,"@ember/test-helpers/settled",0,"@ember/test-helpers/dom/fire-event",0,"@ember/test-helpers/-utils",0,"@ember/test-helpers/dom/-logging",0,"@ember/test-helpers/dom/-is-form-control",0,"@ember/test-helpers/helper-hooks",0,"@ember/test-helpers/dom/-get-description"eaimeta@70e063a35619d71f
   (0, _helperHooks.registerHook)('triggerKeyEvent', 'start', (target, eventType, key) => {
     (0, _logging.log)('triggerKeyEvent', target, eventType, key);
   });
@@ -4761,8 +4486,9 @@ define("@ember/test-helpers/dom/trigger-key-event", ["exports", "@ember/test-hel
     altKey: false,
     shiftKey: false,
     metaKey: false
-  }); // This is not a comprehensive list, but it is better than nothing.
+  });
 
+  // This is not a comprehensive list, but it is better than nothing.
   const keyFromKeyCode = {
     8: 'Backspace',
     9: 'Tab',
@@ -4816,9 +4542,40 @@ define("@ember/test-helpers/dom/trigger-key-event", ["exports", "@ember/test-hel
     91: 'Meta',
     93: 'Meta',
     // There is two keys that map to meta,
+    186: ';',
     187: '=',
-    189: '-'
+    188: ',',
+    189: '-',
+    190: '.',
+    191: '/',
+    219: '[',
+    220: '\\',
+    221: ']',
+    222: "'"
   };
+  const keyFromKeyCodeWithShift = {
+    48: ')',
+    49: '!',
+    50: '@',
+    51: '#',
+    52: '$',
+    53: '%',
+    54: '^',
+    55: '&',
+    56: '*',
+    57: '(',
+    186: ':',
+    187: '+',
+    188: '<',
+    189: '_',
+    190: '>',
+    191: '?',
+    219: '{',
+    220: '|',
+    221: '}',
+    222: '"'
+  };
+
   /**
     Calculates the value of KeyboardEvent#key given a keycode and the modifiers.
     Note that this works if the key is pressed in combination with the shift key, but it cannot
@@ -4827,7 +4584,6 @@ define("@ember/test-helpers/dom/trigger-key-event", ["exports", "@ember/test-hel
     @param {object} modifiers The modifiers of the event.
     @returns {string} The key string for the event.
    */
-
   function keyFromKeyCodeAndModifiers(keycode, modifiers) {
     if (keycode > 64 && keycode < 91) {
       if (modifiers.shiftKey) {
@@ -4836,22 +4592,20 @@ define("@ember/test-helpers/dom/trigger-key-event", ["exports", "@ember/test-hel
         return String.fromCharCode(keycode).toLocaleLowerCase();
       }
     }
-    let key = keyFromKeyCode[keycode];
-    if (key) {
-      return key;
-    }
+    return modifiers.shiftKey && keyFromKeyCodeWithShift[keycode] || keyFromKeyCode[keycode];
   }
+
   /**
    * Infers the keycode from the given key
    * @param {string} key The KeyboardEvent#key string
    * @returns {number} The keycode for the given key
    */
-
   function keyCodeFromKey(key) {
     let keys = Object.keys(keyFromKeyCode);
-    let keyCode = (0, _ie11Polyfills.find)(keys, keyCode => keyFromKeyCode[Number(keyCode)] === key) || (0, _ie11Polyfills.find)(keys, keyCode => keyFromKeyCode[Number(keyCode)] === key.toLowerCase());
+    let keyCode = keys.find(keyCode => keyFromKeyCode[Number(keyCode)] === key) || keys.find(keyCode => keyFromKeyCode[Number(keyCode)] === key.toLowerCase());
     return keyCode !== undefined ? parseInt(keyCode) : undefined;
   }
+
   /**
     @private
     @param {Element | Document} element the element to trigger the key event on
@@ -4860,10 +4614,8 @@ define("@ember/test-helpers/dom/trigger-key-event", ["exports", "@ember/test-hel
     @param {Object} [modifiers] the state of various modifier keys
     @return {Promise<Event>} resolves when settled
    */
-
-  function __triggerKeyEvent__(element, eventType, key) {
-    let modifiers = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : DEFAULT_MODIFIERS;
-    return _utils.Promise.resolve().then(() => {
+  function __triggerKeyEvent__(element, eventType, key, modifiers = DEFAULT_MODIFIERS) {
+    return Promise.resolve().then(() => {
       let props;
       if (typeof key === 'number') {
         props = {
@@ -4874,7 +4626,7 @@ define("@ember/test-helpers/dom/trigger-key-event", ["exports", "@ember/test-hel
         };
       } else if (typeof key === 'string' && key.length !== 0) {
         let firstCharacter = key[0];
-        if (firstCharacter !== firstCharacter.toUpperCase()) {
+        if (!firstCharacter || firstCharacter !== firstCharacter.toUpperCase()) {
           throw new Error(`Must provide a \`key\` to \`triggerKeyEvent\` that starts with an uppercase character but you passed \`${key}\`.`);
         }
         if ((0, _utils.isNumeric)(key) && key.length > 1) {
@@ -4893,6 +4645,13 @@ define("@ember/test-helpers/dom/trigger-key-event", ["exports", "@ember/test-hel
       return (0, _fireEvent.default)(element, eventType, props);
     });
   }
+
+  // eslint-disable-next-line require-jsdoc
+  function errorMessage(message, target) {
+    let description = (0, _getDescription.default)(target);
+    return `${message} when calling \`triggerKeyEvent('${description}')\`.`;
+  }
+
   /**
     Triggers a keyboard event of given type in the target element.
     It also requires the developer to provide either a string with the [`key`](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values)
@@ -4900,7 +4659,7 @@ define("@ember/test-helpers/dom/trigger-key-event", ["exports", "@ember/test-hel
     Optionally the user can also provide a POJO with extra modifiers for the event.
   
     @public
-    @param {string|Element} target the element or selector to trigger the event on
+    @param {string|Element|IDOMElementDescriptor} target the element, selector, or descriptor to trigger the event on
     @param {'keydown' | 'keyup' | 'keypress'} eventType the type of event to trigger
     @param {number|string} key the `keyCode`(number) or `key`(string) of the event being triggered
     @param {Object} [modifiers] the state of various modifier keys
@@ -4916,18 +4675,17 @@ define("@ember/test-helpers/dom/trigger-key-event", ["exports", "@ember/test-hel
     </caption>
     triggerKeyEvent('button', 'keydown', 'Enter');
   */
-
-  function triggerKeyEvent(target, eventType, key) {
-    let modifiers = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : DEFAULT_MODIFIERS;
-    return _utils.Promise.resolve().then(() => {
+  function triggerKeyEvent(target, eventType, key, modifiers = DEFAULT_MODIFIERS) {
+    return Promise.resolve().then(() => {
       return (0, _helperHooks.runHooks)('triggerKeyEvent', 'start', target, eventType, key);
     }).then(() => {
       if (!target) {
-        throw new Error('Must pass an element or selector to `triggerKeyEvent`.');
+        throw new Error('Must pass an element, selector, or descriptor to `triggerKeyEvent`.');
       }
       let element = (0, _getElement.default)(target);
       if (!element) {
-        throw new Error(`Element not found when calling \`triggerKeyEvent('${target}', ...)\`.`);
+        let description = (0, _getDescription.default)(target);
+        throw new Error(`Element not found when calling \`triggerKeyEvent('${description}')\`.`);
       }
       if (!eventType) {
         throw new Error(`Must provide an \`eventType\` to \`triggerKeyEvent\``);
@@ -4943,16 +4701,18 @@ define("@ember/test-helpers/dom/trigger-key-event", ["exports", "@ember/test-hel
     }).then(() => (0, _helperHooks.runHooks)('triggerKeyEvent', 'end', target, eventType, key));
   }
 });
-define("@ember/test-helpers/dom/type-in", ["exports", "@ember/test-helpers/-utils", "@ember/test-helpers/settled", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/-is-form-control", "@ember/test-helpers/dom/focus", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/dom/-guard-for-maxlength", "@ember/test-helpers/dom/-target", "@ember/test-helpers/dom/trigger-key-event", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/-internal/helper-hooks"], function (_exports, _utils, _settled, _getElement, _isFormControl, _focus, _fireEvent, _guardForMaxlength, _target, _triggerKeyEvent, _logging, _helperHooks) {
+define("@ember/test-helpers/dom/type-in", ["exports", "@ember/test-helpers/settled", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/-is-form-control", "@ember/test-helpers/dom/focus", "@ember/test-helpers/dom/fire-event", "@ember/test-helpers/dom/-guard-for-maxlength", "@ember/test-helpers/dom/-target", "@ember/test-helpers/dom/trigger-key-event", "@ember/test-helpers/dom/-logging", "@ember/test-helpers/helper-hooks", "@ember/test-helpers/dom/-get-description"], function (_exports, _settled, _getElement, _isFormControl, _focus, _fireEvent, _guardForMaxlength, _target, _triggerKeyEvent, _logging, _helperHooks, _getDescription) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = typeIn;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/settled",0,"@ember/test-helpers/dom/-get-element",0,"@ember/test-helpers/dom/-is-form-control",0,"@ember/test-helpers/dom/focus",0,"@ember/test-helpers/dom/fire-event",0,"@ember/test-helpers/dom/-guard-for-maxlength",0,"@ember/test-helpers/dom/-target",0,"@ember/test-helpers/dom/trigger-key-event",0,"@ember/test-helpers/dom/-logging",0,"@ember/test-helpers/helper-hooks",0,"@ember/test-helpers/dom/-get-description"eaimeta@70e063a35619d71f
   (0, _helperHooks.registerHook)('typeIn', 'start', (target, text) => {
     (0, _logging.log)('typeIn', target, text);
   });
+
   /**
    * Mimics character by character entry into the target `input` or `textarea` element.
    *
@@ -4965,7 +4725,7 @@ define("@ember/test-helpers/dom/type-in", ["exports", "@ember/test-helpers/-util
    * per character of the passed text (this may vary on some browsers).
    *
    * @public
-   * @param {string|Element} target the element or selector to enter text into
+   * @param {string|Element|IDOMElementDescriptor} target the element, selector, or descriptor to enter text into
    * @param {string} text the test to fill the element with
    * @param {Object} options {delay: x} (default 50) number of milliseconds to wait per keypress
    * @return {Promise<void>} resolves when the application is settled
@@ -4977,18 +4737,17 @@ define("@ember/test-helpers/dom/type-in", ["exports", "@ember/test-helpers/-util
    *
    * typeIn('input', 'hello world');
    */
-
-  function typeIn(target, text) {
-    let options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-    return _utils.Promise.resolve().then(() => {
+  function typeIn(target, text, options = {}) {
+    return Promise.resolve().then(() => {
       return (0, _helperHooks.runHooks)('typeIn', 'start', target, text, options);
     }).then(() => {
       if (!target) {
-        throw new Error('Must pass an element or selector to `typeIn`.');
+        throw new Error('Must pass an element, selector, or descriptor to `typeIn`.');
       }
       const element = (0, _getElement.default)(target);
       if (!element) {
-        throw new Error(`Element not found when calling \`typeIn('${target}')\``);
+        let description = (0, _getDescription.default)(target);
+        throw new Error(`Element not found when calling \`typeIn('${description}')\``);
       }
       if ((0, _target.isDocument)(element) || !(0, _isFormControl.default)(element) && !(0, _target.isContentEditable)(element)) {
         throw new Error('`typeIn` is only usable on form controls or contenteditable elements.');
@@ -4998,10 +4757,10 @@ define("@ember/test-helpers/dom/type-in", ["exports", "@ember/test-helpers/-util
       }
       if ((0, _isFormControl.default)(element)) {
         if (element.disabled) {
-          throw new Error(`Can not \`typeIn\` disabled '${target}'.`);
+          throw new Error(`Can not \`typeIn\` disabled '${(0, _getDescription.default)(target)}'.`);
         }
         if ('readOnly' in element && element.readOnly) {
-          throw new Error(`Can not \`typeIn\` readonly '${target}'.`);
+          throw new Error(`Can not \`typeIn\` readonly '${(0, _getDescription.default)(target)}'.`);
         }
       }
       let {
@@ -5009,15 +4768,17 @@ define("@ember/test-helpers/dom/type-in", ["exports", "@ember/test-helpers/-util
       } = options;
       return (0, _focus.__focus__)(element).then(() => fillOut(element, text, delay)).then(() => (0, _fireEvent.default)(element, 'change')).then(_settled.default).then(() => (0, _helperHooks.runHooks)('typeIn', 'end', target, text, options));
     });
-  } // eslint-disable-next-line require-jsdoc
+  }
 
+  // eslint-disable-next-line require-jsdoc
   function fillOut(element, text, delay) {
     const inputFunctions = text.split('').map(character => keyEntry(element, character));
     return inputFunctions.reduce((currentPromise, func) => {
       return currentPromise.then(() => delayedExecute(delay)).then(func);
-    }, _utils.Promise.resolve(undefined));
-  } // eslint-disable-next-line require-jsdoc
+    }, Promise.resolve());
+  }
 
+  // eslint-disable-next-line require-jsdoc
   function keyEntry(element, character) {
     let shiftKey = character === character.toUpperCase() && character !== character.toLowerCase();
     let options = {
@@ -5025,7 +4786,7 @@ define("@ember/test-helpers/dom/type-in", ["exports", "@ember/test-helpers/-util
     };
     let characterKey = character.toUpperCase();
     return function () {
-      return _utils.Promise.resolve().then(() => (0, _triggerKeyEvent.__triggerKeyEvent__)(element, 'keydown', characterKey, options)).then(() => (0, _triggerKeyEvent.__triggerKeyEvent__)(element, 'keypress', characterKey, options)).then(() => {
+      return Promise.resolve().then(() => (0, _triggerKeyEvent.__triggerKeyEvent__)(element, 'keydown', characterKey, options)).then(() => (0, _triggerKeyEvent.__triggerKeyEvent__)(element, 'keypress', characterKey, options)).then(() => {
         if ((0, _isFormControl.default)(element)) {
           const newValue = element.value + character;
           (0, _guardForMaxlength.default)(element, newValue, 'typeIn');
@@ -5037,27 +4798,29 @@ define("@ember/test-helpers/dom/type-in", ["exports", "@ember/test-helpers/-util
         return (0, _fireEvent.default)(element, 'input');
       }).then(() => (0, _triggerKeyEvent.__triggerKeyEvent__)(element, 'keyup', characterKey, options));
     };
-  } // eslint-disable-next-line require-jsdoc
+  }
 
+  // eslint-disable-next-line require-jsdoc
   function delayedExecute(delay) {
-    return new _utils.Promise(resolve => {
+    return new Promise(resolve => {
       setTimeout(resolve, delay);
     });
   }
 });
-define("@ember/test-helpers/dom/wait-for", ["exports", "@ember/test-helpers/wait-until", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/-get-elements", "@ember/test-helpers/ie-11-polyfills", "@ember/test-helpers/-utils"], function (_exports, _waitUntil, _getElement, _getElements, _ie11Polyfills, _utils) {
+define("@ember/test-helpers/dom/wait-for", ["exports", "@ember/test-helpers/wait-until", "@ember/test-helpers/dom/-get-element", "@ember/test-helpers/dom/-get-elements", "dom-element-descriptors", "@ember/test-helpers/dom/-get-description"], function (_exports, _waitUntil, _getElement, _getElements, _domElementDescriptors, _getDescription) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = waitFor;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/wait-until",0,"@ember/test-helpers/dom/-get-element",0,"@ember/test-helpers/dom/-get-elements",0,"dom-element-descriptors",0,"@ember/test-helpers/dom/-get-description"eaimeta@70e063a35619d71f
   /**
     Used to wait for a particular selector to appear in the DOM. Due to the fact
     that it does not wait for general settledness, this is quite useful for testing
     interim DOM states (e.g. loading states, pending promises, etc).
   
-    @param {string} selector the selector to wait for
+    @param {string|IDOMElementDescriptor} target the selector or DOM element descriptor to wait for
     @param {Object} [options] the options to be used
     @param {number} [options.timeout=1000] the time to wait (in ms) for a match
     @param {number} [options.count=null] the number of elements that should match the provided selector (null means one or more)
@@ -5069,11 +4832,10 @@ define("@ember/test-helpers/dom/wait-for", ["exports", "@ember/test-helpers/wait
     </caption>
     await waitFor('.my-selector', { timeout: 2000 })
   */
-  function waitFor(selector) {
-    let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-    return _utils.Promise.resolve().then(() => {
-      if (!selector) {
-        throw new Error('Must pass a selector to `waitFor`.');
+  function waitFor(target, options = {}) {
+    return Promise.resolve().then(() => {
+      if (typeof target !== 'string' && !(0, _domElementDescriptors.lookupDescriptorData)(target)) {
+        throw new Error('Must pass a selector or DOM element descriptor to `waitFor`.');
       }
       let {
         timeout = 1000,
@@ -5081,19 +4843,20 @@ define("@ember/test-helpers/dom/wait-for", ["exports", "@ember/test-helpers/wait
         timeoutMessage
       } = options;
       if (!timeoutMessage) {
-        timeoutMessage = `waitFor timed out waiting for selector "${selector}"`;
+        let description = (0, _getDescription.default)(target);
+        timeoutMessage = `waitFor timed out waiting for selector "${description}"`;
       }
       let callback;
       if (count !== null) {
         callback = () => {
-          let elements = (0, _getElements.default)(selector);
+          let elements = Array.from((0, _getElements.default)(target));
           if (elements.length === count) {
-            return (0, _ie11Polyfills.toArray)(elements);
+            return elements;
           }
           return;
         };
       } else {
-        callback = () => (0, _getElement.default)(selector);
+        callback = () => (0, _getElement.default)(target);
       }
       return (0, _waitUntil.default)(callback, {
         timeout,
@@ -5109,8 +4872,9 @@ define("@ember/test-helpers/global", ["exports"], function (_exports) {
     value: true
   });
   _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
   /* globals global */
-  var _default = (() => {
+  var _default = _exports.default = (() => {
     if (typeof self !== 'undefined') {
       return self;
     } else if (typeof window !== 'undefined') {
@@ -5121,7 +4885,6 @@ define("@ember/test-helpers/global", ["exports"], function (_exports) {
       return Function('return this')();
     }
   })();
-  _exports.default = _default;
 });
 define("@ember/test-helpers/has-ember-version", ["exports", "ember"], function (_exports, _ember) {
   "use strict";
@@ -5130,6 +4893,7 @@ define("@ember/test-helpers/has-ember-version", ["exports", "ember"], function (
     value: true
   });
   _exports.default = hasEmberVersion;
+  0; //eaimeta@70e063a35619d71f0,"ember"eaimeta@70e063a35619d71f
   /**
     Checks if the currently running Ember version is greater than or equal to the
     specified major and minor version numbers.
@@ -5139,74 +4903,105 @@ define("@ember/test-helpers/has-ember-version", ["exports", "ember"], function (
     @param {number} minor the minor version number to compare
     @returns {boolean} true if the Ember version is >= MAJOR.MINOR specified, false otherwise
   */
-
   function hasEmberVersion(major, minor) {
-    let numbers = _ember.default.VERSION.split('-')[0].split('.');
+    let numbers = _ember.default.VERSION.split('-')[0]?.split('.');
+    if (!numbers || !numbers[0] || !numbers[1]) {
+      throw new Error('`Ember.VERSION` is not set.');
+    }
     let actualMajor = parseInt(numbers[0], 10);
     let actualMinor = parseInt(numbers[1], 10);
     return actualMajor > major || actualMajor === major && actualMinor >= minor;
   }
 });
-define("@ember/test-helpers/ie-11-polyfills", ["exports"], function (_exports) {
+define("@ember/test-helpers/helper-hooks", ["exports"], function (_exports) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.find = find;
-  _exports.toArray = toArray;
-  // @ts-nocheck
+  _exports.registerHook = registerHook;
+  _exports.runHooks = runHooks;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
+  const registeredHooks = new Map();
 
-  /**
-   * Polyfills Array.prototype.find for ie11 without mocking the app during test execution
-   * @param {array} array to find an element
-   * @param {predicate} predicate function to find the element
-   * @returns {(number | string | array | function)} found element inside the array
-   */
-  function find(array, predicate) {
-    return Array.prototype.find ? array.find(predicate) : array.filter(predicate)[0];
-  }
-  /**
-   * Polyfills Array.from for ie11 without mocking the app during test execution
-   * @param {array} nodeList like data structure(e.g. NodeList)
-   * @returns {array} parameter converted to a JS array
-   */
-
-  function toArray(nodeList) {
-    return Array.from ? Array.from(nodeList) : toArrayPolyfill(nodeList);
-  }
   /**
    * @private
-   * Polyfills Array.from for ie11 without mocking the app during test execution
-   * @param {array} nodeList like data structure(e.g. NodeList)
-   * @returns {array} parameter converted to a JS array
+   * @param {string} helperName The name of the test helper in which to run the hook.
+   * @param {string} label A label to help identify the hook.
+   * @returns {string} The compound key for the helper.
    */
+  function getHelperKey(helperName, label) {
+    return `${helperName}:${label}`;
+  }
 
-  function toArrayPolyfill(nodeList) {
-    let array = new Array(nodeList.length);
-    for (let i = 0; i < nodeList.length; i++) {
-      array[i] = nodeList[i];
+  /**
+   * Registers a function to be run during the invocation of a test helper.
+   *
+   * @param {string} helperName The name of the test helper in which to run the hook.
+   *                            Test helper names include `blur`, `click`, `doubleClick`, `fillIn`,
+   *                            `fireEvent`, `focus`, `render`, `scrollTo`, `select`, `tab`, `tap`, `triggerEvent`,
+   *                            `triggerKeyEvent`, `typeIn`, and `visit`.
+   * @param {string} label A label to help identify the hook. Built-in labels include `start`, `end`,
+   *                       and `targetFound`, the former designating either the start or end of
+   *                       the helper invocation.
+   * @param {Function} hook The hook function to run when the test helper is invoked.
+   * @returns {HookUnregister} An object containing an `unregister` function that unregisters
+   *                           the specific hook initially registered to the helper.
+   * @example
+   * <caption>
+   *   Registering a hook for the `end` point of the `click` test helper invocation
+   * </caption>
+   *
+   * const hook = registerHook('click', 'end', () => {
+   *   console.log('Running `click:end` test helper hook');
+   * });
+   *
+   * // Unregister the hook at some later point in time
+   * hook.unregister();
+   */
+  function registerHook(helperName, label, hook) {
+    let helperKey = getHelperKey(helperName, label);
+    let hooksForHelper = registeredHooks.get(helperKey);
+    if (hooksForHelper === undefined) {
+      hooksForHelper = new Set();
+      registeredHooks.set(helperKey, hooksForHelper);
     }
-    return array;
+    hooksForHelper.add(hook);
+    return {
+      unregister() {
+        hooksForHelper.delete(hook);
+      }
+    };
+  }
+
+  /**
+   * Runs all hooks registered for a specific test helper.
+   *
+   * @param {string} helperName The name of the test helper in which to run the hook.
+   *                            Test helper names include `blur`, `click`, `doubleClick`, `fillIn`,
+   *                            `fireEvent`, `focus`, `render`, `scrollTo`, `select`, `tab`, `tap`, `triggerEvent`,
+   *                            `triggerKeyEvent`, `typeIn`, and `visit`.
+   * @param {string} label A label to help identify the hook. Built-in labels include `start`, `end`,
+   *                       and `targetFound`, the former designating either the start or end of
+   *                       the helper invocation.
+   * @param {unknown[]} args Any arguments originally passed to the test helper.
+   * @returns {Promise<void>} A promise representing the serial invocation of the hooks.
+   */
+  function runHooks(helperName, label, ...args) {
+    let hooks = registeredHooks.get(getHelperKey(helperName, label)) || new Set();
+    let promises = [];
+    hooks.forEach(hook => {
+      let hookResult = hook(...args);
+      promises.push(hookResult);
+    });
+    return Promise.all(promises).then(() => {});
   }
 });
-define("@ember/test-helpers/index", ["exports", "@ember/test-helpers/resolver", "@ember/test-helpers/application", "@ember/test-helpers/setup-context", "@ember/test-helpers/teardown-context", "@ember/test-helpers/setup-rendering-context", "@ember/test-helpers/rerender", "@ember/test-helpers/setup-application-context", "@ember/test-helpers/settled", "@ember/test-helpers/wait-until", "@ember/test-helpers/validate-error-handler", "@ember/test-helpers/setup-onerror", "@ember/test-helpers/-internal/debug-info", "@ember/test-helpers/-internal/debug-info-helpers", "@ember/test-helpers/test-metadata", "@ember/test-helpers/-internal/helper-hooks", "@ember/test-helpers/dom/click", "@ember/test-helpers/dom/double-click", "@ember/test-helpers/dom/tab", "@ember/test-helpers/dom/tap", "@ember/test-helpers/dom/focus", "@ember/test-helpers/dom/blur", "@ember/test-helpers/dom/trigger-event", "@ember/test-helpers/dom/trigger-key-event", "@ember/test-helpers/dom/fill-in", "@ember/test-helpers/dom/select", "@ember/test-helpers/dom/wait-for", "@ember/test-helpers/dom/get-root-element", "@ember/test-helpers/dom/find", "@ember/test-helpers/dom/find-all", "@ember/test-helpers/dom/type-in", "@ember/test-helpers/dom/scroll-to"], function (_exports, _resolver, _application, _setupContext, _teardownContext, _setupRenderingContext, _rerender, _setupApplicationContext, _settled, _waitUntil, _validateErrorHandler, _setupOnerror, _debugInfo, _debugInfoHelpers, _testMetadata, _helperHooks, _click, _doubleClick, _tab, _tap, _focus, _blur, _triggerEvent, _triggerKeyEvent, _fillIn, _select, _waitFor, _getRootElement, _find, _findAll, _typeIn, _scrollTo) {
+define("@ember/test-helpers/index", ["exports", "@ember/test-helpers/resolver", "@ember/test-helpers/application", "@ember/test-helpers/has-ember-version", "@ember/test-helpers/setup-context", "@ember/test-helpers/teardown-context", "@ember/test-helpers/setup-rendering-context", "@ember/test-helpers/rerender", "@ember/test-helpers/setup-application-context", "@ember/test-helpers/settled", "@ember/test-helpers/wait-until", "@ember/test-helpers/validate-error-handler", "@ember/test-helpers/setup-onerror", "@ember/test-helpers/-internal/debug-info", "@ember/test-helpers/-internal/debug-info-helpers", "@ember/test-helpers/test-metadata", "@ember/test-helpers/helper-hooks", "@ember/test-helpers/dom/click", "@ember/test-helpers/dom/double-click", "@ember/test-helpers/dom/tab", "@ember/test-helpers/dom/tap", "@ember/test-helpers/dom/focus", "@ember/test-helpers/dom/blur", "@ember/test-helpers/dom/trigger-event", "@ember/test-helpers/dom/trigger-key-event", "@ember/test-helpers/dom/fill-in", "@ember/test-helpers/dom/select", "@ember/test-helpers/dom/wait-for", "@ember/test-helpers/dom/get-root-element", "@ember/test-helpers/dom/find", "@ember/test-helpers/dom/find-all", "@ember/test-helpers/dom/type-in", "@ember/test-helpers/dom/scroll-to"], function (_exports, _resolver, _application, _hasEmberVersion, _setupContext, _teardownContext, _setupRenderingContext, _rerender, _setupApplicationContext, _settled, _waitUntil, _validateErrorHandler, _setupOnerror, _debugInfo, _debugInfoHelpers, _testMetadata, _helperHooks, _click, _doubleClick, _tab, _tap, _focus, _blur, _triggerEvent, _triggerKeyEvent, _fillIn, _select, _waitFor, _getRootElement, _find, _findAll, _typeIn, _scrollTo) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
-  });
-  Object.defineProperty(_exports, "_registerHook", {
-    enumerable: true,
-    get: function () {
-      return _helperHooks.registerHook;
-    }
-  });
-  Object.defineProperty(_exports, "_runHooks", {
-    enumerable: true,
-    get: function () {
-      return _helperHooks.runHooks;
-    }
   });
   Object.defineProperty(_exports, "blur", {
     enumerable: true,
@@ -5334,6 +5129,12 @@ define("@ember/test-helpers/index", ["exports", "@ember/test-helpers/resolver", 
       return _setupContext.getWarningsDuringCallback;
     }
   });
+  Object.defineProperty(_exports, "hasEmberVersion", {
+    enumerable: true,
+    get: function () {
+      return _hasEmberVersion.default;
+    }
+  });
   Object.defineProperty(_exports, "isSettled", {
     enumerable: true,
     get: function () {
@@ -5350,6 +5151,12 @@ define("@ember/test-helpers/index", ["exports", "@ember/test-helpers/resolver", 
     enumerable: true,
     get: function () {
       return _debugInfoHelpers.default;
+    }
+  });
+  Object.defineProperty(_exports, "registerHook", {
+    enumerable: true,
+    get: function () {
+      return _helperHooks.registerHook;
     }
   });
   Object.defineProperty(_exports, "render", {
@@ -5374,6 +5181,12 @@ define("@ember/test-helpers/index", ["exports", "@ember/test-helpers/resolver", 
     enumerable: true,
     get: function () {
       return _setupContext.resumeTest;
+    }
+  });
+  Object.defineProperty(_exports, "runHooks", {
+    enumerable: true,
+    get: function () {
+      return _helperHooks.runHooks;
     }
   });
   Object.defineProperty(_exports, "scrollTo", {
@@ -5502,6 +5315,8 @@ define("@ember/test-helpers/index", ["exports", "@ember/test-helpers/resolver", 
       return _waitUntil.default;
     }
   });
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/resolver",0,"@ember/test-helpers/application",0,"@ember/test-helpers/has-ember-version",0,"@ember/test-helpers/setup-context",0,"@ember/test-helpers/teardown-context",0,"@ember/test-helpers/setup-rendering-context",0,"@ember/test-helpers/rerender",0,"@ember/test-helpers/setup-application-context",0,"@ember/test-helpers/settled",0,"@ember/test-helpers/wait-until",0,"@ember/test-helpers/validate-error-handler",0,"@ember/test-helpers/setup-onerror",0,"@ember/test-helpers/-internal/debug-info",0,"@ember/test-helpers/-internal/debug-info-helpers",0,"@ember/test-helpers/test-metadata",0,"@ember/test-helpers/helper-hooks",0,"@ember/test-helpers/dom/click",0,"@ember/test-helpers/dom/double-click",0,"@ember/test-helpers/dom/tab",0,"@ember/test-helpers/dom/tap",0,"@ember/test-helpers/dom/focus",0,"@ember/test-helpers/dom/blur",0,"@ember/test-helpers/dom/trigger-event",0,"@ember/test-helpers/dom/trigger-key-event",0,"@ember/test-helpers/dom/fill-in",0,"@ember/test-helpers/dom/select",0,"@ember/test-helpers/dom/wait-for",0,"@ember/test-helpers/dom/get-root-element",0,"@ember/test-helpers/dom/find",0,"@ember/test-helpers/dom/find-all",0,"@ember/test-helpers/dom/type-in",0,"@ember/test-helpers/dom/scroll-to"eaimeta@70e063a35619d71f
+  // DOM Helpers
 });
 define("@ember/test-helpers/rerender", ["exports", "@ember/test-helpers/-internal/render-settled"], function (_exports, _renderSettled) {
   "use strict";
@@ -5510,6 +5325,7 @@ define("@ember/test-helpers/rerender", ["exports", "@ember/test-helpers/-interna
     value: true
   });
   _exports.default = rerender;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/-internal/render-settled"eaimeta@70e063a35619d71f
   /**
     Returns a promise which will resolve when rendering has completed. In
     this context, rendering is completed when all auto-tracked state that is
@@ -5526,7 +5342,6 @@ define("@ember/test-helpers/rerender", ["exports", "@ember/test-helpers/-interna
     @public
     @returns {Promise<void>} a promise which fulfills when rendering has completed
   */
-
   function rerender() {
     return (0, _renderSettled.default)();
   }
@@ -5539,7 +5354,9 @@ define("@ember/test-helpers/resolver", ["exports"], function (_exports) {
   });
   _exports.getResolver = getResolver;
   _exports.setResolver = setResolver;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
   let __resolver__;
+
   /**
     Stores the provided resolver instance so that tests being ran can resolve
     objects in the same way as a normal application.
@@ -5549,17 +5366,16 @@ define("@ember/test-helpers/resolver", ["exports"], function (_exports) {
     @public
     @param {Ember.Resolver} resolver the resolver to be used for testing
   */
-
   function setResolver(resolver) {
     __resolver__ = resolver;
   }
+
   /**
     Retrieve the resolver instance stored by `setResolver`.
   
     @public
     @returns {Ember.Resolver} the previously stored resolver
   */
-
   function getResolver() {
     return __resolver__;
   }
@@ -5575,8 +5391,11 @@ define("@ember/test-helpers/settled", ["exports", "@ember/runloop", "ember", "@e
   _exports.default = settled;
   _exports.getSettledState = getSettledState;
   _exports.isSettled = isSettled;
+  0; //eaimeta@70e063a35619d71f0,"@ember/runloop",0,"ember",0,"@ember/application/instance",0,"@ember/test-helpers/-utils",0,"@ember/test-helpers/wait-until",0,"@ember/test-helpers/setup-application-context",0,"@ember/test-waiters",0,"@ember/test-helpers/-internal/debug-info"eaimeta@70e063a35619d71f
   /* globals jQuery */
-
+  // @ts-ignore: this is private API. This import will work Ember 5.1+ since it
+  // "provides" this public API, but does not for earlier versions. As a result,
+  // this type will be `any`.
   // Ember internally tracks AJAX requests in the same way that we do here for
   // legacy style "acceptance" tests using the `ember-testing.js` asset provided
   // by emberjs/ember.js itself. When `@ember/test-helpers`'s `settled` utility
@@ -5585,7 +5404,6 @@ define("@ember/test-helpers/settled", ["exports", "@ember/runloop", "ember", "@e
   //
   // This utilizes a local utility method present in Ember since around 2.8.0 to
   // properly consider pending AJAX requests done within legacy acceptance tests.
-
   const _internalPendingRequestsModule = (() => {
     let loader = _ember.default.__loader;
     if (loader.registry['ember-testing/test/pending_requests']) {
@@ -5612,40 +5430,40 @@ define("@ember/test-helpers/settled", ["exports", "@ember/runloop", "ember", "@e
     //
     // This can be removed once Ember 4.0.0 is released
     _instance.default.reopen({
-      willDestroy() {
+      willDestroy(...args) {
         jQuery(document).off('ajaxSend', _internalPendingRequestsModule.incrementPendingRequests);
         jQuery(document).off('ajaxComplete', _internalPendingRequestsModule.decrementPendingRequests);
         _internalPendingRequestsModule.clearPendingRequests();
-        this._super(...arguments);
+        this._super(...args);
       }
     });
   }
   let requests;
+
   /**
     @private
     @returns {number} the count of pending requests
   */
-
   function pendingRequests() {
     let localRequestsPending = requests !== undefined ? requests.length : 0;
     let internalRequestsPending = _internalGetPendingRequestsCount();
     return localRequestsPending + internalRequestsPending;
   }
+
   /**
     @private
     @param {Event} event (unused)
     @param {XMLHTTPRequest} xhr the XHR that has initiated a request
   */
-
   function incrementAjaxPendingRequests(event, xhr) {
     requests.push(xhr);
   }
+
   /**
     @private
     @param {Event} event (unused)
     @param {XMLHTTPRequest} xhr the XHR that has initiated a request
   */
-
   function decrementAjaxPendingRequests(event, xhr) {
     // In most Ember versions to date (current version is 2.16) RSVP promises are
     // configured to flush in the actions queue of the Ember run loop, however it
@@ -5663,18 +5481,19 @@ define("@ember/test-helpers/settled", ["exports", "@ember/runloop", "ember", "@e
           requests.splice(i, 1);
         }
       }
-    }, 0);
+    });
   }
+
   /**
     Clears listeners that were previously setup for `ajaxSend` and `ajaxComplete`.
   
     @private
   */
-
   function _teardownAJAXHooks() {
     // jQuery will not invoke `ajaxComplete` if
     //    1. `transport.send` throws synchronously and
     //    2. it has an `error` option which also throws synchronously
+
     // We can no longer handle any remaining requests
     requests = [];
     if (typeof jQuery === 'undefined') {
@@ -5683,12 +5502,12 @@ define("@ember/test-helpers/settled", ["exports", "@ember/runloop", "ember", "@e
     jQuery(document).off('ajaxSend', incrementAjaxPendingRequests);
     jQuery(document).off('ajaxComplete', decrementAjaxPendingRequests);
   }
+
   /**
     Sets up listeners for `ajaxSend` and `ajaxComplete`.
   
     @private
   */
-
   function _setupAJAXHooks() {
     requests = [];
     if (typeof jQuery === 'undefined') {
@@ -5706,26 +5525,22 @@ define("@ember/test-helpers/settled", ["exports", "@ember/runloop", "ember", "@e
     // Ember >= 3.2
     _internalCheckWaiters = loader.require('ember-testing/lib/test/waiters').checkWaiters;
   }
+
   /**
     @private
     @returns {boolean} true if waiters are still pending
   */
-
   function checkWaiters() {
     let EmberTest = _ember.default.Test;
     if (_internalCheckWaiters) {
       return _internalCheckWaiters();
     } else if (EmberTest.waiters) {
-      if (EmberTest.waiters.some(_ref => {
-        let [context, callback] = _ref;
-        return !callback.call(context);
-      })) {
+      if (EmberTest.waiters.some(([context, callback]) => !callback.call(context))) {
         return true;
       }
     }
     return false;
   }
-
   /**
     Check various settledness metrics, and return an object with the following properties:
   
@@ -5758,9 +5573,9 @@ define("@ember/test-helpers/settled", ["exports", "@ember/runloop", "ember", "@e
     let hasPendingLegacyWaiters = checkWaiters();
     let hasPendingTestWaiters = (0, _testWaiters.hasPendingWaiters)();
     let pendingRequestCount = pendingRequests();
-    let hasPendingRequests = pendingRequestCount > 0; // TODO: Ideally we'd have a function in Ember itself that can synchronously identify whether
+    let hasPendingRequests = pendingRequestCount > 0;
+    // TODO: Ideally we'd have a function in Ember itself that can synchronously identify whether
     // or not there are any pending render operations, but this will have to suffice for now
-
     let isRenderPending = !!hasRunLoop;
     return {
       hasPendingTimers,
@@ -5780,6 +5595,7 @@ define("@ember/test-helpers/settled", ["exports", "@ember/runloop", "ember", "@e
       })
     };
   }
+
   /**
     Checks various settledness metrics (via `getSettledState()`) to determine if things are settled or not.
   
@@ -5790,7 +5606,6 @@ define("@ember/test-helpers/settled", ["exports", "@ember/runloop", "ember", "@e
     @public
     @returns {boolean} `true` if settled, `false` otherwise
   */
-
   function isSettled() {
     let {
       hasPendingTimers,
@@ -5805,6 +5620,7 @@ define("@ember/test-helpers/settled", ["exports", "@ember/runloop", "ember", "@e
     }
     return true;
   }
+
   /**
     Returns a promise that resolves when in a settled state (see `isSettled` for
     a definition of "settled state").
@@ -5812,14 +5628,13 @@ define("@ember/test-helpers/settled", ["exports", "@ember/runloop", "ember", "@e
     @public
     @returns {Promise<void>} resolves when settled
   */
-
   function settled() {
     return (0, _waitUntil.default)(isSettled, {
       timeout: Infinity
     }).then(() => {});
   }
 });
-define("@ember/test-helpers/setup-application-context", ["exports", "@ember/object", "@ember/test-helpers/-utils", "@ember/test-helpers/setup-context", "@ember/test-helpers/global", "@ember/test-helpers/has-ember-version", "@ember/test-helpers/settled", "@ember/test-helpers/test-metadata", "@ember/test-helpers/-internal/helper-hooks"], function (_exports, _object, _utils, _setupContext, _global, _hasEmberVersion, _settled, _testMetadata, _helperHooks) {
+define("@ember/test-helpers/setup-application-context", ["exports", "@ember/object", "@ember/test-helpers/setup-context", "@ember/test-helpers/global", "@ember/test-helpers/has-ember-version", "@ember/test-helpers/settled", "@ember/test-helpers/test-metadata", "@ember/test-helpers/helper-hooks", "@ember/debug"], function (_exports, _object, _setupContext, _global, _hasEmberVersion, _settled, _testMetadata, _helperHooks, _debug) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -5832,27 +5647,30 @@ define("@ember/test-helpers/setup-application-context", ["exports", "@ember/obje
   _exports.isApplicationTestContext = isApplicationTestContext;
   _exports.setupRouterSettlednessTracking = setupRouterSettlednessTracking;
   _exports.visit = visit;
+  0; //eaimeta@70e063a35619d71f0,"@ember/object",0,"@ember/test-helpers/setup-context",0,"@ember/test-helpers/global",0,"@ember/test-helpers/has-ember-version",0,"@ember/test-helpers/settled",0,"@ember/test-helpers/test-metadata",0,"@ember/test-helpers/helper-hooks",0,"@ember/debug"eaimeta@70e063a35619d71f
   const CAN_USE_ROUTER_EVENTS = (0, _hasEmberVersion.default)(3, 6);
   let routerTransitionsPending = null;
   const ROUTER = new WeakMap();
-  const HAS_SETUP_ROUTER = new WeakMap(); // eslint-disable-next-line require-jsdoc
+  const HAS_SETUP_ROUTER = new WeakMap();
 
+  // eslint-disable-next-line require-jsdoc
   function isApplicationTestContext(context) {
     return (0, _setupContext.isTestContext)(context);
   }
+
   /**
-    Determines if we have any pending router transtions (used to determine `settled` state)
+    Determines if we have any pending router transitions (used to determine `settled` state)
   
     @public
     @returns {(boolean|null)} if there are pending transitions
   */
-
   function hasPendingTransitions() {
     if (CAN_USE_ROUTER_EVENTS) {
       return routerTransitionsPending;
     }
-    let context = (0, _setupContext.getContext)(); // there is no current context, we cannot check
+    let context = (0, _setupContext.getContext)();
 
+    // there is no current context, we cannot check
     if (context === undefined) {
       return null;
     }
@@ -5869,6 +5687,7 @@ define("@ember/test-helpers/setup-application-context", ["exports", "@ember/obje
     }
     return !!routerMicrolib.activeTransition;
   }
+
   /**
     Setup the current router instance with settledness tracking. Generally speaking this
     is done automatically (during a `visit('/some-url')` invocation), but under some
@@ -5877,13 +5696,13 @@ define("@ember/test-helpers/setup-application-context", ["exports", "@ember/obje
   
     @public
    */
-
   function setupRouterSettlednessTracking() {
     const context = (0, _setupContext.getContext)();
-    if (context === undefined) {
+    if (context === undefined || !(0, _setupContext.isTestContext)(context)) {
       throw new Error('Cannot setupRouterSettlednessTracking outside of a test context');
-    } // avoid setting up many times for the same context
+    }
 
+    // avoid setting up many times for the same context
     if (HAS_SETUP_ROUTER.get(context)) {
       return;
     }
@@ -5893,23 +5712,36 @@ define("@ember/test-helpers/setup-application-context", ["exports", "@ember/obje
     } = context;
     let router;
     if (CAN_USE_ROUTER_EVENTS) {
-      router = owner.lookup('service:router'); // track pending transitions via the public routeWillChange / routeDidChange APIs
+      // SAFETY: unfortunately we cannot `assert` here at present because the
+      // class is not exported, only the type, since it is not designed to be
+      // sub-classed. The most we can do at present is assert that it at least
+      // *exists* and assume that if it does exist, it is bound correctly.
+      let routerService = owner.lookup('service:router');
+      (true && !(!!routerService) && (0, _debug.assert)('router service is not set up correctly', !!routerService));
+      router = routerService;
+
+      // track pending transitions via the public routeWillChange / routeDidChange APIs
       // routeWillChange can fire many times and is only useful to know when we have _started_
       // transitioning, we can then use routeDidChange to signal that the transition has settled
-
       router.on('routeWillChange', () => routerTransitionsPending = true);
       router.on('routeDidChange', () => routerTransitionsPending = false);
     } else {
-      router = owner.lookup('router:main');
+      // SAFETY: similarly, this cast cannot be made safer because on the versions
+      // where we fall into this path, this is *also* not an exported class.
+      let mainRouter = owner.lookup('router:main');
+      (true && !(!!mainRouter) && (0, _debug.assert)('router:main is not available', !!mainRouter));
+      router = mainRouter;
       ROUTER.set(context, router);
-    } // hook into teardown to reset local settledness state
+    }
 
+    // hook into teardown to reset local settledness state
     let ORIGINAL_WILL_DESTROY = router.willDestroy;
     router.willDestroy = function () {
       routerTransitionsPending = null;
       return ORIGINAL_WILL_DESTROY.call(this);
     };
   }
+
   /**
     Navigate the application to the provided URL.
   
@@ -5917,8 +5749,19 @@ define("@ember/test-helpers/setup-application-context", ["exports", "@ember/obje
     @param {string} url The URL to visit (e.g. `/posts`)
     @param {object} options app boot options
     @returns {Promise<void>} resolves when settled
+  
+    @example
+    <caption>
+      Visiting the route for post 1.
+    </caption>
+    await visit('/posts/1');
+  
+    @example
+    <caption>
+      Visiting the route for post 1 while also providing the `rootElement` app boot option.
+    </caption>
+    await visit('/', { rootElement: '#container' });
   */
-
   function visit(url, options) {
     const context = (0, _setupContext.getContext)();
     if (!context || !isApplicationTestContext(context)) {
@@ -5929,7 +5772,7 @@ define("@ember/test-helpers/setup-application-context", ["exports", "@ember/obje
     } = context;
     let testMetadata = (0, _testMetadata.default)(context);
     testMetadata.usedHelpers.push('visit');
-    return _utils.Promise.resolve().then(() => {
+    return Promise.resolve().then(() => {
       return (0, _helperHooks.runHooks)('visit', 'start', url, options);
     }).then(() => {
       let visitResult = owner.visit(url, options);
@@ -5945,25 +5788,27 @@ define("@ember/test-helpers/setup-application-context", ["exports", "@ember/obje
       return (0, _helperHooks.runHooks)('visit', 'end', url, options);
     });
   }
+
   /**
     @public
     @returns {string} the currently active route name
   */
-
   function currentRouteName() {
     const context = (0, _setupContext.getContext)();
     if (!context || !isApplicationTestContext(context)) {
       throw new Error('Cannot call `currentRouteName` without having first called `setupApplicationContext`.');
     }
     let router = context.owner.lookup('router:main');
-    return (0, _object.get)(router, 'currentRouteName');
+    let currentRouteName = (0, _object.get)(router, 'currentRouteName');
+    (true && !(typeof currentRouteName === 'string') && (0, _debug.assert)('currentRouteName should be a string', typeof currentRouteName === 'string'));
+    return currentRouteName;
   }
   const HAS_CURRENT_URL_ON_ROUTER = (0, _hasEmberVersion.default)(2, 13);
+
   /**
     @public
     @returns {string} the applications current url
   */
-
   function currentURL() {
     const context = (0, _setupContext.getContext)();
     if (!context || !isApplicationTestContext(context)) {
@@ -5971,11 +5816,25 @@ define("@ember/test-helpers/setup-application-context", ["exports", "@ember/obje
     }
     let router = context.owner.lookup('router:main');
     if (HAS_CURRENT_URL_ON_ROUTER) {
-      return (0, _object.get)(router, 'currentURL');
+      let routerCurrentURL = (0, _object.get)(router, 'currentURL');
+
+      // SAFETY: this path is a lie for the sake of the public-facing types. The
+      // framework itself sees this path, but users never do. A user who calls the
+      // API without calling `visit()` will see an `UnrecognizedURLError`, rather
+      // than getting back `null`.
+      if (routerCurrentURL === null) {
+        return routerCurrentURL;
+      }
+      (true && !(typeof routerCurrentURL === 'string') && (0, _debug.assert)(`currentUrl should be a string, but was ${typeof routerCurrentURL}`, typeof routerCurrentURL === 'string'));
+      return routerCurrentURL;
     } else {
+      // SAFETY: this is *positively ancient* and should probably be removed at
+      // some point; old routers which don't have `currentURL` *should* have a
+      // `location` with `getURL()` per the docs for 2.12.
       return (0, _object.get)(router, 'location').getURL();
     }
   }
+
   /**
     Used by test framework addons to setup the provided context for working with
     an application (e.g. routing).
@@ -5987,16 +5846,15 @@ define("@ember/test-helpers/setup-application-context", ["exports", "@ember/obje
   
     @public
     @param {Object} context the context to setup
-    @returns {Promise<Object>} resolves with the context that was setup
+    @returns {Promise<void>} resolves when the context is set up
   */
-
   function setupApplicationContext(context) {
     let testMetadata = (0, _testMetadata.default)(context);
     testMetadata.setupTypes.push('setupApplicationContext');
-    return _utils.Promise.resolve();
+    return Promise.resolve();
   }
 });
-define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@ember/object", "@ember/application", "@ember/test-helpers/build-owner", "@ember/test-helpers/settled", "@ember/test-helpers/setup-onerror", "ember", "@ember/debug", "@ember/test-helpers/global", "@ember/test-helpers/resolver", "@ember/test-helpers/application", "@ember/test-helpers/-utils", "@ember/test-helpers/test-metadata", "@ember/destroyable", "@ember/test-helpers/-internal/deprecations", "@ember/test-helpers/-internal/warnings"], function (_exports, _runloop, _object, _application, _buildOwner, _settled, _setupOnerror, _ember, _debug, _global, _resolver, _application2, _utils, _testMetadata, _destroyable, _deprecations, _warnings) {
+define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@ember/object", "@ember/application", "@ember/test-helpers/build-owner", "@ember/test-helpers/settled", "@ember/test-helpers/setup-onerror", "ember", "@ember/debug", "@ember/test-helpers/global", "@ember/test-helpers/resolver", "@ember/test-helpers/application", "@ember/test-helpers/test-metadata", "@ember/destroyable", "@ember/test-helpers/-internal/deprecations", "@ember/test-helpers/-internal/warnings"], function (_exports, _runloop, _object, _application, _buildOwner, _settled, _setupOnerror, _ember, _debug, _global, _resolver, _application2, _testMetadata, _destroyable, _deprecations, _warnings) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -6014,14 +5872,18 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
   _exports.resumeTest = resumeTest;
   _exports.setContext = setContext;
   _exports.unsetContext = unsetContext;
+  0; //eaimeta@70e063a35619d71f0,"@ember/runloop",0,"@ember/object",0,"@ember/application",0,"@ember/test-helpers/build-owner",0,"@ember/test-helpers/settled",0,"@ember/test-helpers/setup-onerror",0,"ember",0,"@ember/debug",0,"@ember/test-helpers/global",0,"@ember/test-helpers/resolver",0,"@ember/test-helpers/application",0,"@ember/test-helpers/test-metadata",0,"@ember/destroyable",0,"@ember/test-helpers/-internal/deprecations",0,"@ember/test-helpers/-internal/warnings"eaimeta@70e063a35619d71f
+  // @ts-ignore: this is private API. This import will work Ember 5.1+ since it
+  // "provides" this public API, but does not for earlier versions. As a result,
+  // this type will be `any`.
   // This handler exists to provide the underlying data to enable the following methods:
   // * getDeprecations()
   // * getDeprecationsDuringCallback()
   // * getDeprecationsDuringCallbackForContext()
-
   (0, _debug.registerDeprecationHandler)((message, options, next) => {
     const context = getContext();
     if (context === undefined) {
+      next.apply(null, [message, options]);
       return;
     }
     (0, _deprecations.getDeprecationsForContext)(context).push({
@@ -6029,14 +5891,16 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
       options
     });
     next.apply(null, [message, options]);
-  }); // This handler exists to provide the underlying data to enable the following methods:
+  });
+
+  // This handler exists to provide the underlying data to enable the following methods:
   // * getWarnings()
   // * getWarningsDuringCallback()
   // * getWarningsDuringCallbackForContext()
-
   (0, _debug.registerWarnHandler)((message, options, next) => {
     const context = getContext();
     if (context === undefined) {
+      next.apply(null, [message, options]);
       return;
     }
     (0, _warnings.getWarningsForContext)(context).push({
@@ -6047,9 +5911,11 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
   });
   // eslint-disable-next-line require-jsdoc
   function isTestContext(context) {
-    return typeof context.pauseTest === 'function' && typeof context.resumeTest === 'function';
+    let maybeContext = context;
+    return typeof maybeContext['pauseTest'] === 'function' && typeof maybeContext['resumeTest'] === 'function';
   }
   let __test_context__;
+
   /**
     Stores the provided context as the "global testing context".
   
@@ -6058,20 +5924,20 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
     @public
     @param {Object} context the context to use
   */
-
   function setContext(context) {
     __test_context__ = context;
   }
+
   /**
-    Retrive the "global testing context" as stored by `setContext`.
+    Retrieve the "global testing context" as stored by `setContext`.
   
     @public
     @returns {Object} the previously stored testing context
   */
-
   function getContext() {
     return __test_context__;
   }
+
   /**
     Clear the "global testing context".
   
@@ -6079,10 +5945,10 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
   
     @public
   */
-
   function unsetContext() {
     __test_context__ = undefined;
   }
+
   /**
    * Returns a promise to be used to pauses the current test (due to being
    * returned from the test itself).  This is useful for debugging while testing
@@ -6117,7 +5983,6 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
    *   });
    * });
    */
-
   function pauseTest() {
     let context = getContext();
     if (!context || !isTestContext(context)) {
@@ -6125,12 +5990,12 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
     }
     return context.pauseTest();
   }
+
   /**
     Resumes a test previously paused by `await pauseTest()`.
   
     @public
   */
-
   function resumeTest() {
     let context = getContext();
     if (!context || !isTestContext(context)) {
@@ -6138,21 +6003,21 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
     }
     context.resumeTest();
   }
+
   /**
     @private
     @param {Object} context the test context being cleaned up
   */
-
   function cleanup(context) {
     (0, _settled._teardownAJAXHooks)();
-    _ember.default.testing = false;
-    unsetContext(); // this should not be required, but until https://github.com/emberjs/ember.js/pull/19106
-    // lands in a 3.20 patch release
 
-    context.owner.destroy();
+    // SAFETY: this is intimate API *designed* for us to override.
+    _ember.default.testing = false;
+    unsetContext();
   }
+
   /**
-   * Returns deprecations which have occured so far for a the current test context
+   * Returns deprecations which have occurred so far for a the current test context
    *
    * @public
    * @returns {Array<DeprecationFailure>} An array of deprecation messages
@@ -6164,11 +6029,10 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
    *   setupRenderingTest(hooks);
    *
    *   test('does something awesome', function(assert) {
-         const deprecations = getDeprecations() // => returns deprecations which have occured so far in this test
+         const deprecations = getDeprecations() // => returns deprecations which have occurred so far in this test
    *   });
    * });
    */
-
   function getDeprecations() {
     const context = getContext();
     if (!context) {
@@ -6177,10 +6041,10 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
     return (0, _deprecations.getDeprecationsForContext)(context);
   }
   /**
-   * Returns deprecations which have occured so far for a the current test context
+   * Returns deprecations which have occurred so far for a the current test context
    *
    * @public
-   * @param {CallableFunction} [callback] The callback that when executed will have its DeprecationFailure recorded
+   * @param {Function} [callback] The callback that when executed will have its DeprecationFailure recorded
    * @returns {Array<DeprecationFailure> | Promise<Array<DeprecationFailure>>} An array of deprecation messages
    * @example <caption>Usage via ember-qunit</caption>
    *
@@ -6193,18 +6057,17 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
    *     const deprecations = getDeprecationsDuringCallback(() => {
    *       // code that might emit some deprecations
    *
-   *     }); // => returns deprecations which occured while the callback was invoked
+   *     }); // => returns deprecations which occurred while the callback was invoked
    *   });
    *
    *
    *   test('does something awesome', async function(assert) {
    *     const deprecations = await getDeprecationsDuringCallback(async () => {
    *       // awaited code that might emit some deprecations
-   *     }); // => returns deprecations which occured while the callback was invoked
+   *     }); // => returns deprecations which occurred while the callback was invoked
    *   });
    * });
    */
-
   function getDeprecationsDuringCallback(callback) {
     const context = getContext();
     if (!context) {
@@ -6212,8 +6075,9 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
     }
     return (0, _deprecations.getDeprecationsDuringCallbackForContext)(context, callback);
   }
+
   /**
-   * Returns warnings which have occured so far for a the current test context
+   * Returns warnings which have occurred so far for a the current test context
    *
    * @public
    * @returns {Array<Warning>} An array of warnings
@@ -6225,11 +6089,10 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
    *   setupRenderingTest(hooks);
    *
    *   test('does something awesome', function(assert) {
-         const warnings = getWarnings() // => returns warnings which have occured so far in this test
+         const warnings = getWarnings() // => returns warnings which have occurred so far in this test
    *   });
    * });
    */
-
   function getWarnings() {
     const context = getContext();
     if (!context) {
@@ -6238,10 +6101,10 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
     return (0, _warnings.getWarningsForContext)(context);
   }
   /**
-   * Returns warnings which have occured so far for a the current test context
+   * Returns warnings which have occurred so far for a the current test context
    *
    * @public
-   * @param {CallableFunction} [callback] The callback that when executed will have its warnings recorded
+   * @param {Function} [callback] The callback that when executed will have its warnings recorded
    * @returns {Array<Warning> | Promise<Array<Warning>>} An array of warnings information
    * @example <caption>Usage via ember-qunit</caption>
    *
@@ -6255,7 +6118,7 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
    *     const warnings = getWarningsDuringCallback(() => {
    *     warn('some warning');
    *
-   *     }); // => returns warnings which occured while the callback was invoked
+   *     }); // => returns warnings which occurred while the callback was invoked
    *   });
    *
    *   test('does something awesome', async function(assert) {
@@ -6263,23 +6126,23 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
    *
    *     const warnings = await getWarningsDuringCallback(async () => {
    *       warn('some other warning');
-   *     }); // => returns warnings which occured while the callback was invoked
+   *     }); // => returns warnings which occurred while the callback was invoked
    *   });
    * });
    */
-
   function getWarningsDuringCallback(callback) {
     const context = getContext();
     if (!context) {
       throw new Error('[@ember/test-helpers] could not get warnings if no test context is currently active');
     }
     return (0, _warnings.getWarningsDuringCallbackForContext)(context, callback);
-  } // This WeakMap is used to track whenever a component is rendered in a test so that we can throw
-  // assertions when someone uses `this.{set,setProperties}` while rendering a component.
+  }
 
-  const ComponentRenderMap = new WeakMap();
-  _exports.ComponentRenderMap = ComponentRenderMap;
-  const SetUsage = new WeakMap();
+  // This WeakMap is used to track whenever a component is rendered in a test so that we can throw
+  // assertions when someone uses `this.{set,setProperties}` while rendering a component.
+  const ComponentRenderMap = _exports.ComponentRenderMap = new WeakMap();
+  const SetUsage = _exports.SetUsage = new WeakMap();
+
   /**
     Used by test framework addons to setup the provided context for testing.
   
@@ -6292,14 +6155,15 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
     - setting up `pauseTest` (also available as `this.pauseTest()`) and `resumeTest` helpers
   
     @public
-    @param {Object} context the context to setup
+    @param {Object} base the context to setup
     @param {Object} [options] options used to override defaults
     @param {Resolver} [options.resolver] a resolver to use for customizing normal resolution
     @returns {Promise<Object>} resolves with the context that was setup
   */
-  _exports.SetUsage = SetUsage;
-  function setupContext(context) {
-    let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  function setupContext(base, options = {}) {
+    let context = base;
+
+    // SAFETY: this is intimate API *designed* for us to override.
     _ember.default.testing = true;
     setContext(context);
     let testMetadata = (0, _testMetadata.default)(context);
@@ -6307,7 +6171,7 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
     _runloop._backburner.DEBUG = true;
     (0, _destroyable.registerDestructor)(context, cleanup);
     (0, _setupOnerror._prepareOnerror)(context);
-    return _utils.Promise.resolve().then(() => {
+    return Promise.resolve().then(() => {
       let application = (0, _application2.getApplication)();
       if (application) {
         return application.boot().then(() => {});
@@ -6316,13 +6180,14 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
     }).then(() => {
       let {
         resolver
-      } = options; // This handles precendence, specifying a specific option of
+      } = options;
+
+      // This handles precedence, specifying a specific option of
       // resolver always trumps whatever is auto-detected, then we fallback to
       // the suite-wide registrations
       //
       // At some later time this can be extended to support specifying a custom
       // engine or application...
-
       if (resolver) {
         return (0, _buildOwner.default)(null, resolver);
       }
@@ -6339,6 +6204,7 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
       Object.defineProperty(context, 'set', {
         configurable: true,
         enumerable: true,
+        // SAFETY: in all of these `defineProperty` calls, we can't actually guarantee any safety w.r.t. the corresponding field's type in `TestContext`
         value(key, value) {
           let ret = (0, _runloop.run)(function () {
             if (ComponentRenderMap.has(context)) {
@@ -6360,17 +6226,24 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
       Object.defineProperty(context, 'setProperties', {
         configurable: true,
         enumerable: true,
+        // SAFETY: in all of these `defineProperty` calls, we can't actually guarantee any safety w.r.t. the corresponding field's type in `TestContext`
         value(hash) {
           let ret = (0, _runloop.run)(function () {
             if (ComponentRenderMap.has(context)) {
               (true && !(false) && (0, _debug.assert)('You cannot call `this.setProperties` when passing a component to `render()` (the rendered component does not have access to the test context)'));
             } else {
-              let setCalls = SetUsage.get(context);
-              if (SetUsage.get(context) === undefined) {
-                setCalls = [];
-                SetUsage.set(context, setCalls);
+              // While neither the types nor the API documentation indicate that passing `null` or
+              // `undefined` to `setProperties` is allowed, it works and *has worked* for a long
+              // time, so there is considerable real-world code which relies on the fact that it
+              // does in fact work. Checking and no-op-ing here handles that.
+              if (hash != null) {
+                let setCalls = SetUsage.get(context);
+                if (SetUsage.get(context) === undefined) {
+                  setCalls = [];
+                  SetUsage.set(context, setCalls);
+                }
+                setCalls?.push(...Object.keys(hash));
               }
-              setCalls?.push(...Object.keys(hash));
             }
             return (0, _object.setProperties)(context, hash);
           });
@@ -6389,24 +6262,22 @@ define("@ember/test-helpers/setup-context", ["exports", "@ember/runloop", "@embe
       Object.defineProperty(context, 'getProperties', {
         configurable: true,
         enumerable: true,
-        value() {
-          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-          }
+        // SAFETY: in all of these `defineProperty` calls, we can't actually guarantee any safety w.r.t. the corresponding field's type in `TestContext`
+        value(...args) {
           return (0, _object.getProperties)(context, args);
         },
         writable: false
       });
       let resume;
-      context.resumeTest = function resumeTest() {
-        (true && !(Boolean(resume)) && (0, _debug.assert)('Testing has not been paused. There is nothing to resume.', Boolean(resume)));
+      context['resumeTest'] = function resumeTest() {
+        (true && !(!!resume) && (0, _debug.assert)('Testing has not been paused. There is nothing to resume.', !!resume));
         resume();
         _global.default.resumeTest = resume = undefined;
       };
-      context.pauseTest = function pauseTest() {
+      context['pauseTest'] = function pauseTest() {
         console.info('Testing paused. Use `resumeTest()` to continue.'); // eslint-disable-line no-console
 
-        return new _utils.Promise(resolve => {
+        return new Promise(resolve => {
           resume = resolve;
           _global.default.resumeTest = resumeTest;
         });
@@ -6426,7 +6297,9 @@ define("@ember/test-helpers/setup-onerror", ["exports", "ember", "@ember/test-he
   _exports._prepareOnerror = _prepareOnerror;
   _exports.default = setupOnerror;
   _exports.resetOnerror = resetOnerror;
+  0; //eaimeta@70e063a35619d71f0,"ember",0,"@ember/test-helpers/setup-context"eaimeta@70e063a35619d71f
   let cachedOnerror = new Map();
+
   /**
    * Sets the `Ember.onerror` function for tests. This value is intended to be reset after
    * each test to ensure correct test isolation. To reset, you should simply call `setupOnerror`
@@ -6445,7 +6318,6 @@ define("@ember/test-helpers/setup-onerror", ["exports", "ember", "@ember/test-he
    *   });
    * });
    */
-
   function setupOnerror(onError) {
     let context = (0, _setupContext.getContext)();
     if (!context) {
@@ -6459,6 +6331,7 @@ define("@ember/test-helpers/setup-onerror", ["exports", "ember", "@ember/test-he
     }
     _ember.default.onerror = onError;
   }
+
   /**
    * Resets `Ember.onerror` to the value it originally was at the start of the test run.
    * If there is no context or cached value this is a no-op.
@@ -6473,13 +6346,13 @@ define("@ember/test-helpers/setup-onerror", ["exports", "ember", "@ember/test-he
    *   resetOnerror();
    * })
    */
-
   function resetOnerror() {
     let context = (0, _setupContext.getContext)();
     if (context && cachedOnerror.has(context)) {
       _ember.default.onerror = cachedOnerror.get(context);
     }
   }
+
   /**
    * Caches the current value of Ember.onerror. When `setupOnerror` is called without a value
    * or when `resetOnerror` is called the value will be set to what was cached here.
@@ -6487,26 +6360,25 @@ define("@ember/test-helpers/setup-onerror", ["exports", "ember", "@ember/test-he
    * @private
    * @param {BaseContext} context the text context
    */
-
   function _prepareOnerror(context) {
     if (cachedOnerror.has(context)) {
       throw new Error('_prepareOnerror should only be called once per-context');
     }
     cachedOnerror.set(context, _ember.default.onerror);
   }
+
   /**
    * Removes the cached value of Ember.onerror.
    *
    * @private
    * @param {BaseContext} context the text context
    */
-
   function _cleanupOnerror(context) {
     resetOnerror();
     cachedOnerror.delete(context);
   }
 });
-define("@ember/test-helpers/setup-rendering-context", ["exports", "@embroider/macros/runtime", "@ember/template-factory", "@ember/runloop", "ember", "@ember/test-helpers/global", "@ember/test-helpers/setup-context", "@ember/test-helpers/-utils", "@ember/test-helpers/settled", "@ember/test-helpers/dom/get-root-element", "@ember/test-helpers/test-metadata", "@ember/debug", "@ember/test-helpers/-internal/helper-hooks", "@ember/test-helpers/has-ember-version", "@ember/test-helpers/-internal/is-component", "@embroider/util"], function (_exports, _runtime, _templateFactory, _runloop, _ember, _global, _setupContext, _utils, _settled, _getRootElement, _testMetadata, _debug, _helperHooks, _hasEmberVersion, _isComponent, _util) {
+define("@ember/test-helpers/setup-rendering-context", ["exports", "@ember/runloop", "ember", "@ember/test-helpers/global", "@ember/test-helpers/setup-context", "@ember/test-helpers/settled", "@ember/test-helpers/dom/get-root-element", "@ember/test-helpers/test-metadata", "@ember/debug", "@ember/test-helpers/helper-hooks", "@ember/test-helpers/has-ember-version", "@ember/test-helpers/-internal/is-component", "@ember/template-factory"], function (_exports, _runloop, _ember, _global, _setupContext, _settled, _getRootElement, _testMetadata, _debug, _helperHooks, _hasEmberVersion, _isComponent, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -6516,16 +6388,16 @@ define("@ember/test-helpers/setup-rendering-context", ["exports", "@embroider/ma
   _exports.default = setupRenderingContext;
   _exports.isRenderingTestContext = isRenderingTestContext;
   _exports.render = render;
+  0; //eaimeta@70e063a35619d71f0,"@ember/runloop",0,"ember",0,"@ember/test-helpers/global",0,"@ember/test-helpers/setup-context",0,"@ember/test-helpers/settled",0,"ember-cli-htmlbars",0,"@ember/test-helpers/dom/get-root-element",0,"@ember/test-helpers/test-metadata",0,"@ember/debug",0,"@ember/test-helpers/helper-hooks",0,"@ember/test-helpers/has-ember-version",0,"@ember/test-helpers/-internal/is-component",0,"@ember/test-helpers/setup-context"eaimeta@70e063a35619d71f
   /* globals EmberENV */
-
   const OUTLET_TEMPLATE = (0, _templateFactory.createTemplateFactory)(
   /*
     {{outlet}}
   */
   {
-    "id": "CtJTcOby",
+    "id": "0TqwaQuT",
     "block": "[[[46,[28,[37,1],null,null],null,null,null]],[],false,[\"component\",\"-outlet\"]]",
-    "moduleName": "(unknown template module)",
+    "moduleName": "/home/ben/Documenten/RedPencilWorkspaces/LBLOD/Loket/pages-vendors/@ember/test-helpers/setup-rendering-context.js",
     "isStrictMode": false
   });
   const EMPTY_TEMPLATE = (0, _templateFactory.createTemplateFactory)(
@@ -6533,9 +6405,9 @@ define("@ember/test-helpers/setup-rendering-context", ["exports", "@embroider/ma
     
   */
   {
-    "id": "BD59E4Lo",
+    "id": "YgvWqp1u",
     "block": "[[],[],false,[]]",
-    "moduleName": "(unknown template module)",
+    "moduleName": "/home/ben/Documenten/RedPencilWorkspaces/LBLOD/Loket/pages-vendors/@ember/test-helpers/setup-rendering-context.js",
     "isStrictMode": false
   });
   const INVOKE_PROVIDED_COMPONENT = (0, _templateFactory.createTemplateFactory)(
@@ -6543,33 +6415,42 @@ define("@ember/test-helpers/setup-rendering-context", ["exports", "@embroider/ma
     <this.ProvidedComponent />
   */
   {
-    "id": "jx0Ye8Pb",
+    "id": "UEYXs6yV",
     "block": "[[[8,[30,0,[\"ProvidedComponent\"]],null,null,null]],[],false,[]]",
-    "moduleName": "(unknown template module)",
+    "moduleName": "/home/ben/Documenten/RedPencilWorkspaces/LBLOD/Loket/pages-vendors/@ember/test-helpers/setup-rendering-context.js",
     "isStrictMode": false
   });
+  const hasCalledSetupRenderingContext = Symbol();
+  //  Isolates the notion of transforming a TextContext into a RenderingTestContext.
+  // eslint-disable-next-line require-jsdoc
+  function prepare(context) {
+    let renderingTestContext = context;
+    context[hasCalledSetupRenderingContext] = true;
+    return context;
+  }
+
   // eslint-disable-next-line require-jsdoc
   function isRenderingTestContext(context) {
-    return (0, _setupContext.isTestContext)(context) && typeof context.render === 'function' && typeof context.clearRender === 'function';
+    return (0, _setupContext.isTestContext)(context) && hasCalledSetupRenderingContext in context;
   }
+
   /**
     @private
     @param {Ember.ApplicationInstance} owner the current owner instance
     @param {string} templateFullName the fill template name
     @returns {Template} the template representing `templateFullName`
   */
-
   function lookupTemplate(owner, templateFullName) {
     let template = owner.lookup(templateFullName);
     if (typeof template === 'function') return template(owner);
     return template;
   }
+
   /**
     @private
     @param {Ember.ApplicationInstance} owner the current owner instance
     @returns {Template} a template representing {{outlet}}
   */
-
   function lookupOutletTemplate(owner) {
     let OutletTemplate = lookupTemplate(owner, 'template:-outlet');
     if (!OutletTemplate) {
@@ -6579,21 +6460,26 @@ define("@ember/test-helpers/setup-rendering-context", ["exports", "@embroider/ma
     return OutletTemplate;
   }
   let templateId = 0;
-
   /**
     Renders the provided template and appends it to the DOM.
   
     @public
-    @param {Template|Component} templateOrComponent the component (or template) to render
+    @param {Template|Component} templateFactoryOrComponent the component (or template) to render
     @param {RenderOptions} options options hash containing engine owner ({ owner: engineOwner })
     @returns {Promise<void>} resolves when settled
+  
+    @example
+    <caption>
+      Render a div element with the class 'container'.
+    </caption>
+    await render(hbs`<div class="container"></div>`);
   */
-  function render(templateOrComponent, options) {
+  function render(templateFactoryOrComponent, options) {
     let context = (0, _setupContext.getContext)();
-    if (!templateOrComponent) {
+    if (!templateFactoryOrComponent) {
       throw new Error('you must pass a template to `render()`');
     }
-    return _utils.Promise.resolve().then(() => (0, _helperHooks.runHooks)('render', 'start')).then(() => {
+    return Promise.resolve().then(() => (0, _helperHooks.runHooks)('render', 'start')).then(() => {
       if (!context || !isRenderingTestContext(context)) {
         throw new Error('Cannot call `render` without having first called `setupRenderingContext`.');
       }
@@ -6602,41 +6488,30 @@ define("@ember/test-helpers/setup-rendering-context", ["exports", "@embroider/ma
       } = context;
       let testMetadata = (0, _testMetadata.default)(context);
       testMetadata.usedHelpers.push('render');
+
+      // SAFETY: this is all wildly unsafe, because it is all using private API.
+      // At some point we should define a path forward for this kind of internal
+      // API. For now, just flagging it as *NOT* being safe!
       let toplevelView = owner.lookup('-top-level-view:main');
       let OutletTemplate = lookupOutletTemplate(owner);
       let ownerToRenderFrom = options?.owner || owner;
-      if ((0, _runtime.macroCondition)(false)) {
-        // Pre 3.24, we just don't support rendering components at all, so we error
-        // if we find anything that isn't a template.
-        const isTemplate = '__id' in templateOrComponent && '__meta' in templateOrComponent || 'id' in templateOrComponent && 'meta' in templateOrComponent;
-        if (!isTemplate) {
-          throw new Error(`Using \`render\` with something other than a pre-compiled template is not supported until Ember 3.24 (you are on ${_ember.default.VERSION}).`);
+      if ((0, _isComponent.default)(templateFactoryOrComponent)) {
+        // We use this to track when `render` is used with a component so that we can throw an
+        // assertion if `this.{set,setProperty} is used in the same test
+        _setupContext.ComponentRenderMap.set(context, true);
+        const setCalls = _setupContext.SetUsage.get(context);
+        if (setCalls !== undefined) {
+          (true && !(false) && (0, _debug.assert)(`You cannot call \`this.set\` or \`this.setProperties\` when passing a component to \`render\`, but they were called for the following properties:\n${setCalls.map(key => `  - ${key}`).join('\n')}`));
         }
-        templateId += 1;
-        let templateFullName = `template:-undertest-${templateId}`;
-        ownerToRenderFrom.register(templateFullName, templateOrComponent);
-        templateOrComponent = lookupTemplate(ownerToRenderFrom, templateFullName);
-      } else {
-        if ((0, _isComponent.default)(templateOrComponent, owner)) {
-          // We use this to track when `render` is used with a component so that we can throw an
-          // assertion if `this.{set,setProperty} is used in the same test
-          _setupContext.ComponentRenderMap.set(context, true);
-          const setCalls = _setupContext.SetUsage.get(context);
-          if (setCalls !== undefined) {
-            (true && !(false) && (0, _debug.assert)(`You cannot call \`this.set\` or \`this.setProperties\` when passing a component to \`render\`, but they were called for the following properties:\n${setCalls.map(key => `  - ${key}`).join('\n')}`));
-          }
-          let ProvidedComponent = (0, _util.ensureSafeComponent)(templateOrComponent, context);
-          context = {
-            ProvidedComponent
-          };
-          templateOrComponent = INVOKE_PROVIDED_COMPONENT;
-        } else {
-          templateId += 1;
-          let templateFullName = `template:-undertest-${templateId}`;
-          ownerToRenderFrom.register(templateFullName, templateOrComponent);
-          templateOrComponent = lookupTemplate(ownerToRenderFrom, templateFullName);
-        }
+        context = {
+          ProvidedComponent: templateFactoryOrComponent
+        };
+        templateFactoryOrComponent = INVOKE_PROVIDED_COMPONENT;
       }
+      templateId += 1;
+      let templateFullName = `template:-undertest-${templateId}`;
+      ownerToRenderFrom.register(templateFullName, templateFactoryOrComponent);
+      let template = lookupTemplate(ownerToRenderFrom, templateFullName);
       let outletState = {
         render: {
           owner,
@@ -6658,32 +6533,39 @@ define("@ember/test-helpers/setup-rendering-context", ["exports", "@embroider/ma
               name: 'index',
               controller: context,
               ViewClass: undefined,
-              template: templateOrComponent,
+              template,
               outlets: {}
             },
             outlets: {}
           }
         }
       };
-      toplevelView.setOutletState(outletState); // Ember's rendering engine is integration with the run loop so that when a run
+      toplevelView.setOutletState(outletState);
+
+      // Ember's rendering engine is integration with the run loop so that when a run
       // loop starts, the rendering is scheduled to be done.
       //
       // Ember should be ensuring an instance on its own here (the act of
       // setting outletState should ensureInstance, since we know we need to
       // render), but on Ember < 3.23 that is not guaranteed.
-
       if (!(0, _hasEmberVersion.default)(3, 23)) {
+        // SAFETY: this was correct and type checked on the Ember v3 types, but
+        // since the `run` namespace does not exist in Ember v4, this no longer
+        // can be type checked. When (eventually) dropping support for Ember v3,
+        // and therefore for versions before 3.23, this can be removed entirely.
         _runloop.run.backburner.ensureInstance();
-      } // returning settled here because the actual rendering does not happen until
+      }
+
+      // returning settled here because the actual rendering does not happen until
       // the renderer detects it is dirty (which happens on backburner's end
       // hook), see the following implementation details:
       //
       // * [view:outlet](https://github.com/emberjs/ember.js/blob/f94a4b6aef5b41b96ef2e481f35e07608df01440/packages/ember-glimmer/lib/views/outlet.js#L129-L145) manually dirties its own tag upon `setOutletState`
       // * [backburner's custom end hook](https://github.com/emberjs/ember.js/blob/f94a4b6aef5b41b96ef2e481f35e07608df01440/packages/ember-glimmer/lib/renderer.js#L145-L159) detects that the current revision of the root is no longer the latest, and triggers a new rendering transaction
-
       return (0, _settled.default)();
     }).then(() => (0, _helperHooks.runHooks)('render', 'end'));
   }
+
   /**
     Clears any templates previously rendered. This is commonly used for
     confirming behavior that is triggered by teardown (e.g.
@@ -6692,7 +6574,6 @@ define("@ember/test-helpers/setup-rendering-context", ["exports", "@embroider/ma
     @public
     @returns {Promise<void>} resolves when settled
   */
-
   function clearRender() {
     let context = (0, _setupContext.getContext)();
     if (!context || !isRenderingTestContext(context)) {
@@ -6700,6 +6581,7 @@ define("@ember/test-helpers/setup-rendering-context", ["exports", "@embroider/ma
     }
     return render(EMPTY_TEMPLATE);
   }
+
   /**
     Used by test framework addons to setup the provided context for rendering.
   
@@ -6716,60 +6598,33 @@ define("@ember/test-helpers/setup-rendering-context", ["exports", "@embroider/ma
       element).
   
     @public
-    @param {Object} context the context to setup for rendering
-    @returns {Promise<Object>} resolves with the context that was setup
+    @param {TestContext} context the context to setup for rendering
+    @returns {Promise<RenderingTestContext>} resolves with the context that was setup
+  
+    @example
+    <caption>
+      Rendering out a paragraph element containing the content 'hello', and then clearing that content via clearRender.
+    </caption>
+  
+    await render(hbs`<p>Hello!</p>`);
+    assert.equal(this.element.textContent, 'Hello!', 'has rendered content');
+    await clearRender();
+    assert.equal(this.element.textContent, '', 'has rendered content');
   */
-
   function setupRenderingContext(context) {
     let testMetadata = (0, _testMetadata.default)(context);
     testMetadata.setupTypes.push('setupRenderingContext');
-    return _utils.Promise.resolve().then(() => {
+    let renderingContext = prepare(context);
+    return Promise.resolve().then(() => {
       let {
         owner
-      } = context;
-      let renderDeprecationWrapper = function (template) {
-        (true && !(false) && (0, _debug.deprecate)('Using this.render has been deprecated, consider using `render` imported from `@ember/test-helpers`.', false, {
-          id: 'ember-test-helpers.setup-rendering-context.render',
-          until: '3.0.0',
-          for: '@ember/test-helpers',
-          since: {
-            enabled: '2.0.0'
-          }
-        } // @types/ember is missing since + for
-        ));
+      } = renderingContext;
 
-        return render(template);
-      };
-      let clearRenderDeprecationWrapper = function () {
-        (true && !(false) && (0, _debug.deprecate)('Using this.clearRender has been deprecated, consider using `clearRender` imported from `@ember/test-helpers`.', false, {
-          id: 'ember-test-helpers.setup-rendering-context.clearRender',
-          until: '3.0.0',
-          for: '@ember/test-helpers',
-          since: {
-            enabled: '2.0.0'
-          }
-        } // @types/ember is missing since + for
-        ));
-
-        return clearRender();
-      };
-      Object.defineProperty(context, 'render', {
-        configurable: true,
-        enumerable: true,
-        value: renderDeprecationWrapper,
-        writable: false
-      });
-      Object.defineProperty(context, 'clearRender', {
-        configurable: true,
-        enumerable: true,
-        value: clearRenderDeprecationWrapper,
-        writable: false
-      }); // When the host app uses `setApplication` (instead of `setResolver`) the event dispatcher has
+      // When the host app uses `setApplication` (instead of `setResolver`) the event dispatcher has
       // already been setup via `applicationInstance.boot()` in `./build-owner`. If using
       // `setResolver` (instead of `setApplication`) a "mock owner" is created by extending
       // `Ember._ContainerProxyMixin` and `Ember._RegistryProxyMixin` in this scenario we need to
       // manually start the event dispatcher.
-
       if (owner._emberTestHelpersMockOwner) {
         let dispatcher = owner.lookup('event_dispatcher:main') || _ember.default.EventDispatcher.create();
         dispatcher.setup({}, '#ember-testing');
@@ -6785,14 +6640,15 @@ define("@ember/test-helpers/setup-rendering-context", ["exports", "@embroider/ma
         create() {
           return toplevelView;
         }
-      }); // initially render a simple empty template
+      });
 
+      // initially render a simple empty template
       return render(EMPTY_TEMPLATE).then(() => {
         (0, _runloop.run)(toplevelView, 'appendTo', (0, _getRootElement.default)());
         return (0, _settled.default)();
       });
     }).then(() => {
-      Object.defineProperty(context, 'element', {
+      Object.defineProperty(renderingContext, 'element', {
         configurable: true,
         enumerable: true,
         // ensure the element is based on the wrapping toplevel view
@@ -6805,17 +6661,18 @@ define("@ember/test-helpers/setup-rendering-context", ["exports", "@embroider/ma
         value: _global.default.EmberENV._APPLICATION_TEMPLATE_WRAPPER !== false ? (0, _getRootElement.default)().querySelector('.ember-view') : (0, _getRootElement.default)(),
         writable: false
       });
-      return context;
+      return renderingContext;
     });
   }
 });
-define("@ember/test-helpers/teardown-context", ["exports", "@ember/test-helpers/-utils", "@ember/test-helpers/settled", "@ember/test-helpers/setup-onerror", "@ember/destroyable"], function (_exports, _utils, _settled, _setupOnerror, _destroyable) {
+define("@ember/test-helpers/teardown-context", ["exports", "@ember/test-helpers/settled", "@ember/test-helpers/setup-onerror", "@ember/destroyable"], function (_exports, _settled, _setupOnerror, _destroyable) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = teardownContext;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/settled",0,"@ember/test-helpers/setup-onerror",0,"@ember/destroyable"eaimeta@70e063a35619d71f
   /**
     Used by test framework addons to tear down the provided context after testing is completed.
   
@@ -6831,13 +6688,10 @@ define("@ember/test-helpers/teardown-context", ["exports", "@ember/test-helpers/
     @param {boolean} [options.waitForSettled=true] should the teardown wait for `settled()`ness
     @returns {Promise<void>} resolves when settled
   */
-
-  function teardownContext(context, options) {
-    let waitForSettled = true;
-    if (options !== undefined && 'waitForSettled' in options) {
-      waitForSettled = options.waitForSettled;
-    }
-    return _utils.Promise.resolve().then(() => {
+  function teardownContext(context, {
+    waitForSettled = true
+  } = {}) {
+    return Promise.resolve().then(() => {
       (0, _setupOnerror._cleanupOnerror)(context);
       (0, _destroyable.destroy)(context);
     }).finally(() => {
@@ -6854,8 +6708,9 @@ define("@ember/test-helpers/test-metadata", ["exports"], function (_exports) {
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.TestMetadata = void 0;
+  _exports.__TestMetadata = void 0;
   _exports.default = getTestMetadata;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
   class TestMetadata {
     constructor() {
       this.setupTypes = [];
@@ -6868,16 +6723,19 @@ define("@ember/test-helpers/test-metadata", ["exports"], function (_exports) {
       return this.setupTypes.indexOf('setupApplicationContext') > -1;
     }
   }
-  _exports.TestMetadata = TestMetadata;
+  _exports.__TestMetadata = TestMetadata;
+  // Only export the type side of the item: this way the only way (it is legal) to
+  // construct it is here, but users can still reference the type.
+
   const TEST_METADATA = new WeakMap();
+
   /**
    * Gets the test metadata associated with the provided test context. Will create
    * a new test metadata object if one does not exist.
    *
    * @param {BaseContext} context the context to use
-   * @returns {ITestMetadata} the test metadata for the provided context
+   * @returns {TestMetadata} the test metadata for the provided context
    */
-
   function getTestMetadata(context) {
     if (!TEST_METADATA.has(context)) {
       TEST_METADATA.set(context, new TestMetadata());
@@ -6892,6 +6750,7 @@ define("@ember/test-helpers/validate-error-handler", ["exports", "ember"], funct
     value: true
   });
   _exports.default = validateErrorHandler;
+  0; //eaimeta@70e063a35619d71f0,"ember"eaimeta@70e063a35619d71f
   const VALID = Object.freeze({
     isValid: true,
     message: null
@@ -6900,6 +6759,7 @@ define("@ember/test-helpers/validate-error-handler", ["exports", "ember"], funct
     isValid: false,
     message: 'error handler should have re-thrown the provided error'
   });
+
   /**
    * Validate the provided error handler to confirm that it properly re-throws
    * errors when `Ember.testing` is true.
@@ -6923,9 +6783,7 @@ define("@ember/test-helpers/validate-error-handler", ["exports", "ember"], funct
    *   assert.ok(result.isValid, result.message);
    * });
    */
-
-  function validateErrorHandler() {
-    let callback = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _ember.default.onerror;
+  function validateErrorHandler(callback = _ember.default.onerror) {
     if (callback === undefined || callback === null) {
       return VALID;
     }
@@ -6951,9 +6809,9 @@ define("@ember/test-helpers/wait-until", ["exports", "@ember/test-helpers/-utils
     value: true
   });
   _exports.default = waitUntil;
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers/-utils"eaimeta@70e063a35619d71f
   const TIMEOUTS = [0, 1, 2, 5, 7];
   const MAX_TIMEOUT = 10;
-
   /**
     Wait for the provided callback to return a truthy value.
   
@@ -6975,20 +6833,19 @@ define("@ember/test-helpers/wait-until", ["exports", "@ember/test-helpers/-utils
       return find('.my-selector').textContent.includes('something')
     }, { timeout: 2000 })
   */
-  function waitUntil(callback) {
-    let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  function waitUntil(callback, options = {}) {
     let timeout = 'timeout' in options ? options.timeout : 1000;
-    let timeoutMessage = 'timeoutMessage' in options ? options.timeoutMessage : 'waitUntil timed out'; // creating this error eagerly so it has the proper invocation stack
+    let timeoutMessage = 'timeoutMessage' in options ? options.timeoutMessage : 'waitUntil timed out';
 
+    // creating this error eagerly so it has the proper invocation stack
     let waitUntilTimedOut = new Error(timeoutMessage);
-    return new _utils.Promise(function (resolve, reject) {
-      let time = 0; // eslint-disable-next-line require-jsdoc
+    return new Promise(function (resolve, reject) {
+      let time = 0;
 
+      // eslint-disable-next-line require-jsdoc
       function scheduleCheck(timeoutsIndex) {
-        let interval = TIMEOUTS[timeoutsIndex];
-        if (interval === undefined) {
-          interval = MAX_TIMEOUT;
-        }
+        let knownTimeout = TIMEOUTS[timeoutsIndex];
+        let interval = knownTimeout === undefined ? MAX_TIMEOUT : knownTimeout;
         (0, _utils.futureTick)(function () {
           time += interval;
           let value;
@@ -7093,521 +6950,6 @@ define("ember-cli-test-loader/test-support/index", ["exports"], function (_expor
   }
   _exports.default = TestLoader;
   ;
-});
-define("ember-page-title/test-support/get-page-title", ["exports"], function (_exports) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.getPageTitle = getPageTitle;
-  // Testem appends progress to the title...
-  // and there's no way to stop this at the moment
-
-  function getPageTitle(doc) {
-    // In Fastboot context we get 2 title elements if we don't remove one from app/index.html
-    // In real world applications, it is mandatory to remove <title> from app/index.html
-    // We are keeping both for sake for testing browser and fastboot scenarios
-    let element = [...(doc || window.document).querySelectorAll('head title')].pop();
-    return element && element.innerText.trim().replace(/^\(\d+\/\d+\)/, '');
-  }
-});
-define("ember-page-title/test-support/index", ["exports", "ember-page-title/test-support/get-page-title"], function (_exports, _getPageTitle) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "getPageTitle", {
-    enumerable: true,
-    get: function () {
-      return _getPageTitle.getPageTitle;
-    }
-  });
-});
-define("ember-qunit/adapter", ["exports", "ember", "qunit", "@ember/test-helpers/has-ember-version"], function (_exports, _ember, QUnit, _hasEmberVersion) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  _exports.nonTestDoneCallback = nonTestDoneCallback;
-  function unhandledRejectionAssertion(current, error) {
-    let message, source;
-    if (typeof error === 'object' && error !== null) {
-      message = error.message;
-      source = error.stack;
-    } else if (typeof error === 'string') {
-      message = error;
-      source = 'unknown source';
-    } else {
-      message = 'unhandledRejection occured, but it had no message';
-      source = 'unknown source';
-    }
-    current.assert.pushResult({
-      result: false,
-      actual: false,
-      expected: true,
-      message: message,
-      source: source
-    });
-  }
-  function nonTestDoneCallback() {}
-  let Adapter = _ember.default.Test.Adapter.extend({
-    init() {
-      this.doneCallbacks = [];
-      this.qunit = this.qunit || QUnit;
-    },
-    asyncStart() {
-      let currentTest = this.qunit.config.current;
-      let done = currentTest && currentTest.assert ? currentTest.assert.async() : nonTestDoneCallback;
-      this.doneCallbacks.push({
-        test: currentTest,
-        done
-      });
-    },
-    asyncEnd() {
-      let currentTest = this.qunit.config.current;
-      if (this.doneCallbacks.length === 0) {
-        throw new Error('Adapter asyncEnd called when no async was expected. Please create an issue in ember-qunit.');
-      }
-      let {
-        test,
-        done
-      } = this.doneCallbacks.pop();
-
-      // In future, we should explore fixing this at a different level, specifically
-      // addressing the pairing of asyncStart/asyncEnd behavior in a more consistent way.
-      if (test === currentTest) {
-        done();
-      }
-    },
-    // clobber default implementation of `exception` will be added back for Ember
-    // < 2.17 just below...
-    exception: null
-  });
-
-  // Ember 2.17 and higher do not require the test adapter to have an `exception`
-  // method When `exception` is not present, the unhandled rejection is
-  // automatically re-thrown and will therefore hit QUnit's own global error
-  // handler (therefore appropriately causing test failure)
-  if (!(0, _hasEmberVersion.default)(2, 17)) {
-    Adapter = Adapter.extend({
-      exception(error) {
-        unhandledRejectionAssertion(QUnit.config.current, error);
-      }
-    });
-  }
-  var _default = Adapter;
-  _exports.default = _default;
-});
-define("ember-qunit/index", ["exports", "ember-qunit/adapter", "ember-qunit/test-loader", "ember-qunit/qunit-configuration", "@ember/runloop", "@ember/test-helpers", "ember", "qunit", "ember-qunit/test-isolation-validation"], function (_exports, _adapter, _testLoader, _qunitConfiguration, _runloop, _testHelpers, _ember, QUnit, _testIsolationValidation) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "QUnitAdapter", {
-    enumerable: true,
-    get: function () {
-      return _adapter.default;
-    }
-  });
-  Object.defineProperty(_exports, "loadTests", {
-    enumerable: true,
-    get: function () {
-      return _testLoader.loadTests;
-    }
-  });
-  Object.defineProperty(_exports, "nonTestDoneCallback", {
-    enumerable: true,
-    get: function () {
-      return _adapter.nonTestDoneCallback;
-    }
-  });
-  _exports.setupApplicationTest = setupApplicationTest;
-  _exports.setupEmberOnerrorValidation = setupEmberOnerrorValidation;
-  _exports.setupEmberTesting = setupEmberTesting;
-  _exports.setupRenderingTest = setupRenderingTest;
-  _exports.setupResetOnerror = setupResetOnerror;
-  _exports.setupTest = setupTest;
-  _exports.setupTestAdapter = setupTestAdapter;
-  _exports.setupTestContainer = setupTestContainer;
-  _exports.setupTestIsolationValidation = setupTestIsolationValidation;
-  _exports.start = start;
-  _exports.startTests = startTests;
-  /* globals Testem */
-
-  if (typeof Testem !== 'undefined') {
-    Testem.hookIntoTestFramework();
-  }
-  let waitForSettled = true;
-  function setupTest(hooks, _options) {
-    let options = {
-      waitForSettled,
-      ..._options
-    };
-    hooks.beforeEach(function (assert) {
-      let testMetadata = (0, _testHelpers.getTestMetadata)(this);
-      testMetadata.framework = 'qunit';
-      return (0, _testHelpers.setupContext)(this, options).then(() => {
-        let originalPauseTest = this.pauseTest;
-        this.pauseTest = function QUnit_pauseTest() {
-          assert.timeout(-1); // prevent the test from timing out
-
-          // This is a temporary work around for
-          // https://github.com/emberjs/ember-qunit/issues/496 this clears the
-          // timeout that would fail the test when it hits the global testTimeout
-          // value.
-          clearTimeout(QUnit.config.timeout);
-          return originalPauseTest.call(this);
-        };
-      });
-    });
-    hooks.afterEach(function () {
-      return (0, _testHelpers.teardownContext)(this, options);
-    });
-  }
-  function setupRenderingTest(hooks, _options) {
-    let options = {
-      waitForSettled,
-      ..._options
-    };
-    setupTest(hooks, options);
-    hooks.beforeEach(function () {
-      return (0, _testHelpers.setupRenderingContext)(this);
-    });
-  }
-  function setupApplicationTest(hooks, _options) {
-    let options = {
-      waitForSettled,
-      ..._options
-    };
-    setupTest(hooks, options);
-    hooks.beforeEach(function () {
-      return (0, _testHelpers.setupApplicationContext)(this);
-    });
-  }
-
-  /**
-     Uses current URL configuration to setup the test container.
-  
-     * If `?nocontainer` is set, the test container will be hidden.
-     * If `?devmode` or `?fullscreencontainer` is set, the test container will be
-       made full screen.
-  
-     @method setupTestContainer
-   */
-  function setupTestContainer() {
-    let testContainer = document.getElementById('ember-testing-container');
-    if (!testContainer) {
-      return;
-    }
-    let params = QUnit.urlParams;
-    let containerVisibility = params.nocontainer ? 'hidden' : 'visible';
-    if (params.devmode || params.fullscreencontainer) {
-      testContainer.className = ' full-screen';
-    }
-    testContainer.style.visibility = containerVisibility;
-  }
-
-  /**
-     Instruct QUnit to start the tests.
-     @method startTests
-   */
-  function startTests() {
-    QUnit.start();
-  }
-
-  /**
-     Sets up the `Ember.Test` adapter for usage with QUnit 2.x.
-  
-     @method setupTestAdapter
-   */
-  function setupTestAdapter() {
-    _ember.default.Test.adapter = _adapter.default.create();
-  }
-
-  /**
-    Ensures that `Ember.testing` is set to `true` before each test begins
-    (including `before` / `beforeEach`), and reset to `false` after each test is
-    completed. This is done via `QUnit.testStart` and `QUnit.testDone`.
-  
-   */
-  function setupEmberTesting() {
-    QUnit.testStart(() => {
-      _ember.default.testing = true;
-    });
-    QUnit.testDone(() => {
-      _ember.default.testing = false;
-    });
-  }
-
-  /**
-    Ensures that `Ember.onerror` (if present) is properly configured to re-throw
-    errors that occur while `Ember.testing` is `true`.
-  */
-  function setupEmberOnerrorValidation() {
-    QUnit.module('ember-qunit: Ember.onerror validation', function () {
-      QUnit.test('Ember.onerror is functioning properly', function (assert) {
-        assert.expect(1);
-        let result = (0, _testHelpers.validateErrorHandler)();
-        assert.ok(result.isValid, `Ember.onerror handler with invalid testing behavior detected. An Ember.onerror handler _must_ rethrow exceptions when \`Ember.testing\` is \`true\` or the test suite is unreliable. See https://git.io/vbine for more details.`);
-      });
-    });
-  }
-  function setupResetOnerror() {
-    QUnit.testDone(_testHelpers.resetOnerror);
-  }
-  function setupTestIsolationValidation(delay) {
-    waitForSettled = false;
-    _runloop._backburner.DEBUG = true;
-    QUnit.on('testStart', () => (0, _testIsolationValidation.installTestNotIsolatedHook)(delay));
-  }
-
-  /**
-     @method start
-     @param {Object} [options] Options to be used for enabling/disabling behaviors
-     @param {Boolean} [options.loadTests] If `false` tests will not be loaded automatically.
-     @param {Boolean} [options.setupTestContainer] If `false` the test container will not
-     be setup based on `devmode`, `dockcontainer`, or `nocontainer` URL params.
-     @param {Boolean} [options.startTests] If `false` tests will not be automatically started
-     (you must run `QUnit.start()` to kick them off).
-     @param {Boolean} [options.setupTestAdapter] If `false` the default Ember.Test adapter will
-     not be updated.
-     @param {Boolean} [options.setupEmberTesting] `false` opts out of the
-     default behavior of setting `Ember.testing` to `true` before all tests and
-     back to `false` after each test will.
-     @param {Boolean} [options.setupEmberOnerrorValidation] If `false` validation
-     of `Ember.onerror` will be disabled.
-     @param {Boolean} [options.setupTestIsolationValidation] If `false` test isolation validation
-     will be disabled.
-     @param {Number} [options.testIsolationValidationDelay] When using
-     setupTestIsolationValidation this number represents the maximum amount of
-     time in milliseconds that is allowed _after_ the test is completed for all
-     async to have been completed. The default value is 50.
-   */
-  function start() {
-    let options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-    if (options.loadTests !== false) {
-      (0, _testLoader.loadTests)();
-    }
-    if (options.setupTestContainer !== false) {
-      setupTestContainer();
-    }
-    if (options.setupTestAdapter !== false) {
-      setupTestAdapter();
-    }
-    if (options.setupEmberTesting !== false) {
-      setupEmberTesting();
-    }
-    if (options.setupEmberOnerrorValidation !== false) {
-      setupEmberOnerrorValidation();
-    }
-    if (typeof options.setupTestIsolationValidation !== 'undefined' && options.setupTestIsolationValidation !== false) {
-      setupTestIsolationValidation(options.testIsolationValidationDelay);
-    }
-    if (options.startTests !== false) {
-      startTests();
-    }
-    setupResetOnerror();
-  }
-});
-define("ember-qunit/qunit-configuration", ["qunit"], function (QUnit) {
-  "use strict";
-
-  QUnit.config.autostart = false;
-  QUnit.config.urlConfig.push({
-    id: 'nocontainer',
-    label: 'Hide container'
-  });
-  QUnit.config.urlConfig.push({
-    id: 'nolint',
-    label: 'Disable Linting'
-  });
-  QUnit.config.urlConfig.push({
-    id: 'devmode',
-    label: 'Development mode'
-  });
-  QUnit.config.testTimeout = QUnit.urlParams.devmode ? null : 60000; //Default Test Timeout 60 Seconds
-});
-define("ember-qunit/test-isolation-validation", ["exports", "qunit", "@ember/runloop", "@ember/test-helpers"], function (_exports, QUnit, _runloop, _testHelpers) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.detectIfTestNotIsolated = detectIfTestNotIsolated;
-  _exports.installTestNotIsolatedHook = installTestNotIsolatedHook;
-  /* eslint-disable no-console */
-
-  /**
-   * Detects if a specific test isn't isolated. A test is considered
-   * not isolated if it:
-   *
-   * - has pending timers
-   * - is in a runloop
-   * - has pending AJAX requests
-   * - has pending test waiters
-   *
-   * @function detectIfTestNotIsolated
-   * @param {Object} testInfo
-   * @param {string} testInfo.module The name of the test module
-   * @param {string} testInfo.name The test name
-   */
-  function detectIfTestNotIsolated(test) {
-    let message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-    if (!(0, _testHelpers.isSettled)()) {
-      let {
-        debugInfo
-      } = (0, _testHelpers.getSettledState)();
-      console.group(`${test.module.name}: ${test.testName}`);
-      debugInfo.toConsole();
-      console.groupEnd();
-      test.expected++;
-      test.assert.pushResult({
-        result: false,
-        message: `${message} \nMore information has been printed to the console. Please use that information to help in debugging.\n\n`
-      });
-    }
-  }
-
-  /**
-   * Installs a hook to detect if a specific test isn't isolated.
-   * This hook is installed by patching into the `test.finish` method,
-   * which allows us to be very precise as to when the detection occurs.
-   *
-   * @function installTestNotIsolatedHook
-   * @param {number} delay the delay delay to use when checking for isolation validation
-   */
-  function installTestNotIsolatedHook() {
-    let delay = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 50;
-    if (!(0, _testHelpers.getDebugInfo)()) {
-      return;
-    }
-    let test = QUnit.config.current;
-    let finish = test.finish;
-    let pushFailure = test.pushFailure;
-    test.pushFailure = function (message) {
-      if (message.indexOf('Test took longer than') === 0) {
-        detectIfTestNotIsolated(this, message);
-      } else {
-        return pushFailure.apply(this, arguments);
-      }
-    };
-
-    // We're hooking into `test.finish`, which utilizes internal ordering of
-    // when a test's hooks are invoked. We do this mainly because we need
-    // greater precision as to when to detect and subsequently report if the
-    // test is isolated.
-    //
-    // We looked at using:
-    // - `afterEach`
-    //    - the ordering of when the `afterEach` is called is not easy to guarantee
-    //      (ancestor `afterEach`es have to be accounted for too)
-    // - `QUnit.on('testEnd')`
-    //    - is executed too late; the test is already considered done so
-    //      we're unable to push a new assert to fail the current test
-    // - 'QUnit.done'
-    //    - it detaches the failure from the actual test that failed, making it
-    //      more confusing to the end user.
-    test.finish = function () {
-      let doFinish = () => finish.apply(this, arguments);
-      if ((0, _testHelpers.isSettled)()) {
-        return doFinish();
-      } else {
-        return (0, _testHelpers.waitUntil)(_testHelpers.isSettled, {
-          timeout: delay
-        }).catch(() => {
-          // we consider that when waitUntil times out, you're in a state of
-          // test isolation violation. The nature of the error is irrelevant
-          // in this case, and we want to allow the error to fall through
-          // to the finally, where cleanup occurs.
-        }).finally(() => {
-          detectIfTestNotIsolated(this, 'Test is not isolated (async execution is extending beyond the duration of the test).');
-
-          // canceling timers here isn't perfect, but is as good as we can do
-          // to attempt to prevent future tests from failing due to this test's
-          // leakage
-          (0, _runloop._cancelTimers)();
-          return doFinish();
-        });
-      }
-    };
-  }
-});
-define("ember-qunit/test-loader", ["exports", "qunit", "ember-cli-test-loader/test-support/index"], function (_exports, QUnit, _index) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.TestLoader = void 0;
-  _exports.loadTests = loadTests;
-  (0, _index.addModuleExcludeMatcher)(function (moduleName) {
-    return QUnit.urlParams.nolint && moduleName.match(/\.(jshint|lint-test)$/);
-  });
-  (0, _index.addModuleIncludeMatcher)(function (moduleName) {
-    return moduleName.match(/\.jshint$/);
-  });
-  let moduleLoadFailures = [];
-  QUnit.done(function () {
-    let length = moduleLoadFailures.length;
-    try {
-      if (length === 0) {
-        // do nothing
-      } else if (length === 1) {
-        throw moduleLoadFailures[0];
-      } else {
-        throw new Error('\n' + moduleLoadFailures.join('\n'));
-      }
-    } finally {
-      // ensure we release previously captured errors.
-      moduleLoadFailures = [];
-    }
-  });
-  class TestLoader extends _index.default {
-    moduleLoadFailure(moduleName, error) {
-      moduleLoadFailures.push(error);
-      QUnit.module('TestLoader Failures');
-      QUnit.test(moduleName + ': could not be loaded', function () {
-        throw error;
-      });
-    }
-  }
-
-  /**
-     Load tests following the default patterns:
-  
-     * The module name ends with `-test`
-     * The module name ends with `.jshint`
-  
-     Excludes tests that match the following
-     patterns when `?nolint` URL param is set:
-  
-     * The module name ends with `.jshint`
-     * The module name ends with `-lint-test`
-  
-     @method loadTests
-   */
-  _exports.TestLoader = TestLoader;
-  function loadTests() {
-    new TestLoader().loadModules();
-  }
-});
-define("ember-test-helpers/has-ember-version", ["exports", "@ember/test-helpers/has-ember-version"], function (_exports, _hasEmberVersion) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function () {
-      return _hasEmberVersion.default;
-    }
-  });
 });
 define("qunit-dom/index", ["exports"], function (_exports) {
   "use strict";
@@ -9212,18 +8554,11 @@ define("qunit-dom/index", ["exports"], function (_exports) {
     overrideRootElement(getRootElement);
   }
 });
-/*
-  used to determine if the application should be booted immediately when `app-name.js` is evaluated
-  when `runningTests` the `app-name.js` file will **not** import the applications `app/app.js` and
-  call `Application.create(...)` on it. Additionally, applications can opt-out of this behavior by
-  setting `autoRun` to `false` in their `ember-cli-build.js`
-*/
 runningTests = true;
 
-/*
-  This file overrides a file built into ember-cli's build pipeline and prevents
-  this built-in `Testem.hookIntoTestFramework` invocation:
+if (typeof Testem !== 'undefined' && (typeof QUnit !== 'undefined' || typeof Mocha !== 'undefined')) {
+  window.Testem.hookIntoTestFramework();
+}
 
-  https://github.com/ember-cli/ember-cli/blob/v3.20.0/lib/broccoli/test-support-suffix.js#L3-L5
-*/
+
 //# sourceMappingURL=test-support.map

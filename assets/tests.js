@@ -10,7 +10,7 @@ define("pages-vendors/tests/helpers/index", ["exports", "ember-qunit"], function
   _exports.setupRenderingTest = setupRenderingTest;
   _exports.setupTest = setupTest;
   0; //eaimeta@70e063a35619d71f0,"ember-qunit"eaimeta@70e063a35619d71f
-  // This file exists to provide wrappers around ember-qunit's / ember-mocha's
+  // This file exists to provide wrappers around ember-qunit's
   // test setup functions. This way, you can easily extend the setup that is
   // needed per test type.
 
@@ -32,13 +32,11 @@ define("pages-vendors/tests/helpers/index", ["exports", "ember-qunit"], function
     // setupIntl(hooks); // ember-intl
     // setupMirage(hooks); // ember-cli-mirage
   }
-
   function setupRenderingTest(hooks, options) {
     (0, _emberQunit.setupRenderingTest)(hooks, options);
 
     // Additional setup for rendering tests can be done here.
   }
-
   function setupTest(hooks, options) {
     (0, _emberQunit.setupTest)(hooks, options);
 
