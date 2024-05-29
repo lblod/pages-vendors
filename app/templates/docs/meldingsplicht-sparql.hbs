@@ -29,19 +29,41 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout" />
 
 <AuHeading @level="3" @skin="3">Voorbeelden van query's</AuHeading>
 <p>
-  Hieronder staan een aantal voorbeelden van SPARQL query's die naar het endpoint kunnen worden verstuurd. Aan de hand van het eerste voorbeeld kan de status van een ingestuurde melding (Submission) worden opgevraagd.
+  Hieronder staan een aantal voorbeelden van SPARQL query's die naar het endpoint kunnen worden verstuurd.
 </p>
-<Snippet @snippetFilename="meldingsplicht-sparql/voorbeeld-melding-status.sparql" />
+
+<AuHeading @level="4" @skin="4">Oplijsten meldingen</AuHeading>
+<p>
+  Met dit eerste voorbeeld worden er 100 eerder verrichtte meldingen opgevraagd. Met de verkregen URI's kan men query's gelijk die in volgende voorbeelden opstellen.
+</p>
+<Snippet @snippetFilename="meldingsplicht-sparql/meldingen-eerste-100.sparql" />
+
+<AuHeading @level="4" @skin="4">Status via Submission URI</AuHeading>
+<p>
+  Aan de hand van dit voorbeeld kan de status van een ingestuurde melding (Submission) worden opgevraagd. Hiervoor wordt de URI gebruikt van de Submission die als antwoord werd gegeven op de melding aanvraag. Zie <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>.
+</p>
+<Snippet @snippetFilename="meldingsplicht-sparql/voorbeeld-melding-status-submission-uri.sparql" />
 <p>
   <strong>Noteer:</strong> voor de status is aangeraden om steeds met de URI te werken. Het label kan veranderen, maar het achterliggende concept (i.e. de URI) niet.
 </p>
 <p>
-<strong>Noteer:</strong> de status voor een inzending kan &ldquo;verzonden&rdquo; of &ldquo;concept&rdquo; zijn. Een inzending in &ldquo;concept&rdquo; vereist nog manuele interventie door onvolledigheid van het document alvorens het officieel kan worden ingediend, waarna het de status &ldquo;verzonden&rdquo; krijgt. Indien er ingestuurd werd met status &ldquo;verzonden&rdquo; en de status blijft hangen op &ldquo;concept&rdquo;, is er hoogst waarschijnlijk iets mis met de gegevens van het document. Je kan steeds terecht bij op <AuLinkExternal href="digitaalABB@vlaanderen.be" @icon="mail">digitaalABB@vlaanderen.be</AuLinkExternal> voor hulp. Verder op deze pagina worden de URI's voor de status opgelijst.
+  <strong>Noteer:</strong> de status voor een inzending kan &ldquo;verzonden&rdquo; of &ldquo;concept&rdquo; zijn. Een inzending in &ldquo;concept&rdquo; vereist nog manuele interventie door onvolledigheid van het document alvorens het officieel kan worden ingediend, waarna het de status &ldquo;verzonden&rdquo; krijgt. Indien er ingestuurd werd met status &ldquo;verzonden&rdquo; en de status blijft hangen op &ldquo;concept&rdquo;, is er hoogst waarschijnlijk iets mis met de gegevens van het document. Je kan steeds terecht bij op <AuLinkExternal href="digitaalABB@vlaanderen.be" @icon="mail">digitaalABB@vlaanderen.be</AuLinkExternal> voor hulp. Verder op deze pagina worden de URI's voor de status opgelijst.
 </p>
+
+<AuHeading @level="4" @skin="4">Status via document URI</AuHeading>
 <p>
-  Met het volgende voorbeeld worden er 100 eerder verrichtte meldingen opgevraagd. Met de verkregen URI's kan men query's gelijk de bovenstaande opstellen.
+De status opvragen van een Submission kan eveneens via de document URI. Deze URI werd door de vendor meegegeven als URI van het werkelijke RDF document in de HTML pagina die ter beschikking werd gesteld. Deze URI wordt <CodeInline @code="submittedResource" /> genoemd bij de melding in <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>.
 </p>
-<Snippet @snippetFilename="meldingsplicht-sparql/meldingen-eerste-100.sparql" />
+<Snippet @snippetFilename="meldingsplicht-sparql/voorbeeld-melding-status-document-uri.sparql" />
+
+<AuHeading @level="4" @skin="4">Status via URL van downloadpagina</AuHeading>
+<p>
+  Ten slotte is het ook mogelijk om de status van een Submission op te vragen via de URL van de downloadpagina. (Dit is een URL, geen URI.) Deze URL werd eveneens door de vendor meegegeven bij het inzenden van een melding en werd <CodeInline @code="href" /> genoemd.
+</p>
+<Snippet @snippetFilename="meldingsplicht-sparql/voorbeeld-melding-status-href.sparql" />
+<p>
+  <strong>Pas op: deze methode van opvragen van informatie over de Submission is niet ideaal!</strong> Het is mogelijk dat er meerdere RDF documenten verwerkt staan in dezelfde HTML pagina. Bijgevolg kunnen er dus meerdere Submissions worden aangemaakt voor dezelfde URL, steeds met een verschillende document URI. In dat geval zal je bij het opvragen van informatie over de Submissions dus een combinatie zien van de gegevens van alle Submissions op die HTML pagina.
+</p>
 
 <AuHeading @level="2" @skin="2">Beschikbare gegevens</AuHeading>
 <p>
