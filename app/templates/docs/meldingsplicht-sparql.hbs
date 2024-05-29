@@ -65,47 +65,9 @@ De status opvragen van een Submission kan eveneens via de document URI. Deze URI
   <strong>Pas op: deze methode van opvragen van informatie over de Submission is niet ideaal!</strong> Het is mogelijk dat er meerdere RDF documenten verwerkt staan in dezelfde HTML pagina. Bijgevolg kunnen er dus meerdere Submissions worden aangemaakt voor dezelfde URL, steeds met een verschillende document URI. In dat geval zal je bij het opvragen van informatie over de Submissions dus een combinatie zien van de gegevens van alle Submissions op die HTML pagina.
 </p>
 
-<AuHeading @level="2" @skin="2">Beschikbare gegevens</AuHeading>
+<AuHeading @level="2" @skin="2">Model van beschikbare gegevens</AuHeading>
 <p>
-  Het datamodel voor de inzendingen worden voorgesteld op onderstaand diagram voor Linked Data. <br>
-  In dit diagram zijn entiteiten voorgesteld met een cirkel, data properties met pijlen wijzend naar een rechthoek waar het datatype in vermeld staat en object properties met pijlen naar een nieuwe cirkel. Als er van een entiteit op het diagram geen eigenschappen bestaan zijn deze ook niet aanwezig in de data.
-</p>
-<a href="assets/images/models/MeldingsplichtSparqlAPI.svg">
-  <figure>
-    <img itemprop="thumbnail" src="assets/images/models/MeldingsplichtSparqlAPI.svg" alt="Diagram van beschikbare gegevens" />
-    <figcaption>Diagram van Linked Data van beschikbare gegevens in het endpoint</figcaption>
-  </figure>
-</a>
-<AuHeading @level="4" @skin="4">Documentstatussen inzendingen</AuHeading>
-<p>
-  Onderstaande tabel verduidelijkt de URI's die worden gebruikt om de status van een ingezonden document aan te duiden.
-</p>
-<AuTable @size="default">
-  <:header>
-    <tr>
-      <th>URI</th>
-      <th>Label</th>
-    </tr>
-  </:header>
-  <:body>
-    <tr>
-      <td><CodeInline @code="http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd" /></td>
-      <td>Concept</td>
-    </tr>
-    <tr>
-      <td><CodeInline @code="http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c" /></td>
-      <td>Verzonden</td>
-    </tr>
-    <tr>
-      <td><CodeInline @code="http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff" /></td>
-      <td>Inzendbaar</td>
-    </tr>
-    </:body>
-</AuTable>
-
-<AuHeading @level="2" @skin="2">Prefixes</AuHeading>
-<p>
-  Onderstaande tabel beschrijft de prefixes gebruikt in dit document en in de gegevens beschikbaar in het endpoint.
+  Onderstaande tabel beschrijft de prefixes gebruikt in dit document en onderstaand model.
 </p>
 <AuTable @size="default">
   <:header>
@@ -156,6 +118,10 @@ De status opvragen van een Submission kan eveneens via de document URI. Deze URI
       <td><AuLinkExternal href="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#">http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</AuLinkExternal></td>
     </tr>
     <tr>
+      <td><CodeInline @code="nmo:" /></td>
+      <td><AuLinkExternal href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#</AuLinkExternal></td>
+    </tr>
+    <tr>
       <td><CodeInline @code="ext:" /></td>
       <td><AuLinkExternal href="http://mu.semte.ch/vocabularies/ext/">http://mu.semte.ch/vocabularies/ext/</AuLinkExternal></td>
     </tr>
@@ -163,5 +129,122 @@ De status opvragen van een Submission kan eveneens via de document URI. Deze URI
       <td><CodeInline @code="am:" /></td>
       <td><AuLinkExternal href="http://lblod.data.gift/vocabularies/automatische-melding/">http://lblod.data.gift/vocabularies/automatische-melding/</AuLinkExternal></td>
     </tr>
+    <tr>
+      <td><CodeInline @code="sec:" /></td>
+      <td><AuLinkExternal href="http://lblod.data.gift/vocabularies/security/">http://lblod.data.gift/vocabularies/security/</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="besluit:" /></td>
+      <td><AuLinkExternal href="http://data.vlaanderen.be/ns/besluit#">http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="foaf:" /></td>
+      <td><AuLinkExternal href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</AuLinkExternal></td>
+    </tr>
   </:body>
+</AuTable>
+
+<AuHeading @level="3" @skin="3"><CodeInline @code="meb:Submission" /></AuHeading>
+<p>
+  Een Submission is de inzending voor een document; de zogezegde &ldquo;gebeurtenis&rdquo; van het inzenden van dat document. Hier kan bijvoorbeeld de status van het inzendingsproces en het tijdstip van inzending worden teuggevonden.
+</p>
+<AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+<AuTable>
+  <:header>
+    <tr>
+      <th>Naam</th>
+      <th>URI</th>
+      <th>Verwacht type</th>
+      <th>Beschrijving</th>
+    </tr>
+  </:header>
+  <:body>
+    <tr>
+      <td>Gecre&euml;erd op</td>
+      <td><CodeInline @code="dct:created" /></td>
+      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td>Tijdstip waarop deze inzending werd gemaakt.</td>
+    </tr>
+    <tr>
+      <td>Bewerkt op</td>
+      <td><CodeInline @code="dct:modified" /></td>
+      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td>Tijdstip waarop deze inzending laatst werd gewijzigd.</td>
+    </tr>
+    <tr>
+      <td>Gecre&euml;erd door</td>
+      <td><CodeInline @code="pav:createdBy" /></td>
+      <td><CodeInline @code="besluit:Bestuurseenheid" /></td>
+      <td>Voor/door welk bestuurseenheid de inzending werd gemaakt. Een derde partij kan een inzending maken via een applicatie voor deze bestuurseenheid.</td>
+    </tr>
+    <tr>
+      <td>Verzonden op</td>
+      <td><CodeInline @code="nmo:sentDate" /></td>
+      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td>Tijdstip waarop de inzending succesvol werd verzonden naar het Loket.</td>
+    </tr>
+    <tr>
+      <td>Ingezonden door</td>
+      <td><CodeInline @code="pav:providedBy" /></td>
+      <td><CodeInline @code="ext:Vendor" /></td>
+      <td>URI van de vendor applicatie die de inzending maakte. Via de Vendor API mogen geen inzendingen van andere vendors gezien worden.</td>
+    </tr>
+    <tr>
+      <td>Status</td>
+      <td><CodeInline @code="adms:status" /></td>
+      <td><CodeInline @code="ext:SubmissionDocumentStatus" /></td>
+      <td>Status van de inzending. Zie onderaan onder hoofdstuk &ldquo;Documentstatussen inzendingen&rdquo;.</td>
+    </tr>
+    <tr>
+      <td>Genereerde dit inzendingsformulier</td>
+      <td><CodeInline @code="prov:generated" /></td>
+      <td><CodeInline @code="am:FormData" /></td>
+      <td>Formuliergegevens die werden gegenereerd op basis van de inzending. Indien volledig wordt dit dossier automatisch verzonden naar het Loket.</td>
+    </tr>
+    <tr>
+      <td>Document ter onderwerp</td>
+      <td><CodeInline @code="dct:subject" /></td>
+      <td><CodeInline @code="ext:SubmissionDocument" /> en <CodeInline @code="foaf:Document" /></td>
+      <td>RDFa document dat werd ingezonden door de vendor. Dit document werd automatisch omgezet tot <CodeInline @code="am:FormData" /> om te versturen.</td>
+    </tr>
+    <tr>
+      <td>Downloadlocatie</td>
+      <td><CodeInline @code="prov:atLocation" /></td>
+      <td><CodeInline @code="xsd:anyURI" /></td>
+      <td>Locatie (URL) van het HTML RDFa document, ingezonden door de vendor, waar het <CodeInline @code="ext:SubmissionDocument" /> kan worden teruggevonden en worden gedownload.</td>
+    </tr>
+    <tr>
+      <td>Heeft als bijlage</td>
+      <td><CodeInline @code="nie:hasPart" /></td>
+      <td><CodeInline @code="nfo:FileDataObject" /></td>
+      <td>Bijlage die bij het <CodeInline @code="ext:SubmissionDocument" /> hoort.</td>
+    </tr>
+  </:body>
+</AuTable>
+
+<AuHeading @level="2" @skin="2">Documentstatussen inzendingen</AuHeading>
+<p>
+  Onderstaande tabel verduidelijkt de URI's die worden gebruikt om de status van een ingezonden document aan te duiden.
+</p>
+<AuTable @size="default">
+  <:header>
+    <tr>
+      <th>URI</th>
+      <th>Label</th>
+    </tr>
+  </:header>
+  <:body>
+    <tr>
+      <td><CodeInline @code="http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd" /></td>
+      <td>Concept</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c" /></td>
+      <td>Verzonden</td>
+    </tr>
+    <tr>
+      <td><CodeInline @code="http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff" /></td>
+      <td>Inzendbaar</td>
+    </tr>
+    </:body>
 </AuTable>
