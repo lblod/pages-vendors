@@ -1,0 +1,11 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX meb:  <http://rdf.myexperiment.org/ontologies/base/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+
+SELECT DISTINCT ?status ?statusLabel
+WHERE {
+  <http://data.lblod.info/submissions/716dfefo-55ho-108a-9n26-ddlbq8ibv3d2>
+    a meb:Submission ;
+    adms:status ?status .
+  ?status skos:prefLabel ?statusLabel .
+}

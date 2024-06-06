@@ -1,0 +1,15 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX meb:  <http://rdf.myexperiment.org/ontologies/base/>
+PREFIX dct:  <http://purl.org/dc/terms/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+
+SELECT DISTINCT ?submission ?status ?statusLabel
+WHERE {
+  ?submission
+    a meb:Submission ;
+    dct:atLocation
+      <http://gemeente.be/url/van/html/rdfa/pagina.html> ;
+    adms:status ?status .
+
+  ?status skos:prefLabel ?statusLabel .
+}
