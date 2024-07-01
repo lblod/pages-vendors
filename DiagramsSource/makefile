@@ -1,5 +1,6 @@
 ALLOUTPUTS = \
-	erediensten-toezichtsdatabank-sparql.svg
+	erediensten-toezichtsdatabank-sparql.svg \
+  berichtencentrum-sparql.svg
 OUTPUTFOLDER = ../public/assets/diagrams/
 FORMAT = svg
 
