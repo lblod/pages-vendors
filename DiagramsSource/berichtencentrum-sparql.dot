@@ -1,0 +1,91 @@
+digraph BerichtenData {
+  node [shape="box", peripheries=2, margin=0, fontname="Monospace"];
+  edge [fontname="Monospace"]
+  rankdir="LR"
+
+  Conversation [label=<
+    <table border="0" cellspacing="0" cellborder="1">
+      <tr>
+        <td><b>schema:Conversation</b></td>
+      </tr>
+      <tr>
+        <td balign="left">
+          core:uuid : xsd:string <br/>
+          schema:about : xsd:string <br/>
+          schema:identifier : xsd:string
+        </td>
+      </tr>
+    </table>
+  >];
+
+  Message [label=<
+    <table border="0" cellspacing="0" cellborder="1">
+      <tr>
+        <td><b>schema:Message</b></td>
+      </tr>
+      <tr>
+        <td balign="left">
+          core:uuid : xsd:string <br/>
+          dcterms:type : xsd:string <br/>
+          schema:sender : besluit:Bestuurseenheid <br/>
+          schema:recipient : besluit:Bestuurseenheid <br/>
+          schema:text : xsd:string <br/>
+          schema:dateSent : xsd:dateTime
+        </td>
+      </tr>
+    </table>
+  >];
+
+  File [label=<
+    <table border="0" cellspacing="0" cellborder="1">
+      <tr>
+        <td><b>nfo:FileDataObject</b></td>
+      </tr>
+      <tr>
+        <td balign="left">
+          core:uuid : xsd:string <br/>
+          dct:created : xsd:dateTime <br/>
+          dct:modified : xsd:dateTime <br/>
+          nfo:fileName : xsd:string <br/>
+          adms:status → skos:concept <br/>
+          nie:url : xsd:anyURI
+        </td>
+      </tr>
+    </table>
+  >];
+
+  Job [label=<
+    <table border="0" cellspacing="0" cellborder="1">
+      <tr>
+        <td><b>cogs:Job</b></td>
+      </tr>
+      <tr>
+        <td balign="left">
+          core:uuid : xsd:string <br/>
+          adms:status skos:concept <br/>
+          dct:created xsd:dateTime <br/>
+          dct:modified xsd:dateTime
+        </td>
+      </tr>
+    </table>
+  >];
+
+  Error [label=<
+    <table border="0" cellspacing="0" cellborder="1">
+      <tr>
+        <td><b>oslc:Error</b></td>
+      </tr>
+      <tr>
+        <td balign="left">
+          core:uuid : xsd:string <br/>
+          oslc:message : xsd:string
+        </td>
+      </tr>
+    </table>
+  >];
+
+  Conversation -> Message [label="schema:hasPart"]
+  Message -> File [label="nie:hasPart"]
+  Job -> Message [label="dct:subject"]
+  Job -> Error [label="task:error"]
+}

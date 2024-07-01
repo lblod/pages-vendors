@@ -1,0 +1,99 @@
+digraph SubmissionData {
+  node [shape="box", peripheries=2, margin=0, fontname="Monospace"];
+  edge [fontname="Monospace"]
+  rankdir="LR"
+
+  Submission [label=<
+    <table border="0" cellspacing="0" cellborder="1">
+      <tr>
+        <td><b>mob:Submission</b></td>
+      </tr>
+      <tr>
+        <td balign="left">
+          core:uuid : xsd:string <br/>
+          dct:created : xsd:dateTime <br/>
+          nmo:sentDate : xsd:dateTime <br/>
+          dct:modified : xsd:dateTime <br/>
+          pav:createdBy → besluit:Bestuurseenheid <br/>
+          pav:providedBy → ext:Vendor <br/>
+          adms:status → skos:Concept <br/>
+          adms:status → ext:SubmissionDocumentStatus <br/>
+          prov:atLocation → IRI
+        </td>
+      </tr>
+    </table>
+  >];
+
+  SubmissionDocument [label=<
+    <table border="0" cellspacing="0" cellborder="1">
+      <tr>
+        <td><b>ext:SubmissionDocument</b></td>
+      </tr>
+      <tr>
+        <td>
+          <i>No properties available</i>
+        </td>
+      </tr>
+    </table>
+  >];
+
+  Artikel [label=<
+    <table border="0" cellspacing="0" cellborder="1">
+      <tr>
+        <td><b>besluit:Artikel</b></td>
+      </tr>
+      <tr>
+        <td balign="left">
+          core:uuid : xsd:string <br/>
+          eli:type_document → IRI
+        </td>
+      </tr>
+    </table>
+  >];
+
+  FormData [label=<
+    <table border="0" cellspacing="0" cellborder="1">
+      <tr>
+        <td><b>am:FormData</b></td>
+      </tr>
+      <tr>
+        <td balign="left">
+          core:uuid : xsd:string <br/>
+          dct:type → skos:Concept <br/>
+          fd:submissionType → skos:Concept <br/>
+          fd:sessionStartedAtTime : xsd:dateTime <br/>
+          le:financialYear : xsd:string <br/>
+          eli:passed_by → besluit:Bestuursorgaan
+        </td>
+      </tr>
+    </table>
+  >];
+
+  File [label=<
+    <table border="0" cellspacing="0" cellborder="1">
+      <tr>
+        <td><b>nfo:FileDataObject</b></td>
+      </tr>
+      <tr>
+        <td balign="left">
+          core:uuid : xsd:string <br/>
+          dct:created : xsd:dateTime <br/>
+          dct:modified : xsd:dateTime <br/>
+          nfo:fileSize : xsd:string <br/>
+          dbpedia:fileExtension : xsd:string <br/>
+          dct:format : xsd:string <br/>
+          nfo:fileName : xsd:string <br/>
+          adms:status → IRI <br/>
+          prov:hadPrimarySource → IRI <br/>
+          nie:url : xsd:string
+        </td>
+      </tr>
+    </table>
+  >];
+
+  Submission -> SubmissionDocument [label="dct:subject"];
+  Submission -> FormData [label="prov:generated"];
+  SubmissionDocument -> Artikel [label="eli:has_part"];
+  Artikel -> SubmissionDocument [label="eli:refers_to"]
+  FormData -> File [label="dct:hasPart"];
+}

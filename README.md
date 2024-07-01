@@ -16,7 +16,20 @@ You will need the following things properly installed on your computer.
 * `cd pages-vendors`
 * `npm install`
 
+To run the diagram generation, you will need installed on you system:
+
+* `sed`
+* GraphViz `dot`
+* GNU `make`
+
 ## Running / Development
+
+**Optional step:** run the diagram generation. Not needed if you haven't made
+changes to the diagram source. Do this with
+
+  `make all`
+
+in the `DiagramsSource` folder.
 
 * `ember serve`
 * Visit your app at [http://localhost:4200/pages-vendors/](http://localhost:4200/pages-vendors/).
