@@ -56,10 +56,9 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
   Met deze downloadlinks kan het bestand gedownload worden door middel van simpele HTTP requests. Houdt rekening dat dezelfde authenticatie moet gebruikt worden al voor de toegang tot deze SPARQL API.
 </p>
 
-{{! TODO }}
 <AuHeading @level="2" @skin="2">Model van beschikbare data</AuHeading>
 <p>
-  In onderstaand model wordt gebruik gemaakt van volgende prefixen.
+  In boven- en onderstaand model wordt gebruik gemaakt van volgende prefixen.
 </p>
 
 <AuTable>
@@ -223,6 +222,57 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
       <td><CodeInline @code="prov:generated" /></td>
       <td><CodeInline @code="am:FormData" /></td>
       <td>De formuliergegevens</td>
+    </tr>
+  </:body>
+</AuTable>
+
+<AuHeading @level="3" @skin="3"><CodeInline @code="ext:SubmissionDocument" /></AuHeading>
+<p>
+  Deze entiteit bestaat alleen maar als het document verwijst naar andere documenten en refereert in feite naar het ingezonden document.
+</p>
+<AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+<AuTable>
+  <:header>
+  <tr>
+    <th>Naam</th>
+    <th>URI</th>
+    <th>Verwacht type</th>
+    <th>Beschrijving</th>
+  </tr>
+  </:header>
+  <:body>
+    <tr>
+      <td colspan=4>Geen eigenschappen</td>
+    </tr>
+  </:body>
+</AuTable>
+
+<AuHeading @level="3" @skin="3"><CodeInline @code="besluit:Artikel" /></AuHeading>
+<p>
+  Deze entiteit bestaat alleen maar als het document verwijst naar andere documenten en staat in voor deze verwijzing.
+</p>
+<AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+<AuTable>
+  <:header>
+  <tr>
+    <th>Naam</th>
+    <th>URI</th>
+    <th>Verwacht type</th>
+    <th>Beschrijving</th>
+  </tr>
+  </:header>
+  <:body>
+    <tr>
+      <td>refers to</td>
+      <td><CodeInline @code="eli:refers_to" /></td>
+      <td><CodeInline @code="ext:SubmissionDocument" /></td>
+      <td>Ander document dat werd gerefereerd in dit document</td>
+    </tr>
+    <tr>
+      <td>type document</td>
+      <td><CodeInline @code="eli:type_document" /></td>
+      <td>IRI</td>
+      <td>Type van het document</td>
     </tr>
   </:body>
 </AuTable>
