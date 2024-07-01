@@ -9,16 +9,16 @@ digraph SubmissionData {
         <td><b>mob:Submission</b></td>
       </tr>
       <tr>
-        <td align="left">
-          core:uuid : xsd:string <br align="left"/>
-          dct:created : xsd:dateTime <br align="left"/>
-          nmo:sentDate : xsd:dateTime <br align="left"/>
-          dct:modified : xsd:dateTime <br align="left"/>
-          pav:createdBy → besluit:Bestuurseenheid <br align="left"/>
-          pav:providedBy → ext:Vendor <br align="left"/>
-          adms:status → skos:Concept <br align="left"/>
-          adms:status → ext:SubmissionDocumentStatus <br align="left"/>
-          prov:atLocation → IRI <br align="left"/>
+        <td balign="left">
+          core:uuid : xsd:string <br/>
+          dct:created : xsd:dateTime <br/>
+          nmo:sentDate : xsd:dateTime <br/>
+          dct:modified : xsd:dateTime <br/>
+          pav:createdBy → besluit:Bestuurseenheid <br/>
+          pav:providedBy → ext:Vendor <br/>
+          adms:status → skos:Concept <br/>
+          adms:status → ext:SubmissionDocumentStatus <br/>
+          prov:atLocation → IRI
         </td>
       </tr>
     </table>
@@ -30,7 +30,7 @@ digraph SubmissionData {
         <td><b>ext:SubmissionDocument</b></td>
       </tr>
       <tr>
-        <td align="left">
+        <td>
           <i>No properties available</i>
         </td>
       </tr>
@@ -43,9 +43,9 @@ digraph SubmissionData {
         <td><b>besluit:Artikel</b></td>
       </tr>
       <tr>
-        <td align="left">
-          core:uuid : xsd:string <br align="left"/>
-          eli:type_document → IRI <br align="left"/>
+        <td balign="left">
+          core:uuid : xsd:string <br/>
+          eli:type_document → IRI
         </td>
       </tr>
     </table>
@@ -57,13 +57,13 @@ digraph SubmissionData {
         <td><b>am:FormData</b></td>
       </tr>
       <tr>
-        <td align="left">
-          core:uuid : xsd:string <br align="left"/>
-          dct:type → skos:Concept <br align="left"/>
-          fd:submissionType → skos:Concept <br align="left"/>
-          fd:sessionStartedAtTime : xsd:dateTime <br align="left"/>
-          le:financialYear : xsd:string <br align="left"/>
-          eli:passed_by → besluit:Bestuursorgaan <br align="left"/>
+        <td balign="left">
+          core:uuid : xsd:string <br/>
+          dct:type → skos:Concept <br/>
+          fd:submissionType → skos:Concept <br/>
+          fd:sessionStartedAtTime : xsd:dateTime <br/>
+          le:financialYear : xsd:string <br/>
+          eli:passed_by → besluit:Bestuursorgaan
         </td>
       </tr>
     </table>
@@ -75,17 +75,17 @@ digraph SubmissionData {
         <td><b>nfo:FileDataObject</b></td>
       </tr>
       <tr>
-        <td align="left">
-          core:uuid : xsd:string <br align="left"/>
-          dct:created : xsd:dateTime <br align="left"/>
-          dct:modified : xsd:dateTime <br align="left"/>
-          nfo:fileSize : xsd:string <br align="left"/>
-          dbpedia:fileExtension : xsd:string <br align="left"/>
-          dct:format : xsd:string <br align="left"/>
-          nfo:fileName : xsd:string <br align="left"/>
-          adms:status → IRI <br align="left"/>
-          prov:hadPrimarySource → IRI <br align="left"/>
-          nie:url : xsd:string <br align="left"/>
+        <td balign="left">
+          core:uuid : xsd:string <br/>
+          dct:created : xsd:dateTime <br/>
+          dct:modified : xsd:dateTime <br/>
+          nfo:fileSize : xsd:string <br/>
+          dbpedia:fileExtension : xsd:string <br/>
+          dct:format : xsd:string <br/>
+          nfo:fileName : xsd:string <br/>
+          adms:status → IRI <br/>
+          prov:hadPrimarySource → IRI <br/>
+          nie:url : xsd:string
         </td>
       </tr>
     </table>
