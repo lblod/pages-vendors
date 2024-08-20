@@ -56,7 +56,28 @@ details
 
 ### Deploying
 
-`ember deploy production` (will deploy on git@github.com:lblod/pages-vendors)
+This application is hosted on GitHub by commiting a new build to the `gh-pages`
+branch. There exist tools for this to automate the process, but they have
+consistently been broken. Instead, we use a manual process that is luckily not
+too difficult:
+
+* Make sure you have re-built the diagrams if you have made changes to them
+  - `make all` in the `DiagramsSource` folder (see above)
+* Run a production build: `ember build --environment production`
+  - Built files are now in the `dist` folder
+* Checkout the `gh-pages` branch: `git switch gh-pages`
+* Move and replace the following files from the `dist` folder into the branch
+  root:
+  - `@appuniversum`
+  - `assets`
+  - `index.html`
+  - `robots.txt`
+* Make sure there still is the (empty) `.nojekyll` file
+* Add only the above files/folders to a Git commit
+* Commit with a message for the new deploy and push
+
+Hopefully, your new changes are now hosted on [the public
+pages](https://lblod.github.io/pages-vendors/).
 
 ## Further Reading / Useful Links
 
