@@ -1,6 +1,8 @@
 # pages-vendors
 
-Contents of https://lblod.github.io/pages-vendors/, which contains Vendor and API integrator documentation related to the LBLOD project.
+Contents of https://lblod.github.io/pages-vendors/, which contains Vendor and
+API integrator documentation related to the LBLOD project.
+
 ## Prerequisites
 
 You will need the following things properly installed on your computer.
@@ -32,17 +34,15 @@ changes to the diagram source. Do this with
 in the `DiagramsSource` folder.
 
 * `ember serve`
-* Visit your app at [http://localhost:4200/pages-vendors/](http://localhost:4200/pages-vendors/).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+* Visit your app at
+  [http://localhost:4200/pages-vendors/](http://localhost:4200/pages-vendors/).
+* Visit your tests at
+  [http://localhost:4200/tests](http://localhost:4200/tests).
 
 ### Code Generators
 
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
+Make use of the many generators for code, try `ember help generate` for more
+details
 
 ### Linting
 
