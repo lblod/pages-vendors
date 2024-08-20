@@ -57,9 +57,9 @@ details
 ### Deploying
 
 This application is hosted on GitHub by commiting a new build to the `gh-pages`
-branch. There exist tools for this to automate the process, but they have
-consistently been broken. Instead, we use a manual process that is luckily not
-too difficult:
+branch. There exist tools to automate the process, but they have consistently
+been broken. Instead, we use a manual process that is luckily not too
+difficult:
 
 * Make sure you have re-built the diagrams if you have made changes to them
   - `make all` in the `DiagramsSource` folder (see above)
@@ -72,6 +72,10 @@ too difficult:
   - `assets`
   - `index.html`
   - `robots.txt`
+  
+  You can use these commands from the root:
+  - `rm -rf \@appuniversum/ assets/ index.html robots.txt`
+  - `cp -r dist/\@appuniversum/ dist/assets/ dist/index.html dist/robots.txt .`
 * Make sure there still is the (empty) `.nojekyll` file
 * Add only the above files/folders to a Git commit
 * Commit with a message for the new deploy and push
