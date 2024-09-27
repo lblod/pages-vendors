@@ -1,0 +1,405 @@
+@prefix dash:   <http://datashapes.org/dash#> .
+@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh:     <http://www.w3.org/ns/shacl#> .
+@prefix shapes: <https://shacl-play.sparna.fr/shapes/> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#>.
+
+shapes:Document  rdf:type  sh:NodeShape ;
+        rdfs:label      "Document"@en ;
+        sh:property     shapes:Document_uuid , shapes:Document_source ;
+        sh:targetClass  <http://xmlns.com/foaf/0.1/Document> .
+
+shapes:FileDataObject_format
+        sh:datatype  xsd:string ;
+        sh:name      "format"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://purl.org/dc/terms/format> .
+
+shapes:FormData_decisionType
+        sh:name      "decisionType"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://mu.semte.ch/vocabularies/ext/decisionType> .
+
+shapes:Submission_createdBy
+        sh:name      "createdBy"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://purl.org/pav/createdBy> .
+
+shapes:FormData_date_publication
+        sh:datatype  xsd:date ;
+        sh:name      "date_publication"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://data.europa.eu/eli/ontology#date_publication> .
+
+shapes:Submission_subject_class_1
+        sh:class  <http://mu.semte.ch/vocabularies/ext/SubmissionDocument> .
+
+shapes:RemoteDataObject_url
+        sh:name      "url"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#url> .
+
+shapes:RemoteDataObject_fileSize
+        sh:datatype  xsd:integer ;
+        sh:name      "fileSize"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileSize> .
+
+shapes:FileDataObject_fileSize
+        sh:datatype  xsd:integer ;
+        sh:name      "fileSize"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileSize> .
+
+shapes:Submission  rdf:type  sh:NodeShape ;
+        rdfs:label      "Submission"@en ;
+        sh:property     shapes:Submission_providedBy ,
+        shapes:Submission_modified ,
+        shapes:Submission_created ,
+        shapes:Submission_uuid ,
+        shapes:Submission_subject ,
+        shapes:Submission_sentDate ,
+        shapes:Submission_atLocation ,
+        shapes:Submission_generated ,
+        shapes:Submission_createdBy ,
+        shapes:Submission_status ;
+        sh:targetClass  <http://rdf.myexperiment.org/ontologies/base/Submission> .
+
+shapes:RemoteDataObject_created_datatype_1
+        sh:datatype  xsd:dateTime .
+
+shapes:FormData  rdf:type  sh:NodeShape ;
+        rdfs:label      "FormData"@en ;
+        sh:property     shapes:FormData_passed_by ,
+        shapes:FormData_type ,
+        shapes:FormData_date_publication ,
+        shapes:FormData_regulationType ,
+        shapes:FormData_hadPrimarySource ,
+        shapes:FormData_hasPart ,
+        shapes:FormData_uuid ,
+        shapes:FormData_sessionStartedAtTime_2 ,
+        shapes:FormData_publication ,
+        shapes:FormData_submissionType ,
+        shapes:FormData_formSubmissionStatus ;
+        sh:targetClass  <http://lblod.data.gift/vocabularies/automatische-melding/FormData> .
+
+shapes:FormData_submissionType
+        sh:name      "submissionType"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://lblod.data.gift/vocabularies/besluit/submission/form-data/submissionType> .
+
+shapes:RemoteDataObject_modified
+        sh:datatype  xsd:dateTime ;
+
+
+        sh:name      "modified"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://purl.org/dc/terms/modified> .
+
+shapes:Submission_subject_class_0
+        sh:class  <http://xmlns.com/foaf/0.1/Document> .
+
+shapes:FormData_publication
+
+
+
+        sh:name      "publication"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://schema.org/publication> .
+
+shapes:RemoteDataObject_created_datatype_0
+        sh:datatype  xsd:date .
+
+shapes:Document_uuid  dash:propertyRole
+                dash:LabelRole ;
+        sh:datatype        xsd:string ;
+        sh:name            "uuid"@en ;
+        sh:nodeKind        sh:Literal ;
+        sh:path            <http://mu.semte.ch/vocabularies/core/uuid> .
+
+shapes:FormData_hadPrimarySource
+        sh:name      "hadPrimarySource"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://www.w3.org/ns/prov#hadPrimarySource> .
+
+shapes:RemoteDataObject_format
+        sh:datatype  xsd:string ;
+
+        sh:name      "format"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://purl.org/dc/terms/format> .
+
+shapes:Document_source
+
+        sh:name      "source"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://purl.org/dc/terms/source> .
+
+shapes:FormData_regulationType_2
+        sh:name      "regulationType"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://mu.semte.ch/vocabularies/ext/regulationType> .
+
+shapes:FormData_hasPart
+
+        sh:name      "hasPart"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:or        ( shapes:FormData_hasPart_class_0 shapes:FormData_hasPart_class_1 ) ;
+        sh:path      <http://purl.org/dc/terms/hasPart> .
+
+shapes:Submission_status
+
+
+        sh:name      "status"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://www.w3.org/ns/adms#status> .
+
+shapes:FileDataObject_modified
+        sh:datatype  xsd:dateTime ;
+
+
+        sh:name      "modified"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://purl.org/dc/terms/modified> .
+
+shapes:FormData_regulationType
+
+
+        sh:name      "regulationType"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://lblod.data.gift/vocabularies/besluit/submission/form-data/regulationType> .
+
+shapes:FormData_type  sh:minCount  1 ;
+        sh:name      "type"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://purl.org/dc/terms/type> .
+
+shapes:Submission_modified
+        sh:datatype  xsd:dateTime ;
+
+
+        sh:name      "modified"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://purl.org/dc/terms/modified> .
+
+shapes:FileDataObject_url
+        sh:name      "url"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#url> .
+
+shapes:RemoteDataObject_uuid
+        sh:datatype  xsd:string ;
+
+
+        sh:name      "uuid"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://mu.semte.ch/vocabularies/core/uuid> .
+
+shapes:RemoteDataObject_fileName
+        sh:datatype  xsd:string ;
+
+        sh:name      "fileName"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName> .
+
+shapes:FormData_formSubmissionStatus
+
+
+
+        sh:name      "formSubmissionStatus"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://mu.semte.ch/vocabularies/ext/formSubmissionStatus> .
+
+shapes:FileDataObject_created
+
+        sh:name      "created"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:or        ( shapes:FileDataObject_created_datatype_0 shapes:FileDataObject_created_datatype_1 ) ;
+        sh:path      <http://purl.org/dc/terms/created> .
+
+shapes:FileDataObject_status
+
+
+        sh:name      "status"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://www.w3.org/ns/adms#status> .
+
+shapes:Submission_generated
+        sh:class     <http://lblod.data.gift/vocabularies/automatische-melding/FormData> ;
+
+
+        sh:name      "generated"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://www.w3.org/ns/prov#generated> .
+
+shapes:Submission_uuid
+        sh:datatype  xsd:string ;
+
+
+        sh:name      "uuid"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://mu.semte.ch/vocabularies/core/uuid> .
+
+shapes:Submission_providedBy
+
+
+        sh:name      "providedBy"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://purl.org/pav/providedBy> .
+
+shapes:FileDataObject_created_datatype_1
+        sh:datatype  xsd:dateTime .
+
+shapes:Submission_subject
+
+
+        sh:name      "subject"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:or        ( shapes:Submission_subject_class_0 shapes:Submission_subject_class_1 ) ;
+        sh:path      <http://purl.org/dc/terms/subject> .
+
+shapes:RemoteDataObject_status
+
+
+
+        sh:name      "status"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://www.w3.org/ns/adms#status> .
+
+shapes:FormData_hasPart_class_1
+        sh:class  <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject> .
+
+shapes:FileDataObject_uuid
+        sh:datatype  xsd:string ;
+
+
+        sh:name      "uuid"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://mu.semte.ch/vocabularies/core/uuid> .
+
+shapes:SubmissionDocument_source
+
+        sh:name      "source"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://purl.org/dc/terms/source> .
+
+shapes:FileDataObject_fileExtension
+        sh:datatype  xsd:string ;
+
+        sh:name      "fileExtension"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://dbpedia.org/ontology/fileExtension> .
+
+<https://shacl-play.sparna.fr/shapes>
+        rdf:type  <http://www.w3.org/2002/07/owl#Ontology> ;
+        <http://purl.org/dc/terms/abstract>
+                "Generated by SHACL Play!"@en ;
+        <http://purl.org/dc/terms/created>
+                "2024-09-27T10:50:39.229Z"^^xsd:dateTime .
+
+shapes:RemoteDataObject_fileExtension
+        sh:datatype  xsd:string ;
+
+        sh:name      "fileExtension"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://dbpedia.org/ontology/fileExtension> .
+
+shapes:FileDataObject_fileName
+        sh:datatype  xsd:string ;
+
+        sh:name      "fileName"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#fileName> .
+
+shapes:FileDataObject_created_datatype_0
+        sh:datatype  xsd:date .
+
+shapes:RemoteDataObject
+        rdf:type        sh:NodeShape ;
+        rdfs:label      "RemoteDataObject"@en ;
+        sh:property     shapes:RemoteDataObject_fileSize , shapes:RemoteDataObject_fileName , shapes:RemoteDataObject_fileExtension , shapes:RemoteDataObject_format , shapes:RemoteDataObject_modified , shapes:RemoteDataObject_status , shapes:RemoteDataObject_uuid , shapes:RemoteDataObject_created , shapes:RemoteDataObject_url ;
+        sh:targetClass  <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject> .
+
+shapes:Submission_sentDate
+        sh:datatype  xsd:dateTime ;
+
+
+        sh:name      "sentDate"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#sentDate> .
+
+shapes:FormData_uuid  sh:datatype  xsd:string ;
+
+
+        sh:name      "uuid"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://mu.semte.ch/vocabularies/core/uuid> .
+
+shapes:FormData_sessionStartedAtTime_2
+        sh:datatype  xsd:dateTime ;
+
+
+        sh:name      "sessionStartedAtTime"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://lblod.data.gift/vocabularies/besluit/submission/form-data/sessionStartedAtTime> .
+
+shapes:RemoteDataObject_created
+
+        sh:name      "created"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:or        ( shapes:RemoteDataObject_created_datatype_0 shapes:RemoteDataObject_created_datatype_1 ) ;
+        sh:path      <http://purl.org/dc/terms/created> .
+
+shapes:FormData_hasPart_class_0
+        sh:class  <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject> .
+
+shapes:Submission_created
+        sh:datatype  xsd:dateTime ;
+
+
+        sh:name      "created"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://purl.org/dc/terms/created> .
+
+shapes:SubmissionDocument
+        rdf:type        sh:NodeShape ;
+        rdfs:label      "SubmissionDocument"@en ;
+        sh:property     shapes:SubmissionDocument_uuid , shapes:SubmissionDocument_source ;
+        sh:targetClass  <http://mu.semte.ch/vocabularies/ext/SubmissionDocument> .
+
+shapes:Submission_atLocation
+
+
+        sh:name      "atLocation"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://www.w3.org/ns/prov#atLocation> .
+
+shapes:FormData_sessionStartedAtTime
+        sh:datatype  xsd:dateTime ;
+
+
+        sh:name      "sessionStartedAtTime"@en ;
+        sh:nodeKind  sh:Literal ;
+        sh:path      <http://mu.semte.ch/vocabularies/ext/sessionStartedAtTime> .
+
+shapes:SubmissionDocument_uuid
+        dash:propertyRole  dash:LabelRole ;
+        sh:datatype        xsd:string ;
+        sh:name            "uuid"@en ;
+        sh:nodeKind        sh:Literal ;
+        sh:path            <http://mu.semte.ch/vocabularies/core/uuid> .
+
+shapes:FormData_passed_by
+        sh:targetClass besluit:Bestuursorgaan ;
+        sh:name      "passed_by"@en ;
+        sh:nodeKind  sh:IRI ;
+        sh:path      <http://data.europa.eu/eli/ontology#passed_by> .
+
+shapes:FileDataObject
+        rdf:type        sh:NodeShape ;
+        rdfs:label      "FileDataObject"@en ;
+        sh:property     shapes:FileDataObject_created , shapes:FileDataObject_fileSize , shapes:FileDataObject_format , shapes:FileDataObject_fileName , shapes:FileDataObject_uuid , shapes:FileDataObject_status , shapes:FileDataObject_url , shapes:FileDataObject_modified , shapes:FileDataObject_fileExtension ;
+        sh:targetClass  <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject> .
