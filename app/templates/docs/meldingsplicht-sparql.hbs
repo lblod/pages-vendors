@@ -56,6 +56,12 @@ De status opvragen van een Submission kan eveneens via de document URI. Deze URI
 </p>
 <Snippet @snippetFilename="meldingsplicht-sparql/voorbeeld-melding-status-document-uri.sparql" />
 
+<AuHeading @level="4" @skin="4">Bijlage ophalen van inzending</AuHeading>
+<p>
+  De bijlage van een inzending kan eveneens worden opgehaald. Aangezien bijlagen niet via SPARQL worden teruggegeven, is er een extra stap nodig. In het volgende script, na het inloggen, halen we eerst de relevante metadata van de bijlage op. Vervolgens wordt het bestand gedownload met behulp van <CodeInline @code="curl" />. Let op dat -voorlopig- de hyperlink naar het bestand handmatig moet worden samengesteld. In het onderstaande script gebeurt dit via de SPARQL-query, maar andere methoden zijn uiteraard ook mogelijk.
+</p>
+<Snippet @snippetFilename="meldingsplicht-sparql/voorbeeld-melding-download-bijlage.sh" />
+
 <AuHeading @level="4" @skin="4">Status via URL van downloadpagina</AuHeading>
 <p>
   Ten slotte is het ook mogelijk om de status van een Submission op te vragen via de URL van de downloadpagina. (Dit is een URL, geen URI.) Deze URL werd eveneens door de vendor meegegeven bij het inzenden van een melding en werd <CodeInline @code="href" /> genoemd.
@@ -248,3 +254,12 @@ De status opvragen van een Submission kan eveneens via de document URI. Deze URI
     </tr>
     </:body>
 </AuTable>
+
+<AuHeading @level="2" @skin="2">Diagram van beschikbare data</AuHeading>
+
+<a class="block au-u-text-right" href="assets/diagrams/diagram-submission.svg">
+  <figure>
+    <img itemprop="thumbnail" src="assets/diagrams/diagram-submission.svg" alt="Diagram van beschikbare gegevens" />
+    <figcaption>Diagram van Linked Data van beschikbare gegevens in het endpoint</figcaption>
+  </figure>
+</a>
