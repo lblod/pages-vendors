@@ -24,7 +24,7 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
   Op dit endpoint kunnen alle gegevens omtrent inzendingen teruggevonden worden, samen met het ingevulde formulier voor de publicatie in Loket. Deze formuliergegevens zitten in bestanden die via een downloadlink kunnen worden gedownload. Al deze informatie is vrij te ondervragen in deze SPARQL endpoint met de volledige vrijheid van SPARQL voor filteren op datum, URI, regex, &hellip;
 </p>
 
-<AuHeading @level="3" @skin="3">Voorbeelden</AuHeading>
+<AuHeading @level="3" @skin="3">Ontdekken van inzendingen - Voorbeelden</AuHeading>
 <p>
   Dit eerste eenvoudige voorbeeld geeft een korte lijst van een aantal willekeurige inzendingen (Submissions); een query voor het ontdekken van een aantal URI's die in volgende query's gebruikt kunnen worden.
 </p>
@@ -40,6 +40,7 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
 </p>
 <Snippet @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-documenttype.sparql" />
 
+<AuHeading @level="3" @skin="3">Opvragen van details - Voorbeelden</AuHeading>
 <p>
   Om in detail alle informatie over een Submission, de formuliergegevens (FormData) en alle gelinkte bestanden te bekomen kan een query als de onderstaande gebruikt worden.
 </p>
@@ -55,6 +56,25 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
 <p>
   Met deze downloadlinks kan het bestand gedownload worden door middel van simpele HTTP requests. Houdt rekening dat dezelfde authenticatie moet gebruikt worden als voor de toegang tot deze SPARQL API.
 </p>
+
+<AuHeading @level="3" @skin="3">Details over gelinkte inzendingen - Voorbeelden</AuHeading>
+<p>
+  Inzendingen kunnen elkaar refereren, bijvoorbeeld een besluit dat een ander besluit goedkeurt. Dit kan op twee manieren gebeuren. Een gemeente- of provinciebestuur gebruikt een tussenliggende entiteit <CodeInline @code="besluit:Artikel" /> als deel van het <CodeInline @code="ext:SubmissionsDocument" />. Een Centraal Bestuur van de erediensten of ander representatief orgaan gebruikt in plaats daarvan een relatie <CodeInline @code="dct:relation" /> op de <CodeInline @code="am:FormData" /> rechtstreeks naar het gerefereerde <CodeInline @code="ext:SubmissionsDocument" />.
+</p>
+<p>
+  <strong>Noteer: het is enkel mogelijk om gedetailleerde informatie op te vragen van gerefereerd Submissions en hun gerelateerde eigenschappen als query's worden uitgevoerd met geldige authenticatie voor de bestuurseenheid waarvan een besluit wordt gerefereerd.</strong>
+</p>
+<p>
+  Stel dat een eredienstbestuur &ldquo;Kerkfabriek St.-Lambertus van Grobbendonk&rdquo; een besluit heeft gepubliceerd, en dat de gemeente Grobbendonk een goedkeuring publiceert op dat besluit en betreffende besluit refereert. Volgende query stelt voor de gegeven Submission van de gemeente een lijst op van de gerefereerde besluiten. Natuurlijk is deze query volledig zelf aan te passen. Het samenklapbaar voorbeeld eronder geeft ook nog de bestuurseenheid waarvoor elke Submission is ingezonden.
+</p>
+<Snippet @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-gelinkte-documenten-gemeente.sparql" />
+<SnippetToggle @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-gelinkte-documenten-gemeente-extra.sparql" />
+
+<p>
+  Het volgend voorbeeld demonstreert hetzelfde principe als het vorige, maar in een scenario met een tussenliggend Centraal Bestuur. Stel dat een eredienstbestuur &ldquo;Kerkfabriek St.-Lambertus van Grobbendonk&rdquo; een besluit heeft gepubliceerd, dan kan het &ldquo;Centraal bestuur van de eredienst Grobbendonk&rdquo; een advies hierover publiceren, dat op zijn beurt door gemeente Grobbendonk kan worden gerefereerd in bijvoorbeeld een goedkeuring. Onderstaande query geeft deze ketting van refereren weer vertrekkend vanuit de Submission van de gemeente.
+</p>
+<Snippet @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-gelinkte-documenten-CKB.sparql" />
+<SnippetToggle @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-gelinkte-documenten-CKB-extra.sparql" />
 
 <AuHeading @level="2" @skin="2">Model van beschikbare data</AuHeading>
 

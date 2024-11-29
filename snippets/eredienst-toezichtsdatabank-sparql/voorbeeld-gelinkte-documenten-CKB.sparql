@@ -1,0 +1,19 @@
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dct:  <http://purl.org/dc/terms/>
+PREFIX pav:  <http://purl.org/pav/>
+PREFIX eli:  <http://data.europa.eu/eli/ontology#>
+PREFIX mob:  <http://rdf.myexperiment.org/ontologies/base/>
+
+SELECT DISTINCT ?submission ?submissionCKB ?submissionEB WHERE {
+  BIND (<http://data.lblod.info/submissions/674929BE379C3E83EE6B1961> as ?submission)
+  ?submission dct:subject ?submissionDocument .
+  ?submissionDocument eli:has_part ?artikel .
+  ?artikel eli:refers_to ?submissionDocumentEB .
+  ?submissionEB
+    rdf:type mob:Submission ;
+    dct:subject ?submissionDocumentEB .
+  ?submissionCKB prov:generated ?formDataCKB .
+  ?formDataCKB dct:relation ?submissionDocumentEB .
+}

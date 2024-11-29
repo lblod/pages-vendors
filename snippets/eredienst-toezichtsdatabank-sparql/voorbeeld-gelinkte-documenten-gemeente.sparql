@@ -1,0 +1,16 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dct:  <http://purl.org/dc/terms/>
+PREFIX eli:  <http://data.europa.eu/eli/ontology#>
+PREFIX mob:  <http://rdf.myexperiment.org/ontologies/base/>
+
+SELECT DISTINCT ?submission ?referredSubmission WHERE {
+  BIND (<http://data.lblod.info/submissions/6749150B379C3E83EE6B1957> as ?submission)
+  ?submission
+    rdf:type mob:Submission ;
+    dct:subject ?submissionsDocument .
+  ?submissionsDocument eli:has_part ?artikel .
+  ?artikel eli:refers_to ?referredDocument .
+  ?referredSubmission
+    rdf:type mob:Submission ;
+    dct:subject ?referredDocument .
+}
