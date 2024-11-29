@@ -94,6 +94,7 @@ digraph SubmissionData {
   Submission -> SubmissionDocument [label="dct:subject"];
   Submission -> FormData [label="prov:generated"];
   SubmissionDocument -> Artikel [label="eli:has_part"];
-  Artikel -> SubmissionDocument [label="eli:refers_to"]
+  Artikel -> SubmissionDocument [label="eli:refers_to"];
   FormData -> File [label="dct:hasPart"];
+  FormData -> SubmissionDocument [label="dct:relation"];
 }
