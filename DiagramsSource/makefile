@@ -1,6 +1,7 @@
 ALLOUTPUTS = \
 	erediensten-toezichtsdatabank-sparql.svg \
-  berichtencentrum-sparql.svg
+  berichtencentrum-sparql.svg \
+  meldingsplicht-sparql.svg
 OUTPUTFOLDER = ../public/assets/diagrams/
 FORMAT = svg
 

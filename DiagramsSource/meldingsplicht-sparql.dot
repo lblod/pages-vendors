@@ -1,0 +1,26 @@
+digraph SubmissionData {
+  node [shape="box", peripheries=2, margin=0, fontname="Monospace"];
+  edge [fontname="Monospace"]
+  rankdir="LR"
+
+  Submission [label=<
+    <table border="0" cellspacing="0" cellborder="1">
+      <tr>
+        <td><b>mob:Submission</b></td>
+      </tr>
+      <tr>
+        <td balign="left">
+          core:uuid : xsd:string <br/>
+          dct:created : xsd:dateTime <br/>
+          nmo:sentDate : xsd:dateTime <br/>
+          dct:modified : xsd:dateTime <br/>
+          pav:createdBy → besluit:Bestuurseenheid <br/>
+          pav:providedBy → ext:Vendor <br/>
+          adms:status → skos:Concept <br/>
+          adms:status → ext:SubmissionDocumentStatus <br/>
+          prov:atLocation → IRI
+        </td>
+      </tr>
+    </table>
+  >];
+}
