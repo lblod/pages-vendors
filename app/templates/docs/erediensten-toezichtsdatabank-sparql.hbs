@@ -256,7 +256,7 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
 
 <AuHeading @level="3" @skin="3"><CodeInline @code="ext:SubmissionDocument" /></AuHeading>
 <p>
-  Deze entiteit bestaat alleen maar als het document verwijst naar andere documenten en refereert in feite naar het ingezonden document.
+  Deze entiteit bestaat altijd, maar wordt alleen maar in de Vendor API beschikbaar gemaakt als het document verwijst naar andere documenten. Het refereert in feite naar het ingezonden document.
 </p>
 <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
 <AuTable>
@@ -270,7 +270,10 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
   </:header>
   <:body>
     <tr>
-      <td colspan=4>Geen eigenschappen</td>
+      <td>Verwijst naar</td>
+      <td><CodeInline @code="eli:has_part" /></td>
+      <td><CodeInline @code="ext:SubmissionDocument" /></td>
+      <td>Ander document dat werd gerefereerd in dit document</td>
     </tr>
   </:body>
 </AuTable>
