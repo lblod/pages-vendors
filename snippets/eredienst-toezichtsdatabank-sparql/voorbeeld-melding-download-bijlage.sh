@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HOST="https://api.loket.lokaalbestuur.vlaanderen.be"
+HOST="https://databankerediensten.lokaalbestuur.vlaanderen.be"
 
 echo "Let's download the first html file attached to a submission we encounter."
 echo Login first.
@@ -26,22 +26,24 @@ ATTACHMENT_QUERY="
   PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
   PREFIX prov: <http://www.w3.org/ns/prov#>
   PREFIX nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
+  PREFIX nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>
+  PREFIX am: <http://lblod.data.gift/vocabularies/automatische-melding/>
 
-  SELECT DISTINCT ?fileName ?fileLocation
+  SELECT DISTINCT ?fileName ?downloadLink
   WHERE {
-     ?submission a meb:Submission;
-       prov:generated ?formData.
+    ?submission
+      a meb:Submission ;
+      prov:generated ?formData .
 
-     ?formData a <http://lblod.data.gift/vocabularies/automatische-melding/FormData>;
-       dcterms:hasPart ?remoteUrl.
+    ?formData
+      a am:FormData ;
+      dcterms:hasPart ?remoteUrl .
 
-     ?remoteUrl a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject> ;
-       mu:uuid ?uuid;
-       nfo:fileName ?fileName;
-       dcterms:format \"text/html\".
-
-     BIND(CONCAT(\"$HOST\", \"/files/\", ?uuid, \"/download\") as ?fileLocation )
-
+    ?remoteFile
+      a nfo:RemoteDataObject ;
+      nfo:fileName ?fileName ;
+      dcterms:format \"text/html\" ;
+      nie:url ?downloadLink .
   }
   LIMIT 1
 "

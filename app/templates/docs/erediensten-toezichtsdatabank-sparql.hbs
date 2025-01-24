@@ -59,9 +59,9 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
 
 <AuHeading @level="4" @skin="4">Bijlage ophalen van inzending</AuHeading>
 <p>
-  De bijlage van een inzending kan eveneens worden opgehaald. Aangezien bijlagen niet via SPARQL worden teruggegeven, is er een extra stap nodig. In het volgende script, na het inloggen, halen we eerst de relevante metadata van de bijlage op. Vervolgens wordt het bestand gedownload met behulp van <CodeInline @code="curl" />. Let op dat -voorlopig- de hyperlink naar het bestand handmatig moet worden samengesteld. In het onderstaande script gebeurt dit via de SPARQL-query, maar andere methoden zijn uiteraard ook mogelijk.
+  De bijlage van een inzending kan eveneens worden opgehaald. Aangezien bijlagen niet via SPARQL worden teruggegeven, is er een extra stap nodig. In het volgende script, na het inloggen, halen we eerst de relevante metadata van de bijlage op, inclusief de downloadlink. Vervolgens wordt het bestand gedownload met behulp van <CodeInline @code="curl" />. Dit script geldt als voorbeeld en moet worden aangepast naar individuele noden. Er is bijvoorbeeld nog geen URI van Submission in de query. Dit voorbeeldscript vindt dus het eerste willekeurige downloadbare bestand.
 </p>
-<Snippet @snippetFilename="meldingsplicht-sparql/voorbeeld-melding-download-bijlage.sh" />
+<SnippetToggle @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-melding-download-bijlage.sh" />
 
 <AuHeading @level="3" @skin="3">Details over gelinkte inzendingen - Voorbeelden</AuHeading>
 <p>
