@@ -16,9 +16,11 @@ digraph SubmissionData {
           dct:modified : xsd:dateTime <br/>
           pav:createdBy → besluit:Bestuurseenheid <br/>
           pav:providedBy → ext:Vendor <br/>
-          adms:status → skos:Concept <br/>
-          adms:status → ext:SubmissionDocumentStatus <br/>
-          prov:atLocation → IRI
+          adms:status → skos:Concept / ext:SubmissionDocumentStatus <br/>
+          prov:generated → am:FormData <br />
+          dct:subject → ext:SubmissionDocument / foaf:Document <br />
+          prov:atLocation → IRI <br />
+          nie:hasPart → nfo:FileDataObject
         </td>
       </tr>
     </table>
