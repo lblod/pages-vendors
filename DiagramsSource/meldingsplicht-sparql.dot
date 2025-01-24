@@ -20,7 +20,6 @@ digraph SubmissionData {
           prov:generated → am:FormData <br />
           dct:subject → ext:SubmissionDocument / foaf:Document <br />
           prov:atLocation → IRI <br />
-          nie:hasPart → nfo:FileDataObject
         </td>
       </tr>
     </table>

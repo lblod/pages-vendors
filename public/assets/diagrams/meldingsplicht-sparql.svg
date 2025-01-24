@@ -27,7 +27,7 @@
 <text text-anchor="start" x="7" y="-71.7" font-family="Monospace" font-size="14.00"> prov:generated → am:FormData </text>
 <text text-anchor="start" x="7" y="-52.2" font-family="Monospace" font-size="14.00"> dct:subject → ext:SubmissionDocument / foaf:Document </text>
 <text text-anchor="start" x="7" y="-32.7" font-family="Monospace" font-size="14.00"> prov:atLocation → IRI </text>
-<text text-anchor="start" x="7" y="-13.2" font-family="Monospace" font-size="14.00"> nie:hasPart → nfo:FileDataObject </text>
+<text text-anchor="start" x="7" y="-13.2" font-family="Monospace" font-size="14.00"> </text>
 </g>
 </g>
 </svg>
