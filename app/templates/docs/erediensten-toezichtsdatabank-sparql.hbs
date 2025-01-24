@@ -57,6 +57,12 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
   Met deze downloadlinks kan het bestand gedownload worden door middel van simpele HTTP requests. Houdt rekening dat dezelfde authenticatie moet gebruikt worden als voor de toegang tot deze SPARQL API.
 </p>
 
+<AuHeading @level="4" @skin="4">Bijlage ophalen van inzending</AuHeading>
+<p>
+  De bijlage van een inzending kan eveneens worden opgehaald. Aangezien bijlagen niet via SPARQL worden teruggegeven, is er een extra stap nodig. In het volgende script, na het inloggen, halen we eerst de relevante metadata van de bijlage op. Vervolgens wordt het bestand gedownload met behulp van <CodeInline @code="curl" />. Let op dat -voorlopig- de hyperlink naar het bestand handmatig moet worden samengesteld. In het onderstaande script gebeurt dit via de SPARQL-query, maar andere methoden zijn uiteraard ook mogelijk.
+</p>
+<Snippet @snippetFilename="meldingsplicht-sparql/voorbeeld-melding-download-bijlage.sh" />
+
 <AuHeading @level="3" @skin="3">Details over gelinkte inzendingen - Voorbeelden</AuHeading>
 <p>
   Inzendingen kunnen elkaar refereren, bijvoorbeeld een besluit dat een ander besluit goedkeurt. Dit kan op twee manieren gebeuren. Een gemeente- of provinciebestuur gebruikt een tussenliggende entiteit <CodeInline @code="besluit:Artikel" /> als deel van het <CodeInline @code="ext:SubmissionsDocument" />. Een Centraal Bestuur van de erediensten of ander representatief orgaan gebruikt in plaats daarvan een relatie <CodeInline @code="dct:relation" /> op de <CodeInline @code="am:FormData" /> rechtstreeks naar het gerefereerde <CodeInline @code="ext:SubmissionsDocument" />.
