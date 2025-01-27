@@ -16,8 +16,7 @@ digraph SubmissionData {
           dct:modified : xsd:dateTime <br/>
           pav:createdBy → besluit:Bestuurseenheid <br/>
           pav:providedBy → ext:Vendor <br/>
-          adms:status → skos:Concept <br/>
-          adms:status → ext:SubmissionDocumentStatus <br/>
+          adms:status → skos:Concept / ext:SubmissionDocumentStatus <br/>
           prov:atLocation → IRI
         </td>
       </tr>
@@ -31,7 +30,7 @@ digraph SubmissionData {
       </tr>
       <tr>
         <td>
-          <i>No properties available</i>
+          <i>No extra properties available</i>
         </td>
       </tr>
     </table>
@@ -45,7 +44,7 @@ digraph SubmissionData {
       <tr>
         <td balign="left">
           core:uuid : xsd:string <br/>
-          eli:type_document → IRI
+          eli:type_document → skos:Concept
         </td>
       </tr>
     </table>
@@ -83,8 +82,8 @@ digraph SubmissionData {
           dbpedia:fileExtension : xsd:string <br/>
           dct:format : xsd:string <br/>
           nfo:fileName : xsd:string <br/>
-          adms:status → IRI <br/>
-          prov:hadPrimarySource → IRI <br/>
+          adms:status → xsd:anyURI <br/>
+          prov:hadPrimarySource : xsd:string <br/>
           nie:url : xsd:string
         </td>
       </tr>

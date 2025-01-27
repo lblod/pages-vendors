@@ -56,12 +56,6 @@ De status opvragen van een Submission kan eveneens via de document URI. Deze URI
 </p>
 <Snippet @snippetFilename="meldingsplicht-sparql/voorbeeld-melding-status-document-uri.sparql" />
 
-<AuHeading @level="4" @skin="4">Bijlage ophalen van inzending</AuHeading>
-<p>
-  De bijlage van een inzending kan eveneens worden opgehaald. Aangezien bijlagen niet via SPARQL worden teruggegeven, is er een extra stap nodig. In het volgende script, na het inloggen, halen we eerst de relevante metadata van de bijlage op. Vervolgens wordt het bestand gedownload met behulp van <CodeInline @code="curl" />. Let op dat -voorlopig- de hyperlink naar het bestand handmatig moet worden samengesteld. In het onderstaande script gebeurt dit via de SPARQL-query, maar andere methoden zijn uiteraard ook mogelijk.
-</p>
-<Snippet @snippetFilename="meldingsplicht-sparql/voorbeeld-melding-download-bijlage.sh" />
-
 <AuHeading @level="4" @skin="4">Status via URL van downloadpagina</AuHeading>
 <p>
   Ten slotte is het ook mogelijk om de status van een Submission op te vragen via de URL van de downloadpagina. (Dit is een URL, geen URI.) Deze URL werd eveneens door de vendor meegegeven bij het inzenden van een melding en werd <CodeInline @code="href" /> genoemd.
@@ -70,6 +64,14 @@ De status opvragen van een Submission kan eveneens via de document URI. Deze URI
 <p>
   <strong>Pas op: deze methode van opvragen van informatie over de Submission is niet ideaal!</strong> Het is mogelijk dat er meerdere RDF documenten verwerkt staan in dezelfde HTML pagina. Bijgevolg kunnen er dus meerdere Submissions worden aangemaakt voor dezelfde URL, steeds met een verschillende document URI. In dat geval zal je bij het opvragen van informatie over de Submissions dus een combinatie zien van de gegevens van alle Submissions op die HTML pagina.
 </p>
+
+<AuHeading @level="2" @skin="2">Diagram van beschikbare data</AuHeading>
+<a class="block au-u-text-center" href="assets/diagrams/meldingsplicht-sparql.svg">
+  <figure>
+    <img itemprop="thumbnail" src="assets/diagrams/meldingsplicht-sparql.svg" alt="Diagram van beschikbare gegevens" />
+    <figcaption class="au-u-text-right">Diagram van Linked Data van beschikbare gegevens in het endpoint</figcaption>
+  </figure>
+</a>
 
 <AuHeading @level="2" @skin="2">Model van beschikbare gegevens</AuHeading>
 <p>
@@ -152,7 +154,7 @@ De status opvragen van een Submission kan eveneens via de document URI. Deze URI
 
 <AuHeading @level="3" @skin="3"><CodeInline @code="meb:Submission" /></AuHeading>
 <p>
-  Een Submission is de inzending voor een document; de zogezegde &ldquo;gebeurtenis&rdquo; van het inzenden van dat document. Hier kan bijvoorbeeld de status van het inzendingsproces en het tijdstip van inzending worden teuggevonden.
+  Een Submission is de inzending voor een document; de zogezegde &ldquo;gebeurtenis&rdquo; van het inzenden van dat document. Hier kan bijvoorbeeld de status van het inzendingsproces en het tijdstip van inzending worden teuggevonden. Onderstaande eigenschappen zijn niet de enige die terug te vinden zijn, maar zijn de meest belangrijke. Overige eigenschappen zijn mogelijk niet altijd beschikbaar, gebruik met voorzichtigheid.
 </p>
 <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
 <AuTable>
@@ -198,7 +200,7 @@ De status opvragen van een Submission kan eveneens via de document URI. Deze URI
     <tr>
       <td>Status</td>
       <td><CodeInline @code="adms:status" /></td>
-      <td><CodeInline @code="ext:SubmissionDocumentStatus" /></td>
+      <td><CodeInline @code="ext:SubmissionDocumentStatus" /> en <CodeInline @code="skos:Concept" /></td>
       <td>Status van de inzending. Zie onderaan onder hoofdstuk <ScrollLink @scrollToId="documentstatussen-inzendingen">Documentstatussen inzendingen</ScrollLink>.</td>
     </tr>
     <tr>
@@ -218,12 +220,6 @@ De status opvragen van een Submission kan eveneens via de document URI. Deze URI
       <td><CodeInline @code="prov:atLocation" /></td>
       <td><CodeInline @code="xsd:anyURI" /></td>
       <td>Locatie (URL) van het HTML RDFa document, ingezonden door de vendor, waar het <CodeInline @code="ext:SubmissionDocument" /> kan worden teruggevonden en worden gedownload.</td>
-    </tr>
-    <tr>
-      <td>Heeft als bijlage</td>
-      <td><CodeInline @code="nie:hasPart" /></td>
-      <td><CodeInline @code="nfo:FileDataObject" /></td>
-      <td>Bijlage die bij het <CodeInline @code="ext:SubmissionDocument" /> hoort.</td>
     </tr>
   </:body>
 </AuTable>
@@ -254,12 +250,3 @@ De status opvragen van een Submission kan eveneens via de document URI. Deze URI
     </tr>
     </:body>
 </AuTable>
-
-<AuHeading @level="2" @skin="2">Diagram van beschikbare data</AuHeading>
-
-<a class="block au-u-text-right" href="assets/diagrams/diagram-submission.svg">
-  <figure>
-    <img itemprop="thumbnail" src="assets/diagrams/diagram-submission.svg" alt="Diagram van beschikbare gegevens" />
-    <figcaption>Diagram van Linked Data van beschikbare gegevens in het endpoint</figcaption>
-  </figure>
-</a>

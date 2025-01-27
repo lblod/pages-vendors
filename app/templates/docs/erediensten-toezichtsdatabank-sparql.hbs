@@ -57,6 +57,12 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
   Met deze downloadlinks kan het bestand gedownload worden door middel van simpele HTTP requests. Houdt rekening dat dezelfde authenticatie moet gebruikt worden als voor de toegang tot deze SPARQL API.
 </p>
 
+<AuHeading @level="4" @skin="4">Bijlage ophalen van inzending</AuHeading>
+<p>
+  De bijlage van een inzending kan eveneens worden opgehaald. Aangezien bijlagen niet via SPARQL worden teruggegeven, is er een extra stap nodig. In het volgende script, na het inloggen, halen we eerst de relevante metadata van de bijlage op, inclusief de downloadlink. Vervolgens wordt het bestand gedownload met behulp van <CodeInline @code="curl" />. Dit script geldt als voorbeeld en moet worden aangepast naar individuele noden. Er is bijvoorbeeld nog geen URI van Submission in de query. Dit voorbeeldscript vindt dus het eerste willekeurige downloadbare bestand.
+</p>
+<SnippetToggle @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-melding-download-bijlage.sh" />
+
 <AuHeading @level="3" @skin="3">Details over gelinkte inzendingen - Voorbeelden</AuHeading>
 <p>
   Inzendingen kunnen elkaar refereren, bijvoorbeeld een besluit dat een ander besluit goedkeurt. Dit kan op twee manieren gebeuren. Een gemeente- of provinciebestuur gebruikt een tussenliggende entiteit <CodeInline @code="besluit:Artikel" /> als deel van het <CodeInline @code="ext:SubmissionsDocument" />. Een Centraal Bestuur van de erediensten of ander representatief orgaan gebruikt in plaats daarvan een relatie <CodeInline @code="dct:relation" /> op de <CodeInline @code="am:FormData" /> rechtstreeks naar het gerefereerde <CodeInline @code="ext:SubmissionsDocument" />.
@@ -192,71 +198,65 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
   </:header>
   <:body>
     <tr>
-      <td>uuid</td>
-      <td><CodeInline @code="core:uuid" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
-      <td>UUID van de entitieit</td>
-    </tr>
-    <tr>
-      <td>created</td>
+      <td>Gecre&euml;erd op</td>
       <td><CodeInline @code="dct:created" /></td>
       <td><CodeInline @code="xsd:dateTime" /></td>
-      <td>Creatiedatum van de Submission</td>
+      <td>Tijdstip waarop deze inzending werd gemaakt.</td>
     </tr>
     <tr>
-      <td>sent date</td>
-      <td><CodeInline @code="nmo:sentDate" /></td>
-      <td><CodeInline @code="xsd:dateTime" /></td>
-      <td>Datum van inzending</td>
-    </tr>
-    <tr>
-      <td>modified</td>
+      <td>Bewerkt op</td>
       <td><CodeInline @code="dct:modified" /></td>
       <td><CodeInline @code="xsd:dateTime" /></td>
-      <td>Laatste bewerkingsdatum van de Submission</td>
+      <td>Tijdstip waarop deze inzending laatst werd gewijzigd.</td>
     </tr>
     <tr>
-      <td>created by</td>
+      <td>Gecre&euml;erd door</td>
       <td><CodeInline @code="pav:createdBy" /></td>
       <td><CodeInline @code="besluit:Bestuurseenheid" /></td>
-      <td>Bestuurseenheid voor dewelke deze Submission werd aangemaakt</td>
+      <td>Voor/door welk bestuurseenheid de inzending werd gemaakt. Een derde partij kan een inzending maken via een applicatie voor deze bestuurseenheid.</td>
     </tr>
     <tr>
-      <td>provided by</td>
+      <td>Verzonden op</td>
+      <td><CodeInline @code="nmo:sentDate" /></td>
+      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td>Tijdstip waarop de inzending succesvol werd verzonden naar het Loket.</td>
+    </tr>
+    <tr>
+      <td>Ingezonden door</td>
       <td><CodeInline @code="pav:providedBy" /></td>
       <td><CodeInline @code="ext:Vendor" /></td>
-      <td>Vendor die de Submission heeft ingezonden</td>
+      <td>URI van de vendor applicatie die de inzending maakte. Via de Vendor API mogen geen inzendingen van andere vendors gezien worden.</td>
     </tr>
     <tr>
-      <td>status</td>
+      <td>Status</td>
       <td><CodeInline @code="adms:status" /></td>
-      <td><CodeInline @code="skos:Concept" /> of <CodeInline @code="ext:SubmissionDocumentStatus" /></td>
-      <td>Status van de inzending, zie de Documentstatussen inzendingen onderaan deze pagina</td>
+      <td><CodeInline @code="ext:SubmissionDocumentStatus" /> en <CodeInline @code="skos:Concept" /></td>
+      <td>Status van de inzending. Zie onderaan onder hoofdstuk <LinkTo @route="docs.meldingsplicht-sparql">Documentstatussen inzendingen</LinkTo>.</td>
     </tr>
     <tr>
-      <td>subject</td>
-      <td><CodeInline @code="dct:subject" /></td>
-      <td>IRI</td>
-      <td>URI van de vendor voor de Submission</td>
-    </tr>
-    <tr>
-      <td>at location</td>
-      <td><CodeInline @code="prov:atLocation" /></td>
-      <td>IRI</td>
-      <td>URL op de vendor applicatie van de gedownloade resource</td>
-    </tr>
-    <tr>
-      <td>generated</td>
+      <td>Genereerde dit inzendingsformulier</td>
       <td><CodeInline @code="prov:generated" /></td>
       <td><CodeInline @code="am:FormData" /></td>
-      <td>De formuliergegevens</td>
+      <td>Formuliergegevens die werden gegenereerd op basis van de inzending. Indien volledig wordt dit dossier automatisch verzonden naar het Loket.</td>
+    </tr>
+    <tr>
+      <td>Document ter onderwerp</td>
+      <td><CodeInline @code="dct:subject" /></td>
+      <td><CodeInline @code="ext:SubmissionDocument" /> en <CodeInline @code="foaf:Document" /></td>
+      <td>RDFa document dat werd ingezonden door de vendor. Dit document werd automatisch omgezet tot <CodeInline @code="am:FormData" /> om te versturen.</td>
+    </tr>
+    <tr>
+      <td>Downloadlocatie</td>
+      <td><CodeInline @code="prov:atLocation" /></td>
+      <td><CodeInline @code="xsd:anyURI" /></td>
+      <td>Locatie (URL) van het HTML RDFa document, ingezonden door de vendor, waar het <CodeInline @code="ext:SubmissionDocument" /> kan worden teruggevonden en worden gedownload.</td>
     </tr>
   </:body>
 </AuTable>
 
 <AuHeading @level="3" @skin="3"><CodeInline @code="ext:SubmissionDocument" /></AuHeading>
 <p>
-  Deze entiteit bestaat alleen maar als het document verwijst naar andere documenten en refereert in feite naar het ingezonden document.
+  Deze entiteit bestaat altijd, maar wordt alleen maar in de Vendor API beschikbaar gemaakt als het document verwijst naar andere documenten. Het refereert in feite naar het ingezonden document.
 </p>
 <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
 <AuTable>
@@ -270,7 +270,10 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
   </:header>
   <:body>
     <tr>
-      <td colspan=4>Geen eigenschappen</td>
+      <td>Verwijst naar</td>
+      <td><CodeInline @code="eli:has_part" /></td>
+      <td><CodeInline @code="ext:SubmissionDocument" /></td>
+      <td>Ander document dat werd gerefereerd in dit document</td>
     </tr>
   </:body>
 </AuTable>
@@ -291,16 +294,16 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
   </:header>
   <:body>
     <tr>
-      <td>refers to</td>
+      <td>Refereert naar</td>
       <td><CodeInline @code="eli:refers_to" /></td>
       <td><CodeInline @code="ext:SubmissionDocument" /></td>
       <td>Ander document dat werd gerefereerd in dit document</td>
     </tr>
     <tr>
-      <td>type document</td>
+      <td>Artikel type</td>
       <td><CodeInline @code="eli:type_document" /></td>
-      <td>IRI</td>
-      <td>Type van het document</td>
+      <td><CodeInline @code="skos:Concept" /></td>
+      <td>Type van het document, bijvoorbeeld: Goedkeuring gerefereerde documenten, Aktename gerefereerd documenten, &hellip;</td>
     </tr>
   </:body>
 </AuTable>
@@ -321,49 +324,43 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
   </:header>
   <:body>
     <tr>
-      <td>uuid</td>
-      <td><CodeInline @code="core:uuid" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
-      <td>UUID van de entitieit</td>
-    </tr>
-    <tr>
-      <td>type</td>
+      <td>Type</td>
       <td><CodeInline @code="dct:type" /></td>
       <td><CodeInline @code="skos:Concept" /></td>
       <td>Het soort besluittype van dit document</td>
     </tr>
     <tr>
-      <td>submission type</td>
+      <td>Besluittype</td>
       <td><CodeInline @code="fd:submissionType" /></td>
       <td><CodeInline @code="skos:Concept" /></td>
       <td>Het soort besluittype van dit document</td>
     </tr>
     <tr>
-      <td>session started at</td>
+      <td>Zitting starttijd</td>
       <td><CodeInline @code="fd:sessionStartedAtTime" /></td>
       <td><CodeInline @code="xsd:dateTime" /></td>
       <td>Starttijdstip van de zitting waar het besluit werd genomen (indien van toepassing)</td>
     </tr>
     <tr>
-      <td>financial year</td>
+      <td>Financieel jaar</td>
       <td><CodeInline @code="le:financialYear" /></td>
       <td><CodeInline @code="xsd:string" /></td>
       <td>Financieel jaar (indien van toepassing)</td>
     </tr>
     <tr>
-      <td>passed by</td>
+      <td>Ondertekend door</td>
       <td><CodeInline @code="eli:passed_by" /></td>
       <td><CodeInline @code="besluit:Bestuursorgaan" /></td>
       <td>Bestuursorgaan dat de besluiten heeft ondertekend</td>
     </tr>
     <tr>
-      <td>has part</td>
+      <td>Bijlage</td>
       <td><CodeInline @code="dct:hasPart" /></td>
       <td><CodeInline @code="nfo:FileDataObject" />, <CodeInline @code="nfo:RemoteDataObject" /></td>
       <td>Onderdeel van de formuliergegevens of bijlagen</td>
     </tr>
     <tr>
-      <td>relation</td>
+      <td>Gerefereerd document</td>
       <td><CodeInline @code="dct:relation" /></td>
       <td><CodeInline @code="ext:SubmissionDocument" /></td>
       <td>Een gerefereerd document. Deze relatie bestaat enkel vanuit de FormData van een besluit door een representatief orgaan of Centraal Bestuur dat een besluit van een eredienstbestuur refereert.</td>
@@ -387,57 +384,51 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
   </:header>
   <:body>
     <tr>
-      <td>uuid</td>
-      <td><CodeInline @code="core:uuid" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
-      <td>UUID van de entitieit</td>
-    </tr>
-    <tr>
-      <td>created</td>
+      <td>Creatiedatum</td>
       <td><CodeInline @code="dct:created" /></td>
       <td><CodeInline @code="xsd:dateTime" /></td>
       <td>Creatiedatum van het bestand</td>
     </tr>
     <tr>
-      <td>modified</td>
+      <td>Bewerkt op</td>
       <td><CodeInline @code="dct:modified" /></td>
       <td><CodeInline @code="xsd:dateTime" /></td>
       <td>Laatste bewerkingsdatum van het bestand</td>
     </tr>
     <tr>
-      <td>file size</td>
+      <td>Bestandsgrootte</td>
       <td><CodeInline @code="nfo:fileSize" /></td>
       <td><CodeInline @code="xsd:string" /></td>
       <td>Bestandsgrootte</td>
     </tr>
     <tr>
-      <td>file extension</td>
+      <td>Bestandsextentie</td>
       <td><CodeInline @code="dbpedia:fileExtension" /></td>
       <td><CodeInline @code="xsd:string" /></td>
       <td>Bestandsextentie</td>
     </tr>
     <tr>
-      <td>format</td>
+      <td>Bestandsformaat</td>
       <td><CodeInline @code="dct:format" /></td>
       <td><CodeInline @code="xsd:string" /></td>
       <td>MIME type van de indeling van het bestand</td>
     </tr>
     <tr>
-      <td>file name</td>
+      <td>Bestandsnaam</td>
       <td><CodeInline @code="nfo:fileName" /></td>
       <td><CodeInline @code="xsd:string" /></td>
       <td>Bestandsnaam</td>
     </tr>
     <tr>
-      <td>status</td>
+      <td>Status</td>
       <td><CodeInline @code="adms:status" /></td>
-      <td>IRI</td>
+      <td><CodeInline @code="xsd:anyURI" /></td>
       <td>Downloadstatus</td>
     </tr>
     <tr>
-      <td>had primary source</td>
+      <td>Vorige locatie</td>
       <td><CodeInline @code="prov:hadPrimarySource" /></td>
-      <td>IRI</td>
+      <td><CodeInline @code="xsd:string" /></td>
       <td>URL in de vendor applicatie waar oorspronkelijk het bestand van werd gedownload</td>
     </tr>
     <tr>
