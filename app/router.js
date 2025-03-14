@@ -13,6 +13,7 @@ Router.map(function () {
     this.route('publicatie-annotaties');
     this.route('bijlagen-annotaties');
     this.route('leidinggevenden-annotaties');
+    this.route('publicatie-feed');
     //Insturen
     this.route('meldingsplicht');
     this.route('berichtencentrum');
