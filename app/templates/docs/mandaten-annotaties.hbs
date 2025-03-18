@@ -20,7 +20,19 @@
   prefix wordt gebruikt voor stabielere uitbreidingen die ook hergebruikt kunnen
   worden in het bredere LBLOD eco-systeem.
 </p>
-
+<p>
+  Opgelet! Sommige predicaten volgen de originele versie van het
+  applicatieprofiel. Voorlopig wordt dit zo gehouden omdat de verschillende
+  vendors dit model ook volgen. Bij publicatie wordt beide versies van de uri
+  aangeboden. Dit is het geval voor:
+  <ul>
+    <li>mandaat:isTijdspecialisatieVan: dit is officieel
+      generiek:isTijdspecialisatieVan</li>
+    <li>generiek: deze prefix wordt met http gebruikt in de applicatie, maar in
+      werkelijkheid is het een https prefix</li>
+    <li>besluit:classificatie: dit is officieel org:classification</li>
+  </ul>
+</p>
 <p>
   Het lokaal mandatenbeheer heeft ook een
   <AuLinkExternal
@@ -34,17 +46,22 @@
   <a
     href="https://github.com/lblod/app-lokaal-mandatenbeheer/blob/master/docs/LDES.md"
     target="_blank"
+    rel="noopener noreferrer"
   >de source code documentatie.</a></p>
 
 <AuHeading @level="2" @skin="2">Secure SPARQL endpoint</AuHeading>
 <p>Het lokaal mandatenbeheer biedt een secure sparql endpoint aan op de url
   <a
     href="https://mandatenbeheer.lokaalbestuur.vlaanderen.be/vendor/sparql"
+    rel="noopener noreferrer"
     target="_blank"
   >https://mandatenbeheer.lokaalbestuur.vlaanderen.be/vendor/sparql</a>. Dit
   endpoint is beveiligd via de
-  <a href="https://github.com/lblod/vendor-login-service" target="_blank">vendor
-    login service</a>
+  <a
+    href="https://github.com/lblod/vendor-login-service"
+    target="_blank"
+    rel="noopener noreferrer"
+  >vendor login service</a>
   met dezelfde credentials als de credentials gebruikt in Loket. De procedure om
   deze aan te vragen staat beschreven in de documentatie van Loket.</p>
 
@@ -157,6 +174,7 @@
   Een besluit zoals gedefinieerd in het
   <a
     href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/#Besluit"
+    rel="noopener noreferrer"
     target="_blank"
   >besluit-publicatie.</a>. In de implementatie is dit concept samengevoegd met
   <CodeInline @code="besluit:Rechtsgrond" />. Enkel de eigenschappen die
