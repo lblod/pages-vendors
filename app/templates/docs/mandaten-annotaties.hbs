@@ -5,7 +5,20 @@
   volgt een uitbreiding op het applicatieprofiel
   <AuLinkExternal
     href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/"
-  >mandatendatabank</AuLinkExternal>. Dit document beschrijft deze uitbreiding.
+  >mandatendatabank</AuLinkExternal>.
+</p>
+<p>
+  Dit document beschrijft deze uitbreiding.
+  <AuLinkExternal
+    href="https://drive.google.com/file/d/1fGkae_PGUZVHehHA33ratebByMtEu2W0/view?usp=drive_link"
+  >Een class-diagram</AuLinkExternal>
+  dat deze uitbreiding weergeeft is ook beschikbaar. De stabiliteit van
+  predicaten en types verschilt naar gelang de prefix. De
+  <CodeInline @code="ext" />
+  prefix wordt gebruikt voor interne uitbreidingen en is het minst stabiel. De
+  <CodeInline @code="lmb" />
+  prefix wordt gebruikt voor stabielere uitbreidingen die ook hergebruikt kunnen
+  worden in het bredere LBLOD eco-systeem.
 </p>
 
 <p>
@@ -467,9 +480,9 @@
       <td><CodeInline @code="mandaat:einde" /></td>
       <td><CodeInline @code="xsd:dateTime" /></td>
       <td>Tijdstip vanaf wanneer de mandataris de bestuursfunctie niet langer
-        opneemt. Dit tijdstip wordt gezet op het einde van de dag, er is immers
-        niet voldoende precisie bij het verzamelen/annoteren van de gegevens om
-        tot op het uur/de minuut exact dit tijdstip te bepalen.</td>
+        opneemt. Dit tijdstip wordt gezet op het einde van de dag (23:59:59), er
+        is immers niet voldoende precisie bij het verzamelen/annoteren van de
+        gegevens om tot op het uur/de minuut exact dit tijdstip te bepalen.</td>
     </tr>
     <tr>
       <td>status</td>
