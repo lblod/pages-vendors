@@ -1,0 +1,14 @@
+@prefix org: <http://www.w3.org/ns/org#>
+@prefix regorg: <https://www.w3.org/ns/regorg#>
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/>
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+<http://data.lblod.info/id/fracties/20bb4a2d-dfb7-4655-89a1-9749154cc0cb> a mandaat:Fractie .
+<http://data.lblod.info/id/fracties/20bb4a2d-dfb7-4655-89a1-9749154cc0cb> mu:uuid """20bb4a2d-dfb7-4655-89a1-9749154cc0cb""" .
+<http://data.lblod.info/id/fracties/20bb4a2d-dfb7-4655-89a1-9749154cc0cb> regorg:legalName """Voorbeeld fractie""" .
+<http://data.lblod.info/id/fracties/20bb4a2d-dfb7-4655-89a1-9749154cc0cb> org:memberOf <http://data.lblod.info/id/bestuursorganen/b4bdceed-17ee-403e-9943-b131abebd06c> .
+<http://data.lblod.info/id/fracties/20bb4a2d-dfb7-4655-89a1-9749154cc0cb> ext:isFractietype <http://data.vlaanderen.be/id/concept/Fractietype/Samenwerkingsverband> .
+

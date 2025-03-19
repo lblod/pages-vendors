@@ -1,0 +1,10 @@
+@prefix prov: <http://www.w3.org/ns/prov#>
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+<http://data.lblod.info/id/besluiten/78cf8492-bc57-4ec5-a060-688cfdcfd433> a besluit:Besluit .
+<http://data.lblod.info/id/besluiten/78cf8492-bc57-4ec5-a060-688cfdcfd433> mu:uuid """78cf8492-bc57-4ec5-a060-688cfdcfd433""" .
+<http://data.lblod.info/id/besluiten/78cf8492-bc57-4ec5-a060-688cfdcfd433> mandaat:bekrachtigtAanstellingVan  <http://data.lblod.info/id/mandatarissen/02416d33-b6d4-4e7c-9edb-3a347638b359> .
+<http://data.lblod.info/id/besluiten/78cf8492-bc57-4ec5-a060-688cfdcfd433> mandaat:bekrachtigtOntslagVan  <http://data.lblod.info/id/mandatarissen/3e3da2b1-ce3d-4667-8f79-a03a3c695f98> .
+<http://data.lblod.info/id/besluiten/78cf8492-bc57-4ec5-a060-688cfdcfd433> prov:wasDerivedFrom """https://pittem-echo.cipalschaubroeck.be/id/besluiten/a563148b-2341-4cdf-a6d4-8789a4bf662d""" .

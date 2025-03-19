@@ -1,0 +1,17 @@
+@prefix org: <http://www.w3.org/ns/org#>
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+@prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+<http://data.lblod.info/id/mandatarissen/191d7b74-e2b1-4eaa-80ef-71e6ae1850b1> a mandaat:Mandataris .
+<http://data.lblod.info/id/mandatarissen/191d7b74-e2b1-4eaa-80ef-71e6ae1850b1> mu:uuid """191d7b74-e2b1-4eaa-80ef-71e6ae1850b1""" .
+<http://data.lblod.info/id/mandatarissen/191d7b74-e2b1-4eaa-80ef-71e6ae1850b1> org:holds <http://data.lblod.info/id/mandaten/94f35744-ae50-489d-aca3-9e39966a0f2b> .
+<http://data.lblod.info/id/mandatarissen/191d7b74-e2b1-4eaa-80ef-71e6ae1850b1> mandaat:start """2024-12-04T23:00:00Z"""^^xsd:dateTime .
+<http://data.lblod.info/id/mandatarissen/191d7b74-e2b1-4eaa-80ef-71e6ae1850b1> mandaat:einde """2030-12-31T22:59:59Z"""^^xsd:dateTime .
+<http://data.lblod.info/id/mandatarissen/191d7b74-e2b1-4eaa-80ef-71e6ae1850b1> mandaat:status <http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75> .
+<http://data.lblod.info/id/mandatarissen/191d7b74-e2b1-4eaa-80ef-71e6ae1850b1> mandaat:rangorde """Eerste schepen""" .
+<http://data.lblod.info/id/mandatarissen/191d7b74-e2b1-4eaa-80ef-71e6ae1850b1> mandaat:beleidsdomein <http://data.vlaanderen.be/id/concept/BeleidsdomeinCode/5ab10d3a4c934f28dc000029> .
+<http://data.lblod.info/id/mandatarissen/191d7b74-e2b1-4eaa-80ef-71e6ae1850b1> org:hasMembership <http://data.lblod.info/id/lidmaatschappen/6b010532-c611-4700-9b69-da91fe16e4d2> .
+<http://data.lblod.info/id/mandatarissen/191d7b74-e2b1-4eaa-80ef-71e6ae1850b1> lmb:hasPublicationStatus <http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/9d8fd14d-95d0-4f5e-b3a5-a56a126227b6> .
+<http://data.lblod.info/id/mandatarissen/191d7b74-e2b1-4eaa-80ef-71e6ae1850b1> mandaat:isBestuurlijkeAliasVan <http://data.lblod.info/id/personen/c43a7446-c412-4a11-87ab-7b5835065294> .

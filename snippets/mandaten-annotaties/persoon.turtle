@@ -1,0 +1,10 @@
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>
+@prefix person: <http://www.w3.org/ns/person#>
+@prefix persoon: <http://data.vlaanderen.be/ns/persoon#>
+@prefix foaf: <http://xmlns.com/foaf/0.1/>
+
+<http://data.lblod.info/id/personen/c43a7446-c412-4a11-87ab-7b5835065294> a person:Person .
+<http://data.lblod.info/id/personen/c43a7446-c412-4a11-87ab-7b5835065294> mu:uuid """c43a7446-c412-4a11-87ab-7b5835065294""" .
+<http://data.lblod.info/id/personen/c43a7446-c412-4a11-87ab-7b5835065294> persoon:gebruikteVoornaam """Pascal""" .
+<http://data.lblod.info/id/personen/c43a7446-c412-4a11-87ab-7b5835065294> foaf:familyName """Corneel""" .
+<http://data.lblod.info/id/personen/c43a7446-c412-4a11-87ab-7b5835065294> foaf:name """PC""" .
