@@ -1,0 +1,12 @@
+@prefix org: <http://www.w3.org/ns/org#>
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+<http://data.lblod.info/id/bestuursorganen/b4bdceed-17ee-403e-9943-b131abebd06c> a besluit:Bestuursorgaan .
+<http://data.lblod.info/id/bestuursorganen/b4bdceed-17ee-403e-9943-b131abebd06c> mu:uuid """b4bdceed-17ee-403e-9943-b131abebd06c""" .
+<http://data.lblod.info/id/bestuursorganen/b4bdceed-17ee-403e-9943-b131abebd06c> org:hasPost <http://data.lblod.info/id/mandaten/C8A92958-F458-11EF-BC01-8152F78DE954> .
+<http://data.lblod.info/id/bestuursorganen/b4bdceed-17ee-403e-9943-b131abebd06c> mandaat:bindingStart """2019-01-01T00:00:00Z"""^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/b4bdceed-17ee-403e-9943-b131abebd06c> mandaat:bindingEinde """2019-01-01T00:00:00Z"""^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/b4bdceed-17ee-403e-9943-b131abebd06c> mandaat:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/b4bdceed-17ee-403e-9943-b131abebd06b> .
