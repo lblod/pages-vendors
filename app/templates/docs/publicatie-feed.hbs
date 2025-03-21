@@ -1,7 +1,7 @@
 <AuHeading @level="1" @skin="1">Publicaties ontsluiten via LDES</AuHeading>
 <p>Een Linked Data Event Stream (LDES) is een standaardformaat om entiteiten en wijzigingen in tijdreeksen te publiceren als een gestructureerde datastroom. In het kader van een publicatieplatform kan een LDES-feed gebruikt worden om publicaties, inclusief hun locatie, type en publicatiedatum, op een efficiënte en schaalbare manier beschikbaar te maken. Zo kunnen systemen die Linked Data verzamelen (harvesters) eenvoudig de gepubliceerde documenten vinden op het publicatieplatform. Dit document biedt een technische introductie voor ontwikkelaars die een LDES-feed willen toevoegen aan een publicatieplatform.</p>
 
-<AuHeading @level="2" @skin="2" id="annotatie-publicaties">Inhoud van de feed</AuHeading>
+<AuHeading @level="2" @skin="2" id="inhoud-van-de-feed">Inhoud van de feed</AuHeading>
 <p>Een LDES-feed is gebaseerd op de RDF-datastructuur en wordt meestal aangeboden via een JSON-LD of Turtle representatie. De basiscomponenten van een LDES-feed zijn:</p>
 <ul>
   <li><CodeInline @code="Tree:Node" />: Een subverzameling van de stream (paginering).</li>
@@ -13,13 +13,13 @@
 <ul>
   <li><CodeInline @code="dct:isVersionOf"/>: Unieke identificatie van de publicatie.</li>
   <li><CodeInline @code="prov:atLocation" />: Locatie (URL) van de publicatie.</li>
-  <li><CodeInline @code="dct:type" />: Type van de publicatie.</li>
-  <li><CodeInline @code="prov:generatedAtTime" />: Publicatiedatum van het document</li>
+  <li><CodeInline @code="dct:type" />: Type van de publicatie, uit de <AuLinkExternal href="https://data.vlaanderen.be/doc/concept/BesluitDocumentType/">BesluitDocumentType codelijst</AuLinkExternal>. </li>
+  <li><CodeInline @code="prov:generatedAtTime" />: Publicatiedatum van het document.</li>
 </ul>
 
 <p>LDES kan aangeboden worden in meerdere serializaties, in dit document gaan we uit van text/turtle serializatie, maar ook JSON-LD is mogelijk. Op het einde van het document worden er voorbeelden voorzien in beide formaten.</p>
 
-<AuHeading @level="3" @skin="3" id="annotatie-publicaties-document-types">Algemene structuur</AuHeading>
+<AuHeading @level="3" @skin="3" id="algemene-structuur">Algemene structuur</AuHeading>
 <p>Een Linked Data Event Stream (LDES) (ldes:EventStream) is een verzameling (rdfs:subClassOf tree:Collection) van onveranderlijke objecten, waarbij elk object wordt beschreven met behulp van een set RDF-triples.</p>
 <Snippet @snippetFilename="publicatie-ldes/metadata-structure.turtle" />
 <ul>
@@ -30,20 +30,19 @@
   <li><CodeInline @code="tree:view" /> Linkt naar de huidige node (pagina) in de collectie (zie fragmentering en paginering).</li>
 </ul>
 
-<AuHeading @level="3" @skin="3" id="annotatie-publicaties-document-types">Fragmentering en paginering</AuHeading>
+<AuHeading @level="3" @skin="3" id="fragmentering-en-paginering">Fragmentering en paginering</AuHeading>
 <p>Als een feed te groot wordt om in één keer op te halen, kan deze worden opgedeeld in kleinere stukken (fragmenten). Dit gebeurt volgens de <AuLinkExternal href="https://treecg.github.io/specification/">TREE-specificatie</AuLinkExternal>, die verschillende manieren biedt om data op te splitsen en te doorzoeken. Zo kan de implementator kiezen om bijvoorbeeld publicaties in stijgende of dalende volgorde van publicatie te publiceren.</p>
 
-<p>Voorbeeld in dalende volgorde (nieuwste eerst): pagina 1 linkt naar pagina 2</p>
+<AuHeading @level="4" @skin="4">Voorbeeld in dalende volgorde (nieuwste eerst): pagina 1</AuHeading>
 <SnippetToggle @snippetFilename="publicatie-ldes/fragment.turtle" />
 <p>Elke pagina (<CodeInline @code="tree:Node" />) gebruikt TREE-relaties om te navigeren door de publicaties op basis van hun tijdstempel. De <CodeInline @code="tree:LessThanRelation" /> verwijst naar de volgende pagina (page=2), die events bevat met een prov:generatedAtTime kleiner dan "2025-03-22T00:00:00Z".</p>
 
-<p>Voorbeeld in dalende volgorde (nieuwste eerst): pagina 2 linkt naar pagina 1 & 3</p>
+<AuHeading @level="4" @skin="4">Voorbeeld in dalende volgorde (nieuwste eerst): pagina 2</AuHeading>
 <SnippetToggle @snippetFilename="publicatie-ldes/fragment-2.turtle" />
 <p>De relaties <CodeInline @code="tree:GreaterThanOrEqualToRelation" /> en <CodeInline @code="tree:LessThanRelation" /> definiëren een bereik voor page=2. In dit geval kunnen we dus publicaties met een timestamp tussen 2025-03-22T00:00:00Z en 2025-03-11T12:00:00Z verwachten op pagina 2. Voor oudere publicaties wordt verwezen naar pagina 3, voor nieuwere naar pagina 1.</p>
   <AuHeading @level="3" @skin="3" id="annotatie-publicaties-document-types">Versionering</AuHeading>
-<p>Als een publicatie wordt geupdate, dan
-</p>
-Dit stelt LDES-afnemers in staat om de geschiedenis van een object te reconstrueren en de meest recente versie te behouden, zonder telkens de volledige LDES-feed opnieuw te moeten verwerken.
-<AuHeading @level="2" @skin="2" id="annotatie-publicaties">Ontdekbaarheid van de feed</AuHeading>
+  <p>Als een publicatie wordt geupdate, dan wordt de publicatie nogmaals op de feed gezet. Dit is een nieuwe member met eigen identifier, die naar de "echte" identifier linkt via de <CodeInline @code="dct:isVersionOf" /> relatie. De member krijgt dan een nieuwe <CodeInline @code="prov:generatedAtTime" />.</p>
+  <SnippetToggle @snippetFilename="publicatie-ldes/version-of.turtle" />
+  <p>In bovenstaande voorbeeld werd de besluitenlijst op https://vlavirgem.be/web/BesluitenLijst_Vast%20bureau_13-03-2025.html geupdate met een nieuwe versie vanwege een typfout. De publicatie staat nu 2 keer op de feed: eenmaal op de originele publicatiedatum, en eenmaal met de laatste publicatiedatum op 28 Maart 2025.</p>
 <p>
 </p>

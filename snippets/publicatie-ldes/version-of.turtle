@@ -6,11 +6,14 @@
 @prefix members: <http://data.vlavirgem.be/members/>
 
 <http://data.vlavirgem.be/feeds/publicaties> a ldes:EventStream ;
-  ldes:timestampPath prov:generatedAtTime ;
-  ldes:versionOfPath dc:isVersionOf ;
-  tree:shape ex:shape1.shacl ;
-  tree:view <https://data.vlavirgem.be/feeds/publicaties.ttl??page=1>;
-  tree:member members:da866e3f-ee87-40e1-b923-f94865f76f40.
+  # Andere attributen weg gelaten voor duidelijkheid
+  tree:member members:da866e3f-ee87-40e1-b923-f94865f76f40, members:da866e3f-ee87-40e1-b923-f94865f76f42.
+
+members:da866e3f-ee87-40e1-b923-f94865f76f42 a foaf:document ;
+  prov:generatedAtTime "2025-03-28T00:00:00Z"^^xsd:dateTime ;
+  prov:atLocation <https://vlavirgem.be/web/BesluitenLijst_Vast%20bureau_13-03-2025.html>;
+  dct:type <https://data.vlaanderen.be/id/concept/BesluitDocumentType/3fa67785-ffdc-4b30-8880-2b99d97b4dee>;
+  dct:isVersionOf <http://data.vlavirgem.be/publications/94c9e9b7-5b45-4482-b4b1-26688ee9e693>.
 
 members:da866e3f-ee87-40e1-b923-f94865f76f40 a foaf:document ;
   prov:generatedAtTime "2025-03-22T00:00:00Z"^^xsd:dateTime ;
