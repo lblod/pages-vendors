@@ -23,7 +23,7 @@
 <p>Een Linked Data Event Stream (LDES) (ldes:EventStream) is een verzameling (rdfs:subClassOf tree:Collection) van onveranderlijke objecten, waarbij elk object wordt beschreven met behulp van een set RDF-triples.</p>
 <Snippet @snippetFilename="publicatie-ldes/metadata-structure.turtle" />
 <ul>
-  <li><CodeInline @code="ldes:timestamPath" /> verwijst naar het predicate dat gebruikt wordt in de member om de timestamp van de data te vinden. In dit geval de publicatiedatum van het document</li>
+  <li><CodeInline @code="ldes:timestampPath" /> verwijst naar het predicate dat gebruikt wordt in de member om de timestamp van de data te vinden. In dit geval de publicatiedatum van het document</li>
   <li><CodeInline @code="ldes:versionOfPath" /> verwijst naar het predicate dat wordt gebruikt om te definiëren dat een tree:member van een ldes:EventStream een versie is van een rdf-document. (zie "Versionering")</li>
   <li><CodeInline @code="tree:shape" /> linkt naar de verwachte vorm van de members en wordt gebruikt voor validatie. Deze mag linken naar de shape gepubliceerd op TODO. Indien de feed meer data bevat dan de minimale set hier beschreven, kan ook een eigen shape gespecifieerd worden.</li>
   <li><CodeInline @code="tree:member" /> duidt op een member in de verzameling, in dit geval een gepubliceerd document.</li>
