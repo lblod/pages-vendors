@@ -1,5 +1,6 @@
-<AuHeading @level="1" @skin="1">Publicaties ontsluiten via LDES</AuHeading>
-<p>Een Linked Data Event Stream (LDES) is een standaardformaat om entiteiten en wijzigingen in tijdreeksen te publiceren als een gestructureerde datastroom. In het kader van een publicatieplatform kan een LDES-feed gebruikt worden om publicaties, inclusief hun locatie, type en publicatiedatum, op een efficiënte en schaalbare manier beschikbaar te maken. Zo kunnen systemen die Linked Data verzamelen (harvesters) eenvoudig de gepubliceerde documenten vinden op het publicatieplatform. Dit document biedt een technische introductie voor ontwikkelaars die een LDES-feed willen toevoegen aan een publicatieplatform.</p>
+<AuHeading @level="1" @skin="1">Publicatie Events ontsluiten via LDES</AuHeading>
+<p>Gepubliceerde documenten kunnen meermaals geupdated worden. Door externe systemen gerichter te laten opvragen wordt de load op de publicatieomgeving en bij de consumenten beperkt. Een Linked Data Event Stream (LDES) laat je toe om te publiceren welke URLs geupdated zijn zodat consumenten gericht komen opvragen.</p>
+<p>LDES is een standaardformaat wat toe laat entiteiten en wijzigingen in tijdreeksen te publiceren als een gestructureerde datastroom. In het kader van een publicatieplatform kan een LDES-feed gebruikt worden om publicaties, inclusief hun locatie, type en publicatiedatum, op een efficiënte en schaalbare manier beschikbaar te stellen. Zo kunnen systemen die Linked Data verzamelen (harvesters) eenvoudig de gepubliceerde documenten vinden op het publicatieplatform. Dit document biedt een technische introductie voor ontwikkelaars die een LDES-feed willen toevoegen aan een publicatieplatform.</p>
 
 <AuHeading @level="2" @skin="2" id="inhoud-van-de-feed">Inhoud van de feed</AuHeading>
 <p>Een LDES-feed is gebaseerd op de RDF-datastructuur en wordt meestal aangeboden via een JSON-LD of Turtle representatie. De basiscomponenten van een LDES-feed zijn:</p>
@@ -32,6 +33,8 @@
 
 <AuHeading @level="3" @skin="3" id="fragmentering-en-paginering">Fragmentering en paginering</AuHeading>
 <p>Als een feed te groot wordt om in één keer op te halen, kan deze worden opgedeeld in kleinere stukken (fragmenten). Dit gebeurt volgens de <AuLinkExternal href="https://treecg.github.io/specification/">TREE-specificatie</AuLinkExternal>, die verschillende manieren biedt om data op te splitsen en te doorzoeken. Zo kan de implementator kiezen om bijvoorbeeld publicaties in stijgende of dalende volgorde van publicatie te publiceren.</p>
+
+<p>Elk individueel fragment is wederom gepubliceerd op een URL. LDES clients behandelen deze individuele documenten.  Om te weten of een pagina gewijzigd is worden de HTTP cache headers gebruikt.  Het is sterk aangewezen op een fragment wat niet meer kan wijzigen op een vaste URL te plaatsen en via HTTP Cache headers aan te geven dat het document niet meer kan wijzigen.</p>
 
 <AuHeading @level="4" @skin="4">Voorbeeld in dalende volgorde (nieuwste eerst): pagina 1</AuHeading>
 <SnippetToggle @snippetFilename="publicatie-ldes/fragment.turtle" />
