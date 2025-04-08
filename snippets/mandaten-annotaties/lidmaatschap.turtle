@@ -1,0 +1,7 @@
+@prefix org: <http://www.w3.org/ns/org#>
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>
+
+<http://data.lblod.info/id/lidmaatschappen/6b010532-c611-4700-9b69-da91fe16e4d2> a org:Membership .
+<http://data.lblod.info/id/lidmaatschappen/6b010532-c611-4700-9b69-da91fe16e4d2> mu:uuid """6b010532-c611-4700-9b69-da91fe16e4d2""" .
+<http://data.lblod.info/id/lidmaatschappen/6b010532-c611-4700-9b69-da91fe16e4d2> org:organisation <http://data.lblod.info/id/fracties/672349D9AE5F6D098DC007F4> .
+<http://data.lblod.info/id/lidmaatschappen/6b010532-c611-4700-9b69-da91fe16e4d2> org:memberDuring <http://data.lblod.info/id/tijdsintervallen/6684F966C77ACE4182718B0C> . # Berekend bij publicatie
