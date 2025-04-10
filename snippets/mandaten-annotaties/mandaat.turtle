@@ -1,0 +1,9 @@
+@prefix org: <http://www.w3.org/ns/org#>
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+
+<http://data.lblod.info/id/mandaten/94f35744-ae50-489d-aca3-9e39966a0f2b> a mandaat:Mandaat .
+<http://data.lblod.info/id/mandaten/94f35744-ae50-489d-aca3-9e39966a0f2b> mu:uuid """94f35744-ae50-489d-aca3-9e39966a0f2b""" .
+<http://data.lblod.info/id/mandaten/94f35744-ae50-489d-aca3-9e39966a0f2b> org:role <http://data.lblod.info/id/lb-mandaat-classificatiecode/22da4572-4818-454b-bbd4-28a9ea97856c> .
+<http://data.lblod.info/id/mandaten/94f35744-ae50-489d-aca3-9e39966a0f2b> mandaat:aantalHouders """1"""^^xsd:Integer .

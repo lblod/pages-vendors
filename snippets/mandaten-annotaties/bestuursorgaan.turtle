@@ -1,0 +1,21 @@
+@prefix org: <http://www.w3.org/ns/org#>
+@prefix mu: <http://mu.semte.ch/vocabularies/core/>
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#>
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>
+@prefix lmb: <http://lblod.data.gift/vocabularies/lmb/>
+
+<http://data.lblod.info/id/bestuursorganen/b4bdceed-17ee-403e-9943-b131abebd06c> a besluit:Bestuursorgaan .
+<http://data.lblod.info/id/bestuursorganen/b4bdceed-17ee-403e-9943-b131abebd06c> mu:uuid """b4bdceed-17ee-403e-9943-b131abebd06c""" .
+<http://data.lblod.info/id/bestuursorganen/b4bdceed-17ee-403e-9943-b131abebd06c> org:hasPost <http://data.lblod.info/id/mandaten/C8A92958-F458-11EF-BC01-8152F78DE954> .
+<http://data.lblod.info/id/bestuursorganen/b4bdceed-17ee-403e-9943-b131abebd06c> mandaat:bindingStart """2019-01-01T00:00:00Z"""^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/b4bdceed-17ee-403e-9943-b131abebd06c> mandaat:bindingEinde """2019-01-01T00:00:00Z"""^^xsd:dateTime .
+<http://data.lblod.info/id/bestuursorganen/b4bdceed-17ee-403e-9943-b131abebd06c> lmb:heeftBestuursperiode <http://data.lblod.info/id/concept/Bestuursperiode/9486222f-2696-4811-bde1-fef9dc4b5f68> .
+<http://data.lblod.info/id/bestuursorganen/b4bdceed-17ee-403e-9943-b131abebd06c> mandaat:isTijdspecialisatieVan <http://data.lblod.info/id/bestuursorganen/87a30ee7-07d6-455a-9000-de0bfcfb2734> .
+
+<http://data.lblod.info/id/bestuursorganen/87a30ee7-07d6-455a-9000-de0bfcfb2734> a besluit:Bestuursorgaan .
+<http://data.lblod.info/id/bestuursorganen/87a30ee7-07d6-455a-9000-de0bfcfb2734> mu:uuid """87a30ee7-07d6-455a-9000-de0bfcfb2734""" .
+<http://data.lblod.info/id/bestuursorganen/87a30ee7-07d6-455a-9000-de0bfcfb2734> skos:prefLabel """Gemeenteraad""" .
+<http://data.lblod.info/id/bestuursorganen/87a30ee7-07d6-455a-9000-de0bfcfb2734> besluit:bestuurt <http://data.lblod.info/id/bestuurseenheden/ae1fba0f-21bd-45e8-8271-567bbe9d3f95> .
+<http://data.lblod.info/id/bestuursorganen/87a30ee7-07d6-455a-9000-de0bfcfb2734> besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005> .
