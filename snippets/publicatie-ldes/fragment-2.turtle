@@ -1,0 +1,28 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix prov: <http://www.w3.org/ns/prov#>.
+@prefix dct:  <http://purl.org/dc/terms/>.
+@prefix ldes: <https://w3id.org/ldes#>.
+@prefix tree: <https://w3id.org/tree#>.
+@prefix members: <http://data.vlavirgem.be/members/>
+
+<https://data.vlavirgem.be/feeds/publicaties> a ldes:EventStream ;
+  # andere attributen weg gelaten voor
+  tree:view  <https://data.vlavirgem.be/feeds/publicaties.ttl?page=1>;
+  tree:member members:da866e3f-ee87-40e1-b923-f94865f76f42.
+
+members:da866e3f-ee87-40e1-b923-f94865f76f42 a foaf:document ;
+  # andere attributen weg gelaten voor duidelijkheid
+   prov:generatedAtTime "2025-03-11T12:00:00Z"^^xsd:dateTime .
+
+<https://data.vlavirgem.be/feeds/publicaties.ttl?page=2> a tree:Node ;
+  tree:relation [
+    a tree:GreaterThanOrEqualToRelation ;
+    tree:node <https://data.vlavirgem.be/feeds/publicaties.ttl?page=1> ;
+    tree:path prov:generatedAtTime ;
+    tree:value "2025-03-22T00:00:00Z"^^xsd:dateTime
+  ], [
+    a tree:LessThanRelation ;
+    tree:node <https://data.vlavirgem.be/feeds/publicaties.ttl?page=3> ;
+    tree:path prov:generatedAtTime ;
+    tree:value "2025-03-11T12:00:00Z"^^xsd:dateTime
+  ] .
