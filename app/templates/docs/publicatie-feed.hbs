@@ -43,9 +43,11 @@
 <AuHeading @level="4" @skin="4">Voorbeeld in dalende volgorde (nieuwste eerst): pagina 2</AuHeading>
 <SnippetToggle @snippetFilename="publicatie-ldes/fragment-2.turtle" />
 <p>De relaties <CodeInline @code="tree:GreaterThanOrEqualToRelation" /> en <CodeInline @code="tree:LessThanRelation" /> definiëren een bereik voor page=2. In dit geval kunnen we dus publicaties met een timestamp tussen 2025-03-22T00:00:00Z en 2025-03-11T12:00:00Z verwachten op pagina 2. Voor oudere publicaties wordt verwezen naar pagina 3, voor nieuwere naar pagina 1.</p>
-  <AuHeading @level="3" @skin="3" id="annotatie-publicaties-document-types">Versionering</AuHeading>
-  <p>Als een publicatie wordt geupdate, dan wordt de publicatie nogmaals op de feed gezet. Dit is een nieuwe member met eigen identifier, die naar de "echte" identifier linkt via de <CodeInline @code="dct:isVersionOf" /> relatie. De member krijgt dan een nieuwe <CodeInline @code="prov:generatedAtTime" />.</p>
-  <SnippetToggle @snippetFilename="publicatie-ldes/version-of.turtle" />
-  <p>In bovenstaande voorbeeld werd de besluitenlijst op https://vlavirgem.be/web/BesluitenLijst_Vast%20bureau_13-03-2025.html geupdate met een nieuwe versie vanwege een typfout. De publicatie staat nu 2 keer op de feed: eenmaal op de originele publicatiedatum, en eenmaal met de laatste publicatiedatum op 28 Maart 2025.</p>
-<p>
-</p>
+
+<AuHeading @level="3" @skin="3" id="annotatie-publicaties-document-types">Versionering</AuHeading>
+<p>Als een publicatie wordt geupdate, dan wordt de publicatie nogmaals op de feed gezet. Dit is een nieuwe member met eigen identifier, die naar de "echte" identifier linkt via de <CodeInline @code="dct:isVersionOf" /> relatie. De member krijgt dan een nieuwe <CodeInline @code="prov:generatedAtTime" />.</p>
+<SnippetToggle @snippetFilename="publicatie-ldes/version-of.turtle" />
+<p>In bovenstaande voorbeeld werd de besluitenlijst op https://vlavirgem.be/web/BesluitenLijst_Vast%20bureau_13-03-2025.html geupdate met een nieuwe versie vanwege een typfout. De publicatie staat nu 2 keer op de feed: eenmaal op de originele publicatiedatum, en eenmaal met de laatste publicatiedatum op 28 Maart 2025.</p>
+<AuHeading @level="4"@skin="4" id="annotatie-publicaties-document-types">Verwijderingen</AuHeading>
+<p>In bepaalde situaties, zoals het ongedaan maken van een per ongeluk gepubliceerde gegevens of het per ongeluk publiceren van gevoelige informatie, kan het nodig zijn om verwijderingen te registreren. Deze verwijderingen kunnen worden vastgelegd met een <CodeInline @code="as:Tombstone" />. De LBLOD Harvester zal tijdens het verwerken van de Tombstone de bijbehorende triples die aan de pagina gekoppeld zijn, verwijderen.</p>
+<SnippetToggle @snippetFilename="publicatie-ldes/tombstone.turtle" />
