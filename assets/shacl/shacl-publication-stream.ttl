@@ -1,0 +1,41 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix ex: <https://lblod.github.io/pages-vendors/assets/shacl/shacl-submission.ttl#> .
+
+ex:DocumentShape a sh:NodeShape ;
+  sh:targetClass foaf:Document ;
+
+  # prov:generatedAtTime is required and must be a xsd:dateTime
+  sh:property [
+    sh:path prov:generatedAtTime ;
+    sh:datatype xsd:dateTime ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+
+  # prov:atLocation is required and must be an IRI
+  sh:property [
+    sh:path prov:atLocation ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+
+  # dct:type is required and must be an IRI
+  sh:property [
+    sh:path dct:type ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] ;
+
+  # dct:isVersionOf is required and must be an IRI
+  sh:property [
+    sh:path dct:isVersionOf ;
+    sh:nodeKind sh:IRI ;
+    sh:minCount 1 ;
+    sh:maxCount 1 ;
+  ] .
