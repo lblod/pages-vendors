@@ -26,7 +26,7 @@
 <ul>
   <li><CodeInline @code="ldes:timestampPath" /> verwijst naar het predicate dat gebruikt wordt in de member om de timestamp van de data te vinden. In dit geval de publicatiedatum van het document</li>
   <li><CodeInline @code="ldes:versionOfPath" /> verwijst naar het predicate dat wordt gebruikt om te definiëren dat een tree:member van een ldes:EventStream een versie is van een rdf-document. (zie "Versionering")</li>
-  <li><CodeInline @code="tree:shape" /> linkt naar de verwachte vorm van de members en wordt gebruikt voor validatie. Deze mag linken naar de shape gepubliceerd op TODO. Indien de feed meer data bevat dan de minimale set hier beschreven, kan ook een eigen shape gespecifieerd worden.</li>
+  <li><CodeInline @code="tree:shape" /> linkt naar de verwachte vorm van de members en wordt gebruikt voor validatie. Deze mag linken naar de shape gepubliceerd op <AuLinkExternal href="https://lblod.github.io/pages-vendors/assets/shacl/shacl-submission.ttl#DocumentShape">deze pagina</AuLinkExternal>. Indien de feed meer data bevat dan de minimale set hier beschreven, kan ook een eigen shape gespecifieerd worden.</li>
   <li><CodeInline @code="tree:member" /> duidt op een member in de verzameling, in dit geval een gepubliceerd document.</li>
   <li><CodeInline @code="tree:view" /> Linkt naar de huidige node (pagina) in de collectie (zie fragmentering en paginering).</li>
 </ul>
@@ -47,5 +47,8 @@
   <p>Als een publicatie wordt geupdate, dan wordt de publicatie nogmaals op de feed gezet. Dit is een nieuwe member met eigen identifier, die naar de "echte" identifier linkt via de <CodeInline @code="dct:isVersionOf" /> relatie. De member krijgt dan een nieuwe <CodeInline @code="prov:generatedAtTime" />.</p>
   <SnippetToggle @snippetFilename="publicatie-ldes/version-of.turtle" />
   <p>In bovenstaande voorbeeld werd de besluitenlijst op https://vlavirgem.be/web/BesluitenLijst_Vast%20bureau_13-03-2025.html geupdate met een nieuwe versie vanwege een typfout. De publicatie staat nu 2 keer op de feed: eenmaal op de originele publicatiedatum, en eenmaal met de laatste publicatiedatum op 28 Maart 2025.</p>
-<p>
-</p>
+
+<AuHeading @level="4" @skin="4">Volledig voorbeeld (turtle)</AuHeading>
+<SnippetToggle @snippetFilename="publicatie-ldes/full-example.turtle" />
+<AuHeading @level="4" @skin="4">Volledig voorbeeld (JSON-LD)</AuHeading>
+<SnippetToggle @snippetFilename="publicatie-ldes/full-example.json" />

@@ -1,0 +1,39 @@
+{
+  "@context": [
+    "https://lblod.github.io/pages-vendors/assets/json-ld/publicatie-feed-context.json",
+    { "members": "http://data.vlavirgem.be/members/" }
+  ],
+  "id": "http://data.vlavirgem.be/feeds/publicaties",
+  "type": "ldes:EventStream",
+  "timestampPath": "prov:generatedAtTime",
+  "versionOfPath": "dct:isVersionOf",
+  "shape": "https://lblod.github.io/pages-vendors/assets/shacl/shacl-submission.ttl#DocumentShape",
+  "view": {
+    "id": "https://data.vlavirgem.be/feeds/publicaties.ttl?page=1",
+    "type": "Node",
+    "relation": {
+      "type": "LessThanRelation",
+      "node": "https://data.vlavirgem.be/feeds/publicaties.ttl?page=2",
+      "path": "prov:generatedAtTime",
+      "value": "2025-03-22T00:00:00Z"
+    }
+  },
+  "member": [
+    {
+      "id": "members:da866e3f-ee87-40e1-b923-f94865f76f40",
+      "type": "foaf:Document",
+      "isVersionOf": "http://data.vlavirgem.be/publications/94c9e9b7-5b45-4482-b4b1-26688ee9e693",
+      "dctType": "https://data.vlaanderen.be/id/concept/BesluitDocumentType/3fa67785-ffdc-4b30-8880-2b99d97b4dee",
+      "atLocation": "https://vlavirgem.be/web/BesluitenLijst_Vast%20bureau_13-03-2025.html",
+      "generatedAtTime": "2025-03-22T00:00:00Z"
+    },
+    {
+      "id": "members:da866e3f-ee87-40e1-b923-f94865f76f42",
+      "type": "foaf:Document",
+      "isVersionOf": "http://data.vlavirgem.be/publications/94c9e9b7-5b45-4482-b4b1-26688ee9e693",
+      "dctType": "https://data.vlaanderen.be/id/concept/BesluitDocumentType/3fa67785-ffdc-4b30-8880-2b99d97b4dee",
+      "atLocation": "https://vlavirgem.be/web/BesluitenLijst_Vast%20bureau_13-03-2025.html",
+      "generatedAtTime": "2025-03-28T00:00:00Z"
+    }
+  ]
+}
