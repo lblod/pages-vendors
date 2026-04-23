@@ -14,7 +14,7 @@ module.exports = function (environment) {
       EXTEND_PROTOTYPES: false,
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
-        // e.g. EMBER_MODULE_UNIFICATION: true
+        // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
       },
     },
 
@@ -44,7 +44,9 @@ module.exports = function (environment) {
     ENV.APP.autoboot = false;
   }
 
-  //if (environment === 'production') {}
+  if (environment === 'production') {
+    // here you can enable a production-specific feature
+  }
 
   return ENV;
 };

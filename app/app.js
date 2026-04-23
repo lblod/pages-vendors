@@ -3,7 +3,7 @@ import Application from '@ember/application';
 import compatModules from '@embroider/virtual/compat-modules';
 import Resolver from 'ember-resolver';
 import loadInitializers from 'ember-load-initializers';
-import config from 'pages-vendors/config/environment';
+import config from './config/environment';
 import { importSync, isDevelopingApp, macroCondition } from '@embroider/macros';
 import setupInspector from '@embroider/legacy-inspector-support/ember-source-4.12';
 
@@ -11,7 +11,7 @@ if (macroCondition(isDevelopingApp())) {
   importSync('./deprecation-workflow');
 }
 
-class App extends Application {
+export default class App extends Application {
   modulePrefix = config.modulePrefix;
   podModulePrefix = config.podModulePrefix;
   Resolver = Resolver.withModules(compatModules);
@@ -19,4 +19,3 @@ class App extends Application {
 }
 
 loadInitializers(App, config.modulePrefix, compatModules);
-export default App;

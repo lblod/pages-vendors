@@ -1,22 +1,13 @@
 # unconventional js
 /blueprints/*/files/
-/vendor/
 
 # compiled output
 /dist/
-/tmp/
-
-# dependencies
-/node_modules/
 
 # misc
 /coverage/
 !.*
-.eslintcache
 .*/
 /pnpm-lock.yaml
 ember-cli-update.json
 *.html
-
-# ember-try
-/.node_modules.ember-try/
