@@ -9,6 +9,7 @@
 # misc
 /.sass-cache
 /.env*
+*.local
 /.pnp*
 /.eslintcache
 /coverage/

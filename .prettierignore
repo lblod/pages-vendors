@@ -13,6 +13,10 @@
 /coverage/
 !.*
 .eslintcache
+.*/
+/pnpm-lock.yaml
+ember-cli-update.json
+*.html
 
 # ember-try
 /.node_modules.ember-try/
