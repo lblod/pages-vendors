@@ -20,43 +20,43 @@
   </:header>
   <:body>
     <tr>
-      <td><CodeInline @code="adres" /></td>
+      <td><MyCodeInline>adres</MyCodeInline></td>
       <td><AuLinkExternal href="https://data.vlaanderen.be/ns/adres#">https://data.vlaanderen.be/ns/adres#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="foaf" /></td>
+      <td><MyCodeInline>foaf</MyCodeInline></td>
       <td><AuLinkExternal href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="lblodlg" /></td>
+      <td><MyCodeInline>lblodlg</MyCodeInline></td>
       <td><AuLinkExternal href="http://data.lblod.info/vocabularies/leidinggevenden/">http://data.lblod.info/vocabularies/leidinggevenden/</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="locn" /></td>
+      <td><MyCodeInline>locn</MyCodeInline></td>
       <td><AuLinkExternal href="http://www.w3.org/ns/locn#">http://www.w3.org/ns/locn#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="mandaat" /></td>
+      <td><MyCodeInline>mandaat</MyCodeInline></td>
       <td><AuLinkExternal href="http://data.vlaanderen.be/ns/mandaat#">http://data.vlaanderen.be/ns/mandaat#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="person" /></td>
+      <td><MyCodeInline>person</MyCodeInline></td>
       <td><AuLinkExternal href="https://data.vlaanderen.be/ns/persoon#">https://data.vlaanderen.be/ns/persoon#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="persoon" /></td>
+      <td><MyCodeInline>persoon</MyCodeInline></td>
       <td><AuLinkExternal href="http://www.w3.org/ns/person#">http://www.w3.org/ns/person#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="org" /></td>
+      <td><MyCodeInline>org</MyCodeInline></td>
       <td><AuLinkExternal href="http://www.w3.org/ns/org#">http://www.w3.org/ns/org#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="schema" /></td>
+      <td><MyCodeInline>schema</MyCodeInline></td>
       <td><AuLinkExternal href="http://schema.org/">http://schema.org/</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="xsd" /></td>
+      <td><MyCodeInline>xsd</MyCodeInline></td>
       <td><AuLinkExternal href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
     </tr>
   </:body>
@@ -66,7 +66,7 @@
 <AuHeading @level="3" @skin="3">Adresvoorstelling</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
-  <CodeInline @code="locn:Address" />
+  <MyCodeInline>locn:Address</MyCodeInline>
 </p>
 <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
 <p>
@@ -89,38 +89,38 @@
   <:body>
     <tr>
       <td>adres-register-uri</td>
-      <td><CodeInline @code="adres:verwijstNaar" /></td>
-      <td><CodeInline @code="adres:Adres" /></td>
+      <td><MyCodeInline>adres:verwijstNaar</MyCodeInline></td>
+      <td><MyCodeInline>adres:Adres</MyCodeInline></td>
       <td>Adres waarvan de adresvoorstelling is afgeleid.</td>
     </tr>
     <tr>
       <td>gemeentenaam</td>
-      <td><CodeInline @code="adres:gemeentenaam" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>adres:gemeentenaam</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>Gemeentenaam van het adres.</td>
     </tr>
     <tr>
       <td>huisnummer</td>
-      <td><CodeInline @code="adres:AdresVoorstelling.huisnummer" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>adres:AdresVoorstelling.huisnummer</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>Alfanumerieke code officieel toegekend aan gebouweenheden, ligplaatsen, standplaatsen of percelen.</td>
     </tr>
     <tr>
       <td>postcode</td>
-      <td><CodeInline @code="locn:postCode" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>locn:postCode</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>Code waarmee het geografisch gebied dat adressen voor postale doeleinden groepeert wordt aangeduid.</td>
     </tr>
     <tr>
       <td>straatnaam</td>
-      <td><CodeInline @code="adres:straatnaam" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>adres:straatnaam</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>Straatnaam van het adres.</td>
     </tr>
     <tr>
       <td>volledig adres</td>
-      <td><CodeInline @code="locn:fullAddress" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>locn:fullAddress</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>Het complete adres in één string, al dan niet geformatteerd.</td>
     </tr>
   </:body>
@@ -129,7 +129,7 @@
 <AuHeading @level="3" @skin="3">Bestuursfunctie</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
-  <CodeInline @code="lblodlg:Bestuursfunctie" />
+  <MyCodeInline>lblodlg:Bestuursfunctie</MyCodeInline>
 </p>
 <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
 <p>
@@ -151,14 +151,14 @@
   <:body>
     <tr>
       <td>rol</td>
-      <td><CodeInline @code="org:role" /></td>
-      <td><CodeInline @code="org:Role" /></td>
+      <td><MyCodeInline>org:role</MyCodeInline></td>
+      <td><MyCodeInline>org:Role</MyCodeInline></td>
       <td>Bestuurseenheid die de publicatie gemaakt heeft.</td>
     </tr>
     <tr>
       <td>contactgegevens</td>
-      <td><CodeInline @code="schema:contactPoint" /></td>
-      <td><CodeInline @code="schema:ContactPoint" /></td>
+      <td><MyCodeInline>schema:contactPoint</MyCodeInline></td>
+      <td><MyCodeInline>schema:ContactPoint</MyCodeInline></td>
       <td>Contactgegevens voor de bestuursfunctie.</td>
     </tr>
   </:body>
@@ -167,7 +167,7 @@
 <AuHeading @level="3" @skin="3">Bestuursorgaan (in bestuursperiode)</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
-  <CodeInline @code="besluit:Bestuursorgaan" />
+  <MyCodeInline>besluit:Bestuursorgaan</MyCodeInline>
 </p>
 <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
 <p>
@@ -186,8 +186,8 @@
   <:body>
     <tr>
       <td>bevat</td>
-      <td><CodeInline @code="lblodlg:heeftBestuursfunctie" /></td>
-      <td><CodeInline @code="lblodlg:Bestuursfunctie" /></td>
+      <td><MyCodeInline>lblodlg:heeftBestuursfunctie</MyCodeInline></td>
+      <td><MyCodeInline>lblodlg:Bestuursfunctie</MyCodeInline></td>
       <td>Een bestuursfunctie binnen het orgaan.</td>
     </tr>
   </:body>
@@ -196,7 +196,7 @@
 <AuHeading @level="3" @skin="3">Contactgegevens</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
-  <CodeInline @code="schema:ContactPoint" />
+  <MyCodeInline>schema:ContactPoint</MyCodeInline>
 </p>
 <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
 <p>
@@ -216,20 +216,20 @@
   <:body>
     <tr>
       <td>adres</td>
-      <td><CodeInline @code="locn:address" /></td>
-      <td><CodeInline @code="locn:Address" /></td>
+      <td><MyCodeInline>locn:address</MyCodeInline></td>
+      <td><MyCodeInline>locn:Address</MyCodeInline></td>
       <td>Adres dat men kan aanschrijven.</td>
     </tr>
     <tr>
       <td>email</td>
-      <td><CodeInline @code="schema:email" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>schema:email</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>Email-adres waarnaar men kan mailen.</td>
     </tr>
     <tr>
       <td>telefoon</td>
-      <td><CodeInline @code="schema:telephone" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>schema:telephone</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>Telefoonnummer waarop men kan bellen.</td>
     </tr>
   </:body>
@@ -238,7 +238,7 @@
 <AuHeading @level="3" @skin="3">Functionaris</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
-  <CodeInline @code="lblodlg:Functionaris" />
+  <MyCodeInline>lblodlg:Functionaris</MyCodeInline>
 </p>
 <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
 <p>
@@ -259,26 +259,26 @@
   <:body>
     <tr>
       <td>bestuursfunctie</td>
-      <td><CodeInline @code="org:holds" /></td>
-      <td><CodeInline @code="lblodlg:Bestuursfunctie" /></td>
+      <td><MyCodeInline>org:holds</MyCodeInline></td>
+      <td><MyCodeInline>lblodlg:Bestuursfunctie</MyCodeInline></td>
       <td>De bestuursfunctie die deze functionaris bekleedt.</td>
     </tr>
     <tr>
       <td>einde</td>
-      <td><CodeInline @code="mandaat:einde" /></td>
-      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td><MyCodeInline>mandaat:einde</MyCodeInline></td>
+      <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
       <td>Tijdstip vanaf wanneer de functionaris de bestuursfunctie niet langer opneemt.</td>
     </tr>
     <tr>
       <td>is bestuurlijke alias van</td>
-      <td><CodeInline @code="mandaat:isBestuurlijkeAliasVan" /></td>
-      <td><CodeInline @code="person:Person" /></td>
+      <td><MyCodeInline>mandaat:isBestuurlijkeAliasVan</MyCodeInline></td>
+      <td><MyCodeInline>person:Person</MyCodeInline></td>
       <td>De persoon die de functionarisrol vervult.</td>
     </tr>
     <tr>
       <td>start</td>
-      <td><CodeInline @code="mandaat:start" /></td>
-      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td><MyCodeInline>mandaat:start</MyCodeInline></td>
+      <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
       <td>Tijdstip vanaf wanneer de functionaris de bestuursfunctie opneemt.</td>
     </tr>
   </:body>
@@ -287,7 +287,7 @@
 <AuHeading @level="3" @skin="3">Persoon</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
-  <CodeInline @code="person:Person" />
+  <MyCodeInline>person:Person</MyCodeInline>
 </p>
 <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
 <p>
@@ -308,20 +308,20 @@
   <:body>
     <tr>
       <td>achternaam</td>
-      <td><CodeInline @code="foaf:familyName" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>foaf:familyName</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>De familienaam van de persoon.</td>
     </tr>
     <tr>
       <td>alternatieve naam</td>
-      <td><CodeInline @code="foaf:name" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>foaf:name</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>Een roepnaam van de persoon. 	Indien aanwezig is het aan te raden deze naam te gebruiken voor visualisaties in plaats van voornaam en familienaam.</td>
     </tr>
     <tr>
       <td>gebruikte voornaam</td>
-      <td><CodeInline @code="persoon:gebruikteVoornaam" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>persoon:gebruikteVoornaam</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>De te gebruiken voornaam van alle officiële voornamen van de persoon.</td>
     </tr>
   </:body>

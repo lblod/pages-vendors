@@ -15,10 +15,10 @@
 <AuHeading @level="3" @skin="3" id="annotatie-publicaties-document-types">Document en besluit types</AuHeading>
 <p>
   Ieder document dat gepubliceerd wordt is een <AuLinkExternal
-  href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/#Document">foaf:Document</AuLinkExternal>.
-  Ieder document heeft een type dat geannoteerd kan worden met het <CodeInline
-  @code="typeof" /> attribuut. De gekende besluit- en document types zijn
-  gepubliceerd als codelijst op <AuLinkExternal
+  href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/#Document">
+  foaf:Document</AuLinkExternal>. Ieder document heeft een type dat geannoteerd
+  kan worden met het <MyCodeInline>typeof</MyCodeInline> attribuut. De gekende
+  besluit- en document types zijn gepubliceerd als codelijst op <AuLinkExternal
   href="https://data.vlaanderen.be">data.vlaanderen.be</AuLinkExternal>:
 </p>
 <AuTable>
@@ -70,19 +70,19 @@
   <:body>
     <tr>
       <td>Agenda</td>
-      <td><CodeInline @code="besluit:heeftAgenda" /></td>
+      <td><MyCodeInline>besluit:heeftAgenda</MyCodeInline></td>
     </tr>
     <tr>
       <td>Besluitenlijst</td>
-      <td><CodeInline @code="besluit:heeftBesluitenlijst" /></td>
+      <td><MyCodeInline>besluit:heeftBesluitenlijst</MyCodeInline></td>
     </tr>
     <tr>
       <td>Uittreksel</td>
-      <td><CodeInline @code="besluit:heeftUittreksel" /></td>
+      <td><MyCodeInline>besluit:heeftUittreksel</MyCodeInline></td>
     </tr>
     <tr>
       <td>Notulen</td>
-      <td><CodeInline @code="besluit:heeftNotulen" /></td>
+      <td><MyCodeInline>besluit:heeftNotulen</MyCodeInline></td>
     </tr>
   </:body>
 </AuTable>
@@ -115,8 +115,8 @@
   met geannoteerde documenten. Denk bijvoorbeeld aan een overzichtspagina
   waarop alle zittingen van de gemeenteraad opgelijst worden. Om de navigatie
   naar relevante pagina's met RDFa kennis te faciliteren, kunnen hyperlinks met
-  een specifieke property <CodeInline
-  @code="http://lblod.data.gift/vocabularies/besluit/linkToPublication" />
+  een specifieke property
+  <MyCodeInline>http://lblod.data.gift/vocabularies/besluit/linkToPublication</MyCodeInline>
   geannoteerd worden waardoor de Besluit Publicatie harvester ook deze gelinkte
   pagina's zal harvesten om er de nodige kennis uit te extraheren.
 </p>

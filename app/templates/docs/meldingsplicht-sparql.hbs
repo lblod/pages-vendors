@@ -6,7 +6,7 @@
   over de toestand van eerder ingestuurde meldingen. Deze API is gebaseerd op
   de <LinkTo @route="docs.vendor-sparql">Vendor SPARQL API</LinkTo>. Bekijk ook
   de pagina over de <LinkTo @route="docs.meldingsplicht">Meldingsplicht
-    API</LinkTo> voor het insturen van meldingen.
+  API</LinkTo> voor het insturen van meldingen.
 </p>
 <p>
   <strong>Het soort beschikbare gegevens is nog sterk onderhevig aan
@@ -85,9 +85,9 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout" />
 <p>
   De status opvragen van een Submission kan eveneens via de document URI. Deze
   URI werd door de vendor meegegeven als URI van het werkelijke RDF document in
-  de HTML pagina die ter beschikking werd gesteld. Deze URI wordt <CodeInline
-  @code="submittedResource" /> genoemd bij de melding in <LinkTo
-  @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>.
+  de HTML pagina die ter beschikking werd gesteld. Deze URI wordt
+  <MyCodeInline>submittedResource</MyCodeInline> genoemd bij de melding in
+  <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>.
 </p>
 <Snippet @snippetFilename="meldingsplicht-sparql/voorbeeld-melding-status-document-uri.sparql" />
 
@@ -96,7 +96,7 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout" />
   Ten slotte is het ook mogelijk om de status van een Submission op te vragen
   via de URL van de downloadpagina. (Dit is een URL, geen URI.) Deze URL werd
   eveneens door de vendor meegegeven bij het inzenden van een melding en werd
-  <CodeInline @code="href" /> genoemd.
+  <MyCodeInline>href</MyCodeInline> genoemd.
 </p>
 <Snippet @snippetFilename="meldingsplicht-sparql/voorbeeld-melding-status-href.sparql" />
 <p>
@@ -133,73 +133,73 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout" />
   </:header>
   <:body>
     <tr>
-      <td><CodeInline @code="rdf:" /></td>
+      <td><MyCodeInline>rdf:</MyCodeInline></td>
       <td><AuLinkExternal href="http://www.w3.org/1999/02/22-rdf-syntax-ns#">http://www.w3.org/1999/02/22-rdf-syntax-ns#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="xsd:" /></td>
+      <td><MyCodeInline>xsd:</MyCodeInline></td>
       <td><AuLinkExternal href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="meb:" /></td>
+      <td><MyCodeInline>meb:</MyCodeInline></td>
       <td><AuLinkExternal href="http://rdf.myexperiment.org/ontologies/base/">http://rdf.myexperiment.org/ontologies/base/</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="mu:" /></td>
+      <td><MyCodeInline>mu:</MyCodeInline></td>
       <td><AuLinkExternal href="http://mu.semte.ch/vocabularies/core/">http://mu.semte.ch/vocabularies/core/</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="prov:" /></td>
+      <td><MyCodeInline>prov:</MyCodeInline></td>
       <td><AuLinkExternal href="http://www.w3.org/ns/prov#">http://www.w3.org/ns/prov#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="dct:" /></td>
+      <td><MyCodeInline>dct:</MyCodeInline></td>
       <td><AuLinkExternal href="http://purl.org/dc/terms/">http://purl.org/dc/terms/</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="adms:" /></td>
+      <td><MyCodeInline>adms:</MyCodeInline></td>
       <td><AuLinkExternal href="http://www.w3.org/ns/adms#">http://www.w3.org/ns/adms#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="pav:" /></td>
+      <td><MyCodeInline>pav:</MyCodeInline></td>
       <td><AuLinkExternal href="http://purl.org/pav/">http://purl.org/pav/</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="nie:" /></td>
+      <td><MyCodeInline>nie:</MyCodeInline></td>
       <td><AuLinkExternal href="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#">http://www.semanticdesktop.org/ontologies/2007/01/19/nie#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="nfo:" /></td>
+      <td><MyCodeInline>nfo:</MyCodeInline></td>
       <td><AuLinkExternal href="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#">http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="nmo:" /></td>
+      <td><MyCodeInline>nmo:</MyCodeInline></td>
       <td><AuLinkExternal href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#">http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="ext:" /></td>
+      <td><MyCodeInline>ext:</MyCodeInline></td>
       <td><AuLinkExternal href="http://mu.semte.ch/vocabularies/ext/">http://mu.semte.ch/vocabularies/ext/</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="am:" /></td>
+      <td><MyCodeInline>am:</MyCodeInline></td>
       <td><AuLinkExternal href="http://lblod.data.gift/vocabularies/automatische-melding/">http://lblod.data.gift/vocabularies/automatische-melding/</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="sec:" /></td>
+      <td><MyCodeInline>sec:</MyCodeInline></td>
       <td><AuLinkExternal href="http://lblod.data.gift/vocabularies/security/">http://lblod.data.gift/vocabularies/security/</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="besluit:" /></td>
+      <td><MyCodeInline>besluit:</MyCodeInline></td>
       <td><AuLinkExternal href="http://data.vlaanderen.be/ns/besluit#">http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="foaf:" /></td>
+      <td><MyCodeInline>foaf:</MyCodeInline></td>
       <td><AuLinkExternal href="http://xmlns.com/foaf/0.1/">http://xmlns.com/foaf/0.1/</AuLinkExternal></td>
     </tr>
   </:body>
 </AuTable>
 
-<AuHeading @level="3" @skin="3"><CodeInline @code="meb:Submission" /></AuHeading>
+<AuHeading @level="3" @skin="3"><MyCodeInline>meb:Submission</MyCodeInline></AuHeading>
 <p>
   Een Submission is de inzending voor een document; de zogezegde
   &ldquo;gebeurtenis&rdquo; van het inzenden van dat document. Hier kan
@@ -221,57 +221,57 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout" />
   <:body>
     <tr>
       <td>Gecre&euml;erd op</td>
-      <td><CodeInline @code="dct:created" /></td>
-      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td><MyCodeInline>dct:created</MyCodeInline></td>
+      <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
       <td>Tijdstip waarop deze inzending werd gemaakt.</td>
     </tr>
     <tr>
       <td>Bewerkt op</td>
-      <td><CodeInline @code="dct:modified" /></td>
-      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td><MyCodeInline>dct:modified</MyCodeInline></td>
+      <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
       <td>Tijdstip waarop deze inzending laatst werd gewijzigd.</td>
     </tr>
     <tr>
       <td>Gecre&euml;erd door</td>
-      <td><CodeInline @code="pav:createdBy" /></td>
-      <td><CodeInline @code="besluit:Bestuurseenheid" /></td>
+      <td><MyCodeInline>pav:createdBy</MyCodeInline></td>
+      <td><MyCodeInline>besluit:Bestuurseenheid</MyCodeInline></td>
       <td>Voor/door welk bestuurseenheid de inzending werd gemaakt. Een derde partij kan een inzending maken via een applicatie voor deze bestuurseenheid.</td>
     </tr>
     <tr>
       <td>Verzonden op</td>
-      <td><CodeInline @code="nmo:sentDate" /></td>
-      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td><MyCodeInline>nmo:sentDate</MyCodeInline></td>
+      <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
       <td>Tijdstip waarop de inzending succesvol werd verzonden naar het Loket.</td>
     </tr>
     <tr>
       <td>Ingezonden door</td>
-      <td><CodeInline @code="pav:providedBy" /></td>
-      <td><CodeInline @code="ext:Vendor" /></td>
+      <td><MyCodeInline>pav:providedBy</MyCodeInline></td>
+      <td><MyCodeInline>ext:Vendor</MyCodeInline></td>
       <td>URI van de vendor applicatie die de inzending maakte. Via de Vendor API mogen geen inzendingen van andere vendors gezien worden.</td>
     </tr>
     <tr>
       <td>Status</td>
-      <td><CodeInline @code="adms:status" /></td>
-      <td><CodeInline @code="ext:SubmissionDocumentStatus" /> en <CodeInline @code="skos:Concept" /></td>
+      <td><MyCodeInline>adms:status</MyCodeInline></td>
+      <td><MyCodeInline>ext:SubmissionDocumentStatus</MyCodeInline> en <MyCodeInline>skos:Concept</MyCodeInline></td>
       <td>Status van de inzending. Zie onderaan onder hoofdstuk <ScrollLink @scrollToId="documentstatussen-inzendingen">Documentstatussen inzendingen</ScrollLink>.</td>
     </tr>
     <tr>
       <td>Genereerde dit inzendingsformulier</td>
-      <td><CodeInline @code="prov:generated" /></td>
-      <td><CodeInline @code="am:FormData" /></td>
+      <td><MyCodeInline>prov:generated</MyCodeInline></td>
+      <td><MyCodeInline>am:FormData</MyCodeInline></td>
       <td>Formuliergegevens die werden gegenereerd op basis van de inzending. Indien volledig wordt dit dossier automatisch verzonden naar het Loket.</td>
     </tr>
     <tr>
       <td>Document ter onderwerp</td>
-      <td><CodeInline @code="dct:subject" /></td>
-      <td><CodeInline @code="ext:SubmissionDocument" /> en <CodeInline @code="foaf:Document" /></td>
-      <td>RDFa document dat werd ingezonden door de vendor. Dit document werd automatisch omgezet tot <CodeInline @code="am:FormData" /> om te versturen.</td>
+      <td><MyCodeInline>dct:subject</MyCodeInline></td>
+      <td><MyCodeInline>ext:SubmissionDocument</MyCodeInline> en <MyCodeInline>foaf:Document</MyCodeInline></td>
+      <td>RDFa document dat werd ingezonden door de vendor. Dit document werd automatisch omgezet tot <MyCodeInline>am:FormData</MyCodeInline> om te versturen.</td>
     </tr>
     <tr>
       <td>Downloadlocatie</td>
-      <td><CodeInline @code="prov:atLocation" /></td>
-      <td><CodeInline @code="xsd:anyURI" /></td>
-      <td>Locatie (URL) van het HTML RDFa document, ingezonden door de vendor, waar het <CodeInline @code="ext:SubmissionDocument" /> kan worden teruggevonden en worden gedownload.</td>
+      <td><MyCodeInline>prov:atLocation</MyCodeInline></td>
+      <td><MyCodeInline>xsd:anyURI</MyCodeInline></td>
+      <td>Locatie (URL) van het HTML RDFa document, ingezonden door de vendor, waar het <MyCodeInline>ext:SubmissionDocument</MyCodeInline> kan worden teruggevonden en worden gedownload.</td>
     </tr>
   </:body>
 </AuTable>
@@ -290,15 +290,15 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout" />
   </:header>
   <:body>
     <tr>
-      <td><CodeInline @code="http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd" /></td>
+      <td><MyCodeInline>http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd</MyCodeInline></td>
       <td>Concept</td>
     </tr>
     <tr>
-      <td><CodeInline @code="http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c" /></td>
+      <td><MyCodeInline>http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c</MyCodeInline></td>
       <td>Verzonden</td>
     </tr>
     <tr>
-      <td><CodeInline @code="http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff" /></td>
+      <td><MyCodeInline>http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff</MyCodeInline></td>
       <td>Inzendbaar</td>
     </tr>
     </:body>

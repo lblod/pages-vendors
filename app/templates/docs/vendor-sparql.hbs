@@ -46,13 +46,13 @@
 </p>
 <Snippet @snippetFilename="vendor-sparql/voorbeeld-login-request-body.json" />
 <p>
-  In het voorbeeld hierboven staat de <CodeInline @code="organisation" /> voor
-  de URI van de bestuurseenheid waar de vendor garant voor staat. <CodeInline
-  @code="publisher.uri" /> staat voor de URI van de vendor, en <CodeInline
-  @code="publisher.key" /> staat voor de geheime sleutel die eerder werd
-  verkregen. Het aanvragen van een publisher URI en geheime sleutel (key) staan
-  beschreven in de sectie &ldquo;Authenticatie&rdquo; op de pagina over <LinkTo
-  @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>.
+  In het voorbeeld hierboven staat de <MyCodeInline>organisation</MyCodeInline>
+  voor de URI van de bestuurseenheid waar de vendor garant voor staat.
+  <MyCodeInline>publisher.uri</MyCodeInline> staat voor de URI van de vendor,
+  en <MyCodeInline>publisher.key</MyCodeInline> staat voor de geheime sleutel
+  die eerder werd verkregen. Het aanvragen van een publisher URI en geheime
+  sleutel (key) staan beschreven in de sectie &ldquo;Authenticatie&rdquo; op de
+  pagina over <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>.
 </p>
 <p>
   De volledige JSON-LD context beschrijft met RDF wat elke eigenschap betekent,
@@ -80,9 +80,9 @@
 <AuHeading @level="3" @skin="3">Voorbeeld</AuHeading>
 <p>
   Als voorbeeld staat hieronder hoe een login kan worden uitgevoerd met
-  <CodeInline @code="cURL" />. Het ontvangen en verder weer versturen van
+  <MyCodeInline>cURL</MyCodeInline>. Het ontvangen en verder weer versturen van
   cookies is noodzakelijk. Daarom wordt de cookie engine ingeschakeld met de
-  <CodeInline @code="-b" /> en <CodeInline @code="-c" /> flags die verwijzen
+  <MyCodeInline>-b</MyCodeInline> en <MyCodeInline>-c</MyCodeInline> flags die verwijzen
   naar een bestand waar de cookies worden opgeslagen.
 </p>
 <Snippet @snippetFilename="vendor-sparql/voorbeeld-login.sh" />
@@ -121,7 +121,7 @@
 <AuHeading @level="3" @skin="3">Voorbeelden van requests</AuHeading>
 <p>
   Hieronder staan een aantal voorbeelden van requests, uitgevoerd via
-  <CodeInline @code="cURL" />. De query is steeds op te vullen met de benodigde
+  <MyCodeInline>cURL</MyCodeInline>. De query is steeds op te vullen met de benodigde
   SPARQL query.
 </p>
 <p>
@@ -131,13 +131,13 @@
 <Snippet @snippetFilename="vendor-sparql/voorbeeld-request-form.sh" />
 <p>
   Het volgende voorbeeld is hetzelfde als het vorige, maar voor de encodering
-  is hier de typische JavaScript <CodeInline @code="encodeURIComponent()" />
+  is hier de typische JavaScript <MyCodeInline>encodeURIComponent()</MyCodeInline>
   gebruikt.
 </p>
 <Snippet @snippetFilename="vendor-sparql/voorbeeld-request-form-url-encode.sh" />
 <p>
-  Dit kan ook uitgevoerd worden met de <CodeInline @code="--data-urlencode" />
-  parameter op <CodeInline @code="cURL" /> als men dan de query meegeeft als
+  Dit kan ook uitgevoerd worden met de <MyCodeInline>--data-urlencode</MyCodeInline>
+  parameter op <MyCodeInline>cURL</MyCodeInline> als men dan de query meegeeft als
   formulier veld zonder speciale encodering.
 </p>
 <Snippet @snippetFilename="vendor-sparql/voorbeeld-request-form-data-urlencode.sh" />
@@ -151,19 +151,19 @@
 <AuHeading @level="2" @skin="2">Uitloggen</AuHeading>
 <p>
   Om de sessie af te sluiten volstaat het om een request, als methode
-  <CodeInline @code="DELETE" /> met de sessie cookie, te sturen naar
+  <MyCodeInline>DELETE</MyCodeInline> met de sessie cookie, te sturen naar
 </p>
 <div>
   <CodeBlock @code="DELETE https://<applicatie-host>/vendor/logout" />
 </div>
 <p>
   Het antwoord op deze request is, als uitloggen successvol was, leeg. De HTTP
-  response code is dan <CodeInline @code="204 No Content" />.
+  response code is dan <MyCodeInline>204 No Content</MyCodeInline>.
 </p>
 
 <AuHeading @level="3" @skin="3">Voorbeeld</AuHeading>
 <p>
-  Bij het gebruik van <CodeInline @code="cURL" /> ziet de request voor
+  Bij het gebruik van <MyCodeInline>cURL</MyCodeInline> ziet de request voor
   uitloggen er als volgt uit.
 </p>
 <Snippet @snippetFilename="vendor-sparql/logout.sh" />

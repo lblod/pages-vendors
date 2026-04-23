@@ -30,12 +30,12 @@
 <AuHeading @level="3" @skin="3">Scope van een melding</AuHeading>
 <p>
   Er moet een melding gedaan worden per besluit/document. De link die gestuurd
-  wordt in de <CodeInline @code="href" />-property van de request body moet een
+  wordt in de <MyCodeInline>href</MyCodeInline>-property van de request body moet een
   link zijn naar de pagina met de inhoud van het besluit/document. Dit mag geen
   overzichtspagina zijn waar er nog moet doorgeklikt worden naar een andere
   pagina. Er mogen wel nog andere besluiten/documenten geannoteerd staan op de
   pagina. De URI van het besluit dat gemeld wordt, wordt meegegeven in de
-  <CodeInline @code="submittedResource" />-property. Verdere vereisten rond de
+  <MyCodeInline>submittedResource</MyCodeInline>-property. Verdere vereisten rond de
   gepubliceerde pagina's staan verderop beschreven.
 </p>
 <p>
@@ -52,9 +52,9 @@
 </ul>
 <p>
   Er moeten dan 3 requests naar de melding API gestuurd worden. Alle requests
-  hebben als <CodeInline @code="href" />-property: <AuLinkExternal
+  hebben als <MyCodeInline>href</MyCodeInline>-property: <AuLinkExternal
   href="#">http://vlavirgem.be/zittingen/20200304.html</AuLinkExternal>. De
-  <CodeInline @code="submittedResource" />-property verschilt per request en
+  <MyCodeInline>submittedResource</MyCodeInline>-property verschilt per request en
   bevat de URI van het besluit dat gemeld wordt.
 </p>
 
@@ -62,15 +62,15 @@
 <p>
   Indien een inzending aangemaakt wordt en volledig is, dan kan ze automatisch
   verzonden worden. Optioneel kan aangegeven worden dat de inzending in concept
-  status is door de onderstaande URI voor "concept" als <CodeInline
-  @code="status" />-property mee te geven. Hierdoor zal de inzending niet
-  verzonden worden, maar als concept blijven staan tot manuele actie de
-  inzending markeert als inzendbaar. Dit kan gedaan worden in de applicatie
-  voor automatische meldingen of via een API call (ongedocumenteerd). Als het
-  document de status van inzendbaar krijgt, wordt het meteen ingezonden als de
-  data volledig is. Indien niet, wordt het alsnog in concept status gebracht
-  voor manuele aanvulling en inzending. De mogelijke waarden voor de status
-  zijn de URI's voor "concept" of "inzendbaar":
+  status is door de onderstaande URI voor "concept" als
+  <MyCodeInline>status</MyCodeInline>-property mee te geven. Hierdoor zal de
+  inzending niet verzonden worden, maar als concept blijven staan tot manuele
+  actie de inzending markeert als inzendbaar. Dit kan gedaan worden in de
+  applicatie voor automatische meldingen of via een API call
+  (ongedocumenteerd). Als het document de status van inzendbaar krijgt, wordt
+  het meteen ingezonden als de data volledig is. Indien niet, wordt het alsnog
+  in concept status gebracht voor manuele aanvulling en inzending. De mogelijke
+  waarden voor de status zijn de URI's voor "concept" of "inzendbaar":
 </p>
 <AuTable>
   <:header>
@@ -147,7 +147,7 @@
 </p>
 <Snippet @snippetFilename="meldingsplicht/voorbeeld-antwoord.json" />
 <p>
-  De <CodeInline @code="submission" /> eigenschap bevat de URI voor de nieuw
+  De <MyCodeInline>submission</MyCodeInline> eigenschap bevat de URI voor de nieuw
   aangemaakte melding voor het ingezonden document. Deze kan worden gebruikt
   voor het formuleren van een aanvraag voor verwijdering dat kan worden
   verzonden op volgende URL:
@@ -159,7 +159,7 @@
 <Snippet @snippetFilename="meldingsplicht/voorbeeld-verwijder-request.json" />
 <p>
   Net zoals bij de melding is authenticatie op dezelfde manier vereist met
-  <CodeInline @code="organization" /> en <CodeInline @code="publisher" />
+  <MyCodeInline>organization</MyCodeInline> en <MyCodeInline>publisher</MyCodeInline>
   eigenschappen.
 </p>
 
@@ -191,7 +191,7 @@
   hebben op de inhoud van de pagina. Alle annotaties die geharvest moeten
   worden, moeten beschikbaar zijn bij het ophalen van de pagina, zonder dat er
   verdere scripts nodig zijn. Dit kan bijvoorbeeld getest worden door het
-  gebruik van het <CodeInline @code="curl" /> commando om de gepubliceerde
+  gebruik van het <MyCodeInline>curl</MyCodeInline> commando om de gepubliceerde
   pagina op te halen.
 </p>
 <AuHeading @level="3" @skin="3">Ophalen van niet-publieke documenten [BETA]</AuHeading>
@@ -296,29 +296,29 @@
   </:header>
   <:body>
     <tr>
-      <td><CodeInline @code="lblodBesluit" /></td>
+      <td><MyCodeInline>lblodBesluit</MyCodeInline></td>
       <td><AuLinkExternal href="http://lblod.data.gift/vocabularies/besluit/">http://lblod.data.gift/vocabularies/besluit/</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="schema" /></td>
+      <td><MyCodeInline>schema</MyCodeInline></td>
       <td><AuLinkExternal href="http://schema.org/">http://schema.org/</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="skos" /></td>
+      <td><MyCodeInline>skos</MyCodeInline></td>
       <td><AuLinkExternal href="http://www.w3.org/2004/02/skos/core#">http://www.w3.org/2004/02/skos/core#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="xsd" /></td>
+      <td><MyCodeInline>xsd</MyCodeInline></td>
       <td><AuLinkExternal href="http://www.w3.org/2001/XMLSchema#">http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
     </tr>
     <tr>
-      <td><CodeInline @code="rule" /></td>
+      <td><MyCodeInline>rule</MyCodeInline></td>
       <td><AuLinkExternal href="http://lblod.data.gift/vocabularies/notification/">http://lblod.data.gift/vocabularies/notification/</AuLinkExternal></td>
     </tr>
   </:body>
 </AuTable>
 
-<AuHeading @level="3" @skin="3"><CodeInline @code="rule:NotificationRule" /></AuHeading>
+<AuHeading @level="3" @skin="3"><MyCodeInline>rule:NotificationRule</MyCodeInline></AuHeading>
 <p>
   Beschrijft de meldingsregel voor een bepaald type besluit
 </p>
@@ -335,20 +335,20 @@
   <:body>
     <tr>
       <td>geldig vanaf</td>
-      <td><CodeInline @code="schema:validFrom" /></td>
-      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td><MyCodeInline>schema:validFrom</MyCodeInline></td>
+      <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
       <td>Beschrijft de inwerkingstreding van de meldingsregel.</td>
     </tr>
     <tr>
       <td>geldig tot</td>
-      <td><CodeInline @code="schema:validThrough " /></td>
-      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td><MyCodeInline>schema:validThrough </MyCodeInline></td>
+      <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
       <td>Beschrijft de uitwerkingstreding van de meldingsregel.</td>
     </tr>
     <tr>
       <td>geldig voor</td>
-      <td><CodeInline @code="lblodBesluit:decidableBy" /></td>
-      <td><CodeInline @code="skos:Concept" /></td>
+      <td><MyCodeInline>lblodBesluit:decidableBy</MyCodeInline></td>
+      <td><MyCodeInline>skos:Concept</MyCodeInline></td>
       <td>
         Beschrijving van het type bestuur voor wie de regel geldig is. <br />
         De concepten staan beschreven op <AuLinkExternal href="https://data.vlaanderen.be/doc/conceptscheme/BestuurseenheidClassificatieCode">data.vlaanderen.be/doc/conceptscheme/BestuurseenheidClassificatieCode</AuLinkExternal>
@@ -356,14 +356,14 @@
     </tr>
     <tr>
       <td>meldingsplichtig</td>
-      <td><CodeInline @code="lblodBesluit:obligationToReport" /></td>
-      <td><CodeInline @code="xsd:boolean" /></td>
+      <td><MyCodeInline>lblodBesluit:obligationToReport</MyCodeInline></td>
+      <td><MyCodeInline>xsd:boolean</MyCodeInline></td>
       <td>Beschrijft of het hier over een meldingsplichtig besluit gaat</td>
     </tr>
   </:body>
 </AuTable>
 
-<AuHeading @level="3" @skin="3">Link naar <CodeInline @code="rule:NotificationRule" /></AuHeading>
+<AuHeading @level="3" @skin="3">Link naar <MyCodeInline>rule:NotificationRule</MyCodeInline></AuHeading>
 <p>
   Elementen uit de codelijsten <AuLinkExternal
   href="https://data.vlaanderen.be/id/concept/BesluitDocumentType/">BesluitDocumentType</AuLinkExternal>
@@ -387,8 +387,8 @@
   <:body>
     <tr>
       <td>notificationRule</td>
-      <td><CodeInline @code="lblodBesluit:notificationRule" /></td>
-      <td><CodeInline @code="rule:NotificationRule" /></td>
+      <td><MyCodeInline>lblodBesluit:notificationRule</MyCodeInline></td>
+      <td><MyCodeInline>rule:NotificationRule</MyCodeInline></td>
       <td>Beschrijft welke meldinsregels van toepassing zijn op het type besluit of document</td>
     </tr>
   </:body>

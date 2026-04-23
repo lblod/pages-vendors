@@ -95,7 +95,7 @@
 <AuHeading @level="3" @skin="3">Submission</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
-  <CodeInline @code="meb:Submission" />
+  <MyCodeInline>meb:Submission</MyCodeInline>
 </p>
 <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
 <p>
@@ -116,32 +116,32 @@
   <:body>
     <tr>
       <td>organization</td>
-      <td><CodeInline @code="pav:createdBy" /></td>
-      <td><CodeInline @code="besluit:Bestuurseenheid" /></td>
+      <td><MyCodeInline>pav:createdBy</MyCodeInline></td>
+      <td><MyCodeInline>besluit:Bestuurseenheid</MyCodeInline></td>
       <td>Bestuurseenheid die de publicatie gemaakt heeft.</td>
     </tr>
     <tr>
       <td>publisher</td>
-      <td><CodeInline @code="pav:providedBy" /></td>
-      <td><CodeInline @code="foaf:Agent" /></td>
+      <td><MyCodeInline>pav:providedBy</MyCodeInline></td>
+      <td><MyCodeInline>foaf:Agent</MyCodeInline></td>
       <td>Partij die de melding uitvoert.</td>
     </tr>
     <tr>
       <td>submittedResource</td>
-      <td><CodeInline @code="dct:subject" /></td>
-      <td><CodeInline @code="foaf:Document" /> (meestal <CodeInline @code="besluit:Besluit" />)</td>
+      <td><MyCodeInline>dct:subject</MyCodeInline></td>
+      <td><MyCodeInline>foaf:Document</MyCodeInline> (meestal <MyCodeInline>besluit:Besluit</MyCodeInline>)</td>
       <td>Beslissing/document dat gemeld wordt.</td>
     </tr>
     <tr>
       <td>status</td>
-      <td><CodeInline @code="adms:status" /></td>
-      <td><CodeInline @code="skos:Concept" /></td>
+      <td><MyCodeInline>adms:status</MyCodeInline></td>
+      <td><MyCodeInline>skos:Concept</MyCodeInline></td>
       <td>Status van de melding.</td>
     </tr>
     <tr>
       <td>href</td>
-      <td><CodeInline @code="prov:atLocation" /></td>
-      <td><CodeInline @code="rdfs:Resource" /></td>
+      <td><MyCodeInline>prov:atLocation</MyCodeInline></td>
+      <td><MyCodeInline>rdfs:Resource</MyCodeInline></td>
       <td>URL waarop het document gepubliceerd is.</td>
     </tr>
   </:body>
@@ -149,7 +149,7 @@
 <AuHeading @level="3" @skin="3">Vendor</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
-  <CodeInline @code="foaf:Agent" />
+  <MyCodeInline>foaf:Agent</MyCodeInline>
 </p>
 <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
 <p>
@@ -168,20 +168,20 @@
   <:body>
     <tr>
       <td>name</td>
-      <td><CodeInline @code="foaf:name" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>foaf:name</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>Naam van de agent.</td>
     </tr>
     <tr>
       <td>key</td>
-      <td><CodeInline @code="muAccount:key" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>muAccount:key</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>Sleutel waarmee geverifieerd kan worden of de agent een inzending mag insturen in naam van een andere organizatie.</td>
     </tr>
     <tr>
       <td>canActOnBehalfOf</td>
-      <td><CodeInline @code="muAccount:canActOnBehalfOf" /></td>
-      <td><CodeInline @code="besluit:Bestuurseenheid" /></td>
+      <td><MyCodeInline>muAccount:canActOnBehalfOf</MyCodeInline></td>
+      <td><MyCodeInline>besluit:Bestuurseenheid</MyCodeInline></td>
       <td>Bestuurseenheden in wiens naam de agent een melding mag insturen.</td>
     </tr>
   </:body>
@@ -189,7 +189,7 @@
 <AuHeading @level="3" @skin="3" id="submitted-resource">Submitted resource</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
-  <CodeInline @code="foaf:Document" /> (meestal <CodeInline @code="besluit:Besluit" />)
+  <MyCodeInline>foaf:Document</MyCodeInline> (meestal <MyCodeInline>besluit:Besluit</MyCodeInline>)
 </p>
 <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
 <p>
@@ -208,50 +208,50 @@
   <:body>
     <tr>
       <td>type</td>
-      <td><CodeInline @code="rdf:type" /></td>
-      <td><CodeInline @code="rdfs:Class" /></td>
+      <td><MyCodeInline>rdf:type</MyCodeInline></td>
+      <td><MyCodeInline>rdfs:Class</MyCodeInline></td>
       <td>Type van het besluit. Concept uit een van volgende concept schemes: <AuLinkExternal href="https://data.vlaanderen.be/id/conceptscheme/BesluitType">https://data.vlaanderen.be/id/conceptscheme/BesluitType</AuLinkExternal><AuLinkExternal href="https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType">https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType</AuLinkExternal></td>
     </tr>
     <tr>
       <td>publicationDate</td>
-      <td><CodeInline @code="eli:date_publication" /></td>
-      <td><CodeInline @code="xsd:date" /></td>
+      <td><MyCodeInline>eli:date_publication</MyCodeInline></td>
+      <td><MyCodeInline>xsd:date</MyCodeInline></td>
       <td>De offici&euml;le publicatiedatum van het besluit.</td>
     </tr>
     <tr>
       <td>passedBy</td>
-      <td><CodeInline @code="eli:passed_by" /></td>
-      <td><CodeInline @code="besluit:Bestuursorgaan" /></td>
+      <td><MyCodeInline>eli:passed_by</MyCodeInline></td>
+      <td><MyCodeInline>besluit:Bestuursorgaan</MyCodeInline></td>
       <td>Het bestuursorgaan dat de beslissing goedgekeurd heeft. <br />(Het gaat over bestuursorgaan in bestuursperiode, zie ook voorbeelden)</td>
     </tr>
     <tr>
       <td>subject</td>
-      <td><CodeInline @code="eli:is_about" /></td>
-      <td><CodeInline @code="foaf:Agent" /></td>
+      <td><MyCodeInline>eli:is_about</MyCodeInline></td>
+      <td><MyCodeInline>foaf:Agent</MyCodeInline></td>
       <td>Agent (organisatie, bestuurseenheid) waarover de beslissing handelt. <br /><strong>Zie onderaan bij "Extra informatie" over <ScrollLink @scrollToId="linken-bestuurseenheid">Linken naar Bestuurseenheid bij sommige Besluittypes</ScrollLink>.</strong></td>
     </tr>
     <tr>
       <td>reportYear</td>
-      <td><CodeInline @code="elod:financialYear" /></td>
-      <td><CodeInline @code="xsd:gYear" /></td>
+      <td><MyCodeInline>elod:financialYear</MyCodeInline></td>
+      <td><MyCodeInline>xsd:gYear</MyCodeInline></td>
       <td>Het boekjaar waarover de beslissing handelt.</td>
     </tr>
     <tr>
       <td>firstDateInForce</td>
-      <td><CodeInline @code="eli:first_date_entry_in_force" /></td>
-      <td><CodeInline @code="xsd:date" /></td>
+      <td><MyCodeInline>eli:first_date_entry_in_force</MyCodeInline></td>
+      <td><MyCodeInline>xsd:date</MyCodeInline></td>
       <td>De datum waarop de regelgeving van kracht wordt.</td>
     </tr>
     <tr>
       <td>dateNoLongerInForce</td>
-      <td><CodeInline @code="eli:date_no_longer_in_force" /></td>
-      <td><CodeInline @code="xsd:date" /></td>
+      <td><MyCodeInline>eli:date_no_longer_in_force</MyCodeInline></td>
+      <td><MyCodeInline>xsd:date</MyCodeInline></td>
       <td>De laatste dag waarop de regelgeving nog van kracht is.</td>
     </tr>
     <tr>
       <td>authenticityType</td>
-      <td><CodeInline @code="lblodBesluit:authenticityType" /></td>
-      <td><CodeInline @code="skos:Concept" /></td>
+      <td><MyCodeInline>lblodBesluit:authenticityType</MyCodeInline></td>
+      <td><MyCodeInline>skos:Concept</MyCodeInline></td>
       <td>
         Authenticiteit van de ingestuurde beslissing.
         Zie <AuLinkExternal href="https://github.com/lblod/codelists/blob/master/authenticitytype.ttl">hier</AuLinkExternal> voor de URI's van de concepten.
@@ -259,8 +259,8 @@
     </tr>
     <tr>
       <td>chartOfAccount</td>
-      <td><CodeInline @code="lblodBesluit:chartOfAccount" /></td>
-      <td><CodeInline @code="skos:Concept" /></td>
+      <td><MyCodeInline>lblodBesluit:chartOfAccount</MyCodeInline></td>
+      <td><MyCodeInline>skos:Concept</MyCodeInline></td>
       <td>
         Code uit het Minimaal Algemeen Rekeningstelsel (MAR) waar in de beslissing naar verwezen wordt.
         Zie <AuLinkExternal href="https://github.com/lblod/codelists/blob/master/minimal-belgian-chart-of-accounts.ttl">hier</AuLinkExternal> voor de URI's van de concepten.
@@ -268,32 +268,32 @@
     </tr>
     <tr>
       <td>taxRate</td>
-      <td><CodeInline @code="lblodBesluit:taxRate" /></td>
-      <td><CodeInline @code="lblodBesluit:TaxRate" /></td>
+      <td><MyCodeInline>lblodBesluit:taxRate</MyCodeInline></td>
+      <td><MyCodeInline>lblodBesluit:TaxRate</MyCodeInline></td>
       <td>Aanslagvoet die in de beslissing bepaald wordt.</td>
     </tr>
     <tr>
       <td>hasAdditionalTaxRate</td>
-      <td><CodeInline @code="lblodBesluit:hasAdditionalTaxRate" /></td>
-      <td><CodeInline @code="xsd:boolean" /></td>
+      <td><MyCodeInline>lblodBesluit:hasAdditionalTaxRate</MyCodeInline></td>
+      <td><MyCodeInline>xsd:boolean</MyCodeInline></td>
       <td>Duidt aan of er nog bijkomende aanslagvoeten zijn dan deze beschreven in de beslissing.</td>
     </tr>
     <tr>
       <td>description</td>
-      <td><CodeInline @code="dct:description" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>dct:description</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>Beschrijving bij de beslissing.</td>
     </tr>
     <tr>
       <td>comment</td>
-      <td><CodeInline @code="rdfs:comment" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>rdfs:comment</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>Opmerking bij de beslissing.</td>
     </tr>
     <tr>
       <td>link</td>
-      <td><CodeInline @code="dct:hasPart" /></td>
-      <td><CodeInline @code="rdfs:Resource" /></td>
+      <td><MyCodeInline>dct:hasPart</MyCodeInline></td>
+      <td><MyCodeInline>rdfs:Resource</MyCodeInline></td>
       <td>URL van gerelateerd document dat een logisch onderdeel is van het besluit.</td>
     </tr>
   </:body>
@@ -301,7 +301,7 @@
 <AuHeading @level="3" @skin="3">Aanslagvoet</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
-  <CodeInline @code="lblodBesluit:TaxRate &lt; schema:UnitPriceSpecification" />
+  <MyCodeInline>lblodBesluit:TaxRate &lt; schema:UnitPriceSpecification</MyCodeInline>
 </p>
 <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
 <p>
@@ -320,8 +320,8 @@
   <:body>
     <tr>
       <td>amount</td>
-      <td><CodeInline @code="schema:price" /></td>
-      <td><CodeInline @code="xsd:float" /></td>
+      <td><MyCodeInline>schema:price</MyCodeInline></td>
+      <td><MyCodeInline>xsd:float</MyCodeInline></td>
       <td>Geldbedrag dat per eenheid gerekend wordt.</td>
     </tr>
   </:body>
@@ -329,7 +329,7 @@
 <AuHeading @level="3" @skin="3">Bestuurseenheid</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
-  <CodeInline @code="besluit:Bestuurseenheid" />
+  <MyCodeInline>besluit:Bestuurseenheid</MyCodeInline>
 </p>
 <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
 <AuTable>
@@ -344,26 +344,26 @@
   <:body>
     <tr>
       <td>classificatie</td>
-      <td><CodeInline @code="besluit:classificatie" /></td>
-      <td><CodeInline @code="skos:Concept" /></td>
+      <td><MyCodeInline>besluit:classificatie</MyCodeInline></td>
+      <td><MyCodeInline>skos:Concept</MyCodeInline></td>
       <td>Classificatie van de bestuurseenheid.</td>
     </tr>
     <tr>
       <td>naam</td>
-      <td><CodeInline @code="skos:prefLabel" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>skos:prefLabel</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>Naam van de bestuurseenheid.</td>
     </tr>
     <tr>
       <td>identifier</td>
-      <td><CodeInline @code="dct:identifier" /></td>
-      <td><CodeInline @code="xsd:string" /></td>
+      <td><MyCodeInline>dct:identifier</MyCodeInline></td>
+      <td><MyCodeInline>xsd:string</MyCodeInline></td>
       <td>Identificator van de bestuurseenheid (vb. ondernemingsnummer).</td>
     </tr>
     <tr>
       <td>bestuursorgaan</td>
-      <td><CodeInline @code="besluit:bestuurt" /></td>
-      <td><CodeInline @code="besluit:Bestuursorgaan" /></td>
+      <td><MyCodeInline>besluit:bestuurt</MyCodeInline></td>
+      <td><MyCodeInline>besluit:Bestuursorgaan</MyCodeInline></td>
       <td>Bestuursorgaan die door de bestuurseenheid bestuurd wordt.</td>
     </tr>
   </:body>
@@ -371,7 +371,7 @@
 <AuHeading @level="3" @skin="3">Bestuursorgaan</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
-  <CodeInline @code="besluit:Bestuursorgaan" />
+  <MyCodeInline>besluit:Bestuursorgaan</MyCodeInline>
 </p>
 <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
 <AuTable>
@@ -386,8 +386,8 @@
   <:body>
     <tr>
       <td>classificatie</td>
-      <td><CodeInline @code="besluit:classificatie" /></td>
-      <td><CodeInline @code="skos:Concept" /></td>
+      <td><MyCodeInline>besluit:classificatie</MyCodeInline></td>
+      <td><MyCodeInline>skos:Concept</MyCodeInline></td>
       <td>Het type bestuursorgaan.</td>
     </tr>
   </:body>
@@ -395,7 +395,7 @@
 <AuHeading @level="3" @skin="3">Behandeling van Agendapunt</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
-  <CodeInline @code="besluit:BehandelingVanAgendapunt" />
+  <MyCodeInline>besluit:BehandelingVanAgendapunt</MyCodeInline>
 </p>
 <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
 <AuTable>
@@ -410,14 +410,14 @@
   <:body>
     <tr>
       <td>onderwerp</td>
-      <td><CodeInline @code="dct:subject" /></td>
-      <td><CodeInline @code="besluit:Agendapunt" /></td>
+      <td><MyCodeInline>dct:subject</MyCodeInline></td>
+      <td><MyCodeInline>besluit:Agendapunt</MyCodeInline></td>
       <td>Het onderwerp van de activiteit.</td>
     </tr>
     <tr>
       <td>besluit</td>
-      <td><CodeInline @code="prov:generated" /></td>
-      <td><CodeInline @code="besluit:Besluit" /></td>
+      <td><MyCodeInline>prov:generated</MyCodeInline></td>
+      <td><MyCodeInline>besluit:Besluit</MyCodeInline></td>
       <td>Een besluit dat is opgemaakt naar aanleiding van de behandeling van het agendapunt.</td>
     </tr>
   </:body>
@@ -425,7 +425,7 @@
 <AuHeading @level="3" @skin="3">Agendapunt</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
-  <CodeInline @code="besluit:Agendapunt" />
+  <MyCodeInline>besluit:Agendapunt</MyCodeInline>
 </p>
 <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
 <p>
@@ -434,7 +434,7 @@
 <AuHeading @level="3" @skin="3">Zitting</AuHeading>
 <AuHeading @level="4" @skin="4">Klasse</AuHeading>
 <p>
-  <CodeInline @code="besluit:Zitting" />
+  <MyCodeInline>besluit:Zitting</MyCodeInline>
 </p>
 <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
 <AuTable>
@@ -449,44 +449,44 @@
   <:body>
     <tr>
       <td>agendapunt</td>
-      <td><CodeInline @code="besluit:behandelt" /></td>
-      <td><CodeInline @code="besluit:Agendapunt" /></td>
+      <td><MyCodeInline>besluit:behandelt</MyCodeInline></td>
+      <td><MyCodeInline>besluit:Agendapunt</MyCodeInline></td>
       <td>Een formeel vastgelegd agendapunt van de zitting.</td>
     </tr>
     <tr>
       <td>gestartOpTijdstip</td>
-      <td><CodeInline @code="prov:startedAtTime" /></td>
-      <td><CodeInline @code="xsd:dateTime" /></td>
+      <td><MyCodeInline>prov:startedAtTime</MyCodeInline></td>
+      <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
       <td>Tijdstip waarop de zitting begint.</td>
     </tr>
     <tr>
       <td>bestuursorgaan</td>
-      <td><CodeInline @code="besluit:isGehoudenDoor" /></td>
-      <td><CodeInline @code="besluit:Bestuursorgaan" /></td>
+      <td><MyCodeInline>besluit:isGehoudenDoor</MyCodeInline></td>
+      <td><MyCodeInline>besluit:Bestuursorgaan</MyCodeInline></td>
       <td>Duidt aan door welk orgaan de zitting is gehouden.</td>
     </tr>
     <tr>
       <td>notulen</td>
-      <td><CodeInline @code="besluit:heeftNotulen" /></td>
-      <td><CodeInline @code="foaf:Document" /></td>
+      <td><MyCodeInline>besluit:heeftNotulen</MyCodeInline></td>
+      <td><MyCodeInline>foaf:Document</MyCodeInline></td>
       <td>Notulen van de zitting.</td>
     </tr>
     <tr>
       <td>besluitenlijst</td>
-      <td><CodeInline @code="besluit:heeftBesluitenlijst" /></td>
-      <td><CodeInline @code="foaf:Document" /></td>
+      <td><MyCodeInline>besluit:heeftBesluitenlijst</MyCodeInline></td>
+      <td><MyCodeInline>foaf:Document</MyCodeInline></td>
       <td>Besluitenlijst van de zitting.</td>
     </tr>
     <tr>
       <td>agenda</td>
-      <td><CodeInline @code="besluit:heeftAgenda" /></td>
-      <td><CodeInline @code="foaf:Document" /></td>
+      <td><MyCodeInline>besluit:heeftAgenda</MyCodeInline></td>
+      <td><MyCodeInline>foaf:Document</MyCodeInline></td>
       <td>Agenda van de zitting.</td>
     </tr>
     <tr>
       <td>uittreksel</td>
-      <td><CodeInline @code="besluit:heeftUittreksel" /></td>
-      <td><CodeInline @code="foaf:Document" /></td>
+      <td><MyCodeInline>besluit:heeftUittreksel</MyCodeInline></td>
+      <td><MyCodeInline>foaf:Document</MyCodeInline></td>
       <td>Uittreksel van een besluit van de zitting.</td>
     </tr>
   </:body>
@@ -524,7 +524,7 @@
 </ul>
 <p>
   Om vanuit het Besluit te refereren naar de betreffende Bestuurseenheid via de
-  URI, gebruik het RDF predicaat <CodeInline @code="eli:is_about" />. Zie
+  URI, gebruik het RDF predicaat <MyCodeInline>eli:is_about</MyCodeInline>. Zie
   eveneens bij de bovenstaande tabel onder <ScrollLink
   @scrollToId="submitted-resource">Submitted Resource</ScrollLink> voor nog
   meer eigenschappen voor Besluiten.
@@ -547,7 +547,7 @@
 
 <AuHeading @level="3" @skin="3">Datetime strings</AuHeading>
 <p>
-  Bij het verwerken van de <CodeInline @code="xsd:dateTime" /> strings wordt
+  Bij het verwerken van de <MyCodeInline>xsd:dateTime</MyCodeInline> strings wordt
   het volgende ondersteund: <br />
   Het gaat over een subset van de ISO-8601 specificatie. Het formaat moet zijn
 </p>
@@ -556,7 +556,7 @@
   <li>Tijdsspecificatie: "YYYY-MM-DDTHH:mm:ss.SSSS" met "T" als separator</li>
   <li>Offset (tov UTC) met het volgende formaat: +-HH:mm, +-HHmm, +-HH of Z</li>
 </ul>
-<AuHeading @level="4" @skin="4">Voorbeelden van aanvaarde <CodeInline @code="xsd:dateTime" /> strings</AuHeading>
+<AuHeading @level="4" @skin="4">Voorbeelden van aanvaarde <MyCodeInline>xsd:dateTime</MyCodeInline> strings</AuHeading>
 <ul>
   <li>'2020-05-14T06:36:05.7540Z'</li>
   <li>'2020-05-14T06:36:05.7540+01:10'</li>
