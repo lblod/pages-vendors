@@ -15,18 +15,20 @@
 <p>
   De endpoint voor deze API kan bereikt worden via
 </p>
-<CodeBlock @code="https://api.loket.lokaalbestuur.vlaanderen.be" />
+<MyCodeBlock>https://api.loket.lokaalbestuur.vlaanderen.be</MyCodeBlock>
 <p>
   Ter volledigheid staat hieronder de volledige lijst aan URL's voor het
   inloggen, sturen van query's en het uitloggen respectievelijk.
 </p>
-<CodeBlock @code="https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login
+<MyCodeBlock>
+https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login
 https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql
-https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout" />
+https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout
+</MyCodeBlock>
 <p>
   <strong>Bekijk zeker de pagina over de <LinkTo
-    @route="docs.vendor-sparql">Vendor SPARQL API</LinkTo> om te leren hoe de
-    SPARQL API werkt!</strong>
+  @route="docs.vendor-sparql">Vendor SPARQL API</LinkTo> om te leren hoe de
+  SPARQL API werkt!</strong>
 </p>
 
 <AuHeading @level="2" @skin="2">Sturen van query's</AuHeading>
@@ -37,7 +39,7 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout" />
   volledige vrijheid van SPARQL. Elk Bericht heeft zijn bijlagen met de nodige
   URL voor het downloaden ervan. Bij het inzenden van een nieuw Bericht (zoals
   beschreven in <LinkTo @route="docs.berichtencentrum">Berichtencentrum
-    API</LinkTo>) wordt er JSON teruggegeven die een URI bevat voor de Job
+  API</LinkTo>) wordt er JSON teruggegeven die een URI bevat voor de Job
   waarin de melding zal worden verwerkt. Deze kan worden gebruikt als onderwerp
   of voorwerp in SPARQL query's om doelgericht informatie op te vragen over de
   verwerking van het nieuwe Bericht.

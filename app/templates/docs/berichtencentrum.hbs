@@ -67,7 +67,7 @@
 <p>
   Het melden van een nieuw bericht gebeurt via een request via
 </p>
-<CodeBlock @code="POST https://api.loket.lokaalbestuur.vlaanderen.be/vendor/berichtencentrum/melding" />
+<MyCodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/vendor/berichtencentrum/melding</MyCodeBlock>
 <p>
   met als JSON-LD request body:
 </p>
@@ -86,7 +86,9 @@
   @route="docs.meldingsplicht">Meldingsplicht API</AuLink>. Een antwoord van
   het endpoint wordt dan, indien de eerste ronde van validatie OK is:
 </p>
-<CodeBlock @code='{ "job": "http://data.lblod.info/id/job/example-uri" }' />
+<MyCodeBlock @language="json">
+{ "job": "http://data.lblod.info/id/job/example-uri" }
+</MyCodeBlock>
 <p>
   Indien er zaken niet in orde zijn, kan u terugvallen op de standaard
   HTTP-codes en error-boodschappen.

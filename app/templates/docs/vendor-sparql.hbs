@@ -35,7 +35,7 @@
   Inloggen gebeurt door middel van een request met authenticatie door middel
   van vendor URI, sleutel en de URI van de organisatie in een JSON-LD body naar
 </p>
-<CodeBlock @code="POST https://<applicatie-host>/vendor/login" />
+<MyCodeBlock>POST https://<applicatie-host>/vendor/login</MyCodeBlock>
 <p>
   De specifieke hostname hangt af van het type van gegevens die benodigd zijn.
   Raadpleeg hiervoor de specifieke documentatie op de pagina's hierboven
@@ -92,7 +92,7 @@
   Eenmaal ingelogd is het mogelijk om SPARQL query's te versturen naar het
   SPARQL endpoint, benaderbaar via
 </p>
-<CodeBlock @code="https://<applicatie-host>/vendor/sparql" />
+<MyCodeBlock>https://<applicatie-host>/vendor/sparql</MyCodeBlock>
 <p>
   Het versturen van query's moet gebeuren via HTTP(S) requests zoals beschreven
   in de <a href="https://www.w3.org/TR/sparql11-protocol/#query-operation"
@@ -154,7 +154,7 @@
   <MyCodeInline>DELETE</MyCodeInline> met de sessie cookie, te sturen naar
 </p>
 <div>
-  <CodeBlock @code="DELETE https://<applicatie-host>/vendor/logout" />
+  <MyCodeBlock>DELETE https://<applicatie-host>/vendor/logout</MyCodeBlock>
 </div>
 <p>
   Het antwoord op deze request is, als uitloggen successvol was, leeg. De HTTP

@@ -13,7 +13,7 @@
 <p>
   Het aanmaken van een nieuwe melding gebeurt via een request naar
 </p>
-<CodeBlock @code="POST https://api.loket.lokaalbestuur.vlaanderen.be/melding" />
+<MyCodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/melding</MyCodeBlock>
 <p>
   met JSON-LD request body:
 </p>
@@ -152,7 +152,7 @@
   voor het formuleren van een aanvraag voor verwijdering dat kan worden
   verzonden op volgende URL:
 </p>
-<CodeBlock @code="POST https://api.loket.lokaalbestuur.vlaanderen.be/delete-melding" />
+<MyCodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/delete-melding</MyCodeBlock>
 <p>
   Volgend codefragment toont de minimale body voor zo'n aanvraag.
 </p>
@@ -255,7 +255,7 @@
   Voor het ontwikkelen en testen van automatische melding is een test endpoint
   ter beschikking gesteld op:
 </p>
-<CodeBlock @code="POST https://api.loket.lblod.info/melding" />
+<MyCodeBlock>POST https://api.loket.lblod.info/melding</MyCodeBlock>
 <p>
   De publisher URI en geheime sleutel voor deze omgeving moeten eerst
   aangevraagd worden zoals beschreven onder 'Authenticatie'. De verwerking van
