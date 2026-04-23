@@ -1,6 +1,11 @@
 <AuHeading @level="1" @skin="1">Annotaties voor automatische melding</AuHeading>
 <p>
-  Lokale besturen publiceren beslissingen die via de Toezicht module in het Loket voor Lokale Besturen gemeld moeten worden. Loket voor Lokale Besturen biedt een API aan waarop publicaties van beslissingen gemeld kunnen worden, waarna ze automatisch geharvest zullen worden en toevoegd worden als nieuwe melding in Loket voor Lokale Besturen. Dit document beschrijft de annotaties die gebruikt worden voor automatische melding.
+  Lokale besturen publiceren beslissingen die via de Toezicht module in het
+  Loket voor Lokale Besturen gemeld moeten worden. Loket voor Lokale Besturen
+  biedt een API aan waarop publicaties van beslissingen gemeld kunnen worden,
+  waarna ze automatisch geharvest zullen worden en toevoegd worden als nieuwe
+  melding in Loket voor Lokale Besturen. Dit document beschrijft de annotaties
+  die gebruikt worden voor automatische melding.
 </p>
 
 <AuHeading @level="2" @skin="2">Gebruikte prefixen</AuHeading>
@@ -94,7 +99,9 @@
 </p>
 <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
 <p>
-  De inzending van een meldingsplichtige publicatie. Een inzending wordt ingestuurd door een (externe) partij en leidt tot een (automatische) verwerking van het gepubliceerde document.
+  De inzending van een meldingsplichtige publicatie. Een inzending wordt
+  ingestuurd door een (externe) partij en leidt tot een (automatische)
+  verwerking van het gepubliceerde document.
 </p>
 <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
 <AuTable>
@@ -504,7 +511,8 @@
 <AuHeading @level="3" @skin="3" id="linken-bestuurseenheid">Linken naar Bestuurseenheid bij sommige Besluittypes</AuHeading>
 
 <p>
-  Bij sommige besluiten is het nodig om te refereren naar een Bestuurseenheid. Hierbij gaat het bijvoorbeeld over de besluiten met volgende types:
+  Bij sommige besluiten is het nodig om te refereren naar een Bestuurseenheid.
+  Hierbij gaat het bijvoorbeeld over de besluiten met volgende types:
 </p>
 <ul>
   <li>Advies jaarrekening</li>
@@ -515,22 +523,32 @@
   <li>Aanvraag desaffectatie presbyteria/kerken</li>
 </ul>
 <p>
-  Om vanuit het Besluit te refereren naar de betreffende Bestuurseenheid via de URI, gebruik het RDF predicaat <CodeInline @code="eli:is_about" />. Zie eveneens bij de bovenstaande tabel onder <ScrollLink @scrollToId="submitted-resource">Submitted Resource</ScrollLink> voor nog meer eigenschappen voor Besluiten.
+  Om vanuit het Besluit te refereren naar de betreffende Bestuurseenheid via de
+  URI, gebruik het RDF predicaat <CodeInline @code="eli:is_about" />. Zie
+  eveneens bij de bovenstaande tabel onder <ScrollLink
+  @scrollToId="submitted-resource">Submitted Resource</ScrollLink> voor nog
+  meer eigenschappen voor Besluiten.
 </p>
 <p>
-  Onderstaande query kan gebruikt worden om gerelateerde Eredienstbestuurseenheden te vinden voor een gegeven Bestuurseenheid. Vervang in onderstaande query de URI voor het Bestuurseenheid met de URI van de betreffende eenheid. Voer deze SPARQL query uit op de <AuLink @route="docs.centrale-vindplaats-sparql">Centrale Vindplaats</AuLink>.
+  Onderstaande query kan gebruikt worden om gerelateerde
+  Eredienstbestuurseenheden te vinden voor een gegeven Bestuurseenheid. Vervang
+  in onderstaande query de URI voor het Bestuurseenheid met de URI van de
+  betreffende eenheid. Voer deze SPARQL query uit op de <AuLink
+  @route="docs.centrale-vindplaats-sparql">Centrale Vindplaats</AuLink>.
 </p>
 <SnippetToggle @snippetFilename="meldingsplicht-annotaties/voorbeeld-verkrijg-bestuurseenheden.sparql" />
 
 <AuHeading @level="4" @skin="4">Voorbeeld</AuHeading>
 <p>
-  Beschouw onderstaand voorbeeld van Besluit waarin wordt verwezen naar een betreffende Bestuurseenheid, direct als eigenschap van het Besluit.
+  Beschouw onderstaand voorbeeld van Besluit waarin wordt verwezen naar een
+  betreffende Bestuurseenheid, direct als eigenschap van het Besluit.
 </p>
 <SnippetToggle @snippetFilename="meldingsplicht-annotaties/voorbeeld-rdfa-met-link-bestuurseenheid.html" />
 
 <AuHeading @level="3" @skin="3">Datetime strings</AuHeading>
 <p>
-  Bij het verwerken van de <CodeInline @code="xsd:dateTime" /> strings wordt het volgende ondersteund: <br />
+  Bij het verwerken van de <CodeInline @code="xsd:dateTime" /> strings wordt
+  het volgende ondersteund: <br />
   Het gaat over een subset van de ISO-8601 specificatie. Het formaat moet zijn
 </p>
 <ul>
@@ -547,5 +565,6 @@
 </ul>
 <AuHeading @level="2" @skin="2">Meldingsplicht API</AuHeading>
 <p>
-  Bekijk de API die vendors kunnen gebruiken om besluiten te melden: <AuLink @route="docs.meldingsplicht">Meldingsplicht API</AuLink>.
+  Bekijk de API die vendors kunnen gebruiken om besluiten te melden: <AuLink
+  @route="docs.meldingsplicht">Meldingsplicht API</AuLink>.
 </p>

@@ -1,7 +1,10 @@
 <AuHeading @skin="1" @level="1">Erediensten Toezichtsdatabank SPARQL API <em>[CONCEPT]</em></AuHeading>
 
 <p>
-  Via deze API is het mogelijk om SPARQL query's uit te voeren op de Toezichtsdatabank voor Erediensten waar besluiten te vinden zijn die naar het Loket zijn gepubliceerd. Deze API is gebaseerd op de <LinkTo @route="docs.vendor-sparql">Vendor SPARQL API</LinkTo>.
+  Via deze API is het mogelijk om SPARQL query's uit te voeren op de
+  Toezichtsdatabank voor Erediensten waar besluiten te vinden zijn die naar het
+  Loket zijn gepubliceerd. Deze API is gebaseerd op de <LinkTo
+  @route="docs.vendor-sparql">Vendor SPARQL API</LinkTo>.
 </p>
 
 <AuHeading @level="2" @skin="2">Verbinden</AuHeading>
@@ -10,74 +13,131 @@
 </p>
 <CodeBlock @code="https://databankerediensten.lokaalbestuur.vlaanderen.be" />
 <p>
-  Ter volledigheid staat hieronder de volledige lijst aan URL's voor het inloggen, sturen van query's en het uitloggen respectievelijk.
+  Ter volledigheid staat hieronder de volledige lijst aan URL's voor het
+  inloggen, sturen van query's en het uitloggen respectievelijk.
 </p>
 <CodeBlock @code="https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/login
 https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/sparql
 https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
 <p>
-  <strong>Bekijk zeker de pagina over de <LinkTo @route="docs.vendor-sparql">Vendor SPARQL API</LinkTo> om te leren hoe de SPARQL API werkt!</strong>
+  <strong>Bekijk zeker de pagina over de <LinkTo @route="docs.vendor-sparql">
+  Vendor SPARQL API</LinkTo> om te leren hoe de SPARQL API werkt!</strong>
 </p>
 
 <AuHeading @level="2" @skin="2">Sturen van query's</AuHeading>
 <p>
-  Op dit endpoint kunnen alle gegevens omtrent inzendingen teruggevonden worden, samen met het ingevulde formulier voor de publicatie in Loket. Deze formuliergegevens zitten in bestanden die via een downloadlink kunnen worden gedownload. Al deze informatie is vrij te ondervragen in deze SPARQL endpoint met de volledige vrijheid van SPARQL voor filteren op datum, URI, regex, &hellip;
+  Op dit endpoint kunnen alle gegevens omtrent inzendingen teruggevonden
+  worden, samen met het ingevulde formulier voor de publicatie in Loket. Deze
+  formuliergegevens zitten in bestanden die via een downloadlink kunnen worden
+  gedownload. Al deze informatie is vrij te ondervragen in deze SPARQL endpoint
+  met de volledige vrijheid van SPARQL voor filteren op datum, URI, regex,
+  &hellip;
 </p>
 
 <AuHeading @level="3" @skin="3">Ontdekken van inzendingen - Voorbeelden</AuHeading>
 <p>
-  Dit eerste eenvoudige voorbeeld geeft een korte lijst van een aantal willekeurige inzendingen (Submissions); een query voor het ontdekken van een aantal URI's die in volgende query's gebruikt kunnen worden.
+  Dit eerste eenvoudige voorbeeld geeft een korte lijst van een aantal
+  willekeurige inzendingen (Submissions); een query voor het ontdekken van een
+  aantal URI's die in volgende query's gebruikt kunnen worden.
 </p>
 <Snippet @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-willekeurige-lijst.sparql" />
 
 <p>
-  In dit volgend voorbeeld wordt er gezocht naar de Submissions in maart van het jaar 2024. Als antwoord wordt een lijst van de URI's en hun creatiedatum gegeven die gesorteerd is op die datum.
+  In dit volgend voorbeeld wordt er gezocht naar de Submissions in maart van
+  het jaar 2024. Als antwoord wordt een lijst van de URI's en hun creatiedatum
+  gegeven die gesorteerd is op die datum.
 </p>
 <Snippet @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-submissions-in-maart.sparql" />
 
 <p>
-  Om te zoeken naar alle Submissions van een bepaald type van publicatie kan inspiratie gehaald worden uit volgend voorbeeld. Dit kan gecombineerd worden met een filter op creatiedatum bijvoorbeeld of met een invulling van de bestuurseenheid om enkel over een bepaalde bestuurseenheid te zoeken.
+  Om te zoeken naar alle Submissions van een bepaald type van publicatie kan
+  inspiratie gehaald worden uit volgend voorbeeld. Dit kan gecombineerd worden
+  met een filter op creatiedatum bijvoorbeeld of met een invulling van de
+  bestuurseenheid om enkel over een bepaalde bestuurseenheid te zoeken.
 </p>
 <Snippet @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-documenttype.sparql" />
 
 <AuHeading @level="3" @skin="3">Opvragen van details - Voorbeelden</AuHeading>
 <p>
-  Om in detail alle informatie over een Submission, de formuliergegevens (FormData) en alle gelinkte bestanden te bekomen kan een query als de onderstaande gebruikt worden.
+  Om in detail alle informatie over een Submission, de formuliergegevens
+  (FormData) en alle gelinkte bestanden te bekomen kan een query als de
+  onderstaande gebruikt worden.
 </p>
 <Snippet @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-construct.sparql" />
 <p>
-  In bovenstaande query wordt gebruik gemaakt van <CodeInline @code="UNION" /> om de performantie van de query te verbeteren. Het gaat over 3 gelinkte entiteiten waarvan alle eigenschappen worden opgevraagd. Buiten de links tussen de entiteiten is er verder geen verband meer en kunnen de eigenschappen onafhankelijk van elkaar opgevraagd worden. Zonder de <CodeInline @code="UNION" /> wordt een gigantisch scalair product opgebouwd in de SPARQL engine. Zodanig dat de query uiteindelijk niet afgewerkt kan worden vanwege geheugen of tijdlimitaties.
+  In bovenstaande query wordt gebruik gemaakt van <CodeInline @code="UNION" />
+  om de performantie van de query te verbeteren. Het gaat over 3 gelinkte
+  entiteiten waarvan alle eigenschappen worden opgevraagd. Buiten de links
+  tussen de entiteiten is er verder geen verband meer en kunnen de
+  eigenschappen onafhankelijk van elkaar opgevraagd worden. Zonder de
+  <CodeInline @code="UNION" /> wordt een gigantisch scalair product opgebouwd
+  in de SPARQL engine. Zodanig dat de query uiteindelijk niet afgewerkt kan
+  worden vanwege geheugen of tijdlimitaties.
 </p>
 
 <p>
-  Om voor een bepaalde Submission een lijst te krijgen van alle gelinkte bestanden van de formuliergegevens, gebruik het onderstaande voorbeeld.
+  Om voor een bepaalde Submission een lijst te krijgen van alle gelinkte
+  bestanden van de formuliergegevens, gebruik het onderstaande voorbeeld.
 </p>
 <Snippet @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-downloadlink.sparql" />
 <p>
-  Met deze downloadlinks kan het bestand gedownload worden door middel van simpele HTTP requests. Houdt rekening dat dezelfde authenticatie moet gebruikt worden als voor de toegang tot deze SPARQL API.
+  Met deze downloadlinks kan het bestand gedownload worden door middel van
+  simpele HTTP requests. Houdt rekening dat dezelfde authenticatie moet
+  gebruikt worden als voor de toegang tot deze SPARQL API.
 </p>
 
 <AuHeading @level="4" @skin="4">Bijlage ophalen van inzending</AuHeading>
 <p>
-  De bijlage van een inzending kan eveneens worden opgehaald. Aangezien bijlagen niet via SPARQL worden teruggegeven, is er een extra stap nodig. In het volgende script, na het inloggen, halen we eerst de relevante metadata van de bijlage op, inclusief de downloadlink. Vervolgens wordt het bestand gedownload met behulp van <CodeInline @code="curl" />. Dit script geldt als voorbeeld en moet worden aangepast naar individuele noden. Er is bijvoorbeeld nog geen URI van Submission in de query. Dit voorbeeldscript vindt dus het eerste willekeurige downloadbare bestand.
+  De bijlage van een inzending kan eveneens worden opgehaald. Aangezien
+  bijlagen niet via SPARQL worden teruggegeven, is er een extra stap nodig. In
+  het volgende script, na het inloggen, halen we eerst de relevante metadata
+  van de bijlage op, inclusief de downloadlink. Vervolgens wordt het bestand
+  gedownload met behulp van <CodeInline @code="curl" />. Dit script geldt als
+  voorbeeld en moet worden aangepast naar individuele noden. Er is bijvoorbeeld
+  nog geen URI van Submission in de query. Dit voorbeeldscript vindt dus het
+  eerste willekeurige downloadbare bestand.
 </p>
 <SnippetToggle @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-melding-download-bijlage.sh" />
 
 <AuHeading @level="3" @skin="3">Details over gelinkte inzendingen - Voorbeelden</AuHeading>
 <p>
-  Inzendingen kunnen elkaar refereren, bijvoorbeeld een besluit dat een ander besluit goedkeurt. Dit kan op twee manieren gebeuren. Een gemeente- of provinciebestuur gebruikt een tussenliggende entiteit <CodeInline @code="besluit:Artikel" /> als deel van het <CodeInline @code="ext:SubmissionsDocument" />. Een Centraal Bestuur van de erediensten of ander representatief orgaan gebruikt in plaats daarvan een relatie <CodeInline @code="dct:relation" /> op de <CodeInline @code="am:FormData" /> rechtstreeks naar het gerefereerde <CodeInline @code="ext:SubmissionsDocument" />.
+  Inzendingen kunnen elkaar refereren, bijvoorbeeld een besluit dat een ander
+  besluit goedkeurt. Dit kan op twee manieren gebeuren. Een gemeente- of
+  provinciebestuur gebruikt een tussenliggende entiteit <CodeInline
+  @code="besluit:Artikel" /> als deel van het <CodeInline
+  @code="ext:SubmissionsDocument" />. Een Centraal Bestuur van de erediensten
+  of ander representatief orgaan gebruikt in plaats daarvan een relatie
+  <CodeInline @code="dct:relation" /> op de <CodeInline @code="am:FormData" />
+  rechtstreeks naar het gerefereerde <CodeInline
+  @code="ext:SubmissionsDocument" />.
 </p>
 <p>
-  <strong>Noteer: het is enkel mogelijk om gedetailleerde informatie op te vragen van gerefereerd Submissions en hun gerelateerde eigenschappen als query's worden uitgevoerd met geldige authenticatie voor de bestuurseenheid waarvan een besluit wordt gerefereerd.</strong>
+  <strong>Noteer: het is enkel mogelijk om gedetailleerde informatie op te
+  vragen van gerefereerd Submissions en hun gerelateerde eigenschappen als
+  query's worden uitgevoerd met geldige authenticatie voor de bestuurseenheid
+  waarvan een besluit wordt gerefereerd.</strong>
 </p>
 <p>
-  Stel dat een eredienstbestuur &ldquo;Kerkfabriek St.-Lambertus van Grobbendonk&rdquo; een besluit heeft gepubliceerd, en dat de gemeente Grobbendonk een goedkeuring publiceert op dat besluit en betreffende besluit refereert. Volgende query stelt voor de gegeven Submission van de gemeente een lijst op van de gerefereerde besluiten. Natuurlijk is deze query volledig zelf aan te passen. Het samenklapbaar voorbeeld eronder geeft ook nog de bestuurseenheid waarvoor elke Submission is ingezonden.
+  Stel dat een eredienstbestuur &ldquo;Kerkfabriek St.-Lambertus van
+  Grobbendonk&rdquo; een besluit heeft gepubliceerd, en dat de gemeente
+  Grobbendonk een goedkeuring publiceert op dat besluit en betreffende besluit
+  refereert. Volgende query stelt voor de gegeven Submission van de gemeente
+  een lijst op van de gerefereerde besluiten. Natuurlijk is deze query volledig
+  zelf aan te passen. Het samenklapbaar voorbeeld eronder geeft ook nog de
+  bestuurseenheid waarvoor elke Submission is ingezonden.
 </p>
 <Snippet @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-gelinkte-documenten-gemeente.sparql" />
 <SnippetToggle @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-gelinkte-documenten-gemeente-extra.sparql" />
 
 <p>
-  Het volgend voorbeeld demonstreert hetzelfde principe als het vorige, maar in een scenario met een tussenliggend Centraal Bestuur. Stel dat een eredienstbestuur &ldquo;Kerkfabriek St.-Lambertus van Grobbendonk&rdquo; een besluit heeft gepubliceerd, dan kan het &ldquo;Centraal bestuur van de eredienst Grobbendonk&rdquo; een advies hierover publiceren, dat op zijn beurt door gemeente Grobbendonk kan worden gerefereerd in bijvoorbeeld een goedkeuring. Onderstaande query geeft deze ketting van refereren weer vertrekkend vanuit de Submission van de gemeente.
+  Het volgend voorbeeld demonstreert hetzelfde principe als het vorige, maar in
+  een scenario met een tussenliggend Centraal Bestuur. Stel dat een
+  eredienstbestuur &ldquo;Kerkfabriek St.-Lambertus van Grobbendonk&rdquo; een
+  besluit heeft gepubliceerd, dan kan het &ldquo;Centraal bestuur van de
+  eredienst Grobbendonk&rdquo; een advies hierover publiceren, dat op zijn
+  beurt door gemeente Grobbendonk kan worden gerefereerd in bijvoorbeeld een
+  goedkeuring. Onderstaande query geeft deze ketting van refereren weer
+  vertrekkend vanuit de Submission van de gemeente.
 </p>
 <Snippet @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-gelinkte-documenten-CKB.sparql" />
 <SnippetToggle @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-gelinkte-documenten-CKB-extra.sparql" />
@@ -87,7 +147,9 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
 <a class="block au-u-text-right" href="assets/diagrams/erediensten-toezichtsdatabank-sparql.svg">
   <figure>
     <img itemprop="thumbnail" src="assets/diagrams/erediensten-toezichtsdatabank-sparql.svg" alt="Diagram van beschikbare gegevens" />
-    <figcaption>Diagram van Linked Data van beschikbare gegevens in het endpoint</figcaption>
+    <figcaption>
+      Diagram van Linked Data van beschikbare gegevens in het endpoint
+    </figcaption>
   </figure>
 </a>
 
@@ -256,7 +318,9 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
 
 <AuHeading @level="3" @skin="3"><CodeInline @code="ext:SubmissionDocument" /></AuHeading>
 <p>
-  Deze entiteit bestaat altijd, maar wordt alleen maar in de Vendor API beschikbaar gemaakt als het document verwijst naar andere documenten. Het refereert in feite naar het ingezonden document.
+  Deze entiteit bestaat altijd, maar wordt alleen maar in de Vendor API
+  beschikbaar gemaakt als het document verwijst naar andere documenten. Het
+  refereert in feite naar het ingezonden document.
 </p>
 <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
 <AuTable>
@@ -280,7 +344,9 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
 
 <AuHeading @level="3" @skin="3"><CodeInline @code="besluit:Artikel" /></AuHeading>
 <p>
-  Deze entiteit bestaat alleen maar als het document verwijst naar andere documenten en staat in voor deze verwijzing. Komt alleen voor bij refereren naar artikels van een eredienstbestuur.
+  Deze entiteit bestaat alleen maar als het document verwijst naar andere
+  documenten en staat in voor deze verwijzing. Komt alleen voor bij refereren
+  naar artikels van een eredienstbestuur.
 </p>
 <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
 <AuTable>
@@ -310,7 +376,8 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
 
 <AuHeading @level="3" @skin="3"><CodeInline @code="am:FormData" /></AuHeading>
 <p>
-  Deze entiteit bevat de gegevens over het ingevulde formulier gelinkt aan de inzending.
+  Deze entiteit bevat de gegevens over het ingevulde formulier gelinkt aan de
+  inzending.
 </p>
 <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
 <AuTable>
@@ -370,7 +437,8 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout" />
 
 <AuHeading @level="3" @skin="3"><CodeInline @code="nfo:FileDataObject" />, <CodeInline @code="nfo:RemoteDataObject" /></AuHeading>
 <p>
-  Deze twee klassen worden vaak samen gebruikt op dezelfde entiteit. Deze beschrijven bestanden als bijlagen gelinkt aan de Submission en FormData.
+  Deze twee klassen worden vaak samen gebruikt op dezelfde entiteit. Deze
+  beschrijven bestanden als bijlagen gelinkt aan de Submission en FormData.
 </p>
 <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
 <AuTable>
