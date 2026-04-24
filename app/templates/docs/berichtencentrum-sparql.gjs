@@ -16,10 +16,10 @@ import SnippetToggle from '../../components/snippet-toggle';
   <p>
     Met deze API is het mogelijk om rechtstreeks SPARQL query's uit te voeren om
     Berichten en Conversaties uit te lezen van Loket. ABB is de enige die een
-    Conversatie kan initi&euml;ren. Hierop kunnen dan antwoorden gevormd worden en
-    ingezonden via de
-    <LinkTo @route="docs.berichtencentrum">Berichtencentrum API</LinkTo>. Deze API
-    is gebaseerd op de
+    Conversatie kan initi&euml;ren. Hierop kunnen dan antwoorden gevormd worden
+    en ingezonden via de
+    <LinkTo @route="docs.berichtencentrum">Berichtencentrum API</LinkTo>. Deze
+    API is gebaseerd op de
     <LinkTo @route="docs.vendor-sparql">Vendor SPARQL API</LinkTo>.
   </p>
 
@@ -44,24 +44,24 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
   <AuHeading @level="2" @skin="2">Sturen van query's</AuHeading>
   <p>
     Het soort query's die door deze API kan beantwoord worden kan sterk
-    vari&euml;ren. Het is mogelijk om alle Conversaties en Berichten uit te lezen
-    die op de bestuurseenheid van toepassing zijn en om daarop te filteren met de
-    volledige vrijheid van SPARQL. Elk Bericht heeft zijn bijlagen met de nodige
-    URL voor het downloaden ervan. Bij het inzenden van een nieuw Bericht (zoals
-    beschreven in
-    <LinkTo @route="docs.berichtencentrum">Berichtencentrum API</LinkTo>) wordt er
-    JSON teruggegeven die een URI bevat voor de Job waarin de melding zal worden
-    verwerkt. Deze kan worden gebruikt als onderwerp of voorwerp in SPARQL query's
-    om doelgericht informatie op te vragen over de verwerking van het nieuwe
-    Bericht.
+    vari&euml;ren. Het is mogelijk om alle Conversaties en Berichten uit te
+    lezen die op de bestuurseenheid van toepassing zijn en om daarop te filteren
+    met de volledige vrijheid van SPARQL. Elk Bericht heeft zijn bijlagen met de
+    nodige URL voor het downloaden ervan. Bij het inzenden van een nieuw Bericht
+    (zoals beschreven in
+    <LinkTo @route="docs.berichtencentrum">Berichtencentrum API</LinkTo>) wordt
+    er JSON teruggegeven die een URI bevat voor de Job waarin de melding zal
+    worden verwerkt. Deze kan worden gebruikt als onderwerp of voorwerp in
+    SPARQL query's om doelgericht informatie op te vragen over de verwerking van
+    het nieuwe Bericht.
   </p>
 
   <AuHeading @level="3" @skin="3">Voorbeelden</AuHeading>
   <AuHeading @level="4" @skin="4">Opvragen berichten ABB</AuHeading>
   <p>
     De onderstaande SPARQL query toont hoe verzonden berichten van ABB naar een
-    specifiek bestuur die recenter zijn dan een specifieke datum opgevraagd kunnen
-    worden. Voor elk bericht halen we ook de (optionele) URL('s) naar de
+    specifiek bestuur die recenter zijn dan een specifieke datum opgevraagd
+    kunnen worden. Voor elk bericht halen we ook de (optionele) URL('s) naar de
     bijlage(n) op. Noteer dat de URI van ABB de volgende is:
     <MyCodeInline
     >http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b</MyCodeInline>
@@ -73,10 +73,10 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
   <AuHeading @level="4" @skin="4">Opvolgen van de ingestuurde melding</AuHeading>
   <p>
     De onderstaande SPARQL query toont hoe u de status van de aangemaakt Job kan
-    opvolgen. Noteer: gegeven de verwerking van een melding een asynchroon proces
-    is kan het even duren alvorens informatie over de Job beschikbaar is. Het
-    staat wel vast dat de informatie ooit beschikbaar wordt. Na de melding kan er
-    dus al gerust opgevraagd worden.
+    opvolgen. Noteer: gegeven de verwerking van een melding een asynchroon
+    proces is kan het even duren alvorens informatie over de Job beschikbaar is.
+    Het staat wel vast dat de informatie ooit beschikbaar wordt. Na de melding
+    kan er dus al gerust opgevraagd worden.
   </p>
   <SnippetToggle
     @snippetFilename="berichtencentrum-sparql/voorbeeld-job-status.sparql"
@@ -84,9 +84,9 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
 
   <AuHeading @level="4" @skin="4">Script voor opvolgen melding</AuHeading>
   <p>
-    Het volgend voorbeeld is een Bash script dat een sequentie van calls uitvoert
-    om een melding op te volgen. Noteer: het gaat om een zeer na&iuml;eve
-    interpretatie, zeker niet aan te raden in productie.
+    Het volgend voorbeeld is een Bash script dat een sequentie van calls
+    uitvoert om een melding op te volgen. Noteer: het gaat om een zeer
+    na&iuml;eve interpretatie, zeker niet aan te raden in productie.
   </p>
   <SnippetToggle
     @snippetFilename="berichtencentrum-sparql/voorbeeld-melding-opvolgen.sh"
@@ -95,10 +95,10 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
   <AuHeading @level="4" @skin="4">Script voor downloaden bijlage</AuHeading>
   <p>
     Het volgend voorbeeld illustreert een sequentie van calls om een bijlage te
-    ontdekken en te downloaden. Noteer: Het ontdekken van de bijlagen kan hier op
-    vele manieren, en veel effici&euml;nter met andere SPARQL query's. Noteer nog
-    steeds: het gaat om een zeer na&iuml;eve interpretatie, zeker niet aan te
-    raden in productie.
+    ontdekken en te downloaden. Noteer: Het ontdekken van de bijlagen kan hier
+    op vele manieren, en veel effici&euml;nter met andere SPARQL query's. Noteer
+    nog steeds: het gaat om een zeer na&iuml;eve interpretatie, zeker niet aan
+    te raden in productie.
   </p>
   <SnippetToggle
     @snippetFilename="berichtencentrum-sparql/voorbeeld-bijlage-downloaden.sh"
@@ -278,15 +278,15 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
         <td>
           Een string die samenvat wat de type communicatie is.
           <br />
-          Voorbeelden hiervan zijn &ldquo;Kennisgeving toezichtsbeslissing&rdquo;
-          of &ldquo;Opvraging&rdquo;
+          Voorbeelden hiervan zijn &ldquo;Kennisgeving
+          toezichtsbeslissing&rdquo; of &ldquo;Opvraging&rdquo;
           <br />
           Noteer hierbij dat het bestuur dit veld
           <em>niet</em>
           hoeft te publiceren.
           <br />
-          Alle berichten die binnenkomen vanuit een bestuur zullen automatisch het
-          label &ldquo;Reactie&rdquo; krijgen.
+          Alle berichten die binnenkomen vanuit een bestuur zullen automatisch
+          het label &ldquo;Reactie&rdquo; krijgen.
         </td>
       </tr>
       <tr>
@@ -328,7 +328,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
         <td>
           De tekst of inhoud van het bericht.
           <br />
-          Dit veld kan opgemaakte tekst bevatten, dit wordt doorgegeven als HTML.
+          Dit veld kan opgemaakte tekst bevatten, dit wordt doorgegeven als
+          HTML.
         </td>
       </tr>
       <tr>
@@ -337,8 +338,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
         <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
         <td>
           Datum en tijd waarop het bericht is verzonden.<br />
-          In de praktijk, wanneer de gebruiker op &ldquo;Versturen&rdquo; geklikt
-          heeft.<br />
+          In de praktijk, wanneer de gebruiker op &ldquo;Versturen&rdquo;
+          geklikt heeft.<br />
           Dit is niet de datum van ontvangest bij ABB.<br />
           (Verdere discussie zal nodig zijn om uit te klaren welke timestamp
           rechtsgeldig is voor de termijnen)
@@ -401,7 +402,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
             href="https://github.com/lblod/download-url-service#file-download-statuses"
           >hier</AuLinkExternal>
           <br />
-          Noteer: deze property wordt genegeerd indien het bestuur dit publiceert.
+          Noteer: deze property wordt genegeerd indien het bestuur dit
+          publiceert.
         </td>
       </tr>
     </:body>
@@ -410,8 +412,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
   <AuHeading @level="3" @skin="3"><MyCodeInline
     >cogs:Job</MyCodeInline></AuHeading>
   <p>
-    Job. Een instantie van deze klasse houdt bij wat de status van de ingestuurde
-    melding is.
+    Job. Een instantie van deze klasse houdt bij wat de status van de
+    ingestuurde melding is.
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
   <AuTable>

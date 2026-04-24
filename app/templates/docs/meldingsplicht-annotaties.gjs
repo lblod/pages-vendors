@@ -201,8 +201,8 @@ import ScrollLink from '../../components/scroll-link';
         <td>key</td>
         <td><MyCodeInline>muAccount:key</MyCodeInline></td>
         <td><MyCodeInline>xsd:string</MyCodeInline></td>
-        <td>Sleutel waarmee geverifieerd kan worden of de agent een inzending mag
-          insturen in naam van een andere organizatie.</td>
+        <td>Sleutel waarmee geverifieerd kan worden of de agent een inzending
+          mag insturen in naam van een andere organizatie.</td>
       </tr>
       <tr>
         <td>canActOnBehalfOf</td>
@@ -321,8 +321,8 @@ import ScrollLink from '../../components/scroll-link';
         <td>hasAdditionalTaxRate</td>
         <td><MyCodeInline>lblodBesluit:hasAdditionalTaxRate</MyCodeInline></td>
         <td><MyCodeInline>xsd:boolean</MyCodeInline></td>
-        <td>Duidt aan of er nog bijkomende aanslagvoeten zijn dan deze beschreven
-          in de beslissing.</td>
+        <td>Duidt aan of er nog bijkomende aanslagvoeten zijn dan deze
+          beschreven in de beslissing.</td>
       </tr>
       <tr>
         <td>description</td>
@@ -580,8 +580,8 @@ import ScrollLink from '../../components/scroll-link';
     <li>Aanvraag desaffectatie presbyteria/kerken</li>
   </ul>
   <p>
-    Om vanuit het Besluit te refereren naar de betreffende Bestuurseenheid via de
-    URI, gebruik het RDF predicaat
+    Om vanuit het Besluit te refereren naar de betreffende Bestuurseenheid via
+    de URI, gebruik het RDF predicaat
     <MyCodeInline>eli:is_about</MyCodeInline>. Zie eveneens bij de bovenstaande
     tabel onder
     <ScrollLink @scrollToId="submitted-resource">Submitted Resource</ScrollLink>
@@ -589,9 +589,9 @@ import ScrollLink from '../../components/scroll-link';
   </p>
   <p>
     Onderstaande query kan gebruikt worden om gerelateerde
-    Eredienstbestuurseenheden te vinden voor een gegeven Bestuurseenheid. Vervang
-    in onderstaande query de URI voor het Bestuurseenheid met de URI van de
-    betreffende eenheid. Voer deze SPARQL query uit op de
+    Eredienstbestuurseenheden te vinden voor een gegeven Bestuurseenheid.
+    Vervang in onderstaande query de URI voor het Bestuurseenheid met de URI van
+    de betreffende eenheid. Voer deze SPARQL query uit op de
     <AuLink @route="docs.centrale-vindplaats-sparql">Centrale Vindplaats</AuLink>.
   </p>
   <SnippetToggle

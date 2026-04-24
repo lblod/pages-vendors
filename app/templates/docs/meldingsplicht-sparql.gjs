@@ -13,17 +13,18 @@ import ScrollLink from '../../components/scroll-link';
 
   <p>
     Met deze API is het mogelijk om rechtstreeks SPARQL query's uit te voeren
-    tegen een gereduceerde dataset waar nuttige informatie terug te vinden is over
-    de toestand van eerder ingestuurde meldingen. Deze API is gebaseerd op de
-    <LinkTo @route="docs.vendor-sparql">Vendor SPARQL API</LinkTo>. Bekijk ook de
-    pagina over de
+    tegen een gereduceerde dataset waar nuttige informatie terug te vinden is
+    over de toestand van eerder ingestuurde meldingen. Deze API is gebaseerd op
+    de
+    <LinkTo @route="docs.vendor-sparql">Vendor SPARQL API</LinkTo>. Bekijk ook
+    de pagina over de
     <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>
     voor het insturen van meldingen.
   </p>
   <p>
     <strong>Het soort beschikbare gegevens is nog sterk onderhevig aan
-      veranderingen. Vertrouw voorlopig (bij het schrijven in 11/2022) nog niet te
-      veel op het soort gegevens en de structuur ervan.</strong>
+      veranderingen. Vertrouw voorlopig (bij het schrijven in 11/2022) nog niet
+      te veel op het soort gegevens en de structuur ervan.</strong>
   </p>
 
   <AuHeading @level="2" @skin="2">Verbinden</AuHeading>
@@ -64,11 +65,13 @@ import ScrollLink from '../../components/scroll-link';
 
   <AuHeading @level="4" @skin="4">Oplijsten meldingen</AuHeading>
   <p>
-    Met dit eerste voorbeeld worden er 100 eerder verrichtte meldingen opgevraagd.
-    Met de verkregen URI's kan men query's gelijk die in volgende voorbeelden
-    opstellen.
+    Met dit eerste voorbeeld worden er 100 eerder verrichtte meldingen
+    opgevraagd. Met de verkregen URI's kan men query's gelijk die in volgende
+    voorbeelden opstellen.
   </p>
-  <Snippet @snippetFilename="meldingsplicht-sparql/meldingen-eerste-100.sparql" />
+  <Snippet
+    @snippetFilename="meldingsplicht-sparql/meldingen-eerste-100.sparql"
+  />
 
   <AuHeading @level="4" @skin="4">Status via Submission URI</AuHeading>
   <p>
@@ -88,8 +91,8 @@ import ScrollLink from '../../components/scroll-link';
   <p>
     <strong>Noteer:</strong>
     de status voor een inzending kan &ldquo;verzonden&rdquo; of
-    &ldquo;concept&rdquo; zijn. Een inzending in &ldquo;concept&rdquo; vereist nog
-    manuele interventie door onvolledigheid van het document alvorens het
+    &ldquo;concept&rdquo; zijn. Een inzending in &ldquo;concept&rdquo; vereist
+    nog manuele interventie door onvolledigheid van het document alvorens het
     officieel kan worden ingediend, waarna het de status &ldquo;verzonden&rdquo;
     krijgt. Indien er ingestuurd werd met status &ldquo;verzonden&rdquo; en de
     status blijft hangen op &ldquo;concept&rdquo;, is er hoogst waarschijnlijk
@@ -104,8 +107,8 @@ import ScrollLink from '../../components/scroll-link';
   <AuHeading @level="4" @skin="4">Status via document URI</AuHeading>
   <p>
     De status opvragen van een Submission kan eveneens via de document URI. Deze
-    URI werd door de vendor meegegeven als URI van het werkelijke RDF document in
-    de HTML pagina die ter beschikking werd gesteld. Deze URI wordt
+    URI werd door de vendor meegegeven als URI van het werkelijke RDF document
+    in de HTML pagina die ter beschikking werd gesteld. Deze URI wordt
     <MyCodeInline>submittedResource</MyCodeInline>
     genoemd bij de melding in
     <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>.
@@ -126,13 +129,13 @@ import ScrollLink from '../../components/scroll-link';
     @snippetFilename="meldingsplicht-sparql/voorbeeld-melding-status-href.sparql"
   />
   <p>
-    <strong>Pas op: deze methode van opvragen van informatie over de Submission is
-      niet ideaal!</strong>
-    Het is mogelijk dat er meerdere RDF documenten verwerkt staan in dezelfde HTML
-    pagina. Bijgevolg kunnen er dus meerdere Submissions worden aangemaakt voor
-    dezelfde URL, steeds met een verschillende document URI. In dat geval zal je
-    bij het opvragen van informatie over de Submissions dus een combinatie zien
-    van de gegevens van alle Submissions op die HTML pagina.
+    <strong>Pas op: deze methode van opvragen van informatie over de Submission
+      is niet ideaal!</strong>
+    Het is mogelijk dat er meerdere RDF documenten verwerkt staan in dezelfde
+    HTML pagina. Bijgevolg kunnen er dus meerdere Submissions worden aangemaakt
+    voor dezelfde URL, steeds met een verschillende document URI. In dat geval
+    zal je bij het opvragen van informatie over de Submissions dus een
+    combinatie zien van de gegevens van alle Submissions op die HTML pagina.
   </p>
 
   <AuHeading @level="2" @skin="2">Diagram van beschikbare data</AuHeading>
@@ -168,111 +171,112 @@ import ScrollLink from '../../components/scroll-link';
       <tr>
         <td><MyCodeInline>rdf:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-        >http://www.w3.org/1999/02/22-rdf-syntax-ns#</AuLinkExternal></td>
+            href="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+          >http://www.w3.org/1999/02/22-rdf-syntax-ns#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>xsd:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.w3.org/2001/XMLSchema#"
-        >http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
+            href="http://www.w3.org/2001/XMLSchema#"
+          >http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>meb:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://rdf.myexperiment.org/ontologies/base/"
-        >http://rdf.myexperiment.org/ontologies/base/</AuLinkExternal></td>
+            href="http://rdf.myexperiment.org/ontologies/base/"
+          >http://rdf.myexperiment.org/ontologies/base/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>mu:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://mu.semte.ch/vocabularies/core/"
-        >http://mu.semte.ch/vocabularies/core/</AuLinkExternal></td>
+            href="http://mu.semte.ch/vocabularies/core/"
+          >http://mu.semte.ch/vocabularies/core/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>prov:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.w3.org/ns/prov#"
-        >http://www.w3.org/ns/prov#</AuLinkExternal></td>
+            href="http://www.w3.org/ns/prov#"
+          >http://www.w3.org/ns/prov#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>dct:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://purl.org/dc/terms/"
-        >http://purl.org/dc/terms/</AuLinkExternal></td>
+            href="http://purl.org/dc/terms/"
+          >http://purl.org/dc/terms/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>adms:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.w3.org/ns/adms#"
-        >http://www.w3.org/ns/adms#</AuLinkExternal></td>
+            href="http://www.w3.org/ns/adms#"
+          >http://www.w3.org/ns/adms#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>pav:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://purl.org/pav/"
-        >http://purl.org/pav/</AuLinkExternal></td>
+            href="http://purl.org/pav/"
+          >http://purl.org/pav/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>nie:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#"
-        >http://www.semanticdesktop.org/ontologies/2007/01/19/nie#</AuLinkExternal></td>
+            href="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#"
+          >http://www.semanticdesktop.org/ontologies/2007/01/19/nie#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>nfo:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#"
-        >http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</AuLinkExternal></td>
+            href="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#"
+          >http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>nmo:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#"
-        >http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#</AuLinkExternal></td>
+            href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#"
+          >http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>ext:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://mu.semte.ch/vocabularies/ext/"
-        >http://mu.semte.ch/vocabularies/ext/</AuLinkExternal></td>
+            href="http://mu.semte.ch/vocabularies/ext/"
+          >http://mu.semte.ch/vocabularies/ext/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>am:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://lblod.data.gift/vocabularies/automatische-melding/"
-        >http://lblod.data.gift/vocabularies/automatische-melding/</AuLinkExternal></td>
+            href="http://lblod.data.gift/vocabularies/automatische-melding/"
+          >http://lblod.data.gift/vocabularies/automatische-melding/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>sec:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://lblod.data.gift/vocabularies/security/"
-        >http://lblod.data.gift/vocabularies/security/</AuLinkExternal></td>
+            href="http://lblod.data.gift/vocabularies/security/"
+          >http://lblod.data.gift/vocabularies/security/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>besluit:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://data.vlaanderen.be/ns/besluit#"
-        >http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
+            href="http://data.vlaanderen.be/ns/besluit#"
+          >http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>foaf:</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://xmlns.com/foaf/0.1/"
-        >http://xmlns.com/foaf/0.1/</AuLinkExternal></td>
+            href="http://xmlns.com/foaf/0.1/"
+          >http://xmlns.com/foaf/0.1/</AuLinkExternal></td>
       </tr>
     </:body>
   </AuTable>
 
   <AuHeading @level="3" @skin="3"><MyCodeInline
-  >meb:Submission</MyCodeInline></AuHeading>
+    >meb:Submission</MyCodeInline></AuHeading>
   <p>
     Een Submission is de inzending voor een document; de zogezegde
     &ldquo;gebeurtenis&rdquo; van het inzenden van dat document. Hier kan
-    bijvoorbeeld de status van het inzendingsproces en het tijdstip van inzending
-    worden teuggevonden. Onderstaande eigenschappen zijn niet de enige die terug
-    te vinden zijn, maar zijn de meest belangrijke. Overige eigenschappen zijn
-    mogelijk niet altijd beschikbaar, gebruik met voorzichtigheid.
+    bijvoorbeeld de status van het inzendingsproces en het tijdstip van
+    inzending worden teuggevonden. Onderstaande eigenschappen zijn niet de enige
+    die terug te vinden zijn, maar zijn de meest belangrijke. Overige
+    eigenschappen zijn mogelijk niet altijd beschikbaar, gebruik met
+    voorzichtigheid.
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
   <AuTable>
@@ -309,7 +313,8 @@ import ScrollLink from '../../components/scroll-link';
         <td>Verzonden op</td>
         <td><MyCodeInline>nmo:sentDate</MyCodeInline></td>
         <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
-        <td>Tijdstip waarop de inzending succesvol werd verzonden naar het Loket.</td>
+        <td>Tijdstip waarop de inzending succesvol werd verzonden naar het
+          Loket.</td>
       </tr>
       <tr>
         <td>Ingezonden door</td>
@@ -334,7 +339,8 @@ import ScrollLink from '../../components/scroll-link';
         <td><MyCodeInline>prov:generated</MyCodeInline></td>
         <td><MyCodeInline>am:FormData</MyCodeInline></td>
         <td>Formuliergegevens die werden gegenereerd op basis van de inzending.
-          Indien volledig wordt dit dossier automatisch verzonden naar het Loket.</td>
+          Indien volledig wordt dit dossier automatisch verzonden naar het
+          Loket.</td>
       </tr>
       <tr>
         <td>Document ter onderwerp</td>
@@ -365,8 +371,8 @@ import ScrollLink from '../../components/scroll-link';
     @skin="2"
   >Documentstatussen inzendingen</AuHeading>
   <p>
-    Onderstaande tabel verduidelijkt de URI's die worden gebruikt om de status van
-    een ingezonden document aan te duiden.
+    Onderstaande tabel verduidelijkt de URI's die worden gebruikt om de status
+    van een ingezonden document aan te duiden.
   </p>
   <AuTable @size="default">
     <:header>
@@ -378,17 +384,17 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td><MyCodeInline
-        >http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd</MyCodeInline></td>
+          >http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd</MyCodeInline></td>
         <td>Concept</td>
       </tr>
       <tr>
         <td><MyCodeInline
-        >http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c</MyCodeInline></td>
+          >http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c</MyCodeInline></td>
         <td>Verzonden</td>
       </tr>
       <tr>
         <td><MyCodeInline
-        >http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff</MyCodeInline></td>
+          >http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff</MyCodeInline></td>
         <td>Inzendbaar</td>
       </tr>
     </:body>

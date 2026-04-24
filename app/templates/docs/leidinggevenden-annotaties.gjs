@@ -6,17 +6,21 @@ import MyCodeInline from '../../components/my-code-inline';
 <template>
   <AuHeading @level="1" @skin="1">Leidinggevendendatabank</AuHeading>
   <p>
-    De leidinggevenden databank bevat de leidinggevenden van de lokale besturen en
-    hun verzelfstandigde entiteiten. Deze databank volgt een uitbreiding op het
-    applicatieprofiel
+    De leidinggevenden databank bevat de leidinggevenden van de lokale besturen
+    en hun verzelfstandigde entiteiten. Deze databank volgt een uitbreiding op
+    het applicatieprofiel
     <AuLinkExternal
       href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/"
     >
-      mandatendatabank</AuLinkExternal>. Dit document beschrijft deze uitbreiding.
+      mandatendatabank</AuLinkExternal>. Dit document beschrijft deze
+    uitbreiding.
   </p>
 
   <AuHeading @level="2" @skin="2">Overzicht</AuHeading>
-  <img src="assets/images/leidinggevenden.jpg" alt="leidinggevend UML diagram" />
+  <img
+    src="assets/images/leidinggevenden.jpg"
+    alt="leidinggevend UML diagram"
+  />
 
   <AuHeading @level="2" @skin="2">Gebruikte prefixen</AuHeading>
   <AuTable>
@@ -30,62 +34,62 @@ import MyCodeInline from '../../components/my-code-inline';
       <tr>
         <td><MyCodeInline>adres</MyCodeInline></td>
         <td><AuLinkExternal
-          href="https://data.vlaanderen.be/ns/adres#"
-        >https://data.vlaanderen.be/ns/adres#</AuLinkExternal></td>
+            href="https://data.vlaanderen.be/ns/adres#"
+          >https://data.vlaanderen.be/ns/adres#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>foaf</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://xmlns.com/foaf/0.1/"
-        >http://xmlns.com/foaf/0.1/</AuLinkExternal></td>
+            href="http://xmlns.com/foaf/0.1/"
+          >http://xmlns.com/foaf/0.1/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>lblodlg</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://data.lblod.info/vocabularies/leidinggevenden/"
-        >http://data.lblod.info/vocabularies/leidinggevenden/</AuLinkExternal></td>
+            href="http://data.lblod.info/vocabularies/leidinggevenden/"
+          >http://data.lblod.info/vocabularies/leidinggevenden/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>locn</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.w3.org/ns/locn#"
-        >http://www.w3.org/ns/locn#</AuLinkExternal></td>
+            href="http://www.w3.org/ns/locn#"
+          >http://www.w3.org/ns/locn#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>mandaat</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://data.vlaanderen.be/ns/mandaat#"
-        >http://data.vlaanderen.be/ns/mandaat#</AuLinkExternal></td>
+            href="http://data.vlaanderen.be/ns/mandaat#"
+          >http://data.vlaanderen.be/ns/mandaat#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>person</MyCodeInline></td>
         <td><AuLinkExternal
-          href="https://data.vlaanderen.be/ns/persoon#"
-        >https://data.vlaanderen.be/ns/persoon#</AuLinkExternal></td>
+            href="https://data.vlaanderen.be/ns/persoon#"
+          >https://data.vlaanderen.be/ns/persoon#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>persoon</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.w3.org/ns/person#"
-        >http://www.w3.org/ns/person#</AuLinkExternal></td>
+            href="http://www.w3.org/ns/person#"
+          >http://www.w3.org/ns/person#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>org</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.w3.org/ns/org#"
-        >http://www.w3.org/ns/org#</AuLinkExternal></td>
+            href="http://www.w3.org/ns/org#"
+          >http://www.w3.org/ns/org#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>schema</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://schema.org/"
-        >http://schema.org/</AuLinkExternal></td>
+            href="http://schema.org/"
+          >http://schema.org/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>xsd</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.w3.org/2001/XMLSchema#"
-        >http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
+            href="http://www.w3.org/2001/XMLSchema#"
+          >http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
       </tr>
     </:body>
   </AuTable>
@@ -99,7 +103,8 @@ import MyCodeInline from '../../components/my-code-inline';
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
     Leesbare voorstelling met enkel de basisgegevens van het adres, bedoeld voor
-    het gebruik van een adres als attribuut van een ander object. Overgenomen uit
+    het gebruik van een adres als attribuut van een ander object. Overgenomen
+    uit
     <AuLinkExternal
       href="https://data.vlaanderen.be/doc/applicatieprofiel/adresregister/#Adresvoorstelling"
     >
@@ -164,8 +169,8 @@ import MyCodeInline from '../../components/my-code-inline';
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
-    De bevoegdheid om gedurende een bepaalde periode een bestuursorgaan te vormen
-    of er deel van uit te maken. Specialisatie van
+    De bevoegdheid om gedurende een bepaalde periode een bestuursorgaan te
+    vormen of er deel van uit te maken. Specialisatie van
     <AuLinkExternal
       href="http://data.vlaanderen.be/ns/mandaat#Mandaat"
     >Mandaat</AuLinkExternal>.
@@ -275,7 +280,8 @@ import MyCodeInline from '../../components/my-code-inline';
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
-    Een persoon in zijn rol als houder van een bestuursfunctie. Specialisatie van
+    Een persoon in zijn rol als houder van een bestuursfunctie. Specialisatie
+    van
     <AuLinkExternal href="http://data.vlaanderen.be/ns/mandaat#Mandataris">
       Mandataris</AuLinkExternal>.
   </p>
@@ -300,8 +306,8 @@ import MyCodeInline from '../../components/my-code-inline';
         <td>einde</td>
         <td><MyCodeInline>mandaat:einde</MyCodeInline></td>
         <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
-        <td>Tijdstip vanaf wanneer de functionaris de bestuursfunctie niet langer
-          opneemt.</td>
+        <td>Tijdstip vanaf wanneer de functionaris de bestuursfunctie niet
+          langer opneemt.</td>
       </tr>
       <tr>
         <td>is bestuurlijke alias van</td>
@@ -352,15 +358,16 @@ import MyCodeInline from '../../components/my-code-inline';
         <td>alternatieve naam</td>
         <td><MyCodeInline>foaf:name</MyCodeInline></td>
         <td><MyCodeInline>xsd:string</MyCodeInline></td>
-        <td>Een roepnaam van de persoon. Indien aanwezig is het aan te raden deze
-          naam te gebruiken voor visualisaties in plaats van voornaam en
+        <td>Een roepnaam van de persoon. Indien aanwezig is het aan te raden
+          deze naam te gebruiken voor visualisaties in plaats van voornaam en
           familienaam.</td>
       </tr>
       <tr>
         <td>gebruikte voornaam</td>
         <td><MyCodeInline>persoon:gebruikteVoornaam</MyCodeInline></td>
         <td><MyCodeInline>xsd:string</MyCodeInline></td>
-        <td>De te gebruiken voornaam van alle officiële voornamen van de persoon.</td>
+        <td>De te gebruiken voornaam van alle officiële voornamen van de
+          persoon.</td>
       </tr>
     </:body>
   </AuTable>

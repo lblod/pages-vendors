@@ -13,8 +13,8 @@ import Snippet from '../../components/snippet';
 
   <p>
     Via deze API is het mogelijk om SPARQL query's uit te voeren op de
-    Toezichtsdatabank voor Erediensten waar besluiten te vinden zijn die naar het
-    Loket zijn gepubliceerd. Deze API is gebaseerd op de
+    Toezichtsdatabank voor Erediensten waar besluiten te vinden zijn die naar
+    het Loket zijn gepubliceerd. Deze API is gebaseerd op de
     <LinkTo @route="docs.vendor-sparql">Vendor SPARQL API</LinkTo>.
   </p>
 
@@ -42,12 +42,12 @@ import Snippet from '../../components/snippet';
 
   <AuHeading @level="2" @skin="2">Sturen van query's</AuHeading>
   <p>
-    Op dit endpoint kunnen alle gegevens omtrent inzendingen teruggevonden worden,
-    samen met het ingevulde formulier voor de publicatie in Loket. Deze
+    Op dit endpoint kunnen alle gegevens omtrent inzendingen teruggevonden
+    worden, samen met het ingevulde formulier voor de publicatie in Loket. Deze
     formuliergegevens zitten in bestanden die via een downloadlink kunnen worden
-    gedownload. Al deze informatie is vrij te ondervragen in deze SPARQL endpoint
-    met de volledige vrijheid van SPARQL voor filteren op datum, URI, regex,
-    &hellip;
+    gedownload. Al deze informatie is vrij te ondervragen in deze SPARQL
+    endpoint met de volledige vrijheid van SPARQL voor filteren op datum, URI,
+    regex, &hellip;
   </p>
 
   <AuHeading @level="3" @skin="3">Ontdekken van inzendingen - Voorbeelden</AuHeading>
@@ -61,8 +61,8 @@ import Snippet from '../../components/snippet';
   />
 
   <p>
-    In dit volgend voorbeeld wordt er gezocht naar de Submissions in maart van het
-    jaar 2024. Als antwoord wordt een lijst van de URI's en hun creatiedatum
+    In dit volgend voorbeeld wordt er gezocht naar de Submissions in maart van
+    het jaar 2024. Als antwoord wordt een lijst van de URI's en hun creatiedatum
     gegeven die gesorteerd is op die datum.
   </p>
   <Snippet
@@ -93,8 +93,8 @@ import Snippet from '../../components/snippet';
     <MyCodeInline>UNION</MyCodeInline>
     om de performantie van de query te verbeteren. Het gaat over 3 gelinkte
     entiteiten waarvan alle eigenschappen worden opgevraagd. Buiten de links
-    tussen de entiteiten is er verder geen verband meer en kunnen de eigenschappen
-    onafhankelijk van elkaar opgevraagd worden. Zonder de
+    tussen de entiteiten is er verder geen verband meer en kunnen de
+    eigenschappen onafhankelijk van elkaar opgevraagd worden. Zonder de
     <MyCodeInline>UNION</MyCodeInline>
     wordt een gigantisch scalair product opgebouwd in de SPARQL engine. Zodanig
     dat de query uiteindelijk niet afgewerkt kan worden vanwege geheugen of
@@ -110,36 +110,37 @@ import Snippet from '../../components/snippet';
   />
   <p>
     Met deze downloadlinks kan het bestand gedownload worden door middel van
-    simpele HTTP requests. Houdt rekening dat dezelfde authenticatie moet gebruikt
-    worden als voor de toegang tot deze SPARQL API.
+    simpele HTTP requests. Houdt rekening dat dezelfde authenticatie moet
+    gebruikt worden als voor de toegang tot deze SPARQL API.
   </p>
 
   <AuHeading @level="4" @skin="4">Bijlage ophalen van inzending</AuHeading>
   <p>
-    De bijlage van een inzending kan eveneens worden opgehaald. Aangezien bijlagen
-    niet via SPARQL worden teruggegeven, is er een extra stap nodig. In het
-    volgende script, na het inloggen, halen we eerst de relevante metadata van de
-    bijlage op, inclusief de downloadlink. Vervolgens wordt het bestand gedownload
-    met behulp van
+    De bijlage van een inzending kan eveneens worden opgehaald. Aangezien
+    bijlagen niet via SPARQL worden teruggegeven, is er een extra stap nodig. In
+    het volgende script, na het inloggen, halen we eerst de relevante metadata
+    van de bijlage op, inclusief de downloadlink. Vervolgens wordt het bestand
+    gedownload met behulp van
     <MyCodeInline>curl</MyCodeInline>. Dit script geldt als voorbeeld en moet
     worden aangepast naar individuele noden. Er is bijvoorbeeld nog geen URI van
-    Submission in de query. Dit voorbeeldscript vindt dus het eerste willekeurige
-    downloadbare bestand.
+    Submission in de query. Dit voorbeeldscript vindt dus het eerste
+    willekeurige downloadbare bestand.
   </p>
   <SnippetToggle
     @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-melding-download-bijlage.sh"
   />
 
-  <AuHeading @level="3" @skin="3">Details over gelinkte inzendingen - Voorbeelden</AuHeading>
+  <AuHeading @level="3" @skin="3">Details over gelinkte inzendingen -
+    Voorbeelden</AuHeading>
   <p>
     Inzendingen kunnen elkaar refereren, bijvoorbeeld een besluit dat een ander
     besluit goedkeurt. Dit kan op twee manieren gebeuren. Een gemeente- of
     provinciebestuur gebruikt een tussenliggende entiteit
     <MyCodeInline>besluit:Artikel</MyCodeInline>
     als deel van het
-    <MyCodeInline>ext:SubmissionsDocument</MyCodeInline>. Een Centraal Bestuur van
-    de erediensten of ander representatief orgaan gebruikt in plaats daarvan een
-    relatie
+    <MyCodeInline>ext:SubmissionsDocument</MyCodeInline>. Een Centraal Bestuur
+    van de erediensten of ander representatief orgaan gebruikt in plaats daarvan
+    een relatie
     <MyCodeInline>dct:relation</MyCodeInline>
     op de
     <MyCodeInline>am:FormData</MyCodeInline>
@@ -149,17 +150,17 @@ import Snippet from '../../components/snippet';
   <p>
     <strong>Noteer: het is enkel mogelijk om gedetailleerde informatie op te
       vragen van gerefereerd Submissions en hun gerelateerde eigenschappen als
-      query's worden uitgevoerd met geldige authenticatie voor de bestuurseenheid
-      waarvan een besluit wordt gerefereerd.</strong>
+      query's worden uitgevoerd met geldige authenticatie voor de
+      bestuurseenheid waarvan een besluit wordt gerefereerd.</strong>
   </p>
   <p>
     Stel dat een eredienstbestuur &ldquo;Kerkfabriek St.-Lambertus van
     Grobbendonk&rdquo; een besluit heeft gepubliceerd, en dat de gemeente
     Grobbendonk een goedkeuring publiceert op dat besluit en betreffende besluit
-    refereert. Volgende query stelt voor de gegeven Submission van de gemeente een
-    lijst op van de gerefereerde besluiten. Natuurlijk is deze query volledig zelf
-    aan te passen. Het samenklapbaar voorbeeld eronder geeft ook nog de
-    bestuurseenheid waarvoor elke Submission is ingezonden.
+    refereert. Volgende query stelt voor de gegeven Submission van de gemeente
+    een lijst op van de gerefereerde besluiten. Natuurlijk is deze query
+    volledig zelf aan te passen. Het samenklapbaar voorbeeld eronder geeft ook
+    nog de bestuurseenheid waarvoor elke Submission is ingezonden.
   </p>
   <Snippet
     @snippetFilename="eredienst-toezichtsdatabank-sparql/voorbeeld-gelinkte-documenten-gemeente.sparql"
@@ -169,12 +170,12 @@ import Snippet from '../../components/snippet';
   />
 
   <p>
-    Het volgend voorbeeld demonstreert hetzelfde principe als het vorige, maar in
-    een scenario met een tussenliggend Centraal Bestuur. Stel dat een
+    Het volgend voorbeeld demonstreert hetzelfde principe als het vorige, maar
+    in een scenario met een tussenliggend Centraal Bestuur. Stel dat een
     eredienstbestuur &ldquo;Kerkfabriek St.-Lambertus van Grobbendonk&rdquo; een
     besluit heeft gepubliceerd, dan kan het &ldquo;Centraal bestuur van de
-    eredienst Grobbendonk&rdquo; een advies hierover publiceren, dat op zijn beurt
-    door gemeente Grobbendonk kan worden gerefereerd in bijvoorbeeld een
+    eredienst Grobbendonk&rdquo; een advies hierover publiceren, dat op zijn
+    beurt door gemeente Grobbendonk kan worden gerefereerd in bijvoorbeeld een
     goedkeuring. Onderstaande query geeft deze ketting van refereren weer
     vertrekkend vanuit de Submission van de gemeente.
   </p>
@@ -218,122 +219,122 @@ import Snippet from '../../components/snippet';
       <tr>
         <td><MyCodeInline>adms</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.w3.org/ns/adms#"
-        >http://www.w3.org/ns/adms#</AuLinkExternal></td>
+            href="http://www.w3.org/ns/adms#"
+          >http://www.w3.org/ns/adms#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>besluit</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://data.vlaanderen.be/ns/besluit#"
-        >http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
+            href="http://data.vlaanderen.be/ns/besluit#"
+          >http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>dct</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://purl.org/dc/terms/"
-        >http://purl.org/dc/terms/</AuLinkExternal></td>
+            href="http://purl.org/dc/terms/"
+          >http://purl.org/dc/terms/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>skos</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.w3.org/2004/02/skos/"
-        >http://www.w3.org/2004/02/skos/</AuLinkExternal></td>
+            href="http://www.w3.org/2004/02/skos/"
+          >http://www.w3.org/2004/02/skos/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>nfo</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#"
-        >http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</AuLinkExternal></td>
+            href="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#"
+          >http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>nie</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#"
-        >http://www.semanticdesktop.org/ontologies/2007/01/19/nie#</AuLinkExternal></td>
+            href="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#"
+          >http://www.semanticdesktop.org/ontologies/2007/01/19/nie#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>rdf</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-        >http://www.w3.org/1999/02/22-rdf-syntax-ns#</AuLinkExternal></td>
+            href="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+          >http://www.w3.org/1999/02/22-rdf-syntax-ns#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>xsd</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.w3.org/2001/XMLSchema#"
-        >http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
+            href="http://www.w3.org/2001/XMLSchema#"
+          >http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>ext</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://mu.semte.ch/vocabularies/ext/"
-        >http://mu.semte.ch/vocabularies/ext/</AuLinkExternal></td>
+            href="http://mu.semte.ch/vocabularies/ext/"
+          >http://mu.semte.ch/vocabularies/ext/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>am</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://lblod.data.gift/vocabularies/automatische-melding/"
-        >http://lblod.data.gift/vocabularies/automatische-melding/</AuLinkExternal></td>
+            href="http://lblod.data.gift/vocabularies/automatische-melding/"
+          >http://lblod.data.gift/vocabularies/automatische-melding/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>core</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://mu.semte.ch/vocabularies/core/"
-        >http://mu.semte.ch/vocabularies/core/</AuLinkExternal></td>
+            href="http://mu.semte.ch/vocabularies/core/"
+          >http://mu.semte.ch/vocabularies/core/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>nmo</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#"
-        >http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#</AuLinkExternal></td>
+            href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#"
+          >http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>prov</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.w3.org/ns/prov#"
-        >http://www.w3.org/ns/prov#</AuLinkExternal></td>
+            href="http://www.w3.org/ns/prov#"
+          >http://www.w3.org/ns/prov#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>pav</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://purl.org/pav/"
-        >http://purl.org/pav/</AuLinkExternal></td>
+            href="http://purl.org/pav/"
+          >http://purl.org/pav/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>fd</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://lblod.data.gift/vocabularies/besluit/submission/form-data/"
-        >http://lblod.data.gift/vocabularies/besluit/submission/form-data/</AuLinkExternal></td>
+            href="http://lblod.data.gift/vocabularies/besluit/submission/form-data/"
+          >http://lblod.data.gift/vocabularies/besluit/submission/form-data/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>eli</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://data.europa.eu/eli/ontology#"
-        >http://data.europa.eu/eli/ontology#</AuLinkExternal></td>
+            href="http://data.europa.eu/eli/ontology#"
+          >http://data.europa.eu/eli/ontology#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>le</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://linkedeconomy.org/ontology#"
-        >http://linkedeconomy.org/ontology#</AuLinkExternal></td>
+            href="http://linkedeconomy.org/ontology#"
+          >http://linkedeconomy.org/ontology#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>dbpedia</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://dbpedia.org/ontology/"
-        >http://dbpedia.org/ontology/</AuLinkExternal></td>
+            href="http://dbpedia.org/ontology/"
+          >http://dbpedia.org/ontology/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>mob</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://rdf.myexperiment.org/ontologies/base/"
-        >http://rdf.myexperiment.org/ontologies/base/</AuLinkExternal></td>
+            href="http://rdf.myexperiment.org/ontologies/base/"
+          >http://rdf.myexperiment.org/ontologies/base/</AuLinkExternal></td>
       </tr>
     </:body>
   </AuTable>
 
   <AuHeading @level="3" @skin="3"><MyCodeInline
-  >mob:Submission</MyCodeInline></AuHeading>
+    >mob:Submission</MyCodeInline></AuHeading>
   <p>
     Dit is de entiteit die informatie over de feitelijke inzending encodeert.
   </p>
@@ -372,7 +373,8 @@ import Snippet from '../../components/snippet';
         <td>Verzonden op</td>
         <td><MyCodeInline>nmo:sentDate</MyCodeInline></td>
         <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
-        <td>Tijdstip waarop de inzending succesvol werd verzonden naar het Loket.</td>
+        <td>Tijdstip waarop de inzending succesvol werd verzonden naar het
+          Loket.</td>
       </tr>
       <tr>
         <td>Ingezonden door</td>
@@ -396,7 +398,8 @@ import Snippet from '../../components/snippet';
         <td><MyCodeInline>prov:generated</MyCodeInline></td>
         <td><MyCodeInline>am:FormData</MyCodeInline></td>
         <td>Formuliergegevens die werden gegenereerd op basis van de inzending.
-          Indien volledig wordt dit dossier automatisch verzonden naar het Loket.</td>
+          Indien volledig wordt dit dossier automatisch verzonden naar het
+          Loket.</td>
       </tr>
       <tr>
         <td>Document ter onderwerp</td>
@@ -422,7 +425,7 @@ import Snippet from '../../components/snippet';
   </AuTable>
 
   <AuHeading @level="3" @skin="3"><MyCodeInline
-  >ext:SubmissionDocument</MyCodeInline></AuHeading>
+    >ext:SubmissionDocument</MyCodeInline></AuHeading>
   <p>
     Deze entiteit bestaat altijd, maar wordt alleen maar in de Vendor API
     beschikbaar gemaakt als het document verwijst naar andere documenten. Het
@@ -449,7 +452,7 @@ import Snippet from '../../components/snippet';
   </AuTable>
 
   <AuHeading @level="3" @skin="3"><MyCodeInline
-  >besluit:Artikel</MyCodeInline></AuHeading>
+    >besluit:Artikel</MyCodeInline></AuHeading>
   <p>
     Deze entiteit bestaat alleen maar als het document verwijst naar andere
     documenten en staat in voor deze verwijzing. Komt alleen voor bij refereren
@@ -483,7 +486,7 @@ import Snippet from '../../components/snippet';
   </AuTable>
 
   <AuHeading @level="3" @skin="3"><MyCodeInline
-  >am:FormData</MyCodeInline></AuHeading>
+    >am:FormData</MyCodeInline></AuHeading>
   <p>
     Deze entiteit bevat de gegevens over het ingevulde formulier gelinkt aan de
     inzending.
@@ -515,8 +518,8 @@ import Snippet from '../../components/snippet';
         <td>Zitting starttijd</td>
         <td><MyCodeInline>fd:sessionStartedAtTime</MyCodeInline></td>
         <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
-        <td>Starttijdstip van de zitting waar het besluit werd genomen (indien van
-          toepassing)</td>
+        <td>Starttijdstip van de zitting waar het besluit werd genomen (indien
+          van toepassing)</td>
       </tr>
       <tr>
         <td>Financieel jaar</td>
@@ -548,7 +551,8 @@ import Snippet from '../../components/snippet';
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><MyCodeInline>nfo:FileDataObject</MyCodeInline>,
+  <AuHeading @level="3" @skin="3"><MyCodeInline
+    >nfo:FileDataObject</MyCodeInline>,
     <MyCodeInline>nfo:RemoteDataObject</MyCodeInline></AuHeading>
   <p>
     Deze twee klassen worden vaak samen gebruikt op dezelfde entiteit. Deze
@@ -618,7 +622,8 @@ import Snippet from '../../components/snippet';
         <td>URL</td>
         <td><MyCodeInline>nie:url</MyCodeInline></td>
         <td><MyCodeInline>xsd:string</MyCodeInline></td>
-        <td>URL waar het bestand op dit moment in deze applicatie te downloaden is</td>
+        <td>URL waar het bestand op dit moment in deze applicatie te downloaden
+          is</td>
       </tr>
     </:body>
   </AuTable>

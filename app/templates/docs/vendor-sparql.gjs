@@ -10,29 +10,30 @@ import Snippet from '../../components/snippet';
 
   <p>
     De Vendor SPARQL API is een manier om SPARQL queries uit te voeren op een
-    SPARQL endpoint gehost op een van de applicaties binnen Loket en verwanten om
-    informatie op te vragen. Dit vervangt een klassieke JSON REST API, maar kan
-    eveneens worden gebruikt voor het integreren met de applicaties van Loket.
-    Deze API biedt de volledige vrijheid van SPARQL voor het construeren van een
-    informatieverzoek. Per applicatie zijn er verschillende soorten gegevens terug
-    te vinden, dus houdt acht met de host waarop query's worden uitgevoerd. De
-    bedoeling is wel dat op elk van de hosts een gelijkaardige Vendor SPARQL API
-    terug te vinden is die steeds op dezelfde manier aanspreekbaar is. Het
-    generiek mechanisme wordt op deze pagina verduidelijkt.
+    SPARQL endpoint gehost op een van de applicaties binnen Loket en verwanten
+    om informatie op te vragen. Dit vervangt een klassieke JSON REST API, maar
+    kan eveneens worden gebruikt voor het integreren met de applicaties van
+    Loket. Deze API biedt de volledige vrijheid van SPARQL voor het construeren
+    van een informatieverzoek. Per applicatie zijn er verschillende soorten
+    gegevens terug te vinden, dus houdt acht met de host waarop query's worden
+    uitgevoerd. De bedoeling is wel dat op elk van de hosts een gelijkaardige
+    Vendor SPARQL API terug te vinden is die steeds op dezelfde manier
+    aanspreekbaar is. Het generiek mechanisme wordt op deze pagina
+    verduidelijkt.
   </p>
   <p>
     Het kunnen uitvoeren van SPARQL query's brengt echter risico met zich mee in
     verband met databeveiliging. Daarom wordt de toegang tot het SPARQL endpoint
-    beschermd met een login en is het enkel mogelijk om data uit te lezen. Er kan
-    dus niets gewijzigd worden via SPARQL Update query's. Deze pagina beschrijft
-    aan de hand van voorbeelden het stappenplan om in te loggen, hoe SPARQL
-    query's uit te voeren, hoe weer uit te loggen en hoe eventuele fouten worden
-    afgehandeld.
+    beschermd met een login en is het enkel mogelijk om data uit te lezen. Er
+    kan dus niets gewijzigd worden via SPARQL Update query's. Deze pagina
+    beschrijft aan de hand van voorbeelden het stappenplan om in te loggen, hoe
+    SPARQL query's uit te voeren, hoe weer uit te loggen en hoe eventuele fouten
+    worden afgehandeld.
   </p>
   <p>
     Per applicatie is er buiten deze pagina nog documentatie te vinden over de
-    beschikbare data en eventuele aandachtspunten. Bekijk hiervoor de gerelateerde
-    pagina's:
+    beschikbare data en eventuele aandachtspunten. Bekijk hiervoor de
+    gerelateerde pagina's:
     <LinkTo @route="docs.meldingsplicht-sparql">Meldingsplicht SPARQL API</LinkTo>,
     <LinkTo @route="docs.berichtencentrum-sparql">Berichtencentrum SPARQL API</LinkTo>,
     &hellip;
@@ -40,15 +41,16 @@ import Snippet from '../../components/snippet';
 
   <AuHeading @level="2" @skin="2">Inloggen</AuHeading>
   <p>
-    Inloggen gebeurt door middel van een request met authenticatie door middel van
-    vendor URI, sleutel en de URI van de organisatie in een JSON-LD body naar
+    Inloggen gebeurt door middel van een request met authenticatie door middel
+    van vendor URI, sleutel en de URI van de organisatie in een JSON-LD body
+    naar
   </p>
   <MyCodeBlock>POST https://&lt;applicatie-host&gt;/vendor/login</MyCodeBlock>
   <p>
     De specifieke hostname hangt af van het type van gegevens die benodigd zijn.
     Raadpleeg hiervoor de specifieke documentatie op de pagina's hierboven
-    beschreven (<LinkTo @route="docs.meldingsplicht-sparql">Meldingsplicht SPARQL
-      API</LinkTo>,
+    beschreven (<LinkTo @route="docs.meldingsplicht-sparql">Meldingsplicht
+      SPARQL API</LinkTo>,
     <LinkTo @route="docs.berichtencentrum-sparql">Berichtencentrum SPARQL API</LinkTo>,
     &hellip;). De JSON-LD body ziet er minimaal uit zoals het volgende:
   </p>
@@ -60,17 +62,17 @@ import Snippet from '../../components/snippet';
     <MyCodeInline>publisher.uri</MyCodeInline>
     staat voor de URI van de vendor, en
     <MyCodeInline>publisher.key</MyCodeInline>
-    staat voor de geheime sleutel die eerder werd verkregen. Het aanvragen van een
-    publisher URI en geheime sleutel (key) staan beschreven in de sectie
+    staat voor de geheime sleutel die eerder werd verkregen. Het aanvragen van
+    een publisher URI en geheime sleutel (key) staan beschreven in de sectie
     &ldquo;Authenticatie&rdquo; op de pagina over
     <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>.
   </p>
   <p>
-    De volledige JSON-LD context beschrijft met RDF wat elke eigenschap betekent,
-    welk datatype wordt verwacht en zou aan aan elke request moeten worden
-    toegevoegd. Deze login service voegt echter automatisch de juiste context toe
-    aan elke login request, dus het verzenden van de minimale body zoals hierboven
-    volstaat. Vind hieronder de volledige context, indien nodig.
+    De volledige JSON-LD context beschrijft met RDF wat elke eigenschap
+    betekent, welk datatype wordt verwacht en zou aan aan elke request moeten
+    worden toegevoegd. Deze login service voegt echter automatisch de juiste
+    context toe aan elke login request, dus het verzenden van de minimale body
+    zoals hierboven volstaat. Vind hieronder de volledige context, indien nodig.
   </p>
   <SnippetToggle @snippetFilename="vendor-sparql/login-context.json" />
   <p>
@@ -83,18 +85,21 @@ import Snippet from '../../components/snippet';
     <strong>de sessie wordt vanaf de login request enkel bepaald door middel van
       de cookie</strong>.
   </p>
-  <SnippetToggle @snippetFilename="vendor-sparql/voorbeeld-login-response.json" />
+  <SnippetToggle
+    @snippetFilename="vendor-sparql/voorbeeld-login-response.json"
+  />
   <p>
-    Als referentie wordt hieronder nog de context vermeld van het antwoord met de
-    sessieinformatie.
+    Als referentie wordt hieronder nog de context vermeld van het antwoord met
+    de sessieinformatie.
   </p>
   <SnippetToggle @snippetFilename="vendor-sparql/login-response-context.json" />
 
   <AuHeading @level="3" @skin="3">Voorbeeld</AuHeading>
   <p>
     Als voorbeeld staat hieronder hoe een login kan worden uitgevoerd met
-    <MyCodeInline>cURL</MyCodeInline>. Het ontvangen en verder weer versturen van
-    cookies is noodzakelijk. Daarom wordt de cookie engine ingeschakeld met de
+    <MyCodeInline>cURL</MyCodeInline>. Het ontvangen en verder weer versturen
+    van cookies is noodzakelijk. Daarom wordt de cookie engine ingeschakeld met
+    de
     <MyCodeInline>-b</MyCodeInline>
     en
     <MyCodeInline>-c</MyCodeInline>
@@ -109,24 +114,24 @@ import Snippet from '../../components/snippet';
   </p>
   <MyCodeBlock>https://&lt;applicatie-host&gt;/vendor/sparql</MyCodeBlock>
   <p>
-    Het versturen van query's moet gebeuren via HTTP(S) requests zoals beschreven
-    in de
+    Het versturen van query's moet gebeuren via HTTP(S) requests zoals
+    beschreven in de
     <a
       href="https://www.w3.org/TR/sparql11-protocol/#query-operation"
       target="_blank"
       rel="noopener noreferrer"
-    >offici&euml;le specificatie van het SPARQL Protocol</a>. Er is geen webpagina
-    beschikbaar op dit endpoint. Het is noodzakelijk om de sessie cookie,
-    verkregen bij het inloggen, steeds mee te sturen bij elke request.
+    >offici&euml;le specificatie van het SPARQL Protocol</a>. Er is geen
+    webpagina beschikbaar op dit endpoint. Het is noodzakelijk om de sessie
+    cookie, verkregen bij het inloggen, steeds mee te sturen bij elke request.
   </p>
 
   <AuHeading @level="3" @skin="3">Voorbeelden van query's</AuHeading>
   <p>
     Hieronder staan een aantal voorbeelden van SPARQL query's die naar het
     endpoint kunnen worden verstuurd. Deze voorbeelden gaan over inzendingen van
-    publicaties (Submissions), en deze zijn dus louter demonstratief. Aan de hand
-    van het eerste voorbeeld kan de status van een ingestuurde melding worden
-    opgevraagd.
+    publicaties (Submissions), en deze zijn dus louter demonstratief. Aan de
+    hand van het eerste voorbeeld kan de status van een ingestuurde melding
+    worden opgevraagd.
   </p>
   <Snippet @snippetFilename="vendor-sparql/voorbeeld-melding-status.sparql" />
   <p>
@@ -148,8 +153,8 @@ import Snippet from '../../components/snippet';
   </p>
   <Snippet @snippetFilename="vendor-sparql/voorbeeld-request-form.sh" />
   <p>
-    Het volgende voorbeeld is hetzelfde als het vorige, maar voor de encodering is
-    hier de typische JavaScript
+    Het volgende voorbeeld is hetzelfde als het vorige, maar voor de encodering
+    is hier de typische JavaScript
     <MyCodeInline>encodeURIComponent()</MyCodeInline>
     gebruikt.
   </p>
@@ -203,12 +208,12 @@ import Snippet from '../../components/snippet';
     falen vanwege syntax problemen met de query zelf of vanwege een fout
     opgestelde request, &hellip; In alle gevallen wordt er zo veel mogelijk aan
     gedaan om een waardevolle foutboodschap terug te geven in combinatie met een
-    bijhorende HTTP (fout)code. In het geval van het versturen van query's kunnen
-    foutberichten en foutcodes terugkomen die gegenereerd werden door de database
-    zelf of van een tussenliggende service. Dit kan enige inconsistenties
-    veroorzaken in de response. In het geval van de login en logout requests,
-    fouten zitten verwerkt in de volgende JSON-LD context en worden ook op die
-    manier geformatteerd als antwoord.
+    bijhorende HTTP (fout)code. In het geval van het versturen van query's
+    kunnen foutberichten en foutcodes terugkomen die gegenereerd werden door de
+    database zelf of van een tussenliggende service. Dit kan enige
+    inconsistenties veroorzaken in de response. In het geval van de login en
+    logout requests, fouten zitten verwerkt in de volgende JSON-LD context en
+    worden ook op die manier geformatteerd als antwoord.
   </p>
   <SnippetToggle @snippetFilename="vendor-sparql/error-response-context.json" />
 </template>

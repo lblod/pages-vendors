@@ -9,10 +9,10 @@ import Snippet from '../../components/snippet';
   <AuHeading @level="1" @skin="1">Berichtencentrum API
     <em>[CONCEPT]</em></AuHeading>
   <p>
-    Lokale besturen en ABB kunnen beveiligde berichten met mekaar uitwisselen. Het
-    loket voor Lokale Besturen biedt een API aan waarop deze functionaliteit
-    programmatorisch ge&iuml;ntegreerd kan worden. Dit document beschrijft de API
-    voor het berichtencentrum.
+    Lokale besturen en ABB kunnen beveiligde berichten met mekaar uitwisselen.
+    Het loket voor Lokale Besturen biedt een API aan waarop deze functionaliteit
+    programmatorisch ge&iuml;ntegreerd kan worden. Dit document beschrijft de
+    API voor het berichtencentrum.
   </p>
 
   <AuHeading @level="2" @skin="2">High level beschrijving van de flow</AuHeading>
@@ -23,11 +23,11 @@ import Snippet from '../../components/snippet';
     besturen enkel reageren. De beschikbare conversaties en berichten kunnen
     bevraagd worden aan de hand van
     <AuLink @route="docs.vendor-sparql">Vendor SPARQL API</AuLink>. Meer details
-    over de query's volgen hieronder. In geval er een nieuw bericht naar ABB moet
-    worden gestuurd, publiceert het bestuur een RDFa-geannoteerd document. Via een
-    REST call meldt het bestuur de locatie van de nieuwe publicatie aan het loket,
-    en zal de crawler van het loket het document ophalen. Het melden van een
-    bericht zal een
+    over de query's volgen hieronder. In geval er een nieuw bericht naar ABB
+    moet worden gestuurd, publiceert het bestuur een RDFa-geannoteerd document.
+    Via een REST call meldt het bestuur de locatie van de nieuwe publicatie aan
+    het loket, en zal de crawler van het loket het document ophalen. Het melden
+    van een bericht zal een
     <MyCodeInline>cogs:Job</MyCodeInline>
     aanmaken. Hiermee kan de vendor of het bestuur de status van de melding
     opvolgen. De flow is heel gelijkaardig aan die van de
@@ -39,9 +39,9 @@ import Snippet from '../../components/snippet';
   </AuHeading>
   <p>
     Het bestuur dat een bericht wil sturen in Loket publiceert een, via
-    authenticatie beschermd, RDFa document. De publieke URL voor dit document moet
-    worden meegegeven in een REST call naar Loket zodat een crawler het document
-    kan inlezen en verwerken.
+    authenticatie beschermd, RDFa document. De publieke URL voor dit document
+    moet worden meegegeven in een REST call naar Loket zodat een crawler het
+    document kan inlezen en verwerken.
   </p>
   <AuHeading @level="3" @skin="3">Vereisten voor gepubliceerde pagina's</AuHeading>
   <p>
@@ -53,8 +53,8 @@ import Snippet from '../../components/snippet';
     De crawler verwacht bij het ophalen van de RDFa-informatie dat de resource
     -gespecifieerd met het
     <MyCodeInline>resource</MyCodeInline>
-    veld in de json-body- volledig beschreven staat op de pagina gespecifieerd in
-    het
+    veld in de json-body- volledig beschreven staat op de pagina gespecifieerd
+    in het
     <MyCodeInline>href</MyCodeInline>
     veld. De crawler verwacht dat de RDFa beschrijving van het veld
     <MyCodeInline>nie:url</MyCodeInline>
@@ -63,16 +63,17 @@ import Snippet from '../../components/snippet';
     weten.) Verder zijn er geen echt harde restricties, behalve dat we niet
     verwachten dat de grootte van de pagina's te groot wordt. (Nader te bepalen
     wat de harde grens zou zijn; een HTML bestand van 20+MB beschouwen we al als
-    groot.) Goede vertrouwelijkheidshygi&euml;ne is wenselijk, bijvoorbeeld: niet
-    de berichten van alle besturen in beheer op één pagina publiceren. Technisch
-    kan het, maar het vergroot het risico.
+    groot.) Goede vertrouwelijkheidshygi&euml;ne is wenselijk, bijvoorbeeld:
+    niet de berichten van alle besturen in beheer op één pagina publiceren.
+    Technisch kan het, maar het vergroot het risico.
   </p>
   <AuHeading @level="3" @skin="3">RDFa voorbeeldpublicatie van bericht</AuHeading>
   <p>
-    Het volgende voorbeeld illustreert hoe een bericht in RDFa wordt gepubliceerd.
-    Dit is een zeer minimaal voorbeeld. Evengoed kan dit uitgebreid worden om het
-    ook bruikbaar te maken voor zowel menselijke gebruikers als machines. Het
-    staat het bestuur dus zeker vrij om extra annotaties toe te voegen.
+    Het volgende voorbeeld illustreert hoe een bericht in RDFa wordt
+    gepubliceerd. Dit is een zeer minimaal voorbeeld. Evengoed kan dit
+    uitgebreid worden om het ook bruikbaar te maken voor zowel menselijke
+    gebruikers als machines. Het staat het bestuur dus zeker vrij om extra
+    annotaties toe te voegen.
   </p>
   <SnippetToggle
     @snippetFilename="berichtencentrum/voorbeeld-rdfa-bericht.html"
@@ -96,12 +97,14 @@ import Snippet from '../../components/snippet';
     beschreven in de sectie 'Authenticatie' van de
     <AuLink @route="docs.meldingsplicht">Meldingsplicht API</AuLink>. Verder
     verwachten we dat het gepubliceerde document beschermd is met authenticatie.
-    Voor meer informatie over welke methodes de crawler ondersteunt, verwijzen we
-    u door naar de sectie 'Ophalen van niet-publieke documenten' van de
-    <AuLink @route="docs.meldingsplicht">Meldingsplicht API</AuLink>. Een antwoord
-    van het endpoint wordt dan, indien de eerste ronde van validatie OK is:
+    Voor meer informatie over welke methodes de crawler ondersteunt, verwijzen
+    we u door naar de sectie 'Ophalen van niet-publieke documenten' van de
+    <AuLink @route="docs.meldingsplicht">Meldingsplicht API</AuLink>. Een
+    antwoord van het endpoint wordt dan, indien de eerste ronde van validatie OK
+    is:
   </p>
-  <MyCodeBlock @language="json">{ "job": "http://data.lblod.info/id/job/example-uri" }</MyCodeBlock>
+  <MyCodeBlock @language="json">{ "job":
+    "http://data.lblod.info/id/job/example-uri" }</MyCodeBlock>
   <p>
     Indien er zaken niet in orde zijn, kan u terugvallen op de standaard
     HTTP-codes en error-boodschappen.
@@ -115,8 +118,9 @@ import Snippet from '../../components/snippet';
   <p>
     Voortgaand op het vorige voorbeeld, geven we weer hoe een request naar loket
     er zou kunnen uitzien. Stel dat de RDFa geannoteerde pagina gehost staat op
-    <MyCodeInline>http://vendor.example.com/conversaties/bestuur/1</MyCodeInline>.
-    Uit vorige voorbeeld is de URI van het nieuwe bericht
+    <MyCodeInline
+    >http://vendor.example.com/conversaties/bestuur/1</MyCodeInline>. Uit vorige
+    voorbeeld is de URI van het nieuwe bericht
     <MyCodeInline>http://nieuw/berichturi/voor/ABB</MyCodeInline>. Dan kan het
     request er als volgt uitzien:
   </p>
@@ -131,8 +135,8 @@ import Snippet from '../../components/snippet';
     Momenteel is er geen endpoint voorzien om een bericht te verwijderen. Van
     zodra het bericht correct verwerkt is, propageert dit binnen allerhande
     systemen en wordt het zeer moeilijk om consistent te verwijderen. Noteer:
-    indien een bepaalde melding gefaald is, kan u steeds dezelfde melding opnieuw
-    insturen.
+    indien een bepaalde melding gefaald is, kan u steeds dezelfde melding
+    opnieuw insturen.
   </p>
 
   <AuHeading @level="2" @skin="2">Ontwikkeling en test</AuHeading>

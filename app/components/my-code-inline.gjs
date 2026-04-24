@@ -3,7 +3,6 @@ import Component from '@glimmer/component';
 import { modifier } from 'ember-modifier';
 
 export default class MyCodeInline extends Component {
-
   get language() {
     return this.args.language ?? 'markup';
   }
@@ -17,7 +16,10 @@ export default class MyCodeInline extends Component {
   });
 
   <template>
-    <code ...attributes class="{{this.languageClass}}" {{this.highlight}}>{{yield}}</code>
+    <code
+      ...attributes
+      class="{{this.languageClass}}"
+      {{this.highlight}}
+    >{{yield}}</code>
   </template>
-
 }

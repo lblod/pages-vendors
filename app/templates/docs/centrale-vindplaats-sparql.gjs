@@ -7,16 +7,17 @@ import Snippet from '../../components/snippet';
   <AuHeading @level="1" @skin="1">Centrale Vindplaats SPARQL endpoint</AuHeading>
   <p>
     Dit database-endpoint kan bevraagd worden aan de hand van SPARQL, een
-    query-taal om RDF data te manipuleren. RDF is een formaat dat binnen het kader
-    van het semantische web -en dus linked data- zeer vaak voorkomt.
+    query-taal om RDF data te manipuleren. RDF is een formaat dat binnen het
+    kader van het semantische web -en dus linked data- zeer vaak voorkomt.
     <br />
     Het LBLOD-project gebruikt RDF intensief. Verschillende datasets worden
     gepubliceerd als Turtle en RDFa, serializatie-formaten die de RDF-standaard
     respecteren.
     <br />
     Dit endpoint kan gebruikt worden om rechstreeks op de bron te werken. Dit
-    helpt niet alleen om het aantal tussenliggende conversies te verminderen, maar
-    ook heel praktisch om complexere bevragingen in minder stappen uit te voeren.
+    helpt niet alleen om het aantal tussenliggende conversies te verminderen,
+    maar ook heel praktisch om complexere bevragingen in minder stappen uit te
+    voeren.
     <br />
     Met SPARQL staat men dichter bij de data, en dus dichter op het model.
   </p>
@@ -29,8 +30,8 @@ import Snippet from '../../components/snippet';
   <MyCodeBlock>https://centrale-vindplaats.lblod.info/sparql</MyCodeBlock>
   <p>
     Dit endpoint heeft UI beschikbaar waar SPARQL query's in uitgevoerd kunnen
-    worden. De query's kunnen ook aan de hand van HTTP calls uitgevoerd worden. De
-    specificatie van de HTTP-calls vindt u
+    worden. De query's kunnen ook aan de hand van HTTP calls uitgevoerd worden.
+    De specificatie van de HTTP-calls vindt u
     <AuLinkExternal
       href="https://www.w3.org/TR/sparql11-protocol/"
     >hier</AuLinkExternal>.
@@ -39,9 +40,9 @@ import Snippet from '../../components/snippet';
     De onderliggende HTTP-calls van
     <AuLinkExternal href="https://centrale-vindplaats.lblod.info/sparql">
       https://centrale-vindplaats.lblod.info/sparql</AuLinkExternal>
-    respecteren deze standaard. Mocht u op zoek zijn naar hoe deze SPARQL query's
-    omgezet worden naar HTTP-calls, vormt de UI een goed startpunt. De UI zelf is
-    een instantie van
+    respecteren deze standaard. Mocht u op zoek zijn naar hoe deze SPARQL
+    query's omgezet worden naar HTTP-calls, vormt de UI een goed startpunt. De
+    UI zelf is een instantie van
     <AuLinkExternal href="https://triply.cc/docs/yasgui">Yasgui
     </AuLinkExternal>. Verder informatie over het gebruik ervan, vindt u daar.
   </p>
@@ -59,11 +60,12 @@ import Snippet from '../../components/snippet';
 
   <AuHeading @level="2" @skin="2">Voorbeelden</AuHeading>
   <p>
-    De volgende sectie bevat een aantal voorbeelden, specifiek geralateerd aan het
-    model.
+    De volgende sectie bevat een aantal voorbeelden, specifiek geralateerd aan
+    het model.
   </p>
 
-  <AuHeading @level="3" @skin="3">Oplijsten bestuurseenheden en hun classificatie</AuHeading>
+  <AuHeading @level="3" @skin="3">Oplijsten bestuurseenheden en hun
+    classificatie</AuHeading>
   <Snippet
     @snippetFilename="centrale-vindplaats-sparql/bestuurseenheden-en-classificatie.sparql"
   />
@@ -74,7 +76,9 @@ import Snippet from '../../components/snippet';
     De lijst van alle bestuursorganen (in bestuursperiode) wordt hier opgelijst,
     alsook hun naam, start en eind datum.
   </p>
-  <Snippet @snippetFilename="centrale-vindplaats-sparql/bestuursorganen.sparql" />
+  <Snippet
+    @snippetFilename="centrale-vindplaats-sparql/bestuursorganen.sparql"
+  />
 
   <AuHeading @level="3" @skin="3">Lijst van alle mandaten, en de bijbehorende
     personen</AuHeading>
@@ -90,8 +94,8 @@ import Snippet from '../../components/snippet';
 
   <AuHeading @level="3" @skin="3">Een vraag over de Burgemeester van Antwerpen</AuHeading>
   <p>
-    Gegeven de Burgemeester van Antwerpen voor bestuursperiode startende op 2019,
-    welke andere mandaten vinden we terug voor deze persoon?
+    Gegeven de Burgemeester van Antwerpen voor bestuursperiode startende op
+    2019, welke andere mandaten vinden we terug voor deze persoon?
   </p>
   <Snippet
     @snippetFilename="centrale-vindplaats-sparql/voorbeeld-burgemeester-antwerpen.sparql"

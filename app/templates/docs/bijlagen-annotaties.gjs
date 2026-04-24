@@ -8,7 +8,8 @@ import Snippet from '../../components/snippet';
   <p>
     Dit document beschrijft hoe verschillende soorten bijlagen bij een besluit
     geannoteerd kunnen worden. Er wordt extra aandacht besteed aan reglementaire
-    bijlagen zoals bijvoorbeeld een subsidieregelement of aanvullend wegreglement.
+    bijlagen zoals bijvoorbeeld een subsidieregelement of aanvullend
+    wegreglement.
   </p>
 
   <AuHeading @level="2" @skin="2">Eenvoudige bijlagen</AuHeading>
@@ -28,9 +29,9 @@ import Snippet from '../../components/snippet';
 
   <AuHeading @level="2" @skin="2">Bijlagen die deel uitmaken van het besluit</AuHeading>
   <p>
-    Indien een bijlage (juridisch) kan worden aanzien als zijnde een onderdeel van
-    het besluit worden de annotaties van de eenvoudige bijlage aangevuld om aan te
-    duiden dat het gaat om een document onderdeel. Het applicatieprofiel
+    Indien een bijlage (juridisch) kan worden aanzien als zijnde een onderdeel
+    van het besluit worden de annotaties van de eenvoudige bijlage aangevuld om
+    aan te duiden dat het gaat om een document onderdeel. Het applicatieprofiel
     besluit-publicatie voorziet hiervoor de relatie
     <AuLinkExternal
       href="http://purl.org/dc/terms/isPartOf"
@@ -39,8 +40,8 @@ import Snippet from '../../components/snippet';
   </p>
   <p>
     <strong>Opmerking:</strong>
-    In het voorbeeld maken we gebruik van het html atribuut "rev" om deze relatie
-    in de omgekeerde richting op te geven.
+    In het voorbeeld maken we gebruik van het html atribuut "rev" om deze
+    relatie in de omgekeerde richting op te geven.
   </p>
   <Snippet
     @snippetFilename="bijlagen-annotaties/voorbeeld-besluit-met-pdf-bijlage-als-onderdeel.html"
@@ -49,11 +50,11 @@ import Snippet from '../../components/snippet';
   <AuHeading @level="2" @skin="2">Een besluit als bijlage</AuHeading>
   <p>
     Sommige bijlagen zijn besluiten op zich, het gaat dan voornamelijk om
-    reglementen zoals het huishoudelijk reglement, subsdiereglementen, aanvullende
-    verkeersreglementen, etc. Deze bijlagen dienen geannoteerd te worden als een
-    besluit en kunnen ofwel opgenomen worden als een tweede besluit in de
-    publicatie (inline bijlage) of als een verwijzing naar een geannoteerde
-    publicatie.
+    reglementen zoals het huishoudelijk reglement, subsdiereglementen,
+    aanvullende verkeersreglementen, etc. Deze bijlagen dienen geannoteerd te
+    worden als een besluit en kunnen ofwel opgenomen worden als een tweede
+    besluit in de publicatie (inline bijlage) of als een verwijzing naar een
+    geannoteerde publicatie.
   </p>
 
   <AuHeading @level="3" @skin="3">Inline besluit als bijlage</AuHeading>
@@ -77,8 +78,8 @@ import Snippet from '../../components/snippet';
     <li>
       Met de relatie
       <MyCodeInline>dct:isPartOf</MyCodeInline>
-      wordt aangegeven dat het subsidiereglement kan worden aanzien als zijnde een
-      onderdeel van het eerste besluit
+      wordt aangegeven dat het subsidiereglement kan worden aanzien als zijnde
+      een onderdeel van het eerste besluit
     </li>
   </ul>
   <Snippet

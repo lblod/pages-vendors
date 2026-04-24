@@ -51,23 +51,23 @@ import Snippet from '../../components/snippet';
   <p>
     <strong>Bijvoorbeeld:</strong>
     <br />
-    Gemeente Vlavirgem heeft de geannoteerde notulen van een zitting gepubliceerd
-    op
+    Gemeente Vlavirgem heeft de geannoteerde notulen van een zitting
+    gepubliceerd op
     <AuLinkExternal
       href="#"
-    >http://vlavirgem.be/zittingen/20200304.html</AuLinkExternal>. De geannoteerde
-    pagina bevat besluiten:
+    >http://vlavirgem.be/zittingen/20200304.html</AuLinkExternal>. De
+    geannoteerde pagina bevat besluiten:
   </p>
   <ul>
     <li><AuLinkExternal
-      href="#"
-    >http://data.vlavirgem.be/besluiten/id/besluit-A</AuLinkExternal>,</li>
+        href="#"
+      >http://data.vlavirgem.be/besluiten/id/besluit-A</AuLinkExternal>,</li>
     <li><AuLinkExternal
-      href="#"
-    >http://data.vlavirgem.be/besluiten/id/besluit-B</AuLinkExternal>,</li>
+        href="#"
+      >http://data.vlavirgem.be/besluiten/id/besluit-B</AuLinkExternal>,</li>
     <li><AuLinkExternal
-      href="#"
-    >http://data.vlavirgem.be/besluit/id/besluit-C</AuLinkExternal></li>
+        href="#"
+      >http://data.vlavirgem.be/besluit/id/besluit-C</AuLinkExternal></li>
   </ul>
   <p>
     Er moeten dan 3 requests naar de melding API gestuurd worden. Alle requests
@@ -76,24 +76,25 @@ import Snippet from '../../components/snippet';
     <AuLinkExternal
       href="#"
     >http://vlavirgem.be/zittingen/20200304.html</AuLinkExternal>. De
-    <MyCodeInline>submittedResource</MyCodeInline>-property verschilt per request
-    en bevat de URI van het besluit dat gemeld wordt.
+    <MyCodeInline>submittedResource</MyCodeInline>-property verschilt per
+    request en bevat de URI van het besluit dat gemeld wordt.
   </p>
 
   <AuHeading @level="3" @skin="3">Meegeven van concept of inzendbaar status
     (optioneel)</AuHeading>
   <p>
     Indien een inzending aangemaakt wordt en volledig is, dan kan ze automatisch
-    verzonden worden. Optioneel kan aangegeven worden dat de inzending in concept
-    status is door de onderstaande URI voor "concept" als
+    verzonden worden. Optioneel kan aangegeven worden dat de inzending in
+    concept status is door de onderstaande URI voor "concept" als
     <MyCodeInline>status</MyCodeInline>-property mee te geven. Hierdoor zal de
     inzending niet verzonden worden, maar als concept blijven staan tot manuele
     actie de inzending markeert als inzendbaar. Dit kan gedaan worden in de
-    applicatie voor automatische meldingen of via een API call (ongedocumenteerd).
-    Als het document de status van inzendbaar krijgt, wordt het meteen ingezonden
-    als de data volledig is. Indien niet, wordt het alsnog in concept status
-    gebracht voor manuele aanvulling en inzending. De mogelijke waarden voor de
-    status zijn de URI's voor "concept" of "inzendbaar":
+    applicatie voor automatische meldingen of via een API call
+    (ongedocumenteerd). Als het document de status van inzendbaar krijgt, wordt
+    het meteen ingezonden als de data volledig is. Indien niet, wordt het alsnog
+    in concept status gebracht voor manuele aanvulling en inzending. De
+    mogelijke waarden voor de status zijn de URI's voor "concept" of
+    "inzendbaar":
   </p>
   <AuTable>
     <:header>
@@ -132,8 +133,8 @@ import Snippet from '../../components/snippet';
   <p>
     Elk van voorgaande voorbeelden heeft een impliciete JSON-LD context. Deze
     context kan expliciet in de calls meegegeven worden, of een alternatieve
-    context kan meegegeven worden. Op deze manier blijft de API maximaal flexibel.
-    Deze context wordt ter beschikking gesteld op
+    context kan meegegeven worden. Op deze manier blijft de API maximaal
+    flexibel. Deze context wordt ter beschikking gesteld op
     <AuLinkExternal
       href="https://lblod.data.gift/contexts/automatische-melding/v1/context.json"
     >
@@ -145,9 +146,9 @@ import Snippet from '../../components/snippet';
   <AuHeading @level="2" @skin="2">Authenticatie</AuHeading>
   <p>
     Een bestuurseenheid kan een externe partij authorizeren om automatische
-    meldingen uit te voeren in hun naam. Het beheer van deze rechten en permissies
-    zal op lange termijn gebeuren via ACM/IDM en het Gebruikersbeheer. Op korte
-    termijn zal dit beheerd worden door ABB.
+    meldingen uit te voeren in hun naam. Het beheer van deze rechten en
+    permissies zal op lange termijn gebeuren via ACM/IDM en het
+    Gebruikersbeheer. Op korte termijn zal dit beheerd worden door ABB.
   </p>
   <p>
     Iedere externe partij krijgt een unieke identificator en sleutel die
@@ -156,39 +157,39 @@ import Snippet from '../../components/snippet';
     <AuLinkExternal
       href="mailto:digitaalABB@vlaanderen.be?subject=Geheime sleutel automatische
       melding API test"
-    >digitaalABB@vlaanderen.be</AuLinkExternal>. Je krijgt dan een random gemeente
-    om mee te testen. Wanneer de productie API beschikbaar komt, zal een bestuur
-    de sleutel kunnen aanvragen via
+    >digitaalABB@vlaanderen.be</AuLinkExternal>. Je krijgt dan een random
+    gemeente om mee te testen. Wanneer de productie API beschikbaar komt, zal
+    een bestuur de sleutel kunnen aanvragen via
     <AuLinkExternal
       href="mailto:digitaalABB@vlaanderen.be?subject=Geheime sleutel automatische
       melding API productie"
-    >digitaalABB@vlaanderen.be</AuLinkExternal>. De lokale besturen zullen dan ook
-    via
+    >digitaalABB@vlaanderen.be</AuLinkExternal>. De lokale besturen zullen dan
+    ook via
     <AuLinkExternal
       href="mailto:digitaalABB@vlaanderen.be?subject=Permissie voor
       softwareleverancier ikv automatische
       melding"
     >digitaalABB@vlaanderen.be</AuLinkExternal>
-    een aanvraag insturen om een softwareleverancier permissie te geven om in hun
-    naam automatische meldingen in te sturen.
+    een aanvraag insturen om een softwareleverancier permissie te geven om in
+    hun naam automatische meldingen in te sturen.
   </p>
 
   <AuHeading @level="2" @skin="2">Verwijderen van een melding</AuHeading>
   <p>
     Het is mogelijk om een melding weer te verwijderen op voorwaarde dat het
-    meegeleverde document nog niet verzonden werd naar het Loket. Dit kan gebruikt
-    worden om documenten die nog niet volledig waren en daarom bleven steken in
-    "Concept" status te verwijderen, aan te vullen en opnieuw te proberen melden.
-    Na het melden van een document via de bovenstaande API wordt er een antwoord
-    verzonden onder de vorm van een JSON object:
+    meegeleverde document nog niet verzonden werd naar het Loket. Dit kan
+    gebruikt worden om documenten die nog niet volledig waren en daarom bleven
+    steken in "Concept" status te verwijderen, aan te vullen en opnieuw te
+    proberen melden. Na het melden van een document via de bovenstaande API
+    wordt er een antwoord verzonden onder de vorm van een JSON object:
   </p>
   <Snippet @snippetFilename="meldingsplicht/voorbeeld-antwoord.json" />
   <p>
     De
     <MyCodeInline>submission</MyCodeInline>
-    eigenschap bevat de URI voor de nieuw aangemaakte melding voor het ingezonden
-    document. Deze kan worden gebruikt voor het formuleren van een aanvraag voor
-    verwijdering dat kan worden verzonden op volgende URL:
+    eigenschap bevat de URI voor de nieuw aangemaakte melding voor het
+    ingezonden document. Deze kan worden gebruikt voor het formuleren van een
+    aanvraag voor verwijdering dat kan worden verzonden op volgende URL:
   </p>
   <MyCodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/delete-melding</MyCodeBlock>
   <p>
@@ -231,11 +232,11 @@ import Snippet from '../../components/snippet';
   </p>
   <AuHeading @level="4" @skin="4">JavaScript</AuHeading>
   <p>
-    De gepubliceerde pagina's mogen JavaScript bevatten, maar dit mag geen impact
-    hebben op de inhoud van de pagina. Alle annotaties die geharvest moeten
-    worden, moeten beschikbaar zijn bij het ophalen van de pagina, zonder dat er
-    verdere scripts nodig zijn. Dit kan bijvoorbeeld getest worden door het
-    gebruik van het
+    De gepubliceerde pagina's mogen JavaScript bevatten, maar dit mag geen
+    impact hebben op de inhoud van de pagina. Alle annotaties die geharvest
+    moeten worden, moeten beschikbaar zijn bij het ophalen van de pagina, zonder
+    dat er verdere scripts nodig zijn. Dit kan bijvoorbeeld getest worden door
+    het gebruik van het
     <MyCodeInline>curl</MyCodeInline>
     commando om de gepubliceerde pagina op te halen.
   </p>
@@ -252,8 +253,9 @@ import Snippet from '../../components/snippet';
         Authentication</AuLinkExternal>
     </li>
     <li>
-      <AuLinkExternal href="https://tools.ietf.org/html/rfc6749#section-4.4">OAuth
-        2.0 Client Credentials Grant</AuLinkExternal>
+      <AuLinkExternal
+        href="https://tools.ietf.org/html/rfc6749#section-4.4"
+      >OAuth 2.0 Client Credentials Grant</AuLinkExternal>
       (zie ook
       <AuLinkExternal
         href="https://oauth.net/2/grant-types/client-credentials/"
@@ -281,9 +283,9 @@ import Snippet from '../../components/snippet';
     <AuLinkExternal
       href="http://lblod.data.gift/vocabularies/automatische-melding/targetAutenticationConfiguration"
     >authentication</AuLinkExternal>
-    dient toegevoed worden aan de body van het request. De informatie die onder de
-    key valt, zal gebruikt worden voor de url van het te ophalen document en alle
-    relevante gerelateerde documenten (bijlagen en
+    dient toegevoed worden aan de body van het request. De informatie die onder
+    de key valt, zal gebruikt worden voor de url van het te ophalen document en
+    alle relevante gerelateerde documenten (bijlagen en
     <AuLinkExternal
       href="http://lblod.data.gift/vocabularies/besluit/linkToPublication"
     >linkToPublication</AuLinkExternal>).
@@ -301,14 +303,16 @@ import Snippet from '../../components/snippet';
   <p>
     De key 'resource' is hier optioneel en kan gebruikt worden om verdere
     beperkingen op te leggen over de op te halen resource, conform:
-    <AuLinkExternal href="https://datatracker.ietf.org/doc/html/rfc8707">Resource
-      Indicators</AuLinkExternal>. Noteer, op OAuth 2.0 zijn er veel variaties
-    mogelijk, contacteer ons gerust indien er uitbreidingen gewenst zijn.
+    <AuLinkExternal
+      href="https://datatracker.ietf.org/doc/html/rfc8707"
+    >Resource Indicators</AuLinkExternal>. Noteer, op OAuth 2.0 zijn er veel
+    variaties mogelijk, contacteer ons gerust indien er uitbreidingen gewenst
+    zijn.
   </p>
   <AuHeading @level="4" @skin="4">Belangrijke opmerking</AuHeading>
   <p>
-    We gaan ervan uit dat de credentials regelmatig geroteerd worden, teneinde de
-    veiligheid te verhogen.
+    We gaan ervan uit dat de credentials regelmatig geroteerd worden, teneinde
+    de veiligheid te verhogen.
   </p>
 
   <AuHeading @level="2" @skin="2">Ontwikkeling en test</AuHeading>
@@ -328,21 +332,23 @@ import Snippet from '../../components/snippet';
     Besturen is een web applicatie beschikbaar gesteld op
     <AuLinkExternal href="https://api.loket.lblod.info/mock-login">
       https://api.loket.lblod.info/mock-login</AuLinkExternal>. Je kan inloggen
-    door de gewenste bestuurseenheid aan te klikken in de lijst. Vervolgens wordt
-    een lijst getoond van alle meldingen die ontvangen zijn. Wanneer op het
-    'detail' van een melding geklikt wordt, kan bekeken worden welke kennis er uit
-    het gepubliceerde document geharvest is en of deze al dan niet geldig/volledig
-    is.
+    door de gewenste bestuurseenheid aan te klikken in de lijst. Vervolgens
+    wordt een lijst getoond van alle meldingen die ontvangen zijn. Wanneer op
+    het 'detail' van een melding geklikt wordt, kan bekeken worden welke kennis
+    er uit het gepubliceerde document geharvest is en of deze al dan niet
+    geldig/volledig is.
   </p>
 
   <AuHeading @level="2" @skin="2">Meldingsregels</AuHeading>
   <p>
     Informatie over welk type besluit meldingsplichtig is en dit voor welke type
     bestuur, wordt bijghouden in de
-    <AuLink @route="docs.centrale-vindplaats-sparql">centrale-vindplaats</AuLink>.
+    <AuLink
+      @route="docs.centrale-vindplaats-sparql"
+    >centrale-vindplaats</AuLink>.
     <br />
-    Dit endpoint kan dan bevraagd worden om te bepalen of een bestuur al dan niet
-    een inzending kan of moet insturen.
+    Dit endpoint kan dan bevraagd worden om te bepalen of een bestuur al dan
+    niet een inzending kan of moet insturen.
   </p>
   <p>
     Het model van dergelijke regel ziet er als volgt uit:
@@ -360,38 +366,38 @@ import Snippet from '../../components/snippet';
       <tr>
         <td><MyCodeInline>lblodBesluit</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://lblod.data.gift/vocabularies/besluit/"
-        >http://lblod.data.gift/vocabularies/besluit/</AuLinkExternal></td>
+            href="http://lblod.data.gift/vocabularies/besluit/"
+          >http://lblod.data.gift/vocabularies/besluit/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>schema</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://schema.org/"
-        >http://schema.org/</AuLinkExternal></td>
+            href="http://schema.org/"
+          >http://schema.org/</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>skos</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.w3.org/2004/02/skos/core#"
-        >http://www.w3.org/2004/02/skos/core#</AuLinkExternal></td>
+            href="http://www.w3.org/2004/02/skos/core#"
+          >http://www.w3.org/2004/02/skos/core#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>xsd</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://www.w3.org/2001/XMLSchema#"
-        >http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
+            href="http://www.w3.org/2001/XMLSchema#"
+          >http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><MyCodeInline>rule</MyCodeInline></td>
         <td><AuLinkExternal
-          href="http://lblod.data.gift/vocabularies/notification/"
-        >http://lblod.data.gift/vocabularies/notification/</AuLinkExternal></td>
+            href="http://lblod.data.gift/vocabularies/notification/"
+          >http://lblod.data.gift/vocabularies/notification/</AuLinkExternal></td>
       </tr>
     </:body>
   </AuTable>
 
   <AuHeading @level="3" @skin="3"><MyCodeInline
-  >rule:NotificationRule</MyCodeInline></AuHeading>
+    >rule:NotificationRule</MyCodeInline></AuHeading>
   <p>
     Beschrijft de meldingsregel voor een bepaald type besluit
   </p>
@@ -473,8 +479,8 @@ import Snippet from '../../components/snippet';
         <td>notificationRule</td>
         <td><MyCodeInline>lblodBesluit:notificationRule</MyCodeInline></td>
         <td><MyCodeInline>rule:NotificationRule</MyCodeInline></td>
-        <td>Beschrijft welke meldinsregels van toepassing zijn op het type besluit
-          of document</td>
+        <td>Beschrijft welke meldinsregels van toepassing zijn op het type
+          besluit of document</td>
       </tr>
     </:body>
   </AuTable>
@@ -484,17 +490,23 @@ import Snippet from '../../components/snippet';
   <p>
     De volgende snippet beschrijft hoe het er kan uitzien in RDF-formaat.
   </p>
-  <Snippet @snippetFilename="meldingsplicht/voorbeeld-notification-rule.turtle" />
+  <Snippet
+    @snippetFilename="meldingsplicht/voorbeeld-notification-rule.turtle"
+  />
   <p>
     Noteer: het gaat hier om een illustratief voorbeeld.
   </p>
   <AuHeading @level="4" @skin="4">SPARQL query</AuHeading>
   <p>
     De volgende SPARQL-query geeft een voorbeeld van hoe
-    <AuLink @route="docs.centrale-vindplaats-sparql">centrale-vindplaats</AuLink>
+    <AuLink
+      @route="docs.centrale-vindplaats-sparql"
+    >centrale-vindplaats</AuLink>
     bevraagd kan worden om meer informatie te vinden over de regels.
     <br />
     Hier worden alle meldingsplichtige besluiten opgelijst voor een Gemeente.
   </p>
-  <Snippet @snippetFilename="meldingsplicht/voorbeeld-notification-rule.sparql" />
+  <Snippet
+    @snippetFilename="meldingsplicht/voorbeeld-notification-rule.sparql"
+  />
 </template>

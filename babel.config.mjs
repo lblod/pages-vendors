@@ -37,12 +37,13 @@ export default {
       },
     ],
     [
-      'prismjs', {
-        languages: ["markup", "javascript", "bash", "turtle", "json", "html"],
+      'prismjs',
+      {
+        languages: ['markup', 'javascript', 'bash', 'turtle', 'json', 'html'],
         plugins: [],
-        theme: "default",
-        css: true
-      }
+        theme: 'default',
+        css: true,
+      },
     ],
     ...babelCompatSupport(),
   ],

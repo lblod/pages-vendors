@@ -8,15 +8,15 @@ import Snippet from '../../components/snippet';
   <AuHeading @level="1" @skin="1">Publicatie Events ontsluiten via LDES</AuHeading>
   <p>
     Gepubliceerde documenten kunnen meermaals geupdated worden. Door externe
-    systemen gerichter te laten opvragen wordt de load op de publicatieomgeving en
-    bij de consumenten beperkt. Een Linked Data Event Stream (LDES) laat je toe om
-    te publiceren welke URLs geupdated zijn zodat consumenten gericht komen
-    opvragen.
+    systemen gerichter te laten opvragen wordt de load op de publicatieomgeving
+    en bij de consumenten beperkt. Een Linked Data Event Stream (LDES) laat je
+    toe om te publiceren welke URLs geupdated zijn zodat consumenten gericht
+    komen opvragen.
   </p>
   <p>
     LDES is een standaardformaat wat toe laat entiteiten en wijzigingen in
-    tijdreeksen te publiceren als een gestructureerde datastroom. In het kader van
-    een publicatieplatform kan een LDES-feed gebruikt worden om publicaties,
+    tijdreeksen te publiceren als een gestructureerde datastroom. In het kader
+    van een publicatieplatform kan een LDES-feed gebruikt worden om publicaties,
     inclusief hun locatie, type en publicatiedatum, op een efficiënte en
     schaalbare manier beschikbaar te stellen. Zo kunnen systemen die Linked Data
     verzamelen (harvesters) eenvoudig de gepubliceerde documenten vinden op het
@@ -26,23 +26,23 @@ import Snippet from '../../components/snippet';
 
   <AuHeading @level="2" @skin="2" id="inhoud-van-de-feed">Inhoud van de feed</AuHeading>
   <p>
-    Een LDES-feed is gebaseerd op de RDF-datastructuur en wordt meestal aangeboden
-    via een JSON-LD of Turtle representatie. De basiscomponenten van een LDES-feed
-    zijn:
+    Een LDES-feed is gebaseerd op de RDF-datastructuur en wordt meestal
+    aangeboden via een JSON-LD of Turtle representatie. De basiscomponenten van
+    een LDES-feed zijn:
   </p>
   <ul>
     <li><MyCodeInline>Tree:Node</MyCodeInline>: Een subverzameling van de stream
       (paginering).</li>
-    <li><MyCodeInline>Tree:Relation</MyCodeInline>: Biedt links naar voorgaande of
-      volgende pagina’s.</li>
+    <li><MyCodeInline>Tree:Relation</MyCodeInline>: Biedt links naar voorgaande
+      of volgende pagina’s.</li>
     <li><MyCodeInline>LDES:EventStream</MyCodeInline>: Een sequentie van
       wijzigingen over tijd.</li>
   </ul>
 
   <p>Elke publicatie wordt als een entiteit weergegeven met minimaal:</p>
   <ul>
-    <li><MyCodeInline>dct:isVersionOf</MyCodeInline>: Unieke identificatie van de
-      publicatie.</li>
+    <li><MyCodeInline>dct:isVersionOf</MyCodeInline>: Unieke identificatie van
+      de publicatie.</li>
     <li><MyCodeInline>prov:atLocation</MyCodeInline>: Locatie (URL) van de
       publicatie.</li>
     <li><MyCodeInline>dct:type</MyCodeInline>: Type van de publicatie, uit de
@@ -50,14 +50,14 @@ import Snippet from '../../components/snippet';
         href="https://data.vlaanderen.be/doc/concept/BesluitDocumentType/"
       >BesluitDocumentType codelijst</AuLinkExternal>.
     </li>
-    <li><MyCodeInline>prov:generatedAtTime</MyCodeInline>: Publicatiedatum van het
-      document.</li>
+    <li><MyCodeInline>prov:generatedAtTime</MyCodeInline>: Publicatiedatum van
+      het document.</li>
   </ul>
 
   <p>
-    LDES kan aangeboden worden in meerdere serializaties, in dit document gaan we
-    uit van text/turtle serializatie, maar ook JSON-LD is mogelijk. Op het einde
-    van het document worden er voorbeelden voorzien in beide formaten.
+    LDES kan aangeboden worden in meerdere serializaties, in dit document gaan
+    we uit van text/turtle serializatie, maar ook JSON-LD is mogelijk. Op het
+    einde van het document worden er voorbeelden voorzien in beide formaten.
   </p>
 
   <AuHeading @level="3" @skin="3" id="algemene-structuur">Algemene structuur</AuHeading>
@@ -69,8 +69,9 @@ import Snippet from '../../components/snippet';
   <Snippet @snippetFilename="publicatie-ldes/metadata-structure.turtle" />
   <ul>
     <li><MyCodeInline>ldes:timestampPath</MyCodeInline>
-      verwijst naar het predicate dat gebruikt wordt in de member om de timestamp
-      van de data te vinden. In dit geval de publicatiedatum van het document</li>
+      verwijst naar het predicate dat gebruikt wordt in de member om de
+      timestamp van de data te vinden. In dit geval de publicatiedatum van het
+      document</li>
     <li><MyCodeInline>ldes:versionOfPath</MyCodeInline>
       verwijst naar het predicate dat wordt gebruikt om te definiëren dat een
       tree:member van een ldes:EventStream een versie is van een rdf-document.
@@ -81,7 +82,8 @@ import Snippet from '../../components/snippet';
       <AuLinkExternal
         href="https://lblod.github.io/pages-vendors/assets/shacl/shacl-submission.ttl#DocumentShape"
       >deze pagina</AuLinkExternal>. Indien de feed meer data bevat dan de
-      minimale set hier beschreven, kan ook een eigen shape gespecifieerd worden.</li>
+      minimale set hier beschreven, kan ook een eigen shape gespecifieerd
+      worden.</li>
     <li><MyCodeInline>tree:member</MyCodeInline>
       duidt op een member in de verzameling, in dit geval een gepubliceerd
       document.</li>
@@ -96,43 +98,43 @@ import Snippet from '../../components/snippet';
     Als een feed te groot wordt om in één keer op te halen, kan deze worden
     opgedeeld in kleinere stukken (fragmenten). Dit gebeurt volgens de
     <AuLinkExternal href="https://treecg.github.io/specification/">
-      TREE-specificatie</AuLinkExternal>, die verschillende manieren biedt om data
-    op te splitsen en te doorzoeken. Zo kan de implementator kiezen om
+      TREE-specificatie</AuLinkExternal>, die verschillende manieren biedt om
+    data op te splitsen en te doorzoeken. Zo kan de implementator kiezen om
     bijvoorbeeld publicaties in stijgende of dalende volgorde van publicatie te
     publiceren.
   </p>
 
   <p>
     Elk individueel fragment is wederom gepubliceerd op een URL. LDES clients
-    behandelen deze individuele documenten. Om te weten of een pagina gewijzigd is
-    worden de HTTP cache headers gebruikt. Het is sterk aangewezen op een fragment
-    wat niet meer kan wijzigen op een vaste URL te plaatsen en via HTTP Cache
-    headers aan te geven dat het document niet meer kan wijzigen.
+    behandelen deze individuele documenten. Om te weten of een pagina gewijzigd
+    is worden de HTTP cache headers gebruikt. Het is sterk aangewezen op een
+    fragment wat niet meer kan wijzigen op een vaste URL te plaatsen en via HTTP
+    Cache headers aan te geven dat het document niet meer kan wijzigen.
   </p>
 
-  <AuHeading @level="4" @skin="4">Voorbeeld in dalende volgorde (nieuwste eerst):
-    pagina 1</AuHeading>
+  <AuHeading @level="4" @skin="4">Voorbeeld in dalende volgorde (nieuwste
+    eerst): pagina 1</AuHeading>
   <SnippetToggle @snippetFilename="publicatie-ldes/fragment.turtle" />
   <p>
-    Elke pagina (<MyCodeInline>tree:Node</MyCodeInline>) gebruikt TREE-relaties om
-    te navigeren door de publicaties op basis van hun tijdstempel. De
+    Elke pagina (<MyCodeInline>tree:Node</MyCodeInline>) gebruikt TREE-relaties
+    om te navigeren door de publicaties op basis van hun tijdstempel. De
     <MyCodeInline>tree:LessThanRelation</MyCodeInline>
     verwijst naar de volgende pagina (page=2), die events bevat met een
     prov:generatedAtTime kleiner dan "2025-03-22T00:00:00Z".
   </p>
 
-  <AuHeading @level="4" @skin="4">Voorbeeld in dalende volgorde (nieuwste eerst):
-    pagina 2</AuHeading>
+  <AuHeading @level="4" @skin="4">Voorbeeld in dalende volgorde (nieuwste
+    eerst): pagina 2</AuHeading>
   <SnippetToggle @snippetFilename="publicatie-ldes/fragment-2.turtle" />
   <p>
     De relaties
     <MyCodeInline>tree:GreaterThanOrEqualToRelation</MyCodeInline>
     en
     <MyCodeInline>tree:LessThanRelation</MyCodeInline>
-    definiëren een bereik voor page=2. In dit geval kunnen we dus publicaties met
-    een timestamp tussen 2025-03-22T00:00:00Z en 2025-03-11T12:00:00Z verwachten
-    op pagina 2. Voor oudere publicaties wordt verwezen naar pagina 3, voor
-    nieuwere naar pagina 1.
+    definiëren een bereik voor page=2. In dit geval kunnen we dus publicaties
+    met een timestamp tussen 2025-03-22T00:00:00Z en 2025-03-11T12:00:00Z
+    verwachten op pagina 2. Voor oudere publicaties wordt verwezen naar pagina
+    3, voor nieuwere naar pagina 1.
   </p>
   <AuHeading
     @level="3"
@@ -140,9 +142,9 @@ import Snippet from '../../components/snippet';
     id="annotatie-publicaties-document-types"
   >Versionering</AuHeading>
   <p>
-    Als een publicatie wordt geupdate, dan wordt de publicatie nogmaals op de feed
-    gezet. Dit is een nieuwe member met eigen identifier, die naar de "echte"
-    identifier linkt via de
+    Als een publicatie wordt geupdate, dan wordt de publicatie nogmaals op de
+    feed gezet. Dit is een nieuwe member met eigen identifier, die naar de
+    "echte" identifier linkt via de
     <MyCodeInline>dct:isVersionOf</MyCodeInline>
     relatie. De member krijgt dan een nieuwe
     <MyCodeInline>prov:generatedAtTime</MyCodeInline>.
@@ -150,10 +152,10 @@ import Snippet from '../../components/snippet';
   <SnippetToggle @snippetFilename="publicatie-ldes/version-of.turtle" />
   <p>
     In bovenstaande voorbeeld werd de besluitenlijst op
-    https://vlavirgem.be/web/BesluitenLijst_Vast%20bureau_13-03-2025.html geupdate
-    met een nieuwe versie vanwege een typfout. De publicatie staat nu 2 keer op de
-    feed: eenmaal op de originele publicatiedatum, en eenmaal met de laatste
-    publicatiedatum op 28 Maart 2025.
+    https://vlavirgem.be/web/BesluitenLijst_Vast%20bureau_13-03-2025.html
+    geupdate met een nieuwe versie vanwege een typfout. De publicatie staat nu 2
+    keer op de feed: eenmaal op de originele publicatiedatum, en eenmaal met de
+    laatste publicatiedatum op 28 Maart 2025.
   </p>
 
   <AuHeading @level="4" @skin="4">Volledig voorbeeld (turtle)</AuHeading>
