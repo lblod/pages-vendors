@@ -1,1 +1,3 @@
-<template>Hier volgt code in een block: {{yield}}</template>
+import MyCodeInline from './my-code-inline';
+
+<template><pre><MyCodeInline ...attributes @language={{@language}}>{{yield}}</MyCodeInline></pre></template>
