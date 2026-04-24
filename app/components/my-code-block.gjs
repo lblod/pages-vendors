@@ -1,3 +1,1 @@
-<template>
-  Hier volgt code in een block: {{yield}}
-</template>
+<template>Hier volgt code in een block: {{yield}}</template>

@@ -19,23 +19,23 @@ You will need the following things properly installed on your computer.
 
 To run the diagram generation, you will need installed on you system:
 
-* `sed`
-* GraphViz `dot`
-* GNU `make`
+- `sed`
+- GraphViz `dot`
+- GNU `make`
 
 ## Running / Development
 
 **Optional step:** run the diagram generation. Not needed if you haven't made
 changes to the diagram source. Do this with
 
-  `make all`
+`make all`
 
 in the `DiagramsSource` folder.
 
-* `ember serve`
-* Visit your app at
+- `ember serve`
+- Visit your app at
   [http://localhost:4200/pages-vendors/](http://localhost:4200/pages-vendors/).
-* Visit your tests at
+- Visit your tests at
   [http://localhost:4200/tests](http://localhost:4200/tests).
 
 ### Code Generators
@@ -63,24 +63,24 @@ branch. There exist tools to automate the process, but they have consistently
 been broken. Instead, we use a manual process that is luckily not too
 difficult:
 
-* Make sure you have re-built the diagrams if you have made changes to them
+- Make sure you have re-built the diagrams if you have made changes to them
   - `make all` in the `DiagramsSource` folder (see above)
-* Run a production build: `ember build --environment production`
+- Run a production build: `ember build --environment production`
   - Built files are now in the `dist` folder
-* Checkout the `gh-pages` branch: `git switch gh-pages`
-* Move and *replace* the built files from the `dist` folder into the branch
+- Checkout the `gh-pages` branch: `git switch gh-pages`
+- Move and _replace_ the built files from the `dist` folder into the branch
   root
   - Only replace these files/folders:
-    * `@appuniversum`
-    * `assets`
-    * `index.html`
-    * `robots.txt`
+    - `@appuniversum`
+    - `assets`
+    - `index.html`
+    - `robots.txt`
   - You can use these commands from the root:
-    * `rm -rf \@appuniversum/ assets/ index.html robots.txt`
-    * `cp -r dist/\@appuniversum/ dist/assets/ dist/index.html dist/robots.txt .`
-* Make sure there still is the (empty) `.nojekyll` file
-* Add only the above files/folders to a Git commit
-* Commit with a message for the new deploy and push
+    - `rm -rf \@appuniversum/ assets/ index.html robots.txt`
+    - `cp -r dist/\@appuniversum/ dist/assets/ dist/index.html dist/robots.txt .`
+- Make sure there still is the (empty) `.nojekyll` file
+- Add only the above files/folders to a Git commit
+- Commit with a message for the new deploy and push
 
 Hopefully, your new changes are now hosted on [the public
 pages](https://lblod.github.io/pages-vendors/).

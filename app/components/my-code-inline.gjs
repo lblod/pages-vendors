@@ -1,3 +1,1 @@
-<template>
-  Hier komt code achter: {{yield}}
-</template>
+<template>Hier komt code achter: {{yield}}</template>

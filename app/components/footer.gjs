@@ -16,14 +16,16 @@ import AuAlert from '@appuniversum/ember-appuniversum/components/au-alert';
         @skin="warning"
         @icon="question-circle"
         @size="default"
-        @closeable={{false}}>
+        @closeable={{false}}
+      >
         <p>
           Voor meer informatie kan u ons contacteren op
           <AuLinkExternal
             href="mailto:digitaalABB@vlaanderen.be"
             @icon="mail"
-            @iconAlignment="left">
-              digitaalABB@vlaanderen.be
+            @iconAlignment="left"
+          >
+            digitaalABB@vlaanderen.be
           </AuLinkExternal>.
         </p>
       </AuAlert>
@@ -32,8 +34,9 @@ import AuAlert from '@appuniversum/ember-appuniversum/components/au-alert';
         <AuLinkExternal
           href="https://www.vlaanderen.be/organisaties/administratieve-diensten-van-de-vlaamse-overheid/beleidsdomein-kanselarij-en-bestuur/agentschap-binnenlands-bestuur"
           @icon="external"
-          @iconAlignment="left">
-            Agentschap Binnenlands Bestuur
+          @iconAlignment="left"
+        >
+          Agentschap Binnenlands Bestuur
         </AuLinkExternal>
       </p>
       <ul class="au-c-list-horizontal">
@@ -42,8 +45,9 @@ import AuAlert from '@appuniversum/ember-appuniversum/components/au-alert';
             href="https://www.vlaanderen.be/over-vlaanderenbe/disclaimer"
             @skin="secondary"
             @icon="external"
-            @iconAlignment="left">
-              Disclaimer
+            @iconAlignment="left"
+          >
+            Disclaimer
           </AuLinkExternal>
         </li>
         <li class="au-c-list-horizontal__item">
@@ -51,8 +55,9 @@ import AuAlert from '@appuniversum/ember-appuniversum/components/au-alert';
             href="https://www.vlaanderen.be/over-vlaanderenbe/cookieverklaring-vlaanderenbe"
             @skin="secondary"
             @icon="external"
-            @iconAlignment="left">
-              Cookieverklaring
+            @iconAlignment="left"
+          >
+            Cookieverklaring
           </AuLinkExternal>
         </li>
       </ul>

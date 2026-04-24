@@ -11,28 +11,29 @@ import Footer from '../components/footer';
 <template>
   {{pageTitle "Docs"}}
   <AuApp>
-    <AuBodyContainer
-      id="scroll-to-top-container"
-      @scroll={{true}}>
+    <AuBodyContainer id="scroll-to-top-container" @scroll={{true}}>
       <div>
         <AuToolbar
           @reverse={{false}}
           @border="bottom"
           @skin="tint"
           @size="large"
-          @nowrap={{true}}>
+          @nowrap={{true}}
+        >
           <AuLink
             @route="index"
             @skin="primary"
             @icon="chevron-left"
-            @iconAlignment="left">
+            @iconAlignment="left"
+          >
             Terug naar overzicht
           </AuLink>
         </AuToolbar>
 
         <AuContent
           class="au-o-region au-o-layout au-u-max-width-medium"
-          @skin="default">
+          @skin="default"
+        >
           {{outlet}}
         </AuContent>
 
@@ -41,21 +42,21 @@ import Footer from '../components/footer';
           @border="top"
           @skin="tint"
           @size="large"
-          @nowrap={{true}}>
+          @nowrap={{true}}
+        >
           <AuLink
             @route="index"
             @skin="primary"
             @icon="chevron-left"
-            @iconAlignment="left">
+            @iconAlignment="left"
+          >
             Terug naar overzicht
           </AuLink>
         </AuToolbar>
 
         <section class="au-u-background-gray-100">
           <div class="au-o-layout">
-            <AuHeading
-              @level="2"
-              @skin="2">
+            <AuHeading @level="2" @skin="2">
               Beschikbare documentatie
             </AuHeading>
             <Menu @fullSize={{false}} />

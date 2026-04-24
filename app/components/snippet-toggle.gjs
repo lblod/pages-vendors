@@ -14,11 +14,9 @@ import Snippet from './snippet';
     @isExpanded={{false}}
     @isOpenInitially={{false}}
     @manualControl={{false}}
-    as |c|>
-    <c.header
-      @badgeIcon=""
-      @badgeSkin=""
-      @badgeSize="">
+    as |c|
+  >
+    <c.header @badgeIcon="" @badgeSkin="" @badgeSize="">
       <AuHeading @level="4" @skin="functional">
         Toon/verberg het code snippet
       </AuHeading>
