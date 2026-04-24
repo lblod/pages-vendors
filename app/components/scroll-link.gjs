@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { on } from '@ember/modifier';
 
 export default class ScrollLinkComponent extends Component {
   @action
@@ -8,4 +9,8 @@ export default class ScrollLinkComponent extends Component {
     if (element) element.scrollIntoView();
     event.preventDefault();
   }
+
+  <template>
+    <a {{on "click" this.performScroll}} href="">{{yield}}</a>
+  </template>
 }
