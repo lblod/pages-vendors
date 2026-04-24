@@ -1,0 +1,650 @@
+import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
+import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
+import AuTable from '@appuniversum/ember-appuniversum/components/au-table';
+import MyCodeInline from '../../components/my-code-inline';
+import SnippetToggle from '../../components/snippet-toggle';
+
+<template>
+  <AuHeading @level="1" @skin="1">Mandatendatabank</AuHeading>
+  <p>
+    Het lokaal mandatenbeheer en de mandatendatabank bevat de mandatarissen van de
+    lokale besturen (gemeenten, OCMWs, districten en provincies). Deze databank
+    volgt een uitbreiding op het applicatieprofiel
+    <AuLinkExternal
+      href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/"
+    >mandatendatabank</AuLinkExternal>.
+  </p>
+  <p>
+    Dit document beschrijft deze uitbreiding.
+    <AuLinkExternal
+      href="https://drive.google.com/file/d/1fGkae_PGUZVHehHA33ratebByMtEu2W0/view?usp=drive_link"
+    >
+      Een class-diagram</AuLinkExternal>
+    dat deze uitbreiding weergeeft is ook beschikbaar. De stabiliteit van
+    predicaten en types verschilt naar gelang de prefix. De
+    <MyCodeInline>ext</MyCodeInline>
+    prefix wordt gebruikt voor interne uitbreidingen en is het minst stabiel. De
+    <MyCodeInline>lmb</MyCodeInline>
+    prefix wordt gebruikt voor stabielere uitbreidingen die ook hergebruikt kunnen
+    worden in het bredere LBLOD eco-systeem.
+  </p>
+  <p>
+    Opgelet! Sommige predicaten volgen de originele versie van het
+    applicatieprofiel. Voorlopig wordt dit zo gehouden omdat de verschillende
+    vendors dit model ook volgen. Bij publicatie worden beide versies van de uri
+    aangeboden. Dit is het geval voor:
+  </p>
+  <ul>
+    <li>mandaat:isTijdspecialisatieVan: dit is officieel
+      generiek:isTijdspecialisatieVan</li>
+    <li>generiek: deze prefix wordt met http gebruikt in de applicatie, maar in
+      werkelijkheid is het een https prefix</li>
+    <li>besluit:classificatie: dit is officieel org:classification</li>
+  </ul>
+  <p>
+    Het lokaal mandatenbeheer heeft ook een
+    <AuLinkExternal
+      href="https://abb-vlaanderen.gitbook.io/handleiding-lokaal-mandatenbeheer"
+    >
+      gebruikershandleiding</AuLinkExternal>. Deze kan extra verheldering brengen
+    over hoe de concepten in dit document in de praktijk gebruikt worden.
+  </p>
+  <AuHeading @level="2" @skin="2">LDES feeds</AuHeading>
+  <p>
+    Het lokaal mandatenbeheer biedt verschillende LDES streams aan. Meer
+    informatie over deze streams is terug te vinden in
+    <a
+      href="https://github.com/lblod/app-lokaal-mandatenbeheer/blob/master/docs/LDES.md"
+      target="_blank"
+      rel="noopener noreferrer"
+    >de source code documentatie.</a>
+  </p>
+
+  <AuHeading @level="2" @skin="2">Secure SPARQL endpoint</AuHeading>
+  <p>
+    Het lokaal mandatenbeheer biedt een secure sparql endpoint aan op de url
+    <a
+      href="https://mandatenbeheer.lokaalbestuur.vlaanderen.be/vendor/sparql"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      https://mandatenbeheer.lokaalbestuur.vlaanderen.be/vendor/sparql</a>. Dit
+    endpoint is beveiligd via de
+    <a
+      href="https://github.com/lblod/vendor-login-service"
+      target="_blank"
+      rel="noopener noreferrer"
+    >vendor login service</a>
+    met dezelfde credentials als de credentials gebruikt in Loket. De procedure om
+    deze aan te vragen staat beschreven in de documentatie van Loket.
+  </p>
+
+  <AuHeading @level="2" @skin="2">Automatische doorstroom van informatie</AuHeading>
+  <p>
+    De informatie beheerd in lokaal mandatenbeheer stroomt automatisch voort naar
+    Loket en van daar naar de Mandatendatabank en de centrale vindplaats.
+    Mandatarissen in de draft status stromen niet automatisch door.
+  </p>
+  <p>
+    Gevoelige persoonsgegevens als rijksregisternummers, geslachten en
+    geboortedatums stromen ook niet door.
+  </p>
+
+  <AuHeading @level="2" @skin="2">Gebruikte prefixen</AuHeading>
+  <AuTable>
+    <:header>
+      <tr>
+        <th>Prefix</th>
+        <th>URI</th>
+      </tr>
+    </:header>
+    <:body>
+      <tr>
+        <td><MyCodeInline>adres</MyCodeInline></td>
+        <td><AuLinkExternal
+          href="https://data.vlaanderen.be/ns/adres#"
+        >https://data.vlaanderen.be/ns/adres#</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><MyCodeInline>besluit</MyCodeInline></td>
+        <td><AuLinkExternal
+          href="http://data.vlaanderen.be/ns/besluit#"
+        >http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><MyCodeInline>ext</MyCodeInline></td>
+        <td><AuLinkExternal
+          href="http://mu.semte.ch/vocabularies/ext/"
+        >http://mu.semte.ch/vocabularies/ext/</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><MyCodeInline>foaf</MyCodeInline></td>
+        <td><AuLinkExternal
+          href="http://xmlns.com/foaf/0.1/"
+        >http://xmlns.com/foaf/0.1/</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><MyCodeInline>lblodlg</MyCodeInline></td>
+        <td><AuLinkExternal
+          href="http://data.lblod.info/vocabularies/leidinggevenden/"
+        >http://data.lblod.info/vocabularies/leidinggevenden/</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><MyCodeInline>locn</MyCodeInline></td>
+        <td><AuLinkExternal
+          href="http://www.w3.org/ns/locn#"
+        >http://www.w3.org/ns/locn#</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><MyCodeInline>lmb</MyCodeInline></td>
+        <td><AuLinkExternal
+          href="http://lblod.data.gift/vocabularies/lmb/"
+        >http://lblod.data.gift/vocabularies/lmb/</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><MyCodeInline>mandaat</MyCodeInline></td>
+        <td><AuLinkExternal
+          href="http://data.vlaanderen.be/ns/mandaat#"
+        >http://data.vlaanderen.be/ns/mandaat#</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><MyCodeInline>person</MyCodeInline></td>
+        <td><AuLinkExternal
+          href="https://data.vlaanderen.be/ns/persoon#"
+        >https://data.vlaanderen.be/ns/persoon#</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><MyCodeInline>persoon</MyCodeInline></td>
+        <td><AuLinkExternal
+          href="http://www.w3.org/ns/person#"
+        >http://www.w3.org/ns/person#</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><MyCodeInline>org</MyCodeInline></td>
+        <td><AuLinkExternal
+          href="http://www.w3.org/ns/org#"
+        >http://www.w3.org/ns/org#</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><MyCodeInline>schema</MyCodeInline></td>
+        <td><AuLinkExternal
+          href="http://schema.org/"
+        >http://schema.org/</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><MyCodeInline>xsd</MyCodeInline></td>
+        <td><AuLinkExternal
+          href="http://www.w3.org/2001/XMLSchema#"
+        >http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
+      </tr>
+    </:body>
+  </AuTable>
+
+  <AuHeading @level="2" @skin="2">Entiteiten</AuHeading>
+
+  <AuHeading @level="3" @skin="3">Besluit</AuHeading>
+  <AuHeading @level="4" @skin="4">Klasse</AuHeading>
+  <p>
+    <MyCodeInline>besluit:Besluit</MyCodeInline>
+  </p>
+  <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
+  <p>
+    Een besluit zoals gedefinieerd in het
+    <a
+      href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/#Besluit"
+      rel="noopener noreferrer"
+      target="_blank"
+    >besluit-publicatie.</a>. In de implementatie is dit concept samengevoegd met
+    <MyCodeInline>besluit:Rechtsgrond</MyCodeInline>. Enkel de eigenschappen die
+    relevant zijn voor de Mandatendatabank worden hieronder beschreven.
+  </p>
+  <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+  <AuTable>
+    <:header>
+      <tr>
+        <th>Naam</th>
+        <th>URI</th>
+        <th>Verwacht type</th>
+        <th>Beschrijving</th>
+      </tr>
+    </:header>
+    <:body>
+      <tr>
+        <td>bekrachtigt aanstelling van</td>
+        <td><MyCodeInline>mandaat:bekrachtigtAanstellingVan</MyCodeInline></td>
+        <td><MyCodeInline>mandaat:Mandataris</MyCodeInline></td>
+        <td>De Mandataris waarvan de aanstelling bekrachtigd wordt door dit
+          besluit. Een bekrachtigde mandataris kan een link hebben naar een
+          Besluit als dat besluit (voldoende) beschreven is in gelinkte data.
+          Mandatarissen kunnen echter ook manueel bekrachtigd worden.</td>
+      </tr>
+      <tr>
+        <td>bekrachtigt ontslag van</td>
+        <td><MyCodeInline>mandaat:bekrachtigtOntslagVan</MyCodeInline></td>
+        <td><MyCodeInline>mandaat:Mandataris</MyCodeInline></td>
+        <td>De Mandataris waarvan het mandaat door dit besluit beëindigd wordt.</td>
+      </tr>
+    </:body>
+  </AuTable>
+  <AuHeading @level="4" @skin="4">Voorbeeld</AuHeading>
+  <SnippetToggle @snippetFilename="mandaten-annotaties/besluit.turtle" />
+
+  <AuHeading @level="3" @skin="3">Bestuursorgaan (in bestuursperiode)</AuHeading>
+  <AuHeading @level="4" @skin="4">Klasse</AuHeading>
+  <p>
+    <MyCodeInline>besluit:Bestuursorgaan</MyCodeInline>
+  </p>
+  <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
+  <p>
+    Een bestuursorgaan, eventueel beperkt tot een bepaalde bestuursperiode.
+    Dezelfde klasse wordt gebruikt om een Bestuursorgaan weer te geven als om een
+    Bestuursorgaan in de tijd weer te geven. Het onderscheid tussen beide wordt
+    gemaakt door de eigenschap
+    <MyCodeInline>besluit:isTijdspecialisatieVan</MyCodeInline>
+    waarmee een Bestuursorgaan in de tijd verwijst naar zijn bestuursorgaan.
+    Daarnaast wordt de
+    <MyCodeInline>besluit:classificatie</MyCodeInline>
+    enkel gespecificeerd op een Bestuursorgaan, niet op een Bestuursorgaan in de
+    tijd. Een Bestuursorgaan in de tijd heeft een
+    <MyCodeInline>mandaat:bindingStart</MyCodeInline>
+    en een
+    <MyCodeInline>mandaat:bindingEinde</MyCodeInline>. Deze eigenschappen geven
+    aan wanneer het Bestuursorgaan in de tijd actief is. Indien een Bestuursorgaan
+    in de tijd geen
+    <MyCodeInline>mandaat:bindingEinde</MyCodeInline>
+    heeft, is het Bestuursorgaan in de tijd nog steeds actief. Enkel
+    Bestuursorganen in de tijd zijn gekoppeld aan instanties van de klasse
+    <MyCodeInline>mandaat:Mandaat</MyCodeInline>. Dat betekent dus ook dat de URI
+    van bijvoorbeeld een burgemeester mandaat verandert per bestuursperiode. De
+    classificatie code (<MyCodeInline>org:role</MyCodeInline>) blijft wel dezelfde
+    uiteraard.
+  </p>
+  <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+  <AuTable>
+    <:header>
+      <tr>
+        <th>Naam</th>
+        <th>URI</th>
+        <th>Verwacht type</th>
+        <th>Beschrijving</th>
+      </tr>
+    </:header>
+    <:body>
+      <tr>
+        <td>bevat</td>
+        <td><MyCodeInline>org:hasPost</MyCodeInline></td>
+        <td><MyCodeInline>mandaat:Mandaat</MyCodeInline></td>
+        <td>Een mandaat dat binnen dit bestuursorgaan in de tijd bekleed kan
+          worden. Een mandaat kan op deze manier deel zijn van verschillende
+          Bestuursorganen in de tijd. Zo is het Burgemeester mandaat steeds deel
+          van het Bestuursorgaan Burgemeester en het Bestuursorgaan College van
+          Burgemeester en Schepenen.</td>
+      </tr>
+      <tr>
+        <td>bindingStart</td>
+        <td><MyCodeInline>mandaat:bindingStart</MyCodeInline></td>
+        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td>Het tijdstip waar op dit Bestuursorgaan in de tijd actief wordt/werd.</td>
+      </tr>
+      <tr>
+        <td>bindingEinde</td>
+        <td><MyCodeInline>mandaat:bindingEinde</MyCodeInline></td>
+        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td>Het tijdstip waar op dit Bestuursorgaan in de tijd niet langer actief
+          wordt/werd.</td>
+      </tr>
+      <tr>
+        <td>classificatie</td>
+        <td><MyCodeInline>besluit:classificatie</MyCodeInline></td>
+        <td><MyCodeInline>skos:Concept</MyCodeInline></td>
+        <td>De classificatie van het bestuursorgaan. Bijvoorbeeld Gemeenteraad, of
+          Burgemeester.</td>
+      </tr>
+      <tr>
+        <td>isTijdspecialisatieVan</td>
+        <td><MyCodeInline>mandaat:isTijdspecialisatieVan</MyCodeInline></td>
+        <td><MyCodeInline>besluit:Bestuursorgaan</MyCodeInline></td>
+        <td>Het bestuursorgaan waarvan dit Bestuursorgaan in de tijd een
+          specialisatie is.</td>
+      </tr>
+    </:body>
+  </AuTable>
+  <AuHeading @level="4" @skin="4">Voorbeeld</AuHeading>
+  <SnippetToggle @snippetFilename="mandaten-annotaties/bestuursorgaan.turtle" />
+
+  <AuHeading @level="3" @skin="3">Fractie</AuHeading>
+  <AuHeading @level="4" @skin="4">Klasse</AuHeading>
+  <p>
+    <MyCodeInline>mandaat:Fractie</MyCodeInline>
+  </p>
+  <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
+  <p>
+    Een politieke fractie binnen een bestuursorgaan. Mandatarissen zijn gelinkt
+    aan een fractie via een instantie van de
+    <MyCodeInline>org:Membership</MyCodeInline>
+    klasse. Binnen één legislatuur kan een persoon enkel lid zijn van 1 politieke
+    fractie en eventueel 1 'onafhankelijke' fractie. Dergelijke onafhankelijke
+    fracties hebben telkens maar 1 persoon die er lid van is (eventueel via
+    meerdere Mandatarissen als de persoon meerdere mandaten heeft of er
+    statusveranderingen zijn in de opname van het mandaat, zoals een verandering
+    in rangorde).
+  </p>
+  <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+  <AuTable>
+    <:header>
+      <tr>
+        <th>Naam</th>
+        <th>URI</th>
+        <th>Verwacht type</th>
+        <th>Beschrijving</th>
+      </tr>
+    </:header>
+    <:body>
+      <tr>
+        <td>naam</td>
+        <td><MyCodeInline>regorg:legalName</MyCodeInline></td>
+        <td><MyCodeInline>string</MyCodeInline></td>
+        <td>De naam van de fractie</td>
+      </tr>
+      <tr>
+        <td>bestuursorganen in tijd</td>
+        <td><MyCodeInline>org:memberOf</MyCodeInline></td>
+        <td><MyCodeInline>besluit:Bestuursorgaan</MyCodeInline></td>
+        <td>De Bestuursorganen in de tijd waar de fractie deel van uitmaakt.</td>
+      </tr>
+      <tr>
+        <td>fractietype</td>
+        <td><MyCodeInline>ext:isFractietype</MyCodeInline></td>
+        <td><MyCodeInline>skos:Concept</MyCodeInline></td>
+        <td>het type van de fractie, hetzij samenstellingsverband
+          <MyCodeInline
+          >http://data.vlaanderen.be/id/concept/Fractietype/Samenwerkingsverband</MyCodeInline>,
+          hetzij onafhankelijk
+          <MyCodeInline
+          >http://data.vlaanderen.be/id/concept/Fractietype/Onafhankelijk</MyCodeInline>.</td>
+      </tr>
+    </:body>
+  </AuTable>
+  <AuHeading @level="4" @skin="4">Voorbeeld</AuHeading>
+  <SnippetToggle @snippetFilename="mandaten-annotaties/fractie.turtle" />
+
+  <AuHeading @level="3" @skin="3">Lidmaatschap</AuHeading>
+  <AuHeading @level="4" @skin="4">Klasse</AuHeading>
+  <p>
+    <MyCodeInline>org:Membership</MyCodeInline>
+  </p>
+  <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
+  <p>
+    De voorstelling van het lidmaatschap van een mandataris aan een fractie. De
+    start en het einde van het lidmaatschap komen steeds overeen met de start en
+    de einddatum van de Mandataris aangezien er bij verandering van fractie een
+    nieuwe Mandataris wordt aangemaakt.
+  </p>
+  <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+  <AuTable>
+    <:header>
+      <tr>
+        <th>Naam</th>
+        <th>URI</th>
+        <th>Verwacht type</th>
+        <th>Beschrijving</th>
+      </tr>
+    </:header>
+    <:body>
+      <tr>
+        <td>binnen fractie</td>
+        <td><MyCodeInline>org:organisation</MyCodeInline></td>
+        <td><MyCodeInline>mandaat:Fractie</MyCodeInline></td>
+        <td>De fractie waar de mandataris lid van is</td>
+      </tr>
+      <tr>
+        <td>lid gedurende</td>
+        <td><MyCodeInline>org:memberDuring</MyCodeInline></td>
+        <td><MyCodeInline>m8g:PeriodOfTime</MyCodeInline></td>
+        <td>De periode waarin de mandataris lid is van de fractie. Deze periode
+          zal altijd overeenkomen met de
+          <MyCodeInline>mandaat:start</MyCodeInline>
+          en
+          <MyCodeInline>mandaat:einde</MyCodeInline>
+          van de Mandataris. In de applicatie Lokaal Mandatenbeheer zal het
+          tijdsinterval dan ook niet opgeslagen worden, het wordt bij publicatie
+          berekend.</td>
+      </tr>
+    </:body>
+  </AuTable>
+  <AuHeading @level="4" @skin="4">Voorbeeld</AuHeading>
+  <SnippetToggle @snippetFilename="mandaten-annotaties/lidmaatschap.turtle" />
+
+  <AuHeading @level="3" @skin="3">Mandaat</AuHeading>
+  <AuHeading @level="4" @skin="4">Klasse</AuHeading>
+  <p>
+    <MyCodeInline>mandaat:Mandaat</MyCodeInline>
+  </p>
+  <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
+  <p>
+    Een mandaat dat bekleed kan worden binnen een Bestuursorgaan in de tijd. De
+    opname van een mandaat wordt voorgesteld door een
+    <MyCodeInline>mandaat:Mandataris</MyCodeInline>.
+  </p>
+  <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+  <AuTable>
+    <:header>
+      <tr>
+        <th>Naam</th>
+        <th>URI</th>
+        <th>Verwacht type</th>
+        <th>Beschrijving</th>
+      </tr>
+    </:header>
+    <:body>
+      <tr>
+        <td>bestuursfunctie</td>
+        <td><MyCodeInline>org:role</MyCodeInline></td>
+        <td><MyCodeInline>skos:Concept</MyCodeInline></td>
+        <td>De bestuursfunctie code van het mandaat, bijvoorbeeld Gemeenteraadslid
+          of Burgemeester.</td>
+      </tr>
+      <tr>
+        <td>aantal houders</td>
+        <td><MyCodeInline>mandaat:aantalHouders</MyCodeInline></td>
+        <td><MyCodeInline>xsd:integer</MyCodeInline></td>
+        <td>Het minimum aantal houders voor het mandaat.</td>
+      </tr>
+    </:body>
+  </AuTable>
+  <AuHeading @level="4" @skin="4">Voorbeeld</AuHeading>
+  <SnippetToggle @snippetFilename="mandaten-annotaties/mandaat.turtle" />
+
+  <AuHeading @level="3" @skin="3">Mandataris</AuHeading>
+  <AuHeading @level="4" @skin="4">Klasse</AuHeading>
+  <p>
+    <MyCodeInline>mandaat:Mandataris</MyCodeInline>
+  </p>
+  <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
+  <p>
+    Een persoon in zijn rol als houder van een mandaat.
+  </p>
+  <p>
+    Een Mandataris is een geversioneerde entiteit. Dat betekent dat wanneer er
+    zich veranderingen voordoen in de opname van een Mandaat door een Persoon, er
+    een nieuwe instantie van Mandataris zal aangemaakt worden. De oude Mandataris
+    krijgt een einddatum van het moment van de aanpassing, met als waarden de oude
+    status van de Mandataris en er wordt een nieuwe Mandataris instantie gemaakt
+    met als startdatum het moment van de verandering en de nieuwe waarden. Op deze
+    manier wordt er een historiek gecreëerd van hoe de Mandataris verandert
+    doorheen de tijd, zonder dat er informatie verloren gaat.
+  </p>
+  <p>
+    Er moet een nieuwe Mandataris aangemaakt worden wanneer:
+  </p>
+  <ul>
+    <li>De mandataris van bestuurlijke status verandert (e.g. de mandataris raakt
+      verhinderd)</li>
+    <li>De mandataris van fractie verandert (e.g. de mandataris wordt
+      onafhankelijk)</li>
+    <li>De mandataris van rangorde verandert (e.g. de mandataris schuift een
+      plaatsje op omdat een andere mandataris vervangen wordt)</li>
+    <li>De mandataris een ander mandaat opneemt (e.g. de aangewezen burgemeester
+      wordt nu burgemeester)</li>
+    <li>Het mandaat opgenomen wordt door een andere persoon</li>
+  </ul>
+  <p>
+    Het is mogelijk dat er incorrecte gegevens werden ingegeven voor een
+    Mandataris, bijvoorbeeld een verkeerde startdatum. In dat geval moet er geen
+    nieuwe Mandataris aangemaakt worden, de gegevens waren immers foutief en
+    moeten niet bijgehouden worden. De bestaande Mandataris krijgt dan gewoon een
+    nieuwe, correcte startdatum.
+  </p>
+  <p>
+    Sommige organen hebben naast leden ook een voorzitter. Bij de gemeenteraad en
+    raad van maatschappelijk welzijn moet de voorzitter ook steeds lid zijn van
+    het orgaan, hij of zij heeft dus telkens 2 mandaten met dezelfde start en
+    einddatums.
+  </p>
+  <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+  <AuTable>
+    <:header>
+      <tr>
+        <th>Naam</th>
+        <th>URI</th>
+        <th>Verwacht type</th>
+        <th>Beschrijving</th>
+      </tr>
+    </:header>
+    <:body>
+      <tr>
+        <td>bekleedt</td>
+        <td><MyCodeInline>org:holds</MyCodeInline></td>
+        <td><MyCodeInline>mandaat:Mandaat</MyCodeInline></td>
+        <td>Het mandaat dat deze mandataris bekleedt.</td>
+      </tr>
+      <tr>
+        <td>start</td>
+        <td><MyCodeInline>mandaat:start</MyCodeInline></td>
+        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td>Tijdstip vanaf wanneer de mandataris het mandaat opneemt. Dit tijdstip
+          wordt gezet op het begin van de dag, er is immers niet voldoende
+          precisie bij het verzamelen/annoteren van de gegevens om tot op het
+          uur/de minuut exact dit tijdstip te bepalen.</td>
+      </tr>
+      <tr>
+        <td>einde</td>
+        <td><MyCodeInline>mandaat:einde</MyCodeInline></td>
+        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td>Tijdstip vanaf wanneer de mandataris de bestuursfunctie niet langer
+          opneemt. Dit tijdstip wordt gezet op het einde van de dag (23:59:59), er
+          is immers niet voldoende precisie bij het verzamelen/annoteren van de
+          gegevens om tot op het uur/de minuut exact dit tijdstip te bepalen.</td>
+      </tr>
+      <tr>
+        <td>status</td>
+        <td><MyCodeInline>mandaat:status</MyCodeInline></td>
+        <td><MyCodeInline>skos:Concept</MyCodeInline></td>
+        <td>De bestuurlijke status van de Mandataris. Dit kan gaan om Effectief (<MyCodeInline
+        >http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75</MyCodeInline>),
+          Verhinderd (<MyCodeInline
+          >http://data.vlaanderen.be/id/concept/MandatarisStatusCode/c301248f-0199-45ca-b3e5-4c596731d5fe</MyCodeInline>),
+          Waarnemend (<MyCodeInline
+          >http://data.vlaanderen.be/id/concept/MandatarisStatusCode/e1ca6edd-55e1-4288-92a5-53f4cf71946a</MyCodeInline>),
+          of Titelvoerend (<MyCodeInline
+          >http://data.vlaanderen.be/id/concept/MandatarisStatusCode/aacb3fed-b51d-4e0b-a411-f3fa641da1b3</MyCodeInline>).</td>
+      </tr>
+      <tr>
+        <td>rangorde</td>
+        <td><MyCodeInline>mandaat:rangorde</MyCodeInline></td>
+        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td>De rangorde van de mandataris als string. Voor gemeenteraadsleden is
+          dit bijvoorbeeld 'eerste lid', voor schepenen 'zesde schepen'. Enkel
+          voor gemeenteraadsleden en schepenen is er een rangorde verplicht.
+        </td>
+      </tr>
+      <tr>
+        <td>beleidsdomein</td>
+        <td><MyCodeInline>mandaat:beleidsdomein</MyCodeInline></td>
+        <td><MyCodeInline>skos:Concept</MyCodeInline></td>
+        <td>De beleidsdomeinen van een mandataris. Een mandataris kan meerdere
+          beleidsdomeinen hebben. Enkel burgemeesters en schepenen hebben
+          beleidsdomeinen. Opgelet: lokale besturen kunnen zelf nieuwe concepten
+          definiëren als beleidsdomein, dat betekent dat er bijvoorbeeld meerdere
+          beleidsdomeinen kunnen zijn met dezelfde naam.
+        </td>
+      </tr>
+      <tr>
+        <td>lidmaatschap</td>
+        <td><MyCodeInline>org:hasMembership</MyCodeInline></td>
+        <td><MyCodeInline>besluit:Bestuursorgaan</MyCodeInline></td>
+        <td>Het lidmaatschap van de mandataris. Er is altijd exact 1 lidmaatschap
+          per mandataris.</td>
+      </tr>
+      <tr>
+        <td>publicatiestatus</td>
+        <td><MyCodeInline>lmb:hasPublicationStatus</MyCodeInline></td>
+        <td><MyCodeInline>skos:Concept</MyCodeInline></td>
+        <td>De publicatie status van de Mandataris. Dit kan gaan om Draft (<MyCodeInline
+        >http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/588ce330-4abb-4448-9776-a17d9305df07</MyCodeInline>),
+          Niet Bekrachtigd (<MyCodeInline
+          >http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/d3b12468-3720-4cb0-95b4-6aa2996ab188</MyCodeInline>),
+          of Bekrachtigd (<MyCodeInline
+          >http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/9d8fd14d-95d0-4f5e-b3a5-a56a126227b6</MyCodeInline>).</td>
+      </tr>
+      <tr>
+        <td>is bestuurlijke alias van</td>
+        <td><MyCodeInline>mandaat:isBestuurlijkeAliasVan</MyCodeInline></td>
+        <td><MyCodeInline>person:Person</MyCodeInline></td>
+        <td>De persoon die het mandaat opneemt.</td>
+      </tr>
+
+    </:body>
+  </AuTable>
+  <AuHeading @level="4" @skin="4">Voorbeeld</AuHeading>
+  <SnippetToggle @snippetFilename="mandaten-annotaties/mandataris.turtle" />
+
+  <AuHeading @level="3" @skin="3">Persoon</AuHeading>
+  <AuHeading @level="4" @skin="4">Klasse</AuHeading>
+  <p>
+    <MyCodeInline>person:Person</MyCodeInline>
+  </p>
+  <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
+  <p>
+    Natuurlijk persoon. Overgenomen uit het
+    <AuLinkExternal
+      href="https://data.vlaanderen.be/doc/applicatieprofiel/mandatendatabank/#Persoon"
+    >
+      OSLO applicatieprofiel mandatendatabank</AuLinkExternal>.
+  </p>
+  <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
+  <AuTable>
+    <:header>
+      <tr>
+        <th>Naam</th>
+        <th>URI</th>
+        <th>Verwacht type</th>
+        <th>Beschrijving</th>
+      </tr>
+    </:header>
+    <:body>
+      <tr>
+        <td>achternaam</td>
+        <td><MyCodeInline>foaf:familyName</MyCodeInline></td>
+        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td>De familienaam van de persoon.</td>
+      </tr>
+      <tr>
+        <td>alternatieve naam</td>
+        <td><MyCodeInline>foaf:name</MyCodeInline></td>
+        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td>Een roepnaam van de persoon. Indien aanwezig is het aan te raden deze
+          naam te gebruiken voor visualisaties in plaats van voornaam en
+          familienaam.</td>
+      </tr>
+      <tr>
+        <td>gebruikte voornaam</td>
+        <td><MyCodeInline>persoon:gebruikteVoornaam</MyCodeInline></td>
+        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td>De te gebruiken voornaam van alle officiële voornamen van de persoon.</td>
+      </tr>
+    </:body>
+  </AuTable>
+  <AuHeading @level="4" @skin="4">Voorbeeld</AuHeading>
+  <SnippetToggle @snippetFilename="mandaten-annotaties/persoon.turtle" />
+</template>
