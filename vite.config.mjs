@@ -12,4 +12,11 @@ export default defineConfig({
       extensions,
     }),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        loadPaths: ["./node_modules/"],
+      },
+    },
+  },
 });
