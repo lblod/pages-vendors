@@ -15,9 +15,7 @@ import Snippet from '../../components/snippet';
   <AuHeading @level="2" @skin="2">Eenvoudige bijlagen</AuHeading>
   <p>
     Het applicatieprofiel besluit-publicatie voorziet de relatie
-    <AuLinkExternal
-      href="http://data.europa.eu/eli/ontology#related_to"
-    >eli:related_to</AuLinkExternal>
+    <CodeInline @language="turtle">eli:related_to</CodeInline>
     voor verwijzingen naar bijlagen.
   </p>
   <p>
@@ -33,9 +31,7 @@ import Snippet from '../../components/snippet';
     van het besluit worden de annotaties van de eenvoudige bijlage aangevuld om
     aan te duiden dat het gaat om een document onderdeel. Het applicatieprofiel
     besluit-publicatie voorziet hiervoor de relatie
-    <AuLinkExternal
-      href="http://purl.org/dc/terms/isPartOf"
-    >dct:isPartOf</AuLinkExternal>
+    <CodeInline @language="turtle">dct:isPartOf</CodeInline>
     van het onderdeel naar het besluit.
   </p>
   <p>
@@ -66,18 +62,18 @@ import Snippet from '../../components/snippet';
   <ul>
     <li>
       Er wordt gebruikt gemaakt van de relatie
-      <CodeInline>prov:generated</CodeInline>
+      <CodeInline @language="turtle">prov:generated</CodeInline>
       tussen de behandeling en de twee besluiten.
     </li>
     <li>
       Met de relatie
-      <CodeInline>eli:related_to</CodeInline>
+      <CodeInline @language="turtle">eli:related_to</CodeInline>
       wordt aangegeven dat het subsidiereglement een bijlage is van het
       goedkeuringsbesluit
     </li>
     <li>
       Met de relatie
-      <CodeInline>dct:isPartOf</CodeInline>
+      <CodeInline @language="turtle">dct:isPartOf</CodeInline>
       wordt aangegeven dat het subsidiereglement kan worden aanzien als zijnde
       een onderdeel van het eerste besluit
     </li>

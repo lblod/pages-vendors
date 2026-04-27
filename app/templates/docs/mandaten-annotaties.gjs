@@ -35,11 +35,11 @@ import SnippetToggle from '../../components/snippet-toggle';
     aangeboden. Dit is het geval voor:
   </p>
   <ul>
-    <li>mandaat:isTijdspecialisatieVan: dit is officieel
-      generiek:isTijdspecialisatieVan</li>
-    <li>generiek: deze prefix wordt met http gebruikt in de applicatie, maar in
+    <li><CodeInline @language="turtle">mandaat:isTijdspecialisatieVan</CodeInline>: dit is officieel
+      <CodeInline @language="turtle">generiek:isTijdspecialisatieVan</CodeInline></li>
+    <li><CodeInline>generiek</CodeInline>: deze prefix wordt met http gebruikt in de applicatie, maar in
       werkelijkheid is het een https prefix</li>
-    <li>besluit:classificatie: dit is officieel org:classification</li>
+    <li><CodeInline @language="turtle">besluit:classificatie</CodeInline>: dit is officieel <CodeInline @language="turtle">org:classification</CodeInline></li>
   </ul>
   <p>
     Het lokaal mandatenbeheer heeft ook een
@@ -186,7 +186,7 @@ import SnippetToggle from '../../components/snippet-toggle';
   <AuHeading @level="3" @skin="3">Besluit</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>besluit:Besluit</CodeInline>
+    <CodeInline @language="turtle">besluit:Besluit</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -195,9 +195,9 @@ import SnippetToggle from '../../components/snippet-toggle';
       href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/#Besluit"
       rel="noopener noreferrer"
       target="_blank"
-    >besluit-publicatie.</a>. In de implementatie is dit concept samengevoegd
+    >besluit-publicatie</a>. In de implementatie is dit concept samengevoegd
     met
-    <CodeInline>besluit:Rechtsgrond</CodeInline>. Enkel de eigenschappen die
+    <CodeInline @language="turtle">besluit:Rechtsgrond</CodeInline>. Enkel de eigenschappen die
     relevant zijn voor de Mandatendatabank worden hieronder beschreven.
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
@@ -213,8 +213,8 @@ import SnippetToggle from '../../components/snippet-toggle';
     <:body>
       <tr>
         <td>bekrachtigt aanstelling van</td>
-        <td><CodeInline>mandaat:bekrachtigtAanstellingVan</CodeInline></td>
-        <td><CodeInline>mandaat:Mandataris</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:bekrachtigtAanstellingVan</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:Mandataris</CodeInline></td>
         <td>De Mandataris waarvan de aanstelling bekrachtigd wordt door dit
           besluit. Een bekrachtigde mandataris kan een link hebben naar een
           Besluit als dat besluit (voldoende) beschreven is in gelinkte data.
@@ -222,8 +222,8 @@ import SnippetToggle from '../../components/snippet-toggle';
       </tr>
       <tr>
         <td>bekrachtigt ontslag van</td>
-        <td><CodeInline>mandaat:bekrachtigtOntslagVan</CodeInline></td>
-        <td><CodeInline>mandaat:Mandataris</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:bekrachtigtOntslagVan</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:Mandataris</CodeInline></td>
         <td>De Mandataris waarvan het mandaat door dit besluit beëindigd wordt.</td>
       </tr>
     </:body>
@@ -234,7 +234,7 @@ import SnippetToggle from '../../components/snippet-toggle';
   <AuHeading @level="3" @skin="3">Bestuursorgaan (in bestuursperiode)</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>besluit:Bestuursorgaan</CodeInline>
+    <CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -242,23 +242,23 @@ import SnippetToggle from '../../components/snippet-toggle';
     Dezelfde klasse wordt gebruikt om een Bestuursorgaan weer te geven als om
     een Bestuursorgaan in de tijd weer te geven. Het onderscheid tussen beide
     wordt gemaakt door de eigenschap
-    <CodeInline>besluit:isTijdspecialisatieVan</CodeInline>
+    <CodeInline @language="turtle">besluit:isTijdspecialisatieVan</CodeInline>
     waarmee een Bestuursorgaan in de tijd verwijst naar zijn bestuursorgaan.
     Daarnaast wordt de
-    <CodeInline>besluit:classificatie</CodeInline>
+    <CodeInline @language="turtle">besluit:classificatie</CodeInline>
     enkel gespecificeerd op een Bestuursorgaan, niet op een Bestuursorgaan in de
     tijd. Een Bestuursorgaan in de tijd heeft een
-    <CodeInline>mandaat:bindingStart</CodeInline>
+    <CodeInline @language="turtle">mandaat:bindingStart</CodeInline>
     en een
-    <CodeInline>mandaat:bindingEinde</CodeInline>. Deze eigenschappen geven aan
+    <CodeInline @language="turtle">mandaat:bindingEinde</CodeInline>. Deze eigenschappen geven aan
     wanneer het Bestuursorgaan in de tijd actief is. Indien een Bestuursorgaan
     in de tijd geen
-    <CodeInline>mandaat:bindingEinde</CodeInline>
+    <CodeInline @language="turtle">mandaat:bindingEinde</CodeInline>
     heeft, is het Bestuursorgaan in de tijd nog steeds actief. Enkel
     Bestuursorganen in de tijd zijn gekoppeld aan instanties van de klasse
-    <CodeInline>mandaat:Mandaat</CodeInline>. Dat betekent dus ook dat de URI
+    <CodeInline @language="turtle">mandaat:Mandaat</CodeInline>. Dat betekent dus ook dat de URI
     van bijvoorbeeld een burgemeester mandaat verandert per bestuursperiode. De
-    classificatie code (<CodeInline>org:role</CodeInline>) blijft wel dezelfde
+    classificatie code (<CodeInline @language="turtle">org:role</CodeInline>) blijft wel dezelfde
     uiteraard.
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
@@ -274,8 +274,8 @@ import SnippetToggle from '../../components/snippet-toggle';
     <:body>
       <tr>
         <td>bevat</td>
-        <td><CodeInline>org:hasPost</CodeInline></td>
-        <td><CodeInline>mandaat:Mandaat</CodeInline></td>
+        <td><CodeInline @language="turtle">org:hasPost</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:Mandaat</CodeInline></td>
         <td>Een mandaat dat binnen dit bestuursorgaan in de tijd bekleed kan
           worden. Een mandaat kan op deze manier deel zijn van verschillende
           Bestuursorganen in de tijd. Zo is het Burgemeester mandaat steeds deel
@@ -284,29 +284,29 @@ import SnippetToggle from '../../components/snippet-toggle';
       </tr>
       <tr>
         <td>bindingStart</td>
-        <td><CodeInline>mandaat:bindingStart</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:bindingStart</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Het tijdstip waar op dit Bestuursorgaan in de tijd actief
           wordt/werd.</td>
       </tr>
       <tr>
         <td>bindingEinde</td>
-        <td><CodeInline>mandaat:bindingEinde</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:bindingEinde</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Het tijdstip waar op dit Bestuursorgaan in de tijd niet langer
           actief wordt/werd.</td>
       </tr>
       <tr>
         <td>classificatie</td>
-        <td><CodeInline>besluit:classificatie</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:classificatie</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>De classificatie van het bestuursorgaan. Bijvoorbeeld Gemeenteraad,
           of Burgemeester.</td>
       </tr>
       <tr>
         <td>isTijdspecialisatieVan</td>
-        <td><CodeInline>mandaat:isTijdspecialisatieVan</CodeInline></td>
-        <td><CodeInline>besluit:Bestuursorgaan</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:isTijdspecialisatieVan</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline></td>
         <td>Het bestuursorgaan waarvan dit Bestuursorgaan in de tijd een
           specialisatie is.</td>
       </tr>
@@ -318,13 +318,13 @@ import SnippetToggle from '../../components/snippet-toggle';
   <AuHeading @level="3" @skin="3">Fractie</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>mandaat:Fractie</CodeInline>
+    <CodeInline @language="turtle">mandaat:Fractie</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
     Een politieke fractie binnen een bestuursorgaan. Mandatarissen zijn gelinkt
     aan een fractie via een instantie van de
-    <CodeInline>org:Membership</CodeInline>
+    <CodeInline @language="turtle">org:Membership</CodeInline>
     klasse. Binnen één legislatuur kan een persoon enkel lid zijn van 1
     politieke fractie en eventueel 1 'onafhankelijke' fractie. Dergelijke
     onafhankelijke fracties hebben telkens maar 1 persoon die er lid van is
@@ -345,20 +345,20 @@ import SnippetToggle from '../../components/snippet-toggle';
     <:body>
       <tr>
         <td>naam</td>
-        <td><CodeInline>regorg:legalName</CodeInline></td>
-        <td><CodeInline>string</CodeInline></td>
+        <td><CodeInline @language="turtle">regorg:legalName</CodeInline></td>
+        <td><CodeInline @language="turtle">string</CodeInline></td>
         <td>De naam van de fractie</td>
       </tr>
       <tr>
         <td>bestuursorganen in tijd</td>
-        <td><CodeInline>org:memberOf</CodeInline></td>
-        <td><CodeInline>besluit:Bestuursorgaan</CodeInline></td>
+        <td><CodeInline @language="turtle">org:memberOf</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline></td>
         <td>De Bestuursorganen in de tijd waar de fractie deel van uitmaakt.</td>
       </tr>
       <tr>
         <td>fractietype</td>
-        <td><CodeInline>ext:isFractietype</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">ext:isFractietype</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>het type van de fractie, hetzij samenstellingsverband
           <CodeInline
           >http://data.vlaanderen.be/id/concept/Fractietype/Samenwerkingsverband</CodeInline>,
@@ -374,7 +374,7 @@ import SnippetToggle from '../../components/snippet-toggle';
   <AuHeading @level="3" @skin="3">Lidmaatschap</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>org:Membership</CodeInline>
+    <CodeInline @language="turtle">org:Membership</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -396,19 +396,19 @@ import SnippetToggle from '../../components/snippet-toggle';
     <:body>
       <tr>
         <td>binnen fractie</td>
-        <td><CodeInline>org:organisation</CodeInline></td>
-        <td><CodeInline>mandaat:Fractie</CodeInline></td>
+        <td><CodeInline @language="turtle">org:organisation</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:Fractie</CodeInline></td>
         <td>De fractie waar de mandataris lid van is</td>
       </tr>
       <tr>
         <td>lid gedurende</td>
-        <td><CodeInline>org:memberDuring</CodeInline></td>
-        <td><CodeInline>m8g:PeriodOfTime</CodeInline></td>
+        <td><CodeInline @language="turtle">org:memberDuring</CodeInline></td>
+        <td><CodeInline @language="turtle">m8g:PeriodOfTime</CodeInline></td>
         <td>De periode waarin de mandataris lid is van de fractie. Deze periode
           zal altijd overeenkomen met de
-          <CodeInline>mandaat:start</CodeInline>
+          <CodeInline @language="turtle">mandaat:start</CodeInline>
           en
-          <CodeInline>mandaat:einde</CodeInline>
+          <CodeInline @language="turtle">mandaat:einde</CodeInline>
           van de Mandataris. In de applicatie Lokaal Mandatenbeheer zal het
           tijdsinterval dan ook niet opgeslagen worden, het wordt bij publicatie
           berekend.</td>
@@ -421,13 +421,13 @@ import SnippetToggle from '../../components/snippet-toggle';
   <AuHeading @level="3" @skin="3">Mandaat</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>mandaat:Mandaat</CodeInline>
+    <CodeInline @language="turtle">mandaat:Mandaat</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
     Een mandaat dat bekleed kan worden binnen een Bestuursorgaan in de tijd. De
     opname van een mandaat wordt voorgesteld door een
-    <CodeInline>mandaat:Mandataris</CodeInline>.
+    <CodeInline @language="turtle">mandaat:Mandataris</CodeInline>.
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
   <AuTable>
@@ -442,15 +442,15 @@ import SnippetToggle from '../../components/snippet-toggle';
     <:body>
       <tr>
         <td>bestuursfunctie</td>
-        <td><CodeInline>org:role</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">org:role</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>De bestuursfunctie code van het mandaat, bijvoorbeeld
           Gemeenteraadslid of Burgemeester.</td>
       </tr>
       <tr>
         <td>aantal houders</td>
-        <td><CodeInline>mandaat:aantalHouders</CodeInline></td>
-        <td><CodeInline>xsd:integer</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:aantalHouders</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:integer</CodeInline></td>
         <td>Het minimum aantal houders voor het mandaat.</td>
       </tr>
     </:body>
@@ -461,7 +461,7 @@ import SnippetToggle from '../../components/snippet-toggle';
   <AuHeading @level="3" @skin="3">Mandataris</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>mandaat:Mandataris</CodeInline>
+    <CodeInline @language="turtle">mandaat:Mandataris</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -518,14 +518,14 @@ import SnippetToggle from '../../components/snippet-toggle';
     <:body>
       <tr>
         <td>bekleedt</td>
-        <td><CodeInline>org:holds</CodeInline></td>
-        <td><CodeInline>mandaat:Mandaat</CodeInline></td>
+        <td><CodeInline @language="turtle">org:holds</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:Mandaat</CodeInline></td>
         <td>Het mandaat dat deze mandataris bekleedt.</td>
       </tr>
       <tr>
         <td>start</td>
-        <td><CodeInline>mandaat:start</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:start</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Tijdstip vanaf wanneer de mandataris het mandaat opneemt. Dit
           tijdstip wordt gezet op het begin van de dag, er is immers niet
           voldoende precisie bij het verzamelen/annoteren van de gegevens om tot
@@ -533,8 +533,8 @@ import SnippetToggle from '../../components/snippet-toggle';
       </tr>
       <tr>
         <td>einde</td>
-        <td><CodeInline>mandaat:einde</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:einde</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Tijdstip vanaf wanneer de mandataris de bestuursfunctie niet langer
           opneemt. Dit tijdstip wordt gezet op het einde van de dag (23:59:59),
           er is immers niet voldoende precisie bij het verzamelen/annoteren van
@@ -542,8 +542,8 @@ import SnippetToggle from '../../components/snippet-toggle';
       </tr>
       <tr>
         <td>status</td>
-        <td><CodeInline>mandaat:status</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:status</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>De bestuurlijke status van de Mandataris. Dit kan gaan om Effectief
           (<CodeInline
           >http://data.vlaanderen.be/id/concept/MandatarisStatusCode/21063a5b-912c-4241-841c-cc7fb3c73e75</CodeInline>),
@@ -556,8 +556,8 @@ import SnippetToggle from '../../components/snippet-toggle';
       </tr>
       <tr>
         <td>rangorde</td>
-        <td><CodeInline>mandaat:rangorde</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:rangorde</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>De rangorde van de mandataris als string. Voor gemeenteraadsleden is
           dit bijvoorbeeld 'eerste lid', voor schepenen 'zesde schepen'. Enkel
           voor gemeenteraadsleden en schepenen is er een rangorde verplicht.
@@ -565,8 +565,8 @@ import SnippetToggle from '../../components/snippet-toggle';
       </tr>
       <tr>
         <td>beleidsdomein</td>
-        <td><CodeInline>mandaat:beleidsdomein</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:beleidsdomein</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>De beleidsdomeinen van een mandataris. Een mandataris kan meerdere
           beleidsdomeinen hebben. Enkel burgemeesters en schepenen hebben
           beleidsdomeinen. Opgelet: lokale besturen kunnen zelf nieuwe concepten
@@ -576,15 +576,15 @@ import SnippetToggle from '../../components/snippet-toggle';
       </tr>
       <tr>
         <td>lidmaatschap</td>
-        <td><CodeInline>org:hasMembership</CodeInline></td>
-        <td><CodeInline>besluit:Bestuursorgaan</CodeInline></td>
+        <td><CodeInline @language="turtle">org:hasMembership</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline></td>
         <td>Het lidmaatschap van de mandataris. Er is altijd exact 1
           lidmaatschap per mandataris.</td>
       </tr>
       <tr>
         <td>publicatiestatus</td>
-        <td><CodeInline>lmb:hasPublicationStatus</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">lmb:hasPublicationStatus</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>De publicatie status van de Mandataris. Dit kan gaan om Draft (<CodeInline
           >http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/588ce330-4abb-4448-9776-a17d9305df07</CodeInline>),
           Niet Bekrachtigd (<CodeInline
@@ -594,8 +594,8 @@ import SnippetToggle from '../../components/snippet-toggle';
       </tr>
       <tr>
         <td>is bestuurlijke alias van</td>
-        <td><CodeInline>mandaat:isBestuurlijkeAliasVan</CodeInline></td>
-        <td><CodeInline>person:Person</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:isBestuurlijkeAliasVan</CodeInline></td>
+        <td><CodeInline @language="turtle">person:Person</CodeInline></td>
         <td>De persoon die het mandaat opneemt.</td>
       </tr>
 
@@ -607,7 +607,7 @@ import SnippetToggle from '../../components/snippet-toggle';
   <AuHeading @level="3" @skin="3">Persoon</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>person:Person</CodeInline>
+    <CodeInline @language="turtle">person:Person</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -630,22 +630,22 @@ import SnippetToggle from '../../components/snippet-toggle';
     <:body>
       <tr>
         <td>achternaam</td>
-        <td><CodeInline>foaf:familyName</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">foaf:familyName</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>De familienaam van de persoon.</td>
       </tr>
       <tr>
         <td>alternatieve naam</td>
-        <td><CodeInline>foaf:name</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">foaf:name</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Een roepnaam van de persoon. Indien aanwezig is het aan te raden
           deze naam te gebruiken voor visualisaties in plaats van voornaam en
           familienaam.</td>
       </tr>
       <tr>
         <td>gebruikte voornaam</td>
-        <td><CodeInline>persoon:gebruikteVoornaam</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">persoon:gebruikteVoornaam</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>De te gebruiken voornaam van alle officiële voornamen van de
           persoon.</td>
       </tr>

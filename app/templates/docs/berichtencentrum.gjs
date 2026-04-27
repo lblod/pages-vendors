@@ -28,7 +28,7 @@ import Snippet from '../../components/snippet';
     Via een REST call meldt het bestuur de locatie van de nieuwe publicatie aan
     het loket, en zal de crawler van het loket het document ophalen. Het melden
     van een bericht zal een
-    <CodeInline>cogs:Job</CodeInline>
+    <CodeInline @language="turtle">cogs:Job</CodeInline>
     aanmaken. Hiermee kan de vendor of het bestuur de status van de melding
     opvolgen. De flow is heel gelijkaardig aan die van de
     <AuLink @route="docs.meldingsplicht">Meldingsplicht API</AuLink>.
@@ -57,7 +57,7 @@ import Snippet from '../../components/snippet';
     in het
     <CodeInline>href</CodeInline>
     veld. De crawler verwacht dat de RDFa beschrijving van het veld
-    <CodeInline>nie:url</CodeInline>
+    <CodeInline @language="turtle">nie:url</CodeInline>
     een rechtstreekse link is naar het bestand. (Indien content-negotiation
     gewenst is, kunnen de annotaties makkelijk uitgebreid worden. Laat gerust
     weten.) Verder zijn er geen echt harde restricties, behalve dat we niet

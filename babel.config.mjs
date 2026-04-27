@@ -39,7 +39,7 @@ export default {
     [
       'prismjs',
       {
-        languages: ['markup', 'javascript', 'bash', 'turtle', 'json', 'html'],
+        languages: ['markup', 'javascript', 'bash', 'turtle', 'json', 'html', 'sparql'],
         plugins: [],
         theme: 'default',
         css: true,

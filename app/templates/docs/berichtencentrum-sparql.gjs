@@ -215,11 +215,11 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline
+  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
     >schema:Conversation</CodeInline></AuHeading>
   <p>
     Bundelt
-    <CodeInline>schema:Message</CodeInline>
+    <CodeInline @language="turtle">schema:Message</CodeInline>
     rond een specifiek topic. Gesprek, Thread.
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
@@ -235,20 +235,20 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
     <:body>
       <tr>
         <td>hasPart</td>
-        <td><CodeInline>schema:hasPart</CodeInline></td>
-        <td><CodeInline>schema:Message</CodeInline></td>
+        <td><CodeInline @language="turtle">schema:hasPart</CodeInline></td>
+        <td><CodeInline @language="turtle">schema:Message</CodeInline></td>
         <td>Verwijst naar het gelinkt bericht aan de conversatie</td>
       </tr>
       <tr>
         <td>about</td>
-        <td><CodeInline>schema:about</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">schema:about</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Beschrijft het topic van het gesprek</td>
       </tr>
       <tr>
         <td>Identificator</td>
-        <td><CodeInline>schema:identifier</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">schema:identifier</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>
           De interne referentie van ABB.
         </td>
@@ -256,7 +256,7 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline
+  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
     >schema:Message</CodeInline></AuHeading>
   <p>
     Bericht. De entiteit die de effectieve communicatie bevat.
@@ -274,8 +274,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
     <:body>
       <tr>
         <td>type</td>
-        <td><CodeInline>dcterms:type</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">dcterms:type</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>
           Een string die samenvat wat de type communicatie is.
           <br />
@@ -292,15 +292,15 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
       </tr>
       <tr>
         <td>hasPart</td>
-        <td><CodeInline>nie:hasPart</CodeInline></td>
-        <td><CodeInline>nfo:FileDataObject</CodeInline></td>
+        <td><CodeInline @language="turtle">nie:hasPart</CodeInline></td>
+        <td><CodeInline @language="turtle">nfo:FileDataObject</CodeInline></td>
         <td>Verwijst naar het bijbehorende document of bestand van het bericht,
           zoals een bijlage.</td>
       </tr>
       <tr>
         <td>sender</td>
-        <td><CodeInline>schema:sender</CodeInline></td>
-        <td><CodeInline>besluit:Bestuurseenheid</CodeInline></td>
+        <td><CodeInline @language="turtle">schema:sender</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Bestuurseenheid</CodeInline></td>
         <td>
           Verwijst naar de zender of afzender van het bericht.
           <br />
@@ -311,21 +311,21 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
       </tr>
       <tr>
         <td>recipient</td>
-        <td><CodeInline>schema:recipient</CodeInline></td>
-        <td><CodeInline>besluit:Bestuurseenheid</CodeInline></td>
+        <td><CodeInline @language="turtle">schema:recipient</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Bestuurseenheid</CodeInline></td>
         <td>
           Verwijst naar de ontvanger van het bericht.
           <br />
           In de prakijk ABB met vaste URI
           <br />
-          <CodeInline
+          <CodeInline @language="turtle"
           >&lt;http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b&gt;</CodeInline>
         </td>
       </tr>
       <tr>
         <td>text</td>
-        <td><CodeInline>schema:text</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">schema:text</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>
           De tekst of inhoud van het bericht.
           <br />
@@ -335,8 +335,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
       </tr>
       <tr>
         <td>dateSent</td>
-        <td><CodeInline>schema:dateSent</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">schema:dateSent</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>
           Datum en tijd waarop het bericht is verzonden.<br />
           In de praktijk, wanneer de gebruiker op &ldquo;Versturen&rdquo;
@@ -349,7 +349,7 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline
+  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
     >nfo:FileDataObject</CodeInline></AuHeading>
   <p>
     Deze klasse wordt gebruikt om bijlagen te annoteren.
@@ -367,33 +367,33 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
     <:body>
       <tr>
         <td>created</td>
-        <td><CodeInline>dcterms:created</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">dcterms:created</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Datum en tijd waarop het bestand is gecre&euml;erd.</td>
       </tr>
       <tr>
         <td>url</td>
-        <td><CodeInline>nie:url</CodeInline></td>
-        <td><CodeInline>xsd:anyURI</CodeInline></td>
+        <td><CodeInline @language="turtle">nie:url</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:anyURI</CodeInline></td>
         <td>De locatie van het bestand die gebruikt zal worden om opgehaald te
           worden</td>
       </tr>
       <tr>
         <td>modified</td>
-        <td><CodeInline>dcterms:modified</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">dcterms:modified</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Datum en tijd waarop het bestand voor het laatst is gewijzigd.</td>
       </tr>
       <tr>
         <td>fileName</td>
-        <td><CodeInline>nfo:fileName</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">nfo:fileName</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>De mensleesbare naam van het bestand.</td>
       </tr>
       <tr>
         <td>status</td>
-        <td><CodeInline>adms:status</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">adms:status</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>
           De status gebruikt bij ABB om de voortgang van de download van de file
           op te volgen.
@@ -410,7 +410,7 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline>cogs:Job</CodeInline></AuHeading>
+  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle">cogs:Job</CodeInline></AuHeading>
   <p>
     Job. Een instantie van deze klasse houdt bij wat de status van de
     ingestuurde melding is.
@@ -428,8 +428,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
     <:body>
       <tr>
         <td>status</td>
-        <td><CodeInline>adms:status</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">adms:status</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>
           Status van de job. Mogelijke waarden zijn
           <br />
@@ -448,26 +448,26 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
       </tr>
       <tr>
         <td>created</td>
-        <td><CodeInline>dct:created</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:created</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Tijdstip van creatie</td>
       </tr>
       <tr>
         <td>modified</td>
-        <td><CodeInline>dct:modified</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:modified</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Tijdstip van laatste update</td>
       </tr>
       <tr>
         <td>subject</td>
-        <td><CodeInline>dct:subject</CodeInline></td>
-        <td><CodeInline>schema:Message</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:subject</CodeInline></td>
+        <td><CodeInline @language="turtle">schema:Message</CodeInline></td>
         <td>Het bericht waaraan de job verbonden is</td>
       </tr>
       <tr>
         <td>error</td>
-        <td><CodeInline>task:error</CodeInline></td>
-        <td><CodeInline>oslc:Error</CodeInline></td>
+        <td><CodeInline @language="turtle">task:error</CodeInline></td>
+        <td><CodeInline @language="turtle">oslc:Error</CodeInline></td>
         <td>
           Meer informatie over de fout in geval van de fout
           <br />
@@ -478,11 +478,11 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline
+  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
     >oslc:Error</CodeInline></AuHeading>
   <p>
     Deze klasse beschrijft een error. In dit geval zal deze gelinkt zijn met
-    <CodeInline>cogs:Job</CodeInline>.
+    <CodeInline @language="turtle">cogs:Job</CodeInline>.
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
   <AuTable>
@@ -497,8 +497,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
     <:body>
       <tr>
         <td>bericht</td>
-        <td><CodeInline>oslc:message</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">oslc:message</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Beschrijving van de fout</td>
       </tr>
     </:body>

@@ -98,7 +98,7 @@ import CodeInline from '../../components/code-inline';
   <AuHeading @level="3" @skin="3">Adresvoorstelling</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>locn:Address</CodeInline>
+    <CodeInline @language="turtle">locn:Address</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -123,40 +123,40 @@ import CodeInline from '../../components/code-inline';
     <:body>
       <tr>
         <td>adres-register-uri</td>
-        <td><CodeInline>adres:verwijstNaar</CodeInline></td>
-        <td><CodeInline>adres:Adres</CodeInline></td>
+        <td><CodeInline @language="turtle">adres:verwijstNaar</CodeInline></td>
+        <td><CodeInline @language="turtle">adres:Adres</CodeInline></td>
         <td>Adres waarvan de adresvoorstelling is afgeleid.</td>
       </tr>
       <tr>
         <td>gemeentenaam</td>
-        <td><CodeInline>adres:gemeentenaam</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">adres:gemeentenaam</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Gemeentenaam van het adres.</td>
       </tr>
       <tr>
         <td>huisnummer</td>
-        <td><CodeInline>adres:AdresVoorstelling.huisnummer</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">adres:AdresVoorstelling.huisnummer</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Alfanumerieke code officieel toegekend aan gebouweenheden,
           ligplaatsen, standplaatsen of percelen.</td>
       </tr>
       <tr>
         <td>postcode</td>
-        <td><CodeInline>locn:postCode</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">locn:postCode</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Code waarmee het geografisch gebied dat adressen voor postale
           doeleinden groepeert wordt aangeduid.</td>
       </tr>
       <tr>
         <td>straatnaam</td>
-        <td><CodeInline>adres:straatnaam</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">adres:straatnaam</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Straatnaam van het adres.</td>
       </tr>
       <tr>
         <td>volledig adres</td>
-        <td><CodeInline>locn:fullAddress</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">locn:fullAddress</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Het complete adres in één string, al dan niet geformatteerd.</td>
       </tr>
     </:body>
@@ -165,7 +165,7 @@ import CodeInline from '../../components/code-inline';
   <AuHeading @level="3" @skin="3">Bestuursfunctie</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>lblodlg:Bestuursfunctie</CodeInline>
+    <CodeInline @language="turtle">lblodlg:Bestuursfunctie</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -189,14 +189,14 @@ import CodeInline from '../../components/code-inline';
     <:body>
       <tr>
         <td>rol</td>
-        <td><CodeInline>org:role</CodeInline></td>
-        <td><CodeInline>org:Role</CodeInline></td>
+        <td><CodeInline @language="turtle">org:role</CodeInline></td>
+        <td><CodeInline @language="turtle">org:Role</CodeInline></td>
         <td>Bestuurseenheid die de publicatie gemaakt heeft.</td>
       </tr>
       <tr>
         <td>contactgegevens</td>
-        <td><CodeInline>schema:contactPoint</CodeInline></td>
-        <td><CodeInline>schema:ContactPoint</CodeInline></td>
+        <td><CodeInline @language="turtle">schema:contactPoint</CodeInline></td>
+        <td><CodeInline @language="turtle">schema:ContactPoint</CodeInline></td>
         <td>Contactgegevens voor de bestuursfunctie.</td>
       </tr>
     </:body>
@@ -205,7 +205,7 @@ import CodeInline from '../../components/code-inline';
   <AuHeading @level="3" @skin="3">Bestuursorgaan (in bestuursperiode)</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>besluit:Bestuursorgaan</CodeInline>
+    <CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -224,8 +224,8 @@ import CodeInline from '../../components/code-inline';
     <:body>
       <tr>
         <td>bevat</td>
-        <td><CodeInline>lblodlg:heeftBestuursfunctie</CodeInline></td>
-        <td><CodeInline>lblodlg:Bestuursfunctie</CodeInline></td>
+        <td><CodeInline @language="turtle">lblodlg:heeftBestuursfunctie</CodeInline></td>
+        <td><CodeInline @language="turtle">lblodlg:Bestuursfunctie</CodeInline></td>
         <td>Een bestuursfunctie binnen het orgaan.</td>
       </tr>
     </:body>
@@ -234,7 +234,7 @@ import CodeInline from '../../components/code-inline';
   <AuHeading @level="3" @skin="3">Contactgegevens</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>schema:ContactPoint</CodeInline>
+    <CodeInline @language="turtle">schema:ContactPoint</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -254,20 +254,20 @@ import CodeInline from '../../components/code-inline';
     <:body>
       <tr>
         <td>adres</td>
-        <td><CodeInline>locn:address</CodeInline></td>
-        <td><CodeInline>locn:Address</CodeInline></td>
+        <td><CodeInline @language="turtle">locn:address</CodeInline></td>
+        <td><CodeInline @language="turtle">locn:Address</CodeInline></td>
         <td>Adres dat men kan aanschrijven.</td>
       </tr>
       <tr>
         <td>email</td>
-        <td><CodeInline>schema:email</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">schema:email</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Email-adres waarnaar men kan mailen.</td>
       </tr>
       <tr>
         <td>telefoon</td>
-        <td><CodeInline>schema:telephone</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">schema:telephone</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Telefoonnummer waarop men kan bellen.</td>
       </tr>
     </:body>
@@ -276,7 +276,7 @@ import CodeInline from '../../components/code-inline';
   <AuHeading @level="3" @skin="3">Functionaris</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>lblodlg:Functionaris</CodeInline>
+    <CodeInline @language="turtle">lblodlg:Functionaris</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -298,27 +298,27 @@ import CodeInline from '../../components/code-inline';
     <:body>
       <tr>
         <td>bestuursfunctie</td>
-        <td><CodeInline>org:holds</CodeInline></td>
-        <td><CodeInline>lblodlg:Bestuursfunctie</CodeInline></td>
+        <td><CodeInline @language="turtle">org:holds</CodeInline></td>
+        <td><CodeInline @language="turtle">lblodlg:Bestuursfunctie</CodeInline></td>
         <td>De bestuursfunctie die deze functionaris bekleedt.</td>
       </tr>
       <tr>
         <td>einde</td>
-        <td><CodeInline>mandaat:einde</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:einde</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Tijdstip vanaf wanneer de functionaris de bestuursfunctie niet
           langer opneemt.</td>
       </tr>
       <tr>
         <td>is bestuurlijke alias van</td>
-        <td><CodeInline>mandaat:isBestuurlijkeAliasVan</CodeInline></td>
-        <td><CodeInline>person:Person</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:isBestuurlijkeAliasVan</CodeInline></td>
+        <td><CodeInline @language="turtle">person:Person</CodeInline></td>
         <td>De persoon die de functionarisrol vervult.</td>
       </tr>
       <tr>
         <td>start</td>
-        <td><CodeInline>mandaat:start</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">mandaat:start</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Tijdstip vanaf wanneer de functionaris de bestuursfunctie opneemt.</td>
       </tr>
     </:body>
@@ -327,7 +327,7 @@ import CodeInline from '../../components/code-inline';
   <AuHeading @level="3" @skin="3">Persoon</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>person:Person</CodeInline>
+    <CodeInline @language="turtle">person:Person</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -350,22 +350,22 @@ import CodeInline from '../../components/code-inline';
     <:body>
       <tr>
         <td>achternaam</td>
-        <td><CodeInline>foaf:familyName</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">foaf:familyName</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>De familienaam van de persoon.</td>
       </tr>
       <tr>
         <td>alternatieve naam</td>
-        <td><CodeInline>foaf:name</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">foaf:name</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Een roepnaam van de persoon. Indien aanwezig is het aan te raden
           deze naam te gebruiken voor visualisaties in plaats van voornaam en
           familienaam.</td>
       </tr>
       <tr>
         <td>gebruikte voornaam</td>
-        <td><CodeInline>persoon:gebruikteVoornaam</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">persoon:gebruikteVoornaam</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>De te gebruiken voornaam van alle officiële voornamen van de
           persoon.</td>
       </tr>

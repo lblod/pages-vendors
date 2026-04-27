@@ -98,19 +98,19 @@ import Snippet from '../../components/snippet';
     <:body>
       <tr>
         <td>Agenda</td>
-        <td><CodeInline>besluit:heeftAgenda</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:heeftAgenda</CodeInline></td>
       </tr>
       <tr>
         <td>Besluitenlijst</td>
-        <td><CodeInline>besluit:heeftBesluitenlijst</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:heeftBesluitenlijst</CodeInline></td>
       </tr>
       <tr>
         <td>Uittreksel</td>
-        <td><CodeInline>besluit:heeftUittreksel</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:heeftUittreksel</CodeInline></td>
       </tr>
       <tr>
         <td>Notulen</td>
-        <td><CodeInline>besluit:heeftNotulen</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:heeftNotulen</CodeInline></td>
       </tr>
     </:body>
   </AuTable>

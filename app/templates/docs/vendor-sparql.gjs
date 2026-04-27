@@ -154,7 +154,7 @@ import Snippet from '../../components/snippet';
   <p>
     Het volgende voorbeeld is hetzelfde als het vorige, maar voor de encodering
     is hier de typische JavaScript
-    <CodeInline>encodeURIComponent()</CodeInline>
+    <CodeInline @language="javascript">encodeURIComponent()</CodeInline>
     gebruikt.
   </p>
   <Snippet

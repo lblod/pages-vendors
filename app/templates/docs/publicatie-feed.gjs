@@ -31,26 +31,26 @@ import Snippet from '../../components/snippet';
     een LDES-feed zijn:
   </p>
   <ul>
-    <li><CodeInline>Tree:Node</CodeInline>: Een subverzameling van de stream
+    <li><CodeInline @language="turtle">Tree:Node</CodeInline>: Een subverzameling van de stream
       (paginering).</li>
-    <li><CodeInline>Tree:Relation</CodeInline>: Biedt links naar voorgaande of
+    <li><CodeInline @language="turtle">Tree:Relation</CodeInline>: Biedt links naar voorgaande of
       volgende pagina’s.</li>
-    <li><CodeInline>LDES:EventStream</CodeInline>: Een sequentie van wijzigingen
+    <li><CodeInline @language="turtle">LDES:EventStream</CodeInline>: Een sequentie van wijzigingen
       over tijd.</li>
   </ul>
 
   <p>Elke publicatie wordt als een entiteit weergegeven met minimaal:</p>
   <ul>
-    <li><CodeInline>dct:isVersionOf</CodeInline>: Unieke identificatie van de
+    <li><CodeInline @language="turtle">dct:isVersionOf</CodeInline>: Unieke identificatie van de
       publicatie.</li>
-    <li><CodeInline>prov:atLocation</CodeInline>: Locatie (URL) van de
+    <li><CodeInline @language="turtle">prov:atLocation</CodeInline>: Locatie (URL) van de
       publicatie.</li>
-    <li><CodeInline>dct:type</CodeInline>: Type van de publicatie, uit de
+    <li><CodeInline @language="turtle">dct:type</CodeInline>: Type van de publicatie, uit de
       <AuLinkExternal
         href="https://data.vlaanderen.be/doc/concept/BesluitDocumentType/"
       >BesluitDocumentType codelijst</AuLinkExternal>.
     </li>
-    <li><CodeInline>prov:generatedAtTime</CodeInline>: Publicatiedatum van het
+    <li><CodeInline @language="turtle">prov:generatedAtTime</CodeInline>: Publicatiedatum van het
       document.</li>
   </ul>
 
@@ -68,15 +68,15 @@ import Snippet from '../../components/snippet';
   </p>
   <Snippet @snippetFilename="publicatie-ldes/metadata-structure.turtle" />
   <ul>
-    <li><CodeInline>ldes:timestampPath</CodeInline>
+    <li><CodeInline @language="turtle">ldes:timestampPath</CodeInline>
       verwijst naar het predicate dat gebruikt wordt in de member om de
       timestamp van de data te vinden. In dit geval de publicatiedatum van het
       document</li>
-    <li><CodeInline>ldes:versionOfPath</CodeInline>
+    <li><CodeInline @language="turtle">ldes:versionOfPath</CodeInline>
       verwijst naar het predicate dat wordt gebruikt om te definiëren dat een
       tree:member van een ldes:EventStream een versie is van een rdf-document.
       (zie "Versionering")</li>
-    <li><CodeInline>tree:shape</CodeInline>
+    <li><CodeInline @language="turtle">tree:shape</CodeInline>
       linkt naar de verwachte vorm van de members en wordt gebruikt voor
       validatie. Deze mag linken naar de shape gepubliceerd op
       <AuLinkExternal
@@ -84,10 +84,10 @@ import Snippet from '../../components/snippet';
       >deze pagina</AuLinkExternal>. Indien de feed meer data bevat dan de
       minimale set hier beschreven, kan ook een eigen shape gespecifieerd
       worden.</li>
-    <li><CodeInline>tree:member</CodeInline>
+    <li><CodeInline @language="turtle">tree:member</CodeInline>
       duidt op een member in de verzameling, in dit geval een gepubliceerd
       document.</li>
-    <li><CodeInline>tree:view</CodeInline>
+    <li><CodeInline @language="turtle">tree:view</CodeInline>
       Linkt naar de huidige node (pagina) in de collectie (zie fragmentering en
       paginering).</li>
   </ul>
@@ -116,9 +116,9 @@ import Snippet from '../../components/snippet';
     eerst): pagina 1</AuHeading>
   <SnippetToggle @snippetFilename="publicatie-ldes/fragment.turtle" />
   <p>
-    Elke pagina (<CodeInline>tree:Node</CodeInline>) gebruikt TREE-relaties om
+    Elke pagina (<CodeInline @language="turtle">tree:Node</CodeInline>) gebruikt TREE-relaties om
     te navigeren door de publicaties op basis van hun tijdstempel. De
-    <CodeInline>tree:LessThanRelation</CodeInline>
+    <CodeInline @language="turtle">tree:LessThanRelation</CodeInline>
     verwijst naar de volgende pagina (page=2), die events bevat met een
     prov:generatedAtTime kleiner dan "2025-03-22T00:00:00Z".
   </p>
@@ -128,9 +128,9 @@ import Snippet from '../../components/snippet';
   <SnippetToggle @snippetFilename="publicatie-ldes/fragment-2.turtle" />
   <p>
     De relaties
-    <CodeInline>tree:GreaterThanOrEqualToRelation</CodeInline>
+    <CodeInline @language="turtle">tree:GreaterThanOrEqualToRelation</CodeInline>
     en
-    <CodeInline>tree:LessThanRelation</CodeInline>
+    <CodeInline @language="turtle">tree:LessThanRelation</CodeInline>
     definiëren een bereik voor page=2. In dit geval kunnen we dus publicaties
     met een timestamp tussen 2025-03-22T00:00:00Z en 2025-03-11T12:00:00Z
     verwachten op pagina 2. Voor oudere publicaties wordt verwezen naar pagina
@@ -145,9 +145,9 @@ import Snippet from '../../components/snippet';
     Als een publicatie wordt geupdate, dan wordt de publicatie nogmaals op de
     feed gezet. Dit is een nieuwe member met eigen identifier, die naar de
     "echte" identifier linkt via de
-    <CodeInline>dct:isVersionOf</CodeInline>
+    <CodeInline @language="turtle">dct:isVersionOf</CodeInline>
     relatie. De member krijgt dan een nieuwe
-    <CodeInline>prov:generatedAtTime</CodeInline>.
+    <CodeInline @language="turtle">prov:generatedAtTime</CodeInline>.
   </p>
   <SnippetToggle @snippetFilename="publicatie-ldes/version-of.turtle" />
   <p>

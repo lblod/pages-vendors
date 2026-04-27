@@ -135,16 +135,16 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
     Inzendingen kunnen elkaar refereren, bijvoorbeeld een besluit dat een ander
     besluit goedkeurt. Dit kan op twee manieren gebeuren. Een gemeente- of
     provinciebestuur gebruikt een tussenliggende entiteit
-    <CodeInline>besluit:Artikel</CodeInline>
+    <CodeInline @language="turtle">besluit:Artikel</CodeInline>
     als deel van het
-    <CodeInline>ext:SubmissionsDocument</CodeInline>. Een Centraal Bestuur van
+    <CodeInline @language="turtle">ext:SubmissionsDocument</CodeInline>. Een Centraal Bestuur van
     de erediensten of ander representatief orgaan gebruikt in plaats daarvan een
     relatie
-    <CodeInline>dct:relation</CodeInline>
+    <CodeInline @language="turtle">dct:relation</CodeInline>
     op de
-    <CodeInline>am:FormData</CodeInline>
+    <CodeInline @language="turtle">am:FormData</CodeInline>
     rechtstreeks naar het gerefereerde
-    <CodeInline>ext:SubmissionsDocument</CodeInline>.
+    <CodeInline @language="turtle">ext:SubmissionsDocument</CodeInline>.
   </p>
   <p>
     <strong>Noteer: het is enkel mogelijk om gedetailleerde informatie op te
@@ -332,7 +332,7 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline
+  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
     >mob:Submission</CodeInline></AuHeading>
   <p>
     Dit is de entiteit die informatie over de feitelijke inzending encodeert.
@@ -350,80 +350,80 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
     <:body>
       <tr>
         <td>Gecre&euml;erd op</td>
-        <td><CodeInline>dct:created</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:created</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Tijdstip waarop deze inzending werd gemaakt.</td>
       </tr>
       <tr>
         <td>Bewerkt op</td>
-        <td><CodeInline>dct:modified</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:modified</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Tijdstip waarop deze inzending laatst werd gewijzigd.</td>
       </tr>
       <tr>
         <td>Gecre&euml;erd door</td>
-        <td><CodeInline>pav:createdBy</CodeInline></td>
-        <td><CodeInline>besluit:Bestuurseenheid</CodeInline></td>
+        <td><CodeInline @language="turtle">pav:createdBy</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Bestuurseenheid</CodeInline></td>
         <td>Voor/door welk bestuurseenheid de inzending werd gemaakt. Een derde
           partij kan een inzending maken via een applicatie voor deze
           bestuurseenheid.</td>
       </tr>
       <tr>
         <td>Verzonden op</td>
-        <td><CodeInline>nmo:sentDate</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">nmo:sentDate</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Tijdstip waarop de inzending succesvol werd verzonden naar het
           Loket.</td>
       </tr>
       <tr>
         <td>Ingezonden door</td>
-        <td><CodeInline>pav:providedBy</CodeInline></td>
-        <td><CodeInline>ext:Vendor</CodeInline></td>
+        <td><CodeInline @language="turtle">pav:providedBy</CodeInline></td>
+        <td><CodeInline @language="turtle">ext:Vendor</CodeInline></td>
         <td>URI van de vendor applicatie die de inzending maakte. Via de Vendor
           API mogen geen inzendingen van andere vendors gezien worden.</td>
       </tr>
       <tr>
         <td>Status</td>
-        <td><CodeInline>adms:status</CodeInline></td>
-        <td><CodeInline>ext:SubmissionDocumentStatus</CodeInline>
+        <td><CodeInline @language="turtle">adms:status</CodeInline></td>
+        <td><CodeInline @language="turtle">ext:SubmissionDocumentStatus</CodeInline>
           en
-          <CodeInline>skos:Concept</CodeInline></td>
+          <CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>Status van de inzending. Zie onderaan onder hoofdstuk
           <LinkTo @route="docs.meldingsplicht-sparql">Documentstatussen
             inzendingen</LinkTo>.</td>
       </tr>
       <tr>
         <td>Genereerde dit inzendingsformulier</td>
-        <td><CodeInline>prov:generated</CodeInline></td>
-        <td><CodeInline>am:FormData</CodeInline></td>
+        <td><CodeInline @language="turtle">prov:generated</CodeInline></td>
+        <td><CodeInline @language="turtle">am:FormData</CodeInline></td>
         <td>Formuliergegevens die werden gegenereerd op basis van de inzending.
           Indien volledig wordt dit dossier automatisch verzonden naar het
           Loket.</td>
       </tr>
       <tr>
         <td>Document ter onderwerp</td>
-        <td><CodeInline>dct:subject</CodeInline></td>
-        <td><CodeInline>ext:SubmissionDocument</CodeInline>
+        <td><CodeInline @language="turtle">dct:subject</CodeInline></td>
+        <td><CodeInline @language="turtle">ext:SubmissionDocument</CodeInline>
           en
-          <CodeInline>foaf:Document</CodeInline></td>
+          <CodeInline @language="turtle">foaf:Document</CodeInline></td>
         <td>RDFa document dat werd ingezonden door de vendor. Dit document werd
           automatisch omgezet tot
-          <CodeInline>am:FormData</CodeInline>
+          <CodeInline @language="turtle">am:FormData</CodeInline>
           om te versturen.</td>
       </tr>
       <tr>
         <td>Downloadlocatie</td>
-        <td><CodeInline>prov:atLocation</CodeInline></td>
-        <td><CodeInline>xsd:anyURI</CodeInline></td>
+        <td><CodeInline @language="turtle">prov:atLocation</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:anyURI</CodeInline></td>
         <td>Locatie (URL) van het HTML RDFa document, ingezonden door de vendor,
           waar het
-          <CodeInline>ext:SubmissionDocument</CodeInline>
+          <CodeInline @language="turtle">ext:SubmissionDocument</CodeInline>
           kan worden teruggevonden en worden gedownload.</td>
       </tr>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline
+  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
     >ext:SubmissionDocument</CodeInline></AuHeading>
   <p>
     Deze entiteit bestaat altijd, maar wordt alleen maar in de Vendor API
@@ -443,14 +443,14 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
     <:body>
       <tr>
         <td>Verwijst naar</td>
-        <td><CodeInline>eli:has_part</CodeInline></td>
-        <td><CodeInline>ext:SubmissionDocument</CodeInline></td>
+        <td><CodeInline @language="turtle">eli:has_part</CodeInline></td>
+        <td><CodeInline @language="turtle">ext:SubmissionDocument</CodeInline></td>
         <td>Ander document dat werd gerefereerd in dit document</td>
       </tr>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline
+  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
     >besluit:Artikel</CodeInline></AuHeading>
   <p>
     Deze entiteit bestaat alleen maar als het document verwijst naar andere
@@ -470,21 +470,21 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
     <:body>
       <tr>
         <td>Refereert naar</td>
-        <td><CodeInline>eli:refers_to</CodeInline></td>
-        <td><CodeInline>ext:SubmissionDocument</CodeInline></td>
+        <td><CodeInline @language="turtle">eli:refers_to</CodeInline></td>
+        <td><CodeInline @language="turtle">ext:SubmissionDocument</CodeInline></td>
         <td>Ander document dat werd gerefereerd in dit document</td>
       </tr>
       <tr>
         <td>Artikel type</td>
-        <td><CodeInline>eli:type_document</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">eli:type_document</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>Type van het document, bijvoorbeeld: Goedkeuring gerefereerde
           documenten, Aktename gerefereerd documenten, &hellip;</td>
       </tr>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline
+  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
     >am:FormData</CodeInline></AuHeading>
   <p>
     Deze entiteit bevat de gegevens over het ingevulde formulier gelinkt aan de
@@ -503,46 +503,46 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
     <:body>
       <tr>
         <td>Type</td>
-        <td><CodeInline>dct:type</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:type</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>Het soort besluittype van dit document</td>
       </tr>
       <tr>
         <td>Besluittype</td>
-        <td><CodeInline>fd:submissionType</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">fd:submissionType</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>Het soort besluittype van dit document</td>
       </tr>
       <tr>
         <td>Zitting starttijd</td>
-        <td><CodeInline>fd:sessionStartedAtTime</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">fd:sessionStartedAtTime</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Starttijdstip van de zitting waar het besluit werd genomen (indien
           van toepassing)</td>
       </tr>
       <tr>
         <td>Financieel jaar</td>
-        <td><CodeInline>le:financialYear</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">le:financialYear</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Financieel jaar (indien van toepassing)</td>
       </tr>
       <tr>
         <td>Ondertekend door</td>
-        <td><CodeInline>eli:passed_by</CodeInline></td>
-        <td><CodeInline>besluit:Bestuursorgaan</CodeInline></td>
+        <td><CodeInline @language="turtle">eli:passed_by</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline></td>
         <td>Bestuursorgaan dat de besluiten heeft ondertekend</td>
       </tr>
       <tr>
         <td>Bijlage</td>
-        <td><CodeInline>dct:hasPart</CodeInline></td>
-        <td><CodeInline>nfo:FileDataObject</CodeInline>,
-          <CodeInline>nfo:RemoteDataObject</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:hasPart</CodeInline></td>
+        <td><CodeInline @language="turtle">nfo:FileDataObject</CodeInline>,
+          <CodeInline @language="turtle">nfo:RemoteDataObject</CodeInline></td>
         <td>Onderdeel van de formuliergegevens of bijlagen</td>
       </tr>
       <tr>
         <td>Gerefereerd document</td>
-        <td><CodeInline>dct:relation</CodeInline></td>
-        <td><CodeInline>ext:SubmissionDocument</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:relation</CodeInline></td>
+        <td><CodeInline @language="turtle">ext:SubmissionDocument</CodeInline></td>
         <td>Een gerefereerd document. Deze relatie bestaat enkel vanuit de
           FormData van een besluit door een representatief orgaan of Centraal
           Bestuur dat een besluit van een eredienstbestuur refereert.</td>
@@ -550,8 +550,8 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline>nfo:FileDataObject</CodeInline>,
-    <CodeInline>nfo:RemoteDataObject</CodeInline></AuHeading>
+  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle">nfo:FileDataObject</CodeInline>,
+    <CodeInline @language="turtle">nfo:RemoteDataObject</CodeInline></AuHeading>
   <p>
     Deze twee klassen worden vaak samen gebruikt op dezelfde entiteit. Deze
     beschrijven bestanden als bijlagen gelinkt aan de Submission en FormData.
@@ -569,57 +569,57 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
     <:body>
       <tr>
         <td>Creatiedatum</td>
-        <td><CodeInline>dct:created</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:created</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Creatiedatum van het bestand</td>
       </tr>
       <tr>
         <td>Bewerkt op</td>
-        <td><CodeInline>dct:modified</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:modified</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Laatste bewerkingsdatum van het bestand</td>
       </tr>
       <tr>
         <td>Bestandsgrootte</td>
-        <td><CodeInline>nfo:fileSize</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">nfo:fileSize</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Bestandsgrootte</td>
       </tr>
       <tr>
         <td>Bestandsextentie</td>
-        <td><CodeInline>dbpedia:fileExtension</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">dbpedia:fileExtension</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Bestandsextentie</td>
       </tr>
       <tr>
         <td>Bestandsformaat</td>
-        <td><CodeInline>dct:format</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:format</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>MIME type van de indeling van het bestand</td>
       </tr>
       <tr>
         <td>Bestandsnaam</td>
-        <td><CodeInline>nfo:fileName</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">nfo:fileName</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Bestandsnaam</td>
       </tr>
       <tr>
         <td>Status</td>
-        <td><CodeInline>adms:status</CodeInline></td>
-        <td><CodeInline>xsd:anyURI</CodeInline></td>
+        <td><CodeInline @language="turtle">adms:status</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:anyURI</CodeInline></td>
         <td>Downloadstatus</td>
       </tr>
       <tr>
         <td>Vorige locatie</td>
-        <td><CodeInline>prov:hadPrimarySource</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">prov:hadPrimarySource</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>URL in de vendor applicatie waar oorspronkelijk het bestand van werd
           gedownload</td>
       </tr>
       <tr>
         <td>URL</td>
-        <td><CodeInline>nie:url</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">nie:url</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>URL waar het bestand op dit moment in deze applicatie te downloaden
           is</td>
       </tr>

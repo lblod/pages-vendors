@@ -118,7 +118,7 @@ import ScrollLink from '../../components/scroll-link';
   <AuHeading @level="3" @skin="3">Submission</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>meb:Submission</CodeInline>
+    <CodeInline @language="turtle">meb:Submission</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -139,34 +139,34 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td>organization</td>
-        <td><CodeInline>pav:createdBy</CodeInline></td>
-        <td><CodeInline>besluit:Bestuurseenheid</CodeInline></td>
+        <td><CodeInline @language="turtle">pav:createdBy</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Bestuurseenheid</CodeInline></td>
         <td>Bestuurseenheid die de publicatie gemaakt heeft.</td>
       </tr>
       <tr>
         <td>publisher</td>
-        <td><CodeInline>pav:providedBy</CodeInline></td>
-        <td><CodeInline>foaf:Agent</CodeInline></td>
+        <td><CodeInline @language="turtle">pav:providedBy</CodeInline></td>
+        <td><CodeInline @language="turtle">foaf:Agent</CodeInline></td>
         <td>Partij die de melding uitvoert.</td>
       </tr>
       <tr>
         <td>submittedResource</td>
-        <td><CodeInline>dct:subject</CodeInline></td>
-        <td><CodeInline>foaf:Document</CodeInline>
+        <td><CodeInline @language="turtle">dct:subject</CodeInline></td>
+        <td><CodeInline @language="turtle">foaf:Document</CodeInline>
           (meestal
-          <CodeInline>besluit:Besluit</CodeInline>)</td>
+          <CodeInline @language="turtle">besluit:Besluit</CodeInline>)</td>
         <td>Beslissing/document dat gemeld wordt.</td>
       </tr>
       <tr>
         <td>status</td>
-        <td><CodeInline>adms:status</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">adms:status</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>Status van de melding.</td>
       </tr>
       <tr>
         <td>href</td>
-        <td><CodeInline>prov:atLocation</CodeInline></td>
-        <td><CodeInline>rdfs:Resource</CodeInline></td>
+        <td><CodeInline @language="turtle">prov:atLocation</CodeInline></td>
+        <td><CodeInline @language="turtle">rdfs:Resource</CodeInline></td>
         <td>URL waarop het document gepubliceerd is.</td>
       </tr>
     </:body>
@@ -174,7 +174,7 @@ import ScrollLink from '../../components/scroll-link';
   <AuHeading @level="3" @skin="3">Vendor</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>foaf:Agent</CodeInline>
+    <CodeInline @language="turtle">foaf:Agent</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -193,21 +193,21 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td>name</td>
-        <td><CodeInline>foaf:name</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">foaf:name</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Naam van de agent.</td>
       </tr>
       <tr>
         <td>key</td>
-        <td><CodeInline>muAccount:key</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">muAccount:key</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Sleutel waarmee geverifieerd kan worden of de agent een inzending
           mag insturen in naam van een andere organizatie.</td>
       </tr>
       <tr>
         <td>canActOnBehalfOf</td>
-        <td><CodeInline>muAccount:canActOnBehalfOf</CodeInline></td>
-        <td><CodeInline>besluit:Bestuurseenheid</CodeInline></td>
+        <td><CodeInline @language="turtle">muAccount:canActOnBehalfOf</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Bestuurseenheid</CodeInline></td>
         <td>Bestuurseenheden in wiens naam de agent een melding mag insturen.</td>
       </tr>
     </:body>
@@ -215,9 +215,9 @@ import ScrollLink from '../../components/scroll-link';
   <AuHeading @level="3" @skin="3" id="submitted-resource">Submitted resource</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>foaf:Document</CodeInline>
+    <CodeInline @language="turtle">foaf:Document</CodeInline>
     (meestal
-    <CodeInline>besluit:Besluit</CodeInline>)
+    <CodeInline @language="turtle">besluit:Besluit</CodeInline>)
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -236,8 +236,8 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td>type</td>
-        <td><CodeInline>rdf:type</CodeInline></td>
-        <td><CodeInline>rdfs:Class</CodeInline></td>
+        <td><CodeInline @language="turtle">rdf:type</CodeInline></td>
+        <td><CodeInline @language="turtle">rdfs:Class</CodeInline></td>
         <td>Type van het besluit. Concept uit een van volgende concept schemes:
           <AuLinkExternal
             href="https://data.vlaanderen.be/id/conceptscheme/BesluitType"
@@ -247,22 +247,22 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>publicationDate</td>
-        <td><CodeInline>eli:date_publication</CodeInline></td>
-        <td><CodeInline>xsd:date</CodeInline></td>
+        <td><CodeInline @language="turtle">eli:date_publication</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:date</CodeInline></td>
         <td>De offici&euml;le publicatiedatum van het besluit.</td>
       </tr>
       <tr>
         <td>passedBy</td>
-        <td><CodeInline>eli:passed_by</CodeInline></td>
-        <td><CodeInline>besluit:Bestuursorgaan</CodeInline></td>
+        <td><CodeInline @language="turtle">eli:passed_by</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline></td>
         <td>Het bestuursorgaan dat de beslissing goedgekeurd heeft.
           <br />(Het gaat over bestuursorgaan in bestuursperiode, zie ook
           voorbeelden)</td>
       </tr>
       <tr>
         <td>subject</td>
-        <td><CodeInline>eli:is_about</CodeInline></td>
-        <td><CodeInline>foaf:Agent</CodeInline></td>
+        <td><CodeInline @language="turtle">eli:is_about</CodeInline></td>
+        <td><CodeInline @language="turtle">foaf:Agent</CodeInline></td>
         <td>Agent (organisatie, bestuurseenheid) waarover de beslissing handelt.
           <br /><strong>Zie onderaan bij "Extra informatie" over
             <ScrollLink @scrollToId="linken-bestuurseenheid">Linken naar
@@ -270,26 +270,26 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>reportYear</td>
-        <td><CodeInline>elod:financialYear</CodeInline></td>
-        <td><CodeInline>xsd:gYear</CodeInline></td>
+        <td><CodeInline @language="turtle">elod:financialYear</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:gYear</CodeInline></td>
         <td>Het boekjaar waarover de beslissing handelt.</td>
       </tr>
       <tr>
         <td>firstDateInForce</td>
-        <td><CodeInline>eli:first_date_entry_in_force</CodeInline></td>
-        <td><CodeInline>xsd:date</CodeInline></td>
+        <td><CodeInline @language="turtle">eli:first_date_entry_in_force</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:date</CodeInline></td>
         <td>De datum waarop de regelgeving van kracht wordt.</td>
       </tr>
       <tr>
         <td>dateNoLongerInForce</td>
-        <td><CodeInline>eli:date_no_longer_in_force</CodeInline></td>
-        <td><CodeInline>xsd:date</CodeInline></td>
+        <td><CodeInline @language="turtle">eli:date_no_longer_in_force</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:date</CodeInline></td>
         <td>De laatste dag waarop de regelgeving nog van kracht is.</td>
       </tr>
       <tr>
         <td>authenticityType</td>
-        <td><CodeInline>lblodBesluit:authenticityType</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">lblodBesluit:authenticityType</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>
           Authenticiteit van de ingestuurde beslissing. Zie
           <AuLinkExternal
@@ -300,8 +300,8 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>chartOfAccount</td>
-        <td><CodeInline>lblodBesluit:chartOfAccount</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">lblodBesluit:chartOfAccount</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>
           Code uit het Minimaal Algemeen Rekeningstelsel (MAR) waar in de
           beslissing naar verwezen wordt. Zie
@@ -313,33 +313,33 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>taxRate</td>
-        <td><CodeInline>lblodBesluit:taxRate</CodeInline></td>
-        <td><CodeInline>lblodBesluit:TaxRate</CodeInline></td>
+        <td><CodeInline @language="turtle">lblodBesluit:taxRate</CodeInline></td>
+        <td><CodeInline @language="turtle">lblodBesluit:TaxRate</CodeInline></td>
         <td>Aanslagvoet die in de beslissing bepaald wordt.</td>
       </tr>
       <tr>
         <td>hasAdditionalTaxRate</td>
-        <td><CodeInline>lblodBesluit:hasAdditionalTaxRate</CodeInline></td>
-        <td><CodeInline>xsd:boolean</CodeInline></td>
+        <td><CodeInline @language="turtle">lblodBesluit:hasAdditionalTaxRate</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:boolean</CodeInline></td>
         <td>Duidt aan of er nog bijkomende aanslagvoeten zijn dan deze
           beschreven in de beslissing.</td>
       </tr>
       <tr>
         <td>description</td>
-        <td><CodeInline>dct:description</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:description</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Beschrijving bij de beslissing.</td>
       </tr>
       <tr>
         <td>comment</td>
-        <td><CodeInline>rdfs:comment</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">rdfs:comment</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Opmerking bij de beslissing.</td>
       </tr>
       <tr>
         <td>link</td>
-        <td><CodeInline>dct:hasPart</CodeInline></td>
-        <td><CodeInline>rdfs:Resource</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:hasPart</CodeInline></td>
+        <td><CodeInline @language="turtle">rdfs:Resource</CodeInline></td>
         <td>URL van gerelateerd document dat een logisch onderdeel is van het
           besluit.</td>
       </tr>
@@ -348,7 +348,7 @@ import ScrollLink from '../../components/scroll-link';
   <AuHeading @level="3" @skin="3">Aanslagvoet</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>lblodBesluit:TaxRate &lt; schema:UnitPriceSpecification</CodeInline>
+    <CodeInline @language="turtle">lblodBesluit:TaxRate &lt; schema:UnitPriceSpecification</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -367,8 +367,8 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td>amount</td>
-        <td><CodeInline>schema:price</CodeInline></td>
-        <td><CodeInline>xsd:float</CodeInline></td>
+        <td><CodeInline @language="turtle">schema:price</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:float</CodeInline></td>
         <td>Geldbedrag dat per eenheid gerekend wordt.</td>
       </tr>
     </:body>
@@ -376,7 +376,7 @@ import ScrollLink from '../../components/scroll-link';
   <AuHeading @level="3" @skin="3">Bestuurseenheid</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>besluit:Bestuurseenheid</CodeInline>
+    <CodeInline @language="turtle">besluit:Bestuurseenheid</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
   <AuTable>
@@ -391,26 +391,26 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td>classificatie</td>
-        <td><CodeInline>besluit:classificatie</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:classificatie</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>Classificatie van de bestuurseenheid.</td>
       </tr>
       <tr>
         <td>naam</td>
-        <td><CodeInline>skos:prefLabel</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:prefLabel</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Naam van de bestuurseenheid.</td>
       </tr>
       <tr>
         <td>identifier</td>
-        <td><CodeInline>dct:identifier</CodeInline></td>
-        <td><CodeInline>xsd:string</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:identifier</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Identificator van de bestuurseenheid (vb. ondernemingsnummer).</td>
       </tr>
       <tr>
         <td>bestuursorgaan</td>
-        <td><CodeInline>besluit:bestuurt</CodeInline></td>
-        <td><CodeInline>besluit:Bestuursorgaan</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:bestuurt</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline></td>
         <td>Bestuursorgaan die door de bestuurseenheid bestuurd wordt.</td>
       </tr>
     </:body>
@@ -418,7 +418,7 @@ import ScrollLink from '../../components/scroll-link';
   <AuHeading @level="3" @skin="3">Bestuursorgaan</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>besluit:Bestuursorgaan</CodeInline>
+    <CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
   <AuTable>
@@ -433,8 +433,8 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td>classificatie</td>
-        <td><CodeInline>besluit:classificatie</CodeInline></td>
-        <td><CodeInline>skos:Concept</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:classificatie</CodeInline></td>
+        <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>Het type bestuursorgaan.</td>
       </tr>
     </:body>
@@ -442,7 +442,7 @@ import ScrollLink from '../../components/scroll-link';
   <AuHeading @level="3" @skin="3">Behandeling van Agendapunt</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>besluit:BehandelingVanAgendapunt</CodeInline>
+    <CodeInline @language="turtle">besluit:BehandelingVanAgendapunt</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
   <AuTable>
@@ -457,14 +457,14 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td>onderwerp</td>
-        <td><CodeInline>dct:subject</CodeInline></td>
-        <td><CodeInline>besluit:Agendapunt</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:subject</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Agendapunt</CodeInline></td>
         <td>Het onderwerp van de activiteit.</td>
       </tr>
       <tr>
         <td>besluit</td>
-        <td><CodeInline>prov:generated</CodeInline></td>
-        <td><CodeInline>besluit:Besluit</CodeInline></td>
+        <td><CodeInline @language="turtle">prov:generated</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Besluit</CodeInline></td>
         <td>Een besluit dat is opgemaakt naar aanleiding van de behandeling van
           het agendapunt.</td>
       </tr>
@@ -473,7 +473,7 @@ import ScrollLink from '../../components/scroll-link';
   <AuHeading @level="3" @skin="3">Agendapunt</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>besluit:Agendapunt</CodeInline>
+    <CodeInline @language="turtle">besluit:Agendapunt</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
   <p>
@@ -482,7 +482,7 @@ import ScrollLink from '../../components/scroll-link';
   <AuHeading @level="3" @skin="3">Zitting</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline>besluit:Zitting</CodeInline>
+    <CodeInline @language="turtle">besluit:Zitting</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
   <AuTable>
@@ -497,44 +497,44 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td>agendapunt</td>
-        <td><CodeInline>besluit:behandelt</CodeInline></td>
-        <td><CodeInline>besluit:Agendapunt</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:behandelt</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Agendapunt</CodeInline></td>
         <td>Een formeel vastgelegd agendapunt van de zitting.</td>
       </tr>
       <tr>
         <td>gestartOpTijdstip</td>
-        <td><CodeInline>prov:startedAtTime</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">prov:startedAtTime</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Tijdstip waarop de zitting begint.</td>
       </tr>
       <tr>
         <td>bestuursorgaan</td>
-        <td><CodeInline>besluit:isGehoudenDoor</CodeInline></td>
-        <td><CodeInline>besluit:Bestuursorgaan</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:isGehoudenDoor</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline></td>
         <td>Duidt aan door welk orgaan de zitting is gehouden.</td>
       </tr>
       <tr>
         <td>notulen</td>
-        <td><CodeInline>besluit:heeftNotulen</CodeInline></td>
-        <td><CodeInline>foaf:Document</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:heeftNotulen</CodeInline></td>
+        <td><CodeInline @language="turtle">foaf:Document</CodeInline></td>
         <td>Notulen van de zitting.</td>
       </tr>
       <tr>
         <td>besluitenlijst</td>
-        <td><CodeInline>besluit:heeftBesluitenlijst</CodeInline></td>
-        <td><CodeInline>foaf:Document</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:heeftBesluitenlijst</CodeInline></td>
+        <td><CodeInline @language="turtle">foaf:Document</CodeInline></td>
         <td>Besluitenlijst van de zitting.</td>
       </tr>
       <tr>
         <td>agenda</td>
-        <td><CodeInline>besluit:heeftAgenda</CodeInline></td>
-        <td><CodeInline>foaf:Document</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:heeftAgenda</CodeInline></td>
+        <td><CodeInline @language="turtle">foaf:Document</CodeInline></td>
         <td>Agenda van de zitting.</td>
       </tr>
       <tr>
         <td>uittreksel</td>
-        <td><CodeInline>besluit:heeftUittreksel</CodeInline></td>
-        <td><CodeInline>foaf:Document</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:heeftUittreksel</CodeInline></td>
+        <td><CodeInline @language="turtle">foaf:Document</CodeInline></td>
         <td>Uittreksel van een besluit van de zitting.</td>
       </tr>
     </:body>
@@ -582,7 +582,7 @@ import ScrollLink from '../../components/scroll-link';
   <p>
     Om vanuit het Besluit te refereren naar de betreffende Bestuurseenheid via
     de URI, gebruik het RDF predicaat
-    <CodeInline>eli:is_about</CodeInline>. Zie eveneens bij de bovenstaande
+    <CodeInline @language="turtle">eli:is_about</CodeInline>. Zie eveneens bij de bovenstaande
     tabel onder
     <ScrollLink @scrollToId="submitted-resource">Submitted Resource</ScrollLink>
     voor nog meer eigenschappen voor Besluiten.
@@ -610,7 +610,7 @@ import ScrollLink from '../../components/scroll-link';
   <AuHeading @level="3" @skin="3">Datetime strings</AuHeading>
   <p>
     Bij het verwerken van de
-    <CodeInline>xsd:dateTime</CodeInline>
+    <CodeInline @language="turtle">xsd:dateTime</CodeInline>
     strings wordt het volgende ondersteund:
     <br />
     Het gaat over een subset van de ISO-8601 specificatie. Het formaat moet zijn
@@ -621,7 +621,7 @@ import ScrollLink from '../../components/scroll-link';
     <li>Offset (tov UTC) met het volgende formaat: +-HH:mm, +-HHmm, +-HH of Z</li>
   </ul>
   <AuHeading @level="4" @skin="4">Voorbeelden van aanvaarde
-    <CodeInline>xsd:dateTime</CodeInline>
+    <CodeInline @language="turtle">xsd:dateTime</CodeInline>
     strings</AuHeading>
   <ul>
     <li>'2020-05-14T06:36:05.7540Z'</li>

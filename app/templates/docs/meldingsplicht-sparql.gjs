@@ -267,7 +267,7 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline
+  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
     >meb:Submission</CodeInline></AuHeading>
   <p>
     Een Submission is de inzending voor een document; de zogezegde
@@ -291,44 +291,44 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout
     <:body>
       <tr>
         <td>Gecre&euml;erd op</td>
-        <td><CodeInline>dct:created</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:created</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Tijdstip waarop deze inzending werd gemaakt.</td>
       </tr>
       <tr>
         <td>Bewerkt op</td>
-        <td><CodeInline>dct:modified</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">dct:modified</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Tijdstip waarop deze inzending laatst werd gewijzigd.</td>
       </tr>
       <tr>
         <td>Gecre&euml;erd door</td>
-        <td><CodeInline>pav:createdBy</CodeInline></td>
-        <td><CodeInline>besluit:Bestuurseenheid</CodeInline></td>
+        <td><CodeInline @language="turtle">pav:createdBy</CodeInline></td>
+        <td><CodeInline @language="turtle">besluit:Bestuurseenheid</CodeInline></td>
         <td>Voor/door welk bestuurseenheid de inzending werd gemaakt. Een derde
           partij kan een inzending maken via een applicatie voor deze
           bestuurseenheid.</td>
       </tr>
       <tr>
         <td>Verzonden op</td>
-        <td><CodeInline>nmo:sentDate</CodeInline></td>
-        <td><CodeInline>xsd:dateTime</CodeInline></td>
+        <td><CodeInline @language="turtle">nmo:sentDate</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Tijdstip waarop de inzending succesvol werd verzonden naar het
           Loket.</td>
       </tr>
       <tr>
         <td>Ingezonden door</td>
-        <td><CodeInline>pav:providedBy</CodeInline></td>
-        <td><CodeInline>ext:Vendor</CodeInline></td>
+        <td><CodeInline @language="turtle">pav:providedBy</CodeInline></td>
+        <td><CodeInline @language="turtle">ext:Vendor</CodeInline></td>
         <td>URI van de vendor applicatie die de inzending maakte. Via de Vendor
           API mogen geen inzendingen van andere vendors gezien worden.</td>
       </tr>
       <tr>
         <td>Status</td>
-        <td><CodeInline>adms:status</CodeInline></td>
-        <td><CodeInline>ext:SubmissionDocumentStatus</CodeInline>
+        <td><CodeInline @language="turtle">adms:status</CodeInline></td>
+        <td><CodeInline @language="turtle">ext:SubmissionDocumentStatus</CodeInline>
           en
-          <CodeInline>skos:Concept</CodeInline></td>
+          <CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>Status van de inzending. Zie onderaan onder hoofdstuk
           <ScrollLink
             @scrollToId="documentstatussen-inzendingen"
@@ -336,30 +336,30 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout
       </tr>
       <tr>
         <td>Genereerde dit inzendingsformulier</td>
-        <td><CodeInline>prov:generated</CodeInline></td>
-        <td><CodeInline>am:FormData</CodeInline></td>
+        <td><CodeInline @language="turtle">prov:generated</CodeInline></td>
+        <td><CodeInline @language="turtle">am:FormData</CodeInline></td>
         <td>Formuliergegevens die werden gegenereerd op basis van de inzending.
           Indien volledig wordt dit dossier automatisch verzonden naar het
           Loket.</td>
       </tr>
       <tr>
         <td>Document ter onderwerp</td>
-        <td><CodeInline>dct:subject</CodeInline></td>
-        <td><CodeInline>ext:SubmissionDocument</CodeInline>
+        <td><CodeInline @language="turtle">dct:subject</CodeInline></td>
+        <td><CodeInline @language="turtle">ext:SubmissionDocument</CodeInline>
           en
-          <CodeInline>foaf:Document</CodeInline></td>
+          <CodeInline @language="turtle">foaf:Document</CodeInline></td>
         <td>RDFa document dat werd ingezonden door de vendor. Dit document werd
           automatisch omgezet tot
-          <CodeInline>am:FormData</CodeInline>
+          <CodeInline @language="turtle">am:FormData</CodeInline>
           om te versturen.</td>
       </tr>
       <tr>
         <td>Downloadlocatie</td>
-        <td><CodeInline>prov:atLocation</CodeInline></td>
-        <td><CodeInline>xsd:anyURI</CodeInline></td>
+        <td><CodeInline @language="turtle">prov:atLocation</CodeInline></td>
+        <td><CodeInline @language="turtle">xsd:anyURI</CodeInline></td>
         <td>Locatie (URL) van het HTML RDFa document, ingezonden door de vendor,
           waar het
-          <CodeInline>ext:SubmissionDocument</CodeInline>
+          <CodeInline @language="turtle">ext:SubmissionDocument</CodeInline>
           kan worden teruggevonden en worden gedownload.</td>
       </tr>
     </:body>
