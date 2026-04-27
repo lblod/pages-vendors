@@ -1,6 +1,6 @@
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
-import MyCodeInline from '../../components/my-code-inline';
+import CodeInline from '../../components/code-inline';
 import Snippet from '../../components/snippet';
 
 <template>
@@ -66,18 +66,18 @@ import Snippet from '../../components/snippet';
   <ul>
     <li>
       Er wordt gebruikt gemaakt van de relatie
-      <MyCodeInline>prov:generated</MyCodeInline>
+      <CodeInline>prov:generated</CodeInline>
       tussen de behandeling en de twee besluiten.
     </li>
     <li>
       Met de relatie
-      <MyCodeInline>eli:related_to</MyCodeInline>
+      <CodeInline>eli:related_to</CodeInline>
       wordt aangegeven dat het subsidiereglement een bijlage is van het
       goedkeuringsbesluit
     </li>
     <li>
       Met de relatie
-      <MyCodeInline>dct:isPartOf</MyCodeInline>
+      <CodeInline>dct:isPartOf</CodeInline>
       wordt aangegeven dat het subsidiereglement kan worden aanzien als zijnde
       een onderdeel van het eerste besluit
     </li>

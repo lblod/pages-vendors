@@ -2,7 +2,7 @@ import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
 import AuTable from '@appuniversum/ember-appuniversum/components/au-table';
-import MyCodeInline from '../../components/my-code-inline';
+import CodeInline from '../../components/code-inline';
 import Snippet from '../../components/snippet';
 
 <template>
@@ -35,7 +35,7 @@ import Snippet from '../../components/snippet';
     >
       foaf:Document</AuLinkExternal>. Ieder document heeft een type dat
     geannoteerd kan worden met het
-    <MyCodeInline>typeof</MyCodeInline>
+    <CodeInline>typeof</CodeInline>
     attribuut. De gekende besluit- en document types zijn gepubliceerd als
     codelijst op
     <AuLinkExternal
@@ -98,19 +98,19 @@ import Snippet from '../../components/snippet';
     <:body>
       <tr>
         <td>Agenda</td>
-        <td><MyCodeInline>besluit:heeftAgenda</MyCodeInline></td>
+        <td><CodeInline>besluit:heeftAgenda</CodeInline></td>
       </tr>
       <tr>
         <td>Besluitenlijst</td>
-        <td><MyCodeInline>besluit:heeftBesluitenlijst</MyCodeInline></td>
+        <td><CodeInline>besluit:heeftBesluitenlijst</CodeInline></td>
       </tr>
       <tr>
         <td>Uittreksel</td>
-        <td><MyCodeInline>besluit:heeftUittreksel</MyCodeInline></td>
+        <td><CodeInline>besluit:heeftUittreksel</CodeInline></td>
       </tr>
       <tr>
         <td>Notulen</td>
-        <td><MyCodeInline>besluit:heeftNotulen</MyCodeInline></td>
+        <td><CodeInline>besluit:heeftNotulen</CodeInline></td>
       </tr>
     </:body>
   </AuTable>
@@ -154,8 +154,8 @@ import Snippet from '../../components/snippet';
     overzichtspagina waarop alle zittingen van de gemeenteraad opgelijst worden.
     Om de navigatie naar relevante pagina's met RDFa kennis te faciliteren,
     kunnen hyperlinks met een specifieke property
-    <MyCodeInline
-    >http://lblod.data.gift/vocabularies/besluit/linkToPublication</MyCodeInline>
+    <CodeInline
+    >http://lblod.data.gift/vocabularies/besluit/linkToPublication</CodeInline>
     geannoteerd worden waardoor de Besluit Publicatie harvester ook deze
     gelinkte pagina's zal harvesten om er de nodige kennis uit te extraheren.
   </p>

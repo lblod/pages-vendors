@@ -1,7 +1,7 @@
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import { LinkTo } from '@ember/routing';
-import MyCodeBlock from '../../components/my-code-block';
-import MyCodeInline from '../../components/my-code-inline';
+import CodeBlock from '../../components/code-block';
+import CodeInline from '../../components/code-inline';
 import SnippetToggle from '../../components/snippet-toggle';
 import Snippet from '../../components/snippet';
 
@@ -45,7 +45,7 @@ import Snippet from '../../components/snippet';
     van vendor URI, sleutel en de URI van de organisatie in een JSON-LD body
     naar
   </p>
-  <MyCodeBlock>POST https://&lt;applicatie-host&gt;/vendor/login</MyCodeBlock>
+  <CodeBlock>POST https://&lt;applicatie-host&gt;/vendor/login</CodeBlock>
   <p>
     De specifieke hostname hangt af van het type van gegevens die benodigd zijn.
     Raadpleeg hiervoor de specifieke documentatie op de pagina's hierboven
@@ -57,11 +57,11 @@ import Snippet from '../../components/snippet';
   <Snippet @snippetFilename="vendor-sparql/voorbeeld-login-request-body.json" />
   <p>
     In het voorbeeld hierboven staat de
-    <MyCodeInline>organisation</MyCodeInline>
+    <CodeInline>organisation</CodeInline>
     voor de URI van de bestuurseenheid waar de vendor garant voor staat.
-    <MyCodeInline>publisher.uri</MyCodeInline>
+    <CodeInline>publisher.uri</CodeInline>
     staat voor de URI van de vendor, en
-    <MyCodeInline>publisher.key</MyCodeInline>
+    <CodeInline>publisher.key</CodeInline>
     staat voor de geheime sleutel die eerder werd verkregen. Het aanvragen van
     een publisher URI en geheime sleutel (key) staan beschreven in de sectie
     &ldquo;Authenticatie&rdquo; op de pagina over
@@ -97,12 +97,11 @@ import Snippet from '../../components/snippet';
   <AuHeading @level="3" @skin="3">Voorbeeld</AuHeading>
   <p>
     Als voorbeeld staat hieronder hoe een login kan worden uitgevoerd met
-    <MyCodeInline>cURL</MyCodeInline>. Het ontvangen en verder weer versturen
-    van cookies is noodzakelijk. Daarom wordt de cookie engine ingeschakeld met
-    de
-    <MyCodeInline>-b</MyCodeInline>
+    <CodeInline>cURL</CodeInline>. Het ontvangen en verder weer versturen van
+    cookies is noodzakelijk. Daarom wordt de cookie engine ingeschakeld met de
+    <CodeInline>-b</CodeInline>
     en
-    <MyCodeInline>-c</MyCodeInline>
+    <CodeInline>-c</CodeInline>
     flags die verwijzen naar een bestand waar de cookies worden opgeslagen.
   </p>
   <Snippet @snippetFilename="vendor-sparql/voorbeeld-login.sh" />
@@ -112,7 +111,7 @@ import Snippet from '../../components/snippet';
     Eenmaal ingelogd is het mogelijk om SPARQL query's te versturen naar het
     SPARQL endpoint, benaderbaar via
   </p>
-  <MyCodeBlock>https://&lt;applicatie-host&gt;/vendor/sparql</MyCodeBlock>
+  <CodeBlock>https://&lt;applicatie-host&gt;/vendor/sparql</CodeBlock>
   <p>
     Het versturen van query's moet gebeuren via HTTP(S) requests zoals
     beschreven in de
@@ -144,7 +143,7 @@ import Snippet from '../../components/snippet';
   <AuHeading @level="3" @skin="3">Voorbeelden van requests</AuHeading>
   <p>
     Hieronder staan een aantal voorbeelden van requests, uitgevoerd via
-    <MyCodeInline>cURL</MyCodeInline>. De query is steeds op te vullen met de
+    <CodeInline>cURL</CodeInline>. De query is steeds op te vullen met de
     benodigde SPARQL query.
   </p>
   <p>
@@ -155,7 +154,7 @@ import Snippet from '../../components/snippet';
   <p>
     Het volgende voorbeeld is hetzelfde als het vorige, maar voor de encodering
     is hier de typische JavaScript
-    <MyCodeInline>encodeURIComponent()</MyCodeInline>
+    <CodeInline>encodeURIComponent()</CodeInline>
     gebruikt.
   </p>
   <Snippet
@@ -163,9 +162,9 @@ import Snippet from '../../components/snippet';
   />
   <p>
     Dit kan ook uitgevoerd worden met de
-    <MyCodeInline>--data-urlencode</MyCodeInline>
+    <CodeInline>--data-urlencode</CodeInline>
     parameter op
-    <MyCodeInline>cURL</MyCodeInline>
+    <CodeInline>cURL</CodeInline>
     als men dan de query meegeeft als formulier veld zonder speciale encodering.
   </p>
   <Snippet
@@ -181,22 +180,22 @@ import Snippet from '../../components/snippet';
   <AuHeading @level="2" @skin="2">Uitloggen</AuHeading>
   <p>
     Om de sessie af te sluiten volstaat het om een request, als methode
-    <MyCodeInline>DELETE</MyCodeInline>
+    <CodeInline>DELETE</CodeInline>
     met de sessie cookie, te sturen naar
   </p>
   <div>
-    <MyCodeBlock>DELETE https://&lt;applicatie-host&gt;/vendor/logout</MyCodeBlock>
+    <CodeBlock>DELETE https://&lt;applicatie-host&gt;/vendor/logout</CodeBlock>
   </div>
   <p>
     Het antwoord op deze request is, als uitloggen successvol was, leeg. De HTTP
     response code is dan
-    <MyCodeInline>204 No Content</MyCodeInline>.
+    <CodeInline>204 No Content</CodeInline>.
   </p>
 
   <AuHeading @level="3" @skin="3">Voorbeeld</AuHeading>
   <p>
     Bij het gebruik van
-    <MyCodeInline>cURL</MyCodeInline>
+    <CodeInline>cURL</CodeInline>
     ziet de request voor uitloggen er als volgt uit.
   </p>
   <Snippet @snippetFilename="vendor-sparql/logout.sh" />

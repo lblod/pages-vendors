@@ -2,8 +2,8 @@ import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import AuTable from '@appuniversum/ember-appuniversum/components/au-table';
 import { LinkTo } from '@ember/routing';
-import MyCodeBlock from '../../components/my-code-block';
-import MyCodeInline from '../../components/my-code-inline';
+import CodeBlock from '../../components/code-block';
+import CodeInline from '../../components/code-inline';
 import Snippet from '../../components/snippet';
 import ScrollLink from '../../components/scroll-link';
 
@@ -31,16 +31,16 @@ import ScrollLink from '../../components/scroll-link';
   <p>
     De endpoint voor deze API kan bereikt worden via
   </p>
-  <MyCodeBlock>https://api.loket.lokaalbestuur.vlaanderen.be</MyCodeBlock>
+  <CodeBlock>https://api.loket.lokaalbestuur.vlaanderen.be</CodeBlock>
   <p>
     Ter volledigheid staat hieronder de volledige lijst aan URL's voor het
     inloggen, sturen van query's en het uitloggen respectievelijk.
   </p>
-  <MyCodeBlock>
-    https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login
-    https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql
-    https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout
-  </MyCodeBlock>
+  {{! prettier-ignore }}
+  <CodeBlock>https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login
+https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql
+https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout
+  </CodeBlock>
   <p>
     <strong>Bekijk zeker de pagina over de
       <LinkTo @route="docs.vendor-sparql">Vendor SPARQL API</LinkTo>
@@ -109,7 +109,7 @@ import ScrollLink from '../../components/scroll-link';
     De status opvragen van een Submission kan eveneens via de document URI. Deze
     URI werd door de vendor meegegeven als URI van het werkelijke RDF document
     in de HTML pagina die ter beschikking werd gesteld. Deze URI wordt
-    <MyCodeInline>submittedResource</MyCodeInline>
+    <CodeInline>submittedResource</CodeInline>
     genoemd bij de melding in
     <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>.
   </p>
@@ -122,7 +122,7 @@ import ScrollLink from '../../components/scroll-link';
     Ten slotte is het ook mogelijk om de status van een Submission op te vragen
     via de URL van de downloadpagina. (Dit is een URL, geen URI.) Deze URL werd
     eveneens door de vendor meegegeven bij het inzenden van een melding en werd
-    <MyCodeInline>href</MyCodeInline>
+    <CodeInline>href</CodeInline>
     genoemd.
   </p>
   <Snippet
@@ -169,97 +169,97 @@ import ScrollLink from '../../components/scroll-link';
     </:header>
     <:body>
       <tr>
-        <td><MyCodeInline>rdf:</MyCodeInline></td>
+        <td><CodeInline>rdf:</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
           >http://www.w3.org/1999/02/22-rdf-syntax-ns#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>xsd:</MyCodeInline></td>
+        <td><CodeInline>xsd:</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/2001/XMLSchema#"
           >http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>meb:</MyCodeInline></td>
+        <td><CodeInline>meb:</CodeInline></td>
         <td><AuLinkExternal
             href="http://rdf.myexperiment.org/ontologies/base/"
           >http://rdf.myexperiment.org/ontologies/base/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>mu:</MyCodeInline></td>
+        <td><CodeInline>mu:</CodeInline></td>
         <td><AuLinkExternal
             href="http://mu.semte.ch/vocabularies/core/"
           >http://mu.semte.ch/vocabularies/core/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>prov:</MyCodeInline></td>
+        <td><CodeInline>prov:</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/ns/prov#"
           >http://www.w3.org/ns/prov#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>dct:</MyCodeInline></td>
+        <td><CodeInline>dct:</CodeInline></td>
         <td><AuLinkExternal
             href="http://purl.org/dc/terms/"
           >http://purl.org/dc/terms/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>adms:</MyCodeInline></td>
+        <td><CodeInline>adms:</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/ns/adms#"
           >http://www.w3.org/ns/adms#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>pav:</MyCodeInline></td>
+        <td><CodeInline>pav:</CodeInline></td>
         <td><AuLinkExternal
             href="http://purl.org/pav/"
           >http://purl.org/pav/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>nie:</MyCodeInline></td>
+        <td><CodeInline>nie:</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#"
           >http://www.semanticdesktop.org/ontologies/2007/01/19/nie#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>nfo:</MyCodeInline></td>
+        <td><CodeInline>nfo:</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#"
           >http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>nmo:</MyCodeInline></td>
+        <td><CodeInline>nmo:</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#"
           >http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>ext:</MyCodeInline></td>
+        <td><CodeInline>ext:</CodeInline></td>
         <td><AuLinkExternal
             href="http://mu.semte.ch/vocabularies/ext/"
           >http://mu.semte.ch/vocabularies/ext/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>am:</MyCodeInline></td>
+        <td><CodeInline>am:</CodeInline></td>
         <td><AuLinkExternal
             href="http://lblod.data.gift/vocabularies/automatische-melding/"
           >http://lblod.data.gift/vocabularies/automatische-melding/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>sec:</MyCodeInline></td>
+        <td><CodeInline>sec:</CodeInline></td>
         <td><AuLinkExternal
             href="http://lblod.data.gift/vocabularies/security/"
           >http://lblod.data.gift/vocabularies/security/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>besluit:</MyCodeInline></td>
+        <td><CodeInline>besluit:</CodeInline></td>
         <td><AuLinkExternal
             href="http://data.vlaanderen.be/ns/besluit#"
           >http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>foaf:</MyCodeInline></td>
+        <td><CodeInline>foaf:</CodeInline></td>
         <td><AuLinkExternal
             href="http://xmlns.com/foaf/0.1/"
           >http://xmlns.com/foaf/0.1/</AuLinkExternal></td>
@@ -267,8 +267,8 @@ import ScrollLink from '../../components/scroll-link';
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><MyCodeInline
-    >meb:Submission</MyCodeInline></AuHeading>
+  <AuHeading @level="3" @skin="3"><CodeInline
+    >meb:Submission</CodeInline></AuHeading>
   <p>
     Een Submission is de inzending voor een document; de zogezegde
     &ldquo;gebeurtenis&rdquo; van het inzenden van dat document. Hier kan
@@ -291,44 +291,44 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td>Gecre&euml;erd op</td>
-        <td><MyCodeInline>dct:created</MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>dct:created</CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>Tijdstip waarop deze inzending werd gemaakt.</td>
       </tr>
       <tr>
         <td>Bewerkt op</td>
-        <td><MyCodeInline>dct:modified</MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>dct:modified</CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>Tijdstip waarop deze inzending laatst werd gewijzigd.</td>
       </tr>
       <tr>
         <td>Gecre&euml;erd door</td>
-        <td><MyCodeInline>pav:createdBy</MyCodeInline></td>
-        <td><MyCodeInline>besluit:Bestuurseenheid</MyCodeInline></td>
+        <td><CodeInline>pav:createdBy</CodeInline></td>
+        <td><CodeInline>besluit:Bestuurseenheid</CodeInline></td>
         <td>Voor/door welk bestuurseenheid de inzending werd gemaakt. Een derde
           partij kan een inzending maken via een applicatie voor deze
           bestuurseenheid.</td>
       </tr>
       <tr>
         <td>Verzonden op</td>
-        <td><MyCodeInline>nmo:sentDate</MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>nmo:sentDate</CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>Tijdstip waarop de inzending succesvol werd verzonden naar het
           Loket.</td>
       </tr>
       <tr>
         <td>Ingezonden door</td>
-        <td><MyCodeInline>pav:providedBy</MyCodeInline></td>
-        <td><MyCodeInline>ext:Vendor</MyCodeInline></td>
+        <td><CodeInline>pav:providedBy</CodeInline></td>
+        <td><CodeInline>ext:Vendor</CodeInline></td>
         <td>URI van de vendor applicatie die de inzending maakte. Via de Vendor
           API mogen geen inzendingen van andere vendors gezien worden.</td>
       </tr>
       <tr>
         <td>Status</td>
-        <td><MyCodeInline>adms:status</MyCodeInline></td>
-        <td><MyCodeInline>ext:SubmissionDocumentStatus</MyCodeInline>
+        <td><CodeInline>adms:status</CodeInline></td>
+        <td><CodeInline>ext:SubmissionDocumentStatus</CodeInline>
           en
-          <MyCodeInline>skos:Concept</MyCodeInline></td>
+          <CodeInline>skos:Concept</CodeInline></td>
         <td>Status van de inzending. Zie onderaan onder hoofdstuk
           <ScrollLink
             @scrollToId="documentstatussen-inzendingen"
@@ -336,30 +336,30 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>Genereerde dit inzendingsformulier</td>
-        <td><MyCodeInline>prov:generated</MyCodeInline></td>
-        <td><MyCodeInline>am:FormData</MyCodeInline></td>
+        <td><CodeInline>prov:generated</CodeInline></td>
+        <td><CodeInline>am:FormData</CodeInline></td>
         <td>Formuliergegevens die werden gegenereerd op basis van de inzending.
           Indien volledig wordt dit dossier automatisch verzonden naar het
           Loket.</td>
       </tr>
       <tr>
         <td>Document ter onderwerp</td>
-        <td><MyCodeInline>dct:subject</MyCodeInline></td>
-        <td><MyCodeInline>ext:SubmissionDocument</MyCodeInline>
+        <td><CodeInline>dct:subject</CodeInline></td>
+        <td><CodeInline>ext:SubmissionDocument</CodeInline>
           en
-          <MyCodeInline>foaf:Document</MyCodeInline></td>
+          <CodeInline>foaf:Document</CodeInline></td>
         <td>RDFa document dat werd ingezonden door de vendor. Dit document werd
           automatisch omgezet tot
-          <MyCodeInline>am:FormData</MyCodeInline>
+          <CodeInline>am:FormData</CodeInline>
           om te versturen.</td>
       </tr>
       <tr>
         <td>Downloadlocatie</td>
-        <td><MyCodeInline>prov:atLocation</MyCodeInline></td>
-        <td><MyCodeInline>xsd:anyURI</MyCodeInline></td>
+        <td><CodeInline>prov:atLocation</CodeInline></td>
+        <td><CodeInline>xsd:anyURI</CodeInline></td>
         <td>Locatie (URL) van het HTML RDFa document, ingezonden door de vendor,
           waar het
-          <MyCodeInline>ext:SubmissionDocument</MyCodeInline>
+          <CodeInline>ext:SubmissionDocument</CodeInline>
           kan worden teruggevonden en worden gedownload.</td>
       </tr>
     </:body>
@@ -383,18 +383,18 @@ import ScrollLink from '../../components/scroll-link';
     </:header>
     <:body>
       <tr>
-        <td><MyCodeInline
-          >http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd</MyCodeInline></td>
+        <td><CodeInline
+          >http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd</CodeInline></td>
         <td>Concept</td>
       </tr>
       <tr>
-        <td><MyCodeInline
-          >http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c</MyCodeInline></td>
+        <td><CodeInline
+          >http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c</CodeInline></td>
         <td>Verzonden</td>
       </tr>
       <tr>
-        <td><MyCodeInline
-          >http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff</MyCodeInline></td>
+        <td><CodeInline
+          >http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff</CodeInline></td>
         <td>Inzendbaar</td>
       </tr>
     </:body>

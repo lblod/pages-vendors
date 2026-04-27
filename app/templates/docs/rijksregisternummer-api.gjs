@@ -1,7 +1,7 @@
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
-import MyCodeBlock from '../../components/my-code-block';
-import MyCodeInline from '../../components/my-code-inline';
+import CodeBlock from '../../components/code-block';
+import CodeInline from '../../components/code-inline';
 import Snippet from '../../components/snippet';
 
 <template>
@@ -25,7 +25,7 @@ import Snippet from '../../components/snippet';
     request kan als GET of als POST opgevraagd worden, in beide gevallen wordt
     een JSON body verwacht.
   </p>
-  <MyCodeBlock>POST https://rrn.api.lblod.info/rrn</MyCodeBlock>
+  <CodeBlock>POST https://rrn.api.lblod.info/rrn</CodeBlock>
   <p>
     Noteer dat de bovenstaande URL verwijst naar de ontwikkelomgeving. Deze
     verandert van zodra de service in productie staat. Volgende voorbeelden
@@ -50,10 +50,10 @@ import Snippet from '../../components/snippet';
   </p>
   <p>
     In dit antwoord bevindt de URI van de persoon zich in de eigenschap
-    <MyCodeInline>uri</MyCodeInline>. De 404 status wordt teruggegeven indien
-    geen antwoord gevonden werd. Dat kan voorvallen omdat de persoon niet
-    gevonden is binnen de opgegeven bestuurseenheid of omdat de meegegeven
-    authenticatie geen recht heeft de persoonsinformatie op te vragen.
+    <CodeInline>uri</CodeInline>. De 404 status wordt teruggegeven indien geen
+    antwoord gevonden werd. Dat kan voorvallen omdat de persoon niet gevonden is
+    binnen de opgegeven bestuurseenheid of omdat de meegegeven authenticatie
+    geen recht heeft de persoonsinformatie op te vragen.
   </p>
 
   <AuHeading @level="2" @skin="2">Authenticatie</AuHeading>
@@ -92,7 +92,7 @@ import Snippet from '../../components/snippet';
     Voor het ontwikkelen en testen van de rijksregisternummer API is een test
     endpoint ter beschikking gesteld op:
   </p>
-  <MyCodeBlock>https://rrn.api.lblod.info/rrn</MyCodeBlock>
+  <CodeBlock>https://rrn.api.lblod.info/rrn</CodeBlock>
   <p>
     De vendor URI en geheime sleutel voor deze omgeving moeten eerst aangevraagd
     worden zoals beschreven onder &lsquo;Authenticatie&rsquo;.

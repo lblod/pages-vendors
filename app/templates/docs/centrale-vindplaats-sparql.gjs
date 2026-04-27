@@ -1,6 +1,6 @@
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
-import MyCodeBlock from '../../components/my-code-block';
+import CodeBlock from '../../components/code-block';
 import Snippet from '../../components/snippet';
 
 <template>
@@ -27,7 +27,7 @@ import Snippet from '../../components/snippet';
     Het endpoint staat beschikbaar op
     <br />
   </p>
-  <MyCodeBlock>https://centrale-vindplaats.lblod.info/sparql</MyCodeBlock>
+  <CodeBlock>https://centrale-vindplaats.lblod.info/sparql</CodeBlock>
   <p>
     Dit endpoint heeft UI beschikbaar waar SPARQL query's in uitgevoerd kunnen
     worden. De query's kunnen ook aan de hand van HTTP calls uitgevoerd worden.

@@ -1,7 +1,7 @@
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
-import MyCodeBlock from '../../components/my-code-block';
-import MyCodeInline from '../../components/my-code-inline';
+import CodeBlock from '../../components/code-block';
+import CodeInline from '../../components/code-inline';
 import SnippetToggle from '../../components/snippet-toggle';
 import Snippet from '../../components/snippet';
 
@@ -28,7 +28,7 @@ import Snippet from '../../components/snippet';
     Via een REST call meldt het bestuur de locatie van de nieuwe publicatie aan
     het loket, en zal de crawler van het loket het document ophalen. Het melden
     van een bericht zal een
-    <MyCodeInline>cogs:Job</MyCodeInline>
+    <CodeInline>cogs:Job</CodeInline>
     aanmaken. Hiermee kan de vendor of het bestuur de status van de melding
     opvolgen. De flow is heel gelijkaardig aan die van de
     <AuLink @route="docs.meldingsplicht">Meldingsplicht API</AuLink>.
@@ -52,12 +52,12 @@ import Snippet from '../../components/snippet';
   <p>
     De crawler verwacht bij het ophalen van de RDFa-informatie dat de resource
     -gespecifieerd met het
-    <MyCodeInline>resource</MyCodeInline>
+    <CodeInline>resource</CodeInline>
     veld in de json-body- volledig beschreven staat op de pagina gespecifieerd
     in het
-    <MyCodeInline>href</MyCodeInline>
+    <CodeInline>href</CodeInline>
     veld. De crawler verwacht dat de RDFa beschrijving van het veld
-    <MyCodeInline>nie:url</MyCodeInline>
+    <CodeInline>nie:url</CodeInline>
     een rechtstreekse link is naar het bestand. (Indien content-negotiation
     gewenst is, kunnen de annotaties makkelijk uitgebreid worden. Laat gerust
     weten.) Verder zijn er geen echt harde restricties, behalve dat we niet
@@ -83,7 +83,8 @@ import Snippet from '../../components/snippet';
   <p>
     Het melden van een nieuw bericht gebeurt via een request via
   </p>
-  <MyCodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/vendor/berichtencentrum/melding</MyCodeBlock>
+  {{! prettier-ignore }}
+  <CodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/vendor/berichtencentrum/melding</CodeBlock>
   <p>
     met als JSON-LD request body:
   </p>
@@ -103,8 +104,8 @@ import Snippet from '../../components/snippet';
     antwoord van het endpoint wordt dan, indien de eerste ronde van validatie OK
     is:
   </p>
-  <MyCodeBlock @language="json">{ "job":
-    "http://data.lblod.info/id/job/example-uri" }</MyCodeBlock>
+  {{! prettier-ignore }}
+  <CodeBlock @language="json">{ "job": "http://data.lblod.info/id/job/example-uri" }</CodeBlock>
   <p>
     Indien er zaken niet in orde zijn, kan u terugvallen op de standaard
     HTTP-codes en error-boodschappen.
@@ -118,10 +119,9 @@ import Snippet from '../../components/snippet';
   <p>
     Voortgaand op het vorige voorbeeld, geven we weer hoe een request naar loket
     er zou kunnen uitzien. Stel dat de RDFa geannoteerde pagina gehost staat op
-    <MyCodeInline
-    >http://vendor.example.com/conversaties/bestuur/1</MyCodeInline>. Uit vorige
-    voorbeeld is de URI van het nieuwe bericht
-    <MyCodeInline>http://nieuw/berichturi/voor/ABB</MyCodeInline>. Dan kan het
+    <CodeInline>http://vendor.example.com/conversaties/bestuur/1</CodeInline>.
+    Uit vorige voorbeeld is de URI van het nieuwe bericht
+    <CodeInline>http://nieuw/berichturi/voor/ABB</CodeInline>. Dan kan het
     request er als volgt uitzien:
   </p>
   <SnippetToggle @snippetFilename="berichtencentrum/voorbeeld-melding.sh" />

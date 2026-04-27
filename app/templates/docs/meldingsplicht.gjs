@@ -2,8 +2,8 @@ import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
 import AuTable from '@appuniversum/ember-appuniversum/components/au-table';
-import MyCodeBlock from '../../components/my-code-block';
-import MyCodeInline from '../../components/my-code-inline';
+import CodeBlock from '../../components/code-block';
+import CodeInline from '../../components/code-inline';
 import Snippet from '../../components/snippet';
 
 <template>
@@ -22,7 +22,8 @@ import Snippet from '../../components/snippet';
   <p>
     Het aanmaken van een nieuwe melding gebeurt via een request naar
   </p>
-  <MyCodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/melding</MyCodeBlock>
+  {{! prettier-ignore }}
+  <CodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/melding</CodeBlock>
   <p>
     met JSON-LD request body:
   </p>
@@ -40,13 +41,13 @@ import Snippet from '../../components/snippet';
   <p>
     Er moet een melding gedaan worden per besluit/document. De link die gestuurd
     wordt in de
-    <MyCodeInline>href</MyCodeInline>-property van de request body moet een link
+    <CodeInline>href</CodeInline>-property van de request body moet een link
     zijn naar de pagina met de inhoud van het besluit/document. Dit mag geen
     overzichtspagina zijn waar er nog moet doorgeklikt worden naar een andere
     pagina. Er mogen wel nog andere besluiten/documenten geannoteerd staan op de
     pagina. De URI van het besluit dat gemeld wordt, wordt meegegeven in de
-    <MyCodeInline>submittedResource</MyCodeInline>-property. Verdere vereisten
-    rond de gepubliceerde pagina's staan verderop beschreven.
+    <CodeInline>submittedResource</CodeInline>-property. Verdere vereisten rond
+    de gepubliceerde pagina's staan verderop beschreven.
   </p>
   <p>
     <strong>Bijvoorbeeld:</strong>
@@ -72,12 +73,12 @@ import Snippet from '../../components/snippet';
   <p>
     Er moeten dan 3 requests naar de melding API gestuurd worden. Alle requests
     hebben als
-    <MyCodeInline>href</MyCodeInline>-property:
+    <CodeInline>href</CodeInline>-property:
     <AuLinkExternal
       href="#"
     >http://vlavirgem.be/zittingen/20200304.html</AuLinkExternal>. De
-    <MyCodeInline>submittedResource</MyCodeInline>-property verschilt per
-    request en bevat de URI van het besluit dat gemeld wordt.
+    <CodeInline>submittedResource</CodeInline>-property verschilt per request en
+    bevat de URI van het besluit dat gemeld wordt.
   </p>
 
   <AuHeading @level="3" @skin="3">Meegeven van concept of inzendbaar status
@@ -86,7 +87,7 @@ import Snippet from '../../components/snippet';
     Indien een inzending aangemaakt wordt en volledig is, dan kan ze automatisch
     verzonden worden. Optioneel kan aangegeven worden dat de inzending in
     concept status is door de onderstaande URI voor "concept" als
-    <MyCodeInline>status</MyCodeInline>-property mee te geven. Hierdoor zal de
+    <CodeInline>status</CodeInline>-property mee te geven. Hierdoor zal de
     inzending niet verzonden worden, maar als concept blijven staan tot manuele
     actie de inzending markeert als inzendbaar. Dit kan gedaan worden in de
     applicatie voor automatische meldingen of via een API call
@@ -186,21 +187,22 @@ import Snippet from '../../components/snippet';
   <Snippet @snippetFilename="meldingsplicht/voorbeeld-antwoord.json" />
   <p>
     De
-    <MyCodeInline>submission</MyCodeInline>
+    <CodeInline>submission</CodeInline>
     eigenschap bevat de URI voor de nieuw aangemaakte melding voor het
     ingezonden document. Deze kan worden gebruikt voor het formuleren van een
     aanvraag voor verwijdering dat kan worden verzonden op volgende URL:
   </p>
-  <MyCodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/delete-melding</MyCodeBlock>
+  {{! prettier-ignore }}
+  <CodeBlock>POST https://api.loket.lokaalbestuur.vlaanderen.be/delete-melding</CodeBlock>
   <p>
     Volgend codefragment toont de minimale body voor zo'n aanvraag.
   </p>
   <Snippet @snippetFilename="meldingsplicht/voorbeeld-verwijder-request.json" />
   <p>
     Net zoals bij de melding is authenticatie op dezelfde manier vereist met
-    <MyCodeInline>organization</MyCodeInline>
+    <CodeInline>organization</CodeInline>
     en
-    <MyCodeInline>publisher</MyCodeInline>
+    <CodeInline>publisher</CodeInline>
     eigenschappen.
   </p>
 
@@ -237,7 +239,7 @@ import Snippet from '../../components/snippet';
     moeten worden, moeten beschikbaar zijn bij het ophalen van de pagina, zonder
     dat er verdere scripts nodig zijn. Dit kan bijvoorbeeld getest worden door
     het gebruik van het
-    <MyCodeInline>curl</MyCodeInline>
+    <CodeInline>curl</CodeInline>
     commando om de gepubliceerde pagina op te halen.
   </p>
   <AuHeading @level="3" @skin="3">Ophalen van niet-publieke documenten [BETA]</AuHeading>
@@ -320,7 +322,8 @@ import Snippet from '../../components/snippet';
     Voor het ontwikkelen en testen van automatische melding is een test endpoint
     ter beschikking gesteld op:
   </p>
-  <MyCodeBlock>POST https://api.loket.lblod.info/melding</MyCodeBlock>
+  {{! prettier-ignore }}
+  <CodeBlock>POST https://api.loket.lblod.info/melding</CodeBlock>
   <p>
     De publisher URI en geheime sleutel voor deze omgeving moeten eerst
     aangevraagd worden zoals beschreven onder 'Authenticatie'. De verwerking van
@@ -364,31 +367,31 @@ import Snippet from '../../components/snippet';
     </:header>
     <:body>
       <tr>
-        <td><MyCodeInline>lblodBesluit</MyCodeInline></td>
+        <td><CodeInline>lblodBesluit</CodeInline></td>
         <td><AuLinkExternal
             href="http://lblod.data.gift/vocabularies/besluit/"
           >http://lblod.data.gift/vocabularies/besluit/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>schema</MyCodeInline></td>
+        <td><CodeInline>schema</CodeInline></td>
         <td><AuLinkExternal
             href="http://schema.org/"
           >http://schema.org/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>skos</MyCodeInline></td>
+        <td><CodeInline>skos</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/2004/02/skos/core#"
           >http://www.w3.org/2004/02/skos/core#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>xsd</MyCodeInline></td>
+        <td><CodeInline>xsd</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/2001/XMLSchema#"
           >http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>rule</MyCodeInline></td>
+        <td><CodeInline>rule</CodeInline></td>
         <td><AuLinkExternal
             href="http://lblod.data.gift/vocabularies/notification/"
           >http://lblod.data.gift/vocabularies/notification/</AuLinkExternal></td>
@@ -396,8 +399,8 @@ import Snippet from '../../components/snippet';
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><MyCodeInline
-    >rule:NotificationRule</MyCodeInline></AuHeading>
+  <AuHeading @level="3" @skin="3"><CodeInline
+    >rule:NotificationRule</CodeInline></AuHeading>
   <p>
     Beschrijft de meldingsregel voor een bepaald type besluit
   </p>
@@ -414,20 +417,20 @@ import Snippet from '../../components/snippet';
     <:body>
       <tr>
         <td>geldig vanaf</td>
-        <td><MyCodeInline>schema:validFrom</MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>schema:validFrom</CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>Beschrijft de inwerkingstreding van de meldingsregel.</td>
       </tr>
       <tr>
         <td>geldig tot</td>
-        <td><MyCodeInline>schema:validThrough </MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>schema:validThrough </CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>Beschrijft de uitwerkingstreding van de meldingsregel.</td>
       </tr>
       <tr>
         <td>geldig voor</td>
-        <td><MyCodeInline>lblodBesluit:decidableBy</MyCodeInline></td>
-        <td><MyCodeInline>skos:Concept</MyCodeInline></td>
+        <td><CodeInline>lblodBesluit:decidableBy</CodeInline></td>
+        <td><CodeInline>skos:Concept</CodeInline></td>
         <td>
           Beschrijving van het type bestuur voor wie de regel geldig is.
           <br />
@@ -439,15 +442,15 @@ import Snippet from '../../components/snippet';
       </tr>
       <tr>
         <td>meldingsplichtig</td>
-        <td><MyCodeInline>lblodBesluit:obligationToReport</MyCodeInline></td>
-        <td><MyCodeInline>xsd:boolean</MyCodeInline></td>
+        <td><CodeInline>lblodBesluit:obligationToReport</CodeInline></td>
+        <td><CodeInline>xsd:boolean</CodeInline></td>
         <td>Beschrijft of het hier over een meldingsplichtig besluit gaat</td>
       </tr>
     </:body>
   </AuTable>
 
   <AuHeading @level="3" @skin="3">Link naar
-    <MyCodeInline>rule:NotificationRule</MyCodeInline></AuHeading>
+    <CodeInline>rule:NotificationRule</CodeInline></AuHeading>
   <p>
     Elementen uit de codelijsten
     <AuLinkExternal
@@ -477,8 +480,8 @@ import Snippet from '../../components/snippet';
     <:body>
       <tr>
         <td>notificationRule</td>
-        <td><MyCodeInline>lblodBesluit:notificationRule</MyCodeInline></td>
-        <td><MyCodeInline>rule:NotificationRule</MyCodeInline></td>
+        <td><CodeInline>lblodBesluit:notificationRule</CodeInline></td>
+        <td><CodeInline>rule:NotificationRule</CodeInline></td>
         <td>Beschrijft welke meldinsregels van toepassing zijn op het type
           besluit of document</td>
       </tr>

@@ -3,8 +3,8 @@ import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-
 import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
 import AuTable from '@appuniversum/ember-appuniversum/components/au-table';
 import { LinkTo } from '@ember/routing';
-import MyCodeBlock from '../../components/my-code-block';
-import MyCodeInline from '../../components/my-code-inline';
+import CodeBlock from '../../components/code-block';
+import CodeInline from '../../components/code-inline';
 import SnippetToggle from '../../components/snippet-toggle';
 
 <template>
@@ -27,14 +27,15 @@ import SnippetToggle from '../../components/snippet-toggle';
   <p>
     De endpoint voor deze API kan bereikt worden via
   </p>
-  <MyCodeBlock>https://api.loket.lokaalbestuur.vlaanderen.be</MyCodeBlock>
+  <CodeBlock>https://api.loket.lokaalbestuur.vlaanderen.be</CodeBlock>
   <p>
     Ter volledigheid staat hieronder de volledige lijst aan URL's voor het
     inloggen, sturen van query's en het uitloggen respectievelijk.
   </p>
-  <MyCodeBlock>https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login
+  {{! prettier-ignore }}
+  <CodeBlock>https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login
 https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql
-https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
+https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
   <p>
     <strong>Bekijk zeker de pagina over de
       <LinkTo @route="docs.vendor-sparql">Vendor SPARQL API</LinkTo>
@@ -63,8 +64,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
     specifiek bestuur die recenter zijn dan een specifieke datum opgevraagd
     kunnen worden. Voor elk bericht halen we ook de (optionele) URL('s) naar de
     bijlage(n) op. Noteer dat de URI van ABB de volgende is:
-    <MyCodeInline
-    >http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b</MyCodeInline>
+    <CodeInline
+    >http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b</CodeInline>
   </p>
   <SnippetToggle
     @snippetFilename="berichtencentrum-sparql/voorbeeld-berichten-na-datum.sparql"
@@ -135,43 +136,43 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
     </:header>
     <:body>
       <tr>
-        <td><MyCodeInline>adms</MyCodeInline></td>
+        <td><CodeInline>adms</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/ns/adms#"
           >http://www.w3.org/ns/adms#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>besluit</MyCodeInline></td>
+        <td><CodeInline>besluit</CodeInline></td>
         <td><AuLinkExternal
             href="http://data.vlaanderen.be/ns/besluit#"
           >http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>dcterms</MyCodeInline></td>
+        <td><CodeInline>dcterms</CodeInline></td>
         <td><AuLinkExternal
             href="http://purl.org/dc/terms/"
           >http://purl.org/dc/terms/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>skos</MyCodeInline></td>
+        <td><CodeInline>skos</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/2004/02/skos/"
           >http://www.w3.org/2004/02/skos/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>nfo</MyCodeInline></td>
+        <td><CodeInline>nfo</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#"
           >http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>nie</MyCodeInline></td>
+        <td><CodeInline>nie</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#"
           >http://www.semanticdesktop.org/ontologies/2007/01/19/nie#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>schema</MyCodeInline></td>
+        <td><CodeInline>schema</CodeInline></td>
         <td>
           <AuLinkExternal
             href="http://schema.org/"
@@ -182,31 +183,31 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
         </td>
       </tr>
       <tr>
-        <td><MyCodeInline>rdf</MyCodeInline></td>
+        <td><CodeInline>rdf</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
           >http://www.w3.org/1999/02/22-rdf-syntax-ns#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>xsd</MyCodeInline></td>
+        <td><CodeInline>xsd</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/2001/XMLSchema#"
           >http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>cogs</MyCodeInline></td>
+        <td><CodeInline>cogs</CodeInline></td>
         <td><AuLinkExternal
             href="http://vocab.deri.ie/cogs#"
           >http://vocab.deri.ie/cogs#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>oslc</MyCodeInline></td>
+        <td><CodeInline>oslc</CodeInline></td>
         <td><AuLinkExternal
             href="http://open-services.net/ns/core#"
           >http://open-services.net/ns/core#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>task</MyCodeInline></td>
+        <td><CodeInline>task</CodeInline></td>
         <td><AuLinkExternal
             href="http://redpencil.data.gift/vocabularies/tasks/"
           >http://redpencil.data.gift/vocabularies/tasks/</AuLinkExternal></td>
@@ -214,11 +215,11 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><MyCodeInline
-    >schema:Conversation</MyCodeInline></AuHeading>
+  <AuHeading @level="3" @skin="3"><CodeInline
+    >schema:Conversation</CodeInline></AuHeading>
   <p>
     Bundelt
-    <MyCodeInline>schema:Message</MyCodeInline>
+    <CodeInline>schema:Message</CodeInline>
     rond een specifiek topic. Gesprek, Thread.
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
@@ -234,20 +235,20 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
     <:body>
       <tr>
         <td>hasPart</td>
-        <td><MyCodeInline>schema:hasPart</MyCodeInline></td>
-        <td><MyCodeInline>schema:Message</MyCodeInline></td>
+        <td><CodeInline>schema:hasPart</CodeInline></td>
+        <td><CodeInline>schema:Message</CodeInline></td>
         <td>Verwijst naar het gelinkt bericht aan de conversatie</td>
       </tr>
       <tr>
         <td>about</td>
-        <td><MyCodeInline>schema:about</MyCodeInline></td>
-        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td><CodeInline>schema:about</CodeInline></td>
+        <td><CodeInline>xsd:string</CodeInline></td>
         <td>Beschrijft het topic van het gesprek</td>
       </tr>
       <tr>
         <td>Identificator</td>
-        <td><MyCodeInline>schema:identifier</MyCodeInline></td>
-        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td><CodeInline>schema:identifier</CodeInline></td>
+        <td><CodeInline>xsd:string</CodeInline></td>
         <td>
           De interne referentie van ABB.
         </td>
@@ -255,8 +256,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><MyCodeInline
-    >schema:Message</MyCodeInline></AuHeading>
+  <AuHeading @level="3" @skin="3"><CodeInline
+    >schema:Message</CodeInline></AuHeading>
   <p>
     Bericht. De entiteit die de effectieve communicatie bevat.
   </p>
@@ -273,8 +274,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
     <:body>
       <tr>
         <td>type</td>
-        <td><MyCodeInline>dcterms:type</MyCodeInline></td>
-        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td><CodeInline>dcterms:type</CodeInline></td>
+        <td><CodeInline>xsd:string</CodeInline></td>
         <td>
           Een string die samenvat wat de type communicatie is.
           <br />
@@ -291,15 +292,15 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
       </tr>
       <tr>
         <td>hasPart</td>
-        <td><MyCodeInline>nie:hasPart</MyCodeInline></td>
-        <td><MyCodeInline>nfo:FileDataObject</MyCodeInline></td>
+        <td><CodeInline>nie:hasPart</CodeInline></td>
+        <td><CodeInline>nfo:FileDataObject</CodeInline></td>
         <td>Verwijst naar het bijbehorende document of bestand van het bericht,
           zoals een bijlage.</td>
       </tr>
       <tr>
         <td>sender</td>
-        <td><MyCodeInline>schema:sender</MyCodeInline></td>
-        <td><MyCodeInline>besluit:Bestuurseenheid</MyCodeInline></td>
+        <td><CodeInline>schema:sender</CodeInline></td>
+        <td><CodeInline>besluit:Bestuurseenheid</CodeInline></td>
         <td>
           Verwijst naar de zender of afzender van het bericht.
           <br />
@@ -310,21 +311,21 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
       </tr>
       <tr>
         <td>recipient</td>
-        <td><MyCodeInline>schema:recipient</MyCodeInline></td>
-        <td><MyCodeInline>besluit:Bestuurseenheid</MyCodeInline></td>
+        <td><CodeInline>schema:recipient</CodeInline></td>
+        <td><CodeInline>besluit:Bestuurseenheid</CodeInline></td>
         <td>
           Verwijst naar de ontvanger van het bericht.
           <br />
           In de prakijk ABB met vaste URI
           <br />
-          <MyCodeInline
-          >&lt;http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b&gt;</MyCodeInline>
+          <CodeInline
+          >&lt;http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b&gt;</CodeInline>
         </td>
       </tr>
       <tr>
         <td>text</td>
-        <td><MyCodeInline>schema:text</MyCodeInline></td>
-        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td><CodeInline>schema:text</CodeInline></td>
+        <td><CodeInline>xsd:string</CodeInline></td>
         <td>
           De tekst of inhoud van het bericht.
           <br />
@@ -334,8 +335,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
       </tr>
       <tr>
         <td>dateSent</td>
-        <td><MyCodeInline>schema:dateSent</MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>schema:dateSent</CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>
           Datum en tijd waarop het bericht is verzonden.<br />
           In de praktijk, wanneer de gebruiker op &ldquo;Versturen&rdquo;
@@ -348,8 +349,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><MyCodeInline
-    >nfo:FileDataObject</MyCodeInline></AuHeading>
+  <AuHeading @level="3" @skin="3"><CodeInline
+    >nfo:FileDataObject</CodeInline></AuHeading>
   <p>
     Deze klasse wordt gebruikt om bijlagen te annoteren.
   </p>
@@ -366,33 +367,33 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
     <:body>
       <tr>
         <td>created</td>
-        <td><MyCodeInline>dcterms:created</MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>dcterms:created</CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>Datum en tijd waarop het bestand is gecre&euml;erd.</td>
       </tr>
       <tr>
         <td>url</td>
-        <td><MyCodeInline>nie:url</MyCodeInline></td>
-        <td><MyCodeInline>xsd:anyURI</MyCodeInline></td>
+        <td><CodeInline>nie:url</CodeInline></td>
+        <td><CodeInline>xsd:anyURI</CodeInline></td>
         <td>De locatie van het bestand die gebruikt zal worden om opgehaald te
           worden</td>
       </tr>
       <tr>
         <td>modified</td>
-        <td><MyCodeInline>dcterms:modified</MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>dcterms:modified</CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>Datum en tijd waarop het bestand voor het laatst is gewijzigd.</td>
       </tr>
       <tr>
         <td>fileName</td>
-        <td><MyCodeInline>nfo:fileName</MyCodeInline></td>
-        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td><CodeInline>nfo:fileName</CodeInline></td>
+        <td><CodeInline>xsd:string</CodeInline></td>
         <td>De mensleesbare naam van het bestand.</td>
       </tr>
       <tr>
         <td>status</td>
-        <td><MyCodeInline>adms:status</MyCodeInline></td>
-        <td><MyCodeInline>skos:Concept</MyCodeInline></td>
+        <td><CodeInline>adms:status</CodeInline></td>
+        <td><CodeInline>skos:Concept</CodeInline></td>
         <td>
           De status gebruikt bij ABB om de voortgang van de download van de file
           op te volgen.
@@ -409,8 +410,7 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><MyCodeInline
-    >cogs:Job</MyCodeInline></AuHeading>
+  <AuHeading @level="3" @skin="3"><CodeInline>cogs:Job</CodeInline></AuHeading>
   <p>
     Job. Een instantie van deze klasse houdt bij wat de status van de
     ingestuurde melding is.
@@ -428,61 +428,61 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
     <:body>
       <tr>
         <td>status</td>
-        <td><MyCodeInline>adms:status</MyCodeInline></td>
-        <td><MyCodeInline>skos:Concept</MyCodeInline></td>
+        <td><CodeInline>adms:status</CodeInline></td>
+        <td><CodeInline>skos:Concept</CodeInline></td>
         <td>
           Status van de job. Mogelijke waarden zijn
           <br />
           <ul>
-            <li><MyCodeInline
-              >http://redpencil.data.gift/id/concept/JobStatus/busy</MyCodeInline></li>
-            <li><MyCodeInline
-              >http://redpencil.data.gift/id/concept/JobStatus/scheduled</MyCodeInline></li>
-            <li><MyCodeInline
-              >http://redpencil.data.gift/id/concept/JobStatus/success</MyCodeInline></li>
-            <li><MyCodeInline
-              >http://redpencil.data.gift/id/concept/JobStatus/failed</MyCodeInline></li>
+            <li><CodeInline
+              >http://redpencil.data.gift/id/concept/JobStatus/busy</CodeInline></li>
+            <li><CodeInline
+              >http://redpencil.data.gift/id/concept/JobStatus/scheduled</CodeInline></li>
+            <li><CodeInline
+              >http://redpencil.data.gift/id/concept/JobStatus/success</CodeInline></li>
+            <li><CodeInline
+              >http://redpencil.data.gift/id/concept/JobStatus/failed</CodeInline></li>
           </ul>
 
         </td>
       </tr>
       <tr>
         <td>created</td>
-        <td><MyCodeInline>dct:created</MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>dct:created</CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>Tijdstip van creatie</td>
       </tr>
       <tr>
         <td>modified</td>
-        <td><MyCodeInline>dct:modified</MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>dct:modified</CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>Tijdstip van laatste update</td>
       </tr>
       <tr>
         <td>subject</td>
-        <td><MyCodeInline>dct:subject</MyCodeInline></td>
-        <td><MyCodeInline>schema:Message</MyCodeInline></td>
+        <td><CodeInline>dct:subject</CodeInline></td>
+        <td><CodeInline>schema:Message</CodeInline></td>
         <td>Het bericht waaraan de job verbonden is</td>
       </tr>
       <tr>
         <td>error</td>
-        <td><MyCodeInline>task:error</MyCodeInline></td>
-        <td><MyCodeInline>oslc:Error</MyCodeInline></td>
+        <td><CodeInline>task:error</CodeInline></td>
+        <td><CodeInline>oslc:Error</CodeInline></td>
         <td>
           Meer informatie over de fout in geval van de fout
           <br />
-          <MyCodeInline
-          >http://redpencil.data.gift/id/concept/JobStatus/failed</MyCodeInline>
+          <CodeInline
+          >http://redpencil.data.gift/id/concept/JobStatus/failed</CodeInline>
         </td>
       </tr>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><MyCodeInline
-    >oslc:Error</MyCodeInline></AuHeading>
+  <AuHeading @level="3" @skin="3"><CodeInline
+    >oslc:Error</CodeInline></AuHeading>
   <p>
     Deze klasse beschrijft een error. In dit geval zal deze gelinkt zijn met
-    <MyCodeInline>cogs:Job</MyCodeInline>.
+    <CodeInline>cogs:Job</CodeInline>.
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
   <AuTable>
@@ -497,8 +497,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</MyCodeBlock>
     <:body>
       <tr>
         <td>bericht</td>
-        <td><MyCodeInline>oslc:message</MyCodeInline></td>
-        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td><CodeInline>oslc:message</CodeInline></td>
+        <td><CodeInline>xsd:string</CodeInline></td>
         <td>Beschrijving van de fout</td>
       </tr>
     </:body>

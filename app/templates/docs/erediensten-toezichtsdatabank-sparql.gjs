@@ -2,8 +2,8 @@ import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import AuTable from '@appuniversum/ember-appuniversum/components/au-table';
 import { LinkTo } from '@ember/routing';
-import MyCodeBlock from '../../components/my-code-block';
-import MyCodeInline from '../../components/my-code-inline';
+import CodeBlock from '../../components/code-block';
+import CodeInline from '../../components/code-inline';
 import SnippetToggle from '../../components/snippet-toggle';
 import Snippet from '../../components/snippet';
 
@@ -22,17 +22,16 @@ import Snippet from '../../components/snippet';
   <p>
     De endpoint voor deze API kan bereikt worden via
   </p>
-  <MyCodeBlock
-  >https://databankerediensten.lokaalbestuur.vlaanderen.be</MyCodeBlock>
+  <CodeBlock>https://databankerediensten.lokaalbestuur.vlaanderen.be</CodeBlock>
   <p>
     Ter volledigheid staat hieronder de volledige lijst aan URL's voor het
     inloggen, sturen van query's en het uitloggen respectievelijk.
   </p>
-  <MyCodeBlock>
-    https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/login
-    https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/sparql
-    https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
-  </MyCodeBlock>
+  {{! prettier-ignore }}
+  <CodeBlock>https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/login
+https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/sparql
+https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
+  </CodeBlock>
   <p>
     <strong>Bekijk zeker de pagina over de
       <LinkTo @route="docs.vendor-sparql">
@@ -90,12 +89,12 @@ import Snippet from '../../components/snippet';
   />
   <p>
     In bovenstaande query wordt gebruik gemaakt van
-    <MyCodeInline>UNION</MyCodeInline>
+    <CodeInline>UNION</CodeInline>
     om de performantie van de query te verbeteren. Het gaat over 3 gelinkte
     entiteiten waarvan alle eigenschappen worden opgevraagd. Buiten de links
     tussen de entiteiten is er verder geen verband meer en kunnen de
     eigenschappen onafhankelijk van elkaar opgevraagd worden. Zonder de
-    <MyCodeInline>UNION</MyCodeInline>
+    <CodeInline>UNION</CodeInline>
     wordt een gigantisch scalair product opgebouwd in de SPARQL engine. Zodanig
     dat de query uiteindelijk niet afgewerkt kan worden vanwege geheugen of
     tijdlimitaties.
@@ -121,8 +120,8 @@ import Snippet from '../../components/snippet';
     het volgende script, na het inloggen, halen we eerst de relevante metadata
     van de bijlage op, inclusief de downloadlink. Vervolgens wordt het bestand
     gedownload met behulp van
-    <MyCodeInline>curl</MyCodeInline>. Dit script geldt als voorbeeld en moet
-    worden aangepast naar individuele noden. Er is bijvoorbeeld nog geen URI van
+    <CodeInline>curl</CodeInline>. Dit script geldt als voorbeeld en moet worden
+    aangepast naar individuele noden. Er is bijvoorbeeld nog geen URI van
     Submission in de query. Dit voorbeeldscript vindt dus het eerste
     willekeurige downloadbare bestand.
   </p>
@@ -136,16 +135,16 @@ import Snippet from '../../components/snippet';
     Inzendingen kunnen elkaar refereren, bijvoorbeeld een besluit dat een ander
     besluit goedkeurt. Dit kan op twee manieren gebeuren. Een gemeente- of
     provinciebestuur gebruikt een tussenliggende entiteit
-    <MyCodeInline>besluit:Artikel</MyCodeInline>
+    <CodeInline>besluit:Artikel</CodeInline>
     als deel van het
-    <MyCodeInline>ext:SubmissionsDocument</MyCodeInline>. Een Centraal Bestuur
-    van de erediensten of ander representatief orgaan gebruikt in plaats daarvan
-    een relatie
-    <MyCodeInline>dct:relation</MyCodeInline>
+    <CodeInline>ext:SubmissionsDocument</CodeInline>. Een Centraal Bestuur van
+    de erediensten of ander representatief orgaan gebruikt in plaats daarvan een
+    relatie
+    <CodeInline>dct:relation</CodeInline>
     op de
-    <MyCodeInline>am:FormData</MyCodeInline>
+    <CodeInline>am:FormData</CodeInline>
     rechtstreeks naar het gerefereerde
-    <MyCodeInline>ext:SubmissionsDocument</MyCodeInline>.
+    <CodeInline>ext:SubmissionsDocument</CodeInline>.
   </p>
   <p>
     <strong>Noteer: het is enkel mogelijk om gedetailleerde informatie op te
@@ -217,115 +216,115 @@ import Snippet from '../../components/snippet';
     </:header>
     <:body>
       <tr>
-        <td><MyCodeInline>adms</MyCodeInline></td>
+        <td><CodeInline>adms</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/ns/adms#"
           >http://www.w3.org/ns/adms#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>besluit</MyCodeInline></td>
+        <td><CodeInline>besluit</CodeInline></td>
         <td><AuLinkExternal
             href="http://data.vlaanderen.be/ns/besluit#"
           >http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>dct</MyCodeInline></td>
+        <td><CodeInline>dct</CodeInline></td>
         <td><AuLinkExternal
             href="http://purl.org/dc/terms/"
           >http://purl.org/dc/terms/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>skos</MyCodeInline></td>
+        <td><CodeInline>skos</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/2004/02/skos/"
           >http://www.w3.org/2004/02/skos/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>nfo</MyCodeInline></td>
+        <td><CodeInline>nfo</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#"
           >http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>nie</MyCodeInline></td>
+        <td><CodeInline>nie</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#"
           >http://www.semanticdesktop.org/ontologies/2007/01/19/nie#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>rdf</MyCodeInline></td>
+        <td><CodeInline>rdf</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
           >http://www.w3.org/1999/02/22-rdf-syntax-ns#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>xsd</MyCodeInline></td>
+        <td><CodeInline>xsd</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/2001/XMLSchema#"
           >http://www.w3.org/2001/XMLSchema#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>ext</MyCodeInline></td>
+        <td><CodeInline>ext</CodeInline></td>
         <td><AuLinkExternal
             href="http://mu.semte.ch/vocabularies/ext/"
           >http://mu.semte.ch/vocabularies/ext/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>am</MyCodeInline></td>
+        <td><CodeInline>am</CodeInline></td>
         <td><AuLinkExternal
             href="http://lblod.data.gift/vocabularies/automatische-melding/"
           >http://lblod.data.gift/vocabularies/automatische-melding/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>core</MyCodeInline></td>
+        <td><CodeInline>core</CodeInline></td>
         <td><AuLinkExternal
             href="http://mu.semte.ch/vocabularies/core/"
           >http://mu.semte.ch/vocabularies/core/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>nmo</MyCodeInline></td>
+        <td><CodeInline>nmo</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#"
           >http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>prov</MyCodeInline></td>
+        <td><CodeInline>prov</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/ns/prov#"
           >http://www.w3.org/ns/prov#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>pav</MyCodeInline></td>
+        <td><CodeInline>pav</CodeInline></td>
         <td><AuLinkExternal
             href="http://purl.org/pav/"
           >http://purl.org/pav/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>fd</MyCodeInline></td>
+        <td><CodeInline>fd</CodeInline></td>
         <td><AuLinkExternal
             href="http://lblod.data.gift/vocabularies/besluit/submission/form-data/"
           >http://lblod.data.gift/vocabularies/besluit/submission/form-data/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>eli</MyCodeInline></td>
+        <td><CodeInline>eli</CodeInline></td>
         <td><AuLinkExternal
             href="http://data.europa.eu/eli/ontology#"
           >http://data.europa.eu/eli/ontology#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>le</MyCodeInline></td>
+        <td><CodeInline>le</CodeInline></td>
         <td><AuLinkExternal
             href="http://linkedeconomy.org/ontology#"
           >http://linkedeconomy.org/ontology#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>dbpedia</MyCodeInline></td>
+        <td><CodeInline>dbpedia</CodeInline></td>
         <td><AuLinkExternal
             href="http://dbpedia.org/ontology/"
           >http://dbpedia.org/ontology/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><MyCodeInline>mob</MyCodeInline></td>
+        <td><CodeInline>mob</CodeInline></td>
         <td><AuLinkExternal
             href="http://rdf.myexperiment.org/ontologies/base/"
           >http://rdf.myexperiment.org/ontologies/base/</AuLinkExternal></td>
@@ -333,8 +332,8 @@ import Snippet from '../../components/snippet';
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><MyCodeInline
-    >mob:Submission</MyCodeInline></AuHeading>
+  <AuHeading @level="3" @skin="3"><CodeInline
+    >mob:Submission</CodeInline></AuHeading>
   <p>
     Dit is de entiteit die informatie over de feitelijke inzending encodeert.
   </p>
@@ -351,81 +350,81 @@ import Snippet from '../../components/snippet';
     <:body>
       <tr>
         <td>Gecre&euml;erd op</td>
-        <td><MyCodeInline>dct:created</MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>dct:created</CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>Tijdstip waarop deze inzending werd gemaakt.</td>
       </tr>
       <tr>
         <td>Bewerkt op</td>
-        <td><MyCodeInline>dct:modified</MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>dct:modified</CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>Tijdstip waarop deze inzending laatst werd gewijzigd.</td>
       </tr>
       <tr>
         <td>Gecre&euml;erd door</td>
-        <td><MyCodeInline>pav:createdBy</MyCodeInline></td>
-        <td><MyCodeInline>besluit:Bestuurseenheid</MyCodeInline></td>
+        <td><CodeInline>pav:createdBy</CodeInline></td>
+        <td><CodeInline>besluit:Bestuurseenheid</CodeInline></td>
         <td>Voor/door welk bestuurseenheid de inzending werd gemaakt. Een derde
           partij kan een inzending maken via een applicatie voor deze
           bestuurseenheid.</td>
       </tr>
       <tr>
         <td>Verzonden op</td>
-        <td><MyCodeInline>nmo:sentDate</MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>nmo:sentDate</CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>Tijdstip waarop de inzending succesvol werd verzonden naar het
           Loket.</td>
       </tr>
       <tr>
         <td>Ingezonden door</td>
-        <td><MyCodeInline>pav:providedBy</MyCodeInline></td>
-        <td><MyCodeInline>ext:Vendor</MyCodeInline></td>
+        <td><CodeInline>pav:providedBy</CodeInline></td>
+        <td><CodeInline>ext:Vendor</CodeInline></td>
         <td>URI van de vendor applicatie die de inzending maakte. Via de Vendor
           API mogen geen inzendingen van andere vendors gezien worden.</td>
       </tr>
       <tr>
         <td>Status</td>
-        <td><MyCodeInline>adms:status</MyCodeInline></td>
-        <td><MyCodeInline>ext:SubmissionDocumentStatus</MyCodeInline>
+        <td><CodeInline>adms:status</CodeInline></td>
+        <td><CodeInline>ext:SubmissionDocumentStatus</CodeInline>
           en
-          <MyCodeInline>skos:Concept</MyCodeInline></td>
+          <CodeInline>skos:Concept</CodeInline></td>
         <td>Status van de inzending. Zie onderaan onder hoofdstuk
           <LinkTo @route="docs.meldingsplicht-sparql">Documentstatussen
             inzendingen</LinkTo>.</td>
       </tr>
       <tr>
         <td>Genereerde dit inzendingsformulier</td>
-        <td><MyCodeInline>prov:generated</MyCodeInline></td>
-        <td><MyCodeInline>am:FormData</MyCodeInline></td>
+        <td><CodeInline>prov:generated</CodeInline></td>
+        <td><CodeInline>am:FormData</CodeInline></td>
         <td>Formuliergegevens die werden gegenereerd op basis van de inzending.
           Indien volledig wordt dit dossier automatisch verzonden naar het
           Loket.</td>
       </tr>
       <tr>
         <td>Document ter onderwerp</td>
-        <td><MyCodeInline>dct:subject</MyCodeInline></td>
-        <td><MyCodeInline>ext:SubmissionDocument</MyCodeInline>
+        <td><CodeInline>dct:subject</CodeInline></td>
+        <td><CodeInline>ext:SubmissionDocument</CodeInline>
           en
-          <MyCodeInline>foaf:Document</MyCodeInline></td>
+          <CodeInline>foaf:Document</CodeInline></td>
         <td>RDFa document dat werd ingezonden door de vendor. Dit document werd
           automatisch omgezet tot
-          <MyCodeInline>am:FormData</MyCodeInline>
+          <CodeInline>am:FormData</CodeInline>
           om te versturen.</td>
       </tr>
       <tr>
         <td>Downloadlocatie</td>
-        <td><MyCodeInline>prov:atLocation</MyCodeInline></td>
-        <td><MyCodeInline>xsd:anyURI</MyCodeInline></td>
+        <td><CodeInline>prov:atLocation</CodeInline></td>
+        <td><CodeInline>xsd:anyURI</CodeInline></td>
         <td>Locatie (URL) van het HTML RDFa document, ingezonden door de vendor,
           waar het
-          <MyCodeInline>ext:SubmissionDocument</MyCodeInline>
+          <CodeInline>ext:SubmissionDocument</CodeInline>
           kan worden teruggevonden en worden gedownload.</td>
       </tr>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><MyCodeInline
-    >ext:SubmissionDocument</MyCodeInline></AuHeading>
+  <AuHeading @level="3" @skin="3"><CodeInline
+    >ext:SubmissionDocument</CodeInline></AuHeading>
   <p>
     Deze entiteit bestaat altijd, maar wordt alleen maar in de Vendor API
     beschikbaar gemaakt als het document verwijst naar andere documenten. Het
@@ -444,15 +443,15 @@ import Snippet from '../../components/snippet';
     <:body>
       <tr>
         <td>Verwijst naar</td>
-        <td><MyCodeInline>eli:has_part</MyCodeInline></td>
-        <td><MyCodeInline>ext:SubmissionDocument</MyCodeInline></td>
+        <td><CodeInline>eli:has_part</CodeInline></td>
+        <td><CodeInline>ext:SubmissionDocument</CodeInline></td>
         <td>Ander document dat werd gerefereerd in dit document</td>
       </tr>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><MyCodeInline
-    >besluit:Artikel</MyCodeInline></AuHeading>
+  <AuHeading @level="3" @skin="3"><CodeInline
+    >besluit:Artikel</CodeInline></AuHeading>
   <p>
     Deze entiteit bestaat alleen maar als het document verwijst naar andere
     documenten en staat in voor deze verwijzing. Komt alleen voor bij refereren
@@ -471,22 +470,22 @@ import Snippet from '../../components/snippet';
     <:body>
       <tr>
         <td>Refereert naar</td>
-        <td><MyCodeInline>eli:refers_to</MyCodeInline></td>
-        <td><MyCodeInline>ext:SubmissionDocument</MyCodeInline></td>
+        <td><CodeInline>eli:refers_to</CodeInline></td>
+        <td><CodeInline>ext:SubmissionDocument</CodeInline></td>
         <td>Ander document dat werd gerefereerd in dit document</td>
       </tr>
       <tr>
         <td>Artikel type</td>
-        <td><MyCodeInline>eli:type_document</MyCodeInline></td>
-        <td><MyCodeInline>skos:Concept</MyCodeInline></td>
+        <td><CodeInline>eli:type_document</CodeInline></td>
+        <td><CodeInline>skos:Concept</CodeInline></td>
         <td>Type van het document, bijvoorbeeld: Goedkeuring gerefereerde
           documenten, Aktename gerefereerd documenten, &hellip;</td>
       </tr>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><MyCodeInline
-    >am:FormData</MyCodeInline></AuHeading>
+  <AuHeading @level="3" @skin="3"><CodeInline
+    >am:FormData</CodeInline></AuHeading>
   <p>
     Deze entiteit bevat de gegevens over het ingevulde formulier gelinkt aan de
     inzending.
@@ -504,46 +503,46 @@ import Snippet from '../../components/snippet';
     <:body>
       <tr>
         <td>Type</td>
-        <td><MyCodeInline>dct:type</MyCodeInline></td>
-        <td><MyCodeInline>skos:Concept</MyCodeInline></td>
+        <td><CodeInline>dct:type</CodeInline></td>
+        <td><CodeInline>skos:Concept</CodeInline></td>
         <td>Het soort besluittype van dit document</td>
       </tr>
       <tr>
         <td>Besluittype</td>
-        <td><MyCodeInline>fd:submissionType</MyCodeInline></td>
-        <td><MyCodeInline>skos:Concept</MyCodeInline></td>
+        <td><CodeInline>fd:submissionType</CodeInline></td>
+        <td><CodeInline>skos:Concept</CodeInline></td>
         <td>Het soort besluittype van dit document</td>
       </tr>
       <tr>
         <td>Zitting starttijd</td>
-        <td><MyCodeInline>fd:sessionStartedAtTime</MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>fd:sessionStartedAtTime</CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>Starttijdstip van de zitting waar het besluit werd genomen (indien
           van toepassing)</td>
       </tr>
       <tr>
         <td>Financieel jaar</td>
-        <td><MyCodeInline>le:financialYear</MyCodeInline></td>
-        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td><CodeInline>le:financialYear</CodeInline></td>
+        <td><CodeInline>xsd:string</CodeInline></td>
         <td>Financieel jaar (indien van toepassing)</td>
       </tr>
       <tr>
         <td>Ondertekend door</td>
-        <td><MyCodeInline>eli:passed_by</MyCodeInline></td>
-        <td><MyCodeInline>besluit:Bestuursorgaan</MyCodeInline></td>
+        <td><CodeInline>eli:passed_by</CodeInline></td>
+        <td><CodeInline>besluit:Bestuursorgaan</CodeInline></td>
         <td>Bestuursorgaan dat de besluiten heeft ondertekend</td>
       </tr>
       <tr>
         <td>Bijlage</td>
-        <td><MyCodeInline>dct:hasPart</MyCodeInline></td>
-        <td><MyCodeInline>nfo:FileDataObject</MyCodeInline>,
-          <MyCodeInline>nfo:RemoteDataObject</MyCodeInline></td>
+        <td><CodeInline>dct:hasPart</CodeInline></td>
+        <td><CodeInline>nfo:FileDataObject</CodeInline>,
+          <CodeInline>nfo:RemoteDataObject</CodeInline></td>
         <td>Onderdeel van de formuliergegevens of bijlagen</td>
       </tr>
       <tr>
         <td>Gerefereerd document</td>
-        <td><MyCodeInline>dct:relation</MyCodeInline></td>
-        <td><MyCodeInline>ext:SubmissionDocument</MyCodeInline></td>
+        <td><CodeInline>dct:relation</CodeInline></td>
+        <td><CodeInline>ext:SubmissionDocument</CodeInline></td>
         <td>Een gerefereerd document. Deze relatie bestaat enkel vanuit de
           FormData van een besluit door een representatief orgaan of Centraal
           Bestuur dat een besluit van een eredienstbestuur refereert.</td>
@@ -551,9 +550,8 @@ import Snippet from '../../components/snippet';
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><MyCodeInline
-    >nfo:FileDataObject</MyCodeInline>,
-    <MyCodeInline>nfo:RemoteDataObject</MyCodeInline></AuHeading>
+  <AuHeading @level="3" @skin="3"><CodeInline>nfo:FileDataObject</CodeInline>,
+    <CodeInline>nfo:RemoteDataObject</CodeInline></AuHeading>
   <p>
     Deze twee klassen worden vaak samen gebruikt op dezelfde entiteit. Deze
     beschrijven bestanden als bijlagen gelinkt aan de Submission en FormData.
@@ -571,57 +569,57 @@ import Snippet from '../../components/snippet';
     <:body>
       <tr>
         <td>Creatiedatum</td>
-        <td><MyCodeInline>dct:created</MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>dct:created</CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>Creatiedatum van het bestand</td>
       </tr>
       <tr>
         <td>Bewerkt op</td>
-        <td><MyCodeInline>dct:modified</MyCodeInline></td>
-        <td><MyCodeInline>xsd:dateTime</MyCodeInline></td>
+        <td><CodeInline>dct:modified</CodeInline></td>
+        <td><CodeInline>xsd:dateTime</CodeInline></td>
         <td>Laatste bewerkingsdatum van het bestand</td>
       </tr>
       <tr>
         <td>Bestandsgrootte</td>
-        <td><MyCodeInline>nfo:fileSize</MyCodeInline></td>
-        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td><CodeInline>nfo:fileSize</CodeInline></td>
+        <td><CodeInline>xsd:string</CodeInline></td>
         <td>Bestandsgrootte</td>
       </tr>
       <tr>
         <td>Bestandsextentie</td>
-        <td><MyCodeInline>dbpedia:fileExtension</MyCodeInline></td>
-        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td><CodeInline>dbpedia:fileExtension</CodeInline></td>
+        <td><CodeInline>xsd:string</CodeInline></td>
         <td>Bestandsextentie</td>
       </tr>
       <tr>
         <td>Bestandsformaat</td>
-        <td><MyCodeInline>dct:format</MyCodeInline></td>
-        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td><CodeInline>dct:format</CodeInline></td>
+        <td><CodeInline>xsd:string</CodeInline></td>
         <td>MIME type van de indeling van het bestand</td>
       </tr>
       <tr>
         <td>Bestandsnaam</td>
-        <td><MyCodeInline>nfo:fileName</MyCodeInline></td>
-        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td><CodeInline>nfo:fileName</CodeInline></td>
+        <td><CodeInline>xsd:string</CodeInline></td>
         <td>Bestandsnaam</td>
       </tr>
       <tr>
         <td>Status</td>
-        <td><MyCodeInline>adms:status</MyCodeInline></td>
-        <td><MyCodeInline>xsd:anyURI</MyCodeInline></td>
+        <td><CodeInline>adms:status</CodeInline></td>
+        <td><CodeInline>xsd:anyURI</CodeInline></td>
         <td>Downloadstatus</td>
       </tr>
       <tr>
         <td>Vorige locatie</td>
-        <td><MyCodeInline>prov:hadPrimarySource</MyCodeInline></td>
-        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td><CodeInline>prov:hadPrimarySource</CodeInline></td>
+        <td><CodeInline>xsd:string</CodeInline></td>
         <td>URL in de vendor applicatie waar oorspronkelijk het bestand van werd
           gedownload</td>
       </tr>
       <tr>
         <td>URL</td>
-        <td><MyCodeInline>nie:url</MyCodeInline></td>
-        <td><MyCodeInline>xsd:string</MyCodeInline></td>
+        <td><CodeInline>nie:url</CodeInline></td>
+        <td><CodeInline>xsd:string</CodeInline></td>
         <td>URL waar het bestand op dit moment in deze applicatie te downloaden
           is</td>
       </tr>
