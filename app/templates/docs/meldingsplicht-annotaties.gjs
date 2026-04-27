@@ -1,3 +1,4 @@
+import { pageTitle } from 'ember-page-title';
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
@@ -7,6 +8,7 @@ import SnippetToggle from '../../components/snippet-toggle';
 import ScrollLink from '../../components/scroll-link';
 
 <template>
+  {{pageTitle "Annotaties voor automatische melding"}}
   <AuHeading @level="1" @skin="1">Annotaties voor automatische melding</AuHeading>
   <p>
     Lokale besturen publiceren beslissingen die via de Toezicht module in het

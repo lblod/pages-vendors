@@ -1,9 +1,11 @@
+import { pageTitle } from 'ember-page-title';
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import CodeBlock from '../../components/code-block';
 import Snippet from '../../components/snippet';
 
 <template>
+  {{pageTitle "Centrale Vindplaats SPARQL endpoint"}}
   <AuHeading @level="1" @skin="1">Centrale Vindplaats SPARQL endpoint</AuHeading>
   <p>
     Dit database-endpoint kan bevraagd worden aan de hand van SPARQL, een

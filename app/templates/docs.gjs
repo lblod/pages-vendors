@@ -1,4 +1,3 @@
-import { pageTitle } from 'ember-page-title';
 import AuApp from '@appuniversum/ember-appuniversum/components/au-app';
 import AuBodyContainer from '@appuniversum/ember-appuniversum/components/au-body-container';
 import AuToolbar from '@appuniversum/ember-appuniversum/components/au-toolbar';
@@ -9,7 +8,6 @@ import Menu from '../components/menu';
 import Footer from '../components/footer';
 
 <template>
-  {{pageTitle "Docs"}}
   <AuApp>
     <AuBodyContainer id="scroll-to-top-container" @scroll={{true}}>
       <div>

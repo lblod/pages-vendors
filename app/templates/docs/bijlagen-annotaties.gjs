@@ -1,9 +1,11 @@
+import { pageTitle } from 'ember-page-title';
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import CodeInline from '../../components/code-inline';
 import Snippet from '../../components/snippet';
 
 <template>
+  {{pageTitle "Annotaties voor bijlagen bij een Besluit"}}
   <AuHeading @level="1" @skin="1">Annotaties voor bijlagen bij een Besluit</AuHeading>
   <p>
     Dit document beschrijft hoe verschillende soorten bijlagen bij een besluit

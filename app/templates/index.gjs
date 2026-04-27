@@ -8,7 +8,6 @@ import Menu from '../components/menu';
 import Footer from '../components/footer';
 
 <template>
-  {{pageTitle "Index"}}
   <AuApp>
     <AuBodyContainer @scroll={{true}}>
       <AuContentHeader

@@ -1,3 +1,4 @@
+import { pageTitle } from 'ember-page-title';
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import CodeInline from '../../components/code-inline';
@@ -5,6 +6,7 @@ import SnippetToggle from '../../components/snippet-toggle';
 import Snippet from '../../components/snippet';
 
 <template>
+  {{pageTitle "Publicatie Events ontsluiten via LDES"}}
   <AuHeading @level="1" @skin="1">Publicatie Events ontsluiten via LDES</AuHeading>
   <p>
     Gepubliceerde documenten kunnen meermaals geupdated worden. Door externe

@@ -1,3 +1,4 @@
+import { pageTitle } from 'ember-page-title';
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import CodeBlock from '../../components/code-block';
@@ -5,6 +6,7 @@ import CodeInline from '../../components/code-inline';
 import Snippet from '../../components/snippet';
 
 <template>
+  {{pageTitle "Rijksregisternummer naar Persoon URI API"}}
   <AuHeading @level="1" @skin="1">Rijksregisternummer naar Persoon URI API</AuHeading>
   <p>
     Het Rijksregisternummer is een veelgebruikte idenitficator voor een persoon.

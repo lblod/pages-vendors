@@ -1,3 +1,4 @@
+import { pageTitle } from 'ember-page-title';
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import { LinkTo } from '@ember/routing';
 import CodeBlock from '../../components/code-block';
@@ -6,6 +7,7 @@ import SnippetToggle from '../../components/snippet-toggle';
 import Snippet from '../../components/snippet';
 
 <template>
+  {{pageTitle "Vendor SPARQL API"}}
   <AuHeading @level="1" @skin="1">Vendor SPARQL API</AuHeading>
 
   <p>

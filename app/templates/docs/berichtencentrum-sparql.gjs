@@ -1,3 +1,4 @@
+import { pageTitle } from 'ember-page-title';
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
@@ -8,6 +9,7 @@ import CodeInline from '../../components/code-inline';
 import SnippetToggle from '../../components/snippet-toggle';
 
 <template>
+  {{pageTitle "Berichtencentrum SPARQL API"}}
   <AuHeading @skin="1" @level="1">
     Berichtencentrum SPARQL API
     <em>[CONCEPT]</em>

@@ -1,9 +1,11 @@
+import { pageTitle } from 'ember-page-title';
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import AuTable from '@appuniversum/ember-appuniversum/components/au-table';
 import CodeInline from '../../components/code-inline';
 
 <template>
+  {{pageTitle "Leidinggevendendatabank"}}
   <AuHeading @level="1" @skin="1">Leidinggevendendatabank</AuHeading>
   <p>
     De leidinggevenden databank bevat de leidinggevenden van de lokale besturen

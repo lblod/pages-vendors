@@ -1,3 +1,4 @@
+import { pageTitle } from 'ember-page-title';
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import AuTable from '@appuniversum/ember-appuniversum/components/au-table';
@@ -5,6 +6,7 @@ import CodeInline from '../../components/code-inline';
 import SnippetToggle from '../../components/snippet-toggle';
 
 <template>
+  {{pageTitle "Mandatendatabank"}}
   <AuHeading @level="1" @skin="1">Mandatendatabank</AuHeading>
   <p>
     Het lokaal mandatenbeheer en de mandatendatabank bevat de mandatarissen van

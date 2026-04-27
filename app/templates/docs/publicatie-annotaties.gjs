@@ -1,3 +1,4 @@
+import { pageTitle } from 'ember-page-title';
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
@@ -6,6 +7,7 @@ import CodeInline from '../../components/code-inline';
 import Snippet from '../../components/snippet';
 
 <template>
+  {{pageTitle "Annotaties voor publicaties"}}
   <AuHeading @level="1" @skin="1">Annotaties voor publicaties</AuHeading>
   <p>
     Lokale besturen publiceren documenten en beslissingen zoals agenda's,

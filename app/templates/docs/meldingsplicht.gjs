@@ -1,3 +1,4 @@
+import { pageTitle } from 'ember-page-title';
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
@@ -7,6 +8,7 @@ import CodeInline from '../../components/code-inline';
 import Snippet from '../../components/snippet';
 
 <template>
+  {{pageTitle "Meldingsplicht API"}}
   <AuHeading @level="1" @skin="1">Meldingsplicht API</AuHeading>
   <p>
     Lokale besturen publiceren beslissingen die via de Toezicht module in het
