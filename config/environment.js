@@ -4,7 +4,7 @@ module.exports = function (environment) {
   const ENV = {
     modulePrefix: 'pages-vendors',
     environment,
-    rootURL: '/pages-vendors/',
+    rootURL: (environment === 'development') ? '/' : '/pages-vendors/',
     locationType: 'hash',
     historySupportMiddleware: true,
     routerScroll: {
