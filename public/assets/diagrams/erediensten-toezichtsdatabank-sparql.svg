@@ -15,7 +15,7 @@
 <polygon fill="none" stroke="black" points="496.75,-319 4,-319 4,-131.5 496.75,-131.5 496.75,-319"/>
 <polygon fill="none" stroke="black" points="500.75,-323 0,-323 0,-127.5 500.75,-127.5 500.75,-323"/>
 <polygon fill="none" stroke="black" points="4,-293.5 4,-319 496.75,-319 496.75,-293.5 4,-293.5"/>
-<text xml:space="preserve" text-anchor="start" x="192.62" y="-303.7" font-family="Monospace" font-weight="bold" font-size="14.00">mob:Submission</text>
+<text xml:space="preserve" text-anchor="start" x="192.62" y="-303.7" font-family="Monospace" font-weight="bold" font-size="14.00">meb:Submission</text>
 <polygon fill="none" stroke="black" points="4,-131.5 4,-293.5 496.75,-293.5 496.75,-131.5 4,-131.5"/>
 <text xml:space="preserve" text-anchor="start" x="7" y="-275.5" font-family="Monospace" font-size="14.00"> core:uuid : xsd:string </text>
 <text xml:space="preserve" text-anchor="start" x="7" y="-256" font-family="Monospace" font-size="14.00"> dct:created : xsd:dateTime </text>

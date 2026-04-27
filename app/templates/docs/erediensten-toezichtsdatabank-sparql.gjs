@@ -324,7 +324,7 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
           >http://dbpedia.org/ontology/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><CodeInline>mob</CodeInline></td>
+        <td><CodeInline>meb</CodeInline></td>
         <td><AuLinkExternal
             href="http://rdf.myexperiment.org/ontologies/base/"
           >http://rdf.myexperiment.org/ontologies/base/</AuLinkExternal></td>
@@ -333,7 +333,7 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
   </AuTable>
 
   <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
-    >mob:Submission</CodeInline></AuHeading>
+    >meb:Submission</CodeInline></AuHeading>
   <p>
     Dit is de entiteit die informatie over de feitelijke inzending encodeert.
   </p>
