@@ -1,4 +1,3 @@
-import { pageTitle } from 'ember-page-title';
 import AuApp from '@appuniversum/ember-appuniversum/components/au-app';
 import AuBodyContainer from '@appuniversum/ember-appuniversum/components/au-body-container';
 import AuContentHeader from '@appuniversum/ember-appuniversum/components/au-content-header';

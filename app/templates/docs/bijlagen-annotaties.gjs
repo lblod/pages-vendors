@@ -1,6 +1,5 @@
 import { pageTitle } from 'ember-page-title';
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
-import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import CodeInline from '../../components/code-inline';
 import Snippet from '../../components/snippet';
 
