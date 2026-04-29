@@ -85,6 +85,7 @@
     "prismjs": "^1.30.0",
     "qunit": "^2.25.0",
     "qunit-dom": "^3.5.0",
+    "sass": "^1.99.0",
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^38.0.0",
     "testem": "^3.19.1",
