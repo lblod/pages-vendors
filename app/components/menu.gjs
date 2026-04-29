@@ -5,8 +5,14 @@ import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
 
 <template>
   <nav>
-    <AuHeading @level="3" @skin="3" class="au-u-margin-top">Structuur</AuHeading>
-    <div class="au-u-padding-top au-u-padding-bottom au-o-grid au-o-grid--small">
+    <AuHeading
+      @level="3"
+      @skin="3"
+      class="au-u-margin-top"
+    >Structuur</AuHeading>
+    <div
+      class="au-u-padding-top au-u-padding-bottom au-o-grid au-o-grid--small"
+    >
       <MenuCard
         class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
         @fullSize={{@fullSize}}
@@ -59,7 +65,9 @@ import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
     </div>
 
     <AuHeading @level="3" @skin="3" class="au-u-margin-top">Insturen</AuHeading>
-    <div class="au-u-padding-top au-u-padding-bottom au-o-grid au-o-grid--small">
+    <div
+      class="au-u-padding-top au-u-padding-bottom au-o-grid au-o-grid--small"
+    >
       <MenuCard
         class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
         @fullSize={{@fullSize}}
@@ -80,7 +88,9 @@ import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
     </div>
 
     <AuHeading @level="3" @skin="3" class="au-u-margin-top">Opvragen</AuHeading>
-    <div class="au-u-padding-top au-u-padding-bottom au-o-grid au-o-grid--small">
+    <div
+      class="au-u-padding-top au-u-padding-bottom au-o-grid au-o-grid--small"
+    >
       <MenuCard
         class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
         @fullSize={{@fullSize}}
