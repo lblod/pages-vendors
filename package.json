@@ -20,7 +20,7 @@
   "scripts": {
     "build": "vite build",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
-    "lint:css": "stylelint \"**/*.css\"",
+    "lint:css": "stylelint \"**/*.css\" \"**/*.scss\"",
     "lint:css:fix": "concurrently \"npm:lint:css -- --fix\"",
     "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\" --prefixColors auto && npm run format",
     "lint:format": "prettier . --cache --check",
@@ -88,6 +88,7 @@
     "sass": "^1.99.0",
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^38.0.0",
+    "stylelint-config-standard-scss": "^16.0.0",
     "testem": "^3.19.1",
     "vite": "^7.3.1"
   },
