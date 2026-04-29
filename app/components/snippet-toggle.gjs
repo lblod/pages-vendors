@@ -1,0 +1,31 @@
+import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
+import AuCard from '@appuniversum/ember-appuniversum/components/au-card';
+import Snippet from './snippet';
+
+<template>
+  <AuCard
+    ...attributes
+    @flex={{false}}
+    @textCenter={{false}}
+    @shadow={{true}}
+    @size="small"
+    @standOut={{false}}
+    @expandable={{true}}
+    @isExpanded={{false}}
+    @isOpenInitially={{false}}
+    @manualControl={{false}}
+    as |c|
+  >
+    <c.header @badgeIcon="" @badgeSkin="" @badgeSize="">
+      <AuHeading @level="4" @skin="functional">
+        Toon/verberg het code snippet
+      </AuHeading>
+    </c.header>
+    <c.content>
+      <Snippet
+        @languageoverride={{@languageoverride}}
+        @snippetFilename={{@snippetFilename}}
+      />
+    </c.content>
+  </AuCard>
+</template>
