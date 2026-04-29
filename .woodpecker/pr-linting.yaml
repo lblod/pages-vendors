@@ -1,0 +1,27 @@
+steps:
+  - name: install
+    image: danlynn/ember-cli:6.11.0-node_24.13
+    commands:
+      - npm ci
+  - name: lint-css
+    image: danlynn/ember-cli:6.11.0-node_24.13
+    depends_on: install
+    commands:
+      - npm run lint:css
+  - name: lint-format
+    image: danlynn/ember-cli:6.11.0-node_24.13
+    depends_on: install
+    commands:
+      - npm run lint:format
+  - name: lint-hbs
+    image: danlynn/ember-cli:6.11.0-node_24.13
+    depends_on: install
+    commands:
+      - npm run lint:hbs
+  - name: lint-js
+    image: danlynn/ember-cli:6.11.0-node_24.13
+    depends_on: install
+    commands:
+      - npm run lint:js
+when:
+  - event: pull_request
