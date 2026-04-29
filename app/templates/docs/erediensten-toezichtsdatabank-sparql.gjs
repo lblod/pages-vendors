@@ -139,9 +139,9 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
     provinciebestuur gebruikt een tussenliggende entiteit
     <CodeInline @language="turtle">besluit:Artikel</CodeInline>
     als deel van het
-    <CodeInline @language="turtle">ext:SubmissionsDocument</CodeInline>. Een Centraal Bestuur van
-    de erediensten of ander representatief orgaan gebruikt in plaats daarvan een
-    relatie
+    <CodeInline @language="turtle">ext:SubmissionsDocument</CodeInline>. Een
+    Centraal Bestuur van de erediensten of ander representatief orgaan gebruikt
+    in plaats daarvan een relatie
     <CodeInline @language="turtle">dct:relation</CodeInline>
     op de
     <CodeInline @language="turtle">am:FormData</CodeInline>
@@ -334,7 +334,8 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
+  <AuHeading @level="3" @skin="3"><CodeInline
+      @language="turtle"
     >meb:Submission</CodeInline></AuHeading>
   <p>
     Dit is de entiteit die informatie over de feitelijke inzending encodeert.
@@ -365,7 +366,9 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
       <tr>
         <td>Gecre&euml;erd door</td>
         <td><CodeInline @language="turtle">pav:createdBy</CodeInline></td>
-        <td><CodeInline @language="turtle">besluit:Bestuurseenheid</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:Bestuurseenheid</CodeInline></td>
         <td>Voor/door welk bestuurseenheid de inzending werd gemaakt. Een derde
           partij kan een inzending maken via een applicatie voor deze
           bestuurseenheid.</td>
@@ -387,7 +390,9 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
       <tr>
         <td>Status</td>
         <td><CodeInline @language="turtle">adms:status</CodeInline></td>
-        <td><CodeInline @language="turtle">ext:SubmissionDocumentStatus</CodeInline>
+        <td><CodeInline
+            @language="turtle"
+          >ext:SubmissionDocumentStatus</CodeInline>
           en
           <CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>Status van de inzending. Zie onderaan onder hoofdstuk
@@ -425,7 +430,8 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
+  <AuHeading @level="3" @skin="3"><CodeInline
+      @language="turtle"
     >ext:SubmissionDocument</CodeInline></AuHeading>
   <p>
     Deze entiteit bestaat altijd, maar wordt alleen maar in de Vendor API
@@ -446,13 +452,16 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
       <tr>
         <td>Verwijst naar</td>
         <td><CodeInline @language="turtle">eli:has_part</CodeInline></td>
-        <td><CodeInline @language="turtle">ext:SubmissionDocument</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >ext:SubmissionDocument</CodeInline></td>
         <td>Ander document dat werd gerefereerd in dit document</td>
       </tr>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
+  <AuHeading @level="3" @skin="3"><CodeInline
+      @language="turtle"
     >besluit:Artikel</CodeInline></AuHeading>
   <p>
     Deze entiteit bestaat alleen maar als het document verwijst naar andere
@@ -473,7 +482,9 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
       <tr>
         <td>Refereert naar</td>
         <td><CodeInline @language="turtle">eli:refers_to</CodeInline></td>
-        <td><CodeInline @language="turtle">ext:SubmissionDocument</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >ext:SubmissionDocument</CodeInline></td>
         <td>Ander document dat werd gerefereerd in dit document</td>
       </tr>
       <tr>
@@ -486,7 +497,8 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
+  <AuHeading @level="3" @skin="3"><CodeInline
+      @language="turtle"
     >am:FormData</CodeInline></AuHeading>
   <p>
     Deze entiteit bevat de gegevens over het ingevulde formulier gelinkt aan de
@@ -517,7 +529,9 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
       </tr>
       <tr>
         <td>Zitting starttijd</td>
-        <td><CodeInline @language="turtle">fd:sessionStartedAtTime</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >fd:sessionStartedAtTime</CodeInline></td>
         <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Starttijdstip van de zitting waar het besluit werd genomen (indien
           van toepassing)</td>
@@ -531,7 +545,9 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
       <tr>
         <td>Ondertekend door</td>
         <td><CodeInline @language="turtle">eli:passed_by</CodeInline></td>
-        <td><CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:Bestuursorgaan</CodeInline></td>
         <td>Bestuursorgaan dat de besluiten heeft ondertekend</td>
       </tr>
       <tr>
@@ -544,7 +560,9 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
       <tr>
         <td>Gerefereerd document</td>
         <td><CodeInline @language="turtle">dct:relation</CodeInline></td>
-        <td><CodeInline @language="turtle">ext:SubmissionDocument</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >ext:SubmissionDocument</CodeInline></td>
         <td>Een gerefereerd document. Deze relatie bestaat enkel vanuit de
           FormData van een besluit door een representatief orgaan of Centraal
           Bestuur dat een besluit van een eredienstbestuur refereert.</td>
@@ -552,7 +570,9 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle">nfo:FileDataObject</CodeInline>,
+  <AuHeading @level="3" @skin="3"><CodeInline
+      @language="turtle"
+    >nfo:FileDataObject</CodeInline>,
     <CodeInline @language="turtle">nfo:RemoteDataObject</CodeInline></AuHeading>
   <p>
     Deze twee klassen worden vaak samen gebruikt op dezelfde entiteit. Deze
@@ -589,7 +609,9 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
       </tr>
       <tr>
         <td>Bestandsextentie</td>
-        <td><CodeInline @language="turtle">dbpedia:fileExtension</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >dbpedia:fileExtension</CodeInline></td>
         <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Bestandsextentie</td>
       </tr>
@@ -613,7 +635,9 @@ https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/logout
       </tr>
       <tr>
         <td>Vorige locatie</td>
-        <td><CodeInline @language="turtle">prov:hadPrimarySource</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >prov:hadPrimarySource</CodeInline></td>
         <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>URL in de vendor applicatie waar oorspronkelijk het bestand van werd
           gedownload</td>

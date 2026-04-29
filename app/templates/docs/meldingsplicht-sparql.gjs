@@ -269,7 +269,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
+  <AuHeading @level="3" @skin="3"><CodeInline
+      @language="turtle"
     >meb:Submission</CodeInline></AuHeading>
   <p>
     Een Submission is de inzending voor een document; de zogezegde
@@ -306,7 +307,9 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout
       <tr>
         <td>Gecre&euml;erd door</td>
         <td><CodeInline @language="turtle">pav:createdBy</CodeInline></td>
-        <td><CodeInline @language="turtle">besluit:Bestuurseenheid</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:Bestuurseenheid</CodeInline></td>
         <td>Voor/door welk bestuurseenheid de inzending werd gemaakt. Een derde
           partij kan een inzending maken via een applicatie voor deze
           bestuurseenheid.</td>
@@ -328,7 +331,9 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout
       <tr>
         <td>Status</td>
         <td><CodeInline @language="turtle">adms:status</CodeInline></td>
-        <td><CodeInline @language="turtle">ext:SubmissionDocumentStatus</CodeInline>
+        <td><CodeInline
+            @language="turtle"
+          >ext:SubmissionDocumentStatus</CodeInline>
           en
           <CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>Status van de inzending. Zie onderaan onder hoofdstuk

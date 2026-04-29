@@ -33,27 +33,28 @@ import Snippet from '../../components/snippet';
     een LDES-feed zijn:
   </p>
   <ul>
-    <li><CodeInline @language="turtle">Tree:Node</CodeInline>: Een subverzameling van de stream
-      (paginering).</li>
-    <li><CodeInline @language="turtle">Tree:Relation</CodeInline>: Biedt links naar voorgaande of
-      volgende pagina’s.</li>
-    <li><CodeInline @language="turtle">LDES:EventStream</CodeInline>: Een sequentie van wijzigingen
-      over tijd.</li>
+    <li><CodeInline @language="turtle">Tree:Node</CodeInline>: Een
+      subverzameling van de stream (paginering).</li>
+    <li><CodeInline @language="turtle">Tree:Relation</CodeInline>: Biedt links
+      naar voorgaande of volgende pagina’s.</li>
+    <li><CodeInline @language="turtle">LDES:EventStream</CodeInline>: Een
+      sequentie van wijzigingen over tijd.</li>
   </ul>
 
   <p>Elke publicatie wordt als een entiteit weergegeven met minimaal:</p>
   <ul>
-    <li><CodeInline @language="turtle">dct:isVersionOf</CodeInline>: Unieke identificatie van de
-      publicatie.</li>
-    <li><CodeInline @language="turtle">prov:atLocation</CodeInline>: Locatie (URL) van de
-      publicatie.</li>
-    <li><CodeInline @language="turtle">dct:type</CodeInline>: Type van de publicatie, uit de
+    <li><CodeInline @language="turtle">dct:isVersionOf</CodeInline>: Unieke
+      identificatie van de publicatie.</li>
+    <li><CodeInline @language="turtle">prov:atLocation</CodeInline>: Locatie
+      (URL) van de publicatie.</li>
+    <li><CodeInline @language="turtle">dct:type</CodeInline>: Type van de
+      publicatie, uit de
       <AuLinkExternal
         href="https://data.vlaanderen.be/doc/concept/BesluitDocumentType/"
       >BesluitDocumentType codelijst</AuLinkExternal>.
     </li>
-    <li><CodeInline @language="turtle">prov:generatedAtTime</CodeInline>: Publicatiedatum van het
-      document.</li>
+    <li><CodeInline @language="turtle">prov:generatedAtTime</CodeInline>:
+      Publicatiedatum van het document.</li>
   </ul>
 
   <p>
@@ -118,8 +119,9 @@ import Snippet from '../../components/snippet';
     eerst): pagina 1</AuHeading>
   <SnippetToggle @snippetFilename="publicatie-ldes/fragment.turtle" />
   <p>
-    Elke pagina (<CodeInline @language="turtle">tree:Node</CodeInline>) gebruikt TREE-relaties om
-    te navigeren door de publicaties op basis van hun tijdstempel. De
+    Elke pagina (<CodeInline @language="turtle">tree:Node</CodeInline>) gebruikt
+    TREE-relaties om te navigeren door de publicaties op basis van hun
+    tijdstempel. De
     <CodeInline @language="turtle">tree:LessThanRelation</CodeInline>
     verwijst naar de volgende pagina (page=2), die events bevat met een
     prov:generatedAtTime kleiner dan "2025-03-22T00:00:00Z".
@@ -130,7 +132,9 @@ import Snippet from '../../components/snippet';
   <SnippetToggle @snippetFilename="publicatie-ldes/fragment-2.turtle" />
   <p>
     De relaties
-    <CodeInline @language="turtle">tree:GreaterThanOrEqualToRelation</CodeInline>
+    <CodeInline
+      @language="turtle"
+    >tree:GreaterThanOrEqualToRelation</CodeInline>
     en
     <CodeInline @language="turtle">tree:LessThanRelation</CodeInline>
     definiëren een bereik voor page=2. In dit geval kunnen we dus publicaties

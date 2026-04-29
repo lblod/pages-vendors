@@ -142,7 +142,9 @@ import ScrollLink from '../../components/scroll-link';
       <tr>
         <td>organization</td>
         <td><CodeInline @language="turtle">pav:createdBy</CodeInline></td>
-        <td><CodeInline @language="turtle">besluit:Bestuurseenheid</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:Bestuurseenheid</CodeInline></td>
         <td>Bestuurseenheid die de publicatie gemaakt heeft.</td>
       </tr>
       <tr>
@@ -208,8 +210,12 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>canActOnBehalfOf</td>
-        <td><CodeInline @language="turtle">muAccount:canActOnBehalfOf</CodeInline></td>
-        <td><CodeInline @language="turtle">besluit:Bestuurseenheid</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >muAccount:canActOnBehalfOf</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:Bestuurseenheid</CodeInline></td>
         <td>Bestuurseenheden in wiens naam de agent een melding mag insturen.</td>
       </tr>
     </:body>
@@ -249,14 +255,18 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>publicationDate</td>
-        <td><CodeInline @language="turtle">eli:date_publication</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >eli:date_publication</CodeInline></td>
         <td><CodeInline @language="turtle">xsd:date</CodeInline></td>
         <td>De offici&euml;le publicatiedatum van het besluit.</td>
       </tr>
       <tr>
         <td>passedBy</td>
         <td><CodeInline @language="turtle">eli:passed_by</CodeInline></td>
-        <td><CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:Bestuursorgaan</CodeInline></td>
         <td>Het bestuursorgaan dat de beslissing goedgekeurd heeft.
           <br />(Het gaat over bestuursorgaan in bestuursperiode, zie ook
           voorbeelden)</td>
@@ -278,19 +288,25 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>firstDateInForce</td>
-        <td><CodeInline @language="turtle">eli:first_date_entry_in_force</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >eli:first_date_entry_in_force</CodeInline></td>
         <td><CodeInline @language="turtle">xsd:date</CodeInline></td>
         <td>De datum waarop de regelgeving van kracht wordt.</td>
       </tr>
       <tr>
         <td>dateNoLongerInForce</td>
-        <td><CodeInline @language="turtle">eli:date_no_longer_in_force</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >eli:date_no_longer_in_force</CodeInline></td>
         <td><CodeInline @language="turtle">xsd:date</CodeInline></td>
         <td>De laatste dag waarop de regelgeving nog van kracht is.</td>
       </tr>
       <tr>
         <td>authenticityType</td>
-        <td><CodeInline @language="turtle">lblodBesluit:authenticityType</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >lblodBesluit:authenticityType</CodeInline></td>
         <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>
           Authenticiteit van de ingestuurde beslissing. Zie
@@ -302,7 +318,9 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>chartOfAccount</td>
-        <td><CodeInline @language="turtle">lblodBesluit:chartOfAccount</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >lblodBesluit:chartOfAccount</CodeInline></td>
         <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>
           Code uit het Minimaal Algemeen Rekeningstelsel (MAR) waar in de
@@ -315,13 +333,19 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>taxRate</td>
-        <td><CodeInline @language="turtle">lblodBesluit:taxRate</CodeInline></td>
-        <td><CodeInline @language="turtle">lblodBesluit:TaxRate</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >lblodBesluit:taxRate</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >lblodBesluit:TaxRate</CodeInline></td>
         <td>Aanslagvoet die in de beslissing bepaald wordt.</td>
       </tr>
       <tr>
         <td>hasAdditionalTaxRate</td>
-        <td><CodeInline @language="turtle">lblodBesluit:hasAdditionalTaxRate</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >lblodBesluit:hasAdditionalTaxRate</CodeInline></td>
         <td><CodeInline @language="turtle">xsd:boolean</CodeInline></td>
         <td>Duidt aan of er nog bijkomende aanslagvoeten zijn dan deze
           beschreven in de beslissing.</td>
@@ -350,7 +374,8 @@ import ScrollLink from '../../components/scroll-link';
   <AuHeading @level="3" @skin="3">Aanslagvoet</AuHeading>
   <AuHeading @level="4" @skin="4">Klasse</AuHeading>
   <p>
-    <CodeInline @language="turtle">lblodBesluit:TaxRate &lt; schema:UnitPriceSpecification</CodeInline>
+    <CodeInline @language="turtle">lblodBesluit:TaxRate &lt;
+      schema:UnitPriceSpecification</CodeInline>
   </p>
   <AuHeading @level="4" @skin="4">Beschrijving</AuHeading>
   <p>
@@ -393,7 +418,9 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td>classificatie</td>
-        <td><CodeInline @language="turtle">besluit:classificatie</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:classificatie</CodeInline></td>
         <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>Classificatie van de bestuurseenheid.</td>
       </tr>
@@ -412,7 +439,9 @@ import ScrollLink from '../../components/scroll-link';
       <tr>
         <td>bestuursorgaan</td>
         <td><CodeInline @language="turtle">besluit:bestuurt</CodeInline></td>
-        <td><CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:Bestuursorgaan</CodeInline></td>
         <td>Bestuursorgaan die door de bestuurseenheid bestuurd wordt.</td>
       </tr>
     </:body>
@@ -435,7 +464,9 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td>classificatie</td>
-        <td><CodeInline @language="turtle">besluit:classificatie</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:classificatie</CodeInline></td>
         <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>Het type bestuursorgaan.</td>
       </tr>
@@ -511,19 +542,27 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>bestuursorgaan</td>
-        <td><CodeInline @language="turtle">besluit:isGehoudenDoor</CodeInline></td>
-        <td><CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:isGehoudenDoor</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:Bestuursorgaan</CodeInline></td>
         <td>Duidt aan door welk orgaan de zitting is gehouden.</td>
       </tr>
       <tr>
         <td>notulen</td>
-        <td><CodeInline @language="turtle">besluit:heeftNotulen</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:heeftNotulen</CodeInline></td>
         <td><CodeInline @language="turtle">foaf:Document</CodeInline></td>
         <td>Notulen van de zitting.</td>
       </tr>
       <tr>
         <td>besluitenlijst</td>
-        <td><CodeInline @language="turtle">besluit:heeftBesluitenlijst</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:heeftBesluitenlijst</CodeInline></td>
         <td><CodeInline @language="turtle">foaf:Document</CodeInline></td>
         <td>Besluitenlijst van de zitting.</td>
       </tr>
@@ -535,7 +574,9 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>uittreksel</td>
-        <td><CodeInline @language="turtle">besluit:heeftUittreksel</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:heeftUittreksel</CodeInline></td>
         <td><CodeInline @language="turtle">foaf:Document</CodeInline></td>
         <td>Uittreksel van een besluit van de zitting.</td>
       </tr>
@@ -584,8 +625,8 @@ import ScrollLink from '../../components/scroll-link';
   <p>
     Om vanuit het Besluit te refereren naar de betreffende Bestuurseenheid via
     de URI, gebruik het RDF predicaat
-    <CodeInline @language="turtle">eli:is_about</CodeInline>. Zie eveneens bij de bovenstaande
-    tabel onder
+    <CodeInline @language="turtle">eli:is_about</CodeInline>. Zie eveneens bij
+    de bovenstaande tabel onder
     <ScrollLink @scrollToId="submitted-resource">Submitted Resource</ScrollLink>
     voor nog meer eigenschappen voor Besluiten.
   </p>

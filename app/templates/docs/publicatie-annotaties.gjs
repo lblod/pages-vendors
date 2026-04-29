@@ -104,15 +104,21 @@ import Snippet from '../../components/snippet';
       </tr>
       <tr>
         <td>Besluitenlijst</td>
-        <td><CodeInline @language="turtle">besluit:heeftBesluitenlijst</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:heeftBesluitenlijst</CodeInline></td>
       </tr>
       <tr>
         <td>Uittreksel</td>
-        <td><CodeInline @language="turtle">besluit:heeftUittreksel</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:heeftUittreksel</CodeInline></td>
       </tr>
       <tr>
         <td>Notulen</td>
-        <td><CodeInline @language="turtle">besluit:heeftNotulen</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:heeftNotulen</CodeInline></td>
       </tr>
     </:body>
   </AuTable>

@@ -401,7 +401,8 @@ import Snippet from '../../components/snippet';
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
+  <AuHeading @level="3" @skin="3"><CodeInline
+      @language="turtle"
     >rule:NotificationRule</CodeInline></AuHeading>
   <p>
     Beschrijft de meldingsregel voor een bepaald type besluit
@@ -425,13 +426,16 @@ import Snippet from '../../components/snippet';
       </tr>
       <tr>
         <td>geldig tot</td>
-        <td><CodeInline @language="turtle">schema:validThrough </CodeInline></td>
+        <td><CodeInline @language="turtle">schema:validThrough
+          </CodeInline></td>
         <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Beschrijft de uitwerkingstreding van de meldingsregel.</td>
       </tr>
       <tr>
         <td>geldig voor</td>
-        <td><CodeInline @language="turtle">lblodBesluit:decidableBy</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >lblodBesluit:decidableBy</CodeInline></td>
         <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>
           Beschrijving van het type bestuur voor wie de regel geldig is.
@@ -444,7 +448,9 @@ import Snippet from '../../components/snippet';
       </tr>
       <tr>
         <td>meldingsplichtig</td>
-        <td><CodeInline @language="turtle">lblodBesluit:obligationToReport</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >lblodBesluit:obligationToReport</CodeInline></td>
         <td><CodeInline @language="turtle">xsd:boolean</CodeInline></td>
         <td>Beschrijft of het hier over een meldingsplichtig besluit gaat</td>
       </tr>
@@ -452,7 +458,9 @@ import Snippet from '../../components/snippet';
   </AuTable>
 
   <AuHeading @level="3" @skin="3">Link naar
-    <CodeInline @language="turtle">rule:NotificationRule</CodeInline></AuHeading>
+    <CodeInline
+      @language="turtle"
+    >rule:NotificationRule</CodeInline></AuHeading>
   <p>
     Elementen uit de codelijsten
     <AuLinkExternal
@@ -482,8 +490,12 @@ import Snippet from '../../components/snippet';
     <:body>
       <tr>
         <td>notificationRule</td>
-        <td><CodeInline @language="turtle">lblodBesluit:notificationRule</CodeInline></td>
-        <td><CodeInline @language="turtle">rule:NotificationRule</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >lblodBesluit:notificationRule</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >rule:NotificationRule</CodeInline></td>
         <td>Beschrijft welke meldinsregels van toepassing zijn op het type
           besluit of document</td>
       </tr>

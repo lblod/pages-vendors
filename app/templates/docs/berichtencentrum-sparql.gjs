@@ -217,7 +217,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
+  <AuHeading @level="3" @skin="3"><CodeInline
+      @language="turtle"
     >schema:Conversation</CodeInline></AuHeading>
   <p>
     Bundelt
@@ -258,7 +259,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
+  <AuHeading @level="3" @skin="3"><CodeInline
+      @language="turtle"
     >schema:Message</CodeInline></AuHeading>
   <p>
     Bericht. De entiteit die de effectieve communicatie bevat.
@@ -302,7 +304,9 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
       <tr>
         <td>sender</td>
         <td><CodeInline @language="turtle">schema:sender</CodeInline></td>
-        <td><CodeInline @language="turtle">besluit:Bestuurseenheid</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:Bestuurseenheid</CodeInline></td>
         <td>
           Verwijst naar de zender of afzender van het bericht.
           <br />
@@ -314,13 +318,16 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
       <tr>
         <td>recipient</td>
         <td><CodeInline @language="turtle">schema:recipient</CodeInline></td>
-        <td><CodeInline @language="turtle">besluit:Bestuurseenheid</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:Bestuurseenheid</CodeInline></td>
         <td>
           Verwijst naar de ontvanger van het bericht.
           <br />
           In de prakijk ABB met vaste URI
           <br />
-          <CodeInline @language="turtle"
+          <CodeInline
+            @language="turtle"
           >&lt;http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b&gt;</CodeInline>
         </td>
       </tr>
@@ -351,7 +358,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
+  <AuHeading @level="3" @skin="3"><CodeInline
+      @language="turtle"
     >nfo:FileDataObject</CodeInline></AuHeading>
   <p>
     Deze klasse wordt gebruikt om bijlagen te annoteren.
@@ -412,7 +420,9 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle">cogs:Job</CodeInline></AuHeading>
+  <AuHeading @level="3" @skin="3"><CodeInline
+      @language="turtle"
+    >cogs:Job</CodeInline></AuHeading>
   <p>
     Job. Een instantie van deze klasse houdt bij wat de status van de
     ingestuurde melding is.
@@ -480,7 +490,8 @@ https://api.loket.lokaalbestuur.vlaanderen.be/vendor/logout</CodeBlock>
     </:body>
   </AuTable>
 
-  <AuHeading @level="3" @skin="3"><CodeInline @language="turtle"
+  <AuHeading @level="3" @skin="3"><CodeInline
+      @language="turtle"
     >oslc:Error</CodeInline></AuHeading>
   <p>
     Deze klasse beschrijft een error. In dit geval zal deze gelinkt zijn met

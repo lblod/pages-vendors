@@ -3,6 +3,8 @@ import { getCodeSnippet } from 'ember-code-snippet';
 
 <template>
   {{#let (getCodeSnippet @snippetFilename) as |snippet|}}
-    <CodeBlock @language={{if @languageoverride @languageoverride snippet.language}}>{{snippet.source}}</CodeBlock>
+    <CodeBlock
+      @language={{if @languageoverride @languageoverride snippet.language}}
+    >{{snippet.source}}</CodeBlock>
   {{/let}}
 </template>

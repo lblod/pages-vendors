@@ -37,11 +37,17 @@ import SnippetToggle from '../../components/snippet-toggle';
     aangeboden. Dit is het geval voor:
   </p>
   <ul>
-    <li><CodeInline @language="turtle">mandaat:isTijdspecialisatieVan</CodeInline>: dit is officieel
-      <CodeInline @language="turtle">generiek:isTijdspecialisatieVan</CodeInline></li>
-    <li><CodeInline>generiek</CodeInline>: deze prefix wordt met http gebruikt in de applicatie, maar in
-      werkelijkheid is het een https prefix</li>
-    <li><CodeInline @language="turtle">besluit:classificatie</CodeInline>: dit is officieel <CodeInline @language="turtle">org:classification</CodeInline></li>
+    <li><CodeInline
+        @language="turtle"
+      >mandaat:isTijdspecialisatieVan</CodeInline>: dit is officieel
+      <CodeInline
+        @language="turtle"
+      >generiek:isTijdspecialisatieVan</CodeInline></li>
+    <li><CodeInline>generiek</CodeInline>: deze prefix wordt met http gebruikt
+      in de applicatie, maar in werkelijkheid is het een https prefix</li>
+    <li><CodeInline @language="turtle">besluit:classificatie</CodeInline>: dit
+      is officieel
+      <CodeInline @language="turtle">org:classification</CodeInline></li>
   </ul>
   <p>
     Het lokaal mandatenbeheer heeft ook een
@@ -197,10 +203,10 @@ import SnippetToggle from '../../components/snippet-toggle';
       href="https://data.vlaanderen.be/doc/applicatieprofiel/besluit-publicatie/#Besluit"
       rel="noopener noreferrer"
       target="_blank"
-    >besluit-publicatie</a>. In de implementatie is dit concept samengevoegd
-    met
-    <CodeInline @language="turtle">besluit:Rechtsgrond</CodeInline>. Enkel de eigenschappen die
-    relevant zijn voor de Mandatendatabank worden hieronder beschreven.
+    >besluit-publicatie</a>. In de implementatie is dit concept samengevoegd met
+    <CodeInline @language="turtle">besluit:Rechtsgrond</CodeInline>. Enkel de
+    eigenschappen die relevant zijn voor de Mandatendatabank worden hieronder
+    beschreven.
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
   <AuTable>
@@ -215,7 +221,9 @@ import SnippetToggle from '../../components/snippet-toggle';
     <:body>
       <tr>
         <td>bekrachtigt aanstelling van</td>
-        <td><CodeInline @language="turtle">mandaat:bekrachtigtAanstellingVan</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >mandaat:bekrachtigtAanstellingVan</CodeInline></td>
         <td><CodeInline @language="turtle">mandaat:Mandataris</CodeInline></td>
         <td>De Mandataris waarvan de aanstelling bekrachtigd wordt door dit
           besluit. Een bekrachtigde mandataris kan een link hebben naar een
@@ -224,7 +232,9 @@ import SnippetToggle from '../../components/snippet-toggle';
       </tr>
       <tr>
         <td>bekrachtigt ontslag van</td>
-        <td><CodeInline @language="turtle">mandaat:bekrachtigtOntslagVan</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >mandaat:bekrachtigtOntslagVan</CodeInline></td>
         <td><CodeInline @language="turtle">mandaat:Mandataris</CodeInline></td>
         <td>De Mandataris waarvan het mandaat door dit besluit beëindigd wordt.</td>
       </tr>
@@ -252,16 +262,17 @@ import SnippetToggle from '../../components/snippet-toggle';
     tijd. Een Bestuursorgaan in de tijd heeft een
     <CodeInline @language="turtle">mandaat:bindingStart</CodeInline>
     en een
-    <CodeInline @language="turtle">mandaat:bindingEinde</CodeInline>. Deze eigenschappen geven aan
-    wanneer het Bestuursorgaan in de tijd actief is. Indien een Bestuursorgaan
-    in de tijd geen
+    <CodeInline @language="turtle">mandaat:bindingEinde</CodeInline>. Deze
+    eigenschappen geven aan wanneer het Bestuursorgaan in de tijd actief is.
+    Indien een Bestuursorgaan in de tijd geen
     <CodeInline @language="turtle">mandaat:bindingEinde</CodeInline>
     heeft, is het Bestuursorgaan in de tijd nog steeds actief. Enkel
     Bestuursorganen in de tijd zijn gekoppeld aan instanties van de klasse
-    <CodeInline @language="turtle">mandaat:Mandaat</CodeInline>. Dat betekent dus ook dat de URI
-    van bijvoorbeeld een burgemeester mandaat verandert per bestuursperiode. De
-    classificatie code (<CodeInline @language="turtle">org:role</CodeInline>) blijft wel dezelfde
-    uiteraard.
+    <CodeInline @language="turtle">mandaat:Mandaat</CodeInline>. Dat betekent
+    dus ook dat de URI van bijvoorbeeld een burgemeester mandaat verandert per
+    bestuursperiode. De classificatie code (<CodeInline
+      @language="turtle"
+    >org:role</CodeInline>) blijft wel dezelfde uiteraard.
   </p>
   <AuHeading @level="4" @skin="4">Eigenschappen</AuHeading>
   <AuTable>
@@ -286,29 +297,39 @@ import SnippetToggle from '../../components/snippet-toggle';
       </tr>
       <tr>
         <td>bindingStart</td>
-        <td><CodeInline @language="turtle">mandaat:bindingStart</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >mandaat:bindingStart</CodeInline></td>
         <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Het tijdstip waar op dit Bestuursorgaan in de tijd actief
           wordt/werd.</td>
       </tr>
       <tr>
         <td>bindingEinde</td>
-        <td><CodeInline @language="turtle">mandaat:bindingEinde</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >mandaat:bindingEinde</CodeInline></td>
         <td><CodeInline @language="turtle">xsd:dateTime</CodeInline></td>
         <td>Het tijdstip waar op dit Bestuursorgaan in de tijd niet langer
           actief wordt/werd.</td>
       </tr>
       <tr>
         <td>classificatie</td>
-        <td><CodeInline @language="turtle">besluit:classificatie</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:classificatie</CodeInline></td>
         <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>De classificatie van het bestuursorgaan. Bijvoorbeeld Gemeenteraad,
           of Burgemeester.</td>
       </tr>
       <tr>
         <td>isTijdspecialisatieVan</td>
-        <td><CodeInline @language="turtle">mandaat:isTijdspecialisatieVan</CodeInline></td>
-        <td><CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >mandaat:isTijdspecialisatieVan</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:Bestuursorgaan</CodeInline></td>
         <td>Het bestuursorgaan waarvan dit Bestuursorgaan in de tijd een
           specialisatie is.</td>
       </tr>
@@ -354,7 +375,9 @@ import SnippetToggle from '../../components/snippet-toggle';
       <tr>
         <td>bestuursorganen in tijd</td>
         <td><CodeInline @language="turtle">org:memberOf</CodeInline></td>
-        <td><CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:Bestuursorgaan</CodeInline></td>
         <td>De Bestuursorganen in de tijd waar de fractie deel van uitmaakt.</td>
       </tr>
       <tr>
@@ -451,7 +474,9 @@ import SnippetToggle from '../../components/snippet-toggle';
       </tr>
       <tr>
         <td>aantal houders</td>
-        <td><CodeInline @language="turtle">mandaat:aantalHouders</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >mandaat:aantalHouders</CodeInline></td>
         <td><CodeInline @language="turtle">xsd:integer</CodeInline></td>
         <td>Het minimum aantal houders voor het mandaat.</td>
       </tr>
@@ -567,7 +592,9 @@ import SnippetToggle from '../../components/snippet-toggle';
       </tr>
       <tr>
         <td>beleidsdomein</td>
-        <td><CodeInline @language="turtle">mandaat:beleidsdomein</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >mandaat:beleidsdomein</CodeInline></td>
         <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>De beleidsdomeinen van een mandataris. Een mandataris kan meerdere
           beleidsdomeinen hebben. Enkel burgemeesters en schepenen hebben
@@ -579,13 +606,17 @@ import SnippetToggle from '../../components/snippet-toggle';
       <tr>
         <td>lidmaatschap</td>
         <td><CodeInline @language="turtle">org:hasMembership</CodeInline></td>
-        <td><CodeInline @language="turtle">besluit:Bestuursorgaan</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >besluit:Bestuursorgaan</CodeInline></td>
         <td>Het lidmaatschap van de mandataris. Er is altijd exact 1
           lidmaatschap per mandataris.</td>
       </tr>
       <tr>
         <td>publicatiestatus</td>
-        <td><CodeInline @language="turtle">lmb:hasPublicationStatus</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >lmb:hasPublicationStatus</CodeInline></td>
         <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>De publicatie status van de Mandataris. Dit kan gaan om Draft (<CodeInline
           >http://data.lblod.info/id/concept/MandatarisPublicationStatusCode/588ce330-4abb-4448-9776-a17d9305df07</CodeInline>),
@@ -596,7 +627,9 @@ import SnippetToggle from '../../components/snippet-toggle';
       </tr>
       <tr>
         <td>is bestuurlijke alias van</td>
-        <td><CodeInline @language="turtle">mandaat:isBestuurlijkeAliasVan</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >mandaat:isBestuurlijkeAliasVan</CodeInline></td>
         <td><CodeInline @language="turtle">person:Person</CodeInline></td>
         <td>De persoon die het mandaat opneemt.</td>
       </tr>
@@ -646,7 +679,9 @@ import SnippetToggle from '../../components/snippet-toggle';
       </tr>
       <tr>
         <td>gebruikte voornaam</td>
-        <td><CodeInline @language="turtle">persoon:gebruikteVoornaam</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >persoon:gebruikteVoornaam</CodeInline></td>
         <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>De te gebruiken voornaam van alle officiële voornamen van de
           persoon.</td>

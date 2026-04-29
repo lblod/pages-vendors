@@ -22,7 +22,10 @@ import Snippet from './snippet';
       </AuHeading>
     </c.header>
     <c.content>
-      <Snippet @languageoverride={{@languageoverride}} @snippetFilename={{@snippetFilename}} />
+      <Snippet
+        @languageoverride={{@languageoverride}}
+        @snippetFilename={{@snippetFilename}}
+      />
     </c.content>
   </AuCard>
 </template>

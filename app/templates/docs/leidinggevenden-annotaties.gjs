@@ -137,7 +137,9 @@ import CodeInline from '../../components/code-inline';
       </tr>
       <tr>
         <td>huisnummer</td>
-        <td><CodeInline @language="turtle">adres:AdresVoorstelling.huisnummer</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >adres:AdresVoorstelling.huisnummer</CodeInline></td>
         <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>Alfanumerieke code officieel toegekend aan gebouweenheden,
           ligplaatsen, standplaatsen of percelen.</td>
@@ -226,8 +228,12 @@ import CodeInline from '../../components/code-inline';
     <:body>
       <tr>
         <td>bevat</td>
-        <td><CodeInline @language="turtle">lblodlg:heeftBestuursfunctie</CodeInline></td>
-        <td><CodeInline @language="turtle">lblodlg:Bestuursfunctie</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >lblodlg:heeftBestuursfunctie</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >lblodlg:Bestuursfunctie</CodeInline></td>
         <td>Een bestuursfunctie binnen het orgaan.</td>
       </tr>
     </:body>
@@ -301,7 +307,9 @@ import CodeInline from '../../components/code-inline';
       <tr>
         <td>bestuursfunctie</td>
         <td><CodeInline @language="turtle">org:holds</CodeInline></td>
-        <td><CodeInline @language="turtle">lblodlg:Bestuursfunctie</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >lblodlg:Bestuursfunctie</CodeInline></td>
         <td>De bestuursfunctie die deze functionaris bekleedt.</td>
       </tr>
       <tr>
@@ -313,7 +321,9 @@ import CodeInline from '../../components/code-inline';
       </tr>
       <tr>
         <td>is bestuurlijke alias van</td>
-        <td><CodeInline @language="turtle">mandaat:isBestuurlijkeAliasVan</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >mandaat:isBestuurlijkeAliasVan</CodeInline></td>
         <td><CodeInline @language="turtle">person:Person</CodeInline></td>
         <td>De persoon die de functionarisrol vervult.</td>
       </tr>
@@ -366,7 +376,9 @@ import CodeInline from '../../components/code-inline';
       </tr>
       <tr>
         <td>gebruikte voornaam</td>
-        <td><CodeInline @language="turtle">persoon:gebruikteVoornaam</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >persoon:gebruikteVoornaam</CodeInline></td>
         <td><CodeInline @language="turtle">xsd:string</CodeInline></td>
         <td>De te gebruiken voornaam van alle officiële voornamen van de
           persoon.</td>
