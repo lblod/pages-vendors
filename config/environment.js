@@ -23,7 +23,7 @@ module.exports = function (environment) {
       // when it is created
     },
     plausible: {
-      domain: 'https://lblod.github.io/pages-vendors/',
+      domain: 'pages-vendors.lblod.info',
       apiHost: 'https://plausible.lblod.info',
     },
   };

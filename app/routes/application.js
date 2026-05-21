@@ -19,6 +19,7 @@ export default class ApplicationRoute extends Route {
       this.plausible.enable({
         domain,
         apiHost,
+        hashMode: true,
       });
     }
   }
