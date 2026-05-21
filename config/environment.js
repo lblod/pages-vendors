@@ -22,6 +22,10 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
+    plausible: {
+      domain: 'pages-vendors.lblod.info',
+      apiHost: 'https://plausible.lblod.info',
+    },
   };
 
   if (environment === 'development') {
