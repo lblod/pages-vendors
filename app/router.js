@@ -15,6 +15,7 @@ Router.map(function () {
     this.route('leidinggevenden-annotaties');
     this.route('publicatie-feed');
     this.route('mandaten-annotaties');
+    this.route('documenten-refereren');
     //Insturen
     this.route('meldingsplicht');
     this.route('berichtencentrum');
