@@ -4,7 +4,6 @@ import AuTable from '@appuniversum/ember-appuniversum/components/au-table';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
 import CodeInline from '../../components/code-inline';
-import CodeBlock from '../../components/code-block';
 import Snippet from '../../components/snippet';
 import ScrollLink from '../../components/scroll-link';
 
@@ -14,16 +13,16 @@ import ScrollLink from '../../components/scroll-link';
 
   <p>
     Bij sommige documenten is het nodig om te refereren naar andere documenten.
-    Dit is bijvoorbeeld het geval bij documenttype <em>&ldquo;Advies bij
-    jaarrekening eredienstbestuur&rdquo;</em> dat kan worden uitgezonden
-    vanuit een gemeentebestuur. Hierbij moet kunnen worden verwezen naar een
-    origineel document van het type <em>&ldquo;Jaarrekening&rdquo;</em> dat
-    werd opgesteld door een eredienstbestuur, maar eerst werd doorgestuurd
+    Dit is bijvoorbeeld het geval bij documenttype
+    <em>&ldquo;Advies bij jaarrekening eredienstbestuur&rdquo;</em>
+    dat kan worden uitgezonden vanuit een gemeentebestuur. Hierbij moet kunnen
+    worden verwezen naar een origineel document van het type
+    <em>&ldquo;Jaarrekening&rdquo;</em>
+    dat werd opgesteld door een eredienstbestuur, maar eerst werd doorgestuurd
     vanuit een Centraal Kerkbestuur onder het documenttype
     <em>&ldquo;Jaarrekeningen van de besturen van de eredienst&rdquo;</em>.
     Hieronder wordt uitgelegd op welke documenttypes dit van toepassing is, hoe
-    het model er uit ziet, en hoe documenten en regels kunnen worden
-    opgevraagd.
+    het model er uit ziet, en hoe documenten en regels kunnen worden opgevraagd.
   </p>
 
   <AuHeading @level="2" @skin="2">Documenttypes</AuHeading>
@@ -45,11 +44,13 @@ import ScrollLink from '../../components/scroll-link';
     steeds naar een document van een eredienstbestuur. Er worden geen Artikels
     gelinkt aan de referentie, omdat er geen kleuring (Goedkeuring, Aktename,
     Gunstig advies, &hellip;) moet worden meegegeven. In dit geval zal het
-    <CodeInline @language="turtle">ext:SubmissionDocument</CodeInline> van de
-    refererende inzending direct verwijzen naar het <CodeInline
-    @language="turtle">ext:SubmissionDocument</CodeInline> van het gerefereerde
-    document (in dit geval het document van het eredienstbestuur) door middel
-    van het predicaat <CodeInline @language="turtle">dct:relation</CodeInline>. Onderstaande figuur toont dit simpele model in diagramvorm.
+    <CodeInline @language="turtle">ext:SubmissionDocument</CodeInline>
+    van de refererende inzending direct verwijzen naar het
+    <CodeInline @language="turtle">ext:SubmissionDocument</CodeInline>
+    van het gerefereerde document (in dit geval het document van het
+    eredienstbestuur) door middel van het predicaat
+    <CodeInline @language="turtle">dct:relation</CodeInline>. Onderstaande
+    figuur toont dit simpele model in diagramvorm.
   </p>
   <a
     class="block au-u-text-center"
@@ -83,48 +84,68 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td>
-          Jaarrekeningen van de besturen van de eredienst <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitDocumentType/672bf096-dccd-40af-ab60-bd7de15cc461</CodeInline>
+          Jaarrekeningen van de besturen van de eredienst
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitDocumentType/672bf096-dccd-40af-ab60-bd7de15cc461</CodeInline>
         </td>
         <td>
-          Jaarrekeningen <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitType/e44c535d-4339-4d15-bdbf-d4be6046de2c</CodeInline>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Budgetten(wijzigingen) - Indiening bij representatief orgaan <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitDocumentType/18833df2-8c9e-4edd-87fd-b5c252337349</CodeInline>
-        </td>
-        <td>
-          Budget(wijziging) - Indiening bij centraal bestuur of representatief orgaan <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitType/d463b6d1-c207-4c1a-8c08-f2c7dd1fa53b</CodeInline>
+          Jaarrekeningen
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitType/e44c535d-4339-4d15-bdbf-d4be6046de2c</CodeInline>
         </td>
       </tr>
       <tr>
         <td>
-          Budgetten(wijzigingen) - Indiening bij toezichthoudende gemeente of provincie <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitDocumentType/ce569d3d-25ff-4ce9-a194-e77113597e29</CodeInline>
+          Budgetten(wijzigingen) - Indiening bij representatief orgaan
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitDocumentType/18833df2-8c9e-4edd-87fd-b5c252337349</CodeInline>
         </td>
         <td>
-          Budget(wijziging) - Indiening bij centraal bestuur of representatief orgaan <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitType/d463b6d1-c207-4c1a-8c08-f2c7dd1fa53b</CodeInline>
+          Budget(wijziging) - Indiening bij centraal bestuur of representatief
+          orgaan
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitType/d463b6d1-c207-4c1a-8c08-f2c7dd1fa53b</CodeInline>
         </td>
       </tr>
       <tr>
         <td>
-          Meerjarenplannen(wijzigingen) van de besturen van de eredienst <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitDocumentType/2c9ada23-1229-4c7e-a53e-acddc9014e4e</CodeInline>
+          Budgetten(wijzigingen) - Indiening bij toezichthoudende gemeente of
+          provincie
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitDocumentType/ce569d3d-25ff-4ce9-a194-e77113597e29</CodeInline>
         </td>
         <td>
-          Meerjarenplan(aanpassing) <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitType/f56c645d-b8e1-4066-813d-e213f5bc529f</CodeInline>
+          Budget(wijziging) - Indiening bij centraal bestuur of representatief
+          orgaan
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitType/d463b6d1-c207-4c1a-8c08-f2c7dd1fa53b</CodeInline>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Meerjarenplannen(wijzigingen) van de besturen van de eredienst
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitDocumentType/2c9ada23-1229-4c7e-a53e-acddc9014e4e</CodeInline>
+        </td>
+        <td>
+          Meerjarenplan(aanpassing)
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitType/f56c645d-b8e1-4066-813d-e213f5bc529f</CodeInline>
         </td>
       </tr>
     </:body>
   </AuTable>
 
-  <AuHeading id="refereren-als-gemeente" @level="2" @skin="2">Refereren als gemeentebestuur, provinciebestuur, &hellip;</AuHeading>
+  <AuHeading id="refereren-als-gemeente" @level="2" @skin="2">Refereren als
+    gemeentebestuur, provinciebestuur, &hellip;</AuHeading>
 
   <p>
     Buiten in uitzonderlijke gevallen, zal een gemeente, die naar een document
@@ -132,13 +153,13 @@ import ScrollLink from '../../components/scroll-link';
     document bestaat, gepubliceerd door een centraal kerkbestuur, dat ook
     refereert naar datzelfde document van het eredienstbestuur. Dit verloopt dan
     niet via een enkele relatie, gelijk bij het centraal kerkbestuur, maar via
-    een tussenliggende entiteit: een <CodeInline
-    @language="turtle">besluit:Artikel</CodeInline>. Onderstaand diagram toont
-    kort hoe het model voor een verwijzing er uit ziet als dit gebeurt vanuit een
-    gemeente, verwijzend naar een document van een eredienstbestuur. In grijs
-    staat de referentie van een document vanuit het centraal kerkbestuur naar
-    hetzelfde document van het eredienstbestuur, zoals hierboven al werd
-    beschreven.
+    een tussenliggende entiteit: een
+    <CodeInline @language="turtle">besluit:Artikel</CodeInline>. Onderstaand
+    diagram toont kort hoe het model voor een verwijzing er uit ziet als dit
+    gebeurt vanuit een gemeente, verwijzend naar een document van een
+    eredienstbestuur. In grijs staat de referentie van een document vanuit het
+    centraal kerkbestuur naar hetzelfde document van het eredienstbestuur, zoals
+    hierboven al werd beschreven.
   </p>
 
   <a
@@ -173,52 +194,74 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td>
-          Advies bij jaarrekening eredienstbestuur <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitType/79414af4-4f57-4ca3-aaa4-f8f1e015e71c</CodeInline>
+          Advies bij jaarrekening eredienstbestuur
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitType/79414af4-4f57-4ca3-aaa4-f8f1e015e71c</CodeInline>
         </td>
         <td>
-          Jaarrekeningen van de besturen van de eredienst <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitDocumentType/672bf096-dccd-40af-ab60-bd7de15cc461</CodeInline>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Besluit over budget(wijziging) eredienstbestuur <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitType/df261490-cc74-4f80-b783-41c35e720b46</CodeInline>
-        </td>
-        <td>
-          Budgetten(wijzigingen) - Indiening bij toezichthoudende gemeente of provincie <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitDocumentType/ce569d3d-25ff-4ce9-a194-e77113597e29</CodeInline>
+          Jaarrekeningen van de besturen van de eredienst
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitDocumentType/672bf096-dccd-40af-ab60-bd7de15cc461</CodeInline>
         </td>
       </tr>
       <tr>
         <td>
-          Besluit over budget(wijziging) eredienstbestuur <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitType/df261490-cc74-4f80-b783-41c35e720b46</CodeInline>
+          Besluit over budget(wijziging) eredienstbestuur
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitType/df261490-cc74-4f80-b783-41c35e720b46</CodeInline>
         </td>
         <td>
-          Budget(wijziging) - Indiening bij toezichthoudende gemeente of provincie <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitType/d85218e2-a75f-4a30-9182-512b5c9dd1b2</CodeInline>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          Besluit over meerjarenplan(aanpassing) eredienstbestuur <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitType/3fcf7dba-2e5b-4955-a489-6dd8285c013b</CodeInline>
-        </td>
-        <td>
-          Meerjarenplannen(wijzigingen) van de besturen van de eredienst <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitDocumentType/2c9ada23-1229-4c7e-a53e-acddc9014e4e</CodeInline>
+          Budgetten(wijzigingen) - Indiening bij toezichthoudende gemeente of
+          provincie
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitDocumentType/ce569d3d-25ff-4ce9-a194-e77113597e29</CodeInline>
         </td>
       </tr>
       <tr>
         <td>
-          Besluit over meerjarenplan(aanpassing) eredienstbestuur <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitType/3fcf7dba-2e5b-4955-a489-6dd8285c013b</CodeInline>
+          Besluit over budget(wijziging) eredienstbestuur
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitType/df261490-cc74-4f80-b783-41c35e720b46</CodeInline>
         </td>
         <td>
-          Meerjarenplan(aanpassing) <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitType/f56c645d-b8e1-4066-813d-e213f5bc529f</CodeInline>
+          Budget(wijziging) - Indiening bij toezichthoudende gemeente of
+          provincie
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitType/d85218e2-a75f-4a30-9182-512b5c9dd1b2</CodeInline>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Besluit over meerjarenplan(aanpassing) eredienstbestuur
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitType/3fcf7dba-2e5b-4955-a489-6dd8285c013b</CodeInline>
+        </td>
+        <td>
+          Meerjarenplannen(wijzigingen) van de besturen van de eredienst
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitDocumentType/2c9ada23-1229-4c7e-a53e-acddc9014e4e</CodeInline>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Besluit over meerjarenplan(aanpassing) eredienstbestuur
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitType/3fcf7dba-2e5b-4955-a489-6dd8285c013b</CodeInline>
+        </td>
+        <td>
+          Meerjarenplan(aanpassing)
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitType/f56c645d-b8e1-4066-813d-e213f5bc529f</CodeInline>
         </td>
       </tr>
     </:body>
@@ -232,8 +275,8 @@ import ScrollLink from '../../components/scroll-link';
 
   <p>
     Het Artikel is de tussenliggende entiteit tussen een SubmissionDocument van
-    een gemeente, provincie, &hellip; dat wil verwijzen naar een document van een
-    eredienst. Er wordt een Artikeltype meegegeven als specificatie zoals
+    een gemeente, provincie, &hellip; dat wil verwijzen naar een document van
+    een eredienst. Er wordt een Artikeltype meegegeven als specificatie zoals
     goedkeuring, afkeuring, of het geven van advies.
   </p>
 
@@ -253,13 +296,19 @@ import ScrollLink from '../../components/scroll-link';
         <td>Artikeltype</td>
         <td><CodeInline @language="turtle">eli:type_document</CodeInline></td>
         <td><CodeInline @language="turtle">skos:Concept</CodeInline></td>
-        <td>Specifiek type voor de referentie (bijvoorbeeld "Goedkeuring gerefereerde documenten"). <ScrollLink @scrollToId="artikeltypes">Zie lijst met artikeltypes hieronder.</ScrollLink></td>
+        <td>Specifiek type voor de referentie (bijvoorbeeld "Goedkeuring
+          gerefereerde documenten").
+          <ScrollLink @scrollToId="artikeltypes">Zie lijst met artikeltypes
+            hieronder.</ScrollLink></td>
       </tr>
       <tr>
         <td>Gerefereerd ingezonden document</td>
         <td><CodeInline @language="turtle">eli:has_part</CodeInline></td>
-        <td><CodeInline @language="turtle">ext:SubmissionDocument</CodeInline></td>
-        <td>SubmissionDocument, het ingezonden document waar naar wordt verwezen. Dit is meestal een document van een eredienstbestuur.</td>
+        <td><CodeInline
+            @language="turtle"
+          >ext:SubmissionDocument</CodeInline></td>
+        <td>SubmissionDocument, het ingezonden document waar naar wordt
+          verwezen. Dit is meestal een document van een eredienstbestuur.</td>
       </tr>
       <tr>
         <td>Volgorde</td>
@@ -288,7 +337,8 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td>
-          <CodeInline>http://data.lblod.info/concepts/ArtikelTypes/03bb19a1-5ada-4098-830e-936c1da367f5</CodeInline>
+          <CodeInline
+          >http://data.lblod.info/concepts/ArtikelTypes/03bb19a1-5ada-4098-830e-936c1da367f5</CodeInline>
         </td>
         <td>
           Aanpassing gerefereerde documenten.
@@ -296,7 +346,8 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>
-          <CodeInline>http://data.lblod.info/concepts/ArtikelTypes/080def57-72ce-4f32-b3f9-369009644fd2</CodeInline>
+          <CodeInline
+          >http://data.lblod.info/concepts/ArtikelTypes/080def57-72ce-4f32-b3f9-369009644fd2</CodeInline>
         </td>
         <td>
           Goedkeuring gerefereerde documenten.
@@ -304,7 +355,8 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>
-          <CodeInline>http://data.lblod.info/concepts/ArtikelTypes/5e1beb14-142b-4394-b302-6648ad6f3e00</CodeInline>
+          <CodeInline
+          >http://data.lblod.info/concepts/ArtikelTypes/5e1beb14-142b-4394-b302-6648ad6f3e00</CodeInline>
         </td>
         <td>
           Aktename gerefereerde documenten.
@@ -312,7 +364,8 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>
-          <CodeInline>http://data.lblod.info/concepts/ArtikelTypes/773343c9-55a4-4aaa-942c-e3a048b35c1f</CodeInline>
+          <CodeInline
+          >http://data.lblod.info/concepts/ArtikelTypes/773343c9-55a4-4aaa-942c-e3a048b35c1f</CodeInline>
         </td>
         <td>
           Niet goedkeuring gerefereerde documenten.
@@ -320,7 +373,8 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>
-          <CodeInline>http://data.lblod.info/concepts/ArtikelTypes/9a54a930-7dd6-4ff2-a4b1-ee403f7cda5c</CodeInline>
+          <CodeInline
+          >http://data.lblod.info/concepts/ArtikelTypes/9a54a930-7dd6-4ff2-a4b1-ee403f7cda5c</CodeInline>
         </td>
         <td>
           Gunstig advies gerefereerde documenten.
@@ -328,7 +382,8 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>
-          <CodeInline>http://data.lblod.info/concepts/ArtikelTypes/c47c6ac9-1628-4378-9689-8caa7c6d7968</CodeInline>
+          <CodeInline
+          >http://data.lblod.info/concepts/ArtikelTypes/c47c6ac9-1628-4378-9689-8caa7c6d7968</CodeInline>
         </td>
         <td>
           Ongunstig advies gerefereerde documenten.
@@ -342,13 +397,14 @@ import ScrollLink from '../../components/scroll-link';
   <p>
     Er zijn twee documenttypes waarvoor een uitzondering bestaat. Bij deze
     documenttypes zal de gemeente, provincie, &hellip; direct kunnen verwijzen
-    naar een document, gepubliceerd door een eredienstbestuur zonder dat hiervoor
-    een document van een centraal kerkbestuur ook naar het document van het
-    eredienstbestuur moet refereren. Hiervoor wordt het model gebruikt zoals bij
+    naar een document, gepubliceerd door een eredienstbestuur zonder dat
+    hiervoor een document van een centraal kerkbestuur ook naar het document van
+    het eredienstbestuur moet refereren. Hiervoor wordt het model gebruikt zoals
+    bij
     <ScrollLink @scrollToId="refereren-als-gemeente">Refereren als
-    gemeentebestuur, provinciebestuur, &hellip;</ScrollLink>, maar dan waarbij
-    <strong>het Artikel geen type</strong> heeft. Het gaat om de volgende
-    documenttypes:
+      gemeentebestuur, provinciebestuur, &hellip;</ScrollLink>, maar dan waarbij
+    <strong>het Artikel geen type</strong>
+    heeft. Het gaat om de volgende documenttypes:
   </p>
 
   <AuTable>
@@ -361,22 +417,31 @@ import ScrollLink from '../../components/scroll-link';
     <:body>
       <tr>
         <td>
-          Schorsing beslissing eredienstbesturen <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitType/b25faa84-3ab5-47ae-98c0-1b389c77b827</CodeInline>
+          Schorsing beslissing eredienstbesturen
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitType/b25faa84-3ab5-47ae-98c0-1b389c77b827</CodeInline>
         </td>
         <td>
-          Notulen <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitDocumentType/8e791b27-7600-4577-b24e-c7c29e0eb773</CodeInline>
+          Notulen
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitDocumentType/8e791b27-7600-4577-b24e-c7c29e0eb773</CodeInline>
         </td>
       </tr>
       <tr>
         <td>
-          Opvragen bijkomende inlichtingen eredienstbesturen (met als gevolg stuiting termijn) <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitDocumentType/24743b26-e0fb-4c14-8c82-5cd271289b0e</CodeInline>
+          Opvragen bijkomende inlichtingen eredienstbesturen (met als gevolg
+          stuiting termijn)
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitDocumentType/24743b26-e0fb-4c14-8c82-5cd271289b0e</CodeInline>
         </td>
         <td>
-          Notulen <br />
-          <CodeInline>https://data.vlaanderen.be/id/concept/BesluitDocumentType/8e791b27-7600-4577-b24e-c7c29e0eb773</CodeInline>
+          Notulen
+          <br />
+          <CodeInline
+          >https://data.vlaanderen.be/id/concept/BesluitDocumentType/8e791b27-7600-4577-b24e-c7c29e0eb773</CodeInline>
         </td>
       </tr>
     </:body>
@@ -390,7 +455,7 @@ import ScrollLink from '../../components/scroll-link';
     refereren werden in model gebracht zodat ze door middel van query's kunnen
     worden bevraagd. Dit verloopt via SPARQL query's op Centrale Vindplaats.
     <AuLink @route="docs.centrale-vindplaats-sparql">Refereer naar de
-    documentatie daarover voor het uitvoeren van SPARQL query's.</AuLink>
+      documentatie daarover voor het uitvoeren van SPARQL query's.</AuLink>
   </p>
 
   <p>
@@ -407,11 +472,13 @@ import ScrollLink from '../../components/scroll-link';
     eredienstbestuur kan worden verwezen, gezien we verwijzen vanuit een
     gemeente, en we weten dat er een centraal kerkbestuur bestaat. Onderstaande
     SPARQL query toont dit voorbeeld, waar we zoeken naar documenten van een
-    centraal kerkbestuur, terwijl het originele document werd opgesteld door
-    een eredienstbestuur.
+    centraal kerkbestuur, terwijl het originele document werd opgesteld door een
+    eredienstbestuur.
   </p>
 
-  <Snippet @snippetFilename="refereren/voorbeeld-opvragen-documenttypes.sparql" />
+  <Snippet
+    @snippetFilename="refereren/voorbeeld-opvragen-documenttypes.sparql"
+  />
 
   <AuHeading @level="3" @skin="3">Model</AuHeading>
 
@@ -456,42 +523,57 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>Beslisbaar door</td>
-        <td><CodeInline @language="turtle">lblodBesluit:decidableBy</CodeInline></td>
-        <td><CodeInline @language="turtle">organisatie:BestuurseenheidClassificatieCode</CodeInline> of <CodeInline @language="turtle">skos:Concept</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >lblodBesluit:decidableBy</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >organisatie:BestuurseenheidClassificatieCode</CodeInline>
+          of
+          <CodeInline @language="turtle">skos:Concept</CodeInline></td>
         <td>Soort van bestuurseenheid dat de verwijzing maakt.</td>
       </tr>
       <tr>
         <td>Verwezen document beslisbaar door</td>
-        <td><CodeInline @language="turtle">lblodBesluit:referredDecidableBy</CodeInline></td>
-        <td><CodeInline @language="turtle">organisatie:BestuurseenheidClassificatieCode</CodeInline> of <CodeInline @language="turtle">skos:Concept</CodeInline></td>
-        <td>Soort van bestuurseenheid die het originele document heeft gepubliceerd, waarnaar wordt verwezen.</td>
+        <td><CodeInline
+            @language="turtle"
+          >lblodBesluit:referredDecidableBy</CodeInline></td>
+        <td><CodeInline
+            @language="turtle"
+          >organisatie:BestuurseenheidClassificatieCode</CodeInline>
+          of
+          <CodeInline @language="turtle">skos:Concept</CodeInline></td>
+        <td>Soort van bestuurseenheid die het originele document heeft
+          gepubliceerd, waarnaar wordt verwezen.</td>
       </tr>
     </:body>
   </AuTable>
 
-  <AuHeading @level="2" @skin="2">Opvragen van refereerbare documenten (voorbeeld)</AuHeading>
+  <AuHeading @level="2" @skin="2">Opvragen van refereerbare documenten
+    (voorbeeld)</AuHeading>
 
   <p>
     Het is uiteraard mogelijk om refereerbare documenten op te vragen. Dit
-    gebeurt via de Vendor API, waarvoor men geauthoriseerde toegang nodig
-    heeft. Refereer hiervoor naar <AuLink @route="docs.vendor-sparql">de
-    documentatie over de Vendor API</AuLink>, of <AuLink
-    @route="docs.erediensten-toezichtsdatabank-sparql">Erediensten
-    Toezichtsdatabank SPARQL API</AuLink> voor toegang tot documenten van
-    erediensten.
+    gebeurt via de Vendor API, waarvoor men geauthoriseerde toegang nodig heeft.
+    Refereer hiervoor naar
+    <AuLink @route="docs.vendor-sparql">de documentatie over de Vendor API</AuLink>,
+    of
+    <AuLink @route="docs.erediensten-toezichtsdatabank-sparql">Erediensten
+      Toezichtsdatabank SPARQL API</AuLink>
+    voor toegang tot documenten van erediensten.
   </p>
 
   <p>
-    Na het verkrijgen van toegang tot de Vendor API kunnen SPARQL query's
-    worden uitgevoerd om lijsten van documenten op te vragen van een bepaald
-    type om naar te kunnen refereren. Als eerste voorbeeld willen we als een
-    centraal kerkbestuur een document opstellen dat een "Jaarrekening" van
-    "Kerkfabriek St.-Lambertus" bundelt voor indiening bij de gemeente
-    Grobbendonk. Hiervoor moeten we zoeken naar inzendingen van het
-    eredienstbestuur van het juiste type. Als eerste zal een query moeten
-    worden opgesteld om het juiste type document te bekomen, zoals in een vorig
-    voorbeeld beschreven, of kan worden gekeken in de bovenstaande tabellen.
-    Hierna vormen we een query zoals het voorbeeld hieronder.
+    Na het verkrijgen van toegang tot de Vendor API kunnen SPARQL query's worden
+    uitgevoerd om lijsten van documenten op te vragen van een bepaald type om
+    naar te kunnen refereren. Als eerste voorbeeld willen we als een centraal
+    kerkbestuur een document opstellen dat een "Jaarrekening" van "Kerkfabriek
+    St.-Lambertus" bundelt voor indiening bij de gemeente Grobbendonk. Hiervoor
+    moeten we zoeken naar inzendingen van het eredienstbestuur van het juiste
+    type. Als eerste zal een query moeten worden opgesteld om het juiste type
+    document te bekomen, zoals in een vorig voorbeeld beschreven, of kan worden
+    gekeken in de bovenstaande tabellen. Hierna vormen we een query zoals het
+    voorbeeld hieronder.
   </p>
 
   <Snippet @snippetFilename="refereren/voorbeeld-ckb-grobbendonk.sparql" />
@@ -500,8 +582,8 @@ import ScrollLink from '../../components/scroll-link';
     Op zich is deze query niets speciaals, behalve dat we een extra keer
     controleren dat het centraal kerkbestuur effectief instaat voor dit
     eredienstbestuur. Deze voorbeeldquery dient als basis voor meer uitgebreide
-    query's. Het is uiteraard mogelijk om meer dan alleen de inzenddatum van
-    het document op te vragen. Refereer hiervoor verder naar de Vendop API.
+    query's. Het is uiteraard mogelijk om meer dan alleen de inzenddatum van het
+    document op te vragen. Refereer hiervoor verder naar de Vendop API.
   </p>
 
   <p>
@@ -511,9 +593,8 @@ import ScrollLink from '../../components/scroll-link';
     als gemeente naar kan verwezen worden. Onderstaande query voert opnieuw een
     check uit tussen tussen gemeente, centraal kerkbestuur en het
     eredienstbestuur, om ervoor te zorgen dat we enkel kunnen verwijzen naar
-    documenten waarvoor het centraal kerkbestuur het originele document al
-    heeft gebundeld. Deze query geld opnieuw als basis voor meer uitgebreide
-    query's.
+    documenten waarvoor het centraal kerkbestuur het originele document al heeft
+    gebundeld. Deze query geld opnieuw als basis voor meer uitgebreide query's.
   </p>
 
   <Snippet @snippetFilename="refereren/voorbeeld-gemeente-grobbendonk.sparql" />
@@ -632,5 +713,4 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
     </:body>
   </AuTable>
-
 </template>
