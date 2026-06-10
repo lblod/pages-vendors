@@ -1,7 +1,7 @@
 digraph BerichtenData {
   node [shape="box", peripheries=2, margin=0, fontname="Monospace"];
-  edge [fontname="Monospace"]
-  rankdir="LR"
+  edge [fontname="Monospace"];
+  rankdir="LR";
 
   Conversation [label=<
     <table border="0" cellspacing="0" cellborder="1">
@@ -84,8 +84,8 @@ digraph BerichtenData {
     </table>
   >];
 
-  Conversation -> Message [label="schema:hasPart"]
-  Message -> File [label="nie:hasPart"]
-  Job -> Message [label="dct:subject"]
-  Job -> Error [label="task:error"]
+  Conversation -> Message [label="schema:hasPart"];
+  Message -> File [label="nie:hasPart"];
+  Job -> Message [label="dct:subject"];
+  Job -> Error [label="task:error"];
 }

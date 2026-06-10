@@ -1,0 +1,39 @@
+digraph ReferencingAsCKBModel {
+  node [shape="box", peripheries=2, margin=0, fontname="Monospace"];
+  edge [fontname="Monospace"];
+  rankdir="LR";
+
+  SubmissionDocumentCKB [label=<
+    <table border="0" cellspacing="0" cellborder="1">
+      <tr>
+        <td><b>ext:SubmissionDocument</b></td>
+      </tr>
+      <tr>
+        <td>
+          <i>Dit stelt het document van <br align="left" />
+het CKB voor dat een document <br align="left" />
+van een eredienstbestuur <br align="left" />
+refereert.
+          </i>
+        </td>
+      </tr>
+    </table>
+  >];
+
+  SubmissionDocumentEB [label=<
+    <table border="0" cellspacing="0" cellborder="1">
+      <tr>
+        <td><b>ext:SubmissionDocument</b></td>
+      </tr>
+      <tr>
+        <td>
+          <i>Dit stelt het document van<br align="left" />
+het eredienstbestuur voor.
+          </i>
+        </td>
+      </tr>
+    </table>
+  >];
+
+  SubmissionDocumentCKB -> SubmissionDocumentEB [label="dct:relation"];
+}
