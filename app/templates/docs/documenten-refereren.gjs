@@ -15,11 +15,11 @@ import ScrollLink from '../../components/scroll-link';
     Bij sommige documenten is het nodig om te refereren naar andere documenten.
     Dit is bijvoorbeeld het geval bij documenttype
     <em>&ldquo;Advies bij jaarrekening eredienstbestuur&rdquo;</em>
-    dat kan worden uitgezonden vanuit een gemeentebestuur. Hierbij moet kunnen
+    dat kan worden gepubliceerd door een gemeentebestuur. Hierbij moet kunnen
     worden verwezen naar een origineel document van het type
     <em>&ldquo;Jaarrekening&rdquo;</em>
-    dat werd opgesteld door een eredienstbestuur, maar eerst werd doorgestuurd
-    vanuit een Centraal Kerkbestuur onder het documenttype
+    dat werd opgesteld door een eredienstbestuur, maar eerst werd gebundeld door
+    een centraal kerkbestuur onder het documenttype
     <em>&ldquo;Jaarrekeningen van de besturen van de eredienst&rdquo;</em>.
     Hieronder wordt uitgelegd op welke documenttypes dit van toepassing is, hoe
     het model er uit ziet, en hoe documenten en regels kunnen worden opgevraagd.
@@ -37,10 +37,10 @@ import ScrollLink from '../../components/scroll-link';
     dit verloopt.
   </p>
 
-  <AuHeading @level="2" @skin="2">Refereren als Centraal Kerkbestuur</AuHeading>
+  <AuHeading @level="2" @skin="2">Refereren als centraal kerkbestuur</AuHeading>
 
   <p>
-    Als wordt gerefereerd vanuit een Centraal Kerkbestuur, dan gebeurt dit
+    Als wordt gerefereerd vanuit een centraal kerkbestuur, dan gebeurt dit
     steeds naar een document van een eredienstbestuur. Er worden geen Artikels
     gelinkt aan de referentie, omdat er geen kleuring (Goedkeuring, Aktename,
     Gunstig advies, &hellip;) moet worden meegegeven. In dit geval zal het
@@ -63,15 +63,15 @@ import ScrollLink from '../../components/scroll-link';
         alt="Minimaal model voor refereren als CKB"
       />
       <figcaption class="au-u-text-right">
-        Minimaal model voor het refereren als een CKB
+        Minimaal model voor het refereren als een centraal kerkbestuur
       </figcaption>
     </figure>
   </a>
 
   <p>
     Onderstaande tabel toont de beschikbare documenttypes die kunnen worden
-    verzonden vanuit een CKB en refereren naar een document van een
-    eredienstbestuur en naar welke documenttypes deze dan verwijzen.
+    gepubliceerd vanuit een centraal kerkbestuur en refereren naar een document
+    van een eredienstbestuur en naar welke documenttypes deze dan verwijzen.
   </p>
 
   <AuTable>
@@ -149,7 +149,7 @@ import ScrollLink from '../../components/scroll-link';
 
   <p>
     Buiten in uitzonderlijke gevallen, zal een gemeente, die naar een document
-    van een eredienst wil refereren dit enkel geldig kunnen doen als er al een
+    van een eredienst wil refereren, dit enkel geldig kunnen doen als er al een
     document bestaat, gepubliceerd door een centraal kerkbestuur, dat ook
     refereert naar datzelfde document van het eredienstbestuur. Dit verloopt dan
     niet via een enkele relatie, gelijk bij het centraal kerkbestuur, maar via
@@ -223,21 +223,6 @@ import ScrollLink from '../../components/scroll-link';
       </tr>
       <tr>
         <td>
-          Besluit over budget(wijziging) eredienstbestuur
-          <br />
-          <CodeInline
-          >https://data.vlaanderen.be/id/concept/BesluitType/df261490-cc74-4f80-b783-41c35e720b46</CodeInline>
-        </td>
-        <td>
-          Budget(wijziging) - Indiening bij toezichthoudende gemeente of
-          provincie
-          <br />
-          <CodeInline
-          >https://data.vlaanderen.be/id/concept/BesluitType/d85218e2-a75f-4a30-9182-512b5c9dd1b2</CodeInline>
-        </td>
-      </tr>
-      <tr>
-        <td>
           Besluit over meerjarenplan(aanpassing) eredienstbestuur
           <br />
           <CodeInline
@@ -250,20 +235,6 @@ import ScrollLink from '../../components/scroll-link';
           >https://data.vlaanderen.be/id/concept/BesluitDocumentType/2c9ada23-1229-4c7e-a53e-acddc9014e4e</CodeInline>
         </td>
       </tr>
-      <tr>
-        <td>
-          Besluit over meerjarenplan(aanpassing) eredienstbestuur
-          <br />
-          <CodeInline
-          >https://data.vlaanderen.be/id/concept/BesluitType/3fcf7dba-2e5b-4955-a489-6dd8285c013b</CodeInline>
-        </td>
-        <td>
-          Meerjarenplan(aanpassing)
-          <br />
-          <CodeInline
-          >https://data.vlaanderen.be/id/concept/BesluitType/f56c645d-b8e1-4066-813d-e213f5bc529f</CodeInline>
-        </td>
-      </tr>
     </:body>
   </AuTable>
 
@@ -274,9 +245,9 @@ import ScrollLink from '../../components/scroll-link';
   </AuHeading>
 
   <p>
-    Het Artikel is de tussenliggende entiteit tussen een SubmissionDocument van
-    een gemeente, provincie, &hellip; dat wil verwijzen naar een document van
-    een eredienst. Er wordt een Artikeltype meegegeven als specificatie zoals
+    Het Artikel is de tussenliggende entiteit tussen een document van een
+    gemeente, provincie, &hellip; dat wil verwijzen naar een document van een
+    eredienst. Er wordt een Artikeltype meegegeven als specificatie zoals
     goedkeuring, afkeuring, of het geven van advies.
   </p>
 
@@ -397,10 +368,9 @@ import ScrollLink from '../../components/scroll-link';
   <p>
     Er zijn twee documenttypes waarvoor een uitzondering bestaat. Bij deze
     documenttypes zal de gemeente, provincie, &hellip; direct kunnen verwijzen
-    naar een document, gepubliceerd door een eredienstbestuur zonder dat
-    hiervoor een document van een centraal kerkbestuur ook naar het document van
-    het eredienstbestuur moet refereren. Hiervoor wordt het model gebruikt zoals
-    bij
+    naar een document gepubliceerd door een eredienstbestuur zonder dat hiervoor
+    een document van een centraal kerkbestuur ook naar het document van het
+    eredienstbestuur moet refereren. Hiervoor wordt het model gebruikt zoals bij
     <ScrollLink @scrollToId="refereren-als-gemeente">Refereren als
       gemeentebestuur, provinciebestuur, &hellip;</ScrollLink>, maar dan waarbij
     <strong>het Artikel geen type</strong>
@@ -583,7 +553,7 @@ import ScrollLink from '../../components/scroll-link';
     controleren dat het centraal kerkbestuur effectief instaat voor dit
     eredienstbestuur. Deze voorbeeldquery dient als basis voor meer uitgebreide
     query's. Het is uiteraard mogelijk om meer dan alleen de inzenddatum van het
-    document op te vragen. Refereer hiervoor verder naar de Vendop API.
+    document op te vragen. Refereer hiervoor verder naar de Vendor API.
   </p>
 
   <p>
