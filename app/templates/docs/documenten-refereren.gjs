@@ -571,7 +571,7 @@ import ScrollLink from '../../components/scroll-link';
 
   <AuHeading @skin="2" @level="2">Gebruikte prefixen</AuHeading>
 
-  <AuTable @size="default">
+  <AuTable @size="small">
     <:header>
       <tr>
         <th>Prefix</th>
@@ -598,12 +598,6 @@ import ScrollLink from '../../components/scroll-link';
           >http://rdf.myexperiment.org/ontologies/base/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><CodeInline>mu:</CodeInline></td>
-        <td><AuLinkExternal
-            href="http://mu.semte.ch/vocabularies/core/"
-          >http://mu.semte.ch/vocabularies/core/</AuLinkExternal></td>
-      </tr>
-      <tr>
         <td><CodeInline>prov:</CodeInline></td>
         <td><AuLinkExternal
             href="http://www.w3.org/ns/prov#"
@@ -616,28 +610,10 @@ import ScrollLink from '../../components/scroll-link';
           >http://purl.org/dc/terms/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><CodeInline>adms:</CodeInline></td>
-        <td><AuLinkExternal
-            href="http://www.w3.org/ns/adms#"
-          >http://www.w3.org/ns/adms#</AuLinkExternal></td>
-      </tr>
-      <tr>
         <td><CodeInline>pav:</CodeInline></td>
         <td><AuLinkExternal
             href="http://purl.org/pav/"
           >http://purl.org/pav/</AuLinkExternal></td>
-      </tr>
-      <tr>
-        <td><CodeInline>nie:</CodeInline></td>
-        <td><AuLinkExternal
-            href="http://www.semanticdesktop.org/ontologies/2007/01/19/nie#"
-          >http://www.semanticdesktop.org/ontologies/2007/01/19/nie#</AuLinkExternal></td>
-      </tr>
-      <tr>
-        <td><CodeInline>nfo:</CodeInline></td>
-        <td><AuLinkExternal
-            href="http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#"
-          >http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#</AuLinkExternal></td>
       </tr>
       <tr>
         <td><CodeInline>nmo:</CodeInline></td>
@@ -652,34 +628,46 @@ import ScrollLink from '../../components/scroll-link';
           >http://mu.semte.ch/vocabularies/ext/</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><CodeInline>am:</CodeInline></td>
-        <td><AuLinkExternal
-            href="http://lblod.data.gift/vocabularies/automatische-melding/"
-          >http://lblod.data.gift/vocabularies/automatische-melding/</AuLinkExternal></td>
-      </tr>
-      <tr>
-        <td><CodeInline>sec:</CodeInline></td>
-        <td><AuLinkExternal
-            href="http://lblod.data.gift/vocabularies/security/"
-          >http://lblod.data.gift/vocabularies/security/</AuLinkExternal></td>
-      </tr>
-      <tr>
         <td><CodeInline>besluit:</CodeInline></td>
         <td><AuLinkExternal
             href="http://data.vlaanderen.be/ns/besluit#"
           >http://data.vlaanderen.be/ns/besluit#</AuLinkExternal></td>
       </tr>
       <tr>
-        <td><CodeInline>foaf:</CodeInline></td>
-        <td><AuLinkExternal
-            href="http://xmlns.com/foaf/0.1/"
-          >http://xmlns.com/foaf/0.1/</AuLinkExternal></td>
-      </tr>
-      <tr>
         <td><CodeInline>organisatie:</CodeInline></td>
         <td><AuLinkExternal
             href="http://lblod.data.gift/vocabularies/organisatie/"
           >http://lblod.data.gift/vocabularies/organisatie/</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><CodeInline>eli:</CodeInline></td>
+        <td><AuLinkExternal
+            href="http://data.europa.eu/eli/ontology#"
+          >http://data.europa.eu/eli/ontology#</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><CodeInline>skos:</CodeInline></td>
+        <td><AuLinkExternal
+            href="http://www.w3.org/2004/02/skos/core#"
+          >http://www.w3.org/2004/02/skos/core#</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><CodeInline>sh:</CodeInline></td>
+        <td><AuLinkExternal
+            href="http://www.w3.org/ns/shacl#"
+          >http://www.w3.org/ns/shacl#</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><CodeInline>ref:</CodeInline></td>
+        <td><AuLinkExternal
+            href="http://lblod.data.gift/vocabularies/referencing/"
+          >http://lblod.data.gift/vocabularies/referencing/</AuLinkExternal></td>
+      </tr>
+      <tr>
+        <td><CodeInline>lblodBesluit:</CodeInline></td>
+        <td><AuLinkExternal
+            href="http://lblod.data.gift/vocabularies/besluit/"
+          >http://lblod.data.gift/vocabularies/besluit/</AuLinkExternal></td>
       </tr>
     </:body>
   </AuTable>
