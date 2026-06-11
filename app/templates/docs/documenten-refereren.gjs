@@ -44,9 +44,9 @@ import ScrollLink from '../../components/scroll-link';
     steeds naar een document van een eredienstbestuur. Er worden geen Artikels
     gelinkt aan de referentie, omdat er geen kleuring (Goedkeuring, Aktename,
     Gunstig advies, &hellip;) moet worden meegegeven. In dit geval zal het
-    <CodeInline @language="turtle">ext:SubmissionDocument</CodeInline>
+    <CodeInline @language="turtle">foaf:Document</CodeInline>
     van de refererende inzending direct verwijzen naar het
-    <CodeInline @language="turtle">ext:SubmissionDocument</CodeInline>
+    <CodeInline @language="turtle">foaf:Document</CodeInline>
     van het gerefereerde document (in dit geval het document van het
     eredienstbestuur) door middel van het predicaat
     <CodeInline @language="turtle">dct:relation</CodeInline>. Onderstaande
@@ -275,11 +275,14 @@ import ScrollLink from '../../components/scroll-link';
       <tr>
         <td>Gerefereerd ingezonden document</td>
         <td><CodeInline @language="turtle">eli:has_part</CodeInline></td>
-        <td><CodeInline
-            @language="turtle"
-          >ext:SubmissionDocument</CodeInline></td>
-        <td>SubmissionDocument, het ingezonden document waar naar wordt
-          verwezen. Dit is meestal een document van een eredienstbestuur.</td>
+        <td><CodeInline @language="turtle">foaf:Document</CodeInline></td>
+        <td>het
+          <CodeInline @language="turtle">foaf:Document</CodeInline>; het
+          ingezonden document waarnaar wordt verwezen. Dit is meestal een
+          document van een eredienstbestuur. Vaak een
+          <CodeInline @language="turtle">besluit:Besluit</CodeInline>
+          maar in sommig gevallen het meer generieke
+          <CodeInline @language="turtle">foaf:Document</CodeInline></td>
       </tr>
       <tr>
         <td>Volgorde</td>

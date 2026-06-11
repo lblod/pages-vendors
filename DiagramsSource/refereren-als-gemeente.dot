@@ -6,7 +6,7 @@ digraph ReferencingAsCKBModel {
   SubmissionDocumentGemeente [label=<
     <table border="0" cellspacing="0" cellborder="1">
       <tr>
-        <td><b>ext:SubmissionDocument</b></td>
+        <td><b>foaf:Document</b></td>
       </tr>
       <tr>
         <td>
@@ -36,7 +36,7 @@ eredienstbestuur refereert.
   SubmissionDocumentCKB [color=grey fontcolor=grey label=<
     <table border="0" cellspacing="0" cellborder="1">
       <tr>
-        <td><b>ext:SubmissionDocument</b></td>
+        <td><b>foaf:Document</b></td>
       </tr>
       <tr>
         <td>
@@ -53,7 +53,7 @@ refereert.
   SubmissionDocumentEB [label=<
     <table border="0" cellspacing="0" cellborder="1">
       <tr>
-        <td><b>ext:SubmissionDocument</b></td>
+        <td><b>foaf:Document</b></td>
       </tr>
       <tr>
         <td>

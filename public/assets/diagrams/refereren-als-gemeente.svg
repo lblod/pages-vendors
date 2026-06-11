@@ -15,7 +15,7 @@
 <polygon fill="none" stroke="black" points="257.5,-186.5 4,-186.5 4,-99 257.5,-99 257.5,-186.5"/>
 <polygon fill="none" stroke="black" points="261.5,-190.5 0,-190.5 0,-95 261.5,-95 261.5,-190.5"/>
 <polygon fill="none" stroke="black" points="4,-161 4,-186.5 257.5,-186.5 257.5,-161 4,-161"/>
-<text xml:space="preserve" text-anchor="start" x="40" y="-171.2" font-family="Monospace" font-weight="bold" font-size="14.00">ext:SubmissionDocument</text>
+<text xml:space="preserve" text-anchor="start" x="77.12" y="-171.2" font-family="Monospace" font-weight="bold" font-size="14.00">foaf:Document</text>
 <polygon fill="none" stroke="black" points="4,-99 4,-161 257.5,-161 257.5,-99 4,-99"/>
 <text xml:space="preserve" text-anchor="start" x="7" y="-145.7" font-family="Monospace" font-size="14.00"> </text>
 <text xml:space="preserve" text-anchor="start" x="15.25" y="-145.7" font-family="Monospace" font-style="italic" font-size="14.00">Dit stelt het document van </text>
@@ -47,7 +47,7 @@
 <polygon fill="none" stroke="black" points="1083.5,-98.5 838.25,-98.5 838.25,-39 1083.5,-39 1083.5,-98.5"/>
 <polygon fill="none" stroke="black" points="1087.5,-102.5 834.25,-102.5 834.25,-35 1087.5,-35 1087.5,-102.5"/>
 <polygon fill="none" stroke="black" points="838.25,-73 838.25,-98.5 1083.5,-98.5 1083.5,-73 838.25,-73"/>
-<text xml:space="preserve" text-anchor="start" x="870.12" y="-83.2" font-family="Monospace" font-weight="bold" font-size="14.00">ext:SubmissionDocument</text>
+<text xml:space="preserve" text-anchor="start" x="907.25" y="-83.2" font-family="Monospace" font-weight="bold" font-size="14.00">foaf:Document</text>
 <polygon fill="none" stroke="black" points="838.25,-39 838.25,-73 1083.5,-73 1083.5,-39 838.25,-39"/>
 <text xml:space="preserve" text-anchor="start" x="841.25" y="-57.7" font-family="Monospace" font-size="14.00"> </text>
 <text xml:space="preserve" text-anchor="start" x="849.5" y="-57.7" font-family="Monospace" font-style="italic" font-size="14.00">Dit stelt het document voor </text>
@@ -67,7 +67,7 @@
 <polygon fill="none" stroke="grey" points="674.62,-91.5 412.88,-91.5 412.88,-4 674.62,-4 674.62,-91.5"/>
 <polygon fill="none" stroke="grey" points="678.62,-95.5 408.88,-95.5 408.88,0 678.62,0 678.62,-95.5"/>
 <polygon fill="none" stroke="grey" points="412.88,-66 412.88,-91.5 674.62,-91.5 674.62,-66 412.88,-66"/>
-<text xml:space="preserve" text-anchor="start" x="453" y="-76.2" font-family="Monospace" font-weight="bold" font-size="14.00" fill="grey">ext:SubmissionDocument</text>
+<text xml:space="preserve" text-anchor="start" x="490.12" y="-76.2" font-family="Monospace" font-weight="bold" font-size="14.00" fill="grey">foaf:Document</text>
 <polygon fill="none" stroke="grey" points="412.88,-4 412.88,-66 674.62,-66 674.62,-4 412.88,-4"/>
 <text xml:space="preserve" text-anchor="start" x="415.88" y="-50.7" font-family="Monospace" font-size="14.00" fill="grey"> </text>
 <text xml:space="preserve" text-anchor="start" x="424.12" y="-50.7" font-family="Monospace" font-style="italic" font-size="14.00" fill="grey">Dit stelt het document van </text>
