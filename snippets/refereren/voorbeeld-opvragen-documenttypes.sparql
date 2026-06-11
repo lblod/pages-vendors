@@ -1,0 +1,20 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX BestuurseenheidClassificatieCode: <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/>
+PREFIX ref: <http://lblod.data.gift/vocabularies/referencing/>
+PREFIX BesluitType: <https://data.vlaanderen.be/id/concept/BesluitType/>
+PREFIX lblodBesluit: <http://lblod.data.gift/vocabularies/besluit/>
+
+SELECT DISTINCT ?verwijsbaarType
+WHERE {
+  ?rule
+    rdf:type ref:ReferencingRule ;
+  	# Advies bij jaarrekening eredienstbestuur
+  	rdfs:domain BesluitType:79414af4-4f57-4ca3-aaa4-f8f1e015e71c ;
+  	rdfs:range ?verwijsbaarType ;
+    # Gemeente
+  	lblodBesluit:decidableBy BestuurseenheidClassificatieCode:5ab0e9b8a3b2ca7c5e000001 ;
+  	# Centraal bestuur van de eredienst
+    lblodBesluit:referredDecidableBy BestuurseenheidClassificatieCode:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+}
+

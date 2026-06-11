@@ -1,0 +1,33 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX meb: <http://rdf.myexperiment.org/ontologies/base/>
+PREFIX nmo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#>
+PREFIX pav: <http://purl.org/pav/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+SELECT DISTINCT ?subject ?dateSent
+WHERE {
+  # Eredienstbestuur "Kerkfabriek St.-Lambertus":
+  VALUES ?referredOrganisation { <http://data.lblod.info/id/besturenVanDeEredienst/4bafd12e53d6aaa218d74446202dc2ed> }
+
+  # Centraal kerkbestuur Grobbendonk:
+  VALUES ?referringOrganisation { <http://data.lblod.info/id/centraleBesturenVanDeEredienst/3e95fcbcdde9a46586f91b693985578f> }
+
+  # Type document van het eredienstbestuur:
+  VALUES ?referredType { <https://data.vlaanderen.be/id/concept/BesluitType/e44c535d-4339-4d15-bdbf-d4be6046de2c> }
+
+  # Link tussen het centraal kerkbestuur en het eredienstbestuur:
+  ?referringOrganisation org:hasSubOrganization ?referredOrganisation .
+
+  # Een inzending van het eredienstbestuur van het juiste type:
+  ?submission
+    rdf:type meb:Submission ;
+    nmo:sentDate ?dateSent ;
+    dcterms:subject ?subject ;
+    pav:createdBy ?referredOrganisation ;
+    prov:generated ?formData .
+  ?subject rdf:type ext:SubmissionDocument .
+  ?formData dcterms:type ?referredType .
+}

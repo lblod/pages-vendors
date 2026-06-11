@@ -62,6 +62,14 @@ import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
         @title="Leidinggevendendatabank"
         @content="De leidinggevenden databank volgt het applicatieprofiel mandatendatabank, maar werd uitgebreid met enkele subklassen en eigenschappen."
       />
+      <MenuCard
+        class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
+        @fullSize={{@fullSize}}
+        @badgeIcon="pencil"
+        @route="docs.documenten-refereren"
+        @title="Refereren"
+        @content="Documenten refereren voor sommige besluittypes tussen eredienstbesturen, Centrale Kerkbesturen en gemeente- of provinciebesturen."
+      />
     </div>
 
     <AuHeading @level="3" @skin="3" class="au-u-margin-top">Insturen</AuHeading>

@@ -1,7 +1,7 @@
 digraph SubmissionData {
   node [shape="box", peripheries=2, margin=0, fontname="Monospace"];
-  edge [fontname="Monospace"]
-  rankdir="LR"
+  edge [fontname="Monospace"];
+  rankdir="LR";
 
   Submission [label=<
     <table border="0" cellspacing="0" cellborder="1">
