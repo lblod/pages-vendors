@@ -672,6 +672,12 @@ import ScrollLink from '../../components/scroll-link';
             href="http://lblod.data.gift/vocabularies/besluit/"
           >http://lblod.data.gift/vocabularies/besluit/</AuLinkExternal></td>
       </tr>
+      <tr>
+        <td><CodeInline>foaf:</CodeInline></td>
+        <td><AuLinkExternal
+            href="http://xmlns.com/foaf/0.1/"
+          >http://xmlns.com/foaf/0.1/</AuLinkExternal></td>
+      </tr>
     </:body>
   </AuTable>
 </template>
