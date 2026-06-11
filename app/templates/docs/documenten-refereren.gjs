@@ -275,14 +275,14 @@ import ScrollLink from '../../components/scroll-link';
       <tr>
         <td>Gerefereerd ingezonden document</td>
         <td><CodeInline @language="turtle">eli:has_part</CodeInline></td>
-        <td><CodeInline @language="turtle">foaf:Document</CodeInline></td>
-        <td>het
-          <CodeInline @language="turtle">foaf:Document</CodeInline>; het
-          ingezonden document waarnaar wordt verwezen. Dit is meestal een
+        <td><CodeInline @language="turtle">foaf:Document</CodeInline>
+          of
+          <CodeInline @language="turtle">besluit:Besluit</CodeInline></td>
+        <td>Het ingezonden document waarnaar wordt verwezen. Dit is meestal een
           document van een eredienstbestuur. Vaak een
           <CodeInline @language="turtle">besluit:Besluit</CodeInline>
-          maar in sommig gevallen het meer generieke
-          <CodeInline @language="turtle">foaf:Document</CodeInline></td>
+          maar in sommige gevallen het meer generieke
+          <CodeInline @language="turtle">foaf:Document</CodeInline>.</td>
       </tr>
       <tr>
         <td>Volgorde</td>
