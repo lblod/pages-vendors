@@ -32,7 +32,7 @@ changes to the diagram source. Do this with
 
 in the `DiagramsSource` folder.
 
-- `ember serve`
+- `npm run start`
 - Visit your app at
   [http://localhost:4200/pages-vendors/](http://localhost:4200/pages-vendors/).
 - Visit your tests at
