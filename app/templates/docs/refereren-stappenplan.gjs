@@ -122,6 +122,27 @@ import Snippet from '../../components/snippet';
     </:body>
   </AuTable>
 
+  <p>
+    Onderstaand diagram vat de volledige flow samen: wie dient wat in, welke
+    stappen doorloop je als vendor, en via welke endpoints.
+  </p>
+
+  <a
+    class="block au-u-text-center"
+    href="assets/diagrams/stappenplan-v2.drawio.svg"
+  >
+    <figure>
+      <img
+        itemprop="thumbnail"
+        src="assets/diagrams/stappenplan-v2.drawio.svg"
+        alt="Flowdiagram van het stappenplan: van de inzendingen van het eredienstbestuur en het CKB, via de publieke stappen op de Centrale Vindplaats en de login en zoekstappen op de Vendor SPARQL API, tot het indienen van het advies via de Meldingsplicht API"
+      />
+      <figcaption class="au-u-text-right">
+        De volledige flow van dit stappenplan
+      </figcaption>
+    </figure>
+  </a>
+
   <AuHeading @level="2" @skin="2">Stap 1: Zoek de URI van je eigen
     bestuurseenheid (publiek)</AuHeading>
 
