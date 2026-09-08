@@ -25,6 +25,13 @@ import ScrollLink from '../../components/scroll-link';
     het model er uit ziet, en hoe documenten en regels kunnen worden opgevraagd.
   </p>
 
+  <p>
+    Voor een stap-voor-stap begeleiding van deze flow, met concrete voorbeelden
+    voor gemeenten en provincies, zie
+    <AuLink @route="docs.refereren-stappenplan">Stappenplan: refereren als
+      gemeente of provincie</AuLink>.
+  </p>
+
   <AuHeading @level="2" @skin="2">Documenttypes</AuHeading>
 
   <p>

@@ -16,6 +16,7 @@ Router.map(function () {
     this.route('publicatie-feed');
     this.route('mandaten-annotaties');
     this.route('documenten-refereren');
+    this.route('refereren-stappenplan');
     //Insturen
     this.route('meldingsplicht');
     this.route('berichtencentrum');
