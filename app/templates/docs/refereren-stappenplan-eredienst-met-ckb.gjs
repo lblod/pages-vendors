@@ -7,15 +7,22 @@ import CodeInline from '../../components/code-inline';
 import Snippet from '../../components/snippet';
 
 <template>
-  {{pageTitle "Stappenplan: refereren als gemeente of provincie"}}
+  {{pageTitle
+    "Stappenplan: refereren als gemeente of provincie naar een document van een eredienstbestuur met centraal bestuur"
+  }}
   <AuHeading @level="1" @skin="1">Stappenplan: refereren als gemeente of
-    provincie</AuHeading>
+    provincie naar een document van een eredienstbestuur met centraal bestuur</AuHeading>
 
   <p>
     Deze pagina begeleidt je, als vendor van een gemeente of provincie, stap
     voor stap door het publiceren van een besluit dat verwijst naar een document
     van een eredienstbestuur (bv. een kerkfabriek), en door het terugvinden van
-    het exacte document waarnaar je moet verwijzen.
+    het exacte document waarnaar je moet verwijzen. Deze pagina behandelt het
+    geval waarin het eredienstbestuur een centraal bestuur (CKB) heeft: het CKB
+    bundelt de documenten van de eredienstbesturen, en je besluit verwijst naar
+    het onderliggende document van het eredienstbestuur in die bundel. Het geval
+    van een eredienstbestuur zonder centraal bestuur komt op een aparte pagina
+    aan bod.
   </p>
 
   <p>
@@ -47,13 +54,11 @@ import Snippet from '../../components/snippet';
       <strong>De documenten van de erediensten.</strong>
       Je besluit kan enkel verwijzen naar een document dat al bestaat in de
       Databank Erediensten: het eredienstbestuur heeft zijn document (bv. de
-      jaarrekening) ingezonden, en voor de meeste besluittypes heeft het
-      centraal bestuur van de eredienst (CKB) dat document gebundeld. Als vendor
-      van de gemeente kan je die documenten niet aanmaken; de erediensten dienen
-      ze in via hun eigen tools. Als de zoekquery in stap 6 niets teruggeeft,
-      bestaat de keten nog niet. Probeer later opnieuw. Enkel bij schorsing en
-      opvragen bijkomende inlichtingen mag rechtstreeks naar een document van
-      het eredienstbestuur worden verwezen, zonder CKB-bundel.
+      jaarrekening) ingezonden, en het centraal bestuur van de eredienst (CKB)
+      heeft dat document gebundeld. Als vendor van de gemeente kan je die
+      documenten niet aanmaken; de erediensten dienen ze in via hun eigen tools.
+      Als de zoekquery in stap 6 niets teruggeeft, bestaat de keten nog niet.
+      Probeer later opnieuw.
     </li>
   </ol>
 
@@ -90,7 +95,7 @@ import Snippet from '../../components/snippet';
       </tr>
       <tr>
         <td>3</td>
-        <td>Controleer of een CKB instaat voor de kerkfabriek</td>
+        <td>Haal het CKB op van het eredienstbestuur</td>
         <td>Centrale Vindplaats (publiek)</td>
       </tr>
       <tr>
@@ -191,8 +196,8 @@ import Snippet from '../../components/snippet';
     >http://data.lblod.info/id/besturenVanDeEredienst/4bafd12e53d6aaa218d74446202dc2ed</CodeInline>.
   </p>
 
-  <AuHeading @level="2" @skin="2">Stap 3: Controleer of een CKB instaat voor de
-    kerkfabriek (publiek)</AuHeading>
+  <AuHeading @level="2" @skin="2">Stap 3: Haal het CKB op van het
+    eredienstbestuur (publiek)</AuHeading>
 
   <p>
     Vervang de
@@ -203,12 +208,11 @@ import Snippet from '../../components/snippet';
   <Snippet @snippetFilename="refereren-stappenplan/stap-3-ckb-relatie.sparql" />
 
   <p>
-    Als er een rij terugkomt, bundelt dat centraal bestuur documenten voor de
-    kerkfabriek, en zal je advies via zijn bundel naar het document van de
-    kerkfabriek verwijzen. Geen rij betekent dat er geen CKB is; bekijk de
-    regels voor het refereren op de pagina
-    <LinkTo @route="docs.documenten-refereren">Refereren van inzendingen</LinkTo>
-    voor wat er dan geldt.
+    Je krijgt het centraal bestuur dat instaat voor het eredienstbestuur, in het
+    voorbeeld CKB Grobbendonk. Dat CKB bundelt de documenten van de kerkfabriek;
+    je advies zal via zijn bundel naar het document van de kerkfabriek
+    verwijzen. Heeft je eredienstbestuur geen centraal bestuur, dan geldt de
+    flow zonder CKB, die op een aparte pagina wordt behandeld.
   </p>
 
   <AuHeading @level="2" @skin="2">Stap 4: Controleer naar welk documenttype je

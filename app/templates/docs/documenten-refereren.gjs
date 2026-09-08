@@ -28,8 +28,9 @@ import ScrollLink from '../../components/scroll-link';
   <p>
     Voor een stap-voor-stap begeleiding van deze flow, met concrete voorbeelden
     voor gemeenten en provincies, zie
-    <AuLink @route="docs.refereren-stappenplan">Stappenplan: refereren als
-      gemeente of provincie</AuLink>.
+    <AuLink @route="docs.refereren-stappenplan-eredienst-met-ckb">Stappenplan:
+      refereren als gemeente of provincie naar een document van een
+      eredienstbestuur met centraal bestuur</AuLink>.
   </p>
 
   <AuHeading @level="2" @skin="2">Documenttypes</AuHeading>
