@@ -1,0 +1,17 @@
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX am: <http://lblod.data.gift/vocabularies/automatische-melding/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX meb: <http://rdf.myexperiment.org/ontologies/base/>
+PREFIX nmo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT DISTINCT ?status ?statusLabel ?sentDate ?formData ?submissionDocument WHERE {
+  <http://data.lblod.info/submissions/31b7b6a0-2c85-11ee-aac3-018db9894181>
+    a meb:Submission ;
+    adms:status ?status .
+  OPTIONAL { ?status skos:prefLabel ?statusLabel . FILTER (LANG(?statusLabel) = "nl") }
+  OPTIONAL { <http://data.lblod.info/submissions/31b7b6a0-2c85-11ee-aac3-018db9894181> nmo:sentDate ?sentDate }
+  OPTIONAL { <http://data.lblod.info/submissions/31b7b6a0-2c85-11ee-aac3-018db9894181> prov:generated ?formData . ?formData a am:FormData }
+  OPTIONAL { <http://data.lblod.info/submissions/31b7b6a0-2c85-11ee-aac3-018db9894181> dct:subject ?submissionDocument }
+}

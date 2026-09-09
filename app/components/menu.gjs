@@ -200,6 +200,14 @@ import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
           @title="Stappenplan: refereren zonder centraal bestuur"
           @content="Stap-voor-stap begeleiding voor gemeenten en provincies om te refereren naar een document van een eredienstbestuur zonder centraal bestuur."
         />
+        <MenuCard
+          class="au-o-grid__item au-u-1-3@medium au-u-1-2@small"
+          @fullSize={{@fullSize}}
+          @badgeIcon="pencil"
+          @route="docs.stappenplan-inzending-indienen"
+          @title="Stappenplan: een inzending indienen en opvolgen"
+          @content="Stap-voor-stap begeleiding voor het indienen van een document via de Meldingsplicht API en het opvolgen van de status via de Vendor SPARQL API."
+        />
       </div>
     </AuAccordion>
   </nav>
