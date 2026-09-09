@@ -1,0 +1,37 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX meb: <http://rdf.myexperiment.org/ontologies/base/>
+PREFIX nmo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#>
+PREFIX pav: <http://purl.org/pav/>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+
+SELECT DISTINCT ?ckbSubmission ?ckbSubmissionSentDate ?ckbDocument ?eredienstDocument
+WHERE {
+  VALUES ?gemeente { <http://data.lblod.info/id/bestuurseenheden/f4641f7ba21f1a575993f1b523fb581af12269164006abeab121886037ac0cad> }
+  VALUES ?ckbBesluitType { <https://data.vlaanderen.be/id/concept/BesluitDocumentType/672bf096-dccd-40af-ab60-bd7de15cc461> }
+
+  ?betrokkenBestuur org:organization ?eredienst .
+  ?gemeente ere:betrokkenBestuur ?betrokkenBestuur .
+
+  ?ckbSubmission
+    rdf:type meb:Submission ;
+    nmo:sentDate ?ckbSubmissionSentDate ;
+    pav:createdBy ?ckb ;
+    dcterms:subject ?ckbDocument ;
+    prov:generated ?ckbFormData .
+
+  ?ckbFormData
+    dcterms:type ?ckbBesluitType ;
+    dcterms:relation ?eredienstDocument .
+
+  # Enkel de meest recente bundel per ?eredienstDocument behouden:
+  FILTER NOT EXISTS {
+    ?newerCkbSubmission
+      rdf:type meb:Submission ;
+      prov:generated / dcterms:relation ?eredienstDocument ;
+      nmo:sentDate ?newerSentDate .
+    FILTER (?newerSentDate > ?ckbSubmissionSentDate)
+  }
+}

@@ -1,0 +1,11 @@
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX meb: <http://rdf.myexperiment.org/ontologies/base/>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT DISTINCT ?submission ?status ?statusLabel WHERE {
+  ?submission a meb:Submission ;
+    dct:subject <http://een.domein.van.mechelen.be/id/besluitenlijsten/2026-09-09> ;
+    adms:status ?status .
+  ?status skos:prefLabel ?statusLabel .
+}
