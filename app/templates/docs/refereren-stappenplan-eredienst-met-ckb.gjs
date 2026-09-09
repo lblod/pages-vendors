@@ -74,7 +74,7 @@ import Snippet from '../../components/snippet';
           <CodeInline>https://loket.vendor-test.lblod.info</CodeInline>
           maak je de nodige documenten aan. Een
           <AuLinkExternal
-            href="/videos/aanmaak-jaarverslag-eredienst-met-ckb.webm"
+            href="videos/aanmaak-jaarverslag-eredienst-met-ckb.webm"
             @icon="external"
           >voorbeeldfilmpje</AuLinkExternal>
           toont hoe je dat doet.
