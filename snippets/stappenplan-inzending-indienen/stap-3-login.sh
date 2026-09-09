@@ -7,4 +7,4 @@ curl -X POST \
       "uri": "http://example.com/vendor/mechelen",
       "key": "your-secret-key"
     }
-}' https://api.loket.lokaalbestuur.vlaanderen.be/vendor/login
+}' https://loket.vendor-test.lblod.info/vendor/login

@@ -127,7 +127,6 @@ import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
           @badgeIcon="download"
           @route="docs.meldingsplicht-sparql"
           @title="Meldingsplicht SPARQL API"
-          @subtitle="[CONCEPT]"
           @content="Het opvragen van statusgegevens over eerder uitgevoerde meldingen in Loket via de Vendor SPARQL API."
         />
         <MenuCard

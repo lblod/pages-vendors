@@ -8,4 +8,4 @@ curl -X POST \
       "key": "your-secret-key"
     },
     "submittedResource": "http://een.domein.van.mechelen.be/id/besluitenlijsten/2026-09-09"
-}' https://api.loket.lokaalbestuur.vlaanderen.be/melding
+}' https://loket.vendor-test.lblod.info/melding

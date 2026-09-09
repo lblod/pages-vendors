@@ -1,5 +1,6 @@
 import { pageTitle } from 'ember-page-title';
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
+import AuAlert from '@appuniversum/ember-appuniversum/components/au-alert';
 import AuTable from '@appuniversum/ember-appuniversum/components/au-table';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import { LinkTo } from '@ember/routing';
@@ -11,6 +12,11 @@ import Snippet from '../../components/snippet';
   {{pageTitle "Stappenplan: een inzending indienen en opvolgen"}}
   <AuHeading @level="1" @skin="1">Stappenplan: een inzending indienen en
     opvolgen</AuHeading>
+
+  <AuAlert @skin="info" @icon="pencil" @closeable={{false}}>
+    <p>Deze pagina is nog volop in ontwikkeling. Feedback? Contacteer ons
+      gerust!</p>
+  </AuAlert>
 
   <p>
     Deze pagina begeleidt je, als vendor van een lokaal bestuur, stap voor stap
@@ -68,16 +74,9 @@ import Snippet from '../../components/snippet';
   <AuHeading @level="2" @skin="2">Overzicht van de stappen</AuHeading>
 
   <p>
-    Het aanmelden gebeurt via
-    <CodeInline
-    >https://api.loket.lokaalbestuur.vlaanderen.be/melding</CodeInline>, het
-    opvolgen via
-    <CodeInline>/vendor/login</CodeInline>,
-    <CodeInline>/vendor/sparql</CodeInline>
-    en
-    <CodeInline>/vendor/logout</CodeInline>
-    van dezelfde host. Hoe de Meldingsplicht API werkt, staat op de pagina over
-    de
+    Het aanmelden gebeurt via de Meldingsplicht API, het opvolgen via de Vendor
+    SPARQL API; beide draaien op dezelfde host. Hoe de Meldingsplicht API werkt,
+    staat op de pagina over de
     <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>; het
     inloggen en het sturen van query's via de Vendor SPARQL API op de pagina
     over de
@@ -129,6 +128,61 @@ import Snippet from '../../components/snippet';
       </tr>
     </:body>
   </AuTable>
+
+  <AuHeading @level="2" @skin="2">Endpoints</AuHeading>
+
+  <p>
+    De voorbeelden op deze pagina gebruiken de testomgeving: daar krijgt een
+    vendor zijn account en sleutel. Werk je in productie, vervang dan de host
+    door de productieomgeving uit de tabel. Zowel de Meldingsplicht API (stap 2)
+    als de Vendor SPARQL API (stappen 3 tot en met 5) draaien op dezelfde host.
+    Merk op dat de data op de testomgeving niet dezelfde is als de
+    productiedata.
+  </p>
+
+  <AuTable>
+    <:header>
+      <tr>
+        <th>Omgeving</th>
+        <th>Loket</th>
+      </tr>
+    </:header>
+    <:body>
+      <tr>
+        <td>Test</td>
+        <td>
+          <CodeInline>https://loket.vendor-test.lblod.info</CodeInline>
+        </td>
+      </tr>
+      <tr>
+        <td>Productie</td>
+        <td>
+          <CodeInline>https://api.loket.lokaalbestuur.vlaanderen.be</CodeInline>
+        </td>
+      </tr>
+    </:body>
+  </AuTable>
+
+  <p>
+    Onderstaand diagram vat de volledige flow samen: wie publiceert wat, wat
+    gebeurt er automatisch, en via welke endpoints.
+  </p>
+
+  <a
+    class="block au-u-text-center"
+    href="assets/diagrams/stappenplan-inzending-indienen.drawio.svg"
+  >
+    <figure>
+      <img
+        itemprop="thumbnail"
+        src="assets/diagrams/stappenplan-inzending-indienen.drawio.svg"
+        alt="Flowdiagram van het stappenplan: het publiceren van het document als RDFa-pagina op de website van het bestuur, het indienen van de melding via de Meldingsplicht API, de automatische harvest van de pagina door het Loket, en het inloggen, opvolgen van de status en uitloggen via de Vendor SPARQL API"
+      />
+      <figcaption class="au-u-text-right">
+        De volledige flow van dit stappenplan
+      </figcaption>
+    </figure>
+  </a>
 
   <AuHeading @level="2" @skin="2">Stap 1: Publiceer het document als RDFa-pagina</AuHeading>
 
@@ -258,8 +312,7 @@ import Snippet from '../../components/snippet';
     URI uit stap 2 mee. Ze toont de status, en vanaf de inzending verstuurd is
     ook de verzenddatum, de gegenereerde formuliergegevens en het geharveste
     document. De query wordt gestuurd naar
-    <CodeInline
-    >https://api.loket.lokaalbestuur.vlaanderen.be/vendor/sparql</CodeInline>
+    <CodeInline>https://loket.vendor-test.lblod.info/vendor/sparql</CodeInline>
     met dezelfde sessie cookie als bij het inloggen. Meer voorbeelden van
     query's op inzendingen staan op de pagina over de
     <LinkTo @route="docs.meldingsplicht-sparql">Meldingsplicht SPARQL API</LinkTo>.
@@ -401,7 +454,7 @@ import Snippet from '../../components/snippet';
       <CodeInline>POST</CodeInline>
       naar
       <CodeInline
-      >https://api.loket.lokaalbestuur.vlaanderen.be/delete-melding</CodeInline>
+      >https://loket.vendor-test.lblod.info/delete-melding</CodeInline>
       (zie de pagina over de
       <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>).
     </li>

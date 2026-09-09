@@ -21,6 +21,33 @@ import Snippet from '../../components/snippet';
 
   <AuHeading @level="2" @skin="2">Aanmaken nieuwe melding</AuHeading>
   <AuHeading @level="3" @skin="3">API endpoint</AuHeading>
+    <p>
+    Deze host bestaat in een test- en een productieomgeving:
+  </p>
+  <AuTable>
+    <:header>
+      <tr>
+        <th>Omgeving</th>
+        <th>Host</th>
+      </tr>
+    </:header>
+    <:body>
+      <tr>
+        <td>Test</td>
+        <td>
+          <CodeInline>https://loket.vendor-test.lblod.info</CodeInline>
+          (voorheen
+          <CodeInline>api.loket.lblod.info</CodeInline>)
+        </td>
+      </tr>
+      <tr>
+        <td>Productie</td>
+        <td>
+          <CodeInline>https://api.loket.lokaalbestuur.vlaanderen.be</CodeInline>
+        </td>
+      </tr>
+    </:body>
+  </AuTable>
   <p>
     Het aanmaken van een nieuwe melding gebeurt via een request naar
   </p>

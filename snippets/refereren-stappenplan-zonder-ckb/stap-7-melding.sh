@@ -8,4 +8,4 @@ curl -X POST \
       "key": "your-secret-key"
     },
     "submittedResource": "http://data.londerzeel.be/besluiten/2026-advies-jaarrekening-christengemeente"
-}' https://api.loket.lokaalbestuur.vlaanderen.be/melding
+}' https://loket.vendor-test.lblod.info/melding

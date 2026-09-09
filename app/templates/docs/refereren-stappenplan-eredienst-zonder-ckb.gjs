@@ -1,5 +1,6 @@
 import { pageTitle } from 'ember-page-title';
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
+import AuAlert from '@appuniversum/ember-appuniversum/components/au-alert';
 import AuTable from '@appuniversum/ember-appuniversum/components/au-table';
 import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import { LinkTo } from '@ember/routing';
@@ -12,6 +13,11 @@ import Snippet from '../../components/snippet';
   }}
   <AuHeading @level="1" @skin="1">Stappenplan: refereren als gemeente of
     provincie naar een document van een eredienstbestuur zonder centraal bestuur</AuHeading>
+
+  <AuAlert @skin="info" @icon="pencil" @closeable={{false}}>
+    <p>Deze pagina is nog volop in ontwikkeling. Feedback? Contacteer ons
+      gerust!</p>
+  </AuAlert>
 
   <p>
     Deze pagina begeleidt je, als vendor van een gemeente of provincie, stap
@@ -66,15 +72,28 @@ import Snippet from '../../components/snippet';
       besluit refereert. Als vendor van de gemeente kan je het niet aanmaken.
       Als de zoekquery in stap 6 niets teruggeeft, heeft het eredienstbestuur
       nog niet ingediend. Probeer later opnieuw.
+      <ul>
+        <li>
+          Voor testdoeleinden kan je deze voorwaarde zelf vervullen: op de
+          testomgeving
+          <CodeInline>https://loket.vendor-test.lblod.info</CodeInline>
+          maak je het nodige document aan. Een
+          <AuLinkExternal
+            href="/videos/aanmaak-jaarverslag-eredienst-zonder-ckb.webm"
+            @icon="external"
+          >voorbeeldfilmpje</AuLinkExternal>
+          toont hoe je dat doet.
+        </li>
+      </ul>
     </li>
   </ol>
 
   <AuHeading @level="2" @skin="2">Overzicht van de stappen</AuHeading>
 
   <p>
-    De query's in de stappen 1 tot en met 4 worden publiek uitgevoerd op
-    <CodeInline>https://centrale-vindplaats.lblod.info/sparql</CodeInline>. Voor
-    het uitvoeren van SPARQL query's op dit endpoint, zie de pagina over het
+    De query's in de stappen 1 tot en met 4 worden publiek uitgevoerd op de
+    Centrale Vindplaats. Voor het uitvoeren van SPARQL query's op dat endpoint,
+    zie de pagina over het
     <LinkTo @route="docs.centrale-vindplaats-sparql">Centrale Vindplaats SPARQL
       endpoint</LinkTo>. Het inloggen en het sturen van query's via de Vendor
     SPARQL API staat uitgelegd op de pagina over de
@@ -133,6 +152,54 @@ import Snippet from '../../components/snippet';
       </tr>
     </:body>
   </AuTable>
+
+  <AuHeading @level="2" @skin="2">Endpoints</AuHeading>
+
+  <p>
+    De voorbeelden op deze pagina gebruiken de testomgeving: daar krijgt een
+    vendor zijn account en sleutel. Werk je in productie, vervang dan de hosts
+    door de productieomgeving uit de tabel. Merk op dat de data op de
+    testomgeving niet dezelfde is als de productiedata.
+  </p>
+
+  <AuTable>
+    <:header>
+      <tr>
+        <th>Omgeving</th>
+        <th>Databank Erediensten (stappen 5 en 6)</th>
+        <th>Loket (stap 7)</th>
+      </tr>
+    </:header>
+    <:body>
+      <tr>
+        <td>Test</td>
+        <td>
+          <CodeInline
+          >https://databankerediensten.vendor-test.lblod.info</CodeInline>
+        </td>
+        <td>
+          <CodeInline>https://loket.vendor-test.lblod.info</CodeInline>
+        </td>
+      </tr>
+      <tr>
+        <td>Productie</td>
+        <td>
+          <CodeInline
+          >https://databankerediensten.lokaalbestuur.vlaanderen.be</CodeInline>
+        </td>
+        <td>
+          <CodeInline>https://api.loket.lokaalbestuur.vlaanderen.be</CodeInline>
+        </td>
+      </tr>
+    </:body>
+  </AuTable>
+
+  <p>
+    De publieke query's in de stappen 1 tot en met 4 draaien op de Centrale
+    Vindplaats,
+    <CodeInline>https://centrale-vindplaats.lblod.info/sparql</CodeInline>. Dit
+    endpoint is publiek en heeft geen aparte omgeving.
+  </p>
 
   <p>
     Onderstaand diagram vat de volledige flow samen: wie dient wat in, welke
@@ -287,7 +354,7 @@ import Snippet from '../../components/snippet';
     terugkrijgt. Vervang de gemeente-URI en het BesluitType door je eigen
     waarden (uit stappen 1 en 4). De query wordt gestuurd naar
     <CodeInline
-    >https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/sparql</CodeInline>
+    >https://databankerediensten.vendor-test.lblod.info/vendor/sparql</CodeInline>
     met dezelfde sessie cookie als bij het inloggen. Meer voorbeelden van
     query's op deze databank staan op de pagina over de
     <LinkTo @route="docs.erediensten-toezichtsdatabank-sparql">Erediensten

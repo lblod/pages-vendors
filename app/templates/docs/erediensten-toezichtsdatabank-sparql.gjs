@@ -26,6 +26,33 @@ import Snippet from '../../components/snippet';
   </p>
   <CodeBlock>https://databankerediensten.lokaalbestuur.vlaanderen.be</CodeBlock>
   <p>
+    Deze host bestaat in een test- en een productieomgeving:
+  </p>
+  <AuTable>
+    <:header>
+      <tr>
+        <th>Omgeving</th>
+        <th>Host</th>
+      </tr>
+    </:header>
+    <:body>
+      <tr>
+        <td>Test</td>
+        <td>
+          <CodeInline
+          >https://databankerediensten.vendor-test.lblod.info</CodeInline>
+        </td>
+      </tr>
+      <tr>
+        <td>Productie</td>
+        <td>
+          <CodeInline
+          >https://databankerediensten.lokaalbestuur.vlaanderen.be</CodeInline>
+        </td>
+      </tr>
+    </:body>
+  </AuTable>
+  <p>
     Ter volledigheid staat hieronder de volledige lijst aan URL's voor het
     inloggen, sturen van query's en het uitloggen respectievelijk.
   </p>

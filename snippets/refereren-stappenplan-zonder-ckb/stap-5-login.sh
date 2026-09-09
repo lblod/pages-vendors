@@ -7,4 +7,4 @@ curl -X POST \
       "uri": "http://data.lblod.info/vendors/your-vendor",
       "key": "your-secret-key"
     }
-}' https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/login
+}' https://databankerediensten.vendor-test.lblod.info/vendor/login
