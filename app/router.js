@@ -17,6 +17,7 @@ Router.map(function () {
     this.route('mandaten-annotaties');
     this.route('documenten-refereren');
     this.route('refereren-stappenplan-eredienst-met-ckb');
+    this.route('refereren-stappenplan-eredienst-zonder-ckb');
     //Insturen
     this.route('meldingsplicht');
     this.route('berichtencentrum');

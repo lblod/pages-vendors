@@ -8,34 +8,39 @@ import Snippet from '../../components/snippet';
 
 <template>
   {{pageTitle
-    "Stappenplan: refereren als gemeente of provincie naar een document van een eredienstbestuur met centraal bestuur"
+    "Stappenplan: refereren als gemeente of provincie naar een document van een eredienstbestuur zonder centraal bestuur"
   }}
   <AuHeading @level="1" @skin="1">Stappenplan: refereren als gemeente of
-    provincie naar een document van een eredienstbestuur met centraal bestuur</AuHeading>
+    provincie naar een document van een eredienstbestuur zonder centraal bestuur</AuHeading>
 
   <p>
     Deze pagina begeleidt je, als vendor van een gemeente of provincie, stap
     voor stap door het publiceren van een besluit dat verwijst naar een document
-    van een eredienstbestuur (bv. een kerkfabriek), en door het terugvinden van
-    het exacte document waarnaar je moet verwijzen. Deze pagina behandelt het
-    geval waarin het eredienstbestuur een centraal bestuur (CKB) heeft: het CKB
-    bundelt de documenten van de eredienstbesturen, en je besluit verwijst naar
-    het onderliggende document van het eredienstbestuur in die bundel. Het geval
-    van een eredienstbestuur zonder centraal bestuur wordt behandeld op de
-    pagina over het
-    <LinkTo @route="docs.refereren-stappenplan-eredienst-zonder-ckb">stappenplan
-      voor een eredienstbestuur zonder centraal bestuur</LinkTo>.
+    van een eredienstbestuur
+    <strong>zonder centraal bestuur van de eredienst (CKB)</strong>, en door het
+    terugvinden van het exacte document waarnaar je moet verwijzen. Eén publieke
+    query (stap 3) vertelt je in welke flow je zit. Heeft je eredienstbestuur
+    wél een CKB, dan geldt een andere flow: zie het
+    <LinkTo @route="docs.refereren-stappenplan-eredienst-met-ckb">stappenplan
+      voor een eredienstbestuur met centraal bestuur</LinkTo>.
+  </p>
+
+  <p>
+    Merk op dat hele eredienstfamilies nooit een CKB hebben (protestantse,
+    israëlitische en anglicaanse eredienstbesturen); ook sommige kerkfabrieken
+    en islamitische of orthodoxe besturen hebben er geen. Voor al die is deze
+    pagina de normale flow, geen uitzondering.
   </p>
 
   <p>
     Doorheen de hele pagina wordt hetzelfde voorbeeld gevolgd: gemeente
-    Grobbendonk publiceert een
+    Londerzeel publiceert een
     <em>"Advies bij jaarrekening eredienstbestuur"</em>
-    over de jaarrekening van de Kerkfabriek St.-Lambertus van Grobbendonk. Alle
-    voorbeelden zijn uitvoerbaar met deze voorbeeldwaarden. Waar je eigen
-    waarden moeten worden ingevuld, staat dit in de tekst vermeld. De volledige
-    regels voor het refereren (welk type besluit kan verwijzen naar welk type
-    document) staan op de pagina
+    over de jaarrekening van de Christengemeente Londerzeel (een protestantse
+    gemeente, zonder CKB). Alle voorbeelden zijn uitvoerbaar met deze
+    voorbeeldwaarden. Waar je eigen waarden moeten worden ingevuld, staat dit in
+    de tekst vermeld. De volledige regels voor het refereren (welk type besluit
+    kan verwijzen naar welk type document) staan op de pagina
     <LinkTo @route="docs.documenten-refereren">Refereren van inzendingen</LinkTo>.
   </p>
 
@@ -53,14 +58,14 @@ import Snippet from '../../components/snippet';
       Stap 1 toont hoe je die terugvindt als je ze nog niet kent.
     </li>
     <li>
-      <strong>De documenten van de erediensten.</strong>
+      <strong>Het document van het eredienstbestuur.</strong>
       Je besluit kan enkel verwijzen naar een document dat al bestaat in de
       Databank Erediensten: het eredienstbestuur heeft zijn document (bv. de
-      jaarrekening) ingezonden, en het centraal bestuur van de eredienst (CKB)
-      heeft dat document gebundeld. Als vendor van de gemeente kan je die
-      documenten niet aanmaken; de erediensten dienen ze in via hun eigen tools.
-      Als de zoekquery in stap 6 niets teruggeeft, bestaat de keten nog niet.
-      Probeer later opnieuw.
+      jaarrekening) ingezonden. In deze flow is er geen CKB en geen bundel: het
+      eredienstbestuur dient het document zelf in, en dat document is wat je
+      besluit refereert. Als vendor van de gemeente kan je het niet aanmaken.
+      Als de zoekquery in stap 6 niets teruggeeft, heeft het eredienstbestuur
+      nog niet ingediend. Probeer later opnieuw.
     </li>
   </ol>
 
@@ -97,7 +102,7 @@ import Snippet from '../../components/snippet';
       </tr>
       <tr>
         <td>3</td>
-        <td>Haal het CKB op van het eredienstbestuur</td>
+        <td>Controleer dat het eredienstbestuur geen centraal bestuur heeft</td>
         <td>Centrale Vindplaats (publiek)</td>
       </tr>
       <tr>
@@ -136,13 +141,13 @@ import Snippet from '../../components/snippet';
 
   <a
     class="block au-u-text-center"
-    href="assets/diagrams/stappenplan-v2.drawio.svg"
+    href="assets/diagrams/stappenplan-no-cb.drawio.svg"
   >
     <figure>
       <img
         itemprop="thumbnail"
-        src="assets/diagrams/stappenplan-v2.drawio.svg"
-        alt="Flowdiagram van het stappenplan: van de inzendingen van het eredienstbestuur en het CKB, via de publieke stappen op de Centrale Vindplaats en de login en zoekstappen op de Vendor SPARQL API, tot het indienen van het advies via de Meldingsplicht API"
+        src="assets/diagrams/stappenplan-no-cb.drawio.svg"
+        alt="Flowdiagram van het stappenplan zonder centraal bestuur: van de inzending van het eredienstbestuur, via de publieke stappen op de Centrale Vindplaats en de login en zoekstappen op de Vendor SPARQL API, tot het indienen van het advies via de Meldingsplicht API"
       />
       <figcaption class="au-u-text-right">
         De volledige flow van dit stappenplan
@@ -155,7 +160,7 @@ import Snippet from '../../components/snippet';
 
   <p>
     Vervang
-    <CodeInline>grobbendonk</CodeInline>
+    <CodeInline>londerzeel</CodeInline>
     door je eigen gemeente en behoud de filter op de classificatie: die houdt
     besturen met dezelfde naam uit elkaar (bv. het OCMW). Voor een provincie
     gebruik je de classificatiecode
@@ -165,14 +170,14 @@ import Snippet from '../../components/snippet';
   </p>
 
   <Snippet
-    @snippetFilename="refereren-stappenplan/stap-1-zoek-eigen-bestuurseenheid.sparql"
+    @snippetFilename="refereren-stappenplan-zonder-ckb/stap-1-zoek-eigen-bestuurseenheid.sparql"
   />
 
   <p>
     Je ziet nu precies één rij: je bestuurseenheid en zijn URI. Voor het
     voorbeeld is dat
     <CodeInline
-    >http://data.lblod.info/id/bestuurseenheden/f4641f7ba21f1a575993f1b523fb581af12269164006abeab121886037ac0cad</CodeInline>.
+    >http://data.lblod.info/id/bestuurseenheden/169b6bfa2d8ee340f266af26d1a6055182214082dca720b8817d3893692f3068</CodeInline>.
   </p>
 
   <AuHeading @level="2" @skin="2">Stap 2: Zoek de eredienstbesturen waar je
@@ -185,38 +190,41 @@ import Snippet from '../../components/snippet';
   </p>
 
   <Snippet
-    @snippetFilename="refereren-stappenplan/stap-2-betrokken-eredienstbesturen.sparql"
+    @snippetFilename="refereren-stappenplan-zonder-ckb/stap-2-betrokken-eredienstbesturen.sparql"
   />
 
   <p>
-    Je krijgt één rij per eredienstbestuur, met zijn naam en classificatie
-    ("Bestuur van de eredienst" voor bv. kerkfabrieken, "Centraal bestuur van de
-    eredienst" voor het CKB). In het voorbeeld: twee kerkfabrieken en CKB
-    Grobbendonk. Kies de kerkfabriek waarover je besluit gaat. Voorbeeld:
-    Kerkfabriek St.-Lambertus van Grobbendonk,
+    Je krijgt één rij per eredienstbestuur, met zijn naam en classificatie. De
+    lijst kan beide flows mengen. In het voorbeeld: vier kerkfabrieken en CKB
+    Londerzeel (die hebben een CKB, dus voor hen geldt het
+    <LinkTo @route="docs.refereren-stappenplan-eredienst-met-ckb">stappenplan
+      met centraal bestuur</LinkTo>), en de Christengemeente Londerzeel, die er
+    geen heeft. Kies het eredienstbestuur waarover je besluit gaat. Voorbeeld:
+    Christengemeente Londerzeel,
     <CodeInline
-    >http://data.lblod.info/id/besturenVanDeEredienst/4bafd12e53d6aaa218d74446202dc2ed</CodeInline>.
+    >http://data.lblod.info/id/besturenVanDeEredienst/635935898DE5818A7C9F42F0</CodeInline>.
   </p>
 
-  <AuHeading @level="2" @skin="2">Stap 3: Haal het CKB op van het
-    eredienstbestuur (publiek)</AuHeading>
+  <AuHeading @level="2" @skin="2">Stap 3: Controleer dat het eredienstbestuur
+    geen centraal bestuur heeft (publiek)</AuHeading>
 
   <p>
     Vervang de
     <CodeInline>besturenVanDeEredienst</CodeInline>
-    URI door de kerkfabriek uit stap 2.
+    URI door het eredienstbestuur uit stap 2.
   </p>
 
-  <Snippet @snippetFilename="refereren-stappenplan/stap-3-ckb-relatie.sparql" />
+  <Snippet
+    @snippetFilename="refereren-stappenplan-zonder-ckb/stap-3-ckb-relatie.sparql"
+  />
 
   <p>
-    Je krijgt het centraal bestuur dat instaat voor het eredienstbestuur, in het
-    voorbeeld CKB Grobbendonk. Dat CKB bundelt de documenten van de kerkfabriek;
-    je advies zal via zijn bundel naar het document van de kerkfabriek
-    verwijzen. Heeft je eredienstbestuur geen centraal bestuur, dan geldt de
-    flow zonder CKB, die behandeld wordt op de pagina over het
-    <LinkTo @route="docs.refereren-stappenplan-eredienst-zonder-ckb">stappenplan
-      voor een eredienstbestuur zonder centraal bestuur</LinkTo>.
+    <strong>Geen rij betekent dat je in de juiste handleiding zit.</strong>
+    Er is geen centraal bestuur dat documenten bundelt voor dit
+    eredienstbestuur, dus je besluit verwijst rechtstreeks naar zijn document.
+    Een rij betekent dat er toch een CKB is: gebruik dan het
+    <LinkTo @route="docs.refereren-stappenplan-eredienst-met-ckb">stappenplan
+      met centraal bestuur</LinkTo>.
   </p>
 
   <AuHeading @level="2" @skin="2">Stap 4: Controleer naar welk documenttype je
@@ -225,27 +233,25 @@ import Snippet from '../../components/snippet';
   <p>
     De regels voor het refereren zijn publieke data. Deze query beantwoordt de
     vraag: voor mijn type besluit, beslist door mijn soort bestuur, naar welk
-    documenttype mag ik verwijzen als het document afkomstig is van een CKB?
-    Vervang het BesluitType door je eigen type besluit, en de classificatiecodes
-    door de jouwe (eerste regel: Gemeente, tweede regel: Centraal bestuur van de
-    eredienst
-    <CodeInline>f9cac08a-13c1-49da-9bcb-f650b0604054</CodeInline>; voor een
-    provincie gebruik je
+    documenttype mag ik verwijzen als het document afkomstig is van het
+    eredienstbestuur zelf? Vervang het BesluitType door je eigen type besluit,
+    en de classificatiecodes door de jouwe (eerste regel: Gemeente, tweede
+    regel: Bestuur van de eredienst
+    <CodeInline>66ec74fd-8cfc-4e16-99c6-350b35012e86</CodeInline>, de klasse van
+    het eredienstbestuur; voor een provincie gebruik je
     <CodeInline>...5ab0e9b8a3b2ca7c5e000000</CodeInline>).
   </p>
 
   <Snippet
-    @snippetFilename="refereren-stappenplan/stap-4-verwijsbaar-documenttype.sparql"
+    @snippetFilename="refereren-stappenplan-zonder-ckb/stap-4-verwijsbaar-documenttype.sparql"
   />
 
   <p>
-    Voor het voorbeeldadvies is het antwoord BesluitDocumentType
+    Voor het voorbeeldadvies is het antwoord BesluitType
     <CodeInline
-    >https://data.vlaanderen.be/id/concept/BesluitDocumentType/672bf096-dccd-40af-ab60-bd7de15cc461</CodeInline>
-    "Gezamenlijk indienen van de jaarrekeningen van de besturen van de eredienst
-    door het centraal bestuur van de eredienst." Dat is het type van de
-    CKB-bundel: je besluit verwijst naar het document van de kerkfabriek binnen
-    zo'n bundel. Dit documenttype-URI heb je nodig in de zoekquery in stap 6.
+    >https://data.vlaanderen.be/id/concept/BesluitType/e44c535d-4339-4d15-bdbf-d4be6046de2c</CodeInline>
+    "Jaarrekening": het type van het eigen document van het eredienstbestuur.
+    Dit documenttype-URI heb je nodig in de zoekquery in stap 6.
   </p>
 
   <AuHeading @level="2" @skin="2">Stap 5: Log in op de Vendor SPARQL API</AuHeading>
@@ -259,7 +265,9 @@ import Snippet from '../../components/snippet';
     om te leren hoe het inloggen werkt.
   </p>
 
-  <Snippet @snippetFilename="refereren-stappenplan/stap-5-login.sh" />
+  <Snippet
+    @snippetFilename="refereren-stappenplan-zonder-ckb/stap-5-login.sh"
+  />
 
   <p>
     Een sessiedocument (<CodeInline>mu.semte.ch/sessions/...</CodeInline>)
@@ -272,9 +280,11 @@ import Snippet from '../../components/snippet';
   <p>
     Dit is de query die je uitvoert voor je het besluit opstelt: "naar welke
     documenten kan ons volgende besluit verwijzen?". Ze geeft, voor de
-    eredienstbesturen waar je bestuur bij betrokken is, de CKB-bundel terug en
-    het onderliggende document van het eredienstbestuur waarnaar die bundel
-    verwijst. Vervang de gemeente-URI en het BesluitDocumentType door je eigen
+    eredienstbesturen waar je bestuur bij betrokken is, hun eigen ingezonden
+    documenten terug van het type uit stap 4. In deze flow ziet je login de
+    inzending van het eredienstbestuur rechtstreeks: zonder centraal bestuur is
+    er geen bundel, het document van het eredienstbestuur zelf is wat je
+    terugkrijgt. Vervang de gemeente-URI en het BesluitType door je eigen
     waarden (uit stappen 1 en 4). De query wordt gestuurd naar
     <CodeInline
     >https://databankerediensten.lokaalbestuur.vlaanderen.be/vendor/sparql</CodeInline>
@@ -285,7 +295,7 @@ import Snippet from '../../components/snippet';
   </p>
 
   <Snippet
-    @snippetFilename="refereren-stappenplan/stap-6-refereerbare-documenten.sparql"
+    @snippetFilename="refereren-stappenplan-zonder-ckb/stap-6-refereerbare-documenten.sparql"
   />
 
   <p>
@@ -293,13 +303,17 @@ import Snippet from '../../components/snippet';
   </p>
   <ul>
     <li>
-      <CodeInline>?ckbSubmission</CodeInline>
+      <CodeInline>?eredienstSubmission</CodeInline>
       /
-      <CodeInline>?ckbDocument</CodeInline>: de CKB-bundel en zijn document.
+      <CodeInline>?eredienstSubmissionSentDate</CodeInline>: de eigen inzending
+      van het eredienstbestuur van het document.
     </li>
     <li>
-      <CodeInline>?eredienstDocument</CodeInline>: het document van het
-      eredienstbestuur (bv. de jaarrekening).
+      <CodeInline>?eredienst</CodeInline>: om welk eredienstbestuur het gaat.
+    </li>
+    <li>
+      <CodeInline>?eredienstDocument</CodeInline>: het document (bv. de
+      jaarrekening).
       <strong>Dit is de URI waarnaar je Artikel zal verwijzen</strong>
       (stap 7).
     </li>
@@ -310,11 +324,13 @@ import Snippet from '../../components/snippet';
   </p>
   <ul>
     <li>
-      <strong>Laat de query zoals ze is.</strong>
-      Je login ziet de CKB-bundel en de document-URI van het eredienstbestuur
-      waarnaar die verwijst, maar niet de inzending van het eredienstbestuur
-      zelf. Voeg geen join op die inzending toe: ze is onzichtbaar voor je login
-      en je query geeft dan zonder foutmelding een leeg resultaat.
+      <strong>In één lijst kunnen eredienstbesturen van beide flows voorkomen.</strong>
+      Is je bestuur ook betrokken bij eredienstbesturen die wél een CKB hebben
+      (in het voorbeeld: de vier kerkfabrieken), dan kunnen hun documenten je
+      via de CKB-bundel bereiken. Voor die eredienstbesturen gebruik je het
+      <LinkTo @route="docs.refereren-stappenplan-eredienst-met-ckb">stappenplan
+        met centraal bestuur</LinkTo>; de controle in stap 3 per
+      eredienstbestuur houdt de twee uit elkaar.
     </li>
   </ul>
 
@@ -330,7 +346,9 @@ import Snippet from '../../components/snippet';
     uit stap 6):
   </p>
 
-  <Snippet @snippetFilename="refereren-stappenplan/stap-7-artikel-rdfa.html" />
+  <Snippet
+    @snippetFilename="refereren-stappenplan-zonder-ckb/stap-7-artikel-rdfa.html"
+  />
 
   <p>
     De artikeltype-concepten (gebruik het type dat bij je Artikel past):
@@ -396,7 +414,9 @@ import Snippet from '../../components/snippet';
     <LinkTo @route="docs.meldingsplicht">Meldingsplicht API</LinkTo>.
   </p>
 
-  <Snippet @snippetFilename="refereren-stappenplan/stap-7-melding.sh" />
+  <Snippet
+    @snippetFilename="refereren-stappenplan-zonder-ckb/stap-7-melding.sh"
+  />
 
   <p>
     <CodeInline>href</CodeInline>

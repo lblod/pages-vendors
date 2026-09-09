@@ -1,0 +1,8 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+SELECT ?bestuurseenheid ?label WHERE {
+  ?bestuurseenheid a besluit:Bestuurseenheid ;
+    skos:prefLabel ?label ;
+    besluit:classificatie <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> .
+  FILTER (LCASE(STR(?label)) = "londerzeel")
+}
