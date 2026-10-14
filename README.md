@@ -32,9 +32,11 @@ changes to the diagram source. Do this with
 
 in the `DiagramsSource` folder.
 
+Then, run the app live with Vite using:
+
 - `npm run start`
 - Visit your app at
-  [http://localhost:4200/pages-vendors/](http://localhost:4200/pages-vendors/).
+  [http://localhost:4200/](http://localhost:4200/).
 - Visit your tests at
   [http://localhost:4200/tests](http://localhost:4200/tests).
 
@@ -53,8 +55,19 @@ Make use of the many generators for code, try `npm exec ember help generate` for
 
 ### Building
 
-- `npm exec vite build --mode development` (development)
+- `npm run build_development` (development)
 - `npm run build` (production)
+
+If you have made a build for development or production, and you want to test
+with a simple file web server, then you need a hack. The set-up for Vite, in
+combination with what is expected for Github Pages, is a little broken. In the
+`/dist` folder, copy all the files and folders and place copies in a new
+`/dist/pages-vendors` folder. Then start your favourite simple web server and
+navigate to it like normal. You have to do this because Vite is configured to
+serve assets from a `pages-vendors` folder, to match the way Github Pages hosts
+these files. The reason this hack works is because it makes all files available
+on the root *and* the prefixed path, so it is always going to find what it
+wants.
 
 ### Deploying
 
