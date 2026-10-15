@@ -52,15 +52,6 @@ import Footer from '../components/footer';
           </AuLink>
         </AuToolbar>
 
-        <section class="au-u-background-gray-100">
-          <div class="au-o-layout">
-            <AuHeading @level="2" @skin="2">
-              Beschikbare documentatie
-            </AuHeading>
-            <Menu @fullSize={{false}} />
-          </div>
-        </section>
-
         <Footer />
 
       </div>
