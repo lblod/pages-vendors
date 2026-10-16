@@ -1,10 +1,8 @@
 import AuApp from '@appuniversum/ember-appuniversum/components/au-app';
 import AuBodyContainer from '@appuniversum/ember-appuniversum/components/au-body-container';
 import AuToolbar from '@appuniversum/ember-appuniversum/components/au-toolbar';
-import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuContent from '@appuniversum/ember-appuniversum/components/au-content';
 import AuLink from '@appuniversum/ember-appuniversum/components/au-link';
-import Menu from '../components/menu';
 import Footer from '../components/footer';
 
 <template>
