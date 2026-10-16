@@ -10,7 +10,7 @@ export const meldingsplicht_annotaties = <template>
     @title="Annotaties voor automatische meldingen"
     @content="Annotaties die gebruikt worden bij automatische meldingen van besluiten en documenten."
   />
-</template>
+</template>;
 
 export const publicatie_annotaties = <template>
   <MenuCard
@@ -19,7 +19,7 @@ export const publicatie_annotaties = <template>
     @title="Annotaties voor publicaties"
     @content="Annotaties die gebruikt worden bij de publicatie van Besluiten en documenten opdat ze automatisch geharvest kunnen worden."
   />
-</template>
+</template>;
 
 export const bijlagen_annotaties = <template>
   <MenuCard
@@ -28,7 +28,7 @@ export const bijlagen_annotaties = <template>
     @title="Annotaties voor bijlagen bij een Besluit"
     @content="Beschrijft hoe verschillende soorten bijlagen bij een besluit geannoteerd kunnen worden."
   />
-</template>
+</template>;
 
 export const besluit_publicatie_external = <template>
   <MenuCard
@@ -38,7 +38,7 @@ export const besluit_publicatie_external = <template>
     @content="Dit applicatieprofiel definieert een specificatie voor de publicatie van notulen en besluiten van bestuursorgaan."
     @external={{true}}
   />
-</template>
+</template>;
 
 export const mandaten_annotaties = <template>
   <MenuCard
@@ -47,7 +47,7 @@ export const mandaten_annotaties = <template>
     @title="Mandatendatabank"
     @content="Dit applicatieprofiel definieert een specificatie voor een gelinkte mandatendatabank op basis van gelinkte besluiten."
   />
-</template>
+</template>;
 
 export const leidinggevenden_annotaties = <template>
   <MenuCard
@@ -56,7 +56,7 @@ export const leidinggevenden_annotaties = <template>
     @title="Leidinggevendendatabank"
     @content="De leidinggevenden databank volgt het applicatieprofiel mandatendatabank, maar werd uitgebreid met enkele subklassen en eigenschappen."
   />
-</template>
+</template>;
 
 export const documenten_refereren = <template>
   <MenuCard
@@ -65,7 +65,7 @@ export const documenten_refereren = <template>
     @title="Refereren"
     @content="Documenten refereren voor sommige besluittypes tussen eredienstbesturen, Centrale Kerkbesturen en gemeente- of provinciebesturen."
   />
-</template>
+</template>;
 
 export const meldingsplicht = <template>
   <MenuCard
@@ -74,7 +74,7 @@ export const meldingsplicht = <template>
     @title="Meldingsplicht API"
     @content="Deel van een API om een nieuwe melding aan te maken in Loket voor Lokale Besturen op basis van een publicatie. Indien al de nodige velden ingevuld zijn, kan de melding automatisch verzonden worden."
   />
-</template>
+</template>;
 
 export const berichtencentrum = <template>
   <MenuCard
@@ -84,7 +84,7 @@ export const berichtencentrum = <template>
     @subtitle="[CONCEPT]"
     @content="Opsturen van berichten door middel van het publiceren van een RDFa document en het melden van de URL."
   />
-</template>
+</template>;
 
 export const vendor_sparql = <template>
   <MenuCard
@@ -93,7 +93,7 @@ export const vendor_sparql = <template>
     @title="Vendor SPARQL API (generiek)"
     @content="Generieke documentatie voor het uitvoeren van SPARQL query's via de Vendor SPARQL API, van toepassing op verscheidene applicaties."
   />
-</template>
+</template>;
 
 export const meldingsplicht_sparql = <template>
   <MenuCard
@@ -103,7 +103,7 @@ export const meldingsplicht_sparql = <template>
     @subtitle="[CONCEPT]"
     @content="Het opvragen van statusgegevens over eerder uitgevoerde meldingen in Loket via de Vendor SPARQL API."
   />
-</template>
+</template>;
 
 export const berichtencentrum_sparql = <template>
   <MenuCard
@@ -113,7 +113,7 @@ export const berichtencentrum_sparql = <template>
     @subtitle="[CONCEPT]"
     @content="Het opvragen van Berichten en Conversaties uit het Loket."
   />
-</template>
+</template>;
 
 export const erediensten_toezichtsdatabank_sparql = <template>
   <MenuCard
@@ -123,7 +123,7 @@ export const erediensten_toezichtsdatabank_sparql = <template>
     @subtitle="[CONCEPT]"
     @content="Het opvragen van Besluiten over Erediensten via de Vendor SPARQL API."
   />
-</template>
+</template>;
 
 export const rijksregisternummer_api = <template>
   <MenuCard
@@ -132,7 +132,7 @@ export const rijksregisternummer_api = <template>
     @title="Rijksregisternummer naar Persoon URI API"
     @content="Bevragen van de URI van een persoon op basis van diens rijksregisternummer en bestuurseenheid."
   />
-</template>
+</template>;
 
 export const centrale_vindplaats_sparql = <template>
   <MenuCard
@@ -141,7 +141,7 @@ export const centrale_vindplaats_sparql = <template>
     @title="Centrale Vindplaats SPARQL endpoint"
     @content="Endpoint om met SPARQL publieke data te bevragen."
   />
-</template>
+</template>;
 
 export const publicatie_feed = <template>
   <MenuCard
@@ -150,18 +150,16 @@ export const publicatie_feed = <template>
     @title="Publicaties events via LDES"
     @content="Publicatie Events ontsluiten via LDES"
   />
-</template>
+</template>;
 
 export const MenuGrid = <template>
   <div class="au-o-grid au-o-grid--small">
     {{yield}}
   </div>
-</template>
+</template>;
 
 const MenuCard = <template>
-  <div
-    class="au-o-grid__item au-u-1-2@medium au-u-1-2@small"
-  >
+  <div class="au-o-grid__item au-u-1-2@medium au-u-1-2@small">
     <AuCard
       @flex={{true}}
       @textCenter={{false}}
