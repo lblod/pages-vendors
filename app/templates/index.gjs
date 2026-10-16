@@ -3,9 +3,9 @@ import AuBodyContainer from '@appuniversum/ember-appuniversum/components/au-body
 import AuContentHeader from '@appuniversum/ember-appuniversum/components/au-content-header';
 import AuHeading from '@appuniversum/ember-appuniversum/components/au-heading';
 import AuContent from '@appuniversum/ember-appuniversum/components/au-content';
+import AuLinkExternal from '@appuniversum/ember-appuniversum/components/au-link-external';
 import Footer from '../components/footer';
 import * as M from '../components/menu-items';
-// import Menu from '../components/menu';
 
 <template>
   <AuApp>
@@ -27,25 +27,31 @@ import * as M from '../components/menu-items';
             Gelinkt Notuleren en Loket: Vendor en API integrator documentatie
           </AuHeading>
           <p class="au-u-para-lead au-u-margin-top">
-            Integreer met systemen van Gelinkt Notuleren en Loket. Deze
+            Integreer met applicaties van Gelinkt Notuleren en Loket. Deze
             documentatie wordt verder aangevuld naarmate er meer API's
             beschikbaar zijn, en naarmate er meer vereisten gedefinieerd worden.
           </p>
         </div>
         <section class="au-u-background-gray-100 au-o-region">
           <div class="au-c-content au-o-layout au-u-max-width-medium">
+            <p class="au-u-para-lead">
+              Deze API documentatie beschrijft verschillende, soms onafhankelijke onderdelen waar een externe partij (vendor) mee kan integreren. In grote lijnen is er de <strong>Meldingsplicht API</strong>, waarbij externe partijen documenten kunnen inzenden om te voldoen aan de meldingsplicht, en opvragen om ook de inzendingen te kunnen weergeven in eigen applicaties, de <strong>Berichtencentrum API</strong>, waarmee externe partijen conversaties tussen ABB en besturen kunnen inlezen en reageren, en een aantal ondersteunende API's, waaronder die voor het uitlezen van Rijksregisternummers of publieke data uit de Centrale Vindplaats.
+            </p>
+
             <AuHeading @level="2" @skin="2">
               Meldingsplicht
             </AuHeading>
-
-            <!--TODO: Intro-->
+            <p class="au-u-para-lead">
+              Om te voldoen aan de <AuLinkExternal href="https://www.vlaanderen.be/lokaal-bestuur/organisatie-en-werking/meldingsplicht">meldingsplicht</AuLinkExternal> moeten externe partijen documenten kunnen inzenden in het centrale Loket voor Lokale Besturen. Dit gebeurt door middel van een melding, een registratie van een document met zijn URL, waarna Loket het document en eventuele bijlagen zal opvragen (crawlen) van die URL, eventueel achter een authenticatiemethode. <br />
+              Dit proces wordt ook "automatische meldingen" genoemd, omdat er in de meeste gevallen geen menselijke tussenkomst meer nodig is.
+            </p>
 
             <AuHeading @level="3" @skin="3">
               Structureren van RDF documenten
             </AuHeading>
-
-            <!--TODO: description-->
-
+            <p>
+              Het document dat ter beschikking moet worden gesteld wordt geacht een <AuLinkExternal href="https://www.w3.org/TR/rdfa-primer/">RDFa document</AuLinkExternal> te zijn. Onderstaande documentatie beschrijft in meer detail het model hoe de RDFa documenten moeten worden opgebouwd.
+            </p>
             <M.MenuGrid>
               <M.meldingsplicht_annotaties />
               <M.publicatie_annotaties />
@@ -53,11 +59,12 @@ import * as M from '../components/menu-items';
               <M.besluit_publicatie_external />
             </M.MenuGrid>
 
-            <!--TODO: doel, en flow van gegevens-->
-
             <AuHeading @level="3" @skin="3">
               Insturen
             </AuHeading>
+            <p>
+              Eenmaal documenten als RDFa ter beschikking zijn gesteld kan het worden ingezonden in het Loket voor Lokale Besturen. Het inzenden zorgt voor een verwerkingsopdracht die binnen enkele minuten het document zal crawlen. Als het document volgens validatieregels correct is zal het automatisch gefinaliseerd worden zodat het als gepubliceerd wordt beschouwd. Zoniet, dan blijft het document in concept staan zodat het vervolledigd kan worden door menselijke tussenkomst. Eventueel verwijderen van het document is in dit stadium mogelijk zodat het gecorrigeerd en opnieuw ingezonden kan worden.
+            </p>
             <M.MenuGrid>
               <M.meldingsplicht />
             </M.MenuGrid>
@@ -65,6 +72,12 @@ import * as M from '../components/menu-items';
             <AuHeading @level="3" @skin="3">
               Opvragen
             </AuHeading>
+            <p>
+              Na het inzenden is het mogelijk om informatie op te vragen over de pas ingezonden documenten, maar ook over oudere documenten, of documenten die via andere partijen zijn ingezonden, zoals die via het Loket zelf. Alle documenten worden ingezonden in Loket, maar binnen enkele minuten worden gepubliceerde inzendingen gesynchroniseerd naar andere, meer gespecialiseerde, applicaties. Daarom is de beschikbare informatie in Loket over de ingezonden documenten beperkt, maar is er meer beschikbaar via, bijvoorbeeld, de Erediensten Toezichtsdatabank.
+            </p>
+            <p>
+              Opvragen van gegevens gebeurt via een beveiligde SPARQL API. De eerste documentatie hieronder voorziet generieke informatie over hoe de beveiligde SPARQL endpoint kan worden aangesproken. De tweede over hoe deze API toe te passen op Loket zelf, waar maar beperkte informatie over de inzendingen te zien is, maar wel meteen na het inzenden. De derde documentatiepagina past de API toe op de Erediensten Toezichtsdatabank, waar de meest uitgebreide informatie terug te vinden is.
+            </p>
             <M.MenuGrid>
               <M.vendor_sparql />
               <M.meldingsplicht_sparql />
@@ -74,6 +87,9 @@ import * as M from '../components/menu-items';
             <AuHeading @level="3" @skin="3">
               Refereren tussen documenten
             </AuHeading>
+            <p>
+              Bij sommige documenten is het nodig om te kunnen refereren naar andere, eerder ingezonden documenten. Volgende documentatie bespreekt hoe het model er uit ziet, en hoe documenten kunnen worden teruggevonden om naar te refereren.
+            </p>
             <M.MenuGrid>
               <M.documenten_refereren />
             </M.MenuGrid>
