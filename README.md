@@ -66,7 +66,7 @@ combination with what is expected for Github Pages, is a little broken. In the
 navigate to it like normal. You have to do this because Vite is configured to
 serve assets from a `pages-vendors` folder, to match the way Github Pages hosts
 these files. The reason this hack works is because it makes all files available
-on the root *and* the prefixed path, so it is always going to find what it
+on the root _and_ the prefixed path, so it is always going to find what it
 wants.
 
 ### Deploying
