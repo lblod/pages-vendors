@@ -31,6 +31,34 @@ import SnippetToggle from '../../components/snippet-toggle';
   </p>
   <CodeBlock>https://api.loket.lokaalbestuur.vlaanderen.be</CodeBlock>
   <p>
+    Deze host bestaat in een test- en een productieomgeving:
+  </p>
+  <AuTable>
+    <:header>
+      <tr>
+        <th>Omgeving</th>
+        <th>Host</th>
+      </tr>
+    </:header>
+    <:body>
+      <tr>
+        <td>Test</td>
+        <td>
+          <CodeInline>https://loket.vendor-test.lblod.info</CodeInline>
+          (voorheen
+          <CodeInline>api.loket.lblod.info</CodeInline>)
+          Noteer: voorlopig nog niet in gebruik
+        </td>
+      </tr>
+      <tr>
+        <td>Productie</td>
+        <td>
+          <CodeInline>https://api.loket.lokaalbestuur.vlaanderen.be</CodeInline>
+        </td>
+      </tr>
+    </:body>
+  </AuTable>
+  <p>
     Ter volledigheid staat hieronder de volledige lijst aan URL's voor het
     inloggen, sturen van query's en het uitloggen respectievelijk.
   </p>

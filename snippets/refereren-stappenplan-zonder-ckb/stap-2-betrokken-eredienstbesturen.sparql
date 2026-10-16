@@ -1,0 +1,14 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+PREFIX ere: <http://data.lblod.info/vocabularies/erediensten/>
+SELECT DISTINCT ?eredienst ?label ?classificatieLabel WHERE {
+  <http://data.lblod.info/id/bestuurseenheden/169b6bfa2d8ee340f266af26d1a6055182214082dca720b8817d3893692f3068>
+    a besluit:Bestuurseenheid ;
+    ere:betrokkenBestuur ?betrokkenBestuur .
+  ?betrokkenBestuur org:organization ?eredienst .
+  ?eredienst
+    besluit:classificatie ?classificatie ;
+    skos:prefLabel ?label .
+  ?classificatie skos:prefLabel ?classificatieLabel .
+}

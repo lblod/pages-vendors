@@ -5,3 +5,50 @@
 .block {
   display: block;
 }
+
+.docs-sticky-back-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* stylelint-disable-next-line selector-class-pattern -- appuniversum BEM class */
+.docs-menu-accordion .au-c-accordion__button {
+  color: var(--au-gray-900);
+  font-size: var(--au-h3-small);
+  font-weight: var(--au-medium);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    color: var(--au-gray-900);
+    text-decoration: none;
+  }
+
+  @include mq(small) {
+    font-size: var(--au-h3);
+  }
+}
+
+/* stylelint-disable-next-line selector-class-pattern -- appuniversum BEM class */
+.docs-menu-accordion .au-c-accordion__toggle {
+  border-width: 0.2rem;
+  padding: 1.2rem;
+}
+
+.docs-menu-accordion:has([data-test-accordion-content]) {
+  /* stylelint-disable-next-line selector-class-pattern -- appuniversum BEM class */
+  .au-c-accordion__toggle {
+    border: none;
+  }
+}
+
+.docs-menu-accordion [data-test-accordion-content] {
+  outline: none;
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
