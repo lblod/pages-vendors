@@ -29,7 +29,7 @@ import Snippet from '../../components/snippet';
     het onderliggende document van het eredienstbestuur in die bundel. Het geval
     van een eredienstbestuur zonder centraal bestuur wordt behandeld op de
     pagina over het
-    <LinkTo @route="docs.refereren-stappenplan-eredienst-zonder-ckb">stappenplan
+    <LinkTo @route="docs.stappenplan-refereren-eredienst-zonder-ckb">stappenplan
       voor een eredienstbestuur zonder centraal bestuur</LinkTo>.
   </p>
 
@@ -282,7 +282,7 @@ import Snippet from '../../components/snippet';
     je advies zal via zijn bundel naar het document van de kerkfabriek
     verwijzen. Heeft je eredienstbestuur geen centraal bestuur, dan geldt de
     flow zonder CKB, die behandeld wordt op de pagina over het
-    <LinkTo @route="docs.refereren-stappenplan-eredienst-zonder-ckb">stappenplan
+    <LinkTo @route="docs.stappenplan-refereren-eredienst-zonder-ckb">stappenplan
       voor een eredienstbestuur zonder centraal bestuur</LinkTo>.
   </p>
 

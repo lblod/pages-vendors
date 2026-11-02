@@ -27,7 +27,7 @@ import Snippet from '../../components/snippet';
     terugvinden van het exacte document waarnaar je moet verwijzen. Eén publieke
     query (stap 3) vertelt je in welke flow je zit. Heeft je eredienstbestuur
     wél een CKB, dan geldt een andere flow: zie het
-    <LinkTo @route="docs.refereren-stappenplan-eredienst-met-ckb">stappenplan
+    <LinkTo @route="docs.stappenplan-refereren-eredienst-met-ckb">stappenplan
       voor een eredienstbestuur met centraal bestuur</LinkTo>.
   </p>
 
@@ -264,7 +264,7 @@ import Snippet from '../../components/snippet';
     Je krijgt één rij per eredienstbestuur, met zijn naam en classificatie. De
     lijst kan beide flows mengen. In het voorbeeld: vier kerkfabrieken en CKB
     Londerzeel (die hebben een CKB, dus voor hen geldt het
-    <LinkTo @route="docs.refereren-stappenplan-eredienst-met-ckb">stappenplan
+    <LinkTo @route="docs.stappenplan-refereren-eredienst-met-ckb">stappenplan
       met centraal bestuur</LinkTo>), en de Christengemeente Londerzeel, die er
     geen heeft. Kies het eredienstbestuur waarover je besluit gaat. Voorbeeld:
     Christengemeente Londerzeel,
@@ -290,7 +290,7 @@ import Snippet from '../../components/snippet';
     Er is geen centraal bestuur dat documenten bundelt voor dit
     eredienstbestuur, dus je besluit verwijst rechtstreeks naar zijn document.
     Een rij betekent dat er toch een CKB is: gebruik dan het
-    <LinkTo @route="docs.refereren-stappenplan-eredienst-met-ckb">stappenplan
+    <LinkTo @route="docs.stappenplan-refereren-eredienst-met-ckb">stappenplan
       met centraal bestuur</LinkTo>.
   </p>
 
@@ -395,7 +395,7 @@ import Snippet from '../../components/snippet';
       Is je bestuur ook betrokken bij eredienstbesturen die wél een CKB hebben
       (in het voorbeeld: de vier kerkfabrieken), dan kunnen hun documenten je
       via de CKB-bundel bereiken. Voor die eredienstbesturen gebruik je het
-      <LinkTo @route="docs.refereren-stappenplan-eredienst-met-ckb">stappenplan
+      <LinkTo @route="docs.stappenplan-refereren-eredienst-met-ckb">stappenplan
         met centraal bestuur</LinkTo>; de controle in stap 3 per
       eredienstbestuur houdt de twee uit elkaar.
     </li>
