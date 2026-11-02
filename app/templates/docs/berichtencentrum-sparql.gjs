@@ -46,8 +46,8 @@ import SnippetToggle from '../../components/snippet-toggle';
         <td>
           <CodeInline>https://loket.vendor-test.lblod.info</CodeInline>
           (voorheen
-          <CodeInline>api.loket.lblod.info</CodeInline>)
-          Noteer: voorlopig nog niet in gebruik
+          <CodeInline>api.loket.lblod.info</CodeInline>) Noteer: voorlopig nog
+          niet in gebruik
         </td>
       </tr>
       <tr>

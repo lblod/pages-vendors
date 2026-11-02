@@ -21,7 +21,7 @@ import Snippet from '../../components/snippet';
 
   <AuHeading @level="2" @skin="2">Aanmaken nieuwe melding</AuHeading>
   <AuHeading @level="3" @skin="3">API endpoint</AuHeading>
-    <p>
+  <p>
     Deze host bestaat in een test- en een productieomgeving:
   </p>
   <AuTable>
