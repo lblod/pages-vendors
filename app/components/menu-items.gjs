@@ -152,6 +152,33 @@ export const publicatie_feed = <template>
   />
 </template>;
 
+export const stappenplan_refereren_ckb = <template>
+  <MenuCard
+    @badgeIcon="pencil"
+    @route="docs.stappenplan-refereren-eredienst-met-ckb"
+    @title="Stappenplan: refereren met centraal bestuur"
+    @content="Stap-voor-stap begeleiding voor gemeenten en provincies om te refereren naar een document van een eredienstbestuur dat een centraal bestuur (CKB) heeft."
+  />
+</template>;
+
+export const stappenplan_refereren_zonder_ckb = <template>
+  <MenuCard
+    @badgeIcon="pencil"
+    @route="docs.stappenplan-refereren-eredienst-zonder-ckb"
+    @title="Stappenplan: refereren zonder centraal bestuur"
+    @content="Stap-voor-stap begeleiding voor gemeenten en provincies om te refereren naar een document van een eredienstbestuur zonder centraal bestuur."
+  />
+</template>;
+
+export const stappenplan_inzenden = <template>
+  <MenuCard
+    @badgeIcon="pencil"
+    @route="docs.stappenplan-inzending-indienen"
+    @title="Stappenplan: een inzending indienen en opvolgen"
+    @content="Stap-voor-stap begeleiding voor het indienen van een document via de Meldingsplicht API en het opvolgen van de status via de Vendor SPARQL API."
+  />
+</template>;
+
 export const MenuGrid = <template>
   <div class="au-o-grid au-o-grid--small">
     {{yield}}

@@ -135,6 +135,19 @@ import * as M from '../components/menu-items';
             </M.MenuGrid>
 
             <AuHeading @level="3" @skin="3">
+              Stappenplan met voorbeeld
+            </AuHeading>
+            <p>
+              Onderstaande documentatie demonstreert, van begin tot einde,
+              concreet een voorbeeld van een inzending. Het stappenplan
+              begeleidt je tot een eerste succesvolle manuele inzending om
+              verder een automatisch procss te kunnen uitbouwen.
+            </p>
+            <M.MenuGrid>
+              <M.stappenplan_inzenden />
+            </M.MenuGrid>
+
+            <AuHeading @level="3" @skin="3">
               Refereren tussen documenten
             </AuHeading>
             <p>
@@ -145,6 +158,17 @@ import * as M from '../components/menu-items';
             </p>
             <M.MenuGrid>
               <M.documenten_refereren />
+            </M.MenuGrid>
+            <p>
+              Om een meer concreet overzicht en voorbeeld te kunnen geven van
+              een volledige workflow voor het refereren van documenten,
+              refereer naar de volgende documentatie. Deze behandelen van begin
+              tot einde het refereren van documenten via - of zonder - een
+              Centraal Kerkbestuur.
+            </p>
+            <M.MenuGrid>
+              <M.stappenplan_refereren_ckb />
+              <M.stappenplan_refereren_zonder_ckb />
             </M.MenuGrid>
 
             <AuHeading @level="2" @skin="2">
