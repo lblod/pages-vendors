@@ -34,16 +34,16 @@ import ScrollLink from '../../components/scroll-link';
   <ul>
     <li>
       Heeft het eredienstbestuur een centraal bestuur? Zie
-      <AuLink @route="docs.refereren-stappenplan-eredienst-met-ckb">Stappenplan:
+      <AuLink @route="docs.stappenplan-refereren-eredienst-met-ckb">Stappenplan:
         refereren als gemeente of provincie naar een document van een
-        eredienstbestuur met centraal bestuur</AuLink>.
+        eredienstbestuur met Centraal Bestuur.</AuLink>
     </li>
     <li>
       Heeft het eredienstbestuur geen centraal bestuur? Zie
       <AuLink
-        @route="docs.refereren-stappenplan-eredienst-zonder-ckb"
+        @route="docs.stappenplan-refereren-eredienst-zonder-ckb"
       >Stappenplan: refereren als gemeente of provincie naar een document van
-        een eredienstbestuur zonder centraal bestuur</AuLink>.
+        een eredienstbestuur zonder Centraal Bestuur.</AuLink>
     </li>
   </ul>
 

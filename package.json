@@ -19,6 +19,7 @@
   },
   "scripts": {
     "build": "vite build",
+    "build_development": "vite build --mode development",
     "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\" --prefixColors auto",
     "lint:css": "stylelint \"**/*.css\" \"**/*.scss\"",
     "lint:css:fix": "concurrently \"npm:lint:css -- --fix\"",
