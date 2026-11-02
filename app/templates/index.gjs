@@ -161,10 +161,10 @@ import * as M from '../components/menu-items';
             </M.MenuGrid>
             <p>
               Om een meer concreet overzicht en voorbeeld te kunnen geven van
-              een volledige workflow voor het refereren van documenten,
-              refereer naar de volgende documentatie. Deze behandelen van begin
-              tot einde het refereren van documenten via - of zonder - een
-              Centraal Kerkbestuur.
+              een volledige workflow voor het refereren van documenten, refereer
+              naar de volgende documentatie. Deze behandelen van begin tot einde
+              het refereren van documenten via - of zonder - een Centraal
+              Kerkbestuur.
             </p>
             <M.MenuGrid>
               <M.stappenplan_refereren_ckb />
