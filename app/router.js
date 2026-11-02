@@ -16,6 +16,9 @@ Router.map(function () {
     this.route('publicatie-feed');
     this.route('mandaten-annotaties');
     this.route('documenten-refereren');
+    this.route('stappenplan-refereren-eredienst-met-ckb');
+    this.route('stappenplan-refereren-eredienst-zonder-ckb');
+    this.route('stappenplan-inzending-indienen');
     //Insturen
     this.route('meldingsplicht');
     this.route('berichtencentrum');

@@ -1,0 +1,6 @@
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX org: <http://www.w3.org/ns/org#>
+SELECT ?ckb ?ckbLabel WHERE {
+  ?ckb org:hasSubOrganization <http://data.lblod.info/id/besturenVanDeEredienst/4bafd12e53d6aaa218d74446202dc2ed> ;
+    skos:prefLabel ?ckbLabel .
+}

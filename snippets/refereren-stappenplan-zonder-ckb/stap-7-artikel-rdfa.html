@@ -1,0 +1,24 @@
+<!-- Het besluit: type Advies bij jaarrekening eredienstbestuur -->
+<div typeof="besluit:Besluit"
+     resource="http://data.londerzeel.be/besluiten/2026-advies-jaarrekening-christengemeente">
+  <!-- JOUW WAARDEN: de URI van het besluit en het eredienstbestuur waarover het gaat -->
+  <div property="eli:is_about"
+       resource="http://data.lblod.info/id/besturenVanDeEredienst/635935898DE5818A7C9F42F0"></div>
+
+  <div property="prov:value" datatype="xsd:string">
+    De gemeenteraad geeft een gunstig advies over de jaarrekening
+    van de Christengemeente Londerzeel.
+    <!-- JOUW WAARDEN: de URI van het artikel -->
+    <div property="eli:has_part"
+         resource="http://data.londerzeel.be/artikels/2026-advies-jaarrekening-christengemeente-artikel-1"
+         typeof="besluit:Artikel">
+      <div property="eli:number" datatype="xsd:string">Artikel 1</div>
+      <!-- Het artikeltype van je Artikel (zie de tabel met artikeltypes) -->
+      <div property="eli:type_document"
+           resource="http://data.lblod.info/concepts/ArtikelTypes/9a54a930-7dd6-4ff2-a4b1-ee403f7cda5c"></div>
+      <!-- De verwijzing: de ?eredienstDocument URI uit de zoekquery in stap 6 -->
+      <div property="eli:refers_to"
+           resource="http://data.lblod.info/submission-documents/VUL-HIER-DE-URI-VAN-HET-EREDIENSTDOCUMENT-IN"></div>
+    </div>
+  </div>
+</div>

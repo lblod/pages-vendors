@@ -15,6 +15,7 @@ import Footer from '../components/footer';
           @skin="tint"
           @size="large"
           @nowrap={{true}}
+          class="docs-sticky-back-toolbar"
         >
           <AuLink
             @route="index"
@@ -32,23 +33,6 @@ import Footer from '../components/footer';
         >
           {{outlet}}
         </AuContent>
-
-        <AuToolbar
-          @reverse={{false}}
-          @border="top"
-          @skin="tint"
-          @size="large"
-          @nowrap={{true}}
-        >
-          <AuLink
-            @route="index"
-            @skin="primary"
-            @icon="chevron-left"
-            @iconAlignment="left"
-          >
-            Terug naar overzicht
-          </AuLink>
-        </AuToolbar>
 
         <Footer />
 

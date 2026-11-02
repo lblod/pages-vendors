@@ -25,6 +25,28 @@ import ScrollLink from '../../components/scroll-link';
     het model er uit ziet, en hoe documenten en regels kunnen worden opgevraagd.
   </p>
 
+  <AuHeading @level="2" @skin="2">Stappenplannen</AuHeading>
+
+  <p>
+    Voor een stap-voor-stap begeleiding van deze flow, met concrete voorbeelden
+    voor gemeenten en provincies:
+  </p>
+  <ul>
+    <li>
+      Heeft het eredienstbestuur een centraal bestuur? Zie
+      <AuLink @route="docs.stappenplan-refereren-eredienst-met-ckb">Stappenplan:
+        refereren als gemeente of provincie naar een document van een
+        eredienstbestuur met Centraal Bestuur.</AuLink>
+    </li>
+    <li>
+      Heeft het eredienstbestuur geen centraal bestuur? Zie
+      <AuLink
+        @route="docs.stappenplan-refereren-eredienst-zonder-ckb"
+      >Stappenplan: refereren als gemeente of provincie naar een document van
+        een eredienstbestuur zonder Centraal Bestuur.</AuLink>
+    </li>
+  </ul>
+
   <AuHeading @level="2" @skin="2">Documenttypes</AuHeading>
 
   <p>

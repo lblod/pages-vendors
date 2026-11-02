@@ -1,0 +1,11 @@
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX meb: <http://rdf.myexperiment.org/ontologies/base/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT DISTINCT ?submission ?status ?statusLabel WHERE {
+  ?submission a meb:Submission ;
+    prov:atLocation <http://een.domein.van.mechelen.be/besluitenlijsten/2026-09-09.html> ;
+    adms:status ?status .
+  ?status skos:prefLabel ?statusLabel .
+}

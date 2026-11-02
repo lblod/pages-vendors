@@ -1,0 +1,14 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX ref: <http://lblod.data.gift/vocabularies/referencing/>
+PREFIX lblodBesluit: <http://lblod.data.gift/vocabularies/besluit/>
+SELECT DISTINCT ?verwijsbaarType ?typeLabel WHERE {
+  ?rule
+    rdf:type ref:ReferencingRule ;
+    rdfs:domain <https://data.vlaanderen.be/id/concept/BesluitType/79414af4-4f57-4ca3-aaa4-f8f1e015e71c> ;
+    rdfs:range ?verwijsbaarType ;
+    lblodBesluit:decidableBy <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+    lblodBesluit:referredDecidableBy <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054> .
+  ?verwijsbaarType skos:prefLabel ?typeLabel .
+}
